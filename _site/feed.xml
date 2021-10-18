@@ -1,1 +1,650 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-18T21:36:05+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Site Title</title><subtitle>An amazing website.</subtitle><author><name>Your Name</name></author></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://carl020958.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://carl020958.github.io/" rel="alternate" type="text/html" /><updated>2021-10-18T18:28:49+09:00</updated><id>https://carl020958.github.io/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[ALGORITHM] Programmers ALGORITHM 연습문제 (1)</title><link href="https://carl020958.github.io/algorithm/programmers_coding_test/" rel="alternate" type="text/html" title="[ALGORITHM] Programmers ALGORITHM 연습문제 (1)" /><published>2021-10-18T00:00:00+09:00</published><updated>2021-10-18T00:00:00+09:00</updated><id>https://carl020958.github.io/algorithm/programmers_coding_test</id><content type="html" xml:base="https://carl020958.github.io/algorithm/programmers_coding_test/">&lt;hr /&gt;
+&lt;h3 id=&quot;algorithm-übung---programmers&quot;&gt;ALGORITHM Übung - Programmers&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;알고리즘 문제 풀이를 통한 코딩 테스트 연습&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-1&quot;&gt;문제 1&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;18/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/coding_test/coding_test1.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-2&quot;&gt;문제 2&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;18/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/coding_test/coding_test2.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-3&quot;&gt;문제 3&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;18/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/coding_test/coding_test3.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="ALGORITHM" /><category term="BACKEND" /><category term="ALGORITHM" /><summary type="html">ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry><entry><title type="html">[SQL] Subquery</title><link href="https://carl020958.github.io/sql/sql2_4_subquery/" rel="alternate" type="text/html" title="[SQL] Subquery" /><published>2021-10-18T00:00:00+09:00</published><updated>2021-10-18T00:00:00+09:00</updated><id>https://carl020958.github.io/sql/sql2_4_subquery</id><content type="html" xml:base="https://carl020958.github.io/sql/sql2_4_subquery/">&lt;hr /&gt;
+&lt;h3 id=&quot;sql-übung&quot;&gt;SQL Übung&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;SQL JOIN 문법 정리(4)&lt;/li&gt;
+  &lt;li&gt;Subquery - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WHERE&lt;/code&gt;/ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SELECT&lt;/code&gt;/ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt; 안에 쿼리를 쓰는 것&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;subquery-inside-where&quot;&gt;Subquery (inside WHERE)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;가장 많이 사용됨&lt;/li&gt;
+  &lt;li&gt;Select all fields from populations with records of 2015 that are larger than 1.15 times the average life expectancy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;populations&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'2015'&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;life_expectancy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AVG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;life_expectancy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;populations&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;subquery-inside-select&quot;&gt;Subquery (inside SELECT)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;이 경우, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AS&lt;/code&gt;로 alias 해야 함!&lt;/li&gt;
+  &lt;li&gt;GET the country and number of cities per country&lt;/li&gt;
+  &lt;li&gt;Order the result in descending order of the number and limit the result to 9 countries&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;countries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;country&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities_num&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;INNER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;countries&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;countries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;country_code&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;country&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities_num&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DESC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;country&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# 위 코드와 같은 코드
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;countries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;country&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;countries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;country_code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities_num&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;countries&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities_num&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DESC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;country&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;subquery-inside-from&quot;&gt;Subquery (inside FROM)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;이 경우, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AS&lt;/code&gt;로 alias 해야 함!&lt;/li&gt;
+  &lt;li&gt;Get the number of languages spoken for each country, identified by the country’s local name&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;local_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subquery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lang_num&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;countries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  	&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lang_num&lt;/span&gt;
+  	 &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;languages&lt;/span&gt;
+  	 &lt;span class=&quot;n&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subquery&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;countries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subquery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lang_num&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DESC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="SQL" /><summary type="html">SQL Übung SQL JOIN 문법 정리(4) Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것</summary></entry><entry><title type="html">[Algorithm] 거듭제곱 - Dynamic Programming</title><link href="https://carl020958.github.io/algorithm/algorithm23_powers_dynamic_programming/" rel="alternate" type="text/html" title="[Algorithm] 거듭제곱 - Dynamic Programming" /><published>2021-10-17T00:00:00+09:00</published><updated>2021-10-17T00:00:00+09:00</updated><id>https://carl020958.github.io/algorithm/algorithm23_powers_dynamic_programming</id><content type="html" xml:base="https://carl020958.github.io/algorithm/algorithm23_powers_dynamic_programming/">&lt;h3 id=&quot;algorithm&quot;&gt;ALGORITHM&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;알고리즘 정리(23)&lt;/li&gt;
+  &lt;li&gt;Dyanmic Programming&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;dynamic-programming&quot;&gt;Dynamic Programming&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;거듭제곱의 경우 for 문을 돌릴 경우 시간복잡도 O(n)이 나옴&lt;/li&gt;
+  &lt;li&gt;시간복잡도가 O(lgn)이 되는 함수를 구현하시오.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;power&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;subresult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;power&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subresult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subresult&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subresult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subresult&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 테스트
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;power&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;power&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;power&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;243
+15625
+40353607
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="ALGORITHM" /><category term="BACKEND" /><category term="ALGORITHM" /><summary type="html">ALGORITHM 알고리즘 정리(23) Dyanmic Programming</summary></entry><entry><title type="html">[SQL] UNION &amp;amp; INTER &amp;amp; EXCEPT</title><link href="https://carl020958.github.io/sql/sql2_3_set_theory_clauses/" rel="alternate" type="text/html" title="[SQL] UNION &amp;amp; INTER &amp;amp; EXCEPT" /><published>2021-10-17T00:00:00+09:00</published><updated>2021-10-17T00:00:00+09:00</updated><id>https://carl020958.github.io/sql/sql2_3_set_theory_clauses</id><content type="html" xml:base="https://carl020958.github.io/sql/sql2_3_set_theory_clauses/">&lt;hr /&gt;
+&lt;h3 id=&quot;sql-übung&quot;&gt;SQL Übung&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;SQL JOIN 문법 정리(3)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UNION&lt;/code&gt;을 통해 두 데이터 간 합집함을 가져올 수 있음
+    &lt;ul&gt;
+      &lt;li&gt;중복되는 데이터는 한 개만 포함됨&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UNION&lt;/code&gt;되는 데이터 세트의 열 개수가 같아야 함&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UNION&lt;/code&gt;되는 데이터들의 열의 자료형이 같아야 함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UNION ALL&lt;/code&gt;을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음
+    &lt;ul&gt;
+      &lt;li&gt;중복된 데이터는 2개가 존재&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;INTER&lt;/code&gt;을 통해 교집합만 가져올 수 있음&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EXCEPT&lt;/code&gt;을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;SEMI JOIN - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WHERE&lt;/code&gt; &amp;amp; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IN&lt;/code&gt;에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음&lt;/li&gt;
+  &lt;li&gt;ANTI JOIN - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WHERE&lt;/code&gt; &amp;amp; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NOT IN&lt;/code&gt;에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;union&quot;&gt;UNION&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Determine all (non-duplicated) country codes in either the cities or the currencies table. The result should be a table with only one field called country_code&lt;/li&gt;
+  &lt;li&gt;Sort by country_code in alphabetical order&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;country_code&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;UNION&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;From&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currencies&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currencies&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;country_code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;union-all&quot;&gt;UNION ALL&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Determine all combinations (include duplicates) of country code and year that exist in either the economies or the populations tables. Order by code then year.a table with only one field called country_code&lt;/li&gt;
+  &lt;li&gt;The result of the query should only have two columns/fields. Think about how many records this query should result in&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;country_code&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;UNION&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;From&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currencies&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currencies&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;country_code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;intersect&quot;&gt;INTERSECT&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Determine the records in common for country code and year for the economies and populations tables&lt;/li&gt;
+  &lt;li&gt;Order by code and then by year, both in ascending order&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;year&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;economies&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;INTERSECT&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;country_code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;year&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;populations&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;except&quot;&gt;EXCEPT&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Get the names of cities in cities which are not noted as capital cities in countries as a single field result&lt;/li&gt;
+  &lt;li&gt;Order the resulting field in ascending order&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cities&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;EXCEPT&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;capital&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;countries&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;where--in-semi-join&quot;&gt;WHERE &amp;amp; IN (Semi-join)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Identify languages spoken in the Middle East&lt;/li&gt;
+  &lt;li&gt;Order the result by name in ascending order&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DISTINCT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;languages&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IN&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;countries&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;region&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Middle East'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;where--not-in-anti-join&quot;&gt;WHERE &amp;amp; NOT IN (Anti-join)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Identify the code and name used in Oceanian countries which are included in the countries table but not in the currencies table&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;countries&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;continent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Oceania'&lt;/span&gt;
+  	&lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IN&lt;/span&gt;
+  	&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; 
+  	 &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currencies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="SQL" /><summary type="html">SQL Übung SQL JOIN 문법 정리(3) UNION을 통해 두 데이터 간 합집함을 가져올 수 있음 중복되는 데이터는 한 개만 포함됨 UNION되는 데이터 세트의 열 개수가 같아야 함 UNION되는 데이터들의 열의 자료형이 같아야 함 UNION ALL을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음 중복된 데이터는 2개가 존재 INTER을 통해 교집합만 가져올 수 있음 EXCEPT을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음 SEMI JOIN - WHERE &amp;amp; IN에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음 ANTI JOIN - WHERE &amp;amp; NOT IN에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음</summary></entry><entry><title type="html">[Algorithm] 최대 이익 구간 - Brute Force</title><link href="https://carl020958.github.io/algorithm/algorithm22_maximum_profits_brute_force/" rel="alternate" type="text/html" title="[Algorithm] 최대 이익 구간 - Brute Force" /><published>2021-10-16T00:00:00+09:00</published><updated>2021-10-16T00:00:00+09:00</updated><id>https://carl020958.github.io/algorithm/algorithm22_maximum_profits_brute_force</id><content type="html" xml:base="https://carl020958.github.io/algorithm/algorithm22_maximum_profits_brute_force/">&lt;h3 id=&quot;algorithm&quot;&gt;ALGORITHM&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;알고리즘 정리(22)&lt;/li&gt;
+  &lt;li&gt;Brute Force&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;brute-force&quot;&gt;Brute Force&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;리스트에는 며칠 동안의 수익이 담겨 있습니다.&lt;/li&gt;
+  &lt;li&gt;예를 들어서 [7, -3, 4, -8]이라면 첫 날에는 7달러를 벌었고, 둘째 날에는 3달러를 잃었고, 셋째 날에는 4달러를 벌었고, 마지막 날에는 8달러를 잃은 것입니다.&lt;/li&gt;
+  &lt;li&gt;profits를 파라미터로 받아, 최대 수익을 내는 구간의 수익을 리턴 sublist_max 함수를 구현하시오.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sublist_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# 코드를 작성하세요.
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;max_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;max_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_result&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# 테스트
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sublist_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sublist_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sublist_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;15
+8
+27
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="ALGORITHM" /><category term="BACKEND" /><category term="ALGORITHM" /><summary type="html">ALGORITHM 알고리즘 정리(22) Brute Force</summary></entry><entry><title type="html">[SQL] Programmers SQL 연습문제 (1)</title><link href="https://carl020958.github.io/sql/sql_practice_programmers/" rel="alternate" type="text/html" title="[SQL] Programmers SQL 연습문제 (1)" /><published>2021-10-16T00:00:00+09:00</published><updated>2021-10-16T00:00:00+09:00</updated><id>https://carl020958.github.io/sql/sql_practice_programmers</id><content type="html" xml:base="https://carl020958.github.io/sql/sql_practice_programmers/">&lt;hr /&gt;
+&lt;h3 id=&quot;sql-übung---programmers&quot;&gt;SQL Übung - Programmers&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;SQL 문제 풀이를 통한 연습&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-1&quot;&gt;문제 1&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;16/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers1.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_INS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-2&quot;&gt;문제 2&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;16/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers2.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATETIME&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_INS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_ID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DESC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-3&quot;&gt;문제 3&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;16/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers3.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_INS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTAKE_CONDITION&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Sick'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-4&quot;&gt;문제 4&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;16/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers4.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_INS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTAKE_CONDITION&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Aged'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-5&quot;&gt;문제 5&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;16/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers5.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATETIME&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_INS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATETIME&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DESC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-6&quot;&gt;문제 6&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;16/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers6.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_INS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATETIME&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-7&quot;&gt;문제 7&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;17/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers7.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DATETIME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_INS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-8&quot;&gt;문제 8&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;17/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers8.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_INS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-9&quot;&gt;문제 9&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;17/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers9.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DISTINCT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_INS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-10&quot;&gt;문제 10&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;17/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers10.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_TYPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ANIMAL_TYPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_INS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_TYPE&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_TYPE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ASC&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-11&quot;&gt;문제 11&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;17/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers11.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_INS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NULL&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;HAVING&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-12&quot;&gt;문제 12&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;17/10/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/sql/sql_programmers12.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATE_FORMAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DATETIME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%H&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HOUR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_OUTS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HOUR&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;HAVING&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HOUR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BETWEEN&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HOUR&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="SQL" /><summary type="html">SQL Übung - Programmers SQL 문제 풀이를 통한 연습</summary></entry><entry><title type="html">[Algorithm] 수업을 최대로 많이 듣는 수강 신청 - Greedy Alogirthm</title><link href="https://carl020958.github.io/algorithm/algorithm21_maximum_class_greedy_algorithm/" rel="alternate" type="text/html" title="[Algorithm] 수업을 최대로 많이 듣는 수강 신청 - Greedy Alogirthm" /><published>2021-10-15T00:00:00+09:00</published><updated>2021-10-15T00:00:00+09:00</updated><id>https://carl020958.github.io/algorithm/algorithm21_maximum_class_greedy_algorithm</id><content type="html" xml:base="https://carl020958.github.io/algorithm/algorithm21_maximum_class_greedy_algorithm/">&lt;h3 id=&quot;algorithm&quot;&gt;ALGORITHM&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;알고리즘 정리(21)&lt;/li&gt;
+  &lt;li&gt;Greedy Algorithm이 사용되면 최적인 경우
+    &lt;ul&gt;
+      &lt;li&gt;최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것&lt;/li&gt;
+      &lt;li&gt;탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;greedy-algorithm&quot;&gt;Greedy Algorithm&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;리스트에 담겨있는 튜플들은 각각 하나의 수업을 나타내며, 각 튜플의 0번째 항목은 해당 수업의 시작 교시, 그리고 1 번 항목은 해당 수업이 끝나는 교시를 의미&lt;/li&gt;
+  &lt;li&gt;최대한 많은 수업을 들을 수 있는 수업 조합을 찾아주는 함수를 구하세요.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;course_selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;course_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sorted_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;course_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;my_selection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sorted_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;course&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sorted_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;course&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;my_selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;course&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_selection&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 테스트
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;course_selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;course_selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;course_selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[(2, 3), (4, 5), (6, 8), (9, 10)]
+[(1, 2), (3, 4), (5, 7), (8, 9)]
+[(1, 3), (4, 7), (8, 10), (13, 16)]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="ALGORITHM" /><category term="BACKEND" /><category term="ALGORITHM" /><summary type="html">ALGORITHM 알고리즘 정리(21) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것</summary></entry><entry><title type="html">[Algorithm] 최대 곱 구하기 - Greedy Alogirthm</title><link href="https://carl020958.github.io/algorithm/algorithm19_max_card_combination_greedy_algorithm/" rel="alternate" type="text/html" title="[Algorithm] 최대 곱 구하기 - Greedy Alogirthm" /><published>2021-10-15T00:00:00+09:00</published><updated>2021-10-15T00:00:00+09:00</updated><id>https://carl020958.github.io/algorithm/algorithm19_max_card_combination_greedy_algorithm</id><content type="html" xml:base="https://carl020958.github.io/algorithm/algorithm19_max_card_combination_greedy_algorithm/">&lt;h3 id=&quot;algorithm&quot;&gt;ALGORITHM&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;알고리즘 정리(19)&lt;/li&gt;
+  &lt;li&gt;Greedy Algorithm이 사용되면 최적인 경우
+    &lt;ul&gt;
+      &lt;li&gt;최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것&lt;/li&gt;
+      &lt;li&gt;탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;greedy-algorithm&quot;&gt;Greedy Algorithm&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;여러 명이 카드 게임을 하는 상황에서 각 플레이어는 3장의 카드를 들고 있습니다.&lt;/li&gt;
+  &lt;li&gt;한 사람당 카드를 하나씩 뽑아서 모두 곱했을 때 가능한 최대 곱을 구하는 함수를 구하세요.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;max_product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;card_lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;product&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;card_list&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;card_lists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;product&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;card_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;product&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;test_cards1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_cards1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;test_cards2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_cards2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;test_cards3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_cards3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;test_cards4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_cards4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;24
+244944
+10800
+12600
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="ALGORITHM" /><category term="BACKEND" /><category term="ALGORITHM" /><summary type="html">ALGORITHM 알고리즘 정리(19) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것</summary></entry><entry><title type="html">[Algorithm] 최대 수익 - Greedy Alogirthm</title><link href="https://carl020958.github.io/algorithm/algorithm18_return_coin_greedy_algorithm/" rel="alternate" type="text/html" title="[Algorithm] 최대 수익 - Greedy Alogirthm" /><published>2021-10-15T00:00:00+09:00</published><updated>2021-10-15T00:00:00+09:00</updated><id>https://carl020958.github.io/algorithm/algorithm18_return_coin_greedy_algorithm</id><content type="html" xml:base="https://carl020958.github.io/algorithm/algorithm18_return_coin_greedy_algorithm/">&lt;h3 id=&quot;algorithm&quot;&gt;ALGORITHM&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;알고리즘 정리(18)&lt;/li&gt;
+  &lt;li&gt;Greedy Algorithm이 사용되면 최적인 경우
+    &lt;ul&gt;
+      &lt;li&gt;최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것&lt;/li&gt;
+      &lt;li&gt;탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;greedy-algorithm&quot;&gt;Greedy Algorithm&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;최소의 동전 개수로 거슬러주기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;min_coin_count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coin_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 테스트
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default_coin_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_coin_count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1440&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default_coin_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_coin_count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1700&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default_coin_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_coin_count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23520&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default_coin_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_coin_count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32590&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default_coin_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;10
+5
+49
+70
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="ALGORITHM" /><category term="BACKEND" /><category term="ALGORITHM" /><summary type="html">ALGORITHM 알고리즘 정리(18) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것</summary></entry><entry><title type="html">[Algorithm] 벌금 최소화하기 - Greedy Alogirthm</title><link href="https://carl020958.github.io/algorithm/algorithm20_minimize_late_penalty_greedy_algorithm/" rel="alternate" type="text/html" title="[Algorithm] 벌금 최소화하기 - Greedy Alogirthm" /><published>2021-10-15T00:00:00+09:00</published><updated>2021-10-15T00:00:00+09:00</updated><id>https://carl020958.github.io/algorithm/algorithm20_minimize_late_penalty_greedy_algorithm</id><content type="html" xml:base="https://carl020958.github.io/algorithm/algorithm20_minimize_late_penalty_greedy_algorithm/">&lt;h3 id=&quot;algorithm&quot;&gt;ALGORITHM&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;알고리즘 정리(20)&lt;/li&gt;
+  &lt;li&gt;Greedy Algorithm이 사용되면 최적인 경우
+    &lt;ul&gt;
+      &lt;li&gt;최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것&lt;/li&gt;
+      &lt;li&gt;탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;greedy-algorithm&quot;&gt;Greedy Algorithm&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;스터디 약속시간에 늦으면 1분에 1달러씩 내야 하는 벌금 제도가 존재.&lt;/li&gt;
+  &lt;li&gt;스터디를 하러갈 때, 준비물을 프린트해야하는데, 프린트하는데 1장당 1분씩 소요되며, 각자 프린트해야하는 양은 변경할 수 없음.&lt;/li&gt;
+  &lt;li&gt;벌금을 1/n로 내기로 했을 때, 벌금을 최소화하는 함수를 구하세요.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;min_fee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages_to_print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;penalty&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages_to_print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages_to_print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;penalty&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;penalty&lt;/span&gt; 
+
+&lt;span class=&quot;c1&quot;&gt;# 테스트
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_fee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_fee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_fee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_fee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;39
+10
+32
+188
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="ALGORITHM" /><category term="BACKEND" /><category term="ALGORITHM" /><summary type="html">ALGORITHM 알고리즘 정리(20) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것</summary></entry></feed>

@@ -1,0 +1,571 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[PYTHON BACKEND] 깔끔한 파이썬 탄탄한 백엔드 CH4 - Bibliothek für Data-Engineering</title>
+<meta name="description" content="Eine Bibliothek">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[PYTHON BACKEND] 깔끔한 파이썬 탄탄한 백엔드 CH4">
+<meta property="og:url" content="https://carl020958.github.io/storage/2021-09-20-python_backend-CH4/">
+
+
+  <meta property="og:description" content="Eine Bibliothek">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-09-20T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://carl020958.github.io/storage/2021-09-20-python_backend-CH4/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "https://carl020958.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://www.notion.so/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/barca_icon.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[PYTHON BACKEND] 깔끔한 파이썬 탄탄한 백엔드 CH4">
+    
+    <meta itemprop="datePublished" content="2021-09-20T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[PYTHON BACKEND] 깔끔한 파이썬 탄탄한 백엔드 CH4
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#ch4-http의-구조-및-핵심-요소">CH4 HTTP의 구조 및 핵심 요소</a></li><li><a href="#http-통신-방식">HTTP 통신 방식</a></li><li><a href="#http-요청-구조">HTTP 요청 구조</a></li><li><a href="#자주-사용되는-http-매소드">자주 사용되는 HTTP 매소드</a></li><li><a href="#자주-사용되는-shttp-status-code--text">자주 사용되는 SHTTP Status Code &amp; Text</a></li><li><a href="#api-엔드포인트-아키텍처-패턴">API 엔드포인트 아키텍처 패턴</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<p><b>깔끔한 파이썬 탄탄한 백엔드</b></p>
+<h3 id="ch4-http의-구조-및-핵심-요소">CH4 HTTP의 구조 및 핵심 요소</h3>
+<ul>
+  <li>HTTP 핵심 요소</li>
+  <li>HTTP 구조</li>
+  <li>자주 사용되는 HTTP 매소드와 Status Code</li>
+</ul>
+
+<hr />
+
+<h3 id="http-통신-방식">HTTP 통신 방식</h3>
+<ul>
+  <li>요청(request)과 응답(response) 방식
+    <ul>
+      <li>Web Client가 request ➡️ Web Server가 response</li>
+    </ul>
+  </li>
+  <li>stateless
+    <ul>
+      <li>각각의 HTTP통신은 독립적이며 그 전에 처리된 HTTP통신에 대해서 전혀 알지 못하기에, 해당 요청을 처리하기 위해 필요한 모든 데이터를 매번 포함시켜야함</li>
+      <li>이로 인해 발생하는 문제를 해결하기 위해 cookie, session이 존재
+        <ul>
+          <li>cookie를 통해 Web Client(Browser)는 필요한 정보를 저장</li>
+          <li>
+            <h2 id="session을-통해-web-server는-필요한-정보를-저장">session을 통해 Web Server는 필요한 정보를 저장</h2>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="http-요청-구조">HTTP 요청 구조</h3>
+<ul>
+  <li>1) Start Line
+    <ul>
+      <li>HTTP 매소드
+        <ul>
+          <li>GET/ POST/ PUT/ DELETE/ OPTIONS/ Etc</li>
+        </ul>
+      </li>
+      <li>Request target
+        <ul>
+          <li>해당 HTTP 요청이 전송되는 목표 주소 ex) ‘ping’ 엔드포인트에 보내는 HTTP 요청의 request target ➡️ /ping</li>
+        </ul>
+      </li>
+      <li>HTTP version</li>
+    </ul>
+  </li>
+  <li>2) Headers
+    <ul>
+      <li>HTTP 요청 그 자체에 대한 정보 담고 있음 ex) HTTP 요청 메세지의 전체 크기(Content-length)</li>
+      <li>dictionary 형태로 되어 있음</li>
+      <li>자주 사용되는 header은 아래와 같음
+        <ul>
+          <li>Host - 요청이 전송되는 target 호스트의 URL 주소</li>
+          <li>User-Agent - 요청을 보내는 Client에 대한 정보(ex) 웹 브라우저에 대한 정보)</li>
+          <li>Accept - 해당 요청이 받을 수 있는 응답 데이터 타입을 알려주며, MIME(Multipurpose Internet Mail Extenions) type이 value로 지정됨 ex) application/json, text/html</li>
+          <li>Connection - 해당 요청 후 Client-Web 간 네트워크 연결을 유지할 것인지 끊을 것인지 알려줌</li>
+          <li>Content-Type - HTTP 요청이 보내는 메시지 body의 타입을 알려주며 MIME type이 사용됨</li>
+          <li>Content-Length - HTTP 요청이 보내는 메시지 body의 총 사이즈 알려줌</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>3) Body
+    <ul>
+      <li>HTTP 요청이 전송하는 데이터를 담고 있으며, 전송하는 데이터가 없으면 비어 있음</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># startline
+</span><span class="n">GET</span> <span class="o">/</span><span class="n">search</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Headers example
+</span><span class="n">HOST</span><span class="p">:</span> <span class="n">google</span><span class="p">.</span><span class="n">com</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="자주-사용되는-http-매소드">자주 사용되는 HTTP 매소드</h3>
+<ul>
+  <li>GET
+    <ul>
+      <li>데이터를 서보로부터 요청(GET)할 떄 주로 사용</li>
+    </ul>
+  </li>
+  <li>POST
+    <ul>
+      <li>GET과 다륵5ㅔ 데이터를 생성하거나 수정 및 삭제 요청을 할 떄 주로 사용</li>
+    </ul>
+  </li>
+  <li>OPTIONS
+    <ul>
+      <li>
+        <h2 id="특정-엔드포인트에서-허용하는-메소드들이-무엇이-있는지-알고자-하는-요청에서-사용되는-http-메소드">특정 엔드포인트에서 허용하는 메소드들이 무엇이 있는지 알고자 하는 요청에서 사용되는 HTTP 메소드</h2>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="자주-사용되는-shttp-status-code--text">자주 사용되는 SHTTP Status Code &amp; Text</h3>
+<ul>
+  <li>200 OK</li>
+  <li>301 Moved Permanently - 엔드포인트의 URL 주소가 바뀌었다는 것을 나타냄</li>
+  <li>400 Bad Request - HTTP 요청이 잘못된 요청일 경우에 발생, 주로 input 값이 잘못된 경우에 사용됨</li>
+  <li>401 Unauthorized - HTTP 요청을 처리하기 위 해당 요청을 하는 주체의 신분이 확인되지 않는 경우 사용됨</li>
+  <li>403 Forbidden - HTTP 요청을 보내는 주체가 해당 요청에 대한 권한이 없음을 나타내는 응답 코드</li>
+  <li>404 Not Found - HTTP 요청을 보내고하자 하는 URI가 존재하지 않을 때 사용됨</li>
+  <li>
+    <h2 id="500-internal-server-error---http-요청을-받은-서버에서-해당-요청을-처리하는-과정에서-서버-오류가-나서-해당-요청을-처리할-수-없을-때-사용됨">500 Internal Server Error - HTTP 요청을 받은 서버에서 해당 요청을 처리하는 과정에서 서버 오류가 나서 해당 요청을 처리할 수 없을 때 사용됨</h2>
+  </li>
+</ul>
+
+<h3 id="api-엔드포인트-아키텍처-패턴">API 엔드포인트 아키텍처 패턴</h3>
+<ul>
+  <li>REST Api
+    <ul>
+      <li>API에서 전송하는 리소스를 URI로 표현하고 해당 리소스에 행하고자 하는 의도를 HTTP 메소드로 정의하는 방식</li>
+      <li>각 엔드포인트는 처리하는 리소스를 표헌하는 고유의 URI 주소를 가지며, 해당 리소스에 행할 수 있는 행위를 표현하는 HTTP 메소드를 처리함</li>
+      <li>자기 설명력(self-descriptiveness)이 높아, 엔드포인트의 구조만으로도 해당 엔드포인트가 제공하는 리소스와 기능을 파악할 수 있음</li>
+      <li>구조가 직관적이며 간단해짐</li>
+    </ul>
+  </li>
+  <li>GraphQL
+    <ul>
+      <li>REST 방식의 API에서는 이미 구현해놓은 틀에 맞추어 사용해야된다는 단점이 존재</li>
+      <li>GraphQL에서는 엔드포인트가 오직 하나이며, 엔드포인트에 클라이언트가 필요한 것을 정의해서 요청함</li>
+    </ul>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#backend" class="page__taxonomy-item" rel="tag">BACKEND</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#backend" class="page__taxonomy-item" rel="tag">BACKEND</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-20T00:00:00+09:00">September 20, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BPYTHON+BACKEND%5D+%EA%B9%94%EB%81%94%ED%95%9C+%ED%8C%8C%EC%9D%B4%EC%8D%AC+%ED%83%84%ED%83%84%ED%95%9C+%EB%B0%B1%EC%97%94%EB%93%9C+CH4%20https%3A%2F%2Fcarl020958.github.io%2Fstorage%2F2021-09-20-python_backend-CH4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcarl020958.github.io%2Fstorage%2F2021-09-20-python_backend-CH4%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcarl020958.github.io%2Fstorage%2F2021-09-20-python_backend-CH4%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

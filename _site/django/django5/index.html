@@ -1,0 +1,882 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Django] 배포 - Bibliothek für Data-Engineering</title>
+<meta name="description" content="DJANGO WEB DEVELOPMENT 5. 배포">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[Django] 배포">
+<meta property="og:url" content="https://carl020958.github.io/django/django5/">
+
+
+  <meta property="og:description" content="DJANGO WEB DEVELOPMENT 5. 배포">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-06T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://carl020958.github.io/django/django5/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "https://carl020958.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://www.notion.so/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/barca_icon.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">50</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Data-Enginnering</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--sql 카테고리 글들을 모아둔 페이지인 /categories/sql 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (9)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm - Python (25)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Django] 배포">
+    <meta itemprop="description" content="DJANGO WEB DEVELOPMENT5. 배포">
+    <meta itemprop="datePublished" content="2021-10-06T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Django] 배포
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#5-배포">5. 배포</a></li><li><a href="#배포-방법">배포 방법</a></li><li><a href="#베포-전-사전작업">베포 전 사전작업</a></li><li><a href="#베포">베포</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<p><b>DJANGO WEB DEVELOPMENT</b></p>
+<h3 id="5-배포">5. 배포</h3>
+
+<hr />
+
+<h3 id="배포-방법">배포 방법</h3>
+<ul>
+  <li>IaaS(Infrastructure as a service)
+    <ul>
+      <li>서버 장비 + 운영체제만 제공, 그 외 필요한 프로그램은 개발자가 직접 설치 및 설정</li>
+      <li>학습할 것이 많지만, 최적의 환경 구성 가능</li>
+      <li>AWS EC2 등</li>
+    </ul>
+  </li>
+  <li>PaaS(Platform as as service)
+    <ul>
+      <li>서버 장비 + 운영체제 + 실행환경 제공</li>
+      <li>학습할 것이 적어, 프로젝트에 집중 가능</li>
+      <li>AWS Elastic Beanstalk, Google App Engine HEROKU 등</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="베포-전-사전작업">베포 전 사전작업</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 베포 전 디버그 모드로 바꾸기
+# 'costaurant' directory의 settings.py 파일
+</span><span class="p">...</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="p">...</span>
+
+<span class="c1"># 호스트 기입
+</span><span class="p">...</span>
+<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s">'.pythonanywhere.com'</span><span class="p">]</span>
+<span class="p">...</span>
+
+<span class="c1"># static 파일 한 곳에 모으기
+</span><span class="p">...</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">'static'</span><span class="p">)</span>
+<span class="p">...</span>
+
+<span class="c1"># CMD에
+</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">collectstatic</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="베포">베포</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># project root을 기준으로 directory 전체를 압축파일로 압축
+</span>
+<span class="c1"># https://www.pythonanywhere.com/ 접속
+</span>
+<span class="c1"># sign up/ login
+</span>
+<span class="c1"># Files 클릭
+</span>
+<span class="c1"># 압축한 파일 Upload
+</span>
+<span class="c1"># Open Bash console here
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 파일 압축 해제(unzip [file_name]
+</span><span class="n">unzip</span> <span class="n">costaurant</span><span class="p">.</span><span class="nb">zip</span>
+
+<span class="c1"># 해당 서버에 파이썬 가상환경 설치(virtualenv --python=python[파이썬_버전] [가상환경_이름])
+</span><span class="n">virtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=</span><span class="n">python3</span><span class="p">.</span><span class="mi">7</span> <span class="n">django</span><span class="o">-</span><span class="n">envs</span>
+
+<span class="c1"># 해당 가상환경으로 들어가서 가상환경 실행
+</span><span class="n">cd</span> <span class="n">django</span><span class="o">-</span><span class="n">envs</span>
+<span class="n">source</span> <span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+
+<span class="c1"># django 설치
+</span><span class="n">pip</span> <span class="n">install</span> <span class="n">django</span><span class="o">==</span><span class="mf">2.2</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 오른쪽 상단의 메뉴 클릭 후, Web 클릭
+</span>
+<span class="c1"># add a new web app 클릭
+</span>
+<span class="c1"># Next
+</span>
+<span class="c1"># Manual Configuration 클릭
+</span>
+<span class="c1"># 해다오디는 파이썬 버전 클릭
+</span>
+<span class="c1"># Next 클릭
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Code 부분으로 가서 source code 기입 (/home/[id]/[project_name])
+</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">zsu</span><span class="o">/</span><span class="n">costaurant</span>
+
+<span class="c1"># WSGI 링크 클릭해 수정
+</span>
+<span class="c1"># 19~47번째 줄까지 주석처리
+</span>
+<span class="c1"># 76~89번째 줄은 주석해제
+</span>
+<span class="c1"># 81번쨰 줄 url을 위의 url로 수정
+</span><span class="p">...</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">'/home/zsu/costaurant'</span>
+<span class="p">...</span>
+<span class="c1"># 85번째 줄 [project_name].settings로 수정
+</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'DJANGO_SETTINGS_MODULE'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'costaurant.settings'</span>
+
+<span class="c1"># 저장 후, 다시 오른 쪽 상단 메뉴 클릭 후, Web 클릭
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Virtualenv 부분으로 가서 virtualenv 기입 (/home/[id]/[virtualenv_name])
+</span><span class="n">home</span><span class="o">/</span><span class="n">zsu</span><span class="o">/</span><span class="n">django</span><span class="o">-</span><span class="n">envs</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Static files 부분으로 가서 URL 기입 
+</span><span class="o">/</span><span class="n">static</span><span class="o">/</span>
+
+<span class="c1"># Directory 기입(/home/[id]/[project_name]/static)
+</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">zsu</span><span class="o">/</span><span class="n">costaurant</span><span class="o">/</span><span class="n">static</span>
+
+<span class="c1"># 완료 후 맨 위로 가서 초록색 버튼의 reload 클릭
+</span></code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#backend" class="page__taxonomy-item" rel="tag">BACKEND</a><span class="sep">, </span>
+    
+      <a href="/tags/#django" class="page__taxonomy-item" rel="tag">DJANGO</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#django" class="page__taxonomy-item" rel="tag">DJANGO</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-10-06T00:00:00+09:00">October 6, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDjango%5D+%EB%B0%B0%ED%8F%AC%20https%3A%2F%2Fcarl020958.github.io%2Fdjango%2Fdjango5%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcarl020958.github.io%2Fdjango%2Fdjango5%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcarl020958.github.io%2Fdjango%2Fdjango5%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/django/django4/" class="pagination--pager" title="[Django] Model
+">Previous</a>
+    
+    
+      <a href="/algorithm/algorithm9_max_card_combination/" class="pagination--pager" title="[Algorithm] 카드 조합 최대값 - 무차별 대입
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/sql2_4_subquery/" rel="permalink">[SQL] Subquery
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung
+
+  SQL JOIN 문법 정리(4)
+  Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/programmers_coding_test/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 (1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/sql2_3_set_theory_clauses/" rel="permalink">[SQL] UNION &amp; INTER &amp; EXCEPT
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung
+
+  SQL JOIN 문법 정리(3)
+  UNION을 통해 두 데이터 간 합집함을 가져올 수 있음
+    
+      중복되는 데이터는 한 개만 포함됨
+      UNION되는 데이터 세트의 열 개수가 같아야 함
+      UNION되는 데이터들의 열의 자료형...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/algorithm23_powers_dynamic_programming/" rel="permalink">[Algorithm] 거듭제곱 - Dynamic Programming
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(23)
+  Dyanmic Programming
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

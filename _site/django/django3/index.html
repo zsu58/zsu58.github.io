@@ -1,0 +1,1093 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Django] Template &amp; View - Bibliothek für Data-Engineering</title>
+<meta name="description" content="DJANGO WEB DEVELOPMENT 3. TEMPLATE &amp; VIEW">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[Django] Template &amp; View">
+<meta property="og:url" content="https://carl020958.github.io/django/django3/">
+
+
+  <meta property="og:description" content="DJANGO WEB DEVELOPMENT 3. TEMPLATE &amp; VIEW">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-03T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://carl020958.github.io/django/django3/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "https://carl020958.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://www.notion.so/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/barca_icon.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">50</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Data-Enginnering</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--sql 카테고리 글들을 모아둔 페이지인 /categories/sql 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (9)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm - Python (25)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Django] Template &amp; View">
+    <meta itemprop="description" content="DJANGO WEB DEVELOPMENT3. TEMPLATE &amp; VIEW">
+    <meta itemprop="datePublished" content="2021-10-03T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Django] Template &amp; View
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#3-template--view">3. TEMPLATE &amp; VIEW</a></li><li><a href="#정적-파일">정적 파일</a></li><li><a href="#템플릿--정적-파일-directroy-구조">템플릿 &amp; 정적 파일 directroy 구조</a></li><li><a href="#template-language">Template Language</a></li><li><a href="#template-상속">Template 상속</a></li><li><a href="#동적-웹페이지-만들기">동적 웹페이지 만들기</a></li><li><a href="#url-추가">URL 추가</a></li><li><a href="#우아한-url">우아한 URL</a></li><li><a href="#django의-url-처리">DJANGO의 URL 처리</a></li><li><a href="#get_static_prefix">get_static_prefix</a></li><li><a href="#에러-코드와-처리">에러 코드와 처리</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<p><b>DJANGO WEB DEVELOPMENT</b></p>
+<h3 id="3-template--view">3. TEMPLATE &amp; VIEW</h3>
+
+<hr />
+
+<h3 id="정적-파일">정적 파일</h3>
+<ul>
+  <li>목표: (foods 앱의) 정적 파일</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># 'foods/static/foods' directory 안에 css &amp; fonts &amp; images directory를 각각 만들고 이에 맞는 각 파일 넣기
+# 'foods/templates/foods' directory의 index.html 파일 맨 위에 '{% load static %}' 템플릿 테그 넣기
+</span><span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">static</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">코스토랑</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="o">&gt;</span>
+<span class="p">...</span>
+
+<span class="c1"># '{% static 'foods/[directory_name]'%}' 넣어서 css 경로 수정
+</span>  <span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="n">href</span><span class="o">=</span><span class="p">{</span><span class="o">%</span> <span class="n">static</span> <span class="s">"foods/css/styles.css"</span><span class="o">%</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="p">...</span>
+
+<span class="c1"># {%static 'foods/[directory_name]'%}
+</span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"food"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="o">%</span> <span class="n">static</span> <span class="s">"foods/images/chicken.jpg"</span><span class="o">%</span><span class="p">}</span> <span class="n">width</span><span class="o">=</span><span class="s">"300px"</span> <span class="n">height</span><span class="o">=</span><span class="s">"200px"</span><span class="o">/&gt;</span>
+
+<span class="p">...</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="템플릿--정적-파일-directroy-구조">템플릿 &amp; 정적 파일 directroy 구조</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">앱_이름</span><span class="o">&gt;/</span><span class="n">templates</span><span class="o">/&lt;</span><span class="n">앱_이름</span><span class="o">&gt;/</span><span class="n">template_files</span>
+<span class="o">&lt;</span><span class="n">앱_이름</span><span class="o">&gt;/</span><span class="n">static</span><span class="o">/&lt;</span><span class="n">앱_이름</span><span class="o">&gt;/</span><span class="n">static_files</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="template-language">Template Language</h3>
+<ul>
+  <li>1) Template Variable(템플릿 변수)
+    <ul>
+      <li>템플릿이 렌더될 때 해당 변수가 의미하는 값으로 변환됨</li>
+      <li>뷰(View)에서 가공한 데이터를 템플릿으로 넘겨주면 템플릿에서는 템플릿 변수를 사용해 넘겨받은 데이터에 접근할 수 있음</li>
+      <li>템플릿 변수는 점(.)을 사용해서 변수 안쪽 속성에 접근할 수 있으며(ex. user.name), 다음의 순서로 조회
+        <ul>
+          <li>변수를 사전형(dict)으로 생각하고 점(.) 연산자로 Key값 조회</li>
+          <li>변수를 객체로 생각하고 내부 속성값 조회 또는 함수 호출</li>
+          <li>변수를 리스트(list)로 생각하고 점(.) 연산자로 Index 조회
+<br /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>2) Template Filter(템플릿 필터)
+    <ul>
+      <li>일부 필터는 필터 뒤에 인자를 필요로 함</li>
+      <li>Django는 약 60개의 내장 템플릿 필터를 제공하며 개발자가 직접 필터를 정의해서 사용하는 것도 가능, 아래는 일부 내장 템플릿 필터
+        <ul>
+          <li>default/ capfirst/ random/ upper &amp; lower/ ljust &amp; rjust
+<br /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>3) Template Tag(템플릿 태그)
+    <ul>
+      <li>템플릿 태그는 템플릿을 작성할 때 반복문, 조건문 등의 로직을 사용해서 마치 프로그래밍을 하듯 템플릿을 작성할 수 있게 해줌</li>
+      <li>Django가 기본적으로 제공하는 태그가 있지만, 개발자가 직접 태그를 정의해서 사용할 수도 있음, 애래는 일부 기본 템플릿
+        <ul>
+          <li>for/ if/ with</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="template-상속">Template 상속</h3>
+<ul>
+  <li>foods/templates/foods/index.html의 ‘index.html’에 대한 부모 템플릿 만들기</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># 'foods/templates/foods/' directory의 base.html 생성
+# 자식 파일(index.html)의 내용을 cp한 후, 자식 파일에서 작업할 부분은 '{% block [block-name] %} {% endblock [block-name] %}' 입력
+</span><span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span> 
+    <span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">date</span><span class="o">-</span><span class="n">block</span><span class="o">%</span><span class="p">}</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="n">date</span><span class="o">-</span><span class="n">block</span><span class="o">%</span><span class="p">}</span> 
+  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="p">...</span>
+
+<span class="c1"># 자식 파일(index.html) 첫 번째 줄에 {% extends './base.html'%} 입력
+# 자식 파일 안에 block 부분 구현
+</span><span class="p">{</span><span class="o">%</span> <span class="n">extends</span> <span class="s">'./base.html'</span><span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">static</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">date</span><span class="o">-</span><span class="n">block</span> <span class="o">%</span><span class="p">}</span>
+  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span><span class="mi">12</span> <span class="n">Aug</span><span class="p">,</span> <span class="mi">2020</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="n">date</span><span class="o">-</span><span class="n">block</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">...</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="동적-웹페이지-만들기">동적 웹페이지 만들기</h3>
+<ul>
+  <li>템플리 변수 사용하여, 자동으로 Date 변하게끔 하기</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># 'foods/' directory의 views.py 파일
+# 날짜 가져올 함수를 위해 datetime import 후, index 함수에 date를 today 변수에 저장, 이를 dictionary형에 담아서 template에 넘기기
+</span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">today</span><span class="p">().</span><span class="n">date</span><span class="p">()</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s">"date"</span><span class="p">:</span><span class="n">today</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"foods/index.html"</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
+
+<span class="c1"># 'foods/templates/foods' directory의 index.html 파일
+# today 변수를 '{{key}}'를 통해 가져오기
+</span><span class="p">{</span><span class="o">%</span> <span class="n">extends</span> <span class="s">'./base.html'</span><span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">static</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">date</span><span class="o">-</span><span class="n">block</span><span class="o">%</span><span class="p">}</span>
+  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">date</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="n">date</span><span class="o">-</span><span class="n">block</span><span class="o">%</span><span class="p">}</span>
+<span class="p">...</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="url-추가">URL 추가</h3>
+<ul>
+  <li>HTML 페이지 내 연결되는 URL 구현</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># 'foods/' directory의 urls.py 파일
+# 새로 만들 URL인 'foods/chicken' path 추가
+</span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'index/'</span><span class="p">,</span> <span class="n">views</span><span class="p">.</span><span class="n">index</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'chicken/'</span><span class="p">,</span> <span class="n">views</span><span class="p">.</span><span class="n">chicken</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># 'foods/' directory의 views.py 파일
+# 새로운 URL을 위한 함수 생성
+</span><span class="k">def</span> <span class="nf">chicken</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"foods/chicken.html"</span><span class="p">)</span>
+
+<span class="c1"># 'foods/templates/foods/' directory에 chicken.html 파일 추가
+</span><span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">코딩에</span> <span class="n">빠진</span> <span class="n">닭</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span><span class="n">주머니가</span> <span class="n">가벼운</span> <span class="n">당신의</span> <span class="n">마음까지</span> <span class="n">생각한</span> <span class="n">가격</span><span class="err">!</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span><span class="mi">12000</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">"/foods/index"</span><span class="o">&gt;</span><span class="n">돌아가기</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+
+<span class="c1"># 'foods/templates/foods/' directory의 index.html 파일의 chicken 쪽 경로 변경
+</span><span class="p">...</span>
+       <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"food-container"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"food"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="o">%</span> <span class="n">static</span> <span class="s">"foods/images/chicken.jpg"</span> <span class="o">%</span><span class="p">}</span> <span class="n">width</span><span class="o">=</span><span class="s">"300px"</span> <span class="n">height</span><span class="o">=</span><span class="s">"200px"</span><span class="o">/&gt;</span>
+          <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"info"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">코딩에</span> <span class="n">빠진</span> <span class="n">닭</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="n">주머니가</span> <span class="n">가벼운</span> <span class="n">당신의</span> <span class="n">마음까지</span> <span class="n">생각한</span> <span class="n">가격</span><span class="err">!</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">"/foods/chicken"</span><span class="o">&gt;</span><span class="n">메뉴</span> <span class="n">보기</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+         <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+       <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="p">...</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="우아한-url">우아한 URL</h3>
+<ul>
+  <li>DJANGO의 우아한 URL 관리 (DYNMAIC URL)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># 'foods/' directory의 urls.py 파일
+# '&lt;str:food&gt;' 부분이 동적으로 만드는 URL을 변수로 처리하게끔 해줌
+# 구체적으로 'menu/' 뒤 변수(ex.pizza)가 food_detail 함수의 파라미터가 됨
+</span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'index/'</span><span class="p">,</span> <span class="n">views</span><span class="p">.</span><span class="n">index</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'menu/&lt;str:food&gt;'</span><span class="p">,</span> <span class="n">views</span><span class="p">.</span><span class="n">food_detail</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># 'foods/' directory의 views.py 파일
+</span><span class="k">def</span> <span class="nf">food_detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="n">food</span><span class="p">):</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s">"name"</span><span class="p">:</span><span class="n">food</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"foods/detail.html"</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
+
+<span class="c1"># 'foods/templates/foods/' directory에 detail.html 파일 생성
+</span><span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">name</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+
+<span class="c1"># localhost:8000/foods/menu/pasta ➡️ 'pasta'가 화면에 나옴
+# localhost:8000/foods/menu/pizza ➡️ 'pizza'가 화면에 나옴
+</span>
+</code></pre></div></div>
+
+<h3 id="django의-url-처리">DJANGO의 URL 처리</h3>
+<ul>
+  <li>URL 처리 순서
+    <ul>
+      <li>1) 처음 요청이 들어오면 Django는 맨 처음 사용할 URLConf 모듈을 찾음, 따로 변경하지 않았다면 프로젝트 앱 내 settings.py의 ROOT_URLCONF 설정을 사용</li>
+      <li>2) ROOT_URLconf로 정의된 URLConf 모듈을 보고 urlpatterns 리스트 안쪽의 django.urls.path() 함수를 순서대로 실행</li>
+      <li>3) 요청과 일치하는 URL 패턴이 있다면 django.urls.path() 함수에 따라 view를 호출하거나, 일치하는 URL 패턴 다음의 URL을 하위 URLconf 모듈로 넘김
+<br /><br /></li>
+    </ul>
+  </li>
+  <li>Path 함수 path(route, view, kwargs=None, name=None)
+    <ul>
+      <li>route - URL 문자열, 경로 변수(Path Converter)를 사용하여 URL의 일부를 view의 인수로 보낼 수 있음
+        <ul>
+          <li>Path Converter
+            <ul>
+              <li>str : 경로 구분 기호(/)를 제외한 모든 문자열과 매칭</li>
+              <li>int : 0 또는 양의 정수와 매칭</li>
+              <li>slug : 문자, 숫자, 하이픈(-), 밑줄(_)로 구성된 문자열과 매칭</li>
+              <li>uuid : 범용 고유 식별자(UUID)와 매칭</li>
+              <li>path : 경로 구분 기호(/)를 포함한 모든 문자열과 매칭</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>view - 함수형 view 또는 클래스 기반 view가 들어갈 수 있으며, include를 사용해서 다른 URFconf 모듈로 연결</li>
+      <li>kwargs - view에 추가 인자를 전달 할 때 사용</li>
+      <li>name - path 함수가 가지는 URL 패턴에 이름을 붙여 주기 위해 사용, URL을 직접 템플릿에 적지 않게 하며 URL을 직관적으로 참조할 수 있게 해줌</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="get_static_prefix">get_static_prefix</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># 'foods/' directory의 views.py 파일
+</span><span class="k">def</span> <span class="nf">food_detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">food</span><span class="p">):</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">food</span> <span class="o">==</span> <span class="s">"chicken"</span><span class="p">:</span>
+        <span class="n">context</span><span class="p">[</span><span class="s">"name"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"코딩에 빠진 닭"</span>
+        <span class="n">context</span><span class="p">[</span><span class="s">"description"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"주머니가 가벼운 당신의 마음까지 생각한 가격!"</span>
+        <span class="n">context</span><span class="p">[</span><span class="s">"price"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"10000"</span>
+        <span class="n">context</span><span class="p">[</span><span class="s">"img_path"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"foods/images/chicken.jpg"</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"foods/detail.html"</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
+
+<span class="c1"># 'foods/templates/foods/' directory에 detail.html 파일
+# 
+</span><span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">static</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">name</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">description</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">price</span> <span class="p">}}</span><span class="n">원</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="c1"># 템플릿 태크 안에 템플릿 변수 중첩해서 사용할 수 없음, 즉 &lt;img src={% static {{img_path}}%} 하면 에러 남!
+</span><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="o">%</span> <span class="n">get_static_prefix</span><span class="o">%</span><span class="p">}{{</span><span class="n">img_path</span><span class="p">}}</span><span class="o">/&gt;</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="에러-코드와-처리">에러 코드와 처리</h3>
+<ul>
+  <li>1XX : 정보전달
+    <ul>
+      <li>100 (진행, Continue) : 요청의 첫 부분을 받아서 다음 요청을 기다리고 있다는 것을 알려줌, 이미 요청을 완료했다면 해당 응답을 무시할 수 있음</li>
+      <li>101 (프로토콜 전환, Switching Protocol) : 클라이언트가 서버에게 프로토콜 전환을 요청했고 서버에서 프로토콜을 변경한다는 것을 나타냄
+<br /><br /></li>
+    </ul>
+  </li>
+  <li>2XX : 성공
+    <ul>
+      <li>200 (성공, OK) : 클라이언트의 요청이 성공적으로 처리되었다는 것을 의미하며 주로 요청한 페이지를 서버가 제공했다는 것을 알려줌</li>
+      <li>201 (작성됨, Created) : 요청이 성공적으로 처리되어 새로운 리소스를 생성했다는 것을 의미</li>
+      <li>202 (허용됨, Accepted) : 서버가 성공적으로 요청을 받았지만 아직 처리 전인 상태를 나타냄</li>
+      <li>203 (신뢰할 수 없는 정보, Non-Authoritative Information) : 서버가 성공적으로 요청을 처리했지만 요청에 포함된 정보가 다른 곳에서 수정된 정보라는 것을 나타냄</li>
+      <li>204 (콘텐츠 없음, No Content) : 요청을 성공적으로 처리했지만 콘텐츠를 제공하지 않는다는 것을 의미함</li>
+      <li>205 (콘텐츠 재설정, Reset Content) : 요청을 성공적으로 처리했고 콘텐츠를 제공하지 않으며 클라이언트가 문서 보기를 재설정할 것을 요구함
+<br /><br /></li>
+    </ul>
+  </li>
+  <li>3XX : 리다이렉션
+    <ul>
+      <li>300 (여러 개의 선택 항목, Multiple Choice) : 요청에 대해 서버가 여러 응답이 가능하며 하나를 선택해야 함을 나타냄</li>
+      <li>301 (영구 이동, Moved Permanently : 요청한 리소스가 새로운 위치로 영구 이동했음을 나타냄, 클라이언트는 자동적으로 새로운 위치로 전달됨</li>
+      <li>302 (임시 이동, Found) : 요청한 리소스가 일시적으로 이동했음을 나타내며 향후 다시 해당 리소스를 요청할 때도 동일한 주소로 해야 한다는 것을 알려줌</li>
+      <li>304 (수정되지 않음, Not Modified) : 지막 요청 이후 요청한 리소스는 수정되지 않았다는 것을 알려주며 서버가 콘텐츠를 전달하지 않음, 클라이언트는 이전에 전달받은 결과를 계속해서 사용할 수 있습
+<br /><br /></li>
+    </ul>
+  </li>
+  <li>4XX : 실패
+    <ul>
+      <li>400 (잘못된 요청, Bad Request) : 라이언트의 요청을 서버가 이해할 수 없다는 것을 의미함</li>
+      <li>401 (권한 없음, Unauthorized) : 클라이언트가 해당 요청에 대한 응답을 받기 위해서는 추가적인 인증이 필요하다는 것을 나타냄</li>
+      <li>402 (결제 필요, Payment Required) : 이 요청을 결제가 필요하다는 것을 의미하며 처음 이 응답 코드가 만들어질 당시에는 결제 시스템에 사용할 목적이었으나 현재는 사용되고 있지 않음</li>
+      <li>403 (금지됨, Forbidden) : 클라이언트가 요청한 리소스에 접근할 권한이 없음을 의미함, 401과 다른 점은 서버는 해당 클라이언트에 대한 정보를 가지고 있다는 점임</li>
+      <li>404 (찾을 수 없음, Not Found) : 클라이언트가 요청한 리소스를 서버가 찾을 수 없다는 것을 의미함
+<br /><br /></li>
+    </ul>
+  </li>
+  <li>5XX : 서버 오류
+    <ul>
+      <li>500 (내부 서버 오류, Internal Server Error) : 버에서 오류가 발생하여 요청한 작업을 수행할 수 없다는 것을 의미함</li>
+      <li>501 (구현되지 않음, Not Implemented) : 클라이언트가 요청한 방법을 서버에서 수행할 수 있는 기능이 없다는 것을 의미함</li>
+      <li>502 (잘못된 게이트웨이, Bad Gateway) : 버가 요청을 처리하는데 필요한 작업 중 게이트웨이로부터 잘못된 응답을 받았다는 것을 의미함</li>
+      <li>503 (서비스를 사용할 수 없음, Service Unavailable) : 서버가 해당 요청을 처리할 준비가 되지 않았으며 일반적으로는 유지관리를 위해 작동이 중단되거나 과부하가 걸렸을 때를 나타내며 대개 일시적임</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 'foods/' directory의 views.py 파일
+# django의 Http404 import
+</span><span class="p">...</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">Http404</span>
+
+<span class="c1"># chicken 이외의 요소가 입력될 경우 raise Http404, message도 입력 가능
+</span><span class="k">def</span> <span class="nf">food_detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">food</span><span class="p">):</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">food</span> <span class="o">==</span> <span class="s">"chicken"</span><span class="p">:</span>
+       <span class="p">...</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">Http404</span><span class="p">(</span><span class="s">'이런 음식은 없다구요 !'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"foods/detail.html"</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#backend" class="page__taxonomy-item" rel="tag">BACKEND</a><span class="sep">, </span>
+    
+      <a href="/tags/#django" class="page__taxonomy-item" rel="tag">DJANGO</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#django" class="page__taxonomy-item" rel="tag">DJANGO</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-10-03T00:00:00+09:00">October 3, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDjango%5D+Template+%26+View%20https%3A%2F%2Fcarl020958.github.io%2Fdjango%2Fdjango3%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcarl020958.github.io%2Fdjango%2Fdjango3%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcarl020958.github.io%2Fdjango%2Fdjango3%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/algorithm8_hanoi/" class="pagination--pager" title="[Algorithm] 하노이의 탑 - 재귀함수
+">Previous</a>
+    
+    
+      <a href="/django/django4/" class="pagination--pager" title="[Django] Model
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/sql2_4_subquery/" rel="permalink">[SQL] Subquery
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung
+
+  SQL JOIN 문법 정리(4)
+  Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/programmers_coding_test/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 (1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/sql2_3_set_theory_clauses/" rel="permalink">[SQL] UNION &amp; INTER &amp; EXCEPT
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung
+
+  SQL JOIN 문법 정리(3)
+  UNION을 통해 두 데이터 간 합집함을 가져올 수 있음
+    
+      중복되는 데이터는 한 개만 포함됨
+      UNION되는 데이터 세트의 열 개수가 같아야 함
+      UNION되는 데이터들의 열의 자료형...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/algorithm23_powers_dynamic_programming/" rel="permalink">[Algorithm] 거듭제곱 - Dynamic Programming
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(23)
+  Dyanmic Programming
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

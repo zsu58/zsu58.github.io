@@ -1,12 +1,8 @@
 # main links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+  - title: "Vorstellung"
+    url: /vorstellung
+  - title: "Portfolio"
+    url: https://www.notion.so/Park-Jisu-66aeeb7693f64f20b149890337cdfc01
+  # - title: "Kategorie"
+  #   url: /categories/

@@ -1,0 +1,943 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[SQL] WHERE &amp; AND &amp; OR &amp; BETWEEN &amp; IN &amp; IS (NOT) NULL &amp; LIKE - Bibliothek für Data-Engineering</title>
+<meta name="description" content="SQL Übung    SQL 문법 정리(2)   WHERE을 통해 filter            WHERE는 FROM 이후에 작성       WHERE 조건이 여러개일 경우 조건을(AND, OR) 모두 작성해줘야함       BETWEEN을 통해 범위 filter                    가장 처음과 마지막은 포함                       IN을 통해 (여러개의 OR) 간소화       IS NULL을 통해 NULL filter       IS NOT NULL을 통해 NULL이 아닌 값을 filter       LIKE을 통해 pattern을 활용하여 filter                    %을 통해 한 개 이상의 문자를 대체           _을 통해 한 개의 문자를 대체                            연산자            = equal       &lt;&gt; not equal       &lt; less than       &gt; greater than       &lt;= less than or equal to       &gt;= greater than or equal to">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[SQL] WHERE &amp; AND &amp; OR &amp; BETWEEN &amp; IN &amp; IS (NOT) NULL &amp; LIKE">
+<meta property="og:url" content="https://carl020958.github.io/sql/sql_2_filter/">
+
+
+  <meta property="og:description" content="SQL Übung    SQL 문법 정리(2)   WHERE을 통해 filter            WHERE는 FROM 이후에 작성       WHERE 조건이 여러개일 경우 조건을(AND, OR) 모두 작성해줘야함       BETWEEN을 통해 범위 filter                    가장 처음과 마지막은 포함                       IN을 통해 (여러개의 OR) 간소화       IS NULL을 통해 NULL filter       IS NOT NULL을 통해 NULL이 아닌 값을 filter       LIKE을 통해 pattern을 활용하여 filter                    %을 통해 한 개 이상의 문자를 대체           _을 통해 한 개의 문자를 대체                            연산자            = equal       &lt;&gt; not equal       &lt; less than       &gt; greater than       &lt;= less than or equal to       &gt;= greater than or equal to">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-09-14T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://carl020958.github.io/sql/sql_2_filter/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "https://carl020958.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://www.notion.so/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/barca_icon.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">50</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Data-Enginnering</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--sql 카테고리 글들을 모아둔 페이지인 /categories/sql 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (9)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm - Python (25)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[SQL] WHERE &amp; AND &amp; OR &amp; BETWEEN &amp; IN &amp; IS (NOT) NULL &amp; LIKE">
+    <meta itemprop="description" content="SQL Übung  SQL 문법 정리(2)  WHERE을 통해 filter          WHERE는 FROM 이후에 작성      WHERE 조건이 여러개일 경우 조건을(AND, OR) 모두 작성해줘야함      BETWEEN을 통해 범위 filter                  가장 처음과 마지막은 포함                    IN을 통해 (여러개의 OR) 간소화      IS NULL을 통해 NULL filter      IS NOT NULL을 통해 NULL이 아닌 값을 filter      LIKE을 통해 pattern을 활용하여 filter                  %을 통해 한 개 이상의 문자를 대체          _을 통해 한 개의 문자를 대체                      연산자          = equal      &lt;&gt; not equal      &lt; less than      &gt; greater than      &lt;= less than or equal to      &gt;= greater than or equal to      ">
+    <meta itemprop="datePublished" content="2021-09-14T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[SQL] WHERE &amp; AND &amp; OR &amp; BETWEEN &amp; IN &amp; IS (NOT) NULL &amp; LIKE
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#sql-übung">SQL Übung</a></li><li><a href="#where">WHERE</a></li><li><a href="#and">AND</a></li><li><a href="#or">OR</a></li><li><a href="#between">BETWEEN</a></li><li><a href="#in">IN</a></li><li><a href="#null--is-null">NULL &amp; IS NULL</a></li><li><a href="#like--not-like">LIKE &amp; NOT LIKE</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="sql-übung">SQL Übung</h3>
+<ul>
+  <li>SQL 문법 정리(2)</li>
+  <li><code class="language-plaintext highlighter-rouge">WHERE</code>을 통해 filter
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">WHERE</code>는 <code class="language-plaintext highlighter-rouge">FROM</code> 이후에 작성</li>
+      <li><code class="language-plaintext highlighter-rouge">WHERE</code> 조건이 여러개일 경우 조건을(<code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">OR</code>) 모두 작성해줘야함</li>
+      <li><code class="language-plaintext highlighter-rouge">BETWEEN</code>을 통해 범위 filter
+        <ul>
+          <li>가장 처음과 마지막은 포함</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">IN</code>을 통해 (여러개의 <code class="language-plaintext highlighter-rouge">OR</code>) 간소화</li>
+      <li><code class="language-plaintext highlighter-rouge">IS NULL</code>을 통해 NULL filter</li>
+      <li><code class="language-plaintext highlighter-rouge">IS NOT NULL</code>을 통해 NULL이 아닌 값을 filter</li>
+      <li><code class="language-plaintext highlighter-rouge">LIKE</code>을 통해 pattern을 활용하여 filter
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">%</code>을 통해 한 개 이상의 문자를 대체</li>
+          <li><code class="language-plaintext highlighter-rouge">_</code>을 통해 한 개의 문자를 대체
+<br /><br /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>연산자
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">=</code> equal</li>
+      <li><code class="language-plaintext highlighter-rouge">&lt;&gt;</code> not equal</li>
+      <li><code class="language-plaintext highlighter-rouge">&lt;</code> less than</li>
+      <li><code class="language-plaintext highlighter-rouge">&gt;</code> greater than</li>
+      <li><code class="language-plaintext highlighter-rouge">&lt;=</code> less than or equal to</li>
+      <li><code class="language-plaintext highlighter-rouge">&gt;=</code> greater than or equal to</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="where">WHERE</h3>
+<p>1-1) Simple filtering of numeric values</p>
+<ul>
+  <li>Get all details for all films released in 2016.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="o">=</span> <span class="mi">2016</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>1-2) Simple filtering of numeric values</p>
+<ul>
+  <li>Get the title and release year of films released after 2000.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">release_year</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>2-1) Simple filtering of text</p>
+<ul>
+  <li>Get the number of Hindi language films.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">language</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">language</span> <span class="o">=</span> <span class="s">'Hindi'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>2-2) Simple filtering of text</p>
+<ul>
+  <li>Get all details for all films with an R certification.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">certification</span> <span class="o">=</span> <span class="s">'R'</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="and">AND</h3>
+<p>3-1) WHERE AND</p>
+<ul>
+  <li>Get the title and release year for all Spanish language films released before 2000.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span><span class="n">release_year</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="o">&lt;</span> <span class="mi">2000</span>
+<span class="n">AND</span> <span class="n">language</span> <span class="o">=</span> <span class="s">'Spanish'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>3-2) WHERE AND</p>
+<ul>
+  <li>Get all details for Spanish language films released after 2000, but before 2010.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">language</span> <span class="o">=</span> <span class="s">'Spanish'</span>
+<span class="n">AND</span> <span class="n">release_year</span> <span class="o">&gt;</span> <span class="mi">2000</span>
+<span class="n">AND</span> <span class="n">release_year</span> <span class="o">&lt;</span> <span class="mi">2010</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="or">OR</h3>
+<p>4) WHERE AND OR</p>
+<ul>
+  <li>get the title and release year of films released in the 90s which were in French or Spanish and which took in more than $2M gross</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">release_year</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="p">(</span><span class="n">release_year</span> <span class="o">&gt;=</span> <span class="mi">1990</span> <span class="n">AND</span> <span class="n">release_year</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">AND</span> <span class="p">(</span><span class="n">language</span> <span class="o">=</span> <span class="s">'French'</span> <span class="n">OR</span> <span class="n">language</span> <span class="o">=</span> <span class="s">'Spanish'</span><span class="p">)</span>
+<span class="n">AND</span> <span class="n">gross</span> <span class="o">&gt;</span> <span class="mi">2000000</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="between">BETWEEN</h3>
+<p>5) BETWEEN</p>
+<ul>
+  <li>get the title and release year of all Spanish language films released between 1990 and 2000 (inclusive) with budgets over $100 million</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">release_year</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="n">BETWEEN</span> <span class="mi">1990</span> <span class="n">AND</span> <span class="mi">2000</span>
+<span class="n">AND</span> <span class="n">budget</span> <span class="o">&gt;</span> <span class="mi">100000000</span>
+<span class="n">AND</span> <span class="n">language</span> <span class="o">=</span> <span class="s">'Spanish'</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="in">IN</h3>
+<p>6) WHERE IN</p>
+<ul>
+  <li>Get the title and release year of all films released in 1990 or 2000 that were longer than two hours</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">release_year</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">AND</span> <span class="n">duration</span> <span class="o">&gt;</span> <span class="mi">120</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="null--is-null">NULL &amp; IS NULL</h3>
+<p>7) NULL and IS NULL</p>
+<ul>
+  <li>Get the number of films which don’t have a language associated with them.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">language</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="like--not-like">LIKE &amp; NOT LIKE</h3>
+<p>8-1) LIKE and NOT LIKE</p>
+<ul>
+  <li>Get the names of all people whose names begin with ‘B’.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">name</span>
+<span class="n">FROM</span> <span class="n">people</span>
+<span class="n">WHERE</span> <span class="n">name</span> <span class="n">LIKE</span> <span class="s">'B%'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>8-2) LIKE and NOT LIKE</p>
+<ul>
+  <li>Get the names of people whose names have ‘r’ as the second letter</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">name</span>
+<span class="n">FROM</span> <span class="n">people</span>
+<span class="n">WHERE</span> <span class="n">name</span> <span class="n">LIKE</span> <span class="s">'_r%'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>8-3) LIKE and NOT LIKE</p>
+<ul>
+  <li>Get the names of people whose names don’t start with A</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">name</span>
+<span class="n">FROM</span> <span class="n">people</span>
+<span class="n">WHERE</span> <span class="n">name</span> <span class="n">NOT</span> <span class="n">LIKE</span> <span class="s">'A%'</span><span class="p">;</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#sql" class="page__taxonomy-item" rel="tag">SQL</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#sql" class="page__taxonomy-item" rel="tag">SQL</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-14T00:00:00+09:00">September 14, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BSQL%5D+WHERE+%26+AND+%26+OR+%26+BETWEEN+%26+IN+%26+IS+%28NOT%29+NULL+%26+LIKE%20https%3A%2F%2Fcarl020958.github.io%2Fsql%2Fsql_2_filter%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcarl020958.github.io%2Fsql%2Fsql_2_filter%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcarl020958.github.io%2Fsql%2Fsql_2_filter%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/python/generator/" class="pagination--pager" title="[Python] Generator
+">Previous</a>
+    
+    
+      <a href="/sql/sql_3_aggregate/" class="pagination--pager" title="[SQL] AVG &amp; SUM &amp; MAX &amp; MIN &amp; AS
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/sql2_4_subquery/" rel="permalink">[SQL] Subquery
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung
+
+  SQL JOIN 문법 정리(4)
+  Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/programmers_coding_test/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 (1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/sql2_3_set_theory_clauses/" rel="permalink">[SQL] UNION &amp; INTER &amp; EXCEPT
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung
+
+  SQL JOIN 문법 정리(3)
+  UNION을 통해 두 데이터 간 합집함을 가져올 수 있음
+    
+      중복되는 데이터는 한 개만 포함됨
+      UNION되는 데이터 세트의 열 개수가 같아야 함
+      UNION되는 데이터들의 열의 자료형...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/algorithm23_powers_dynamic_programming/" rel="permalink">[Algorithm] 거듭제곱 - Dynamic Programming
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(23)
+  Dyanmic Programming
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

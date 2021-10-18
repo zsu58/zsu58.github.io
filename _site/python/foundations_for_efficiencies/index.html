@@ -1,0 +1,889 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Python] range &amp; enumerate &amp; map &amp; numpy - Bibliothek für Data-Engineering</title>
+<meta name="description" content="Writing Efficient Python Code    RANGE   ENUMERATE   MAP   NUMPY">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[Python] range &amp; enumerate &amp; map &amp; numpy">
+<meta property="og:url" content="https://carl020958.github.io/python/foundations_for_efficiencies/">
+
+
+  <meta property="og:description" content="Writing Efficient Python Code    RANGE   ENUMERATE   MAP   NUMPY">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-09-16T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://carl020958.github.io/python/foundations_for_efficiencies/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "https://carl020958.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://www.notion.so/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/barca_icon.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">50</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Data-Enginnering</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--sql 카테고리 글들을 모아둔 페이지인 /categories/sql 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (9)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm - Python (25)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Python] range &amp; enumerate &amp; map &amp; numpy">
+    <meta itemprop="description" content="Writing Efficient Python Code  RANGE  ENUMERATE  MAP  NUMPY">
+    <meta itemprop="datePublished" content="2021-09-16T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Python] range &amp; enumerate &amp; map &amp; numpy
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#writing-efficient-python-code">Writing Efficient Python Code</a></li><li><a href="#range">range</a></li><li><a href="#enumerate">enumerate</a></li><li><a href="#map">map</a></li><li><a href="#numpy">numpy</a></li><li><a href="#wrap-up">Wrap up</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="writing-efficient-python-code">Writing Efficient Python Code</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">RANGE</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ENUMERATE</code></li>
+  <li><code class="language-plaintext highlighter-rouge">MAP</code></li>
+  <li><code class="language-plaintext highlighter-rouge">NUMPY</code></li>
+</ul>
+
+<hr />
+
+<h3 id="range">range</h3>
+<p>1) range</p>
+<ul>
+  <li>Create a new list of odd numbers from 1 to 11 by unpacking a range object</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_list</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 3, 5, 7, 9, 11]
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="enumerate">enumerate</h3>
+<p>2) enumerate</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Jerry'</span><span class="p">,</span> <span class="s">'Kramer'</span><span class="p">,</span> <span class="s">'Elaine'</span><span class="p">,</span> <span class="s">'George'</span><span class="p">,</span> <span class="s">'Newman'</span><span class="p">]</span>
+
+<span class="c1"># method 1
+</span><span class="n">indexed_names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+    <span class="n">index_name</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">indexed_names</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">index_name</span><span class="p">)</span>
+
+<span class="c1"># method 2
+</span><span class="n">indexed_names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+    <span class="n">index_name</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">indexed_names</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">index_name</span><span class="p">)</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">indexed_names</span><span class="p">)</span>
+
+<span class="c1"># method 3
+</span><span class="n">indexed_names_comp</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">indexed_names_comp</span><span class="p">)</span>
+
+<span class="c1"># method 4
+</span><span class="n">indexed_names_unpack</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span> <span class="c1"># 1부터 시작
+</span><span class="k">print</span><span class="p">(</span><span class="n">indexed_names_unpack</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[(0, 'Jerry'), (1, 'Kramer'), (2, 'Elaine'), (3, 'George'), (4, 'Newman')]
+[(0, 'Jerry'), (1, 'Kramer'), (2, 'Elaine'), (3, 'George'), (4, 'Newman')]
+[(1, 'Jerry'), (2, 'Kramer'), (3, 'Elaine'), (4, 'George'), (5, 'Newman')]
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="map">map</h3>
+<p>3) map</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Jerry'</span><span class="p">,</span> <span class="s">'Kramer'</span><span class="p">,</span> <span class="s">'Elaine'</span><span class="p">,</span> <span class="s">'George'</span><span class="p">,</span> <span class="s">'Newman'</span><span class="p">]</span>
+
+<span class="c1"># method1
+</span><span class="n">names_map</span>  <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">.</span><span class="n">upper</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">names_map</span><span class="p">))</span>
+
+<span class="c1"># method2
+</span><span class="n">names_uppercase</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">.</span><span class="n">upper</span><span class="p">,</span> <span class="n">names</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">names_uppercase</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['JERRY', 'KRAMER', 'ELAINE', 'GEORGE', 'NEWMAN']
+['JERRY', 'KRAMER', 'ELAINE', 'GEORGE', 'NEWMAN'] ---
+</code></pre></div></div>
+
+<h3 id="numpy">numpy</h3>
+<p>4) numpy</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">num_list</span> <span class="o">=</span> <span class="p">[[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">],</span>
+            <span class="p">[</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">num_list</span><span class="p">)</span>
+
+<span class="c1"># Print second row of nums
+</span><span class="k">print</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">,:])</span>
+
+<span class="c1"># Print all elements of nums that are greater than six
+</span><span class="k">print</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">nums</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="c1"># Double every element of nums
+</span><span class="n">nums_dbl</span> <span class="o">=</span> <span class="n">nums</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">nums_dbl</span><span class="p">)</span>
+
+<span class="c1"># Replace the third column of nums
+</span><span class="n">nums</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ 6  7  8  9 10]
+[ 7  8  9 10]
+[[ 2  4  6  8 10]
+ [12 14 16 18 20]]
+[[ 1  2  4  4  5]
+ [ 6  7  9  9 10]] ---
+</code></pre></div></div>
+
+<h3 id="wrap-up">Wrap up</h3>
+<p>5) Bringing it all together</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Jerry'</span><span class="p">,</span> <span class="s">'Kramer'</span><span class="p">,</span> <span class="s">'Elaine'</span><span class="p">,</span> <span class="s">'George'</span><span class="p">,</span> <span class="s">'Newman'</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">welcome_guest</span><span class="p">(</span><span class="n">guest_arrivals</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">"Welcome to Festivus"</span><span class="p">,</span> <span class="n">guest_arrivals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s">"..."</span><span class="p">,</span> <span class="s">"You're"</span><span class="p">,</span> <span class="n">guest_arrivals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">"min late."</span>
+
+<span class="n">arrival_times</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">10</span><span class="p">)]</span>
+<span class="n">arrival_times_np</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">arrival_times</span><span class="p">)</span>
+<span class="n">new_times</span> <span class="o">=</span> <span class="n">arrival_times_np</span> <span class="o">-</span> <span class="mi">3</span>
+
+<span class="n">guest_arrivals</span> <span class="o">=</span> <span class="p">[(</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">time</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">time</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">new_times</span><span class="p">)]</span>
+
+<span class="n">welcome_map</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">welcome_guest</span><span class="p">,</span> <span class="n">guest_arrivals</span><span class="p">)</span>
+<span class="n">guest_welcomes</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">welcome_map</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="o">*</span><span class="n">guest_welcomes</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('Welcome to Festivus', 'Jerry...', "You're", 7, 'min late.')
+('Welcome to Festivus', 'Kramer...', "You're", 17, 'min late.')
+('Welcome to Festivus', 'Elaine...', "You're", 27, 'min late.')
+('Welcome to Festivus', 'George...', "You're", 37, 'min late.')
+('Welcome to Festivus', 'Newman...', "You're", 47, 'min late.')
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-16T00:00:00+09:00">September 16, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BPython%5D+range+%26+enumerate+%26+map+%26+numpy%20https%3A%2F%2Fcarl020958.github.io%2Fpython%2Ffoundations_for_efficiencies%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcarl020958.github.io%2Fpython%2Ffoundations_for_efficiencies%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcarl020958.github.io%2Fpython%2Ffoundations_for_efficiencies%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/sql/sql2_2_outer_join/" class="pagination--pager" title="[SQL] LEFT JOIN &amp; RIGHT JOIN &amp; FULL JOIN &amp; CROSS JOIN
+">Previous</a>
+    
+    
+      <a href="/python/dplyr_to_pandas/" class="pagination--pager" title="[Python] Dplyr to Pandas
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/sql2_4_subquery/" rel="permalink">[SQL] Subquery
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung
+
+  SQL JOIN 문법 정리(4)
+  Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/programmers_coding_test/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 (1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/sql2_3_set_theory_clauses/" rel="permalink">[SQL] UNION &amp; INTER &amp; EXCEPT
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung
+
+  SQL JOIN 문법 정리(3)
+  UNION을 통해 두 데이터 간 합집함을 가져올 수 있음
+    
+      중복되는 데이터는 한 개만 포함됨
+      UNION되는 데이터 세트의 열 개수가 같아야 함
+      UNION되는 데이터들의 열의 자료형...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/algorithm23_powers_dynamic_programming/" rel="permalink">[Algorithm] 거듭제곱 - Dynamic Programming
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(23)
+  Dyanmic Programming
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

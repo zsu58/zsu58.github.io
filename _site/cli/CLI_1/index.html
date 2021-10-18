@@ -1,0 +1,1003 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[UNIX CLI] Command Line - Bibliothek für Data-Engineering</title>
+<meta name="description" content="UNIX COMMAND LINE    UNIX CLI 정리(1)   argument(인자)는 커맨드가 작동할 대상을 지정하기 위해 사용   option(옵션)은 커맨드가 구체적으로 어떤 방식으로 동작할지를 지시하기 위해 사용            옵션은 하이픈(-)이 붙음       옵션 중에는 옵션을 적고 한 칸 띄운 다음 옵션에 대한 인자(or value)를 적어야하는 것들이 존재       하이픈 뒤에는 여러 옵션을 연속적으로 사용 가능                    값을 줘야 하는 옵션이 있다면 값을 줘야 하는 옵션을 가장 뒤에 써야 명령이 정상적으로 작동                           man [command]을 통해 명령어에 대한 공식 메뉴얼을 볼 수 있음   cd를 통해 directory를 변경할 수 있음   ls를 통해 directory 내의 directory/file 볼 수 있음   ls -l를 통해 현재 directory 내 파일들의 detail info에 대해 알 수 있음   mkdir를 통해 directory 만들 수 있음   touch를 통해 새 파일 만들 수 있음   rm를 통해 파일 삭제할 수 있음   mv를 통해 파일을 옮기거나 파일/directory의 이름을 변경할 수 있음   cp를 통해 파일/directory를 복사+붙여놓기 할 수 있음   cat를 통해 파일 1개 이상을 이어 볼 수 있음   less를 통해 파일 1개 이상을 각각 볼 수 있음   head를 통해 파일의 앞 부분만 볼 수 있음   tail를 통해 파일의 뒷 부분만 볼 수 있음   history를 통해 지금까지 사용한 명령어를 모두 볼 수 있음">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[UNIX CLI] Command Line">
+<meta property="og:url" content="https://carl020958.github.io/cli/CLI_1/">
+
+
+  <meta property="og:description" content="UNIX COMMAND LINE    UNIX CLI 정리(1)   argument(인자)는 커맨드가 작동할 대상을 지정하기 위해 사용   option(옵션)은 커맨드가 구체적으로 어떤 방식으로 동작할지를 지시하기 위해 사용            옵션은 하이픈(-)이 붙음       옵션 중에는 옵션을 적고 한 칸 띄운 다음 옵션에 대한 인자(or value)를 적어야하는 것들이 존재       하이픈 뒤에는 여러 옵션을 연속적으로 사용 가능                    값을 줘야 하는 옵션이 있다면 값을 줘야 하는 옵션을 가장 뒤에 써야 명령이 정상적으로 작동                           man [command]을 통해 명령어에 대한 공식 메뉴얼을 볼 수 있음   cd를 통해 directory를 변경할 수 있음   ls를 통해 directory 내의 directory/file 볼 수 있음   ls -l를 통해 현재 directory 내 파일들의 detail info에 대해 알 수 있음   mkdir를 통해 directory 만들 수 있음   touch를 통해 새 파일 만들 수 있음   rm를 통해 파일 삭제할 수 있음   mv를 통해 파일을 옮기거나 파일/directory의 이름을 변경할 수 있음   cp를 통해 파일/directory를 복사+붙여놓기 할 수 있음   cat를 통해 파일 1개 이상을 이어 볼 수 있음   less를 통해 파일 1개 이상을 각각 볼 수 있음   head를 통해 파일의 앞 부분만 볼 수 있음   tail를 통해 파일의 뒷 부분만 볼 수 있음   history를 통해 지금까지 사용한 명령어를 모두 볼 수 있음">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-09-24T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://carl020958.github.io/cli/CLI_1/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "https://carl020958.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://www.notion.so/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/barca_icon.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">50</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Data-Enginnering</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--sql 카테고리 글들을 모아둔 페이지인 /categories/sql 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (9)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm - Python (25)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[UNIX CLI] Command Line">
+    <meta itemprop="description" content="UNIX COMMAND LINE  UNIX CLI 정리(1)  argument(인자)는 커맨드가 작동할 대상을 지정하기 위해 사용  option(옵션)은 커맨드가 구체적으로 어떤 방식으로 동작할지를 지시하기 위해 사용          옵션은 하이픈(-)이 붙음      옵션 중에는 옵션을 적고 한 칸 띄운 다음 옵션에 대한 인자(or value)를 적어야하는 것들이 존재      하이픈 뒤에는 여러 옵션을 연속적으로 사용 가능                  값을 줘야 하는 옵션이 있다면 값을 줘야 하는 옵션을 가장 뒤에 써야 명령이 정상적으로 작동                      man [command]을 통해 명령어에 대한 공식 메뉴얼을 볼 수 있음  cd를 통해 directory를 변경할 수 있음  ls를 통해 directory 내의 directory/file 볼 수 있음  ls -l를 통해 현재 directory 내 파일들의 detail info에 대해 알 수 있음  mkdir를 통해 directory 만들 수 있음  touch를 통해 새 파일 만들 수 있음  rm를 통해 파일 삭제할 수 있음  mv를 통해 파일을 옮기거나 파일/directory의 이름을 변경할 수 있음  cp를 통해 파일/directory를 복사+붙여놓기 할 수 있음  cat를 통해 파일 1개 이상을 이어 볼 수 있음  less를 통해 파일 1개 이상을 각각 볼 수 있음  head를 통해 파일의 앞 부분만 볼 수 있음  tail를 통해 파일의 뒷 부분만 볼 수 있음  history를 통해 지금까지 사용한 명령어를 모두 볼 수 있음">
+    <meta itemprop="datePublished" content="2021-09-24T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[UNIX CLI] Command Line
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#unix-command-line">UNIX COMMAND LINE</a></li><li><a href="#argument--option">argument &amp; option</a></li><li><a href="#manual">manual</a></li><li><a href="#pwd">pwd</a></li><li><a href="#cd">cd</a></li><li><a href="#ls">ls</a></li><li><a href="#mkdir">mkdir</a></li><li><a href="#rm">rm</a></li><li><a href="#mv">mv</a></li><li><a href="#cp">cp</a></li><li><a href="#cat">cat</a></li><li><a href="#less">less</a></li><li><a href="#head--tail">head &amp; tail</a></li><li><a href="#history">history</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="unix-command-line">UNIX COMMAND LINE</h3>
+<ul>
+  <li>UNIX CLI 정리(1)</li>
+  <li><code class="language-plaintext highlighter-rouge">argument(인자)</code>는 커맨드가 작동할 대상을 지정하기 위해 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">option(옵션)</code>은 커맨드가 구체적으로 어떤 방식으로 동작할지를 지시하기 위해 사용
+    <ul>
+      <li>옵션은 하이픈(-)이 붙음</li>
+      <li>옵션 중에는 옵션을 적고 한 칸 띄운 다음 옵션에 대한 인자(or value)를 적어야하는 것들이 존재</li>
+      <li>하이픈 뒤에는 여러 옵션을 연속적으로 사용 가능
+        <ul>
+          <li>값을 줘야 하는 옵션이 있다면 값을 줘야 하는 옵션을 가장 뒤에 써야 명령이 정상적으로 작동</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">man [command]</code>을 통해 명령어에 대한 공식 메뉴얼을 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">cd</code>를 통해 directory를 변경할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">ls</code>를 통해 directory 내의 directory/file 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">ls -l</code>를 통해 현재 directory 내 파일들의 detail info에 대해 알 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">mkdir</code>를 통해 directory 만들 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">touch</code>를 통해 새 파일 만들 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">rm</code>를 통해 파일 삭제할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">mv</code>를 통해 파일을 옮기거나 파일/directory의 이름을 변경할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">cp</code>를 통해 파일/directory를 복사+붙여놓기 할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">cat</code>를 통해 파일 1개 이상을 이어 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">less</code>를 통해 파일 1개 이상을 각각 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">head</code>를 통해 파일의 앞 부분만 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">tail</code>를 통해 파일의 뒷 부분만 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">history</code>를 통해 지금까지 사용한 명령어를 모두 볼 수 있음</li>
+</ul>
+
+<hr />
+
+<h3 id="argument--option">argument &amp; option</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># '2020' is an argumnet
+</span><span class="n">cal</span> <span class="mi">2020</span>
+
+<span class="c1"># '-y' is an option
+</span><span class="n">cal</span> <span class="o">-</span><span class="n">y</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2 is give after optino -B which stands for before
+</span><span class="n">cal</span> <span class="o">-</span><span class="n">B</span> <span class="mi">2</span>
+
+<span class="c1"># returns a calender from two months before to 3 months after
+</span><span class="n">cal</span> <span class="o">-</span><span class="n">B</span> <span class="mi">2</span> <span class="o">-</span><span class="n">A</span> <span class="mi">3</span>
+
+<span class="c1"># returns a calender counting the days in a year from two months before to 3 months after
+</span><span class="n">cal</span> <span class="o">-</span><span class="n">B</span> <span class="mi">2</span> <span class="o">-</span><span class="n">A</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">j</span>
+
+<span class="c1"># same as above
+</span><span class="n">cal</span> <span class="o">-</span><span class="n">B</span> <span class="mi">2</span> <span class="o">-</span><span class="n">jA</span> <span class="mi">3</span>
+<span class="n">cal</span> <span class="o">-</span><span class="n">jB</span> <span class="mi">2</span> <span class="o">-</span><span class="n">A</span> <span class="mi">3</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="manual">manual</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># official manual of cal
+</span><span class="n">man</span> <span class="n">cal</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="pwd">pwd</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># print working directory
+</span><span class="n">pwd</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="cd">cd</h3>
+<ul>
+  <li>tab 키를 통해 자동완성 할 수 있음</li>
+  <li>control + a를 통해 줄의 가장 앞쪽으로 갈 수 있음</li>
+  <li>control + e를 통해 줄의 가장 뒤쪽으로 갈 수 있음</li>
+  <li>clear를 통해 command 창을 모두 지울 수 있음</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># change directory
+</span><span class="n">cd</span> <span class="n">Jupyter_Projects</span><span class="o">/</span><span class="n">blog</span>
+
+<span class="c1"># change to parent directory
+</span><span class="n">cd</span> <span class="p">..</span><span class="o">/</span>
+
+<span class="c1"># change to parent's parent directory
+</span><span class="n">cd</span> <span class="p">..</span><span class="o">/</span><span class="p">..</span>
+
+<span class="c1"># change to root directory
+</span><span class="n">cd</span> <span class="o">/</span>
+
+<span class="c1"># change to home directory
+</span><span class="n">cd</span> <span class="o">~</span>
+
+<span class="c1"># change to previous directory
+</span><span class="n">cd</span> <span class="o">-</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="ls">ls</h3>
+<ul>
+  <li>가장 처음에 오는 것을 통해 해당 파일의 종류 알 수 있음</li>
+  <li>- : 일반 파일</li>
+  <li>d : 디렉토리</li>
+  <li>c : 캐릭터 장치 파일</li>
+  <li>b : 블록 장치 파일</li>
+  <li>s : 소켓</li>
+  <li>p : 파이프</li>
+  <li>l : 심볼릭 링크</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># show list with details
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+
+<span class="c1"># show all file 
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
+
+<span class="c1"># show all file as list with details
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">al</span> <span class="c1"># ls -la or ls -l -a
+</span>
+<span class="c1"># show file's info or files inside a directory
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="p">[</span><span class="n">filename</span><span class="o">/</span><span class="n">directory_name</span><span class="p">]</span>
+
+<span class="c1"># show directory's info
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">ld</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span>
+
+<span class="c1"># show every file and directory in the current level, then everything in each sub-directory, and so on
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">R</span>
+
+<span class="c1"># print a / after the name of every directory and a * after the name of every runnable program
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">F</span>
+
+</code></pre></div></div>
+<hr />
+
+<h3 id="mkdir">mkdir</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># make directory
+</span><span class="n">mkdir</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="rm">rm</h3>
+<ul>
+  <li>directory 삭제시 -i 옵션을 사용해 중요한 파일을 지우지 않도록 확인</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># delete file
+</span><span class="n">rm</span> <span class="p">[</span><span class="n">file_name</span><span class="p">]</span>
+
+<span class="c1"># delete directory
+</span><span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">i</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="mv">mv</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># move file
+</span><span class="n">mv</span> <span class="p">[</span><span class="n">file_name</span><span class="p">]</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span>
+
+<span class="c1"># use -i option to prevent overwriting
+</span><span class="n">mv</span> <span class="o">-</span><span class="n">i</span> <span class="p">[</span><span class="n">file_name</span><span class="p">]</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span>
+
+<span class="c1"># rename file/directory name
+</span><span class="n">mv</span> <span class="p">[</span><span class="nb">file</span><span class="o">/</span><span class="n">directory_name</span><span class="p">]</span> <span class="p">[</span><span class="n">new_directory_name</span><span class="p">]</span>
+
+<span class="c1"># move directory and change name of file
+</span><span class="n">mv</span> <span class="o">-</span><span class="n">i</span> <span class="p">[</span><span class="n">file_name</span><span class="p">]</span> <span class="p">[</span><span class="n">directory_name</span><span class="o">/</span><span class="n">new_file_name</span><span class="p">]</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="cp">cp</h3>
+<ul>
+  <li>-i 옵션을 항상 입력해 overwriting이 일어나지 않도록 방지</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># copy &amp; paste file
+</span><span class="n">cp</span> <span class="o">-</span><span class="n">i</span> <span class="p">[</span><span class="n">file_name</span><span class="p">]</span> <span class="p">[</span><span class="n">duplicated_file_name</span><span class="p">]</span>
+
+<span class="c1"># copy &amp; paste directory
+</span><span class="n">cp</span> <span class="o">-</span><span class="n">ir</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span> <span class="p">[</span><span class="n">duplicated_directory_name</span><span class="p">]</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="cat">cat</h3>
+<ul>
+  <li>⬇️ : 아래로 한줄 이동</li>
+  <li>⬆️ : 위로 한줄 이동</li>
+  <li>spacebar : 아래로 한 페이지 이동</li>
+  <li>b : 위로 한 페이지 이동</li>
+  <li>G : 가장 마지막으로 이동</li>
+  <li>g : 가장 처음으로 이동</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># view photograph_lyric file
+</span><span class="n">cat</span> <span class="n">photograph_lyric</span>
+
+<span class="c1"># view photogrpah_lyric &amp; shiver_lyric file
+</span><span class="n">cat</span> <span class="n">photograph_lyric</span> <span class="n">shiver_lyric</span> <span class="nb">file</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="less">less</h3>
+<ul>
+  <li>:n : view next file</li>
+  <li>:p : view previous file</li>
+  <li>⬇️ : 아래로 한줄 이동</li>
+  <li>⬆️ : 위로 한줄 이동</li>
+  <li>spacebar : 아래로 한 페이지 이동</li>
+  <li>b : 위로 한 페이지 이동</li>
+  <li>G : 가장 마지막으로 이동</li>
+  <li>g : 가장 처음으로 이동</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># view photograph_lyric file
+</span><span class="n">less</span> <span class="n">photograph_lyric</span>
+
+<span class="c1"># view photogrpah_lyric &amp; shiver_lyric file
+</span><span class="n">less</span> <span class="n">photograph_lyric</span> <span class="n">shiver_lyric</span> <span class="nb">file</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="head--tail">head &amp; tail</h3>
+<ul>
+  <li>-n 옵션을 통해 출력될 line 수를 지정할 수 있음</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># view 20 line of photograph_lyric file
+</span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">20</span> <span class="n">photograph_lyric</span>
+
+<span class="c1"># view the last of 10 line of photogrpah_lyric file
+</span><span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span> <span class="n">photograph_lyric</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="history">history</h3>
+<ul>
+  <li>![number]를 통해 해당 command 불러 올 수 있음</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># view history of commands
+</span><span class="n">history</span>
+
+<span class="c1"># view the last of 10 line of photogrpah_lyric file
+</span><span class="err">!</span><span class="p">[</span><span class="n">number</span><span class="p">]</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#backend" class="page__taxonomy-item" rel="tag">BACKEND</a><span class="sep">, </span>
+    
+      <a href="/tags/#cli" class="page__taxonomy-item" rel="tag">CLI</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#cli" class="page__taxonomy-item" rel="tag">CLI</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-24T00:00:00+09:00">September 24, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BUNIX+CLI%5D+Command+Line%20https%3A%2F%2Fcarl020958.github.io%2Fcli%2FCLI_1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcarl020958.github.io%2Fcli%2FCLI_1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcarl020958.github.io%2Fcli%2FCLI_1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/python/gaining_efficiencies/" class="pagination--pager" title="[Python] Counter &amp; combinations &amp; set
+">Previous</a>
+    
+    
+      <a href="/cli/CLI_2_VIM/" class="pagination--pager" title="[UNIX CLI] VIM
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/sql2_4_subquery/" rel="permalink">[SQL] Subquery
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung
+
+  SQL JOIN 문법 정리(4)
+  Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/programmers_coding_test/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 (1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/sql2_3_set_theory_clauses/" rel="permalink">[SQL] UNION &amp; INTER &amp; EXCEPT
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung
+
+  SQL JOIN 문법 정리(3)
+  UNION을 통해 두 데이터 간 합집함을 가져올 수 있음
+    
+      중복되는 데이터는 한 개만 포함됨
+      UNION되는 데이터 세트의 열 개수가 같아야 함
+      UNION되는 데이터들의 열의 자료형...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/algorithm23_powers_dynamic_programming/" rel="permalink">[Algorithm] 거듭제곱 - Dynamic Programming
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(23)
+  Dyanmic Programming
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
