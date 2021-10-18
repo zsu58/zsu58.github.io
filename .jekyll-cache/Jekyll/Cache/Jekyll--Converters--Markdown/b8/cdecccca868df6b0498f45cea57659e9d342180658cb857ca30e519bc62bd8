@@ -1,0 +1,21 @@
+I"�<hr />
+
+<h3 id="sql-übung">SQL Übung</h3>
+<ul>
+  <li>SQL 문법 정리(3)</li>
+  <li><code class="language-plaintext highlighter-rouge">AVG</code> 평균</li>
+  <li><code class="language-plaintext highlighter-rouge">SUM</code> 합계</li>
+  <li><code class="language-plaintext highlighter-rouge">MAX</code> 최대값</li>
+  <li><code class="language-plaintext highlighter-rouge">MIN</code> 최소값</li>
+  <li>연산자
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">+</code></li>
+      <li><code class="language-plaintext highlighter-rouge">-</code></li>
+      <li><code class="language-plaintext highlighter-rouge">/</code></li>
+      <li><code class="language-plaintext highlighter-rouge">*</code></li>
+      <li><code class="language-plaintext highlighter-rouge">%</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">AS</code>를 통해 column의 이름 수정</li>
+</ul>
+:ET

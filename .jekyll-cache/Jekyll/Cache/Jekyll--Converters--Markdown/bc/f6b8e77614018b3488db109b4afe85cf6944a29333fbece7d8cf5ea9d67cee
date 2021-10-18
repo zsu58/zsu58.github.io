@@ -1,0 +1,29 @@
+I"<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(17)</li>
+  <li>Dynamic Programming이 필요한 경우
+    <ul>
+      <li>최적 부분 구조가 있음</li>
+      <li>중복되는 부분 문제들이 있음</li>
+    </ul>
+  </li>
+  <li>Dyanmic Programming은 2가지 종류가 존재
+    <ul>
+      <li>Memoization
+        <ul>
+          <li>재귀를 사용</li>
+          <li>장점: 모든 경우를 다 계산할 필요 없음</li>
+          <li>단점: call stack이 계속 쌓임</li>
+        </ul>
+      </li>
+      <li>Tabulation
+        <ul>
+          <li>반복을 사용</li>
+          <li>장점: call stack이 쌓이지 않음</li>
+          <li>단점: 모든 경우를 다 계산함</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+:ET

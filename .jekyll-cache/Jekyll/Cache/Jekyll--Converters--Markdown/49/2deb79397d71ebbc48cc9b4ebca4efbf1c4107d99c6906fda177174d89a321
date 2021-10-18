@@ -1,0 +1,248 @@
+I"d6<hr />
+<h3 id="unix-command-line">UNIX COMMAND LINE</h3>
+<ul>
+  <li>UNIX CLI 정리(1)</li>
+  <li><code class="language-plaintext highlighter-rouge">argument(인자)</code>는 커맨드가 작동할 대상을 지정하기 위해 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">option(옵션)</code>은 커맨드가 구체적으로 어떤 방식으로 동작할지를 지시하기 위해 사용
+    <ul>
+      <li>옵션은 하이픈(-)이 붙음</li>
+      <li>옵션 중에는 옵션을 적고 한 칸 띄운 다음 옵션에 대한 인자(or value)를 적어야하는 것들이 존재</li>
+      <li>하이픈 뒤에는 여러 옵션을 연속적으로 사용 가능
+        <ul>
+          <li>값을 줘야 하는 옵션이 있다면 값을 줘야 하는 옵션을 가장 뒤에 써야 명령이 정상적으로 작동</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">man [command]</code>을 통해 명령어에 대한 공식 메뉴얼을 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">cd</code>를 통해 directory를 변경할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">ls</code>를 통해 directory 내의 directory/file 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">ls -l</code>를 통해 현재 directory 내 파일들의 detail info에 대해 알 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">mkdir</code>를 통해 directory 만들 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">touch</code>를 통해 새 파일 만들 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">rm</code>를 통해 파일 삭제할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">mv</code>를 통해 파일을 옮기거나 파일/directory의 이름을 변경할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">cp</code>를 통해 파일/directory를 복사+붙여놓기 할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">cat</code>를 통해 파일 1개 이상을 이어 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">less</code>를 통해 파일 1개 이상을 각각 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">head</code>를 통해 파일의 앞 부분만 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">tail</code>를 통해 파일의 뒷 부분만 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">history</code>를 통해 지금까지 사용한 명령어를 모두 볼 수 있음</li>
+</ul>
+
+<hr />
+
+<h3 id="argument--option">argument &amp; option</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># '2020' is an argumnet
+</span><span class="n">cal</span> <span class="mi">2020</span>
+
+<span class="c1"># '-y' is an option
+</span><span class="n">cal</span> <span class="o">-</span><span class="n">y</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2 is give after optino -B which stands for before
+</span><span class="n">cal</span> <span class="o">-</span><span class="n">B</span> <span class="mi">2</span>
+
+<span class="c1"># returns a calender from two months before to 3 months after
+</span><span class="n">cal</span> <span class="o">-</span><span class="n">B</span> <span class="mi">2</span> <span class="o">-</span><span class="n">A</span> <span class="mi">3</span>
+
+<span class="c1"># returns a calender counting the days in a year from two months before to 3 months after
+</span><span class="n">cal</span> <span class="o">-</span><span class="n">B</span> <span class="mi">2</span> <span class="o">-</span><span class="n">A</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">j</span>
+
+<span class="c1"># same as above
+</span><span class="n">cal</span> <span class="o">-</span><span class="n">B</span> <span class="mi">2</span> <span class="o">-</span><span class="n">jA</span> <span class="mi">3</span>
+<span class="n">cal</span> <span class="o">-</span><span class="n">jB</span> <span class="mi">2</span> <span class="o">-</span><span class="n">A</span> <span class="mi">3</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="manual">manual</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># official manual of cal
+</span><span class="n">man</span> <span class="n">cal</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="pwd">pwd</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># print working directory
+</span><span class="n">pwd</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="cd">cd</h3>
+<ul>
+  <li>tab 키를 통해 자동완성 할 수 있음</li>
+  <li>control + a를 통해 줄의 가장 앞쪽으로 갈 수 있음</li>
+  <li>control + e를 통해 줄의 가장 뒤쪽으로 갈 수 있음</li>
+  <li>clear를 통해 command 창을 모두 지울 수 있음</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># change directory
+</span><span class="n">cd</span> <span class="n">Jupyter_Projects</span><span class="o">/</span><span class="n">blog</span>
+
+<span class="c1"># change to parent directory
+</span><span class="n">cd</span> <span class="p">..</span><span class="o">/</span>
+
+<span class="c1"># change to parent's parent directory
+</span><span class="n">cd</span> <span class="p">..</span><span class="o">/</span><span class="p">..</span>
+
+<span class="c1"># change to root directory
+</span><span class="n">cd</span> <span class="o">/</span>
+
+<span class="c1"># change to home directory
+</span><span class="n">cd</span> <span class="o">~</span>
+
+<span class="c1"># change to previous directory
+</span><span class="n">cd</span> <span class="o">-</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="ls">ls</h3>
+<ul>
+  <li>가장 처음에 오는 것을 통해 해당 파일의 종류 알 수 있음</li>
+  <li>- : 일반 파일</li>
+  <li>d : 디렉토리</li>
+  <li>c : 캐릭터 장치 파일</li>
+  <li>b : 블록 장치 파일</li>
+  <li>s : 소켓</li>
+  <li>p : 파이프</li>
+  <li>l : 심볼릭 링크</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># show list with details
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+
+<span class="c1"># show all file 
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
+
+<span class="c1"># show all file as list with details
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">al</span> <span class="c1"># ls -la or ls -l -a
+</span>
+<span class="c1"># show file's info or files inside a directory
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="p">[</span><span class="n">filename</span><span class="o">/</span><span class="n">directory_name</span><span class="p">]</span>
+
+<span class="c1"># show directory's info
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">ld</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span>
+
+<span class="c1"># show every file and directory in the current level, then everything in each sub-directory, and so on
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">R</span>
+
+<span class="c1"># print a / after the name of every directory and a * after the name of every runnable program
+</span><span class="n">ls</span> <span class="o">-</span><span class="n">F</span>
+
+</code></pre></div></div>
+<hr />
+
+<h3 id="mkdir">mkdir</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># make directory
+</span><span class="n">mkdir</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="rm">rm</h3>
+<ul>
+  <li>directory 삭제시 -i 옵션을 사용해 중요한 파일을 지우지 않도록 확인</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># delete file
+</span><span class="n">rm</span> <span class="p">[</span><span class="n">file_name</span><span class="p">]</span>
+
+<span class="c1"># delete directory
+</span><span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">i</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="mv">mv</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># move file
+</span><span class="n">mv</span> <span class="p">[</span><span class="n">file_name</span><span class="p">]</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span>
+
+<span class="c1"># use -i option to prevent overwriting
+</span><span class="n">mv</span> <span class="o">-</span><span class="n">i</span> <span class="p">[</span><span class="n">file_name</span><span class="p">]</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span>
+
+<span class="c1"># rename file/directory name
+</span><span class="n">mv</span> <span class="p">[</span><span class="nb">file</span><span class="o">/</span><span class="n">directory_name</span><span class="p">]</span> <span class="p">[</span><span class="n">new_directory_name</span><span class="p">]</span>
+
+<span class="c1"># move directory and change name of file
+</span><span class="n">mv</span> <span class="o">-</span><span class="n">i</span> <span class="p">[</span><span class="n">file_name</span><span class="p">]</span> <span class="p">[</span><span class="n">directory_name</span><span class="o">/</span><span class="n">new_file_name</span><span class="p">]</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="cp">cp</h3>
+<ul>
+  <li>-i 옵션을 항상 입력해 overwriting이 일어나지 않도록 방지</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># copy &amp; paste file
+</span><span class="n">cp</span> <span class="o">-</span><span class="n">i</span> <span class="p">[</span><span class="n">file_name</span><span class="p">]</span> <span class="p">[</span><span class="n">duplicated_file_name</span><span class="p">]</span>
+
+<span class="c1"># copy &amp; paste directory
+</span><span class="n">cp</span> <span class="o">-</span><span class="n">ir</span> <span class="p">[</span><span class="n">directory_name</span><span class="p">]</span> <span class="p">[</span><span class="n">duplicated_directory_name</span><span class="p">]</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="cat">cat</h3>
+<ul>
+  <li>⬇️ : 아래로 한줄 이동</li>
+  <li>⬆️ : 위로 한줄 이동</li>
+  <li>spacebar : 아래로 한 페이지 이동</li>
+  <li>b : 위로 한 페이지 이동</li>
+  <li>G : 가장 마지막으로 이동</li>
+  <li>g : 가장 처음으로 이동</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># view photograph_lyric file
+</span><span class="n">cat</span> <span class="n">photograph_lyric</span>
+
+<span class="c1"># view photogrpah_lyric &amp; shiver_lyric file
+</span><span class="n">cat</span> <span class="n">photograph_lyric</span> <span class="n">shiver_lyric</span> <span class="nb">file</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="less">less</h3>
+<ul>
+  <li>:n : view next file</li>
+  <li>:p : view previous file</li>
+  <li>⬇️ : 아래로 한줄 이동</li>
+  <li>⬆️ : 위로 한줄 이동</li>
+  <li>spacebar : 아래로 한 페이지 이동</li>
+  <li>b : 위로 한 페이지 이동</li>
+  <li>G : 가장 마지막으로 이동</li>
+  <li>g : 가장 처음으로 이동</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># view photograph_lyric file
+</span><span class="n">less</span> <span class="n">photograph_lyric</span>
+
+<span class="c1"># view photogrpah_lyric &amp; shiver_lyric file
+</span><span class="n">less</span> <span class="n">photograph_lyric</span> <span class="n">shiver_lyric</span> <span class="nb">file</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="head--tail">head &amp; tail</h3>
+<ul>
+  <li>-n 옵션을 통해 출력될 line 수를 지정할 수 있음</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># view 20 line of photograph_lyric file
+</span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">20</span> <span class="n">photograph_lyric</span>
+
+<span class="c1"># view the last of 10 line of photogrpah_lyric file
+</span><span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span> <span class="n">photograph_lyric</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="history">history</h3>
+<ul>
+  <li>![number]를 통해 해당 command 불러 올 수 있음</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># view history of commands
+</span><span class="n">history</span>
+
+<span class="c1"># view the last of 10 line of photogrpah_lyric file
+</span><span class="err">!</span><span class="p">[</span><span class="n">number</span><span class="p">]</span>
+</code></pre></div></div>
+:ET

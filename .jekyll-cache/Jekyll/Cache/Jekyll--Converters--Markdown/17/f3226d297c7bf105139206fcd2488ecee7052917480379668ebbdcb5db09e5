@@ -1,0 +1,27 @@
+I"�<hr />
+
+<h3 id="writing-efficient-python-code">Writing Efficient Python Code</h3>
+<ul>
+  <li>PART3</li>
+  <li><code class="language-plaintext highlighter-rouge">Counter</code> from module collections
+    <ul>
+      <li>종류별 개수를 반환</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">combinations</code> from itertools
+    <ul>
+      <li>가능한 조합을 list로 반환</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">set</code> from itertools
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">set</code>을 통해 distinct한 element만 산출</li>
+      <li><code class="language-plaintext highlighter-rouge">intersection</code>을 통해 교집합 산출</li>
+      <li><code class="language-plaintext highlighter-rouge">difference</code>을 통해 차집합 산출</li>
+      <li><code class="language-plaintext highlighter-rouge">symmetric_difference</code>을 통해 합집합-교집합 산출</li>
+    </ul>
+  </li>
+  <li>계산이 한 번만 필요한 것은 loop 전에 계산하기</li>
+  <li><code class="language-plaintext highlighter-rouge">map</code>을 활용해 한 번에 처리하기</li>
+</ul>
+:ET

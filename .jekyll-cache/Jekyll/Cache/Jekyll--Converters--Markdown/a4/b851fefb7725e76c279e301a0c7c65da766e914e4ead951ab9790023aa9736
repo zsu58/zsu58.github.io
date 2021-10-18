@@ -1,0 +1,13 @@
+I";<hr />
+
+<h3 id="generator">Generator</h3>
+<ul>
+  <li>list와 같은 <code class="language-plaintext highlighter-rouge">iterable객체</code>와 달리 대용량의 memory를 사용하지 않음
+    <ul>
+      <li>그러나 반대로 여러번 값을 가져올 수 없음</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">next</code>함수를 통해 다음 generator의 값을 가져올 수 있음</li>
+  <li>함수 안의 <code class="language-plaintext highlighter-rouge">yield</code>를 통해 generator을 만들 수도 있음</li>
+</ul>
+:ET

@@ -1,0 +1,25 @@
+I"�<hr />
+
+<h3 id="writing-efficient-python-code">Writing Efficient Python Code</h3>
+<ul>
+  <li>PART2</li>
+  <li><code class="language-plaintext highlighter-rouge">%timeit</code>을 통해 runtime을 examine할 수 있음
+    <ul>
+      <li>-r2를 통해 전체 run 횟수를, -n을 통해 한 run에서 몇 회 반복할지 설정 가능</li>
+      <li><code class="language-plaintext highlighter-rouge">%%timeit</code>을 통해 multiple-line code의 runtime을 examine할 수 있음</li>
+      <li>ns = nanosecond 10^-9</li>
+      <li>µs(us) = microsecond 10^-6</li>
+      <li>ms = millisecond 10^-3</li>
+      <li>s = second 10^0</li>
+      <li>ipython에서만 가능(Jupyter notebook에서도 가능), script에 쓰고 싶은 경우 tiemit modeul 사용</li>
+    </ul>
+  </li>
+  <li>line profiler 라이브러리의 <code class="language-plaintext highlighter-rouge">%lprun</code>을 통해 line 별 runtime을 examine할 수 있음
+<br /><br /></li>
+  <li>memory profiler 라이브러리의 <code class="language-plaintext highlighter-rouge">%mprun</code>을 통해 lineq 별 memory를 examine할 수 있음
+    <ul>
+      <li>function examine 위해서는 다른 파일로부터 function을 import해야함</li>
+    </ul>
+  </li>
+</ul>
+:ET

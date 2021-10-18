@@ -1,0 +1,125 @@
+I"�<hr />
+<h3 id="sql-übung">SQL Übung</h3>
+<ul>
+  <li>SQL 문법 정리(3)</li>
+  <li><code class="language-plaintext highlighter-rouge">AVG</code> 평균</li>
+  <li><code class="language-plaintext highlighter-rouge">SUM</code> 합계</li>
+  <li><code class="language-plaintext highlighter-rouge">MAX</code> 최대값</li>
+  <li><code class="language-plaintext highlighter-rouge">MIN</code> 최소값</li>
+  <li>연산자
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">+</code></li>
+      <li><code class="language-plaintext highlighter-rouge">-</code></li>
+      <li><code class="language-plaintext highlighter-rouge">/</code></li>
+      <li><code class="language-plaintext highlighter-rouge">*</code></li>
+      <li><code class="language-plaintext highlighter-rouge">%</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">AS</code>를 통해 column의 이름 수정</li>
+</ul>
+
+<hr />
+<h3 id="sum">SUM</h3>
+<p>1-1) Aggregate functions</p>
+<ul>
+  <li>Get the total duration of all films.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">SUM</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">films</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="min">MIN</h3>
+<p>1-2) Aggregate functions</p>
+<ul>
+  <li>Get the duration of the shortest film</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">MIN</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">films</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="avg">AVG</h3>
+<p>1-3) Aggregate functions</p>
+<ul>
+  <li>Get the average amount grossed by all films whose titles start with the letter ‘A’</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">AVG</span><span class="p">(</span><span class="n">gross</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">title</span> <span class="n">LIKE</span> <span class="s">'A%'</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="max">MAX</h3>
+<p>1-4) Aggregate functions</p>
+<ul>
+  <li>Get the amount grossed by the best performing film between 2000 and 2012, inclusive</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">MAX</span><span class="p">(</span><span class="n">gross</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="n">BETWEEN</span> <span class="mi">2000</span> <span class="n">AND</span> <span class="mi">2012</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="나누기">나누기</h3>
+<p>2) Arithmetic</p>
+<ul>
+  <li>나누기 할 때 자료형(float/ int) 주의</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="p">(</span><span class="mf">10.0</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+3.333 ---
+</code></pre></div></div>
+
+<h3 id="as">AS</h3>
+<p>3-1) AS aliasing</p>
+<ul>
+  <li>Get the title and net profit (the amount a film grossed, minus its budget) for all films. Alias the net profit as net_profit</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">gross</span><span class="o">-</span><span class="n">budget</span> <span class="n">AS</span> <span class="n">net_profit</span>
+<span class="n">FROM</span> <span class="n">films</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>3-2) AS aliasing</p>
+<ul>
+  <li>Get the average duration in hours for all films, aliased as avg_duration_hours</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">AVG</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span><span class="o">/</span><span class="mf">60.0</span> <span class="k">as</span> <span class="n">avg_duration_hours</span>
+<span class="n">FROM</span> <span class="n">films</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>4-1) More aliasing</p>
+<ul>
+  <li>Get the percentage of people who are no longer alive. Alias the result as percentage_dead</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">/</span><span class="mi">8397</span> <span class="n">AS</span> <span class="n">percentage_dead</span>
+<span class="n">FROM</span> <span class="n">people</span>
+<span class="n">WHERE</span> <span class="n">deathdate</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">;</span>
+
+
+<span class="o">--</span> <span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="o">--</span> <span class="n">FROM</span> <span class="n">people</span><span class="p">;</span>
+<span class="o">--</span> <span class="mi">8397</span>
+</code></pre></div></div>
+
+<p>4-2) More aliasing</p>
+<ul>
+  <li>Get the number of decades the films table covers. Alias the result as number_of_decades. The top half of your fraction should be enclosed in parentheses</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="p">(</span><span class="n">MAX</span><span class="p">(</span><span class="n">release_year</span><span class="p">)</span> <span class="o">-</span> <span class="n">MIN</span><span class="p">(</span><span class="n">release_year</span><span class="p">))</span> <span class="o">/</span> <span class="mi">10</span> <span class="n">AS</span> <span class="n">number_of_decades</span>
+<span class="n">FROM</span> <span class="n">films</span><span class="p">;</span>
+</code></pre></div></div>
+:ET

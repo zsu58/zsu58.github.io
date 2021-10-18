@@ -1,0 +1,34 @@
+I"�
+<hr />
+
+<h3 id="unix-command-line">UNIX COMMAND LINE</h3>
+<ul>
+  <li>UNIX CLI 정리(1)</li>
+  <li><code class="language-plaintext highlighter-rouge">argument(인자)</code>는 커맨드가 작동할 대상을 지정하기 위해 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">option(옵션)</code>은 커맨드가 구체적으로 어떤 방식으로 동작할지를 지시하기 위해 사용
+    <ul>
+      <li>옵션은 하이픈(-)이 붙음</li>
+      <li>옵션 중에는 옵션을 적고 한 칸 띄운 다음 옵션에 대한 인자(or value)를 적어야하는 것들이 존재</li>
+      <li>하이픈 뒤에는 여러 옵션을 연속적으로 사용 가능
+        <ul>
+          <li>값을 줘야 하는 옵션이 있다면 값을 줘야 하는 옵션을 가장 뒤에 써야 명령이 정상적으로 작동</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">man [command]</code>을 통해 명령어에 대한 공식 메뉴얼을 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">cd</code>를 통해 directory를 변경할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">ls</code>를 통해 directory 내의 directory/file 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">ls -l</code>를 통해 현재 directory 내 파일들의 detail info에 대해 알 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">mkdir</code>를 통해 directory 만들 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">touch</code>를 통해 새 파일 만들 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">rm</code>를 통해 파일 삭제할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">mv</code>를 통해 파일을 옮기거나 파일/directory의 이름을 변경할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">cp</code>를 통해 파일/directory를 복사+붙여놓기 할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">cat</code>를 통해 파일 1개 이상을 이어 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">less</code>를 통해 파일 1개 이상을 각각 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">head</code>를 통해 파일의 앞 부분만 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">tail</code>를 통해 파일의 뒷 부분만 볼 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">history</code>를 통해 지금까지 사용한 명령어를 모두 볼 수 있음</li>
+</ul>
+:ET

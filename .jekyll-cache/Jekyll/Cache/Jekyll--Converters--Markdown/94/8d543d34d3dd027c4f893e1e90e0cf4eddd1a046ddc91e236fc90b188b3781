@@ -1,0 +1,50 @@
+I"*<hr />
+<h3 id="전역범수global-variable">전역범수(Global Variable)</h3>
+<ul>
+  <li>함수를 포함하여 스크립트 전체에서 접근할 수 있는 변수</li>
+  <li>전역 범위(Global Scope) - 전역 변수에 접근할 수 있는 범위</li>
+  <li>함수 안에서 전역변수 선언시 <code class="language-plaintext highlighter-rouge">global</code> 사용</li>
+</ul>
+
+<h3 id="지역변수local-variable">지역변수(Local Variable)</h3>
+<ul>
+  <li>변수를 만든 함수 안에서만 접근할 수 있는 변수</li>
+  <li>지역 범위(Local Scope) - 지역 변수에 접근할 수 있는 범위</li>
+  <li>함수의 지역 범위 바깥의 지역 변수 사용시 <code class="language-plaintext highlighter-rouge">nonlocal</code> 사용</li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">team</span> <span class="o">=</span> <span class="s">"teen titans"</span>
+
+<span class="k">def</span> <span class="nf">change_team</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">team</span> <span class="c1"># 함수 안에서 (team을) 전역변수로 선언
+</span>    <span class="n">team</span> <span class="o">=</span> <span class="s">'justice league'</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">team</span><span class="p">)</span>
+<span class="n">change_team</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">team</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>teen titans
+justice league
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">echo_shout</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">echo_word</span> <span class="o">=</span> <span class="n">word</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">echo_word</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">shout</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">echo_word</span> <span class="c1"># 함수의 지역 범위 바깥의 지역 변수(echo_word) 를 사용
+</span>        <span class="n">echo_word</span> <span class="o">=</span> <span class="n">echo_word</span> <span class="o">+</span> <span class="s">'!!!'</span>
+    <span class="n">shout</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">echo_word</span><span class="p">)</span>
+
+<span class="n">echo_shout</span><span class="p">(</span><span class="s">'hello'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hellohello
+hellohello!!!
+</code></pre></div></div>
+
+:ET

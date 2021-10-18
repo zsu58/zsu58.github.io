@@ -1,0 +1,15 @@
+I"�<hr />
+
+<h3 id="unix-command-line">UNIX COMMAND LINE</h3>
+<ul>
+  <li>UNIX CLI 정리(2) - VIM</li>
+  <li>VIM은 4가지 모드가 존재
+    <ul>
+      <li>Normal Mode : 커서 이동/ 텍스트 붙여놓기/ 텍스트 삭제/ 작업 취소</li>
+      <li>Insert Mode : 텍스트 입력</li>
+      <li>Visual Mode : 텍스트 블록 지정/ 텍스트 복사</li>
+      <li>Command Mode : 내용 저장/ vim 종료/ 특정 텍스트 검색 및 치환</li>
+    </ul>
+  </li>
+</ul>
+:ET

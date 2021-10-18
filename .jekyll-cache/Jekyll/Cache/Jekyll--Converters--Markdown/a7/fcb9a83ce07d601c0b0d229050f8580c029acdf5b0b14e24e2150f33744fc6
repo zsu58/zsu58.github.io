@@ -1,0 +1,64 @@
+I"c<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(15)</li>
+  <li>Dynamic Programming이 필요한 경우
+    <ul>
+      <li>최적 부분 구조가 있음</li>
+      <li>중복되는 부분 문제들이 있음</li>
+    </ul>
+  </li>
+  <li>Dyanmic Programming은 2가지 종류가 존재
+    <ul>
+      <li>Memoization
+        <ul>
+          <li>재귀를 사용</li>
+          <li>장점: 모든 경우를 다 계산할 필요 없음</li>
+          <li>단점: call stack이 계속 쌓임</li>
+        </ul>
+      </li>
+      <li>Tabulation
+        <ul>
+          <li>반복을 사용</li>
+          <li>장점: call stack이 쌓이지 않음</li>
+          <li>단점: 모든 경우를 다 계산함</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="memoization">Memoization</h3>
+<ul>
+  <li>Fibonacci</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib_memo</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">cache</span><span class="p">):</span>
+    <span class="c1"># 코드를 작성하세요.
+</span>    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">fib_memo</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cache</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib_memo</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">cache</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># n번째 피보나치 수를 담는 사전
+</span>    <span class="n">fib_cache</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="n">fib_memo</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">fib_cache</span><span class="p">)</span>
+
+<span class="c1"># 테스트
+</span><span class="k">print</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>55
+12586269025
+354224848179261915075
+</code></pre></div></div>
+
+:ET

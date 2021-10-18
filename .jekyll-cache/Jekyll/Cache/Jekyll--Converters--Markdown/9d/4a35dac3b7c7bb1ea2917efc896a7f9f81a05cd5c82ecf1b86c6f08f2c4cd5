@@ -1,0 +1,12 @@
+I"<hr />
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(13)</li>
+  <li>Divide and Conquer(2)
+    <ul>
+      <li>핵심 divide/ conquer/ combine</li>
+      <li>합병 정렬의 경우 divide, conquer이 간단, combine이 복잡</li>
+    </ul>
+  </li>
+</ul>
+:ET

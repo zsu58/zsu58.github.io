@@ -1,0 +1,37 @@
+I"�	<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(23)</li>
+  <li>Dyanmic Programming</li>
+</ul>
+
+<hr />
+
+<h3 id="dynamic-programming">Dynamic Programming</h3>
+<ul>
+  <li>거듭제곱의 경우 for 문을 돌릴 경우 시간복잡도 O(n)이 나옴</li>
+  <li>시간복잡도가 O(lgn)이 되는 함수를 구현하시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="n">subresult</span> <span class="o">=</span> <span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">subresult</span> <span class="o">*</span> <span class="n">subresult</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">subresult</span> <span class="o">*</span> <span class="n">subresult</span>
+
+<span class="c1"># 테스트
+</span><span class="k">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>243
+15625
+40353607
+</code></pre></div></div>
+
+:ET

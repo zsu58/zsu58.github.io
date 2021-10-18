@@ -1,0 +1,37 @@
+I"k
+<hr />
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(12)</li>
+  <li>Divide and Conquer(1)
+    <ul>
+      <li>핵심 divide/ conquer/ combine</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="1부터-n까지의-합">1부터 n까지의 합</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">consecutive_sum</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="c1"># 코드를 작성하세요
+</span>    <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">start</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">consecutive_sum</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="p">(</span><span class="n">start</span><span class="o">+</span><span class="n">end</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">consecutive_sum</span><span class="p">((</span><span class="n">start</span><span class="o">+</span><span class="n">end</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+
+<span class="c1"># 테스트
+</span><span class="k">print</span><span class="p">(</span><span class="n">consecutive_sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">consecutive_sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">consecutive_sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">253</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">consecutive_sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">388</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>55
+5050
+32131
+75466
+</code></pre></div></div>
+
+:ET

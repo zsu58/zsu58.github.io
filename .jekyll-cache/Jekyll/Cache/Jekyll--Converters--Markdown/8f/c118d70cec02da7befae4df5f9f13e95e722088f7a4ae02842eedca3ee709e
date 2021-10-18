@@ -1,0 +1,134 @@
+I"<hr />
+<p><b>깔끔한 파이썬 탄탄한 백엔드</b></p>
+<h3 id="ch4-http의-구조-및-핵심-요소">CH4 HTTP의 구조 및 핵심 요소</h3>
+<ul>
+  <li>HTTP 핵심 요소</li>
+  <li>HTTP 구조</li>
+  <li>자주 사용되는 HTTP 매소드와 Status Code</li>
+</ul>
+
+<hr />
+
+<h3 id="http-통신-방식">HTTP 통신 방식</h3>
+<ul>
+  <li>요청(request)과 응답(response) 방식
+    <ul>
+      <li>Web Client가 request ➡️ Web Server가 response</li>
+    </ul>
+  </li>
+  <li>stateless
+    <ul>
+      <li>각각의 HTTP통신은 독립적이며 그 전에 처리된 HTTP통신에 대해서 전혀 알지 못하기에, 해당 요청을 처리하기 위해 필요한 모든 데이터를 매번 포함시켜야함</li>
+      <li>이로 인해 발생하는 문제를 해결하기 위해 cookie, session이 존재
+        <ul>
+          <li>cookie를 통해 Web Client(Browser)는 필요한 정보를 저장</li>
+          <li>
+            <h2 id="session을-통해-web-server는-필요한-정보를-저장">session을 통해 Web Server는 필요한 정보를 저장</h2>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="http-요청-구조">HTTP 요청 구조</h3>
+<ul>
+  <li>1) Start Line
+    <ul>
+      <li>HTTP 매소드
+        <ul>
+          <li>GET/ POST/ PUT/ DELETE/ OPTIONS/ Etc</li>
+        </ul>
+      </li>
+      <li>Request target
+        <ul>
+          <li>해당 HTTP 요청이 전송되는 목표 주소 ex) ‘ping’ 엔드포인트에 보내는 HTTP 요청의 request target ➡️ /ping</li>
+        </ul>
+      </li>
+      <li>HTTP version</li>
+    </ul>
+  </li>
+  <li>2) Headers
+    <ul>
+      <li>HTTP 요청 그 자체에 대한 정보 담고 있음 ex) HTTP 요청 메세지의 전체 크기(Content-length)</li>
+      <li>dictionary 형태로 되어 있음</li>
+      <li>자주 사용되는 header은 아래와 같음
+        <ul>
+          <li>Host - 요청이 전송되는 target 호스트의 URL 주소</li>
+          <li>User-Agent - 요청을 보내는 Client에 대한 정보(ex) 웹 브라우저에 대한 정보)</li>
+          <li>Accept - 해당 요청이 받을 수 있는 응답 데이터 타입을 알려주며, MIME(Multipurpose Internet Mail Extenions) type이 value로 지정됨 ex) application/json, text/html</li>
+          <li>Connection - 해당 요청 후 Client-Web 간 네트워크 연결을 유지할 것인지 끊을 것인지 알려줌</li>
+          <li>Content-Type - HTTP 요청이 보내는 메시지 body의 타입을 알려주며 MIME type이 사용됨</li>
+          <li>Content-Length - HTTP 요청이 보내는 메시지 body의 총 사이즈 알려줌</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>3) Body
+    <ul>
+      <li>HTTP 요청이 전송하는 데이터를 담고 있으며, 전송하는 데이터가 없으면 비어 있음</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># startline
+</span><span class="n">GET</span> <span class="o">/</span><span class="n">search</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Headers example
+</span><span class="n">HOST</span><span class="p">:</span> <span class="n">google</span><span class="p">.</span><span class="n">com</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="자주-사용되는-http-매소드">자주 사용되는 HTTP 매소드</h3>
+<ul>
+  <li>GET
+    <ul>
+      <li>데이터를 서보로부터 요청(GET)할 떄 주로 사용</li>
+    </ul>
+  </li>
+  <li>POST
+    <ul>
+      <li>GET과 다륵5ㅔ 데이터를 생성하거나 수정 및 삭제 요청을 할 떄 주로 사용</li>
+    </ul>
+  </li>
+  <li>OPTIONS
+    <ul>
+      <li>
+        <h2 id="특정-엔드포인트에서-허용하는-메소드들이-무엇이-있는지-알고자-하는-요청에서-사용되는-http-메소드">특정 엔드포인트에서 허용하는 메소드들이 무엇이 있는지 알고자 하는 요청에서 사용되는 HTTP 메소드</h2>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="자주-사용되는-shttp-status-code--text">자주 사용되는 SHTTP Status Code &amp; Text</h3>
+<ul>
+  <li>200 OK</li>
+  <li>301 Moved Permanently - 엔드포인트의 URL 주소가 바뀌었다는 것을 나타냄</li>
+  <li>400 Bad Request - HTTP 요청이 잘못된 요청일 경우에 발생, 주로 input 값이 잘못된 경우에 사용됨</li>
+  <li>401 Unauthorized - HTTP 요청을 처리하기 위 해당 요청을 하는 주체의 신분이 확인되지 않는 경우 사용됨</li>
+  <li>403 Forbidden - HTTP 요청을 보내는 주체가 해당 요청에 대한 권한이 없음을 나타내는 응답 코드</li>
+  <li>404 Not Found - HTTP 요청을 보내고하자 하는 URI가 존재하지 않을 때 사용됨</li>
+  <li>
+    <h2 id="500-internal-server-error---http-요청을-받은-서버에서-해당-요청을-처리하는-과정에서-서버-오류가-나서-해당-요청을-처리할-수-없을-때-사용됨">500 Internal Server Error - HTTP 요청을 받은 서버에서 해당 요청을 처리하는 과정에서 서버 오류가 나서 해당 요청을 처리할 수 없을 때 사용됨</h2>
+  </li>
+</ul>
+
+<h3 id="api-엔드포인트-아키텍처-패턴">API 엔드포인트 아키텍처 패턴</h3>
+<ul>
+  <li>REST Api
+    <ul>
+      <li>API에서 전송하는 리소스를 URI로 표현하고 해당 리소스에 행하고자 하는 의도를 HTTP 메소드로 정의하는 방식</li>
+      <li>각 엔드포인트는 처리하는 리소스를 표헌하는 고유의 URI 주소를 가지며, 해당 리소스에 행할 수 있는 행위를 표현하는 HTTP 메소드를 처리함</li>
+      <li>자기 설명력(self-descriptiveness)이 높아, 엔드포인트의 구조만으로도 해당 엔드포인트가 제공하는 리소스와 기능을 파악할 수 있음</li>
+      <li>구조가 직관적이며 간단해짐</li>
+    </ul>
+  </li>
+  <li>GraphQL
+    <ul>
+      <li>REST 방식의 API에서는 이미 구현해놓은 틀에 맞추어 사용해야된다는 단점이 존재</li>
+      <li>GraphQL에서는 엔드포인트가 오직 하나이며, 엔드포인트에 클라이언트가 필요한 것을 정의해서 요청함</li>
+    </ul>
+  </li>
+</ul>
+:ET

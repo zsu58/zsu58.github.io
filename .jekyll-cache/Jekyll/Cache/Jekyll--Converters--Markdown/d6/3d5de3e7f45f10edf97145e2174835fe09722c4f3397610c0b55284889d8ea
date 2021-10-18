@@ -1,0 +1,23 @@
+I"F<hr />
+<h3 id="sql-übung">SQL Übung</h3>
+<ul>
+  <li>SQL JOIN 문법 정리(3)</li>
+  <li><code class="language-plaintext highlighter-rouge">UNION</code>을 통해 두 데이터 간 합집함을 가져올 수 있음
+    <ul>
+      <li>중복되는 데이터는 한 개만 포함됨</li>
+      <li><code class="language-plaintext highlighter-rouge">UNION</code>되는 데이터 세트의 열 개수가 같아야 함</li>
+      <li><code class="language-plaintext highlighter-rouge">UNION</code>되는 데이터들의 열의 자료형이 같아야 함</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">UNION ALL</code>을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음
+    <ul>
+      <li>중복된 데이터는 2개가 존재</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">INTER</code>을 통해 교집합만 가져올 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">EXCEPT</code>을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음
+<br /><br /></li>
+  <li>SEMI JOIN - <code class="language-plaintext highlighter-rouge">WHERE</code> &amp; <code class="language-plaintext highlighter-rouge">IN</code>에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음</li>
+  <li>ANTI JOIN - <code class="language-plaintext highlighter-rouge">WHERE</code> &amp; <code class="language-plaintext highlighter-rouge">NOT IN</code>에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음</li>
+</ul>
+:ET

@@ -1,0 +1,9 @@
+I"�<hr />
+
+<h3 id="전역범수global-variable">전역범수(Global Variable)</h3>
+<ul>
+  <li>함수를 포함하여 스크립트 전체에서 접근할 수 있는 변수</li>
+  <li>전역 범위(Global Scope) - 전역 변수에 접근할 수 있는 범위</li>
+  <li>함수 안에서 전역변수 선언시 <code class="language-plaintext highlighter-rouge">global</code> 사용</li>
+</ul>
+:ET

@@ -1,0 +1,17 @@
+I"+<hr />
+
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(14)</li>
+  <li>Divide and Conquer(3)
+    <ul>
+      <li>핵심 divide/ conquer/ combine</li>
+      <li>퀵 정렬</li>
+      <li>퀵 정렬의 경우 conquer, combine이 간단, divide가 복잡</li>
+      <li>Divide: partition 과정을 통해, pivot을 기준으로 리스트를 나눈다.</li>
+      <li>Conquer: pivot 왼쪽 부분과 pivot 오른쪽 부분을 각각 quicksort 함수로 정렬한다.</li>
+      <li>Combine: 따로 할 게 없다!</li>
+    </ul>
+  </li>
+</ul>
+:ET

@@ -1,0 +1,190 @@
+I"++<hr />
+<h3 id="sql-übung">SQL Übung</h3>
+<ul>
+  <li>SQL 문법 정리(2)</li>
+  <li><code class="language-plaintext highlighter-rouge">WHERE</code>을 통해 filter
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">WHERE</code>는 <code class="language-plaintext highlighter-rouge">FROM</code> 이후에 작성</li>
+      <li><code class="language-plaintext highlighter-rouge">WHERE</code> 조건이 여러개일 경우 조건을(<code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">OR</code>) 모두 작성해줘야함</li>
+      <li><code class="language-plaintext highlighter-rouge">BETWEEN</code>을 통해 범위 filter
+        <ul>
+          <li>가장 처음과 마지막은 포함</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">IN</code>을 통해 (여러개의 <code class="language-plaintext highlighter-rouge">OR</code>) 간소화</li>
+      <li><code class="language-plaintext highlighter-rouge">IS NULL</code>을 통해 NULL filter</li>
+      <li><code class="language-plaintext highlighter-rouge">IS NOT NULL</code>을 통해 NULL이 아닌 값을 filter</li>
+      <li><code class="language-plaintext highlighter-rouge">LIKE</code>을 통해 pattern을 활용하여 filter
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">%</code>을 통해 한 개 이상의 문자를 대체</li>
+          <li><code class="language-plaintext highlighter-rouge">_</code>을 통해 한 개의 문자를 대체
+<br /><br /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>연산자
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">=</code> equal</li>
+      <li><code class="language-plaintext highlighter-rouge">&lt;&gt;</code> not equal</li>
+      <li><code class="language-plaintext highlighter-rouge">&lt;</code> less than</li>
+      <li><code class="language-plaintext highlighter-rouge">&gt;</code> greater than</li>
+      <li><code class="language-plaintext highlighter-rouge">&lt;=</code> less than or equal to</li>
+      <li><code class="language-plaintext highlighter-rouge">&gt;=</code> greater than or equal to</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="where">WHERE</h3>
+<p>1-1) Simple filtering of numeric values</p>
+<ul>
+  <li>Get all details for all films released in 2016.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="o">=</span> <span class="mi">2016</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>1-2) Simple filtering of numeric values</p>
+<ul>
+  <li>Get the title and release year of films released after 2000.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">release_year</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>2-1) Simple filtering of text</p>
+<ul>
+  <li>Get the number of Hindi language films.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">language</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">language</span> <span class="o">=</span> <span class="s">'Hindi'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>2-2) Simple filtering of text</p>
+<ul>
+  <li>Get all details for all films with an R certification.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">certification</span> <span class="o">=</span> <span class="s">'R'</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="and">AND</h3>
+<p>3-1) WHERE AND</p>
+<ul>
+  <li>Get the title and release year for all Spanish language films released before 2000.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span><span class="n">release_year</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="o">&lt;</span> <span class="mi">2000</span>
+<span class="n">AND</span> <span class="n">language</span> <span class="o">=</span> <span class="s">'Spanish'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>3-2) WHERE AND</p>
+<ul>
+  <li>Get all details for Spanish language films released after 2000, but before 2010.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">language</span> <span class="o">=</span> <span class="s">'Spanish'</span>
+<span class="n">AND</span> <span class="n">release_year</span> <span class="o">&gt;</span> <span class="mi">2000</span>
+<span class="n">AND</span> <span class="n">release_year</span> <span class="o">&lt;</span> <span class="mi">2010</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="or">OR</h3>
+<p>4) WHERE AND OR</p>
+<ul>
+  <li>get the title and release year of films released in the 90s which were in French or Spanish and which took in more than $2M gross</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">release_year</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="p">(</span><span class="n">release_year</span> <span class="o">&gt;=</span> <span class="mi">1990</span> <span class="n">AND</span> <span class="n">release_year</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">AND</span> <span class="p">(</span><span class="n">language</span> <span class="o">=</span> <span class="s">'French'</span> <span class="n">OR</span> <span class="n">language</span> <span class="o">=</span> <span class="s">'Spanish'</span><span class="p">)</span>
+<span class="n">AND</span> <span class="n">gross</span> <span class="o">&gt;</span> <span class="mi">2000000</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="between">BETWEEN</h3>
+<p>5) BETWEEN</p>
+<ul>
+  <li>get the title and release year of all Spanish language films released between 1990 and 2000 (inclusive) with budgets over $100 million</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">release_year</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="n">BETWEEN</span> <span class="mi">1990</span> <span class="n">AND</span> <span class="mi">2000</span>
+<span class="n">AND</span> <span class="n">budget</span> <span class="o">&gt;</span> <span class="mi">100000000</span>
+<span class="n">AND</span> <span class="n">language</span> <span class="o">=</span> <span class="s">'Spanish'</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="in">IN</h3>
+<p>6) WHERE IN</p>
+<ul>
+  <li>Get the title and release year of all films released in 1990 or 2000 that were longer than two hours</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">release_year</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">AND</span> <span class="n">duration</span> <span class="o">&gt;</span> <span class="mi">120</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="null--is-null">NULL &amp; IS NULL</h3>
+<p>7) NULL and IS NULL</p>
+<ul>
+  <li>Get the number of films which don’t have a language associated with them.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">language</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="like--not-like">LIKE &amp; NOT LIKE</h3>
+<p>8-1) LIKE and NOT LIKE</p>
+<ul>
+  <li>Get the names of all people whose names begin with ‘B’.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">name</span>
+<span class="n">FROM</span> <span class="n">people</span>
+<span class="n">WHERE</span> <span class="n">name</span> <span class="n">LIKE</span> <span class="s">'B%'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>8-2) LIKE and NOT LIKE</p>
+<ul>
+  <li>Get the names of people whose names have ‘r’ as the second letter</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">name</span>
+<span class="n">FROM</span> <span class="n">people</span>
+<span class="n">WHERE</span> <span class="n">name</span> <span class="n">LIKE</span> <span class="s">'_r%'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>8-3) LIKE and NOT LIKE</p>
+<ul>
+  <li>Get the names of people whose names don’t start with A</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">name</span>
+<span class="n">FROM</span> <span class="n">people</span>
+<span class="n">WHERE</span> <span class="n">name</span> <span class="n">NOT</span> <span class="n">LIKE</span> <span class="s">'A%'</span><span class="p">;</span>
+</code></pre></div></div>
+:ET

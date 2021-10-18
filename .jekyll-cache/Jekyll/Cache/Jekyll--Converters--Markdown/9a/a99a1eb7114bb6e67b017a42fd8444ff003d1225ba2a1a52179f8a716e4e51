@@ -1,0 +1,42 @@
+I"�<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(18)</li>
+  <li>Greedy Algorithm이 사용되면 최적인 경우
+    <ul>
+      <li>최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것</li>
+      <li>탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="greedy-algorithm">Greedy Algorithm</h3>
+<ul>
+  <li>최소의 동전 개수로 거슬러주기</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">min_coin_count</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">coin_list</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">coin</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">coin_list</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="p">(</span><span class="n">value</span> <span class="o">//</span> <span class="n">coin</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">%=</span> <span class="n">coin</span>
+
+    <span class="k">return</span> <span class="n">count</span>
+
+<span class="c1"># 테스트
+</span><span class="n">default_coin_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">min_coin_count</span><span class="p">(</span><span class="mi">1440</span><span class="p">,</span> <span class="n">default_coin_list</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">min_coin_count</span><span class="p">(</span><span class="mi">1700</span><span class="p">,</span> <span class="n">default_coin_list</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">min_coin_count</span><span class="p">(</span><span class="mi">23520</span><span class="p">,</span> <span class="n">default_coin_list</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">min_coin_count</span><span class="p">(</span><span class="mi">32590</span><span class="p">,</span> <span class="n">default_coin_list</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+5
+49
+70
+</code></pre></div></div>
+
+:ET

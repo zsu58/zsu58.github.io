@@ -1,0 +1,47 @@
+I"�<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(19)</li>
+  <li>Greedy Algorithm이 사용되면 최적인 경우
+    <ul>
+      <li>최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것</li>
+      <li>탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="greedy-algorithm">Greedy Algorithm</h3>
+<ul>
+  <li>여러 명이 카드 게임을 하는 상황에서 각 플레이어는 3장의 카드를 들고 있습니다.</li>
+  <li>한 사람당 카드를 하나씩 뽑아서 모두 곱했을 때 가능한 최대 곱을 구하는 함수를 구하세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">max_product</span><span class="p">(</span><span class="n">card_lists</span><span class="p">):</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">card_list</span> <span class="ow">in</span> <span class="n">card_lists</span><span class="p">:</span>
+        <span class="n">product</span> <span class="o">*=</span> <span class="nb">max</span><span class="p">(</span><span class="n">card_list</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">product</span>
+
+<span class="n">test_cards1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">max_product</span><span class="p">(</span><span class="n">test_cards1</span><span class="p">))</span>
+
+<span class="n">test_cards2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">max_product</span><span class="p">(</span><span class="n">test_cards2</span><span class="p">))</span>
+
+<span class="n">test_cards3</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">max_product</span><span class="p">(</span><span class="n">test_cards3</span><span class="p">))</span>
+
+<span class="n">test_cards4</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">max_product</span><span class="p">(</span><span class="n">test_cards4</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>24
+244944
+10800
+12600
+</code></pre></div></div>
+
+:ET

@@ -1,0 +1,125 @@
+I"/<hr />
+<p><b>DJANGO WEB DEVELOPMENT</b></p>
+<h3 id="5-배포">5. 배포</h3>
+
+<hr />
+
+<h3 id="배포-방법">배포 방법</h3>
+<ul>
+  <li>IaaS(Infrastructure as a service)
+    <ul>
+      <li>서버 장비 + 운영체제만 제공, 그 외 필요한 프로그램은 개발자가 직접 설치 및 설정</li>
+      <li>학습할 것이 많지만, 최적의 환경 구성 가능</li>
+      <li>AWS EC2 등</li>
+    </ul>
+  </li>
+  <li>PaaS(Platform as as service)
+    <ul>
+      <li>서버 장비 + 운영체제 + 실행환경 제공</li>
+      <li>학습할 것이 적어, 프로젝트에 집중 가능</li>
+      <li>AWS Elastic Beanstalk, Google App Engine HEROKU 등</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="베포-전-사전작업">베포 전 사전작업</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 베포 전 디버그 모드로 바꾸기
+# 'costaurant' directory의 settings.py 파일
+</span><span class="p">...</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="p">...</span>
+
+<span class="c1"># 호스트 기입
+</span><span class="p">...</span>
+<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s">'.pythonanywhere.com'</span><span class="p">]</span>
+<span class="p">...</span>
+
+<span class="c1"># static 파일 한 곳에 모으기
+</span><span class="p">...</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">'static'</span><span class="p">)</span>
+<span class="p">...</span>
+
+<span class="c1"># CMD에
+</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">collectstatic</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="베포">베포</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># project root을 기준으로 directory 전체를 압축파일로 압축
+</span>
+<span class="c1"># https://www.pythonanywhere.com/ 접속
+</span>
+<span class="c1"># sign up/ login
+</span>
+<span class="c1"># Files 클릭
+</span>
+<span class="c1"># 압축한 파일 Upload
+</span>
+<span class="c1"># Open Bash console here
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 파일 압축 해제(unzip [file_name]
+</span><span class="n">unzip</span> <span class="n">costaurant</span><span class="p">.</span><span class="nb">zip</span>
+
+<span class="c1"># 해당 서버에 파이썬 가상환경 설치(virtualenv --python=python[파이썬_버전] [가상환경_이름])
+</span><span class="n">virtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=</span><span class="n">python3</span><span class="p">.</span><span class="mi">7</span> <span class="n">django</span><span class="o">-</span><span class="n">envs</span>
+
+<span class="c1"># 해당 가상환경으로 들어가서 가상환경 실행
+</span><span class="n">cd</span> <span class="n">django</span><span class="o">-</span><span class="n">envs</span>
+<span class="n">source</span> <span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+
+<span class="c1"># django 설치
+</span><span class="n">pip</span> <span class="n">install</span> <span class="n">django</span><span class="o">==</span><span class="mf">2.2</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 오른쪽 상단의 메뉴 클릭 후, Web 클릭
+</span>
+<span class="c1"># add a new web app 클릭
+</span>
+<span class="c1"># Next
+</span>
+<span class="c1"># Manual Configuration 클릭
+</span>
+<span class="c1"># 해다오디는 파이썬 버전 클릭
+</span>
+<span class="c1"># Next 클릭
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Code 부분으로 가서 source code 기입 (/home/[id]/[project_name])
+</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">zsu</span><span class="o">/</span><span class="n">costaurant</span>
+
+<span class="c1"># WSGI 링크 클릭해 수정
+</span>
+<span class="c1"># 19~47번째 줄까지 주석처리
+</span>
+<span class="c1"># 76~89번째 줄은 주석해제
+</span>
+<span class="c1"># 81번쨰 줄 url을 위의 url로 수정
+</span><span class="p">...</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">'/home/zsu/costaurant'</span>
+<span class="p">...</span>
+<span class="c1"># 85번째 줄 [project_name].settings로 수정
+</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'DJANGO_SETTINGS_MODULE'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'costaurant.settings'</span>
+
+<span class="c1"># 저장 후, 다시 오른 쪽 상단 메뉴 클릭 후, Web 클릭
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Virtualenv 부분으로 가서 virtualenv 기입 (/home/[id]/[virtualenv_name])
+</span><span class="n">home</span><span class="o">/</span><span class="n">zsu</span><span class="o">/</span><span class="n">django</span><span class="o">-</span><span class="n">envs</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Static files 부분으로 가서 URL 기입 
+</span><span class="o">/</span><span class="n">static</span><span class="o">/</span>
+
+<span class="c1"># Directory 기입(/home/[id]/[project_name]/static)
+</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">zsu</span><span class="o">/</span><span class="n">costaurant</span><span class="o">/</span><span class="n">static</span>
+
+<span class="c1"># 완료 후 맨 위로 가서 초록색 버튼의 reload 클릭
+</span></code></pre></div></div>
+:ET
