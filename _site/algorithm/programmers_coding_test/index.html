@@ -139,7 +139,7 @@
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/vorstellung">Vorstellung</a>
             </li><li class="masthead__menu-item">
-              <a href="https://www.notion.so/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+              <a href="https://stingy-camp-e37.notion.site/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -286,7 +286,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">50</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">51</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -359,7 +359,7 @@
             <ul>
                 
                     
-                        <li><a href="/categories/python" class="">Python (8)</a></li>
+                        <li><a href="/categories/python" class="">Python (9)</a></li>
                     
                 
                     
@@ -420,7 +420,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-1">문제 1</a></li><li><a href="#문제-2">문제 2</a></li><li><a href="#문제-3">문제 3</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-1">문제 1</a></li><li><a href="#문제-2">문제 2</a></li><li><a href="#문제-3">문제 3</a></li><li><a href="#문제-4">문제 4</a></li><li><a href="#문제-5">문제 5</a></li><li><a href="#문제-6">문제 6</a></li><li><a href="#문제-7">문제 7</a></li></ul>
 
             </nav>
           </aside>
@@ -469,6 +469,81 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">strip</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"*"</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-4">문제 4</h3>
+<ul>
+  <li>19/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/coding_test/coding_test4.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">phone_number</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">'*'</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phone_number</span><span class="p">)</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">phone_number</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-5">문제 5</h3>
+<ul>
+  <li>19/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/coding_test/coding_test5.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">num</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">num</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">num</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">%</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-6">문제 6</h3>
+<ul>
+  <li>19/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/coding_test/coding_test6.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-7">문제 7</h3>
+<ul>
+  <li>19/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/coding_test/coding_test7.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">num</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">ans</span> <span class="o">!=</span> <span class="mi">500</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">num</span> <span class="o">/=</span> <span class="mi">2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">ans</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">ans</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ans</span>
 </code></pre></div></div>
 
 <hr />

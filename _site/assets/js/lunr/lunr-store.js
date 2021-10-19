@@ -89,6 +89,12 @@ var store = [{
         "url": "/python/gaining_efficiencies/",
         "teaser": null
       },{
+        "title": "[Python] iterrows & itertuples & pd.applys",
+        "excerpt":"Writing Efficient Python Code PART4 iterrows를 통해 row별 iterration 가능 iterrows를 쓸 경우 index와 pandas Series로 구성되어 있는 tuple을 반환 itertuples를 통해 row별 iterration 가능 itertuples를 쓸 경우 namedtuple 형태를 반환 pd.applys을 통해 loop 대체 가능 0: columns, 1: rows 효율성: .values &gt; pd.applys &gt; itertuples &gt; iterrows # import...","categories": ["PYTHON"],
+        "tags": ["PYTHON"],
+        "url": "/python/basic_pandas_optimizations/",
+        "teaser": null
+      },{
         "title": "[UNIX CLI] Command Line",
         "excerpt":"UNIX COMMAND LINE UNIX CLI 정리(1) argument(인자)는 커맨드가 작동할 대상을 지정하기 위해 사용 option(옵션)은 커맨드가 구체적으로 어떤 방식으로 동작할지를 지시하기 위해 사용 옵션은 하이픈(-)이 붙음 옵션 중에는 옵션을 적고 한 칸 띄운 다음 옵션에 대한 인자(or value)를 적어야하는 것들이 존재 하이픈 뒤에는 여러 옵션을 연속적으로 사용 가능 값을 줘야 하는...","categories": ["CLI"],
         "tags": ["CLI","BACKEND"],

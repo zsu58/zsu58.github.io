@@ -61,6 +61,10 @@
 <lastmod>2021-09-20T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/python/basic_pandas_optimizations/</loc>
+<lastmod>2021-09-21T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/cli/CLI_1/</loc>
 <lastmod>2021-09-24T00:00:00+09:00</lastmod>
 </url>
@@ -253,5 +257,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/page10/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page11/</loc>
 </url>
 </urlset>
