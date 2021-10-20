@@ -1,4 +1,4 @@
-I"ì
+I"
 <div class="list__item">
     <article class="archive-item">
         <div>
@@ -63,7 +63,7 @@
     <article class="archive-item">
         <div>
             <span>
-              <a href="/python/r_to_python/">[Python] R to Python</a>
+              <a href="/python/transforming_dataframes/">[Python] Data manipulation with pandas(1)</a>
             </span>
             <small> 
               <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.16

@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Python] R to Python - Bibliothek für Data-Engineering</title>
-<meta name="description" content="R to Python">
+<!-- begin _includes/seo.html --><title>[Algorithm] 효율적으로 중복되는 숫자 찾기 - Bibliothek für Data-Engineering</title>
+<meta name="description" content="ALGORITHM    알고리즘 정리(25)">
 
 
   <meta name="author" content="ZSU">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Bibliothek für Data-Engineering">
-<meta property="og:title" content="[Python] R to Python">
-<meta property="og:url" content="http://localhost:4000/python/r_to_python/">
+<meta property="og:title" content="[Algorithm] 효율적으로 중복되는 숫자 찾기">
+<meta property="og:url" content="http://localhost:4000/algorithm/algorithm25_find_duplicated/">
 
 
-  <meta property="og:description" content="R to Python">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2021-09-16T00:00:00+09:00">
+  <meta property="og:description" content="ALGORITHM    알고리즘 정리(25)">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2021-10-20T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/python/r_to_python/">
+
+<link rel="canonical" href="http://localhost:4000/algorithm/algorithm25_find_duplicated/">
 
 
 
@@ -286,7 +286,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">51</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">53</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -336,7 +336,7 @@
                     
                 
                     
-                        <li><a href="/categories/algorithm" class="">Algorithm - Python (25)</a></li>
+                        <li><a href="/categories/algorithm" class="">Algorithm - Python (27)</a></li>
                     
                 
             </ul>
@@ -381,15 +381,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Python] R to Python">
-    <meta itemprop="description" content="R to Python">
-    <meta itemprop="datePublished" content="2021-09-16T00:00:00+09:00">
+    <meta itemprop="headline" content="[Algorithm] 효율적으로 중복되는 숫자 찾기">
+    <meta itemprop="description" content="ALGORITHM  알고리즘 정리(25)">
+    <meta itemprop="datePublished" content="2021-10-20T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[Python] R to Python
+          <h1 id="page-title" class="page__title" itemprop="headline">[Algorithm] 효율적으로 중복되는 숫자 찾기
 </h1>
           
 
@@ -420,33 +420,43 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#r-to-python">R to Python</a></li><li><a href="#get-name-of-columns-in-df">Get name of columns in df</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm">ALGORITHM</a></li><li><a href="#algorithm-1">Algorithm</a></li></ul>
 
             </nav>
           </aside>
         
-        <hr />
-<h3 id="r-to-python">R to Python</h3>
+        <h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(25)</li>
+</ul>
 
 <hr />
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import data
-</span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<h3 id="algorithm-1">Algorithm</h3>
+<ul>
+  <li>(N + 1)의 크기인 리스트에, 1부터 N까지의 임의의 자연수가 요소로 할당되어 있어, 중복되는 숫자가 최소 1개가 존재</li>
+  <li>중복되는 어느 숫자 ‘하나’를 가장 효율적으로 찾아 리턴하는 함수를 구현하시오.</li>
+</ul>
 
-<span class="n">iris_df</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">'iris'</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">find_same_number</span><span class="p">(</span><span class="n">some_list</span><span class="p">):</span>
+    <span class="n">ele_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">some_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">ele_dict</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ele</span>
+
+        <span class="n">ele_dict</span><span class="p">[</span><span class="n">ele</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">find_same_number</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">find_same_number</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">find_same_number</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
 </code></pre></div></div>
 
-<h3 id="get-name-of-columns-in-df">Get name of columns in df</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># R
-</span><span class="n">names</span><span class="p">(</span><span class="n">iris_df</span><span class="p">)</span>
-
-<span class="c1"># Python
-</span><span class="nb">list</span><span class="p">(</span><span class="n">iris_df</span><span class="p">.</span><span class="n">columns</span><span class="p">)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+5
+3
 </code></pre></div></div>
 
-<hr />
 
         
       </section>
@@ -463,7 +473,9 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+      <a href="/tags/#algorithm" class="page__taxonomy-item" rel="tag">ALGORITHM</a><span class="sep">, </span>
+    
+      <a href="/tags/#backend" class="page__taxonomy-item" rel="tag">BACKEND</a>
     
     </span>
   </p>
@@ -480,7 +492,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">ALGORITHM</a>
     
     </span>
   </p>
@@ -488,7 +500,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-16T00:00:00+09:00">September 16, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-10-20T00:00:00+09:00">October 20, 2021</time></p>
 
 
       </footer>
@@ -498,23 +510,22 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BPython%5D+R+to+Python%20http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fr_to_python%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BAlgorithm%5D+%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C+%EC%A4%91%EB%B3%B5%EB%90%98%EB%8A%94+%EC%88%AB%EC%9E%90+%EC%B0%BE%EA%B8%B0%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Falgorithm25_find_duplicated%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fr_to_python%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Falgorithm25_find_duplicated%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fr_to_python%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Falgorithm25_find_duplicated%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/python/dplyr_to_pandas/" class="pagination--pager" title="[Python] Dplyr to Pandas
+      <a href="/algorithm/algorithm24_minimum_mineral_spring/" class="pagination--pager" title="[Algorithm] 최소한의 약수터 방문 - Greedy Algorithm
 ">Previous</a>
     
     
-      <a href="/python/timing_and_profiling_code/" class="pagination--pager" title="[Python] %timeit &amp; %lprun &amp; %mprun
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -528,6 +539,107 @@
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/algorithm24_minimum_mineral_spring/" rel="permalink">[Algorithm] 최소한의 약수터 방문 - Greedy Algorithm
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(24)
+  Greedy Algorithm
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/transforming_dataframes/" rel="permalink">[Python] Data manipulation with pandas(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Pandas
+
+  Inspecting dataframe
+    
+      .info()
+      .shape
+      .describe
+    
+  
+  Sort
+    
+      .sort_values()
+    
+  
+  select
+    
+      df[['co...</p>
+  </article>
+</div>
+
         
           
 
@@ -556,7 +668,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          less than 1 minute read
         
       </span>
     
@@ -614,98 +726,6 @@ SQL Übung
 ALGORITHM Übung - Programmers
 
   알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/sql/sql2_3_set_theory_clauses/" rel="permalink">[SQL] UNION &amp; INTER &amp; EXCEPT
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL Übung
-
-  SQL JOIN 문법 정리(3)
-  UNION을 통해 두 데이터 간 합집함을 가져올 수 있음
-    
-      중복되는 데이터는 한 개만 포함됨
-      UNION되는 데이터 세트의 열 개수가 같아야 함
-      UNION되는 데이터들의 열의 자료형...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/algorithm23_powers_dynamic_programming/" rel="permalink">[Algorithm] 거듭제곱 - Dynamic Programming
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
-
-  알고리즘 정리(23)
-  Dyanmic Programming
 
 </p>
   </article>

@@ -127,5 +127,62 @@ def solution(num):
 
 ---
 
+### 문제 8
+* 19/10/2021
+<p align="center">
+    <img src="/img/coding_test/coding_test8.png" align="center">
+</p>
+```python
+def solution(n, m):
+    max_div = 1
+    for i in range(2, max(n, m)):
+        if n % i == 0 and m % i == 0:
+            max_div = max(max_div, i)
 
+    return [max_div, int(max_div * (n / max_div) * (m / max_div))]
+```
 
+---
+
+### 문제 9
+* 20/10/2021
+<p align="center">
+    <img src="/img/coding_test/coding_test9.png" align="center">
+</p>
+```python
+def solution(num):
+    return "Even" if num % 2 == 0 else "Odd"
+```
+
+---
+
+### 문제 10
+* 20/10/2021
+<p align="center">
+    <img src="/img/coding_test/coding_test10.png" align="center">
+</p>
+```python
+def solution(arr):
+    if len(arr) == 1:
+        return [-1]
+    else:
+        small = min(arr)
+        index_num = 0
+        for _ in range(len(arr)):
+            if small == arr[index_num]:
+                # arr.pop(index_num) # pop은 제거되는 값을 반환, del이 조금 더 효율적
+                del arr[index_num]
+            else:
+                index_num += 1
+
+    return arr
+
+# 다른 사람의 좋은 풀이
+def solution(arr):
+    if len(arr) == 1:
+        return [-1]
+    small = min(arr)
+    return [num for num in arr if num > small]
+```
+
+---

@@ -1,4 +1,44 @@
-I"�E
+I"wK
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/algorithm/algorithm25_find_duplicated/">[Algorithm] 효율적으로 중복되는 숫자 찾기</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.20
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#algorithm" class="page__taxonomy-item-category" rel="tag">ALGORITHM</a>
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/algorithm/algorithm24_minimum_mineral_spring/">[Algorithm] 최소한의 약수터 방문 - Greedy Algorithm</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.20
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#algorithm" class="page__taxonomy-item-category" rel="tag">ALGORITHM</a>
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
 <div class="list__item">
     <article class="archive-item">
         <div>

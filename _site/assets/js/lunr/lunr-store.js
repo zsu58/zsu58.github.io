@@ -71,12 +71,6 @@ var store = [{
         "url": "/python/dplyr_to_pandas/",
         "teaser": null
       },{
-        "title": "[Python] R to Python",
-        "excerpt":" R to Python     # import data import seaborn as sns import pandas as pd  iris_df = sns.load_dataset('iris')   Get name of columns in df   # R names(iris_df)  # Python list(iris_df.columns)    ","categories": ["PYTHON"],
-        "tags": ["PYTHON"],
-        "url": "/python/r_to_python/",
-        "teaser": null
-      },{
         "title": "[Python] %timeit & %lprun & %mprun",
         "excerpt":"Writing Efficient Python Code PART2 %timeit을 통해 runtime을 examine할 수 있음 -r2를 통해 전체 run 횟수를, -n을 통해 한 run에서 몇 회 반복할지 설정 가능 %%timeit을 통해 multiple-line code의 runtime을 examine할 수 있음 ns = nanosecond 10^-9 µs(us) = microsecond 10^-6 ms = millisecond 10^-3 s = second 10^0 ipython에서만...","categories": ["PYTHON"],
         "tags": ["PYTHON"],
@@ -303,5 +297,23 @@ var store = [{
         "excerpt":"SQL Übung SQL JOIN 문법 정리(4) Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것 Subquery (inside WHERE) 가장 많이 사용됨 Select all fields from populations with records of 2015 that are larger than 1.15 times the average life expectancy SELECT * FROM populations WHERE year = '2015' AND life_expectancy...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/sql2_4_subquery/",
+        "teaser": null
+      },{
+        "title": "[Python] Data manipulation with pandas(1)",
+        "excerpt":"Pandas Inspecting dataframe .info() .shape .describe Sort .sort_values() select df[['column1', 'column2']] filter df[df[column] == 'condition'] mutate df[column] = df[column] + 1 # import data import seaborn as sns import pandas as pd iris = sns.load_dataset('iris') .info() &amp; .shape &amp; .describe() df.info df.shape df.describe # Print information about iris print(iris.info()) #...","categories": ["PYTHON"],
+        "tags": ["PYTHON"],
+        "url": "/python/transforming_dataframes/",
+        "teaser": null
+      },{
+        "title": "[Algorithm] 최소한의 약수터 방문 - Greedy Algorithm",
+        "excerpt":"ALGORITHM 알고리즘 정리(24) Greedy Algorithm Greedy Algorithm 등산을 하는 상황에서, 등산가는 1km에 1L씩 물을 꼭 마셔야함 파라미터로 약수터의 위치 리스트(단위: Km)와 물통 용량(단위: L)을 줄 때, 최소한의 약수터를 들리는 함수를 구현하시오. 단, 탈수로 인해 정상에 도달하지 못하는 경우는 없으며, 약수터에 갈 때마다 최대 용량으로 물통을 채움 또한 마지막 정상의 약수터는...","categories": ["ALGORITHM"],
+        "tags": ["BACKEND","ALGORITHM"],
+        "url": "/algorithm/algorithm24_minimum_mineral_spring/",
+        "teaser": null
+      },{
+        "title": "[Algorithm] 효율적으로 중복되는 숫자 찾기",
+        "excerpt":"ALGORITHM 알고리즘 정리(25) Algorithm (N + 1)의 크기인 리스트에, 1부터 N까지의 임의의 자연수가 요소로 할당되어 있어, 중복되는 숫자가 최소 1개가 존재 중복되는 어느 숫자 ‘하나’를 가장 효율적으로 찾아 리턴하는 함수를 구현하시오. def find_same_number(some_list): ele_dict = {} for ele in some_list: if ele in ele_dict: return ele ele_dict[ele] = True print(find_same_number([1,...","categories": ["ALGORITHM"],
+        "tags": ["BACKEND","ALGORITHM"],
+        "url": "/algorithm/algorithm25_find_duplicated/",
         "teaser": null
       }]

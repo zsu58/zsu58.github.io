@@ -286,7 +286,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">51</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">53</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -336,7 +336,7 @@
                     
                 
                     
-                        <li><a href="/categories/algorithm" class="">Algorithm - Python (25)</a></li>
+                        <li><a href="/categories/algorithm" class="">Algorithm - Python (27)</a></li>
                     
                 
             </ul>
@@ -405,7 +405,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -420,7 +420,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-1">문제 1</a></li><li><a href="#문제-2">문제 2</a></li><li><a href="#문제-3">문제 3</a></li><li><a href="#문제-4">문제 4</a></li><li><a href="#문제-5">문제 5</a></li><li><a href="#문제-6">문제 6</a></li><li><a href="#문제-7">문제 7</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-1">문제 1</a></li><li><a href="#문제-2">문제 2</a></li><li><a href="#문제-3">문제 3</a></li><li><a href="#문제-4">문제 4</a></li><li><a href="#문제-5">문제 5</a></li><li><a href="#문제-6">문제 6</a></li><li><a href="#문제-7">문제 7</a></li><li><a href="#문제-8">문제 8</a></li><li><a href="#문제-9">문제 9</a></li><li><a href="#문제-10">문제 10</a></li></ul>
 
             </nav>
           </aside>
@@ -548,6 +548,68 @@
 
 <hr />
 
+<h3 id="문제-8">문제 8</h3>
+<ul>
+  <li>19/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/coding_test/coding_test8.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">max_div</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">m</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">max_div</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_div</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">max_div</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_div</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="n">max_div</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">/</span> <span class="n">max_div</span><span class="p">))]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-9">문제 9</h3>
+<ul>
+  <li>20/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/coding_test/coding_test9.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">"Even"</span> <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s">"Odd"</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-10">문제 10</h3>
+<ul>
+  <li>20/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/coding_test/coding_test10.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">small</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+        <span class="n">index_num</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">small</span> <span class="o">==</span> <span class="n">arr</span><span class="p">[</span><span class="n">index_num</span><span class="p">]:</span>
+                <span class="c1"># arr.pop(index_num) # pop은 제거되는 값을 반환, del이 조금 더 효율적
+</span>                <span class="k">del</span> <span class="n">arr</span><span class="p">[</span><span class="n">index_num</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">index_num</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">arr</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">small</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">num</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">arr</span> <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="n">small</span><span class="p">]</span>
+</code></pre></div></div>
+
+<hr />
 
         
       </section>
@@ -641,6 +703,150 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/algorithm/algorithm25_find_duplicated/" rel="permalink">[Algorithm] 효율적으로 중복되는 숫자 찾기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(25)
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/algorithm24_minimum_mineral_spring/" rel="permalink">[Algorithm] 최소한의 약수터 방문 - Greedy Algorithm
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(24)
+  Greedy Algorithm
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/transforming_dataframes/" rel="permalink">[Python] Data manipulation with pandas(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Pandas
+
+  Inspecting dataframe
+    
+      .info()
+      .shape
+      .describe
+    
+  
+  Sort
+    
+      .sort_values()
+    
+  
+  select
+    
+      df[['co...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/sql/sql2_4_subquery/" rel="permalink">[SQL] Subquery
 </a>
       
@@ -672,143 +878,6 @@ SQL Übung
 
   SQL JOIN 문법 정리(4)
   Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/sql/sql2_3_set_theory_clauses/" rel="permalink">[SQL] UNION &amp; INTER &amp; EXCEPT
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL Übung
-
-  SQL JOIN 문법 정리(3)
-  UNION을 통해 두 데이터 간 합집함을 가져올 수 있음
-    
-      중복되는 데이터는 한 개만 포함됨
-      UNION되는 데이터 세트의 열 개수가 같아야 함
-      UNION되는 데이터들의 열의 자료형...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/algorithm23_powers_dynamic_programming/" rel="permalink">[Algorithm] 거듭제곱 - Dynamic Programming
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
-
-  알고리즘 정리(23)
-  Dyanmic Programming
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/sql/sql_practice_programmers/" rel="permalink">[SQL] Programmers SQL 연습문제 (1)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL Übung - Programmers
-
-  SQL 문제 풀이를 통한 연습
 
 </p>
   </article>
