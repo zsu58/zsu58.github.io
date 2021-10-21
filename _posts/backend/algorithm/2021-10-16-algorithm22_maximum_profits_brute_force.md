@@ -30,7 +30,7 @@ def sublist_max(profits):
     max_result = 0
     for i in range(len(profits)):
         for j in range(i, len(profits) + 1):
-            max_result = max(max_result, sum(profits[i:i + j]))
+            max_result = max(max_result, sum(profits[i : i+j]))
 
     return max_result
 

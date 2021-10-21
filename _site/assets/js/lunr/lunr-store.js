@@ -290,7 +290,7 @@ var store = [{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (1)",
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 1 18/10/2021 def solution(x, n): return [x + x*i for i in range(n)] 문제 2 18/10/2021 def solution(arr1, arr2): return [[sum(j) for j in zip(*i)] for i in zip(arr1, arr2)] 문제 3 18/10/2021 a, b = map(int, input().strip().split('...","categories": ["ALGORITHM"],
         "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/programmers_coding_test/",
+        "url": "/algorithm/programmers_coding_test(1)/",
         "teaser": null
       },{
         "title": "[SQL] Subquery",
@@ -305,6 +305,12 @@ var store = [{
         "url": "/python/transforming_dataframes/",
         "teaser": null
       },{
+        "title": "[Python] Data manipulation with pandas(2)",
+        "excerpt":"Pandas Aggregating dataframe pandas Series인 상태로 계산하면 계산값이 int/float 형태로, pandas Dataframe 상태로 계산하면 dataframe으로 반환 .mean() - 평균 .median() - 중위값 .mode() - 최빈값 .max() - 최대값 .min() - 최소값 .var() - 분산 .std() - 표준편차 .sum() - 합 .quantile() - 분위수 .agg() - custom function 사용이 가능하게 함...","categories": ["PYTHON"],
+        "tags": ["PYTHON"],
+        "url": "/python/aggregating_dataframe/",
+        "teaser": null
+      },{
         "title": "[Algorithm] 최소한의 약수터 방문 - Greedy Algorithm",
         "excerpt":"ALGORITHM 알고리즘 정리(24) Greedy Algorithm Greedy Algorithm 등산을 하는 상황에서, 등산가는 1km에 1L씩 물을 꼭 마셔야함 파라미터로 약수터의 위치 리스트(단위: Km)와 물통 용량(단위: L)을 줄 때, 최소한의 약수터를 들리는 함수를 구현하시오. 단, 탈수로 인해 정상에 도달하지 못하는 경우는 없으며, 약수터에 갈 때마다 최대 용량으로 물통을 채움 또한 마지막 정상의 약수터는...","categories": ["ALGORITHM"],
         "tags": ["BACKEND","ALGORITHM"],
@@ -315,5 +321,11 @@ var store = [{
         "excerpt":"ALGORITHM 알고리즘 정리(25) Algorithm (N + 1)의 크기인 리스트에, 1부터 N까지의 임의의 자연수가 요소로 할당되어 있어, 중복되는 숫자가 최소 1개가 존재 중복되는 어느 숫자 ‘하나’를 가장 효율적으로 찾아 리턴하는 함수를 구현하시오. def find_same_number(some_list): ele_dict = {} for ele in some_list: if ele in ele_dict: return ele ele_dict[ele] = True print(find_same_number([1,...","categories": ["ALGORITHM"],
         "tags": ["BACKEND","ALGORITHM"],
         "url": "/algorithm/algorithm25_find_duplicated/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (2)",
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 11 21/10/2021 from math import sqrt def solution(n): return int((sqrt(n)+1)**2) if sqrt(n) == int(sqrt(n)) else -1 # 다른 사람의 좋은 풀이 def solution(n): sqrt = n ** (1/2) if sqrt % 1 == 0: return (sqrt + 1)...","categories": ["ALGORITHM"],
+        "tags": ["BACKEND","ALGORITHM"],
+        "url": "/algorithm/programmers_coding_test(2)/",
         "teaser": null
       }]

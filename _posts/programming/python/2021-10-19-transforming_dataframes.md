@@ -352,7 +352,7 @@ iris[['species', 'sepal_length']].head(5)
 
 ---
 
-### df[df['column'] = 'condition]
+### df[df['column'] = 'condition']
 * 조건이 두개인 경우 각 조건마다 `()`로 묶어야함
 * 조건을 줄 때는 Series로 주어야함
 
@@ -365,6 +365,9 @@ iris[(iris['species']=='setosa') & (iris['sepal_length'] > 5.0)].head(5)
 # sepal_bigger_than_5 = iris['sepal_length'] > 5.0
 
 # iris[iris_setosa & sepal_bigger_than_5].head(5)
+
+# 조건이 복수일 때, 아래 .isin() 활용
+iris[(iris['species'].isin(['setosa', 'versicolor'])) & (iris['sepal_length'] > 5.0)]
 ```
 
 

@@ -286,7 +286,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">53</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">55</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -336,7 +336,7 @@
                     
                 
                     
-                        <li><a href="/categories/algorithm" class="">Algorithm - Python (27)</a></li>
+                        <li><a href="/categories/algorithm" class="">Algorithm - Python (28)</a></li>
                     
                 
             </ul>
@@ -359,7 +359,7 @@
             <ul>
                 
                     
-                        <li><a href="/categories/python" class="">Python (9)</a></li>
+                        <li><a href="/categories/python" class="">Python (10)</a></li>
                     
                 
                     
@@ -420,7 +420,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#pandas">Pandas</a></li><li><a href="#info--shape--describe">.info() &amp; .shape &amp; .describe()</a></li><li><a href="#head--columns--index">.head() &amp; .columns &amp; .index</a></li><li><a href="#sort_values">.sort_values()</a></li><li><a href="#dfcolum1-column2">df[[‘colum1’, ‘column2’]]</a></li><li><a href="#dfdfcolumn--condition">df[df[‘column’] = ‘condition]</a></li><li><a href="#isin">.isin()</a></li><li><a href="#dfcolumn-">df`[column] =</a></li></ul>
+              <ul class="toc__menu"><li><a href="#pandas">Pandas</a></li><li><a href="#info--shape--describe">.info() &amp; .shape &amp; .describe()</a></li><li><a href="#head--columns--index">.head() &amp; .columns &amp; .index</a></li><li><a href="#sort_values">.sort_values()</a></li><li><a href="#dfcolum1-column2">df[[‘colum1’, ‘column2’]]</a></li><li><a href="#dfdfcolumn--condition">df[df[‘column’] = ‘condition’]</a></li><li><a href="#isin">.isin()</a></li><li><a href="#dfcolumn-">df`[column] =</a></li></ul>
 
             </nav>
           </aside>
@@ -764,7 +764,7 @@ RangeIndex(start=0, stop=150, step=1)
 
 <hr />
 
-<h3 id="dfdfcolumn--condition">df[df[‘column’] = ‘condition]</h3>
+<h3 id="dfdfcolumn--condition">df[df[‘column’] = ‘condition’]</h3>
 <ul>
   <li>조건이 두개인 경우 각 조건마다 <code class="language-plaintext highlighter-rouge">()</code>로 묶어야함</li>
   <li>조건을 줄 때는 Series로 주어야함</li>
@@ -777,7 +777,10 @@ RangeIndex(start=0, stop=150, step=1)
 # sepal_bigger_than_5 = iris['sepal_length'] &gt; 5.0
 </span>
 <span class="c1"># iris[iris_setosa &amp; sepal_bigger_than_5].head(5)
-</span></code></pre></div></div>
+</span>
+<span class="c1"># 조건이 복수일 때, 아래 .isin() 활용
+</span><span class="n">iris</span><span class="p">[(</span><span class="n">iris</span><span class="p">[</span><span class="s">'species'</span><span class="p">].</span><span class="n">isin</span><span class="p">([</span><span class="s">'setosa'</span><span class="p">,</span> <span class="s">'versicolor'</span><span class="p">]))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">5.0</span><span class="p">)]</span>
+</code></pre></div></div>
 
 <div>
 <style scoped="">
@@ -1015,7 +1018,7 @@ RangeIndex(start=0, stop=150, step=1)
 ">Previous</a>
     
     
-      <a href="/algorithm/algorithm24_minimum_mineral_spring/" class="pagination--pager" title="[Algorithm] 최소한의 약수터 방문 - Greedy Algorithm
+      <a href="/python/aggregating_dataframe/" class="pagination--pager" title="[Python] Data manipulation with pandas(2)
 ">Next</a>
     
   </nav>
@@ -1030,6 +1033,51 @@ RangeIndex(start=0, stop=150, step=1)
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/programmers_coding_test(2)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 (2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -1127,7 +1175,7 @@ RangeIndex(start=0, stop=150, step=1)
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/sql/sql2_4_subquery/" rel="permalink">[SQL] Subquery
+        <a href="/python/aggregating_dataframe/" rel="permalink">[Python] Data manipulation with pandas(2)
 </a>
       
     </h2>
@@ -1145,7 +1193,7 @@ RangeIndex(start=0, stop=150, step=1)
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          3 minute read
         
       </span>
     
@@ -1154,57 +1202,13 @@ RangeIndex(start=0, stop=150, step=1)
 
     <p class="archive__item-excerpt" itemprop="description">
 
-SQL Übung
+Pandas
 
-  SQL JOIN 문법 정리(4)
-  Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것
-
-</p>
-  </article>
-</div>
-
+  Aggregating dataframe
+    
+      pandas Series인 상태로 계산하면 계산값이 int/float 형태로, pandas Dataframe 상태로 계산하면 dataframe으로 반환
         
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/programmers_coding_test/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 (1)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-ALGORITHM Übung - Programmers
-
-  알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
+          .mean() ...</p>
   </article>
 </div>
 

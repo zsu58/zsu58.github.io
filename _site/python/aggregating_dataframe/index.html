@@ -1,0 +1,1503 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Python] Data manipulation with pandas(2) - Bibliothek für Data-Engineering</title>
+<meta name="description" content="Pandas    Aggregating dataframe            pandas Series인 상태로 계산하면 계산값이 int/float 형태로, pandas Dataframe 상태로 계산하면 dataframe으로 반환                    .mean() - 평균           .median() - 중위값           .mode() - 최빈값           .max() - 최대값           .min() - 최소값           .var() - 분산           .std() - 표준편차           .sum() - 합           .quantile() - 분위수           .agg() - custom function 사용이 가능하게 함                       dataframe으로 반환                    .cumsum() - 누적 합           .cummax() - 누적 중 최대값           .cummin() - 누적 중 최소값           .cummprod() - 누적 곱                           unique            .drop_duplicates()           group_by            .groupby()           pivot            .pivot_table">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[Python] Data manipulation with pandas(2)">
+<meta property="og:url" content="http://localhost:4000/python/aggregating_dataframe/">
+
+
+  <meta property="og:description" content="Pandas    Aggregating dataframe            pandas Series인 상태로 계산하면 계산값이 int/float 형태로, pandas Dataframe 상태로 계산하면 dataframe으로 반환                    .mean() - 평균           .median() - 중위값           .mode() - 최빈값           .max() - 최대값           .min() - 최소값           .var() - 분산           .std() - 표준편차           .sum() - 합           .quantile() - 분위수           .agg() - custom function 사용이 가능하게 함                       dataframe으로 반환                    .cumsum() - 누적 합           .cummax() - 누적 중 최대값           .cummin() - 누적 중 최소값           .cummprod() - 누적 곱                           unique            .drop_duplicates()           group_by            .groupby()           pivot            .pivot_table">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-19T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/python/aggregating_dataframe/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://stingy-camp-e37.notion.site/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/armi_made.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">55</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Data-Enginnering</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--sql 카테고리 글들을 모아둔 페이지인 /categories/sql 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (9)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm - Python (28)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (10)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Python] Data manipulation with pandas(2)">
+    <meta itemprop="description" content="Pandas  Aggregating dataframe          pandas Series인 상태로 계산하면 계산값이 int/float 형태로, pandas Dataframe 상태로 계산하면 dataframe으로 반환                  .mean() - 평균          .median() - 중위값          .mode() - 최빈값          .max() - 최대값          .min() - 최소값          .var() - 분산          .std() - 표준편차          .sum() - 합          .quantile() - 분위수          .agg() - custom function 사용이 가능하게 함                    dataframe으로 반환                  .cumsum() - 누적 합          .cummax() - 누적 중 최대값          .cummin() - 누적 중 최소값          .cummprod() - 누적 곱                      unique          .drop_duplicates()        group_by          .groupby()        pivot          .pivot_table      ">
+    <meta itemprop="datePublished" content="2021-10-19T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Python] Data manipulation with pandas(2)
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#pandas">Pandas</a></li><li><a href="#mean--median">.mean() &amp; .median()</a></li><li><a href="#agg">.agg()</a></li><li><a href="#cumsum--cummax--cummin--cumprod">.cumsum() &amp; .cummax() &amp; .cummin() &amp; .cumprod()</a></li><li><a href="#drop_duplicates">.drop_duplicates()</a></li><li><a href="#value_counts">.value_counts()</a></li><li><a href="#groupby">.groupby()</a></li><li><a href="#pivot_table">.pivot_table</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li>Aggregating dataframe
+    <ul>
+      <li>pandas Series인 상태로 계산하면 계산값이 int/float 형태로, pandas Dataframe 상태로 계산하면 dataframe으로 반환
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">.mean()</code> - 평균</li>
+          <li><code class="language-plaintext highlighter-rouge">.median()</code> - 중위값</li>
+          <li><code class="language-plaintext highlighter-rouge">.mode()</code> - 최빈값</li>
+          <li><code class="language-plaintext highlighter-rouge">.max()</code> - 최대값</li>
+          <li><code class="language-plaintext highlighter-rouge">.min()</code> - 최소값</li>
+          <li><code class="language-plaintext highlighter-rouge">.var()</code> - 분산</li>
+          <li><code class="language-plaintext highlighter-rouge">.std()</code> - 표준편차</li>
+          <li><code class="language-plaintext highlighter-rouge">.sum()</code> - 합</li>
+          <li><code class="language-plaintext highlighter-rouge">.quantile()</code> - 분위수</li>
+          <li><code class="language-plaintext highlighter-rouge">.agg()</code> - custom function 사용이 가능하게 함</li>
+        </ul>
+      </li>
+      <li>dataframe으로 반환
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">.cumsum()</code> - 누적 합</li>
+          <li><code class="language-plaintext highlighter-rouge">.cummax()</code> - 누적 중 최대값</li>
+          <li><code class="language-plaintext highlighter-rouge">.cummin()</code> - 누적 중 최소값</li>
+          <li><code class="language-plaintext highlighter-rouge">.cummprod()</code> - 누적 곱</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>unique
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.drop_duplicates()</code></li>
+    </ul>
+  </li>
+  <li>group_by
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.groupby()</code></li>
+    </ul>
+  </li>
+  <li>pivot
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.pivot_table</code></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import data
+</span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">'iris'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="mean--median">.mean() &amp; .median()</h3>
+<ul>
+  <li>df<code class="language-plaintext highlighter-rouge">.mean()</code></li>
+  <li>df<code class="language-plaintext highlighter-rouge">.median()</code></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">mean</span><span class="p">(),</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">median</span><span class="p">())</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5.843333333333334 5.8
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="agg">.agg()</h3>
+<ul>
+  <li>여러 열에 함수를 적용할 경우 리스트 안에 함수를 기입</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">irq</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">column</span><span class="p">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span> <span class="o">-</span> <span class="n">column</span><span class="p">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="n">iris</span><span class="p">[[</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'sepal_width'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="n">irq</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>irq</th>
+      <td>1.300000</td>
+      <td>0.500000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>5.843333</td>
+      <td>3.057333</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="cumsum--cummax--cummin--cumprod">.cumsum() &amp; .cummax() &amp; .cummin() &amp; .cumprod()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cumsumed_sepaL_length</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">cummax_sepaL_length</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">cummax</span><span class="p">()</span>
+<span class="n">cummin_sepaL_length</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">cummin</span><span class="p">()</span>
+<span class="n">cumprod_sepaL_length</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">cumprod</span><span class="p">().</span><span class="nb">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length_cumsum'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cumsumed_sepaL_length</span>
+<span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length_cummax'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cummax_sepaL_length</span>
+<span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length_cummin'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cummin_sepaL_length</span>
+<span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length_cumprod'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cumprod_sepaL_length</span>
+<span class="n">iris</span><span class="p">[[</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'sepal_length_cumsum'</span><span class="p">,</span> <span class="s">'sepal_length_cummax'</span><span class="p">,</span> <span class="s">'sepal_length_cummin'</span><span class="p">,</span> <span class="s">'sepal_length_cumprod'</span><span class="p">]].</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_length_cumsum</th>
+      <th>sepal_length_cummax</th>
+      <th>sepal_length_cummin</th>
+      <th>sepal_length_cumprod</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>5.1</td>
+      <td>5.1</td>
+      <td>5.1</td>
+      <td>5.10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>10.0</td>
+      <td>5.1</td>
+      <td>4.9</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>14.7</td>
+      <td>5.1</td>
+      <td>4.7</td>
+      <td>117.45</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>19.3</td>
+      <td>5.1</td>
+      <td>4.6</td>
+      <td>540.28</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>24.3</td>
+      <td>5.1</td>
+      <td>4.6</td>
+      <td>2701.42</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5.4</td>
+      <td>29.7</td>
+      <td>5.4</td>
+      <td>4.6</td>
+      <td>14587.66</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4.6</td>
+      <td>34.3</td>
+      <td>5.4</td>
+      <td>4.6</td>
+      <td>67103.25</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>5.0</td>
+      <td>39.3</td>
+      <td>5.4</td>
+      <td>4.6</td>
+      <td>335516.24</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4.4</td>
+      <td>43.7</td>
+      <td>5.4</td>
+      <td>4.4</td>
+      <td>1476271.46</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>4.9</td>
+      <td>48.6</td>
+      <td>5.4</td>
+      <td>4.4</td>
+      <td>7233730.13</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="drop_duplicates">.drop_duplicates()</h3>
+<ul>
+  <li>조건을 2개 이상으로 할 경우 리스트 안에 열이름을 기입</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span>
+    <span class="n">iris</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="s">'petal_width'</span><span class="p">).</span><span class="n">shape</span><span class="p">,</span>
+    <span class="n">iris</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s">'petal_length'</span><span class="p">,</span> <span class="s">'petal_width'</span><span class="p">]).</span><span class="n">shape</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(22, 5) (102, 5)
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="value_counts">.value_counts()</h3>
+<ul>
+  <li>pandas Series만 가능</li>
+  <li>normalize 옵션을 통해 비율 산출 가능</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">[</span><span class="s">'species'</span><span class="p">].</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setosa        50
+versicolor    50
+virginica     50
+Name: species, dtype: int64
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">[</span><span class="s">'species'</span><span class="p">].</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setosa        0.333333
+versicolor    0.333333
+virginica     0.333333
+Name: species, dtype: float64
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="groupby">.groupby()</h3>
+<ul>
+  <li>조건을 2개 이상으로 할 경우 리스트 안에 열이름을 기입</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'species'</span><span class="p">)[[</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'sepal_width'</span><span class="p">]].</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># 조건이 두개인 경우
+# iris.groupby(['species', 'petal_length'])[['sepal_length', 'sepal_width']].mean()
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+    </tr>
+    <tr>
+      <th>species</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>setosa</th>
+      <td>5.006</td>
+      <td>3.428</td>
+    </tr>
+    <tr>
+      <th>versicolor</th>
+      <td>5.936</td>
+      <td>2.770</td>
+    </tr>
+    <tr>
+      <th>virginica</th>
+      <td>6.588</td>
+      <td>2.974</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'species'</span><span class="p">).</span><span class="n">agg</span><span class="p">([</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">median</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="4" halign="left">sepal_length</th>
+      <th colspan="4" halign="left">sepal_width</th>
+      <th colspan="4" halign="left">petal_length</th>
+      <th colspan="4" halign="left">petal_width</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>median</th>
+      <th>amax</th>
+      <th>amin</th>
+      <th>mean</th>
+      <th>median</th>
+      <th>amax</th>
+      <th>amin</th>
+      <th>mean</th>
+      <th>median</th>
+      <th>amax</th>
+      <th>amin</th>
+      <th>mean</th>
+      <th>median</th>
+      <th>amax</th>
+      <th>amin</th>
+    </tr>
+    <tr>
+      <th>species</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>setosa</th>
+      <td>5.006</td>
+      <td>5.0</td>
+      <td>5.8</td>
+      <td>4.3</td>
+      <td>3.428</td>
+      <td>3.4</td>
+      <td>4.4</td>
+      <td>2.3</td>
+      <td>1.462</td>
+      <td>1.50</td>
+      <td>1.9</td>
+      <td>1.0</td>
+      <td>0.246</td>
+      <td>0.2</td>
+      <td>0.6</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>versicolor</th>
+      <td>5.936</td>
+      <td>5.9</td>
+      <td>7.0</td>
+      <td>4.9</td>
+      <td>2.770</td>
+      <td>2.8</td>
+      <td>3.4</td>
+      <td>2.0</td>
+      <td>4.260</td>
+      <td>4.35</td>
+      <td>5.1</td>
+      <td>3.0</td>
+      <td>1.326</td>
+      <td>1.3</td>
+      <td>1.8</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>virginica</th>
+      <td>6.588</td>
+      <td>6.5</td>
+      <td>7.9</td>
+      <td>4.9</td>
+      <td>2.974</td>
+      <td>3.0</td>
+      <td>3.8</td>
+      <td>2.2</td>
+      <td>5.552</td>
+      <td>5.55</td>
+      <td>6.9</td>
+      <td>4.5</td>
+      <td>2.026</td>
+      <td>2.0</td>
+      <td>2.5</td>
+      <td>1.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="pivot_table">.pivot_table</h3>
+<ul>
+  <li>default는 mean이며, aggfunc을 통해 복수의 aggregate 값 산출</li>
+  <li>values에는 aggregate한 값을 원하는 변수 기입</li>
+  <li>index에는 groupby로 지정하고 싶은 변수 기입, 해당 변수에 따라 aggregate된 값을 row에 따라 제시</li>
+  <li>columns에 groupby 지정하고 싶은 변수를 기입할 경우, 해당 변수에 따라 aggregate된 값을 column에 따라 제시</li>
+  <li>fill_value에는 Nan 대신 산출하고 싶은 값 기입</li>
+  <li>margins에는 종합적인 aggregate 값을 산출하고 싶을 경우 True 사용</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'petal_length'</span><span class="p">],</span>
+                 <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s">'species'</span><span class="p">,</span><span class="s">'petal_width'</span><span class="p">],</span>
+                 <span class="n">aggfunc</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">],</span>
+                 <span class="n">margins</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="2" halign="left">mean</th>
+      <th colspan="2" halign="left">amax</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>petal_length</th>
+      <th>sepal_length</th>
+      <th>petal_length</th>
+      <th>sepal_length</th>
+    </tr>
+    <tr>
+      <th>species</th>
+      <th>petal_width</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="6" valign="top">setosa</th>
+      <th>0.1</th>
+      <td>1.380000</td>
+      <td>4.820000</td>
+      <td>1.5</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>0.2</th>
+      <td>1.444828</td>
+      <td>4.972414</td>
+      <td>1.9</td>
+      <td>5.8</td>
+    </tr>
+    <tr>
+      <th>0.3</th>
+      <td>1.428571</td>
+      <td>4.971429</td>
+      <td>1.7</td>
+      <td>5.7</td>
+    </tr>
+    <tr>
+      <th>0.4</th>
+      <td>1.571429</td>
+      <td>5.300000</td>
+      <td>1.9</td>
+      <td>5.7</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>1.700000</td>
+      <td>5.100000</td>
+      <td>1.7</td>
+      <td>5.1</td>
+    </tr>
+    <tr>
+      <th>0.6</th>
+      <td>1.600000</td>
+      <td>5.000000</td>
+      <td>1.6</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th rowspan="9" valign="top">versicolor</th>
+      <th>1.0</th>
+      <td>3.628571</td>
+      <td>5.414286</td>
+      <td>4.1</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>1.1</th>
+      <td>3.566667</td>
+      <td>5.400000</td>
+      <td>3.9</td>
+      <td>5.6</td>
+    </tr>
+    <tr>
+      <th>1.2</th>
+      <td>4.240000</td>
+      <td>5.780000</td>
+      <td>4.7</td>
+      <td>6.1</td>
+    </tr>
+    <tr>
+      <th>1.3</th>
+      <td>4.176923</td>
+      <td>5.884615</td>
+      <td>4.6</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>1.4</th>
+      <td>4.500000</td>
+      <td>6.357143</td>
+      <td>4.8</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>1.5</th>
+      <td>4.580000</td>
+      <td>6.190000</td>
+      <td>4.9</td>
+      <td>6.9</td>
+    </tr>
+    <tr>
+      <th>1.6</th>
+      <td>4.766667</td>
+      <td>6.100000</td>
+      <td>5.1</td>
+      <td>6.3</td>
+    </tr>
+    <tr>
+      <th>1.7</th>
+      <td>5.000000</td>
+      <td>6.700000</td>
+      <td>5.0</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>1.8</th>
+      <td>4.800000</td>
+      <td>5.900000</td>
+      <td>4.8</td>
+      <td>5.9</td>
+    </tr>
+    <tr>
+      <th rowspan="12" valign="top">virginica</th>
+      <th>1.4</th>
+      <td>5.600000</td>
+      <td>6.100000</td>
+      <td>5.6</td>
+      <td>6.1</td>
+    </tr>
+    <tr>
+      <th>1.5</th>
+      <td>5.050000</td>
+      <td>6.150000</td>
+      <td>5.1</td>
+      <td>6.3</td>
+    </tr>
+    <tr>
+      <th>1.6</th>
+      <td>5.800000</td>
+      <td>7.200000</td>
+      <td>5.8</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>1.7</th>
+      <td>4.500000</td>
+      <td>4.900000</td>
+      <td>4.5</td>
+      <td>4.9</td>
+    </tr>
+    <tr>
+      <th>1.8</th>
+      <td>5.381818</td>
+      <td>6.445455</td>
+      <td>6.3</td>
+      <td>7.3</td>
+    </tr>
+    <tr>
+      <th>1.9</th>
+      <td>5.320000</td>
+      <td>6.340000</td>
+      <td>6.1</td>
+      <td>7.4</td>
+    </tr>
+    <tr>
+      <th>2.0</th>
+      <td>5.550000</td>
+      <td>6.650000</td>
+      <td>6.7</td>
+      <td>7.9</td>
+    </tr>
+    <tr>
+      <th>2.1</th>
+      <td>5.783333</td>
+      <td>6.916667</td>
+      <td>6.6</td>
+      <td>7.6</td>
+    </tr>
+    <tr>
+      <th>2.2</th>
+      <td>6.033333</td>
+      <td>6.866667</td>
+      <td>6.7</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>2.3</th>
+      <td>5.700000</td>
+      <td>6.912500</td>
+      <td>6.9</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>2.4</th>
+      <td>5.433333</td>
+      <td>6.266667</td>
+      <td>5.6</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>2.5</th>
+      <td>5.933333</td>
+      <td>6.733333</td>
+      <td>6.1</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <th></th>
+      <td>3.758000</td>
+      <td>5.843333</td>
+      <td>6.9</td>
+      <td>7.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-10-19T00:00:00+09:00">October 19, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BPython%5D+Data+manipulation+with+pandas%282%29%20http%3A%2F%2Flocalhost%3A4000%2Fpython%2Faggregating_dataframe%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Faggregating_dataframe%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Faggregating_dataframe%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/python/transforming_dataframes/" class="pagination--pager" title="[Python] Data manipulation with pandas(1)
+">Previous</a>
+    
+    
+      <a href="/algorithm/algorithm24_minimum_mineral_spring/" class="pagination--pager" title="[Algorithm] 최소한의 약수터 방문 - Greedy Algorithm
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/programmers_coding_test(2)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 (2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/algorithm25_find_duplicated/" rel="permalink">[Algorithm] 효율적으로 중복되는 숫자 찾기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(25)
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/algorithm24_minimum_mineral_spring/" rel="permalink">[Algorithm] 최소한의 약수터 방문 - Greedy Algorithm
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(24)
+  Greedy Algorithm
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/transforming_dataframes/" rel="permalink">[Python] Data manipulation with pandas(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Pandas
+
+  Inspecting dataframe
+    
+      .info()
+      .shape
+      .describe
+    
+  
+  Sort
+    
+      .sort_values()
+    
+  
+  select
+    
+      df[['co...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
