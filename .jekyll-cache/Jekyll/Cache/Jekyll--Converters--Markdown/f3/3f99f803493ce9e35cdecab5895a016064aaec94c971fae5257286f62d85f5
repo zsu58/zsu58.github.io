@@ -1,0 +1,96 @@
+I"F<hr />
+<h3 id="sql-übung---programmers">SQL Übung - Programmers</h3>
+<ul>
+  <li>SQL 문제 풀이를 통한 연습</li>
+</ul>
+
+<hr />
+
+<h3 id="문제-11">문제 11</h3>
+<ul>
+  <li>22/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers11.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">MIN</span><span class="p">(</span><span class="n">DATETIME</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-12">문제 12</h3>
+<ul>
+  <li>22/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers12.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-13">문제 13</h3>
+<ul>
+  <li>22/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers13.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">DISTINCT</span> <span class="n">NAME</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-14">문제 14</h3>
+<ul>
+  <li>22/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers14.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">ANIMAL_TYPE</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">ANIMAL_TYPE</span><span class="p">)</span> <span class="n">AS</span> <span class="n">count</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">ANIMAL_TYPE</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">ANIMAL_TYPE</span> <span class="n">ASC</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-15">문제 15</h3>
+<ul>
+  <li>22/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers15.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="n">WHERE</span> <span class="n">NAME</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">NAME</span>
+<span class="n">HAVING</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">NAME</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-16">문제 16</h3>
+<ul>
+  <li>22/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers16.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">DATETIME</span><span class="p">,</span> <span class="s">"%H"</span><span class="p">)</span> <span class="n">AS</span> <span class="n">HOUR</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">AS</span> <span class="n">COUNT</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_OUTS</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">HOUR</span>
+<span class="n">HAVING</span> <span class="n">HOUR</span> <span class="n">BETWEEN</span> <span class="mi">9</span> <span class="n">AND</span> <span class="mi">19</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">HOUR</span>
+</code></pre></div></div>
+
+<hr />
+
+:ET

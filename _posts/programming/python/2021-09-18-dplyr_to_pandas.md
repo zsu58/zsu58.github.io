@@ -240,10 +240,10 @@ iris_df.iloc[0:5]
 # 첫 2개열
 iris_df.iloc[:, 0:2] 
 
-# 1st, 4th, 25th 행 & 1st 6th 열
+# 1st, 4th, 25th 행 & 1st, 4th 열
 iris_df.iloc[[0,3,24], [0,3]]
 
-# 첫 5개 행 & 5th~7th 열
+# 첫 5개 행 & 1th~3th 열
 iris_df.iloc[0:5, 0:3] 
 ```
 

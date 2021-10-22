@@ -169,3 +169,40 @@ def solution(s, n):
 ```
 
 ---
+
+### 문제 18
+* 22/10/2021
+<p align="center">
+    <img src="/img/coding_test/coding_test18.png" align="center">
+</p>
+```python
+def solution(s):
+    if s[0] == '+':
+        return int(s)
+    elif s[0] == '-':
+        return int(s)
+    else:
+        return int(s)
+
+# 다른 사람의 좋은 풀이
+def solution(s):
+    return int(s)
+```
+
+---
+
+### 문제 19
+* 22/10/2021
+<p align="center">
+    <img src="/img/coding_test/coding_test19.png" align="center">
+</p>
+```python
+def solution(n):
+    return '수박'*(n//2) if n % 2 == 0 else '수박'*(n//2) + '수'
+# 다른 사람의 좋은 풀이
+def solution(s):
+def solution(n):
+    return "수박"*(n//2) + "수"*(n%2)
+```
+
+---

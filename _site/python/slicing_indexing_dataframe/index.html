@@ -1,0 +1,2187 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Python] Data manipulation with pandas(3) - Bibliothek für Data-Engineering</title>
+<meta name="description" content="Pandas    Slicing and Indexing DataFrames            pandas에는 index와 loc을 사용해 더 깔끔한 코드로 subsetting을 수 있음       그러나 data가 index로 활용된 측면에서 이는 tidy data는 아님(이 문제는 .reset_index를 통해 해결 가능)       개인적으로 dataframe 정렬 후 slicing을 통해 dataframe을 subsetting할 때 유용할 수 있을 것이라고 생각       .set_index()       .reset_index()       .loc()       .sort_index()">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[Python] Data manipulation with pandas(3)">
+<meta property="og:url" content="http://localhost:4000/python/slicing_indexing_dataframe/">
+
+
+  <meta property="og:description" content="Pandas    Slicing and Indexing DataFrames            pandas에는 index와 loc을 사용해 더 깔끔한 코드로 subsetting을 수 있음       그러나 data가 index로 활용된 측면에서 이는 tidy data는 아님(이 문제는 .reset_index를 통해 해결 가능)       개인적으로 dataframe 정렬 후 slicing을 통해 dataframe을 subsetting할 때 유용할 수 있을 것이라고 생각       .set_index()       .reset_index()       .loc()       .sort_index()">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-20T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/python/slicing_indexing_dataframe/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://stingy-camp-e37.notion.site/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/armi_made.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">57</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Data-Enginnering</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--sql 카테고리 글들을 모아둔 페이지인 /categories/sql 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (10)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm - Python (28)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (11)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Python] Data manipulation with pandas(3)">
+    <meta itemprop="description" content="Pandas  Slicing and Indexing DataFrames          pandas에는 index와 loc을 사용해 더 깔끔한 코드로 subsetting을 수 있음      그러나 data가 index로 활용된 측면에서 이는 tidy data는 아님(이 문제는 .reset_index를 통해 해결 가능)      개인적으로 dataframe 정렬 후 slicing을 통해 dataframe을 subsetting할 때 유용할 수 있을 것이라고 생각      .set_index()      .reset_index()      .loc()      .sort_index()      ">
+    <meta itemprop="datePublished" content="2021-10-20T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Python] Data manipulation with pandas(3)
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#pandas">Pandas</a></li><li><a href="#set_index">.set_index()</a></li><li><a href="#reset_index">.reset_index()</a></li><li><a href="#loc을-이용한-subsetting1">.loc()을 이용한 subsetting(1)</a></li><li><a href="#loc을-이용한-subsetting2">.loc()을 이용한 subsetting(2)</a></li><li><a href="#sort_index">.sort_index</a></li><li><a href="#iloc을-이용한-pivot_table-subsetting">.iloc을 이용한 pivot_table subsetting</a></li><li><a href="#pivot_tablemean">.pivot_table().mean()</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li>Slicing and Indexing DataFrames
+    <ul>
+      <li>pandas에는 index와 loc을 사용해 더 깔끔한 코드로 subsetting을 수 있음</li>
+      <li>그러나 data가 index로 활용된 측면에서 이는 tidy data는 아님(이 문제는 .reset_index를 통해 해결 가능)</li>
+      <li>개인적으로 dataframe 정렬 후 slicing을 통해 dataframe을 subsetting할 때 유용할 수 있을 것이라고 생각</li>
+      <li>.set_index()</li>
+      <li>.reset_index()</li>
+      <li>.loc()</li>
+      <li>.sort_index()</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import data
+</span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="c1"># pd.set_option('display.max_rows', 1000)
+# pd.set_option('display.max_columns', 1000)
+</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"iris"</span><span class="p">)</span>
+<span class="n">temperatures</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"temperatures.csv"</span><span class="p">)</span>
+<span class="n">temperatures</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>date</th>
+      <th>city</th>
+      <th>country</th>
+      <th>avg_temp_c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>2000-01-01</td>
+      <td>Abidjan</td>
+      <td>Côte D'Ivoire</td>
+      <td>27.293</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2000-02-01</td>
+      <td>Abidjan</td>
+      <td>Côte D'Ivoire</td>
+      <td>27.685</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2000-03-01</td>
+      <td>Abidjan</td>
+      <td>Côte D'Ivoire</td>
+      <td>29.061</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="set_index">.set_index()</h3>
+<ul>
+  <li>index는 multilevel(2개 이상)으로 설정할 수 있음</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># index가 1개인 경우
+</span><span class="n">iris</span><span class="p">[</span><span class="s">"name"</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s">"species"</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">iris</span><span class="p">)).</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">iris</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">"name"</span><span class="p">).</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>setosa0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>setosa1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>setosa2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>setosa3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>setosa4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># index가 2개인 경우
+</span><span class="n">temperatures_multi_ind</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"city"</span><span class="p">])</span>
+<span class="n">temperatures_multi_ind</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>date</th>
+      <th>avg_temp_c</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">Côte D'Ivoire</th>
+      <th>Abidjan</th>
+      <td>0</td>
+      <td>2000-01-01</td>
+      <td>27.293</td>
+    </tr>
+    <tr>
+      <th>Abidjan</th>
+      <td>1</td>
+      <td>2000-02-01</td>
+      <td>27.685</td>
+    </tr>
+    <tr>
+      <th>Abidjan</th>
+      <td>2</td>
+      <td>2000-03-01</td>
+      <td>29.061</td>
+    </tr>
+    <tr>
+      <th>Abidjan</th>
+      <td>3</td>
+      <td>2000-04-01</td>
+      <td>28.162</td>
+    </tr>
+    <tr>
+      <th>Abidjan</th>
+      <td>4</td>
+      <td>2000-05-01</td>
+      <td>27.547</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="reset_index">.reset_index()</h3>
+<ul>
+  <li>index가 다시 column으로 바뀜</li>
+  <li>옵션 drop=True로 할 경우 index 열 제거</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatures_ind</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">"city"</span><span class="p">)</span>
+<span class="n">temperatures_ind</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>date</th>
+      <th>country</th>
+      <th>avg_temp_c</th>
+    </tr>
+    <tr>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Abidjan</th>
+      <td>0</td>
+      <td>2000-01-01</td>
+      <td>Côte D'Ivoire</td>
+      <td>27.293</td>
+    </tr>
+    <tr>
+      <th>Abidjan</th>
+      <td>1</td>
+      <td>2000-02-01</td>
+      <td>Côte D'Ivoire</td>
+      <td>27.685</td>
+    </tr>
+    <tr>
+      <th>Abidjan</th>
+      <td>2</td>
+      <td>2000-03-01</td>
+      <td>Côte D'Ivoire</td>
+      <td>29.061</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatures_ind</span><span class="p">.</span><span class="n">reset_index</span><span class="p">().</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>Unnamed: 0</th>
+      <th>date</th>
+      <th>country</th>
+      <th>avg_temp_c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Abidjan</td>
+      <td>0</td>
+      <td>2000-01-01</td>
+      <td>Côte D'Ivoire</td>
+      <td>27.293</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Abidjan</td>
+      <td>1</td>
+      <td>2000-02-01</td>
+      <td>Côte D'Ivoire</td>
+      <td>27.685</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Abidjan</td>
+      <td>2</td>
+      <td>2000-03-01</td>
+      <td>Côte D'Ivoire</td>
+      <td>29.061</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatures_ind</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>date</th>
+      <th>country</th>
+      <th>avg_temp_c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>2000-01-01</td>
+      <td>Côte D'Ivoire</td>
+      <td>27.293</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2000-02-01</td>
+      <td>Côte D'Ivoire</td>
+      <td>27.685</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2000-03-01</td>
+      <td>Côte D'Ivoire</td>
+      <td>29.061</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="loc을-이용한-subsetting1">.loc()을 이용한 subsetting(1)</h3>
+<ul>
+  <li>row에 대한 filter</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .loc을 활용해 (row에 대해) filter하는 방법1 (df.column으로 조건을 주면 됨) (추천)
+</span><span class="n">iris</span><span class="p">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">iris</span><span class="p">.</span><span class="n">species</span> <span class="o">==</span> <span class="s">"setosa"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">iris</span><span class="p">.</span><span class="n">sepal_length</span> <span class="o">&lt;</span> <span class="mf">5.0</span><span class="p">)].</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>setosa1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>setosa2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>setosa3</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4.6</td>
+      <td>3.4</td>
+      <td>1.4</td>
+      <td>0.3</td>
+      <td>setosa</td>
+      <td>setosa6</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4.4</td>
+      <td>2.9</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>setosa8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .loc을 활용해 (row에 대해) filter하는 방법2 (filter할 것을 index로 설정 후 조건을 주면 됨)
+</span><span class="n">temperatures_ind</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">"city"</span><span class="p">)</span>
+<span class="n">temperatures_ind</span> <span class="o">=</span> <span class="n">temperatures_ind</span><span class="p">.</span><span class="n">loc</span><span class="p">[[</span><span class="s">"Moscow"</span><span class="p">,</span> <span class="s">"Saint Petersburg"</span><span class="p">]]</span>
+<span class="n">temperatures_ind</span><span class="p">.</span><span class="n">reset_index</span><span class="p">().</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># 방법1로 방법2를 할 경우의 코드
+# temperatures.loc[temperatures.city.isin(["Moscow", "Saint Petersburg"])].head(5)
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>Unnamed: 0</th>
+      <th>date</th>
+      <th>country</th>
+      <th>avg_temp_c</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Moscow</td>
+      <td>10725</td>
+      <td>2000-01-01</td>
+      <td>Russia</td>
+      <td>-7.313</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Moscow</td>
+      <td>10726</td>
+      <td>2000-02-01</td>
+      <td>Russia</td>
+      <td>-3.551</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Moscow</td>
+      <td>10727</td>
+      <td>2000-03-01</td>
+      <td>Russia</td>
+      <td>-1.661</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Moscow</td>
+      <td>10728</td>
+      <td>2000-04-01</td>
+      <td>Russia</td>
+      <td>10.096</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Moscow</td>
+      <td>10729</td>
+      <td>2000-05-01</td>
+      <td>Russia</td>
+      <td>10.357</td>
+      <td>2000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .loc을 활용해 (row에 대해 ) filter 하는 방법 2-2 (multi index인 경우, 리스트 안에 튜플로(outer_index, inner_index) 조건을 주어야 함)
+</span><span class="n">temperatures_multi_ind</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"city"</span><span class="p">])</span>
+<span class="n">rows_to_keep</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"Brazil"</span><span class="p">,</span> <span class="s">"Rio De Janeiro"</span><span class="p">),</span> <span class="p">(</span><span class="s">"Pakistan"</span><span class="p">,</span> <span class="s">"Lahore"</span><span class="p">)]</span>
+<span class="n">temperatures_multi_ind</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_to_keep</span><span class="p">]</span>
+
+<span class="c1"># 방법1로 방법 2-2를 할 경우의 코드
+# temperatures[(temperatures.country.isin(["Brazil", "Pakistan"])) &amp; (temperatures.city.isin(["Rio De Janeiro", "Lahore"]))]
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>date</th>
+      <th>avg_temp_c</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">Brazil</th>
+      <th>Rio De Janeiro</th>
+      <td>12540</td>
+      <td>2000-01-01</td>
+      <td>25.974</td>
+    </tr>
+    <tr>
+      <th>Rio De Janeiro</th>
+      <td>12541</td>
+      <td>2000-02-01</td>
+      <td>26.699</td>
+    </tr>
+    <tr>
+      <th>Rio De Janeiro</th>
+      <td>12542</td>
+      <td>2000-03-01</td>
+      <td>26.270</td>
+    </tr>
+    <tr>
+      <th>Rio De Janeiro</th>
+      <td>12543</td>
+      <td>2000-04-01</td>
+      <td>25.750</td>
+    </tr>
+    <tr>
+      <th>Rio De Janeiro</th>
+      <td>12544</td>
+      <td>2000-05-01</td>
+      <td>24.356</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Pakistan</th>
+      <th>Lahore</th>
+      <td>8575</td>
+      <td>2013-05-01</td>
+      <td>33.457</td>
+    </tr>
+    <tr>
+      <th>Lahore</th>
+      <td>8576</td>
+      <td>2013-06-01</td>
+      <td>34.456</td>
+    </tr>
+    <tr>
+      <th>Lahore</th>
+      <td>8577</td>
+      <td>2013-07-01</td>
+      <td>33.279</td>
+    </tr>
+    <tr>
+      <th>Lahore</th>
+      <td>8578</td>
+      <td>2013-08-01</td>
+      <td>31.511</td>
+    </tr>
+    <tr>
+      <th>Lahore</th>
+      <td>8579</td>
+      <td>2013-09-01</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>330 rows × 3 columns</p>
+</div>
+
+<hr />
+
+<h3 id="loc을-이용한-subsetting2">.loc()을 이용한 subsetting(2)</h3>
+<ul>
+  <li>row에 대한 filter &amp; column에 대한 select</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatures_srt</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"city"</span><span class="p">]).</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># .loc을 활용해 (row에 대해) slice 하는 방법 1 (index slicing ("condition1":"condition2")로 조건을 주면 됨)
+</span><span class="n">temperatures_srt</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"Pakistan"</span><span class="p">:</span><span class="s">"Russia"</span><span class="p">]</span>
+
+<span class="c1"># multi index인 경우, inner index에 대해서만 조건을 줄 수 없음, 아래의 겨우 원하는 df를 반환하지 않음
+# temperatures_srt.loc["Lahore":"Moscow"]
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>date</th>
+      <th>avg_temp_c</th>
+      <th>year</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">Pakistan</th>
+      <th>Faisalabad</th>
+      <td>4785</td>
+      <td>2000-01-01</td>
+      <td>12.792</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>Faisalabad</th>
+      <td>4786</td>
+      <td>2000-02-01</td>
+      <td>14.339</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>Faisalabad</th>
+      <td>4787</td>
+      <td>2000-03-01</td>
+      <td>20.309</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>Faisalabad</th>
+      <td>4788</td>
+      <td>2000-04-01</td>
+      <td>29.072</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>Faisalabad</th>
+      <td>4789</td>
+      <td>2000-05-01</td>
+      <td>34.845</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Russia</th>
+      <th>Saint Petersburg</th>
+      <td>13360</td>
+      <td>2013-05-01</td>
+      <td>12.355</td>
+      <td>2013</td>
+    </tr>
+    <tr>
+      <th>Saint Petersburg</th>
+      <td>13361</td>
+      <td>2013-06-01</td>
+      <td>17.185</td>
+      <td>2013</td>
+    </tr>
+    <tr>
+      <th>Saint Petersburg</th>
+      <td>13362</td>
+      <td>2013-07-01</td>
+      <td>17.234</td>
+      <td>2013</td>
+    </tr>
+    <tr>
+      <th>Saint Petersburg</th>
+      <td>13363</td>
+      <td>2013-08-01</td>
+      <td>17.153</td>
+      <td>2013</td>
+    </tr>
+    <tr>
+      <th>Saint Petersburg</th>
+      <td>13364</td>
+      <td>2013-09-01</td>
+      <td>NaN</td>
+      <td>2013</td>
+    </tr>
+  </tbody>
+</table>
+<p>1155 rows × 4 columns</p>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .loc을 활용해 (row에 대해) slice 하는 방법 1-2 (multi index인 경우, 리스트 안에 튜플:튜플로("outer_index", "inner_index"):("outer_index", "inner_index") 조건을 주어야 함)
+</span><span class="n">temperatures_srt</span><span class="p">.</span><span class="n">loc</span><span class="p">[(</span><span class="s">"Pakistan"</span><span class="p">,</span><span class="s">"Lahore"</span><span class="p">):(</span><span class="s">"Russia"</span><span class="p">,</span><span class="s">"Moscow"</span><span class="p">)]</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>date</th>
+      <th>avg_temp_c</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">Pakistan</th>
+      <th>Lahore</th>
+      <td>8415</td>
+      <td>2000-01-01</td>
+      <td>12.792</td>
+    </tr>
+    <tr>
+      <th>Lahore</th>
+      <td>8416</td>
+      <td>2000-02-01</td>
+      <td>14.339</td>
+    </tr>
+    <tr>
+      <th>Lahore</th>
+      <td>8417</td>
+      <td>2000-03-01</td>
+      <td>20.309</td>
+    </tr>
+    <tr>
+      <th>Lahore</th>
+      <td>8418</td>
+      <td>2000-04-01</td>
+      <td>29.072</td>
+    </tr>
+    <tr>
+      <th>Lahore</th>
+      <td>8419</td>
+      <td>2000-05-01</td>
+      <td>34.845</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Russia</th>
+      <th>Moscow</th>
+      <td>10885</td>
+      <td>2013-05-01</td>
+      <td>16.152</td>
+    </tr>
+    <tr>
+      <th>Moscow</th>
+      <td>10886</td>
+      <td>2013-06-01</td>
+      <td>18.718</td>
+    </tr>
+    <tr>
+      <th>Moscow</th>
+      <td>10887</td>
+      <td>2013-07-01</td>
+      <td>18.136</td>
+    </tr>
+    <tr>
+      <th>Moscow</th>
+      <td>10888</td>
+      <td>2013-08-01</td>
+      <td>17.485</td>
+    </tr>
+    <tr>
+      <th>Moscow</th>
+      <td>10889</td>
+      <td>2013-09-01</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>660 rows × 3 columns</p>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatures_srt</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"city"</span><span class="p">]).</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># .loc을 활용해 (column)에 대해 slice 하는 방법 2
+</span><span class="n">temperatures_srt</span><span class="p">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s">'date'</span><span class="p">:</span><span class="s">'avg_temp_c'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>date</th>
+      <th>avg_temp_c</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">Afghanistan</th>
+      <th>Kabul</th>
+      <td>2000-01-01</td>
+      <td>3.326</td>
+    </tr>
+    <tr>
+      <th>Kabul</th>
+      <td>2000-02-01</td>
+      <td>3.454</td>
+    </tr>
+    <tr>
+      <th>Kabul</th>
+      <td>2000-03-01</td>
+      <td>9.612</td>
+    </tr>
+    <tr>
+      <th>Kabul</th>
+      <td>2000-04-01</td>
+      <td>17.925</td>
+    </tr>
+    <tr>
+      <th>Kabul</th>
+      <td>2000-05-01</td>
+      <td>24.658</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Zimbabwe</th>
+      <th>Harare</th>
+      <td>2013-05-01</td>
+      <td>18.298</td>
+    </tr>
+    <tr>
+      <th>Harare</th>
+      <td>2013-06-01</td>
+      <td>17.020</td>
+    </tr>
+    <tr>
+      <th>Harare</th>
+      <td>2013-07-01</td>
+      <td>16.299</td>
+    </tr>
+    <tr>
+      <th>Harare</th>
+      <td>2013-08-01</td>
+      <td>19.232</td>
+    </tr>
+    <tr>
+      <th>Harare</th>
+      <td>2013-09-01</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>16500 rows × 2 columns</p>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatures_srt</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"city"</span><span class="p">]).</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># .loc을 활용해 (row와 column)에 대해 slice 하는 방법 2
+</span><span class="n">temperatures_srt</span><span class="p">.</span><span class="n">loc</span><span class="p">[(</span><span class="s">"India"</span><span class="p">,</span> <span class="s">"Hyderabad"</span><span class="p">):(</span><span class="s">"Iraq"</span><span class="p">,</span> <span class="s">"Baghdad"</span><span class="p">),</span><span class="s">"date"</span><span class="p">:</span><span class="s">"avg_temp_c"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>date</th>
+      <th>avg_temp_c</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">India</th>
+      <th>Hyderabad</th>
+      <td>2000-01-01</td>
+      <td>23.779</td>
+    </tr>
+    <tr>
+      <th>Hyderabad</th>
+      <td>2000-02-01</td>
+      <td>25.826</td>
+    </tr>
+    <tr>
+      <th>Hyderabad</th>
+      <td>2000-03-01</td>
+      <td>28.821</td>
+    </tr>
+    <tr>
+      <th>Hyderabad</th>
+      <td>2000-04-01</td>
+      <td>32.698</td>
+    </tr>
+    <tr>
+      <th>Hyderabad</th>
+      <td>2000-05-01</td>
+      <td>32.438</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Iraq</th>
+      <th>Baghdad</th>
+      <td>2013-05-01</td>
+      <td>28.673</td>
+    </tr>
+    <tr>
+      <th>Baghdad</th>
+      <td>2013-06-01</td>
+      <td>33.803</td>
+    </tr>
+    <tr>
+      <th>Baghdad</th>
+      <td>2013-07-01</td>
+      <td>36.392</td>
+    </tr>
+    <tr>
+      <th>Baghdad</th>
+      <td>2013-08-01</td>
+      <td>35.463</td>
+    </tr>
+    <tr>
+      <th>Baghdad</th>
+      <td>2013-09-01</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>2145 rows × 2 columns</p>
+</div>
+
+<hr />
+
+<h3 id="sort_index">.sort_index</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatures_ind</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"city"</span><span class="p">])</span>
+<span class="n">temperatures_ind</span><span class="p">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"city"</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="bp">True</span><span class="p">,</span><span class="bp">False</span><span class="p">]).</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># 위와 같음
+# temperatures.sort_values(["country", "city"], ascending = [True,False])[["Unnamed: 0", "date", "avg_temp_c"]]
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>date</th>
+      <th>avg_temp_c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7260</td>
+      <td>2000-01-01</td>
+      <td>3.326</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7261</td>
+      <td>2000-02-01</td>
+      <td>3.454</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7262</td>
+      <td>2000-03-01</td>
+      <td>9.612</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7263</td>
+      <td>2000-04-01</td>
+      <td>17.925</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7264</td>
+      <td>2000-05-01</td>
+      <td>24.658</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>16495</th>
+      <td>5605</td>
+      <td>2013-05-01</td>
+      <td>18.298</td>
+    </tr>
+    <tr>
+      <th>16496</th>
+      <td>5606</td>
+      <td>2013-06-01</td>
+      <td>17.020</td>
+    </tr>
+    <tr>
+      <th>16497</th>
+      <td>5607</td>
+      <td>2013-07-01</td>
+      <td>16.299</td>
+    </tr>
+    <tr>
+      <th>16498</th>
+      <td>5608</td>
+      <td>2013-08-01</td>
+      <td>19.232</td>
+    </tr>
+    <tr>
+      <th>16499</th>
+      <td>5609</td>
+      <td>2013-09-01</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>16500 rows × 3 columns</p>
+</div>
+
+<hr />
+
+<h3 id="iloc을-이용한-pivot_table-subsetting">.iloc을 이용한 pivot_table subsetting</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataframe["column"].dt.component을 통해 date의 year, month, day 등을 얻을 수 있음
+</span><span class="n">temperatures</span><span class="p">[</span><span class="s">"date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">temperatures</span><span class="p">[</span><span class="s">"date"</span><span class="p">])</span>
+<span class="n">temperatures</span><span class="p">[</span><span class="s">"year"</span><span class="p">]</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">[</span><span class="s">"date"</span><span class="p">].</span><span class="n">dt</span><span class="p">.</span><span class="n">year</span>
+
+<span class="n">temp_by_country_city_vs_year</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="s">"avg_temp_c"</span><span class="p">,</span> 
+    <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"city"</span><span class="p">],</span> 
+    <span class="n">columns</span> <span class="o">=</span> <span class="s">"year"</span><span class="p">)</span>
+
+<span class="n">temp_by_country_city_vs_year</span><span class="p">.</span><span class="n">loc</span><span class="p">[(</span><span class="s">"Egypt"</span><span class="p">,</span> <span class="s">"Cairo"</span><span class="p">):(</span><span class="s">"India"</span><span class="p">,</span> <span class="s">"Delhi"</span><span class="p">),</span> <span class="s">"2005"</span><span class="p">:</span><span class="s">"2010"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>2005</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Egypt</th>
+      <th>Cairo</th>
+      <td>22.006500</td>
+      <td>22.050000</td>
+      <td>22.361000</td>
+      <td>22.644500</td>
+      <td>22.625000</td>
+      <td>23.718250</td>
+    </tr>
+    <tr>
+      <th>Gizeh</th>
+      <td>22.006500</td>
+      <td>22.050000</td>
+      <td>22.361000</td>
+      <td>22.644500</td>
+      <td>22.625000</td>
+      <td>23.718250</td>
+    </tr>
+    <tr>
+      <th>Ethiopia</th>
+      <th>Addis Abeba</th>
+      <td>18.312833</td>
+      <td>18.427083</td>
+      <td>18.142583</td>
+      <td>18.165000</td>
+      <td>18.765333</td>
+      <td>18.298250</td>
+    </tr>
+    <tr>
+      <th>France</th>
+      <th>Paris</th>
+      <td>11.552917</td>
+      <td>11.788500</td>
+      <td>11.750833</td>
+      <td>11.278250</td>
+      <td>11.464083</td>
+      <td>10.409833</td>
+    </tr>
+    <tr>
+      <th>Germany</th>
+      <th>Berlin</th>
+      <td>9.919083</td>
+      <td>10.545333</td>
+      <td>10.883167</td>
+      <td>10.657750</td>
+      <td>10.062500</td>
+      <td>8.606833</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">India</th>
+      <th>Ahmadabad</th>
+      <td>26.828083</td>
+      <td>27.282833</td>
+      <td>27.511167</td>
+      <td>27.048500</td>
+      <td>28.095833</td>
+      <td>28.017833</td>
+    </tr>
+    <tr>
+      <th>Bangalore</th>
+      <td>25.476500</td>
+      <td>25.418250</td>
+      <td>25.464333</td>
+      <td>25.352583</td>
+      <td>25.725750</td>
+      <td>25.705250</td>
+    </tr>
+    <tr>
+      <th>Bombay</th>
+      <td>27.035750</td>
+      <td>27.381500</td>
+      <td>27.634667</td>
+      <td>27.177750</td>
+      <td>27.844500</td>
+      <td>27.765417</td>
+    </tr>
+    <tr>
+      <th>Calcutta</th>
+      <td>26.729167</td>
+      <td>26.986250</td>
+      <td>26.584583</td>
+      <td>26.522333</td>
+      <td>27.153250</td>
+      <td>27.288833</td>
+    </tr>
+    <tr>
+      <th>Delhi</th>
+      <td>25.716083</td>
+      <td>26.365917</td>
+      <td>26.145667</td>
+      <td>25.675000</td>
+      <td>26.554250</td>
+      <td>26.520250</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="pivot_tablemean">.pivot_table().mean()</h3>
+<ul>
+  <li>.pivot_table도 dataframe이기에 mean()함수 적용 가능</li>
+  <li>.mean()의 옵션으로 axis = ‘columns’/’index’를 입력해 해당 axis에 대한 평균 산출 가능</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mean_temp_by_year</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="s">"avg_temp_c"</span><span class="p">,</span> 
+    <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"city"</span><span class="p">],</span> 
+    <span class="n">columns</span> <span class="o">=</span> <span class="s">"year"</span><span class="p">).</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">mean_temp_by_city</span> <span class="o">=</span> <span class="n">temp_by_country_city_vs_year</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="s">'columns'</span><span class="p">)</span>
+
+<span class="c1"># Filter for the city that had the lowest mean temp
+</span><span class="n">mean_temp_by_city</span><span class="p">[</span><span class="n">mean_temp_by_city</span> <span class="o">==</span> <span class="nb">min</span><span class="p">(</span><span class="n">mean_temp_by_city</span><span class="p">)]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>country  city  
+China    Harbin    4.876551
+dtype: float64
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-10-20T00:00:00+09:00">October 20, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BPython%5D+Data+manipulation+with+pandas%283%29%20http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fslicing_indexing_dataframe%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fslicing_indexing_dataframe%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fslicing_indexing_dataframe%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/algorithm25_find_duplicated/" class="pagination--pager" title="[Algorithm] 효율적으로 중복되는 숫자 찾기
+">Previous</a>
+    
+    
+      <a href="/algorithm/programmers_coding_test(2)/" class="pagination--pager" title="[ALGORITHM] Programmers ALGORITHM 연습문제 (2)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/sql_practice_programmers(2)/" rel="permalink">[SQL] Programmers SQL 연습문제 (2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung - Programmers
+
+  SQL 문제 풀이를 통한 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/programmers_coding_test(2)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 (2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/algorithm25_find_duplicated/" rel="permalink">[Algorithm] 효율적으로 중복되는 숫자 찾기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(25)
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/algorithm24_minimum_mineral_spring/" rel="permalink">[Algorithm] 최소한의 약수터 방문 - Greedy Algorithm
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(24)
+  Greedy Algorithm
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

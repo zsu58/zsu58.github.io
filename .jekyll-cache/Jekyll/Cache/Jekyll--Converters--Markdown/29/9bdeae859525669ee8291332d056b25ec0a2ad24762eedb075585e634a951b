@@ -1,0 +1,159 @@
+I"�<hr />
+<h3 id="sql-übung---programmers">SQL Übung - Programmers</h3>
+<ul>
+  <li>SQL 문제 풀이를 통한 연습</li>
+</ul>
+
+<hr />
+
+<h3 id="문제-1">문제 1</h3>
+<ul>
+  <li>16/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers1.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">ANIMAL_ID</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-2">문제 2</h3>
+<ul>
+  <li>16/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers2.png" align="center" />
+</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">DATETIME</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">ANIMAL_ID</span> <span class="n">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-3">문제 3</h3>
+<ul>
+  <li>16/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers3.png" align="center" />
+</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">ANIMAL_ID</span><span class="p">,</span> <span class="n">NAME</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="n">WHERE</span> <span class="n">INTAKE_CONDITION</span> <span class="o">=</span> <span class="s">'Sick'</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">ANIMAL_ID</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-4">문제 4</h3>
+<ul>
+  <li>16/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers4.png" align="center" />
+</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">ANIMAL_ID</span><span class="p">,</span> <span class="n">NAME</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="n">WHERE</span> <span class="n">INTAKE_CONDITION</span> <span class="o">&lt;&gt;</span> <span class="s">'Aged'</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">ANIMAL_ID</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-5">문제 5</h3>
+<ul>
+  <li>16/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers5.png" align="center" />
+</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">ANIMAL_ID</span><span class="p">,</span> <span class="n">NAME</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-6">문제 6</h3>
+<ul>
+  <li>16/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers6.png" align="center" />
+</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">ANIMAL_ID</span><span class="p">,</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">DATETIME</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">DATETIME</span> <span class="n">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-7">문제 7</h3>
+<ul>
+  <li>16/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers7.png" align="center" />
+</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">NAME</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">DATETIME</span>
+<span class="n">LIMIT</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-8">문제 8</h3>
+<ul>
+  <li>17/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers8.png" align="center" />
+</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">MAX</span><span class="p">(</span><span class="n">DATETIME</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-9">문제 9</h3>
+<ul>
+  <li>22/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers9.png" align="center" />
+</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">ANIMAL_ID</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="n">WHERE</span> <span class="n">NAME</span> <span class="n">IS</span> <span class="n">NULL</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-10">문제 10</h3>
+<ul>
+  <li>22/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/sql/sql_programmers10.png" align="center" />
+</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">ANIMAL_ID</span>
+<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="n">WHERE</span> <span class="n">NAME</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span>
+</code></pre></div></div>
+
+<hr />
+
+:ET

@@ -272,7 +272,7 @@ var store = [{
         "title": "[SQL] Programmers SQL 연습문제 (1)",
         "excerpt":"SQL Übung - Programmers SQL 문제 풀이를 통한 연습 문제 1 16/10/2021 SELECT * FROM ANIMAL_INS ORDER BY ANIMAL_ID; 문제 2 16/10/2021 SELECT NAME, DATETIME FROM ANIMAL_INS ORDER BY ANIMAL_ID DESC; 문제 3 16/10/2021 SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION = 'Sick' ORDER BY ANIMAL_ID; 문제 4 16/10/2021 SELECT...","categories": ["SQL"],
         "tags": ["SQL"],
-        "url": "/sql/sql_practice_programmers/",
+        "url": "/sql/sql_practice_programmers(1)/",
         "teaser": null
       },{
         "title": "[Algorithm] 거듭제곱 - Dynamic Programming",
@@ -323,9 +323,21 @@ var store = [{
         "url": "/algorithm/algorithm25_find_duplicated/",
         "teaser": null
       },{
+        "title": "[Python] Data manipulation with pandas(3)",
+        "excerpt":"Pandas Slicing and Indexing DataFrames pandas에는 index와 loc을 사용해 더 깔끔한 코드로 subsetting을 수 있음 그러나 data가 index로 활용된 측면에서 이는 tidy data는 아님(이 문제는 .reset_index를 통해 해결 가능) 개인적으로 dataframe 정렬 후 slicing을 통해 dataframe을 subsetting할 때 유용할 수 있을 것이라고 생각 .set_index() .reset_index() .loc() .sort_index() # import data...","categories": ["PYTHON"],
+        "tags": ["PYTHON"],
+        "url": "/python/slicing_indexing_dataframe/",
+        "teaser": null
+      },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (2)",
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 11 21/10/2021 from math import sqrt def solution(n): return int((sqrt(n)+1)**2) if sqrt(n) == int(sqrt(n)) else -1 # 다른 사람의 좋은 풀이 def solution(n): sqrt = n ** (1/2) if sqrt % 1 == 0: return (sqrt + 1)...","categories": ["ALGORITHM"],
         "tags": ["BACKEND","ALGORITHM"],
         "url": "/algorithm/programmers_coding_test(2)/",
+        "teaser": null
+      },{
+        "title": "[SQL] Programmers SQL 연습문제 (2)",
+        "excerpt":"SQL Übung - Programmers SQL 문제 풀이를 통한 연습 문제 11 22/10/2021 SELECT MIN(DATETIME) FROM ANIMAL_INS; 문제 12 22/10/2021 SELECT COUNT(*) FROM ANIMAL_INS; 문제 13 22/10/2021 SELECT COUNT(DISTINCT NAME) FROM ANIMAL_INS; 문제 14 22/10/2021 SELECT ANIMAL_TYPE, COUNT(ANIMAL_TYPE) AS count FROM ANIMAL_INS GROUP BY ANIMAL_TYPE ORDER BY ANIMAL_TYPE ASC 문제 15...","categories": ["SQL"],
+        "tags": ["SQL"],
+        "url": "/sql/sql_practice_programmers(2)/",
         "teaser": null
       }]
