@@ -1,0 +1,27 @@
+I"�<hr />
+<h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
+<ul>
+  <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
+</ul>
+
+<hr />
+
+<h3 id="문제-21">문제 21</h3>
+<ul>
+  <li>24/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/coding_test/coding_test21.png" align="center" />
+</p>
+<p>def solution(seoul):
+    for i in range(len(seoul)):
+        if seoul[i] == “Kim”:
+            return “김서방은 “+ str(i)+”에 있다”</p>
+
+<h1 id="다른-사람의-좋은-풀이">다른 사람의 좋은 풀이</h1>
+<p>def solution(seoul):
+    return “김서방은 {}에 있다”.format(seoul.index(“Kim”))
+```</p>
+
+<hr />
+:ET

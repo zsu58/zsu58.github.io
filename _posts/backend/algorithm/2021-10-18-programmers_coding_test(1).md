@@ -21,7 +21,7 @@ tags:
 ### 문제 1
 * 18/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test1.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test1.png" align="center">
 </p>
 ```python
 def solution(x, n):
@@ -33,7 +33,7 @@ def solution(x, n):
 ### 문제 2
 * 18/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test2.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test2.png" align="center">
 </p>
 ```python
 def solution(arr1, arr2):
@@ -45,7 +45,7 @@ def solution(arr1, arr2):
 ### 문제 3
 * 18/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test3.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test3.png" align="center">
 </p>
 ```python
 a, b = map(int, input().strip().split(' '))
@@ -58,7 +58,7 @@ for _ in range(b):
 ### 문제 4
 * 19/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test4.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test4.png" align="center">
 </p>
 ```python
 def solution(phone_number):
@@ -70,7 +70,7 @@ def solution(phone_number):
 ### 문제 5
 * 19/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test5.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test5.png" align="center">
 </p>
 ```python
 def solution(x):
@@ -93,7 +93,7 @@ def solution(n):
 ### 문제 6
 * 19/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test6.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test6.png" align="center">
 </p>
 ```python
 def solution(arr):
@@ -106,7 +106,7 @@ def solution(arr):
 ### 문제 7
 * 19/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test7.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test7.png" align="center">
 </p>
 ```python
 def solution(num):
@@ -130,7 +130,7 @@ def solution(num):
 ### 문제 8
 * 19/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test8.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test8.png" align="center">
 </p>
 ```python
 def solution(n, m):
@@ -147,7 +147,7 @@ def solution(n, m):
 ### 문제 9
 * 20/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test9.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test9.png" align="center">
 </p>
 ```python
 def solution(num):
@@ -159,7 +159,7 @@ def solution(num):
 ### 문제 10
 * 20/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test10.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test10.png" align="center">
 </p>
 ```python
 def solution(arr):

@@ -21,7 +21,7 @@ tags:
 ### 문제 11
 * 21/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test11.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test11.png" align="center">
 </p>
 ```python
 from math import sqrt
@@ -43,7 +43,7 @@ def solution(n):
 ### 문제 12
 * 21/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test12.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test12.png" align="center">
 </p>
 ```python
 def solution(n):
@@ -66,7 +66,7 @@ def solution(n):
 ### 문제 13
 * 21/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test13.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test13.png" align="center">
 </p>
 ```python
 def solution(n):
@@ -86,7 +86,7 @@ def solution(n):s
 ### 문제 14
 * 21/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test14.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test14.png" align="center">
 </p>
 ```python
 def solution(n):
@@ -107,7 +107,7 @@ def solution(n):
 ### 문제 15
 * 21/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test15.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test15.png" align="center">
 </p>
 ```python
 def solution(s):
@@ -131,7 +131,7 @@ def solution(s):
 ### 문제 16
 * 21/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test16.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test16.png" align="center">
 </p>
 ```python
 def solution(n):
@@ -147,7 +147,7 @@ def solution(n):
 ### 문제 17
 * 21/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test17.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test17.png" align="center">
 </p>
 ```python
 def solution(s, n):
@@ -173,7 +173,7 @@ def solution(s, n):
 ### 문제 18
 * 22/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test18.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test18.png" align="center">
 </p>
 ```python
 def solution(s):
@@ -194,7 +194,7 @@ def solution(s):
 ### 문제 19
 * 22/10/2021
 <p align="center">
-    <img src="/img/coding_test/coding_test19.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test19.png" align="center">
 </p>
 ```python
 def solution(n):
@@ -203,6 +203,24 @@ def solution(n):
 def solution(s):
 def solution(n):
     return "수박"*(n//2) + "수"*(n%2)
+```
+
+---
+
+### 문제 20
+* 23/10/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test20.png" align="center">
+</p>
+```python
+# 다른 사람의 좋은 풀인
+def solution(n):
+    num=set(range(2,n+1))
+
+    for i in range(2,n+1):
+        if i in num:
+            num-=set(range(2*i,n+1,i))
+    return len(num)
 ```
 
 ---

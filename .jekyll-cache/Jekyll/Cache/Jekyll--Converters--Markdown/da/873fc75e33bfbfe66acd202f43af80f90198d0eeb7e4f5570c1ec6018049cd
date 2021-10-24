@@ -1,0 +1,469 @@
+I"�><hr />
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li>Creating and Visualizing DataFrames
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.plot()</code>
+        <ul>
+          <li>kind=”bar”/ “line”/ “scatter”</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">.hist()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">.legend()</code></li>
+    </ul>
+  </li>
+  <li>Missing data
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.isna()</code></li>
+    </ul>
+  </li>
+  <li>Read &amp; write dataframe
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">pd.read_csv()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">.to_csv()</code></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import data
+</span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"iris"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="plot">.plot()</h3>
+<ul>
+  <li>kind=”bar”</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">petal_len_by_species</span> <span class="o">=</span> <span class="n">iris</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"species"</span><span class="p">)[[</span><span class="s">"petal_length"</span><span class="p">]].</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">petal_len_by_species</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">"bar"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p align="center">
+    <img src="/img/programming/data_manipulation_with_pandas/output1.png" align="center" />
+</p>
+
+<ul>
+  <li>kind = “line”</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sp_wd_by_sp_len</span> <span class="o">=</span> <span class="n">iris</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"sepal_length"</span><span class="p">)[[</span><span class="s">"sepal_width"</span><span class="p">]].</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">sp_wd_by_sp_len</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p align="center">
+    <img src="/img/programming/data_manipulation_with_pandas/output2.png" align="center" />
+</p>
+
+<ul>
+  <li>kind = “scatter”</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"sepal_length"</span><span class="p">,</span>
+          <span class="n">y</span><span class="o">=</span><span class="s">"sepal_width"</span><span class="p">,</span>
+          <span class="n">kind</span><span class="o">=</span><span class="s">"scatter"</span><span class="p">,</span>
+          <span class="n">title</span><span class="o">=</span><span class="s">"Sepal length x Sepal width"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p align="center">
+    <img src="/img/programming/data_manipulation_with_pandas/output3.png" align="center" />
+</p>
+
+<hr />
+
+<h3 id="hist">.hist()</h3>
+<ul>
+  <li>pandas Series로 subsetting 한 경우 &lt;AxesSubplot:&gt;이 되어 2개의 그래프가 하나의 그래프로 표현될 수 있음</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">[</span><span class="n">iris</span><span class="p">.</span><span class="n">species</span><span class="o">==</span><span class="s">"setosa"</span><span class="p">][</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">iris</span><span class="p">[</span><span class="n">iris</span><span class="p">.</span><span class="n">species</span><span class="o">==</span><span class="s">"versicolor"</span><span class="p">][</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">([</span><span class="s">'setosa sepal length'</span><span class="p">,</span><span class="s">'versicolor sepal length'</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p align="center">
+    <img src="/img/programming/data_manipulation_with_pandas/output4.png" align="center" />
+</p>
+
+<hr />
+
+<h3 id="isna">isna()</h3>
+<ul>
+  <li>.any()</li>
+  <li>.sum()</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># column별 missing value 존재 유무 확인
+</span><span class="n">iris</span><span class="p">.</span><span class="n">isna</span><span class="p">().</span><span class="nb">any</span><span class="p">()</span>
+
+<span class="c1"># column별 missing value 개수 확인
+</span><span class="n">iris</span><span class="p">.</span><span class="n">isna</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sepal_length    0
+sepal_width     0
+petal_length    0
+petal_width     0
+species         0
+dtype: int64
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dropna">.dropna()</h3>
+<ul>
+  <li>결측값이 존재하는 row 삭제</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">.</span><span class="n">dropna</span><span class="p">().</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="fillna">.fillna()</h3>
+<ul>
+  <li>결측값 채워넣기</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="creating-dataframes">Creating dataframes</h3>
+<ul>
+  <li>1) from a dictionary of lists</li>
+  <li>2) from a list of dictionaries</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create a dictionary of lists with new data
+</span><span class="n">class_dict</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"class"</span><span class="p">:</span> <span class="p">[</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">],</span>
+  <span class="s">"number_of_students"</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">],</span>
+  <span class="s">"Teacher"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Kwon"</span><span class="p">,</span> <span class="s">"Park"</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">class_dict</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>class</th>
+      <th>number_of_students</th>
+      <th>Teacher</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>40</td>
+      <td>Kwon</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>38</td>
+      <td>Park</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">class_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s">"class"</span><span class="p">:</span> <span class="s">"A"</span><span class="p">,</span> <span class="s">"number_of_students"</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s">"Teacher"</span><span class="p">:</span><span class="s">"Kwon"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s">"class"</span><span class="p">:</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"number_of_students"</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span> <span class="s">"Teacher"</span><span class="p">:</span><span class="s">"Park"</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">class_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>class</th>
+      <th>number_of_students</th>
+      <th>Teacher</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>40</td>
+      <td>Kwon</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>38</td>
+      <td>Park</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="pdread_csv">pd.read_csv()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tp</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"temperatures.csv"</span><span class="p">)</span>
+<span class="n">tp</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>date</th>
+      <th>city</th>
+      <th>country</th>
+      <th>avg_temp_c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>2000-01-01</td>
+      <td>Abidjan</td>
+      <td>Côte D'Ivoire</td>
+      <td>27.293</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2000-02-01</td>
+      <td>Abidjan</td>
+      <td>Côte D'Ivoire</td>
+      <td>27.685</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2000-03-01</td>
+      <td>Abidjan</td>
+      <td>Côte D'Ivoire</td>
+      <td>29.061</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>2000-04-01</td>
+      <td>Abidjan</td>
+      <td>Côte D'Ivoire</td>
+      <td>28.162</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>2000-05-01</td>
+      <td>Abidjan</td>
+      <td>Côte D'Ivoire</td>
+      <td>27.547</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tp</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">"name_of_file.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+:ET

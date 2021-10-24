@@ -59,16 +59,16 @@ var store = [{
         "url": "/sql/sql2_2_outer_join/",
         "teaser": null
       },{
-        "title": "[Python] range & enumerate & map & numpy",
-        "excerpt":"Writing Efficient Python Code RANGE ENUMERATE MAP NUMPY range 1) range Create a new list of odd numbers from 1 to 11 by unpacking a range object num_list = [*range(1,12,2)] print(num_list) [1, 3, 5, 7, 9, 11] enumerate 2) enumerate names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman'] # method 1...","categories": ["PYTHON"],
-        "tags": ["PYTHON"],
-        "url": "/python/foundations_for_efficiencies/",
-        "teaser": null
-      },{
         "title": "[Python] Dplyr to Pandas",
         "excerpt":"dplyr to pandas # import data import seaborn as sns import pandas as pd import re iris_df = sns.load_dataset('iris') print(type(iris_df)) &lt;class 'pandas.core.frame.DataFrame'&gt; dplyr::mutate() # dplyr iris_df %&gt;% mutate(New_feature= Petal.Width*Petal.Length/2) # pandas iris_df[\"New_feature\"] = iris_df[\"petal_width\"] * iris_df[\"petal_length\"] / 2 dplyr::select() # dplyr iris_df %&gt;% select('sepal_length', 'sepal_width') # pandas iris_df[['sepal_length', 'sepal_width']] #...","categories": ["PYTHON"],
         "tags": ["PYTHON"],
         "url": "/python/dplyr_to_pandas/",
+        "teaser": null
+      },{
+        "title": "[Python] range & enumerate & map & numpy",
+        "excerpt":"Writing Efficient Python Code RANGE ENUMERATE MAP NUMPY range 1) range Create a new list of odd numbers from 1 to 11 by unpacking a range object num_list = [*range(1,12,2)] print(num_list) [1, 3, 5, 7, 9, 11] enumerate 2) enumerate names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman'] # method 1...","categories": ["PYTHON"],
+        "tags": ["PYTHON"],
+        "url": "/python/foundations_for_efficiencies/",
         "teaser": null
       },{
         "title": "[Python] %timeit & %lprun & %mprun",
@@ -339,5 +339,17 @@ var store = [{
         "excerpt":"SQL Übung - Programmers SQL 문제 풀이를 통한 연습 문제 11 22/10/2021 SELECT MIN(DATETIME) FROM ANIMAL_INS; 문제 12 22/10/2021 SELECT COUNT(*) FROM ANIMAL_INS; 문제 13 22/10/2021 SELECT COUNT(DISTINCT NAME) FROM ANIMAL_INS; 문제 14 22/10/2021 SELECT ANIMAL_TYPE, COUNT(ANIMAL_TYPE) AS count FROM ANIMAL_INS GROUP BY ANIMAL_TYPE ORDER BY ANIMAL_TYPE ASC 문제 15...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/sql_practice_programmers(2)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (3)",
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테 스트 연습 문제 21 24/10/2021 def solution(seoul): for i in range(len(seoul)): if seoul[i] == \"Kim\": return \"김서방은 \"+ str(i)+\"에 있다\" # 다른 사람의 좋은 풀이 def solution(seoul): return \"김서방은 {}에 있다\".format(seoul.index(\"Kim\")) 문제 22 24/10/2021 if len(s) == 4 or len(s)...","categories": ["ALGORITHM"],
+        "tags": ["BACKEND","ALGORITHM"],
+        "url": "/algorithm/programmers_coding_test(3)/",
+        "teaser": null
+      },{
+        "title": "[Python] Data manipulation with pandas(4)",
+        "excerpt":"Pandas Creating and Visualizing DataFrames .plot() kind=”bar”/ “line”/ “scatter” .hist() .legend() Missing data .isna() Read &amp; write dataframe pd.read_csv() .to_csv() # import data import seaborn as sns import pandas as pd import matplotlib.pyplot as plt iris = sns.load_dataset(\"iris\") .plot() kind=”bar” petal_len_by_species = iris.groupby(\"species\")[[\"petal_length\"]].mean() petal_len_by_species.plot(kind=\"bar\") plt.show() kind = “line” sp_wd_by_sp_len =...","categories": ["PYTHON"],
+        "tags": ["PYTHON"],
+        "url": "/python/creating_and_visualizing_dataframes/",
         "teaser": null
       }]
