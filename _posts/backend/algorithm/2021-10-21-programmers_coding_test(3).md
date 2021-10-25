@@ -65,3 +65,29 @@ def solution(s):
 ```
 
 ---
+
+### 문제 24
+* 25/10/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test24.png" align="center">
+</p>
+```python
+def solution(s):
+    num_p = 0
+    num_y = 0
+
+    for i in s.lower():
+        if i == 'p':
+            num_p += 1
+        elif i == 'y':
+            num_y += 1
+
+    if num_p == num_y:
+        return True
+    return False
+# 다른 사람의 좋은 풀이
+def solution(s):
+    return s.lower().count('p') == s.lower().count('y')
+```
+
+---
