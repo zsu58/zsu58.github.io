@@ -114,57 +114,57 @@ var store = [{
         "teaser": null
       },{
         "title": "[Algorithm] 시간 복잡도",
-        "excerpt":"ALGORITHM 시간 복잡도 - 알고리즘 평가 방법 List 시간 복잡도 인덱싱 - my_list[index] : O(1) 정렬 - my_list.sort() / sorted(my_list) : O(nlgn) 뒤집기 - my_list.reverse() : O(n) 탐색 - element in my_list : O(n) 끝에 요소 추가 - my_list.append(element) : O(1) 중간에 요소 추가 - my_list.insert(index, element) : O(n) 삭제...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/big_O_notation/",
+        "excerpt":"ALGORITHM 시간 복잡도 - 알고리즘 평가 방법 List 시간 복잡도 인덱싱 - my_list[index] : O(1) 정렬 - my_list.sort() / sorted(my_list) : O(nlgn) 뒤집기 - my_list.reverse() : O(n) 탐색 - element in my_list : O(n) 끝에 요소 추가 - my_list.append(element) : O(1) 중간에 요소 추가 - my_list.insert(index, element) : O(n) 삭제...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/big_O_notation/",
         "teaser": null
       },{
         "title": "[Algorithm] 선형 탐색",
-        "excerpt":"ALGORITHM 알고리즘 정리(1) 선형 배열 def linear_search(element, some_list): for i in range(len(some_list)): if element == some_list[i]: return i return None print(linear_search(2, [2, 3, 5, 7, 11])) print(linear_search(0, [2, 3, 5, 7, 11])) print(linear_search(5, [2, 3, 5, 7, 11])) print(linear_search(3, [2, 3, 5, 7, 11])) print(linear_search(11, [2, 3, 5, 7, 11]))...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm1_linear_search/",
+        "excerpt":"ALGORITHM 알고리즘 정리(1) 선형 배열 def linear_search(element, some_list): for i in range(len(some_list)): if element == some_list[i]: return i return None print(linear_search(2, [2, 3, 5, 7, 11])) print(linear_search(0, [2, 3, 5, 7, 11])) print(linear_search(5, [2, 3, 5, 7, 11])) print(linear_search(3, [2, 3, 5, 7, 11])) print(linear_search(11, [2, 3, 5, 7, 11]))...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm1_linear_search/",
         "teaser": null
       },{
         "title": "[Algorithm] 이진 탐색",
-        "excerpt":"ALGORITHM 알고리즘 정리(2) 이진 배열 def binary_search(element, some_list): min_index = 0 max_index = len(some_list) - 1 while max_index &gt;= min_index: index = (min_index + max_index)//2 if some_list[index] == element: return index elif some_list[index] &gt; element: max_index = index - 1 else: min_index = index + 1 return None print(binary_search(2, [2,...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm2_binary_search/",
+        "excerpt":"ALGORITHM 알고리즘 정리(2) 이진 배열 def binary_search(element, some_list): min_index = 0 max_index = len(some_list) - 1 while max_index &gt;= min_index: index = (min_index + max_index)//2 if some_list[index] == element: return index elif some_list[index] &gt; element: max_index = index - 1 else: min_index = index + 1 return None print(binary_search(2, [2,...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm2_binary_search/",
         "teaser": null
       },{
         "title": "[Algorithm] 팩토리얼 - 재귀함수",
-        "excerpt":" ALGORITHM     알고리즘 정리(3)   재귀함수(1)            핵심 : base case와 recursive case 찾기             팩토리얼 - 재귀함수   def factorial(n):     if n == 0:         return 1     return factorial(n-1) * n  print(factorial(5))   120   ","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm3_factorial/",
+        "excerpt":" ALGORITHM     알고리즘 정리(3)   재귀함수(1)            핵심 : base case와 recursive case 찾기             팩토리얼 - 재귀함수   def factorial(n):     if n == 0:         return 1     return factorial(n-1) * n  print(factorial(5))   120   ","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm3_factorial/",
         "teaser": null
       },{
         "title": "[Algorithm] 피보나치 수열 - 재귀함수",
-        "excerpt":" ALGORITHM     알고리즘 정리(4)   재귀함수(2)            핵심 : base case와 recursive case 찾기             피보나치 수열 - 재귀함수   def fib(n):     if n &lt; 3:         return 1     return fib(n-1) + fib(n-2)  for i in range(1, 11):     print(fib(i))     # 시간 복잡도 : O(2^n)   1 1 2 3 5 8 13 21 34 55   ","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm4_fibonacci/",
+        "excerpt":" ALGORITHM     알고리즘 정리(4)   재귀함수(2)            핵심 : base case와 recursive case 찾기             피보나치 수열 - 재귀함수   def fib(n):     if n &lt; 3:         return 1     return fib(n-1) + fib(n-2)  for i in range(1, 11):     print(fib(i))     # 시간 복잡도 : O(2^n)   1 1 2 3 5 8 13 21 34 55   ","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm4_fibonacci/",
         "teaser": null
       },{
         "title": "[Algorithm] 자리수 합 - 재귀함수",
-        "excerpt":" ALGORITHM     알고리즘 정리(5)   재귀함수(3)            핵심 : base case와 recursive case 찾기             자리수 합 - 재귀함수   def sum_digits(n):     if n &lt; 10:         return n     return n % 10 + sum_digits(n // 10)  print(sum_digits(22541)) print(sum_digits(92130)) print(sum_digits(12634)) print(sum_digits(704)) print(sum_digits(3755)) # 시간 복잡도 : O(d)   14 15 16 11 20   ","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm5_digit_sum/",
+        "excerpt":" ALGORITHM     알고리즘 정리(5)   재귀함수(3)            핵심 : base case와 recursive case 찾기             자리수 합 - 재귀함수   def sum_digits(n):     if n &lt; 10:         return n     return n % 10 + sum_digits(n // 10)  print(sum_digits(22541)) print(sum_digits(92130)) print(sum_digits(12634)) print(sum_digits(704)) print(sum_digits(3755)) # 시간 복잡도 : O(d)   14 15 16 11 20   ","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm5_digit_sum/",
         "teaser": null
       },{
         "title": "[Algorithm] 리스트 뒤집기 - 재귀함수",
-        "excerpt":"ALGORITHM 알고리즘 정리(6) 재귀함수(4) 핵심 : base case와 recursive case 찾기 리스트 뒤집기 - 재귀함수 def flip(some_list): if (len(some_list)) == 0 or len(some_list) == 1: return some_list return some_list[-1:] + flip(some_list[:-1]) some_list = [1, 2, 3, 4, 5, 6, 7, 8, 9] some_list = flip(some_list) print(some_list) # 시간 복잡도 :...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm6_flip_list/",
+        "excerpt":"ALGORITHM 알고리즘 정리(6) 재귀함수(4) 핵심 : base case와 recursive case 찾기 리스트 뒤집기 - 재귀함수 def flip(some_list): if (len(some_list)) == 0 or len(some_list) == 1: return some_list return some_list[-1:] + flip(some_list[:-1]) some_list = [1, 2, 3, 4, 5, 6, 7, 8, 9] some_list = flip(some_list) print(some_list) # 시간 복잡도 :...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm6_flip_list/",
         "teaser": null
       },{
         "title": "[Algorithm] 이진 탐색 - 재귀함수",
-        "excerpt":"ALGORITHM 알고리즘 정리(7) 재귀함수(5) 핵심 : base case와 recursive case 찾기 이진 탐색 - 재귀함수 def binary_search(element, some_list, start_index=0, end_index=None): if end_index == None: end_index = len(some_list) - 1 if start_index &gt; end_index: return None search_index = (start_index + end_index) // 2 if some_list[search_index] == element: return search_index if element...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm7_binary_search_recursive/",
+        "excerpt":"ALGORITHM 알고리즘 정리(7) 재귀함수(5) 핵심 : base case와 recursive case 찾기 이진 탐색 - 재귀함수 def binary_search(element, some_list, start_index=0, end_index=None): if end_index == None: end_index = len(some_list) - 1 if start_index &gt; end_index: return None search_index = (start_index + end_index) // 2 if some_list[search_index] == element: return search_index if element...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm7_binary_search_recursive/",
         "teaser": null
       },{
         "title": "[Algorithm] 하노이의 탑 - 재귀함수",
-        "excerpt":"ALGORITHM 알고리즘 정리(8) 재귀함수(6) 핵심 : base case와 recursive case 찾기 하노이의 탑 - 재귀함수 def move_disk(disk_num, start_peg, end_peg): print(\"%d번 원판을 %d번 기둥에서 %d번 기둥으로 이동\" % (disk_num, start_peg, end_peg)) def hanoi(num_disks, start_peg, end_peg): other_peg = 6 - start_peg - end_peg if num_disks == 0: return else: hanoi(num_disks-1, start_peg, other_peg)...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm8_hanoi/",
+        "excerpt":"ALGORITHM 알고리즘 정리(8) 재귀함수(6) 핵심 : base case와 recursive case 찾기 하노이의 탑 - 재귀함수 def move_disk(disk_num, start_peg, end_peg): print(\"%d번 원판을 %d번 기둥에서 %d번 기둥으로 이동\" % (disk_num, start_peg, end_peg)) def hanoi(num_disks, start_peg, end_peg): other_peg = 6 - start_peg - end_peg if num_disks == 0: return else: hanoi(num_disks-1, start_peg, other_peg)...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm8_hanoi/",
         "teaser": null
       },{
         "title": "[Django] Template & View",
@@ -186,87 +186,87 @@ var store = [{
         "teaser": null
       },{
         "title": "[Algorithm] 카드 조합 최대값 - 무차별 대입",
-        "excerpt":"ALGORITHM 알고리즘 정리(9) Brute Force(1) 카드 조합 최대값 def max_product(left_cards, right_cards): max_product = left_cards[0] * right_cards[0] for left in left_cards: for right in right_cards: max_product = max(max_product, left * right) return max_product print(max_product([1, 6, 5], [4, 2, 3])) print(max_product([1, -9, 3, 4], [2, 8, 3, 1])) print(max_product([-1, -7, 3], [-4,...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm9_max_card_combination/",
+        "excerpt":"ALGORITHM 알고리즘 정리(9) Brute Force(1) 카드 조합 최대값 def max_product(left_cards, right_cards): max_product = left_cards[0] * right_cards[0] for left in left_cards: for right in right_cards: max_product = max(max_product, left * right) return max_product print(max_product([1, 6, 5], [4, 2, 3])) print(max_product([1, -9, 3, 4], [2, 8, 3, 1])) print(max_product([-1, -7, 3], [-4,...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm9_max_card_combination/",
         "teaser": null
       },{
         "title": "[Algorithm] 좌표 간 가까운 거리 - 무차별 대입",
-        "excerpt":"ALGORITHM 알고리즘 정리(10) Brute Force(2) 좌표 간 가까운 거리 from math import sqrt def distance(store1, store2): return sqrt((store1[0] - store2[0]) ** 2 + (store1[1] - store2[1]) ** 2) def closest_pair(coordinates): pair = [coordinates[0], coordinates[1]] for i in range(len(coordinates) - 1): for j in range(i + 1, len(coordinates)): store1, store2 =...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm10_closest_coordinate/",
+        "excerpt":"ALGORITHM 알고리즘 정리(10) Brute Force(2) 좌표 간 가까운 거리 from math import sqrt def distance(store1, store2): return sqrt((store1[0] - store2[0]) ** 2 + (store1[1] - store2[1]) ** 2) def closest_pair(coordinates): pair = [coordinates[0], coordinates[1]] for i in range(len(coordinates) - 1): for j in range(i + 1, len(coordinates)): store1, store2 =...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm10_closest_coordinate/",
         "teaser": null
       },{
         "title": "[Algorithm] 벽 사이 빗물 최대량 - 무차별 대입",
-        "excerpt":"ALGORITHM 알고리즘 정리(11) Brute Force(3) 벽 사이 빗물 최대량 def trapping_rain(buildings): total_height = 0 for i in range(1, len(buildings) - 1): max_left = max(buildings[:i]) max_right = max(buildings[i:]) upper_bound = min(max_left, max_right) total_height += max(0, upper_bound - buildings[i]) return total_height print(trapping_rain([0, 3, 0, 0, 2, 0, 4])) print(trapping_rain([0, 1, 0, 2,...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm11_btw_wall_trapped_rain/",
+        "excerpt":"ALGORITHM 알고리즘 정리(11) Brute Force(3) 벽 사이 빗물 최대량 def trapping_rain(buildings): total_height = 0 for i in range(1, len(buildings) - 1): max_left = max(buildings[:i]) max_right = max(buildings[i:]) upper_bound = min(max_left, max_right) total_height += max(0, upper_bound - buildings[i]) return total_height print(trapping_rain([0, 3, 0, 0, 2, 0, 4])) print(trapping_rain([0, 1, 0, 2,...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm11_btw_wall_trapped_rain/",
         "teaser": null
       },{
         "title": "[Algorithm] 첫 번째 숫자부터 마지막 숫자까지 합 - 분할정복",
-        "excerpt":" ALGORITHM     알고리즘 정리(12)   Divide and Conquer(1)            핵심 divide/ conquer/ combine             1부터 n까지의 합   def consecutive_sum(start, end):     # 코드를 작성하세요     if start == end:         return start     else:         return consecutive_sum(start, (start+end)//2) + consecutive_sum((start+end)//2+1, end)  # 테스트 print(consecutive_sum(1, 10)) print(consecutive_sum(1, 100)) print(consecutive_sum(1, 253)) print(consecutive_sum(1, 388))   55 5050 32131 75466   ","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm12_sum_start_to_end/",
+        "excerpt":" ALGORITHM     알고리즘 정리(12)   Divide and Conquer(1)            핵심 divide/ conquer/ combine             1부터 n까지의 합   def consecutive_sum(start, end):     # 코드를 작성하세요     if start == end:         return start     else:         return consecutive_sum(start, (start+end)//2) + consecutive_sum((start+end)//2+1, end)  # 테스트 print(consecutive_sum(1, 10)) print(consecutive_sum(1, 100)) print(consecutive_sum(1, 253)) print(consecutive_sum(1, 388))   55 5050 32131 75466   ","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm12_sum_start_to_end/",
         "teaser": null
       },{
         "title": "[Algorithm] 합병 정렬 - 분할정복",
-        "excerpt":"ALGORITHM 알고리즘 정리(13) Divide and Conquer(2) 핵심 divide/ conquer/ combine 합병 정렬의 경우 divide, conquer이 간단, combine이 복잡 합병 정렬 # combine def merge(list1, list2): i = 0 j = 0 merged_list = [] while i &lt; len(list1) and j &lt; len(list2): if list1[i] &gt; list2[j]: merged_list.append(list2[j]) j += 1...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm13_merge_sort/",
+        "excerpt":"ALGORITHM 알고리즘 정리(13) Divide and Conquer(2) 핵심 divide/ conquer/ combine 합병 정렬의 경우 divide, conquer이 간단, combine이 복잡 합병 정렬 # combine def merge(list1, list2): i = 0 j = 0 merged_list = [] while i &lt; len(list1) and j &lt; len(list2): if list1[i] &gt; list2[j]: merged_list.append(list2[j]) j += 1...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm13_merge_sort/",
         "teaser": null
       },{
         "title": "[Algorithm] 퀵 정렬 - 분할정복",
-        "excerpt":"ALGORITHM 알고리즘 정리(14) Divide and Conquer(3) 핵심 divide/ conquer/ combine 퀵 정렬 퀵 정렬의 경우 conquer, combine이 간단, divide가 복잡 Divide: partition 과정을 통해, pivot을 기준으로 리스트를 나눈다. Conquer: pivot 왼쪽 부분과 pivot 오른쪽 부분을 각각 quicksort 함수로 정렬한다. Combine: 따로 할 게 없다! # partition 함수 def swap_elements(my_list, index1,...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm14_quick_sort/",
+        "excerpt":"ALGORITHM 알고리즘 정리(14) Divide and Conquer(3) 핵심 divide/ conquer/ combine 퀵 정렬 퀵 정렬의 경우 conquer, combine이 간단, divide가 복잡 Divide: partition 과정을 통해, pivot을 기준으로 리스트를 나눈다. Conquer: pivot 왼쪽 부분과 pivot 오른쪽 부분을 각각 quicksort 함수로 정렬한다. Combine: 따로 할 게 없다! # partition 함수 def swap_elements(my_list, index1,...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm14_quick_sort/",
         "teaser": null
       },{
-        "title": "[Algorithm] 피보나치 수열 - Memoization",
-        "excerpt":"ALGORITHM 알고리즘 정리(15) Dynamic Programming이 필요한 경우 최적 부분 구조가 있음 중복되는 부분 문제들이 있음 Dyanmic Programming은 2가지 종류가 존재 Memoization 재귀를 사용 장점: 모든 경우를 다 계산할 필요 없음 단점: call stack이 계속 쌓임 Tabulation 반복을 사용 장점: call stack이 쌓이지 않음 단점: 모든 경우를 다 계산함 Memoization Fibonacci...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm15_memoization/",
+        "title": "[Algorithm] 피보나치 수열 - Dynamic Programming(Memoization)",
+        "excerpt":"ALGORITHM 알고리즘 정리(15) Dynamic Programming이 필요한 경우 최적 부분 구조가 있음 중복되는 부분 문제들이 있음 Dyanmic Programming은 2가지 종류가 존재 Memoization 재귀를 사용 장점: 모든 경우를 다 계산할 필요 없음 단점: call stack이 계속 쌓임 Tabulation 반복을 사용 장점: call stack이 쌓이지 않음 단점: 모든 경우를 다 계산함 Memoization Fibonacci...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm15_memoization/",
         "teaser": null
       },{
-        "title": "[Algorithm] 피보나치 수열 - Tabulation",
-        "excerpt":"ALGORITHM 알고리즘 정리(16) Dynamic Programming이 필요한 경우 최적 부분 구조가 있음 중복되는 부분 문제들이 있음 Dyanmic Programming은 2가지 종류가 존재 Memoization 재귀를 사용 장점: 모든 경우를 다 계산할 필요 없음 단점: call stack이 계속 쌓임 Tabulation 반복을 사용 장점: call stack이 쌓이지 않음 단점: 모든 경우를 다 계산함 Tabulation Fibonacci...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm16_tabulation/",
+        "title": "[Algorithm] 피보나치 수열 - Dynamic Programming(Tabulation)",
+        "excerpt":"ALGORITHM 알고리즘 정리(16) Dynamic Programming이 필요한 경우 최적 부분 구조가 있음 중복되는 부분 문제들이 있음 Dyanmic Programming은 2가지 종류가 존재 Memoization 재귀를 사용 장점: 모든 경우를 다 계산할 필요 없음 단점: call stack이 계속 쌓임 Tabulation 반복을 사용 장점: call stack이 쌓이지 않음 단점: 모든 경우를 다 계산함 Tabulation Fibonacci...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm16_tabulation/",
         "teaser": null
       },{
         "title": "[Algorithm] 최대 수익 - Dynamic Programming(Memoization & Tabulation)",
-        "excerpt":"ALGORITHM 알고리즘 정리(17) Dynamic Programming이 필요한 경우 최적 부분 구조가 있음 중복되는 부분 문제들이 있음 Dyanmic Programming은 2가지 종류가 존재 Memoization 재귀를 사용 장점: 모든 경우를 다 계산할 필요 없음 단점: call stack이 계속 쌓임 Tabulation 반복을 사용 장점: call stack이 쌓이지 않음 단점: 모든 경우를 다 계산함 문제 솔희는...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm17_secomdalcom_dynamic_programming/",
+        "excerpt":"ALGORITHM 알고리즘 정리(17) Dynamic Programming이 필요한 경우 최적 부분 구조가 있음 중복되는 부분 문제들이 있음 Dyanmic Programming은 2가지 종류가 존재 Memoization 재귀를 사용 장점: 모든 경우를 다 계산할 필요 없음 단점: call stack이 계속 쌓임 Tabulation 반복을 사용 장점: call stack이 쌓이지 않음 단점: 모든 경우를 다 계산함 문제 솔희는...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm17_secomdalcom_dynamic_programming/",
         "teaser": null
       },{
         "title": "[Algorithm] 최대 수익 - Greedy Alogirthm",
-        "excerpt":"ALGORITHM 알고리즘 정리(18) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 최소의 동전 개수로 거슬러주기 def min_coin_count(value, coin_list): count...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm18_return_coin_greedy_algorithm/",
+        "excerpt":"ALGORITHM 알고리즘 정리(18) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 최소의 동전 개수로 거슬러주기 def min_coin_count(value, coin_list): count...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm18_return_coin_greedy_algorithm/",
         "teaser": null
       },{
         "title": "[Algorithm] 최대 곱 구하기 - Greedy Alogirthm",
-        "excerpt":"ALGORITHM 알고리즘 정리(19) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 여러 명이 카드 게임을 하는 상황에서 각 플레이어는...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm19_max_card_combination_greedy_algorithm/",
+        "excerpt":"ALGORITHM 알고리즘 정리(19) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 여러 명이 카드 게임을 하는 상황에서 각 플레이어는...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm19_max_card_combination_greedy_algorithm/",
         "teaser": null
       },{
         "title": "[Algorithm] 벌금 최소화하기 - Greedy Alogirthm",
-        "excerpt":"ALGORITHM 알고리즘 정리(20) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 스터디 약속시간에 늦으면 1분에 1달러씩 내야 하는 벌금...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm20_minimize_late_penalty_greedy_algorithm/",
+        "excerpt":"ALGORITHM 알고리즘 정리(20) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 스터디 약속시간에 늦으면 1분에 1달러씩 내야 하는 벌금...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm20_minimize_late_penalty_greedy_algorithm/",
         "teaser": null
       },{
         "title": "[Algorithm] 수업을 최대로 많이 듣는 수강 신청 - Greedy Alogirthm",
-        "excerpt":"ALGORITHM 알고리즘 정리(21) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 리스트에 담겨있는 튜플들은 각각 하나의 수업을 나타내며, 각...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm21_maximum_class_greedy_algorithm/",
+        "excerpt":"ALGORITHM 알고리즘 정리(21) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 리스트에 담겨있는 튜플들은 각각 하나의 수업을 나타내며, 각...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm21_maximum_class_greedy_algorithm/",
         "teaser": null
       },{
         "title": "[Algorithm] 최대 이익 구간 - Brute Force",
-        "excerpt":"ALGORITHM 알고리즘 정리(22) Brute Force Brute Force 리스트에는 며칠 동안의 수익이 담겨 있습니다. 예를 들어서 [7, -3, 4, -8]이라면 첫 날에는 7달러를 벌었고, 둘째 날에는 3달러를 잃었고, 셋째 날에는 4달러를 벌었고, 마지막 날에는 8달러를 잃은 것입니다. profits를 파라미터로 받아, 최대 수익을 내는 구간의 수익을 리턴 sublist_max 함수를 구현하시오. def sublist_max(profits):...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm22_maximum_profits_brute_force/",
+        "excerpt":"ALGORITHM 알고리즘 정리(22) Brute Force Brute Force 리스트에는 며칠 동안의 수익이 담겨 있습니다. 예를 들어서 [7, -3, 4, -8]이라면 첫 날에는 7달러를 벌었고, 둘째 날에는 3달러를 잃었고, 셋째 날에는 4달러를 벌었고, 마지막 날에는 8달러를 잃은 것입니다. profits를 파라미터로 받아, 최대 수익을 내는 구간의 수익을 리턴 sublist_max 함수를 구현하시오. def sublist_max(profits):...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm22_maximum_profits_brute_force/",
         "teaser": null
       },{
         "title": "[SQL] Programmers SQL 연습문제 (1)",
@@ -276,9 +276,9 @@ var store = [{
         "teaser": null
       },{
         "title": "[Algorithm] 거듭제곱 - Dynamic Programming",
-        "excerpt":"ALGORITHM 알고리즘 정리(23) Dyanmic Programming Dynamic Programming 거듭제곱의 경우 for 문을 돌릴 경우 시간복잡도 O(n)이 나옴 시간복잡도가 O(lgn)이 되는 함수를 구현하시오. def power(x, y): if y == 0: return 1 subresult = power(x, y // 2) if y % 2 == 0: return subresult * subresult else: return x *...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm23_powers_dynamic_programming/",
+        "excerpt":"ALGORITHM 알고리즘 정리(23) Dyanmic Programming Dynamic Programming 거듭제곱의 경우 for 문을 돌릴 경우 시간복잡도 O(n)이 나옴 시간복잡도가 O(lgn)이 되는 함수를 구현하시오. def power(x, y): if y == 0: return 1 subresult = power(x, y // 2) if y % 2 == 0: return subresult * subresult else: return x *...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm23_powers_dynamic_programming/",
         "teaser": null
       },{
         "title": "[SQL] UNION & INTER & EXCEPT",
@@ -288,9 +288,9 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (1)",
-        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 1 18/10/2021 def solution(x, n): return [x + x*i for i in range(n)] 문제 2 18/10/2021 def solution(arr1, arr2): return [[sum(j) for j in zip(*i)] for i in zip(arr1, arr2)] 문제 3 18/10/2021 a, b = map(int, input().strip().split('...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/programmers_coding_test(1)/",
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 1 18/10/2021 def solution(x, n): return [x + x*i for i in range(n)] 문제 2 18/10/2021 def solution(arr1, arr2): return [[sum(j) for j in zip(*i)] for i in zip(arr1, arr2)] 문제 3 18/10/2021 a, b = map(int, input().strip().split('...","categories": ["PROGRAMMERS"],
+        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "url": "/programmers/programmers_coding_test(1)/",
         "teaser": null
       },{
         "title": "[SQL] Subquery",
@@ -312,15 +312,15 @@ var store = [{
         "teaser": null
       },{
         "title": "[Algorithm] 최소한의 약수터 방문 - Greedy Algorithm",
-        "excerpt":"ALGORITHM 알고리즘 정리(24) Greedy Algorithm Greedy Algorithm 등산을 하는 상황에서, 등산가는 1km에 1L씩 물을 꼭 마셔야함 파라미터로 약수터의 위치 리스트(단위: Km)와 물통 용량(단위: L)을 줄 때, 최소한의 약수터를 들리는 함수를 구현하시오. 단, 탈수로 인해 정상에 도달하지 못하는 경우는 없으며, 약수터에 갈 때마다 최대 용량으로 물통을 채움 또한 마지막 정상의 약수터는...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm24_minimum_mineral_spring/",
+        "excerpt":"ALGORITHM 알고리즘 정리(24) Greedy Algorithm Greedy Algorithm 등산을 하는 상황에서, 등산가는 1km에 1L씩 물을 꼭 마셔야함 파라미터로 약수터의 위치 리스트(단위: Km)와 물통 용량(단위: L)을 줄 때, 최소한의 약수터를 들리는 함수를 구현하시오. 단, 탈수로 인해 정상에 도달하지 못하는 경우는 없으며, 약수터에 갈 때마다 최대 용량으로 물통을 채움 또한 마지막 정상의 약수터는...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm24_minimum_mineral_spring/",
         "teaser": null
       },{
         "title": "[Algorithm] 효율적으로 중복되는 숫자 찾기",
-        "excerpt":"ALGORITHM 알고리즘 정리(25) Algorithm (N + 1)의 크기인 리스트에, 1부터 N까지의 임의의 자연수가 요소로 할당되어 있어, 중복되는 숫자가 최소 1개가 존재 중복되는 어느 숫자 ‘하나’를 가장 효율적으로 찾아 리턴하는 함수를 구현하시오. def find_same_number(some_list): ele_dict = {} for ele in some_list: if ele in ele_dict: return ele ele_dict[ele] = True print(find_same_number([1,...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/algorithm25_find_duplicated/",
+        "excerpt":"ALGORITHM 알고리즘 정리(25) Algorithm (N + 1)의 크기인 리스트에, 1부터 N까지의 임의의 자연수가 요소로 할당되어 있어, 중복되는 숫자가 최소 1개가 존재 중복되는 어느 숫자 ‘하나’를 가장 효율적으로 찾아 리턴하는 함수를 구현하시오. def find_same_number(some_list): ele_dict = {} for ele in some_list: if ele in ele_dict: return ele ele_dict[ele] = True print(find_same_number([1,...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm25_find_duplicated/",
         "teaser": null
       },{
         "title": "[Python] Data manipulation with pandas(3)",
@@ -330,9 +330,9 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (2)",
-        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 11 21/10/2021 from math import sqrt def solution(n): return int((sqrt(n)+1)**2) if sqrt(n) == int(sqrt(n)) else -1 # 다른 사람의 좋은 풀이 def solution(n): sqrt = n ** (1/2) if sqrt % 1 == 0: return (sqrt + 1)...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/programmers_coding_test(2)/",
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 11 21/10/2021 from math import sqrt def solution(n): return int((sqrt(n)+1)**2) if sqrt(n) == int(sqrt(n)) else -1 # 다른 사람의 좋은 풀이 def solution(n): sqrt = n ** (1/2) if sqrt % 1 == 0: return (sqrt + 1)...","categories": ["PROGRAMMERS"],
+        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "url": "/programmers/programmers_coding_test(2)/",
         "teaser": null
       },{
         "title": "[SQL] Programmers SQL 연습문제 (2)",
@@ -342,14 +342,20 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (3)",
-        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테 스트 연습 문제 21 24/10/2021 def solution(seoul): for i in range(len(seoul)): if seoul[i] == \"Kim\": return \"김서방은 \"+ str(i)+\"에 있다\" # 다른 사람의 좋은 풀이 def solution(seoul): return \"김서방은 {}에 있다\".format(seoul.index(\"Kim\")) 문제 22 24/10/2021 if len(s) == 4 or len(s)...","categories": ["ALGORITHM"],
-        "tags": ["BACKEND","ALGORITHM"],
-        "url": "/algorithm/programmers_coding_test(3)/",
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 21 24/10/2021 def solution(seoul): for i in range(len(seoul)): if seoul[i] == \"Kim\": return \"김서방은 \"+ str(i)+\"에 있다\" # 다른 사람의 좋은 풀이 def solution(seoul): return \"김서방은 {}에 있다\".format(seoul.index(\"Kim\")) 문제 22 24/10/2021 if len(s) == 4 or len(s) ==...","categories": ["PROGRAMMERS"],
+        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "url": "/programmers/programmers_coding_test(3)/",
         "teaser": null
       },{
         "title": "[Python] Data manipulation with pandas(4)",
         "excerpt":"Pandas Creating and Visualizing DataFrames .plot() kind=”bar”/ “line”/ “scatter” .hist() .legend() Missing data .isna() Read &amp; write dataframe pd.read_csv() .to_csv() # import data import seaborn as sns import pandas as pd import matplotlib.pyplot as plt iris = sns.load_dataset(\"iris\") .plot() kind=”bar” petal_len_by_species = iris.groupby(\"species\")[[\"petal_length\"]].mean() petal_len_by_species.plot(kind=\"bar\") plt.show() kind = “line” sp_wd_by_sp_len =...","categories": ["PYTHON"],
         "tags": ["PYTHON"],
         "url": "/python/creating_and_visualizing_dataframes/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 1725",
+        "excerpt":" ALGORITHM Übung - LeetCode     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제  문제 링크   코드  class Solution(object):     def countGoodRectangles(self, rectangles):         rect_list = [min(rectangle) for rectangle in range(rectangles)]         maxLen = max(rect_list)          result = 0         return sum([i for i in rect_list if maxLen == i])     ","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_recursion1/",
         "teaser": null
       }]

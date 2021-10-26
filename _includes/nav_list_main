@@ -30,17 +30,39 @@
                 {% endfor %}
             </ul>
         <span class="nav__sub-title">Back-end</span>
-            <ul>
+            {% comment %} <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "ALGORITHM" %}
                         <li><a href="/categories/algorithm" class="">Algorithm - Python ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
-            </ul>
+            </ul> {% endcomment %}
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "DJANGO" %}
                         <li><a href="/categories/django" class="">Django ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Algorithm</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "CODEIT" %}
+                        <li><a href="/categories/codeit" class="">Codeit ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "LEETCODE" %}
+                        <li><a href="/categories/leetcode" class="">LeetCode ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "PROGRAMMERS" %}
+                        <li><a href="/categories/programmers" class="">Programmers ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

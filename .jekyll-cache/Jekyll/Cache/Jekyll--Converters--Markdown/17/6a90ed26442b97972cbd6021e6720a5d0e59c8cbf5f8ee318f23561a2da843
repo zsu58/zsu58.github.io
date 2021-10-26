@@ -1,0 +1,24 @@
+I"8<hr />
+<h3 id="algorithm-übung---leetcode">ALGORITHM Übung - LeetCode</h3>
+<ul>
+  <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
+</ul>
+
+<hr />
+
+<h3 id="문제">문제</h3>
+<p><a href="https://leetcode.com/problems/number-of-rectangles-that-can-form-the-largest-square/">문제 링크</a></p>
+
+<h3 id="코드">코드</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">countGoodRectangles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rectangles</span><span class="p">):</span>
+        <span class="n">rect_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">rectangle</span><span class="p">)</span> <span class="k">for</span> <span class="n">rectangle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rectangles</span><span class="p">)]</span>
+        <span class="n">maxLen</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">rect_list</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rect_list</span> <span class="k">if</span> <span class="n">maxLen</span> <span class="o">==</span> <span class="n">i</span><span class="p">])</span>
+</code></pre></div></div>
+
+<hr />
+
+:ET
