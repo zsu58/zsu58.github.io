@@ -29,14 +29,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Back-end</span>
-            {% comment %} <ul>
+            <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "ALGORITHM" %}
-                        <li><a href="/categories/algorithm" class="">Algorithm - Python ({{category[1].size}})</a></li>
+                    {% if category[0] == "DOCKER" %}
+                        <li><a href="/categories/docker" class="">Docker ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
-            </ul> {% endcomment %}
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "DJANGO" %}

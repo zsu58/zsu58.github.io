@@ -281,6 +281,12 @@ var store = [{
         "url": "/codeit/algorithm23_powers_dynamic_programming/",
         "teaser": null
       },{
+        "title": "[Docker] Docker 명령어",
+        "excerpt":"Docker Docker 관련 명령어 정리 Docker 관련 명령어 # 로그인 docker login # image 설치는 docker hub에 접속해서 설치를 희망하는 image의 명령어(pull)를 사용하면 됨 docker pull mysql # 설치되어 있는 이미지 보기 docker images # 컨테이너 생성 (docker run --name [name_of_container] [image]) docker run --name ws2 httpd # 기존의 존재하는...","categories": ["DOCKER"],
+        "tags": ["CLI","BACKEND","DOCKER"],
+        "url": "/docker/docker1/",
+        "teaser": null
+      },{
         "title": "[SQL] UNION & INTER & EXCEPT",
         "excerpt":"SQL Übung SQL JOIN 문법 정리(3) UNION을 통해 두 데이터 간 합집함을 가져올 수 있음 중복되는 데이터는 한 개만 포함됨 UNION되는 데이터 세트의 열 개수가 같아야 함 UNION되는 데이터들의 열의 자료형이 같아야 함 UNION ALL을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음 중복된 데이터는 2개가 존재 INTER을...","categories": ["SQL"],
         "tags": ["SQL"],
@@ -353,9 +359,15 @@ var store = [{
         "url": "/python/creating_and_visualizing_dataframes/",
         "teaser": null
       },{
-        "title": "[ALGORITHM] LeetCode 1725",
+        "title": "[ALGORITHM] LeetCode 1725. Number Of Rectangles That Can Form The Largest Square",
         "excerpt":" ALGORITHM Übung - LeetCode     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제  문제 링크   코드  class Solution(object):     def countGoodRectangles(self, rectangles):         rect_list = [min(rectangle) for rectangle in range(rectangles)]         maxLen = max(rect_list)          result = 0         return sum([i for i in rect_list if maxLen == i])     ","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
-        "url": "/leetcode/leetcode_recursion1/",
+        "url": "/leetcode/leetcode_recursion1-copy/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 1. Two Sum",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 문제 링크 코드 # 풀이1 - Brute Force class Solution(object): def twoSum(self, nums, target): \"\"\" :type nums: List[int] :type target: int :rtype: List[int] \"\"\" for i in range(len(nums)): for j in range(i+1,len(nums)): if nums[i] + nums[j] == target:...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_top100_liked(1)/",
         "teaser": null
       }]

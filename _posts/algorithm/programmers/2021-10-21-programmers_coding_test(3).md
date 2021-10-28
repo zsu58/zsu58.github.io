@@ -121,3 +121,32 @@ def solution(a, b):
 ```
 
 ---
+
+### 문제 27
+* 27/10/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test27.png" align="center">
+</p>
+```python
+def solution(arr, divisor):
+    res = sorted([i for i in arr if i % divisor == 0])
+    return res if len(res) > 0 else [-1]
+```
+
+---
+
+### 문제 28
+* 27/10/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test28.png" align="center">
+</p>
+```python
+def solution(arr):
+    res = [arr[0]]
+    for i in range(len(arr)):
+        if arr[i] != res[-1]:
+            res.append(arr[i])
+    return res
+```
+
+---
