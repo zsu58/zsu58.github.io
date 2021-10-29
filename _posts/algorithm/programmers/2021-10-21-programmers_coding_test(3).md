@@ -167,3 +167,67 @@ def solution(s):
 
 ---
 
+### 문제 30
+* 29/10/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test30_1.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test30_2.png" align="center">
+</p>
+```python
+import re
+p = re.compile("[0-9]+\D*")
+int_p = re.compile("[0-9]+")
+
+def solution(dartResult):
+    s = p.findall(dartResult)
+    int_s = int_p.findall(dartResult)
+
+    result_num = []
+    for i in range(3):
+        if "S" in s[i]:
+            if "#" in s[i]:
+                result_num.append(int(int_s[i]) ** 1 * -1)
+            else:
+                result_num.append(int(int_s[i]) ** 1)
+        elif "D" in s[i]:
+            if "#" in s[i]:
+                result_num.append(int(int_s[i]) ** 2 * -1)
+            else:
+                result_num.append(int(int_s[i]) ** 2)
+        else:
+            if "#" in s[i]:
+                result_num.append(int(int_s[i]) ** 3 * -1)
+            else:
+                result_num.append(int(int_s[i]) ** 3)
+
+    if "*" in s[0]:
+        result_num[0] = result_num[0] * 2
+
+    if "*" in s[1]:
+        result_num[1] = result_num[1] * 2
+        result_num[0] = result_num[0] * 2
+
+    if "*" in s[2]:
+        result_num[2] = result_num[2] * 2
+        result_num[1] = result_num[1] * 2
+
+    return sum(result_num)
+
+# 다른 사람의 좋은 풀이
+import re
+
+def solution(dartResult):
+    bonus = {'S' : 1, 'D' : 2, 'T' : 3}
+    option = {'' : 1, '*' : 2, '#' : -1}
+    p = re.compile('(\d+)([SDT])([*#]?)')
+    dart = p.findall(dartResult)
+    for i in range(len(dart)):
+        if dart[i][2] == '*' and i > 0:
+            dart[i-1] *= 2
+        dart[i] = int(dart[i][0]) ** bonus[dart[i][1]] * option[dart[i][2]]
+
+    return sum(dart)
+```
+
+---
+
