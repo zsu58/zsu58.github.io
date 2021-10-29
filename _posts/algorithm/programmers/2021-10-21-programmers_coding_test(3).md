@@ -150,3 +150,20 @@ def solution(arr):
 ```
 
 ---
+
+### 문제 29
+* 29/10/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test29.png" align="center">
+</p>
+```python
+def solution(s):
+    return s[len(s)%2] if len(s) % 2 == 1 else s[(len(s)%2)-1] + s[len(s)%2]
+
+# 다른 사람의 좋은 풀이
+def solution(s):
+    return str[(len(str) - 1) // 2:len(str) // 2 + 1]
+```
+
+---
+
