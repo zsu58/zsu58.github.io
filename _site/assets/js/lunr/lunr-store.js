@@ -350,7 +350,7 @@ var store = [{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (3)",
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 21 24/10/2021 def solution(seoul): for i in range(len(seoul)): if seoul[i] == \"Kim\": return \"김서방은 \"+ str(i)+\"에 있다\" # 다른 사람의 좋은 풀이 def solution(seoul): return \"김서방은 {}에 있다\".format(seoul.index(\"Kim\")) 문제 22 24/10/2021 if len(s) == 4 or len(s) ==...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
-        "url": "/programmers/programmers_coding_test(3)/",
+        "url": "/programmers/programmers_coding_test(3)-copy/",
         "teaser": null
       },{
         "title": "[Python] Data manipulation with pandas(4)",
@@ -369,5 +369,11 @@ var store = [{
         "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 문제 링크 코드 # 풀이1 - Brute Force class Solution(object): def twoSum(self, nums, target): \"\"\" :type nums: List[int] :type target: int :rtype: List[int] \"\"\" for i in range(len(nums)): for j in range(i+1,len(nums)): if nums[i] + nums[j] == target:...","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
         "url": "/leetcode/leetcode_top100_liked(1)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (4)",
+        "excerpt":" ALGORITHM Übung - Programmers     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제 31     30/10/2021          def solution(price, money, count):     return max(sum([price*i for i in range(1,count+1)])-money,0)    ","categories": ["PROGRAMMERS"],
+        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "url": "/programmers/programmers_coding_test(4)/",
         "teaser": null
       }]

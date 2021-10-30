@@ -233,7 +233,7 @@
 <lastmod>2021-10-22T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/programmers/programmers_coding_test(3)/</loc>
+<loc>http://localhost:4000/programmers/programmers_coding_test(3)-copy/</loc>
 <lastmod>2021-10-24T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -247,6 +247,10 @@
 <url>
 <loc>http://localhost:4000/leetcode/leetcode_top100_liked(1)/</loc>
 <lastmod>2021-10-27T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/programmers/programmers_coding_test(4)/</loc>
+<lastmod>2021-10-30T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/storage/2021-09-15-Python_Backend-CH1/</loc>
