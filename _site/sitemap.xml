@@ -65,7 +65,7 @@
 <lastmod>2021-09-24T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/cli/CLI_2_VIM/</loc>
+<loc>http://localhost:4000/cli/VIM/</loc>
 <lastmod>2021-09-24T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -251,6 +251,10 @@
 <url>
 <loc>http://localhost:4000/programmers/programmers_coding_test(4)/</loc>
 <lastmod>2021-10-30T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/cli/CLI_2/</loc>
+<lastmod>2021-10-31T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/storage/2021-09-15-Python_Backend-CH1/</loc>

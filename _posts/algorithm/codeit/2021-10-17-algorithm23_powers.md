@@ -1,5 +1,5 @@
 ---
-title: "[Algorithm] 거듭제곱 - Dynamic Programming"
+title: "[Algorithm] 거듭제곱"
 layout: single
 date: '17/10/2021'
 toc: true
@@ -17,7 +17,7 @@ tags:
 
 ---
 
-### Dynamic Programming
+### 문제
 * 거듭제곱의 경우 for 문을 돌릴 경우 시간복잡도 O(n)이 나옴
 * 시간복잡도가 O(lgn)이 되는 함수를 구현하시오.
 

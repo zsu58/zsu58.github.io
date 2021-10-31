@@ -25,13 +25,16 @@ tags:
 
 ```python
 def sublist_max(profits):
-    # 코드를 작성하세요.
-    max_result = 0
+    max_profit = profits[0]
+    
     for i in range(len(profits)):
-        for j in range(i, len(profits) + 1):
-            max_result = max(max_result, sum(profits[i : i+j]))
+        total = 0
+        
+        for j in range(i, len(profits)):
+            total += profits[j]
+            max_profit = max(max_profit, total)
 
-    return max_result
+    return max_profit
 
 
 # 테스트

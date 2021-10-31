@@ -1,4 +1,4 @@
-I"d6<hr />
+I"�7<hr />
 <h3 id="unix-command-line">UNIX COMMAND LINE</h3>
 <ul>
   <li>UNIX CLI 정리(1)</li>
@@ -41,7 +41,7 @@
 </span><span class="n">cal</span> <span class="o">-</span><span class="n">y</span>
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2 is give after optino -B which stands for before
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2 is give after option -B which stands for before
 </span><span class="n">cal</span> <span class="o">-</span><span class="n">B</span> <span class="mi">2</span>
 
 <span class="c1"># returns a calender from two months before to 3 months after
@@ -56,7 +56,7 @@
 </code></pre></div></div>
 <hr />
 
-<h3 id="manual">manual</h3>
+<h3 id="man">man</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># official manual of cal
 </span><span class="n">man</span> <span class="n">cal</span>
@@ -237,6 +237,7 @@
 <h3 id="history">history</h3>
 <ul>
   <li>![number]를 통해 해당 command 불러 올 수 있음</li>
+  <li>![most_recent_command]를 통해 가장 최근에 해당 command를 불러 올 수 있음</li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># view history of commands
@@ -244,5 +245,11 @@
 
 <span class="c1"># view the last of 10 line of photogrpah_lyric file
 </span><span class="err">!</span><span class="p">[</span><span class="n">number</span><span class="p">]</span>
+
+<span class="c1"># view the top 10 line of iris.csv
+</span><span class="n">head</span> <span class="n">iris</span><span class="p">.</span><span class="n">csv</span>
+
+<span class="c1"># view the last 10 line of iris.csv again
+</span><span class="err">!</span><span class="n">head</span>
 </code></pre></div></div>
 :ET

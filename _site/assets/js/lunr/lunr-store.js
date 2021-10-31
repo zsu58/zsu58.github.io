@@ -89,16 +89,16 @@ var store = [{
         "url": "/python/basic_pandas_optimizations/",
         "teaser": null
       },{
-        "title": "[UNIX CLI] Command Line",
+        "title": "[UNIX CLI] Command Line(1)",
         "excerpt":"UNIX COMMAND LINE UNIX CLI 정리(1) argument(인자)는 커맨드가 작동할 대상을 지정하기 위해 사용 option(옵션)은 커맨드가 구체적으로 어떤 방식으로 동작할지를 지시하기 위해 사용 옵션은 하이픈(-)이 붙음 옵션 중에는 옵션을 적고 한 칸 띄운 다음 옵션에 대한 인자(or value)를 적어야하는 것들이 존재 하이픈 뒤에는 여러 옵션을 연속적으로 사용 가능 값을 줘야 하는...","categories": ["CLI"],
-        "tags": ["CLI","BACKEND"],
+        "tags": ["CLI","BACKEND","DATA-ENGINEERING"],
         "url": "/cli/CLI_1/",
         "teaser": null
       },{
         "title": "[UNIX CLI] VIM",
         "excerpt":"UNIX COMMAND LINE UNIX CLI 정리(2) - VIM VIM은 4가지 모드가 존재 Normal Mode : 커서 이동/ 텍스트 붙여놓기/ 텍스트 삭제/ 작업 취소 Insert Mode : 텍스트 입력 Visual Mode : 텍스트 블록 지정/ 텍스트 복사 Command Mode : 내용 저장/ vim 종료/ 특정 텍스트 검색 및 치환 Normal Mode...","categories": ["CLI"],
-        "tags": ["CLI","BACKEND","VIM"],
-        "url": "/cli/CLI_2_VIM/",
+        "tags": ["CLI","BACKEND","DATA-ENGINEERING","VIM"],
+        "url": "/cli/VIM/",
         "teaser": null
       },{
         "title": "[Django] 개발환경 구성하기",
@@ -375,5 +375,11 @@ var store = [{
         "excerpt":" ALGORITHM Übung - Programmers     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제 31     30/10/2021          def solution(price, money, count):     return max(sum([price*i for i in range(1,count+1)])-money,0)    ","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(4)/",
+        "teaser": null
+      },{
+        "title": "[UNIX CLI] Command Line(2)",
+        "excerpt":"UNIX COMMAND LINE UNIX CLI 정리(2) cut을 통해 텍스트 형식 파일의 열을 선택해서 볼 수 있음 grep을 통해 텍스트 형식 파일에서 특정 문자 패턴만 filter해서 볼 수 있음 &gt;을 통해 명령어를 통해 산출된 결과를 저장(redirection)할 수 있음 |을 통해 | 왼쪽에 있는 명령어의 결과를 오른쪽에서 사용할 수 있음 wc을 통해...","categories": ["CLI"],
+        "tags": ["CLI","BACKEND","DATA-ENGINEERING"],
+        "url": "/cli/CLI_2/",
         "teaser": null
       }]

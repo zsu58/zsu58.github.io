@@ -29,3 +29,17 @@ def solution(price, money, count):
 ```
 
 ---
+
+### 문제 32
+* 31/10/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test32.png" align="center">
+</p>
+```python
+def solution(n):
+    for i in range(1,n):
+        if n%i == 1:
+            return i
+```
+
+---
