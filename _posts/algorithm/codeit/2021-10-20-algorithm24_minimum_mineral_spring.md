@@ -26,10 +26,8 @@ tags:
 
 ```python
 def select_stops(water_stops, capacity):
-    # 약수터 위치 리스트
     result = []
 
-    # 마지막 들른 약수터 위치
     prev_stop = 0
 
     for i in range(len(water_stops)):
@@ -37,7 +35,6 @@ def select_stops(water_stops, capacity):
             result.append(water_stops[i - 1])
             prev_stop = water_stops[i - 1]
 
-    # 마지막 약수터는 무조건 간다
     result.append(water_stops[-1])
 
     return result

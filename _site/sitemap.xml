@@ -185,7 +185,7 @@
 <lastmod>2021-10-16T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/codeit/algorithm23_powers_dynamic_programming/</loc>
+<loc>http://localhost:4000/codeit/algorithm23_powers/</loc>
 <lastmod>2021-10-17T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -233,7 +233,7 @@
 <lastmod>2021-10-22T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/programmers/programmers_coding_test(3)-copy/</loc>
+<loc>http://localhost:4000/programmers/programmers_coding_test(3)/</loc>
 <lastmod>2021-10-24T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -257,6 +257,10 @@
 <lastmod>2021-10-31T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/codeit/algorithm26_maxium_profits_divide_conquer/</loc>
+<lastmod>2021-11-01T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/storage/2021-09-15-Python_Backend-CH1/</loc>
 </url>
 <url>
@@ -267,6 +271,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/categories/algorithm</loc>
+</url>
+<url>
+<loc>http://localhost:4000/categories/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/categories/cli</loc>

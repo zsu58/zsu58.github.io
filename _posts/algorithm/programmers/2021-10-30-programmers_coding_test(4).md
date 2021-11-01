@@ -43,3 +43,22 @@ def solution(n):
 ```
 
 ---
+
+### 문제 33
+* 1/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test33.png" align="center">
+</p>
+```python
+def solution(sizes):
+    max_size = max(sizes[0])
+    min_size = min(sizes[0])
+    
+    for size in sizes:
+        max_size = max(max_size, max(size))
+        min_size = max(min_size, min(size))
+        
+    return max_size * min_size
+```
+
+---

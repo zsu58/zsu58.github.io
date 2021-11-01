@@ -2,7 +2,9 @@
 main:
   - title: "Vorstellung"
     url: /vorstellung
+  - title: "Kategorie"
+    url: /categories/
+  # - title: "Tags"
+  #   url: /tags/
   - title: "Portfolio"
     url: https://stingy-camp-e37.notion.site/Park-Jisu-66aeeb7693f64f20b149890337cdfc01
-  # - title: "Kategorie"
-  #   url: /categories/

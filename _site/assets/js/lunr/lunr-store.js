@@ -240,25 +240,25 @@ var store = [{
         "teaser": null
       },{
         "title": "[Algorithm] 최대 수익 - Greedy Alogirthm",
-        "excerpt":"ALGORITHM 알고리즘 정리(18) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 최소의 동전 개수로 거슬러주기 def min_coin_count(value, coin_list): count...","categories": ["CODEIT"],
+        "excerpt":"ALGORITHM 알고리즘 정리(18) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 당장 최적의 선택을 하는 것이 전체 문제를 해결하는 데 최선의 선택이여함 Greedy Algorithm 최소의 동전 개수로 거슬러주기 def min_coin_count(value,...","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm18_return_coin_greedy_algorithm/",
         "teaser": null
       },{
         "title": "[Algorithm] 최대 곱 구하기 - Greedy Alogirthm",
-        "excerpt":"ALGORITHM 알고리즘 정리(19) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 여러 명이 카드 게임을 하는 상황에서 각 플레이어는...","categories": ["CODEIT"],
+        "excerpt":"ALGORITHM 알고리즘 정리(19) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 당장 최적의 선택을 하는 것이 전체 문제를 해결하는 데 최선의 선택이여함 Greedy Algorithm 여러 명이 카드 게임을 하는 상황에서...","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm19_max_card_combination_greedy_algorithm/",
         "teaser": null
       },{
         "title": "[Algorithm] 벌금 최소화하기 - Greedy Alogirthm",
-        "excerpt":"ALGORITHM 알고리즘 정리(20) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 스터디 약속시간에 늦으면 1분에 1달러씩 내야 하는 벌금...","categories": ["CODEIT"],
+        "excerpt":"ALGORITHM 알고리즘 정리(20) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 당장 최적의 선택을 하는 것이 전체 문제를 해결하는 데 최선의 선택이여함 Greedy Algorithm 스터디 약속시간에 늦으면 1분에 1달러씩 내야...","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm20_minimize_late_penalty_greedy_algorithm/",
         "teaser": null
       },{
         "title": "[Algorithm] 수업을 최대로 많이 듣는 수강 신청 - Greedy Alogirthm",
-        "excerpt":"ALGORITHM 알고리즘 정리(21) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 해당 상황에서 당장 최적의 선택을 할 수 있다는 것 Greedy Algorithm 리스트에 담겨있는 튜플들은 각각 하나의 수업을 나타내며, 각...","categories": ["CODEIT"],
+        "excerpt":"ALGORITHM 알고리즘 정리(21) Greedy Algorithm이 사용되면 최적인 경우 최적 부분 구조가 있음 - 부분 문제들의 최적의 답을 이용해 기존 문제의 최적의 답을 구할 수 있다는 것 탐욕적 선택 속성이 있음 - 당장 최적의 선택을 하는 것이 전체 문제를 해결하는 데 최선의 선택이여함 Greedy Algorithm 리스트에 담겨있는 튜플들은 각각 하나의 수업을...","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm21_maximum_class_greedy_algorithm/",
         "teaser": null
@@ -275,10 +275,10 @@ var store = [{
         "url": "/sql/sql_practice_programmers(1)/",
         "teaser": null
       },{
-        "title": "[Algorithm] 거듭제곱 - Dynamic Programming",
-        "excerpt":"ALGORITHM 알고리즘 정리(23) Dyanmic Programming Dynamic Programming 거듭제곱의 경우 for 문을 돌릴 경우 시간복잡도 O(n)이 나옴 시간복잡도가 O(lgn)이 되는 함수를 구현하시오. def power(x, y): if y == 0: return 1 subresult = power(x, y // 2) if y % 2 == 0: return subresult * subresult else: return x *...","categories": ["CODEIT"],
+        "title": "[Algorithm] 거듭제곱",
+        "excerpt":"ALGORITHM 알고리즘 정리(23) Dyanmic Programming 문제 거듭제곱의 경우 for 문을 돌릴 경우 시간복잡도 O(n)이 나옴 시간복잡도가 O(lgn)이 되는 함수를 구현하시오. def power(x, y): if y == 0: return 1 subresult = power(x, y // 2) if y % 2 == 0: return subresult * subresult else: return x * subresult...","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
-        "url": "/codeit/algorithm23_powers_dynamic_programming/",
+        "url": "/codeit/algorithm23_powers/",
         "teaser": null
       },{
         "title": "[Docker] Docker 명령어",
@@ -324,7 +324,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Algorithm] 효율적으로 중복되는 숫자 찾기",
-        "excerpt":"ALGORITHM 알고리즘 정리(25) Algorithm (N + 1)의 크기인 리스트에, 1부터 N까지의 임의의 자연수가 요소로 할당되어 있어, 중복되는 숫자가 최소 1개가 존재 중복되는 어느 숫자 ‘하나’를 가장 효율적으로 찾아 리턴하는 함수를 구현하시오. def find_same_number(some_list): ele_dict = {} for ele in some_list: if ele in ele_dict: return ele ele_dict[ele] = True print(find_same_number([1,...","categories": ["CODEIT"],
+        "excerpt":"ALGORITHM 알고리즘 정리(25) 문제 (N + 1)의 크기인 리스트에, 1부터 N까지의 임의의 자연수가 요소로 할당되어 있어, 중복되는 숫자가 최소 1개가 존재 중복되는 어느 숫자 ‘하나’를 가장 효율적으로 찾아 리턴하는 함수를 구현하시오. def find_same_number(some_list): ele_dict = {} for ele in some_list: if ele in ele_dict: return ele ele_dict[ele] = True print(find_same_number([1,...","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm25_find_duplicated/",
         "teaser": null
@@ -350,7 +350,7 @@ var store = [{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (3)",
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 21 24/10/2021 def solution(seoul): for i in range(len(seoul)): if seoul[i] == \"Kim\": return \"김서방은 \"+ str(i)+\"에 있다\" # 다른 사람의 좋은 풀이 def solution(seoul): return \"김서방은 {}에 있다\".format(seoul.index(\"Kim\")) 문제 22 24/10/2021 if len(s) == 4 or len(s) ==...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
-        "url": "/programmers/programmers_coding_test(3)-copy/",
+        "url": "/programmers/programmers_coding_test(3)/",
         "teaser": null
       },{
         "title": "[Python] Data manipulation with pandas(4)",
@@ -372,7 +372,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (4)",
-        "excerpt":" ALGORITHM Übung - Programmers     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제 31     30/10/2021          def solution(price, money, count):     return max(sum([price*i for i in range(1,count+1)])-money,0)    ","categories": ["PROGRAMMERS"],
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 31 30/10/2021 def solution(price, money, count): return max(sum([price*i for i in range(1,count+1)])-money,0) 문제 32 31/10/2021 def solution(n): for i in range(1,n): if n%i == 1: return i 문제 33 1/11/2021 def solution(sizes): max_size = max(sizes[0]) min_size = min(sizes[0])...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(4)/",
         "teaser": null
@@ -381,5 +381,11 @@ var store = [{
         "excerpt":"UNIX COMMAND LINE UNIX CLI 정리(2) cut을 통해 텍스트 형식 파일의 열을 선택해서 볼 수 있음 grep을 통해 텍스트 형식 파일에서 특정 문자 패턴만 filter해서 볼 수 있음 &gt;을 통해 명령어를 통해 산출된 결과를 저장(redirection)할 수 있음 |을 통해 | 왼쪽에 있는 명령어의 결과를 오른쪽에서 사용할 수 있음 wc을 통해...","categories": ["CLI"],
         "tags": ["CLI","BACKEND","DATA-ENGINEERING"],
         "url": "/cli/CLI_2/",
+        "teaser": null
+      },{
+        "title": "[Algorithm] 최대 이익 구간 - Divide & Conquer",
+        "excerpt":"ALGORITHM 알고리즘 정리(26) Divide &amp; Conquer 리스트에는 며칠 동안의 수익이 담겨 있습니다. 예를 들어서 [7, -3, 4, -8]이라면 첫 날에는 7달러를 벌었고, 둘째 날에는 3달러를 잃었고, 셋째 날에는 4달러를 벌었고, 마지막 날에는 8달러를 잃은 것입니다. profits를 파라미터로 받아, 최대 수익을 내는 구간의 수익을 리턴 sublist_max 함수를 구현하시오. 함수의 시간 복잡도는...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm26_maxium_profits_divide_conquer/",
         "teaser": null
       }]

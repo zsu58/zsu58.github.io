@@ -1,0 +1,43 @@
+I"\<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(24)</li>
+  <li>Greedy Algorithm</li>
+</ul>
+
+<hr />
+
+<h3 id="greedy-algorithm">Greedy Algorithm</h3>
+<ul>
+  <li>등산을 하는 상황에서, 등산가는 1km에 1L씩 물을 꼭 마셔야함</li>
+  <li>파라미터로 약수터의 위치 리스트(단위: Km)와 물통 용량(단위: L)을 줄 때, 최소한의 약수터를 들리는 함수를 구현하시오.</li>
+  <li>단, 탈수로 인해 정상에 도달하지 못하는 경우는 없으며, 약수터에 갈 때마다 최대 용량으로 물통을 채움</li>
+  <li>또한 마지막 정상의 약수터는 무조건 감</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">select_stops</span><span class="p">(</span><span class="n">water_stops</span><span class="p">,</span> <span class="n">capacity</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">prev_stop</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">water_stops</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">water_stops</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_stop</span> <span class="o">&gt;</span> <span class="n">capacity</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">water_stops</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="n">prev_stop</span> <span class="o">=</span> <span class="n">water_stops</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">water_stops</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># 테스트
+</span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">select_stops</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">47</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">select_stops</span><span class="p">(</span><span class="n">list2</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[4, 7, 11, 13, 16, 20, 24, 26]
+[5, 8, 12, 17, 23, 28, 32, 38, 44, 47]
+</code></pre></div></div>
+
+:ET
