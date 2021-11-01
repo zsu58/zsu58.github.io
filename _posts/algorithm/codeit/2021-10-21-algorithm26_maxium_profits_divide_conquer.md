@@ -43,7 +43,6 @@ def middle_incl_max(profits, start, end):
     return l_max+r_max
 
 def sublist_max(profits, start, end):
-    # 코드를 작성하세요. 
     if start == end:
         return profits[start]
 
