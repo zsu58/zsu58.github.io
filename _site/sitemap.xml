@@ -261,6 +261,14 @@
 <lastmod>2021-11-01T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/cli/CLI_3/</loc>
+<lastmod>2021-11-02T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/cli/CLI_4/</loc>
+<lastmod>2021-11-02T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/storage/2021-09-15-Python_Backend-CH1/</loc>
 </url>
 <url>
@@ -337,5 +345,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/page13/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page14/</loc>
 </url>
 </urlset>

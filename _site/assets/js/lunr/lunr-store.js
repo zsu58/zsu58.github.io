@@ -388,4 +388,16 @@ var store = [{
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm26_maxium_profits_divide_conquer/",
         "teaser": null
+      },{
+        "title": "[UNIX CLI] Command Line(3)",
+        "excerpt":"UNIX COMMAND LINE UNIX CLI 정리(3) echo를 통해 variable의 name, value을 print할 수 있음 =를 통해 shell variable 생성 가능 for [variable] in [list] ; do [body] ; done를 통해 for loop 실행 echo variable의 value를 print할 시 $를 앞에 붙여줘야 함 대표적인 variable OSTYPE : User’s OS type HOME...","categories": ["CLI"],
+        "tags": ["CLI","BACKEND","DATA-ENGINEERING"],
+        "url": "/cli/CLI_3/",
+        "teaser": null
+      },{
+        "title": "[UNIX CLI] Command Line(4)",
+        "excerpt":"UNIX COMMAND LINE UNIX CLI 정리(4) bash: shell script 수행 $@ : bash를 통해 shell script를 실행할 때 변수를 받을 수 있게 함 bash bash [shell_script_name]을 통해 shell script(shell 명령어만 폼한된 텍스트 파일)의 명령어를 실행 shell script는 주로 [file_name].sh로 저장 # command를 입력할 shell script를 vim을 이용해 생성 vim print_header.sh...","categories": ["CLI"],
+        "tags": ["CLI","BACKEND","DATA-ENGINEERING"],
+        "url": "/cli/CLI_4/",
+        "teaser": null
       }]

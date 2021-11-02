@@ -1,5 +1,5 @@
 ---
-title: "[ALGORITHM] Programmers ALGORITHM 연습문제 (1)"
+title: "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (1)"
 layout: single
 date: '18/10/2021'
 toc: true
