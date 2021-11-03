@@ -1,0 +1,85 @@
+I"�#<hr />
+<h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
+<ul>
+  <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
+</ul>
+
+<hr />
+
+<h3 id="문제-31">문제 31</h3>
+<ul>
+  <li>30/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test31.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">money</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="n">price</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span><span class="o">-</span><span class="n">money</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-32">문제 32</h3>
+<ul>
+  <li>31/10/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test32.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-33">문제 33</h3>
+<ul>
+  <li>1/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test33.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">sizes</span><span class="p">):</span>
+    <span class="n">max_size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">min_size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">:</span>
+        <span class="n">max_size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_size</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>
+        <span class="n">min_size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">min_size</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>
+        
+    <span class="k">return</span> <span class="n">max_size</span> <span class="o">*</span> <span class="n">min_size</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-34">문제 34</h3>
+<ul>
+  <li>2/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test34.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">accum_days</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">]:</span>
+        <span class="n">accum_days</span> <span class="o">+=</span> <span class="n">i</span>
+        <span class="n">days</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">accum_days</span><span class="p">)</span>
+
+    <span class="n">mon_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="n">days</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)}</span>
+
+    <span class="n">day_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s">'THU'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s">'FRI'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s">'SAT'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s">'SUN'</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s">'MON'</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s">'TUE'</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s">'WED'</span><span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">day_dict</span><span class="p">[(</span><span class="n">mon_dict</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">getDayName</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s">'FRI'</span><span class="p">,</span> <span class="s">'SAT'</span><span class="p">,</span> <span class="s">'SUN'</span><span class="p">,</span> <span class="s">'MON'</span><span class="p">,</span> <span class="s">'TUE'</span><span class="p">,</span> <span class="s">'WED'</span><span class="p">,</span> <span class="s">'THU'</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">days</span><span class="p">[(</span><span class="nb">sum</span><span class="p">(</span><span class="n">months</span><span class="p">[:</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">7</span><span class="p">]</span>
+</code></pre></div></div>
+
+<hr />
+:ET

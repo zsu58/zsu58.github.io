@@ -1,0 +1,274 @@
+I"Td<hr />
+<h3 id="dplyr-to-pandas">dplyr to pandas</h3>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import data
+</span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">iris_df</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">'iris'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">iris_df</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+</code></pre></div></div>
+
+<h3 id="dplyrmutate">dplyr::mutate()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">mutate</span><span class="p">(</span><span class="n">New_feature</span><span class="o">=</span> <span class="n">Petal</span><span class="p">.</span><span class="n">Width</span><span class="o">*</span><span class="n">Petal</span><span class="p">.</span><span class="n">Length</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># pandas
+</span><span class="n">iris_df</span><span class="p">[</span><span class="s">"New_feature"</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris_df</span><span class="p">[</span><span class="s">"petal_width"</span><span class="p">]</span> <span class="o">*</span> <span class="n">iris_df</span><span class="p">[</span><span class="s">"petal_length"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrselect">dplyr::select()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'sepal_width'</span><span class="p">)</span>
+
+<span class="c1"># pandas
+</span><span class="n">iris_df</span><span class="p">[[</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'sepal_width'</span><span class="p">]]</span>
+<span class="c1"># 위와 같음
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'sepal_width'</span><span class="p">]]</span>
+<span class="n">iris_df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrselect-">dplyr::select(-)</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="o">-</span><span class="n">c</span><span class="p">(</span><span class="n">Sepal</span><span class="p">.</span><span class="n">Length</span><span class="p">,</span> <span class="n">Sepal</span><span class="p">.</span><span class="n">Width</span><span class="p">))</span>
+
+<span class="c1"># pandas
+# cf. inplace = False means the result would be stored in a new DataFrame instead of the original one
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">"sepal_length"</span><span class="p">,</span> <span class="s">"sepal_width"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrfilter">dplyr::filter()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="nb">filter</span><span class="p">(</span><span class="n">species</span> <span class="o">%</span><span class="ow">in</span><span class="o">%</span> <span class="n">c</span><span class="p">(</span><span class="s">'setosa'</span><span class="p">,</span> <span class="s">'virginica'</span><span class="p">))</span>
+<span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="nb">filter</span><span class="p">(</span><span class="n">sepal_length</span> <span class="o">&gt;</span> <span class="mf">5.0</span> <span class="o">&amp;</span> <span class="n">species</span> <span class="o">==</span> <span class="s">'versicolor'</span><span class="p">)</span>
+
+<span class="c1"># pandas
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">iris_df</span><span class="p">.</span><span class="n">species</span> <span class="o">==</span> <span class="s">'setosa'</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">iris_df</span><span class="p">.</span><span class="n">species</span> <span class="o">==</span> <span class="s">'virginica'</span><span class="p">),:]</span>
+<span class="n">iris_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">iris_df</span><span class="p">.</span><span class="n">sepal_length</span> <span class="o">&gt;</span> <span class="mf">5.0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">iris_df</span><span class="p">.</span><span class="n">species</span> <span class="o">==</span> <span class="s">'versicolor'</span><span class="p">)</span> <span class="p">]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrarrange">dplyr::arrange()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 오름차순
+</span><span class="n">dplyr</span>
+<span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">arrange</span><span class="p">(</span><span class="n">sepal_length</span><span class="p">)</span>
+
+<span class="c1"># pandas
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 내림차순
+# dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">arrange</span><span class="p">(</span><span class="n">desc</span><span class="p">(</span><span class="n">sepal_length</span><span class="p">))</span>
+
+<span class="c1"># pandas
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrrename">dplyr::rename()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df_renamed</span> <span class="o">=</span> <span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">rename</span><span class="p">(</span><span class="n">SEPAL_LENGTH</span> <span class="o">=</span> <span class="n">sepal_length</span><span class="p">)</span>
+
+<span class="c1"># pandas
+# cf. inplace = False means the result would be stored in a new DataFrame instead of the original one
+</span><span class="n">iris_df_renamed</span> <span class="o">=</span> <span class="n">iris_df</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'sepal_length'</span><span class="p">:</span><span class="s">'SEPAL_LENGTH'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">rename_with</span><span class="p">(</span><span class="n">toupper</span><span class="p">,</span> <span class="n">matches</span><span class="p">(</span><span class="s">"length|width"</span><span class="p">))</span>
+
+<span class="c1"># pandas
+</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="sa">r</span><span class="s">".*(length|width)"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">iris_df</span><span class="p">.</span><span class="n">columns</span><span class="p">:</span>
+  <span class="k">if</span> <span class="nb">bool</span><span class="p">((</span><span class="n">pattern</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="n">col</span><span class="p">))):</span>
+    <span class="n">iris_df</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="n">col</span><span class="p">.</span><span class="n">upper</span><span class="p">()},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrcase_when">dplyr::case_when()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> 
+  <span class="n">mutate</span><span class="p">(</span><span class="n">Species</span> <span class="o">=</span> <span class="n">case_when</span><span class="p">(</span><span class="n">Species</span> <span class="o">==</span> <span class="s">'setosa'</span> <span class="o">~</span> <span class="mi">0</span><span class="p">,</span>
+                             <span class="n">Species</span> <span class="o">==</span> <span class="s">'versicolor'</span> <span class="o">~</span> <span class="mi">1</span><span class="p">,</span>
+                             <span class="n">Species</span> <span class="o">==</span> <span class="s">'virginica'</span> <span class="o">~</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># pandas
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">iris_df</span><span class="p">[</span><span class="s">'species'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'setosa'</span><span class="p">,</span> <span class="s">"species"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">iris_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">iris_df</span><span class="p">[</span><span class="s">'species'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'versicolor'</span><span class="p">,</span> <span class="s">"species"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">iris_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">iris_df</span><span class="p">[</span><span class="s">'species'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'virginica'</span><span class="p">,</span> <span class="s">"species"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">iris_df</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrdistinct">dplyr::distinct()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">Species</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">distinct</span><span class="p">()</span>
+
+<span class="c1"># pandas
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">species</span><span class="p">.</span><span class="n">unique</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrdistinct-1">dplyr::distinct()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">Species</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">distinct</span><span class="p">()</span>
+
+<span class="c1"># pandas
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">species</span><span class="p">.</span><span class="n">unique</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrsummarise">dplyr::summarise()</h3>
+<ul>
+  <li>get mean and min for each column</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">summarise</span><span class="p">(</span><span class="n">across</span><span class="p">(</span><span class="n">everything</span><span class="p">(),</span> <span class="n">mean</span><span class="p">))</span>
+<span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">summarise</span><span class="p">(</span><span class="n">across</span><span class="p">(</span><span class="n">everything</span><span class="p">(),</span> <span class="nb">min</span><span class="p">))</span>
+
+<span class="c1"># pandas
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'min'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrgroup_by">dplyr::group_by()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+# aggregation by group for all columns
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">group_by</span><span class="p">(</span><span class="n">Species</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">summarise_all</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="nb">min</span><span class="p">))</span>
+
+<span class="c1"># aggregation by group for a specific column
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">group_by</span><span class="p">(</span><span class="n">Species</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">summarise</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Sepal</span><span class="p">.</span><span class="n">Length</span><span class="p">))</span>
+
+<span class="c1"># pandas
+# aggregation by group for all columns
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'species'</span><span class="p">]).</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'min'</span><span class="p">])</span>
+
+<span class="c1"># aggregation by group for a specific column
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'species'</span><span class="p">]).</span><span class="n">agg</span><span class="p">({</span><span class="s">'sepal_length'</span><span class="p">:[</span><span class="s">'mean'</span><span class="p">]})</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrrelocate">dplyr::relocate()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">relocate</span><span class="p">(</span><span class="n">Species</span><span class="p">,</span> <span class="p">.</span><span class="n">before</span> <span class="o">=</span> <span class="n">Sepal</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+
+<span class="c1"># pandas
+# cf. iris_df에 저장이 안 됨
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">reindex</span><span class="p">([</span><span class="s">'species'</span><span class="p">,</span> <span class="s">'petal_length'</span><span class="p">,</span> <span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'sepal_width'</span><span class="p">,</span> <span class="s">'petal_width'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrslice">dplyr::slice()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr, r은 1부터 시작
+# 첫 5개행
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># 첫 2개열
+</span><span class="n">iris_df</span><span class="p">[,</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># 1st, 4th, 25th 행 &amp; 1st 6th 열
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">Sepal</span><span class="p">.</span><span class="n">Length</span><span class="p">,</span> <span class="n">Petal</span><span class="p">.</span><span class="n">Width</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="c1"># 첫 5개 행 &amp; 5th~7th 열
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">Sepal</span><span class="p">.</span><span class="n">Length</span><span class="p">,</span> <span class="n">Sepal</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">Petal</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># pandas, python은 0부터 시작
+# 첫 5개행
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="c1"># 첫 2개열
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> 
+
+<span class="c1"># 1st, 4th, 25th 행 &amp; 1st, 4th 열
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">24</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+
+<span class="c1"># 첫 5개 행 &amp; 1th~3th 열
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> 
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrslice_head--slice_tail">dplyr::slice_head() &amp; slice_tail()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">slice_head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">slice_tail</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># pandas
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">iris_df</span><span class="p">.</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">iris_df</span><span class="p">)</span><span class="o">*</span><span class="mf">0.1</span><span class="p">))</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dplyrbind_rows--bind_cols">dplyr::bind_rows() &amp; bind_cols()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+</span><span class="n">a</span> <span class="o">%&gt;%</span> <span class="n">bind_rows</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">%&gt;%</span> <span class="n">bind_cols</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># pandas
+# rows
+</span><span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">])</span>
+
+<span class="c1"># cols
+</span><span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="count-records">count records</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dplyr
+# Total number of records in dataframe
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">nrow</span><span class="p">()</span>
+
+<span class="c1"># Number of records per Group(two ways)
+</span><span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">group_by</span><span class="p">(</span><span class="n">Species</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">count</span><span class="p">()</span>
+<span class="n">iris_df</span> <span class="o">%&gt;%</span> <span class="n">group_by</span><span class="p">(</span><span class="n">Species</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">tally</span><span class="p">()</span>
+
+
+<span class="c1"># Total number of records in dataframe
+</span><span class="nb">len</span><span class="p">(</span><span class="n">iris_df</span><span class="p">)</span>
+
+<span class="c1"># Number of records per Group(two ways)
+</span><span class="n">iris_df</span><span class="p">.</span><span class="n">value_counts</span><span class="p">(</span><span class="s">'species'</span><span class="p">)</span>
+<span class="n">iris_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'species'</span><span class="p">]).</span><span class="n">size</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+:ET

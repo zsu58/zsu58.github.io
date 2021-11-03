@@ -1,0 +1,31 @@
+I"�<hr />
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>시간 복잡도 - 알고리즘 평가 방법</li>
+</ul>
+
+<hr />
+
+<h3 id="list-시간-복잡도">List 시간 복잡도</h3>
+<ul>
+  <li>인덱싱 - my_list[index] : O(1)</li>
+  <li>정렬 - my_list.sort() / sorted(my_list) : O(nlgn)</li>
+  <li>뒤집기 - my_list.reverse() : O(n)</li>
+  <li>탐색 - element in my_list : O(n)</li>
+  <li>끝에 요소 추가 - my_list.append(element) : O(1)</li>
+  <li>중간에 요소 추가 - my_list.insert(index, element) : O(n)</li>
+  <li>삭제 - del my_list[index] : O(n)</li>
+  <li>최솟값, 최댓값 찾기 - min(my_list) / max(my_list) : O(n)</li>
+  <li>길이 구하기 - len(my_list) : O(1)</li>
+  <li>슬라이싱 - my_list[a:b] : O(b-a)</li>
+</ul>
+
+<h3 id="dictionary-시간-복잡도">Dictionary 시간 복잡도</h3>
+<ul>
+  <li>값 찾기 - my_dict[key] : O(1)</li>
+  <li>값 넣어주기/덮어쓰기 - my_dict[key] = value : O(1)</li>
+  <li>값 삭제 - del my_list[key] : O(1)</li>
+</ul>
+
+<hr />
+:ET

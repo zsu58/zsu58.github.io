@@ -1,0 +1,82 @@
+I"�<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(16)</li>
+  <li>Dynamic Programming이 필요한 경우
+    <ul>
+      <li>최적 부분 구조가 있음</li>
+      <li>중복되는 부분 문제들이 있음</li>
+    </ul>
+  </li>
+  <li>Dyanmic Programming은 2가지 종류가 존재
+    <ul>
+      <li>Memoization
+        <ul>
+          <li>재귀를 사용</li>
+          <li>장점: 모든 경우를 다 계산할 필요 없음</li>
+          <li>단점: call stack이 계속 쌓임</li>
+        </ul>
+      </li>
+      <li>Tabulation
+        <ul>
+          <li>반복을 사용</li>
+          <li>장점: call stack이 쌓이지 않음</li>
+          <li>단점: 모든 경우를 다 계산함</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="tabulation">Tabulation</h3>
+<ul>
+  <li>Fibonacci</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib_tab</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># 코드를 작성하세요.
+</span>    <span class="n">fib_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+         <span class="n">fib_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">fib_list</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">fib_list</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+        
+    <span class="k">return</span> <span class="n">fib_list</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+
+<span class="c1"># 테스트
+</span><span class="k">print</span><span class="p">(</span><span class="n">fib_tab</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fib_tab</span><span class="p">(</span><span class="mi">56</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fib_tab</span><span class="p">(</span><span class="mi">132</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>55
+225851433717
+1725375039079340637797070384
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 공간 최적화
+</span><span class="k">def</span> <span class="nf">fib_optimized</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">previous</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># 반복적으로 위 변수들을 업데이트한다.
+</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">current</span><span class="p">,</span> <span class="n">previous</span> <span class="o">=</span> <span class="n">current</span> <span class="o">+</span> <span class="n">previous</span><span class="p">,</span> <span class="n">current</span>
+
+    <span class="c1"># n번재 피보나치 수를 리턴한다.
+</span>    <span class="k">return</span> <span class="n">current</span>
+
+<span class="c1"># 테스트
+</span><span class="k">print</span><span class="p">(</span><span class="n">fib_optimized</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fib_optimized</span><span class="p">(</span><span class="mi">53</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fib_optimized</span><span class="p">(</span><span class="mi">213</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>987
+53316291173
+146178119651438213260386312206974243796773058
+</code></pre></div></div>
+
+<hr />
+:ET

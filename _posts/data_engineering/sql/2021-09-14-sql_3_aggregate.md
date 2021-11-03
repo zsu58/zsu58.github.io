@@ -122,3 +122,5 @@ WHERE deathdate IS NOT NULL;
 SELECT (MAX(release_year) - MIN(release_year)) / 10 AS number_of_decades
 FROM films;
 ```
+
+---

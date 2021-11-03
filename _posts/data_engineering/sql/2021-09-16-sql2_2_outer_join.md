@@ -93,3 +93,5 @@ FROM cities AS c
   CROSS JOIN languages AS l
 WHERE c.name LIKE 'Hyder%';
 ```
+
+---

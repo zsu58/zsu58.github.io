@@ -152,3 +152,4 @@ print(*guest_welcomes, sep='\n')
     ('Welcome to Festivus', 'George...', "You're", 37, 'min late.')
     ('Welcome to Festivus', 'Newman...', "You're", 47, 'min late.')
 
+---

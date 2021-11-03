@@ -42,3 +42,4 @@ print(consecutive_sum(1, 388))
     32131
     75466
 
+---

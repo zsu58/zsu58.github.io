@@ -1,0 +1,78 @@
+I"�<hr />
+<h3 id="generator">Generator</h3>
+<ul>
+  <li>list와 같은 <code class="language-plaintext highlighter-rouge">iterable객체</code>와 달리 대용량의 memory를 사용하지 않음
+    <ul>
+      <li>그러나 반대로 여러번 값을 가져올 수 없음</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">next</code>함수를 통해 다음 generator의 값을 가져올 수 있음</li>
+  <li>함수 안의 <code class="language-plaintext highlighter-rouge">yield</code>를 통해 generator을 만들 수도 있음</li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lannister</span> <span class="o">=</span> <span class="p">[</span><span class="s">'cersei'</span><span class="p">,</span> <span class="s">'jaime'</span><span class="p">,</span> <span class="s">'tywin'</span><span class="p">,</span> <span class="s">'tyrion'</span><span class="p">,</span> <span class="s">'joffrey'</span><span class="p">]</span>
+<span class="n">lengths</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">person</span><span class="p">)</span> <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">lannister</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">lengths</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+5
+5
+6
+7
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lannister</span> <span class="o">=</span> <span class="p">[</span><span class="s">'cersei'</span><span class="p">,</span> <span class="s">'jaime'</span><span class="p">,</span> <span class="s">'tywin'</span><span class="p">,</span> <span class="s">'tyrion'</span><span class="p">,</span> <span class="s">'joffrey'</span><span class="p">]</span>
+<span class="n">lengths</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">person</span><span class="p">)</span> <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">lannister</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span> <span class="c1"># 더이상 없으므로 StopIteration 에러 발생
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+5
+5
+6
+7
+
+
+
+---------------------------------------------------------------------------
+
+StopIteration                             Traceback (most recent call last)
+
+/var/folders/6k/3q6ftyyn3v1gswgzvq0rxsf80000gn/T/ipykernel_31849/842899953.py in &lt;module&gt;
+      7 print(next(lengths))
+      8 print(next(lengths))
+----&gt; 9 print(next(lengths)) # 더이상 없으므로 StopIteration 에러 발생
+
+
+StopIteration: 
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_lengths</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="nb">len</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+        
+<span class="n">lannister</span> <span class="o">=</span> <span class="p">[</span><span class="s">'cersei'</span><span class="p">,</span> <span class="s">'jaime'</span><span class="p">,</span> <span class="s">'tywin'</span><span class="p">,</span> <span class="s">'tyrion'</span><span class="p">,</span> <span class="s">'joffrey'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">get_lengths</span><span class="p">(</span><span class="n">lannister</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+5
+5
+6
+7
+</code></pre></div></div>
+
+<hr />
+:ET

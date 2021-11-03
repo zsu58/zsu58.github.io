@@ -1,0 +1,21 @@
+I"�<hr />
+<h3 id="sql-날짜">SQL 날짜</h3>
+<ul>
+  <li>SQL 날짜 관련 문법 정리</li>
+  <li><code class="language-plaintext highlighter-rouge">YEAR</code> : DATE형 자료형에서 연도만 추출</li>
+  <li><code class="language-plaintext highlighter-rouge">MONTH</code> : DATE형 자료형에서 월만 추출</li>
+  <li><code class="language-plaintext highlighter-rouge">DAYOFMONTH</code> : DATE형 자료형에서 일만 추출</li>
+  <li><code class="language-plaintext highlighter-rouge">DATEDIFF</code> : DATE형 자료형들 간 날짜 차이 산출</li>
+  <li><code class="language-plaintext highlighter-rouge">CURDATE</code> : 오늘 날짜</li>
+  <li><code class="language-plaintext highlighter-rouge">DATE_ADD</code> : 날짜 더하기</li>
+  <li><code class="language-plaintext highlighter-rouge">DATE_SUB</code> : 날짜 빼기</li>
+  <li><code class="language-plaintext highlighter-rouge">UNIX_TIMESTAMP</code> : DATE 자료형을 Unix timestamp(1970년 1월 1일을 기준으로 몇 초가 지났는지)로 변환</li>
+  <li><code class="language-plaintext highlighter-rouge">FROM_UNIXTIME</code> : Unix timestamp을 DATE 자료형으로 변환</li>
+  <li>그외 MYSQL DATE 관련 공식 문서
+    <ul>
+      <li><a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-types.html">날짜, 시간 관련 데이터 타입</a></li>
+      <li><a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html">날짜, 시간 관련 함수</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

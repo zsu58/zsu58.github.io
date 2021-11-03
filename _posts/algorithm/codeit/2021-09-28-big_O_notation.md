@@ -33,3 +33,5 @@ tags:
 * 값 찾기 - my_dict[key] : O(1)
 * 값 넣어주기/덮어쓰기 - my_dict[key] = value : O(1)
 * 값 삭제 - del my_list[key] : O(1)
+
+---

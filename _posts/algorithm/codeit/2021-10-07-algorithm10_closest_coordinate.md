@@ -46,3 +46,4 @@ print(closest_pair(test_coordinates))
 
     [(2, 3), (3, 4)]
 
+---

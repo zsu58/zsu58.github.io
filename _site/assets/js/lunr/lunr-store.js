@@ -1,6 +1,6 @@
 var store = [{
         "title": "Vorstellung",
-        "excerpt":"데이터 도서관     본 블로그는 더 행복한 세상을 설계하는 Data-Engineer라는 꿈을 향한 과정을 도와줄 도서관   ","categories": [],
+        "excerpt":"데이터 도서관     본 블로그는 더 행복한 세상을 설계하는 Data-Engineer라는 꿈을 향한 과정을 도와줄 도서관     ","categories": [],
         "tags": [],
         "url": "/vorstellung/",
         "teaser": null
@@ -132,19 +132,19 @@ var store = [{
         "teaser": null
       },{
         "title": "[Algorithm] 팩토리얼 - 재귀함수",
-        "excerpt":" ALGORITHM     알고리즘 정리(3)   재귀함수(1)            핵심 : base case와 recursive case 찾기             팩토리얼 - 재귀함수   def factorial(n):     if n == 0:         return 1     return factorial(n-1) * n  print(factorial(5))   120   ","categories": ["CODEIT"],
+        "excerpt":" ALGORITHM     알고리즘 정리(3)   재귀함수(1)            핵심 : base case와 recursive case 찾기             팩토리얼 - 재귀함수   def factorial(n):     if n == 0:         return 1     return factorial(n-1) * n  print(factorial(5))   120    ","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm3_factorial/",
         "teaser": null
       },{
         "title": "[Algorithm] 피보나치 수열 - 재귀함수",
-        "excerpt":" ALGORITHM     알고리즘 정리(4)   재귀함수(2)            핵심 : base case와 recursive case 찾기             피보나치 수열 - 재귀함수   def fib(n):     if n &lt; 3:         return 1     return fib(n-1) + fib(n-2)  for i in range(1, 11):     print(fib(i))     # 시간 복잡도 : O(2^n)   1 1 2 3 5 8 13 21 34 55   ","categories": ["CODEIT"],
+        "excerpt":" ALGORITHM     알고리즘 정리(4)   재귀함수(2)            핵심 : base case와 recursive case 찾기             피보나치 수열 - 재귀함수   def fib(n):     if n &lt; 3:         return 1     return fib(n-1) + fib(n-2)  for i in range(1, 11):     print(fib(i))     # 시간 복잡도 : O(2^n)   1 1 2 3 5 8 13 21 34 55    ","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm4_fibonacci/",
         "teaser": null
       },{
         "title": "[Algorithm] 자리수 합 - 재귀함수",
-        "excerpt":" ALGORITHM     알고리즘 정리(5)   재귀함수(3)            핵심 : base case와 recursive case 찾기             자리수 합 - 재귀함수   def sum_digits(n):     if n &lt; 10:         return n     return n % 10 + sum_digits(n // 10)  print(sum_digits(22541)) print(sum_digits(92130)) print(sum_digits(12634)) print(sum_digits(704)) print(sum_digits(3755)) # 시간 복잡도 : O(d)   14 15 16 11 20   ","categories": ["CODEIT"],
+        "excerpt":" ALGORITHM     알고리즘 정리(5)   재귀함수(3)            핵심 : base case와 recursive case 찾기             자리수 합 - 재귀함수   def sum_digits(n):     if n &lt; 10:         return n     return n % 10 + sum_digits(n // 10)  print(sum_digits(22541)) print(sum_digits(92130)) print(sum_digits(12634)) print(sum_digits(704)) print(sum_digits(3755)) # 시간 복잡도 : O(d)   14 15 16 11 20    ","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm5_digit_sum/",
         "teaser": null
@@ -204,7 +204,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Algorithm] 첫 번째 숫자부터 마지막 숫자까지 합 - 분할정복",
-        "excerpt":" ALGORITHM     알고리즘 정리(12)   Divide and Conquer(1)            핵심 divide/ conquer/ combine             1부터 n까지의 합   def consecutive_sum(start, end):     # 코드를 작성하세요     if start == end:         return start     else:         return consecutive_sum(start, (start+end)//2) + consecutive_sum((start+end)//2+1, end)  # 테스트 print(consecutive_sum(1, 10)) print(consecutive_sum(1, 100)) print(consecutive_sum(1, 253)) print(consecutive_sum(1, 388))   55 5050 32131 75466   ","categories": ["CODEIT"],
+        "excerpt":" ALGORITHM     알고리즘 정리(12)   Divide and Conquer(1)            핵심 divide/ conquer/ combine             1부터 n까지의 합   def consecutive_sum(start, end):     # 코드를 작성하세요     if start == end:         return start     else:         return consecutive_sum(start, (start+end)//2) + consecutive_sum((start+end)//2+1, end)  # 테스트 print(consecutive_sum(1, 10)) print(consecutive_sum(1, 100)) print(consecutive_sum(1, 253)) print(consecutive_sum(1, 388))   55 5050 32131 75466    ","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm12_sum_start_to_end/",
         "teaser": null
@@ -293,7 +293,7 @@ var store = [{
         "url": "/sql/sql2_3_set_theory_clauses/",
         "teaser": null
       },{
-        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (1)",
+        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (1)",
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 1 18/10/2021 def solution(x, n): return [x + x*i for i in range(n)] 문제 2 18/10/2021 def solution(arr1, arr2): return [[sum(j) for j in zip(*i)] for i in zip(arr1, arr2)] 문제 3 18/10/2021 a, b = map(int, input().strip().split('...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(1)/",
@@ -335,7 +335,7 @@ var store = [{
         "url": "/python/slicing_indexing_dataframe/",
         "teaser": null
       },{
-        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (2)",
+        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (2)",
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 11 21/10/2021 from math import sqrt def solution(n): return int((sqrt(n)+1)**2) if sqrt(n) == int(sqrt(n)) else -1 # 다른 사람의 좋은 풀이 def solution(n): sqrt = n ** (1/2) if sqrt % 1 == 0: return (sqrt + 1)...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(2)/",
@@ -347,7 +347,7 @@ var store = [{
         "url": "/sql/sql_practice_programmers(2)/",
         "teaser": null
       },{
-        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (3)",
+        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (3)",
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 21 24/10/2021 def solution(seoul): for i in range(len(seoul)): if seoul[i] == \"Kim\": return \"김서방은 \"+ str(i)+\"에 있다\" # 다른 사람의 좋은 풀이 def solution(seoul): return \"김서방은 {}에 있다\".format(seoul.index(\"Kim\")) 문제 22 24/10/2021 if len(s) == 4 or len(s) ==...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(3)/",
@@ -360,7 +360,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] LeetCode 1725. Number Of Rectangles That Can Form The Largest Square",
-        "excerpt":" ALGORITHM Übung - LeetCode     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제  문제 링크   코드  class Solution(object):     def countGoodRectangles(self, rectangles):         rect_list = [min(rectangle) for rectangle in range(rectangles)]         maxLen = max(rect_list)          result = 0         return sum([i for i in rect_list if maxLen == i])     ","categories": ["LEETCODE"],
+        "excerpt":" ALGORITHM Übung - LeetCode     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제  문제 링크   코드  class Solution(object):     def countGoodRectangles(self, rectangles):         rect_list = [min(rectangle) for rectangle in range(rectangles)]         maxLen = max(rect_list)          result = 0         return sum([i for i in rect_list if maxLen == i])    ","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
         "url": "/leetcode/leetcode_recursion1-copy/",
         "teaser": null
@@ -371,7 +371,7 @@ var store = [{
         "url": "/leetcode/leetcode_top100_liked(1)/",
         "teaser": null
       },{
-        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 (4)",
+        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (4)",
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 31 30/10/2021 def solution(price, money, count): return max(sum([price*i for i in range(1,count+1)])-money,0) 문제 32 31/10/2021 def solution(n): for i in range(1,n): if n%i == 1: return i 문제 33 1/11/2021 def solution(sizes): max_size = max(sizes[0]) min_size = min(sizes[0])...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(4)/",
@@ -389,6 +389,12 @@ var store = [{
         "url": "/codeit/algorithm26_maxium_profits_divide_conquer/",
         "teaser": null
       },{
+        "title": "[Algorithm] 최대 이익 구간",
+        "excerpt":"ALGORITHM 알고리즘 정리(27) Divide &amp; Conquer 리스트에는 며칠 동안의 수익이 담겨 있습니다. 예를 들어서 [7, -3, 4, -8]이라면 첫 날에는 7달러를 벌었고, 둘째 날에는 3달러를 잃었고, 셋째 날에는 4달러를 벌었고, 마지막 날에는 8달러를 잃은 것입니다. profits를 파라미터로 받아, 최대 수익을 내는 구간의 수익을 리턴 sublist_max 함수를 구현하시오. 함수의 시간 복잡도는...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm27_maximum_profits3/",
+        "teaser": null
+      },{
         "title": "[UNIX CLI] Command Line(3)",
         "excerpt":"UNIX COMMAND LINE UNIX CLI 정리(3) echo를 통해 variable의 name, value을 print할 수 있음 =를 통해 shell variable 생성 가능 for [variable] in [list] ; do [body] ; done를 통해 for loop 실행 echo variable의 value를 print할 시 $를 앞에 붙여줘야 함 대표적인 variable OSTYPE : User’s OS type HOME...","categories": ["CLI"],
         "tags": ["CLI","BACKEND","DATA-ENGINEERING"],
@@ -399,5 +405,11 @@ var store = [{
         "excerpt":"UNIX COMMAND LINE UNIX CLI 정리(4) bash: shell script 수행 $@ : bash를 통해 shell script를 실행할 때 변수를 받을 수 있게 함 bash bash [shell_script_name]을 통해 shell script(shell 명령어만 폼한된 텍스트 파일)의 명령어를 실행 shell script는 주로 [file_name].sh로 저장 # command를 입력할 shell script를 vim을 이용해 생성 vim print_header.sh...","categories": ["CLI"],
         "tags": ["CLI","BACKEND","DATA-ENGINEERING"],
         "url": "/cli/CLI_4/",
+        "teaser": null
+      },{
+        "title": "[SQL] SQL 날짜",
+        "excerpt":"SQL 날짜 SQL 날짜 관련 문법 정리 YEAR : DATE형 자료형에서 연도만 추출 MONTH : DATE형 자료형에서 월만 추출 DAYOFMONTH : DATE형 자료형에서 일만 추출 DATEDIFF : DATE형 자료형들 간 날짜 차이 산출 CURDATE : 오늘 날짜 DATE_ADD : 날짜 더하기 DATE_SUB : 날짜 빼기 UNIX_TIMESTAMP : DATE 자료형을 Unix...","categories": ["SQL"],
+        "tags": ["SQL"],
+        "url": "/sql/codeit_sql1/",
         "teaser": null
       }]

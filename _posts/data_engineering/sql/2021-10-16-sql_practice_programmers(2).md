@@ -97,7 +97,3 @@ ORDER BY HOUR
 ```
 
 ---
-
-
-
-

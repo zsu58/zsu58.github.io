@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[ALGORITHM] Programmers ALGORITHM 연습문제 (4) - Bibliothek für Data-Engineering</title>
+<!-- begin _includes/seo.html --><title>[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (4) - Bibliothek für Data-Engineering</title>
 <meta name="description" content="ALGORITHM Übung - Programmers    알고리즘 문제 풀이를 통한 코딩 테스트 연습">
 
 
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Bibliothek für Data-Engineering">
-<meta property="og:title" content="[ALGORITHM] Programmers ALGORITHM 연습문제 (4)">
+<meta property="og:title" content="[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (4)">
 <meta property="og:url" content="http://localhost:4000/programmers/programmers_coding_test(4)/">
 
 
@@ -178,7 +178,7 @@
   
     <div class="author__avatar">
       
-        <img src="/assets/images/excited_zsu_by_arm.gif" alt="ZSU" itemprop="image">
+        <img src="/assets/images/armi_made.png" alt="ZSU" itemprop="image">
       
     </div>
   
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">67</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">69</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/sql" class="">SQL (10)</a></li>
+                        <li><a href="/categories/sql" class="">SQL (11)</a></li>
                     
                 
                     
@@ -400,7 +400,7 @@
                     
                 
                     
-                        <li><a href="/categories/codeit" class="">Codeit (27)</a></li>
+                        <li><a href="/categories/codeit" class="">Codeit (28)</a></li>
                     
                 
                     
@@ -484,7 +484,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[ALGORITHM] Programmers ALGORITHM 연습문제 (4)">
+    <meta itemprop="headline" content="[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (4)">
     <meta itemprop="description" content="ALGORITHM Übung - Programmers  알고리즘 문제 풀이를 통한 코딩 테스트 연습">
     <meta itemprop="datePublished" content="2021-10-30T00:00:00+09:00">
     
@@ -492,7 +492,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[ALGORITHM] Programmers ALGORITHM 연습문제 (4)
+          <h1 id="page-title" class="page__title" itemprop="headline">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (4)
 </h1>
           
 
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-31">문제 31</a></li><li><a href="#문제-32">문제 32</a></li><li><a href="#문제-33">문제 33</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-31">문제 31</a></li><li><a href="#문제-32">문제 32</a></li><li><a href="#문제-33">문제 33</a></li><li><a href="#문제-34">문제 34</a></li></ul>
 
             </nav>
           </aside>
@@ -584,6 +584,35 @@
 
 <hr />
 
+<h3 id="문제-34">문제 34</h3>
+<ul>
+  <li>2/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test34.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">accum_days</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">]:</span>
+        <span class="n">accum_days</span> <span class="o">+=</span> <span class="n">i</span>
+        <span class="n">days</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">accum_days</span><span class="p">)</span>
+
+    <span class="n">mon_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="n">days</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)}</span>
+
+    <span class="n">day_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s">'THU'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s">'FRI'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s">'SAT'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s">'SUN'</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s">'MON'</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s">'TUE'</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s">'WED'</span><span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">day_dict</span><span class="p">[(</span><span class="n">mon_dict</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">getDayName</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s">'FRI'</span><span class="p">,</span> <span class="s">'SAT'</span><span class="p">,</span> <span class="s">'SUN'</span><span class="p">,</span> <span class="s">'MON'</span><span class="p">,</span> <span class="s">'TUE'</span><span class="p">,</span> <span class="s">'WED'</span><span class="p">,</span> <span class="s">'THU'</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">days</span><span class="p">[(</span><span class="nb">sum</span><span class="p">(</span><span class="n">months</span><span class="p">[:</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">7</span><span class="p">]</span>
+</code></pre></div></div>
+
+<hr />
+
         
       </section>
 
@@ -636,7 +665,7 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BALGORITHM%5D+Programmers+ALGORITHM+%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C+%284%29%20http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers_coding_test%284%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BALGORITHM%5D+Programmers+ALGORITHM+%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C+Lv1+%284%29%20http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers_coding_test%284%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers_coding_test%284%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -666,6 +695,54 @@
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/codeit_sql1/" rel="permalink">[SQL] SQL 날짜
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL 날짜
+
+  SQL 날짜 관련 문법 정리
+  YEAR : DATE형 자료형에서 연도만 추출
+  MONTH : DATE형 자료형에서 월만 추출
+  DAYOFMONTH : DATE형 자료형에서 일만 추출
+  DATEDIFF : DATE형 자료형들 간 날짜 차이 산출
+  CUR...</p>
+  </article>
+</div>
+
         
           
 
@@ -769,7 +846,7 @@ UNIX COMMAND LINE
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/codeit/algorithm26_maxium_profits_divide_conquer/" rel="permalink">[Algorithm] 최대 이익 구간 - Divide &amp; Conquer
+        <a href="/codeit/algorithm27_maximum_profits3/" rel="permalink">[Algorithm] 최대 이익 구간
 </a>
       
     </h2>
@@ -787,7 +864,7 @@ UNIX COMMAND LINE
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          less than 1 minute read
         
       </span>
     
@@ -796,55 +873,9 @@ UNIX COMMAND LINE
 
     <p class="archive__item-excerpt" itemprop="description">ALGORITHM
 
-  알고리즘 정리(26)
+  알고리즘 정리(27)
 
 </p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/cli/CLI_2/" rel="permalink">[UNIX CLI] Command Line(2)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          3 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-UNIX COMMAND LINE
-
-  UNIX CLI 정리(2)
-  cut을 통해 텍스트 형식 파일의 열을 선택해서 볼 수 있음
-  grep을 통해 텍스트 형식 파일에서 특정 문자 패턴만 filter해서 볼 수 있음
-  &gt;을 통해 명령어를 통해 산출된 결과를 저장(redi...</p>
   </article>
 </div>
 

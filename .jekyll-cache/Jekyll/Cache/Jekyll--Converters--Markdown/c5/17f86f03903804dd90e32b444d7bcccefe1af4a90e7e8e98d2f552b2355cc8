@@ -1,0 +1,32 @@
+I"m<hr />
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(9)</li>
+  <li>Brute Force(1)</li>
+</ul>
+
+<hr />
+
+<h3 id="카드-조합-최대값">카드 조합 최대값</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">max_product</span><span class="p">(</span><span class="n">left_cards</span><span class="p">,</span> <span class="n">right_cards</span><span class="p">):</span>
+
+    <span class="n">max_product</span> <span class="o">=</span> <span class="n">left_cards</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">right_cards</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">left</span> <span class="ow">in</span> <span class="n">left_cards</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">right</span> <span class="ow">in</span> <span class="n">right_cards</span><span class="p">:</span>
+            <span class="n">max_product</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_product</span><span class="p">,</span> <span class="n">left</span> <span class="o">*</span> <span class="n">right</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">max_product</span>
+    
+<span class="k">print</span><span class="p">(</span><span class="n">max_product</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">max_product</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">max_product</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]))</span>
+<span class="c1"># 시간 복잡도 : O(mn)
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>24
+32
+28
+</code></pre></div></div>
+
+<hr />
+:ET

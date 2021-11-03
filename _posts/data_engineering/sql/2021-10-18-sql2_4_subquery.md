@@ -72,4 +72,5 @@ SELECT local_name, subquery.lang_num
   WHERE countries.code = subquery.code
 ORDER BY lang_num DESC;
 ```
+
 ---

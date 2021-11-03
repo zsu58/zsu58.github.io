@@ -1,0 +1,52 @@
+I"�<hr />
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(8)</li>
+  <li>재귀함수(6)
+    <ul>
+      <li>핵심 : base case와 recursive case 찾기</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="하노이의-탑---재귀함수">하노이의 탑 - 재귀함수</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">move_disk</span><span class="p">(</span><span class="n">disk_num</span><span class="p">,</span> <span class="n">start_peg</span><span class="p">,</span> <span class="n">end_peg</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"%d번 원판을 %d번 기둥에서 %d번 기둥으로 이동"</span> <span class="o">%</span> <span class="p">(</span><span class="n">disk_num</span><span class="p">,</span> <span class="n">start_peg</span><span class="p">,</span> <span class="n">end_peg</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">hanoi</span><span class="p">(</span><span class="n">num_disks</span><span class="p">,</span> <span class="n">start_peg</span><span class="p">,</span> <span class="n">end_peg</span><span class="p">):</span>
+
+    <span class="n">other_peg</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">-</span> <span class="n">start_peg</span> <span class="o">-</span> <span class="n">end_peg</span>
+
+    <span class="k">if</span> <span class="n">num_disks</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">hanoi</span><span class="p">(</span><span class="n">num_disks</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">start_peg</span><span class="p">,</span> <span class="n">other_peg</span><span class="p">)</span>
+        <span class="n">move_disk</span><span class="p">(</span><span class="n">num_disks</span><span class="p">,</span> <span class="n">start_peg</span><span class="p">,</span> <span class="n">end_peg</span><span class="p">)</span>
+        <span class="n">hanoi</span><span class="p">(</span><span class="n">num_disks</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">other_peg</span><span class="p">,</span> <span class="n">end_peg</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'---------------2개---------------'</span><span class="p">)</span>
+<span class="n">hanoi</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'---------------3개---------------'</span><span class="p">)</span>
+<span class="n">hanoi</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1"># 시간 복잡도 : O(2^n)
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------2개---------------
+1번 원판을 1번 기둥에서 2번 기둥으로 이동
+2번 원판을 1번 기둥에서 3번 기둥으로 이동
+1번 원판을 2번 기둥에서 3번 기둥으로 이동
+---------------3개---------------
+1번 원판을 1번 기둥에서 3번 기둥으로 이동
+2번 원판을 1번 기둥에서 2번 기둥으로 이동
+1번 원판을 3번 기둥에서 2번 기둥으로 이동
+3번 원판을 1번 기둥에서 3번 기둥으로 이동
+1번 원판을 2번 기둥에서 1번 기둥으로 이동
+2번 원판을 2번 기둥에서 3번 기둥으로 이동
+1번 원판을 1번 기둥에서 3번 기둥으로 이동
+</code></pre></div></div>
+
+<hr />
+:ET

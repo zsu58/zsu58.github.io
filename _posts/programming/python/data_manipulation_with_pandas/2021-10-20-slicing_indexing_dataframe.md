@@ -1545,4 +1545,4 @@ mean_temp_by_city[mean_temp_by_city == min(mean_temp_by_city)]
     China    Harbin    4.876551
     dtype: float64
 
-
+---

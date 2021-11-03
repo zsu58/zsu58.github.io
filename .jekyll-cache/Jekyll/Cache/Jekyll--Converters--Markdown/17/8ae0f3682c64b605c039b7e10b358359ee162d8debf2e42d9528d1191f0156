@@ -1,0 +1,90 @@
+I"<hr />
+<h3 id="unix-command-line">UNIX COMMAND LINE</h3>
+<ul>
+  <li>UNIX CLI 정리(4)</li>
+  <li><code class="language-plaintext highlighter-rouge">bash</code>: shell script 수행</li>
+  <li><code class="language-plaintext highlighter-rouge">$@</code> : bash를 통해 shell script를 실행할 때 변수를 받을 수 있게 함</li>
+</ul>
+
+<hr />
+
+<h3 id="bash">bash</h3>
+<ul>
+  <li>bash [shell_script_name]을 통해 shell script(shell 명령어만 폼한된 텍스트 파일)의 명령어를 실행
+    <ul>
+      <li>shell script는 주로 [file_name].sh로 저장</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># command를 입력할 shell script를 vim을 이용해 생성
+</span><span class="n">vim</span> <span class="n">print_header</span><span class="p">.</span><span class="n">sh</span>
+
+<span class="c1"># print_header.sh 안에 수행할 명령어 입력
+</span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="n">iris</span><span class="p">.</span><span class="n">csv</span>
+
+<span class="c1"># bash [file_name]을 통해 명령어 수행
+</span><span class="n">bash</span> <span class="n">print_header</span><span class="p">.</span><span class="n">sh</span>
+
+<span class="c1"># history 명령어를 활용하면 이전에 수행한 명령어들을 쉽게 텍스트 파일로 만들 수 있음
+# history | tail -n [number_of_lines].sh &gt; [shell_script_name].sh
+</span></code></pre></div></div>
+<hr />
+
+<h3>$@</h3>
+<ul>
+  <li>지정하고 싶은 변수가 복수일 때는 <code class="language-plaintext highlighter-rouge">$1</code>, <code class="language-plaintext highlighter-rouge">$2</code> 등으로 가능</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># print_header.sh 안에 수행할 명령어 입력
+</span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="err">$</span><span class="o">@</span>
+
+<span class="c1"># bash [file_name]을 통해 명령어 수행
+</span><span class="n">bash</span> <span class="n">print_header</span><span class="p">.</span><span class="n">sh</span> <span class="n">iris</span><span class="p">.</span><span class="n">csv</span>
+ 
+<span class="c1"># row number을 2 번째로 변수로, 파일 이름을 첫 번째 변수로 지정
+</span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="err">$</span><span class="mi">2</span> <span class="err">$</span><span class="mi">1</span>
+<span class="n">bash</span> <span class="n">print_header</span><span class="p">.</span><span class="n">sh</span> <span class="n">iris</span><span class="p">.</span><span class="n">csv</span> <span class="mi">1</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="multiple-lines-in-shell-script">multiple lines in shell script</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># multiple commands
+# print the total row numbers and the column name of csv files that starts with c in the directory
+</span><span class="n">vim</span> <span class="n">print_row_column_name</span><span class="p">.</span><span class="n">sh</span>
+
+<span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="err">$</span><span class="o">@</span>
+<span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="err">$</span><span class="o">@</span>
+
+<span class="n">bash</span> <span class="n">print_row_column_name</span><span class="p">.</span><span class="n">sh</span> <span class="n">c</span><span class="o">*</span><span class="p">.</span><span class="n">csv</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="for-loop-in-shell-script">for loop in shell script</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># multiple commands
+# print the total row numbers and the column name of csv files that starts with c in the directory
+</span><span class="n">vim</span> <span class="n">print_row_column_name</span><span class="p">.</span><span class="n">sh</span>
+
+<span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="err">$</span><span class="o">@</span>
+<span class="n">do</span>
+    <span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="err">$</span><span class="nb">file</span>
+    <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="err">$</span><span class="nb">file</span>
+<span class="n">done</span>
+
+<span class="n">bash</span> <span class="n">print_row_column_name</span><span class="p">.</span><span class="n">sh</span> <span class="n">c</span><span class="o">*</span><span class="p">.</span><span class="n">csv</span>
+
+<span class="c1"># print the total row numbers of csv files that start with c and sort the number of rows as ascending
+</span><span class="n">vim</span> <span class="n">print_row_num</span><span class="p">.</span><span class="n">sh</span>
+
+<span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="err">$</span><span class="o">@</span>
+<span class="n">do</span>
+    <span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="err">$</span><span class="nb">file</span>
+<span class="n">done</span>
+
+<span class="n">bash</span> <span class="n">print_row_num</span><span class="p">.</span><span class="n">sh</span> <span class="n">c</span><span class="o">*</span><span class="p">.</span><span class="n">csv</span> <span class="o">|</span> <span class="n">sort</span>
+</code></pre></div></div>
+
+<hr />
+:ET

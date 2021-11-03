@@ -112,4 +112,5 @@ SELECT code, name
   	(SELECT code 
   	 FROM currencies);
 ```
+
 ---

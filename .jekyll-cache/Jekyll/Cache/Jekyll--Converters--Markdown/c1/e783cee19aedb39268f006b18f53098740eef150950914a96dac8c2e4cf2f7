@@ -1,0 +1,114 @@
+I"<hr />
+<h3 id="writing-efficient-python-code">Writing Efficient Python Code</h3>
+<ul>
+  <li>PART3</li>
+  <li><code class="language-plaintext highlighter-rouge">Counter</code> from module collections
+    <ul>
+      <li>종류별 개수를 반환</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">combinations</code> from itertools
+    <ul>
+      <li>가능한 조합을 list로 반환</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">set</code> from itertools
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">set</code>을 통해 distinct한 element만 산출</li>
+      <li><code class="language-plaintext highlighter-rouge">intersection</code>을 통해 교집합 산출</li>
+      <li><code class="language-plaintext highlighter-rouge">difference</code>을 통해 차집합 산출</li>
+      <li><code class="language-plaintext highlighter-rouge">symmetric_difference</code>을 통해 합집합-교집합 산출</li>
+    </ul>
+  </li>
+  <li>계산이 한 번만 필요한 것은 loop 전에 계산하기</li>
+  <li><code class="language-plaintext highlighter-rouge">map</code>을 활용해 한 번에 처리하기</li>
+</ul>
+
+<hr />
+
+<h3 id="counter">Counter</h3>
+<p>1) Counter</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">iris_df</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">'iris'</span><span class="p">)</span>
+<span class="n">Counter</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="s">'species'</span><span class="p">])</span>
+
+<span class="c1"># 위와 같음
+# species_dict = {}
+# for species in iris_species:
+#     print(species
+#     if species in species_dict.keys():
+#         species_dict[species] += 1
+#     else:
+#         species_dict[species] = 1
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Counter({'setosa': 50, 'versicolor': 50, 'virginica': 50})
+</code></pre></div></div>
+
+<h3 id="combinations">combinations</h3>
+<p>2) combinations</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+
+<span class="n">iris_species</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="s">'species'</span><span class="p">]))</span>
+
+<span class="c1"># get every combination of 2
+</span><span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">iris_species</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[('setosa', 'virginica'), ('setosa', 'versicolor'), ('virginica', 'versicolor')] ---
+</code></pre></div></div>
+
+<h3 id="set">set</h3>
+<p>3) intersection &amp; difference &amp; symmetric_difference</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set_a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">set_b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># 교집합
+</span><span class="n">both</span> <span class="o">=</span> <span class="n">set_a</span><span class="p">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set_b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">both</span><span class="p">)</span>
+
+<span class="c1"># 차집합
+</span><span class="n">set_a_only</span> <span class="o">=</span> <span class="n">set_a</span><span class="p">.</span><span class="n">difference</span><span class="p">(</span><span class="n">set_b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">set_a_only</span><span class="p">)</span>
+
+<span class="c1"># 합집합-교집합
+</span><span class="n">unique_to_set</span> <span class="o">=</span> <span class="n">set_a</span><span class="p">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="n">set_b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">unique_to_set</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{3}
+{1, 2}
+{1, 2, 4, 5} ---
+</code></pre></div></div>
+
+<h3 id="better-loops">Better loops</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># combinations()
+</span><span class="n">possible_pairs</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">combinations</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="s">'species'</span><span class="p">]),</span><span class="mi">2</span><span class="p">)]</span>
+<span class="n">enumerated_tuples</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">pair</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">possible_pairs</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">enumerated_pair_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">,)</span> <span class="o">+</span> <span class="n">pair</span>
+    <span class="n">enumerated_tuples</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">enumerated_pair_tuple</span><span class="p">)</span>
+
+<span class="n">enumerated_pairs</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">enumerated_tuples</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">enumerated_pairs</span><span class="p">)</span>
+
+
+<span class="c1"># 위와 같음
+# for i,pair in enumerate(possible_pairs, 1):
+#     enumerated_pair_tuple = (i,) + pair
+#     enumerated_pair_list = list(enumerated_pair_tuple)
+#     enumerated_pairs.append(enumerated_pair_list)
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[1, 'setosa', 'virginica'], [2, 'setosa', 'versicolor'], [3, 'virginica', 'versicolor']]
+</code></pre></div></div>
+
+<hr />
+:ET

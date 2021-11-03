@@ -1,0 +1,31 @@
+I"�	<hr />
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(6)</li>
+  <li>재귀함수(4)
+    <ul>
+      <li>핵심 : base case와 recursive case 찾기</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="리스트-뒤집기---재귀함수">리스트 뒤집기 - 재귀함수</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">flip</span><span class="p">(</span><span class="n">some_list</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">some_list</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">some_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">some_list</span>
+    <span class="k">return</span> <span class="n">some_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">flip</span><span class="p">(</span><span class="n">some_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">some_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">some_list</span> <span class="o">=</span> <span class="n">flip</span><span class="p">(</span><span class="n">some_list</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">some_list</span><span class="p">)</span>
+<span class="c1"># 시간 복잡도 : O(n^2)
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[9, 8, 7, 6, 5, 4, 3, 2, 1]
+</code></pre></div></div>
+
+<hr />
+:ET

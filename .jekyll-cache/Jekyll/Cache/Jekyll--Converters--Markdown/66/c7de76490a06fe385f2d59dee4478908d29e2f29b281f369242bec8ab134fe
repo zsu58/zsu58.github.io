@@ -1,0 +1,114 @@
+I"�-<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(17)</li>
+  <li>Dynamic Programming이 필요한 경우
+    <ul>
+      <li>최적 부분 구조가 있음</li>
+      <li>중복되는 부분 문제들이 있음</li>
+    </ul>
+  </li>
+  <li>Dyanmic Programming은 2가지 종류가 존재
+    <ul>
+      <li>Memoization
+        <ul>
+          <li>재귀를 사용</li>
+          <li>장점: 모든 경우를 다 계산할 필요 없음</li>
+          <li>단점: call stack이 계속 쌓임</li>
+        </ul>
+      </li>
+      <li>Tabulation
+        <ul>
+          <li>반복을 사용</li>
+          <li>장점: call stack이 쌓이지 않음</li>
+          <li>단점: 모든 경우를 다 계산함</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="문제">문제</h3>
+<ul>
+  <li>솔희는 학원 쉬는 시간에 친구들을 상대로 새꼼달꼼 장사를 합니다. 그러다 문뜩, 갖고 있는 새꼼달꼼으로 벌어들일 수 있는 최대 수익이 궁금해졌는데요…</li>
+  <li>가능한 최대 수익을 리턴시켜 주는 함수 max_profit_memo를 Memoization 방식과 Tabulation 방식으로 작성해 보세요. Memoization의 경우, max_profit_memo는 파라미터 세 개를 받습니다.</li>
+  <li>price_list: 개수별 가격이 정리되어 있는 리스트</li>
+  <li>count: 판매할 새꼼달꼼 개수</li>
+  <li>cache: 개수별 최대 수익이 저장되어 있는 사전</li>
+  <li>예를 들어 price_list가 [0, 100, 400, 800, 900, 1000]이라면,
+    <ul>
+      <li>새꼼달꼼 0개에 0원</li>
+      <li>새꼼달꼼 1개에 100원</li>
+      <li>새꼼달꼼 2개에 400원</li>
+      <li>새꼼달꼼 3개에 800원</li>
+      <li>새꼼달꼼 4개에 900원</li>
+      <li>새꼼달꼼 5개에 1000원</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Memoization
+</span><span class="k">def</span> <span class="nf">max_profit_memo</span><span class="p">(</span><span class="n">price_list</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">cache</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">cache</span><span class="p">[</span><span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="n">price_list</span><span class="p">[</span><span class="n">count</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">count</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">count</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">price_list</span><span class="p">):</span>
+        <span class="n">max_profit</span> <span class="o">=</span> <span class="n">price_list</span><span class="p">[</span><span class="n">count</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">max_profit</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">count</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">max_profit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_profit</span><span class="p">,</span> <span class="n">max_profit_memo</span><span class="p">(</span><span class="n">price_list</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">cache</span><span class="p">)</span> <span class="o">+</span> <span class="n">max_profit_memo</span><span class="p">(</span><span class="n">price_list</span><span class="p">,</span> <span class="n">count</span><span class="o">-</span><span class="n">i</span><span class="p">,</span> <span class="n">cache</span><span class="p">))</span>
+    <span class="n">cache</span><span class="p">[</span><span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_profit</span>
+    <span class="k">return</span> <span class="n">max_profit</span>
+
+
+<span class="k">def</span> <span class="nf">max_profit</span><span class="p">(</span><span class="n">price_list</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+    <span class="n">max_profit_cache</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">return</span> <span class="n">max_profit_memo</span><span class="p">(</span><span class="n">price_list</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">max_profit_cache</span><span class="p">)</span>
+
+<span class="c1"># 테스트
+</span><span class="k">print</span><span class="p">(</span><span class="n">max_profit</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">max_profit</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="mi">10</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">max_profit</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1400</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">2100</span><span class="p">,</span> <span class="mi">2200</span><span class="p">],</span> <span class="mi">9</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1200
+2500
+2400
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Tabulation
+</span><span class="k">def</span> <span class="nf">max_profit</span><span class="p">(</span><span class="n">price_list</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+    <span class="n">profit_tbl</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">price_list</span><span class="p">):</span>
+            <span class="n">biggest_profit</span> <span class="o">=</span> <span class="n">price_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">biggest_profit</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">count</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">biggest_profit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">biggest_profit</span><span class="p">,</span> <span class="n">max_profit</span><span class="p">(</span><span class="n">price_list</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">max_profit</span><span class="p">(</span><span class="n">price_list</span><span class="p">,</span> <span class="n">count</span> <span class="o">-</span> <span class="n">j</span><span class="p">))</span>
+        <span class="n">profit_tbl</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">biggest_profit</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">profit_tbl</span><span class="p">[</span><span class="n">count</span><span class="p">]</span>
+
+<span class="c1"># 테스트
+</span><span class="k">print</span><span class="p">(</span><span class="n">max_profit</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">2000</span><span class="p">],</span> <span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">max_profit</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">1100</span><span class="p">,</span> <span class="mi">1400</span><span class="p">],</span> <span class="mi">8</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">max_profit</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">1300</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1800</span><span class="p">],</span> <span class="mi">9</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2000
+2400
+1800
+</code></pre></div></div>
+
+<hr />
+:ET

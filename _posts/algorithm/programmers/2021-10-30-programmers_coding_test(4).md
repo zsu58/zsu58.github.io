@@ -90,3 +90,39 @@ def getDayName(a,b):
 ```
 
 ---
+
+### 문제 35
+* 3/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test35.png" align="center">
+</p>
+```python
+def solution(numbers):
+    sum_list = []
+    for i in range(len(numbers)-1):
+        for j in range(i+1, len(numbers)):
+            sum_list.append(numbers[i]+numbers[j])
+    return sorted(list(set(sum_list)))
+```
+
+---
+
+### 문제 36
+* 3/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test36.png" align="center">
+</p>
+```python
+def solution(d, budget):
+    res = 0
+    for mon in sorted(d):
+        if budget >= mon:
+            budget -= mon
+            res += 1
+        else:
+            break
+    
+    return res
+```
+
+---

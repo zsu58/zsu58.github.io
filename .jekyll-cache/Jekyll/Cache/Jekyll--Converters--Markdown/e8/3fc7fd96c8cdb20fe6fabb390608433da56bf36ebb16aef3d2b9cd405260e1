@@ -1,0 +1,468 @@
+I"��<hr />
+<p><b>DJANGO WEB DEVELOPMENT</b></p>
+<h3 id="4-model">4. Model</h3>
+
+<hr />
+
+<h3 id="model">Model</h3>
+<ul>
+  <li>사용할 데이터 고려하여 데이터 모델링 후, 이에 맞는 field 작성</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 'foods' directory의 models.py
+</span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="c1"># Create your models here.
+</span><span class="k">class</span> <span class="nc">Menu</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">IntegerField</span><span class="p">()</span>
+    <span class="n">img_path</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">name</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="django-model-field">Django Model Field</h3>
+<ul>
+  <li>Field - 데이터 테이블에서의 열(column), 즉 데이터의 속성을 의미</li>
+  <li>CharField - 제한된 길이의 문자열을 위한 필드
+    <ul>
+      <li>class CharField(max_length=50)
+        <ul>
+          <li>max_length 필수 인수이며 입력할 최대 길이를 설정</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>IntegerField - 정수 값을 위한 필드이며 -2147483648 부터 2147483647 범위를 지원
+    <ul>
+      <li>class IntegerField()</li>
+    </ul>
+  </li>
+  <li>BooleanField - Boolean 값을 위한 필드
+    <ul>
+      <li>class BooleanField()</li>
+    </ul>
+  </li>
+  <li>DateField - 파이썬의 datetime.date 객체 형태로 표시되는 날짜 필드
+    <ul>
+      <li>class DateField(auto_now=False, auto_now_add=False)
+        <ul>
+          <li>auto_now - true로 설정되면 해당 객체가 변경(save) 될 때마다 자동으로 필드 값을 지금으로 수정 (마지막 수정 시간 등)</li>
+        </ul>
+      </li>
+      <li>auto_now_add
+        <ul>
+          <li>모델이 처음 생성될 때 한 번, 자동으로 필드 값을 지금으로 설정, ‘생성된 시간’을 저장하기 위해 많이 사용</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>DateTimeField - 파이썬의 datetime.datetime 객체 형태로 표시되는 날짜 필드, DateField와 인수 옵션은 같음
+    <ul>
+      <li>class DateTimeField(auto_now=False, auto_now_add=False)</li>
+    </ul>
+  </li>
+  <li>EmailField - CharField의 하위 클래스로 문자열이 이용 가능한 이메일 주소인지 EmailValidator를 통해 확인
+    <ul>
+      <li>https://docs.djangoproject.com/en/3.1/ref/validators/#django.core.validators.EmailValidator</li>
+    </ul>
+  </li>
+  <li>FileField - 파일 업로드를 위한 필드
+    <ul>
+      <li>class FileField(upload_to=None, max_length=100)
+        <ul>
+          <li>upload_to 업로드될 경로를 지정하는 필드로 Storage.save() 함수로 값이 전달되어 저장됨</li>
+          <li>https://docs.djangoproject.com/en/3.1/ref/files/storage/#django.core.files.storage.Storage.save</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>ImageField - FileField를 상속하여 구현되는 파일 업로드를 위한 필드이며 기본적으로 최대 길이가 100인 문자열 형식으로 생성됨, FileField에서 업로드된 파일이 정상적인 이미지 파일인지 확인하는 과정이 추가된 필드로 이미지 처리를 위한 Pillow 라이브러리가 필수적으로 필요
+    <ul>
+      <li>class ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)</li>
+      <li>height_field &amp; width_field 객체가 저장 될 때 이미지의 높이와 너비값이 자동으로 채워짐</li>
+    </ul>
+  </li>
+  <li>GenericIPAddressField - IP 주소 체크</li>
+  <li>JSONField - JSON 파일을 위한(Django 3.1 버전 이상부터 지원) 필드</li>
+  <li>FilePathField - 특정 폴더의 파일 패스를 표현하는 필드</li>
+  <li>URLField - URL을 위한 필드</li>
+  <li>그 외 필드 - https://docs.djangoproject.com/en/3.1/ref/models/fields/#django.db.models.Field.default</li>
+</ul>
+
+<h3 id="django-model-field-옵션">Django Model Field 옵션</h3>
+<ul>
+  <li>null - 기본 값은 False이며 Null 값 허용 여부를 선택
+    <ul>
+      <li>Field.null</li>
+      <li>’ ‘ (빈 문자열)과 Null 모두 해당 필드의 데이터가 없다는 것을 의미</li>
+      <li>따라서 null 옵션을 적용할 필드가 문자열 기반 필드 (Char, Text)일 경우에는 주의해서 사용해야 함</li>
+      <li>일반적으로 데이터가 없다는 것을 의미하는 값은 하나여야 하므로 Django는 문자열 기반 필드가 데이터가 없음을 표시할 때는 ‘ ‘(빈 문자열)을 사용하도록 권장</li>
+    </ul>
+  </li>
+  <li>blank - 기본 값은 False이며 True로 설정한 경우 필드 값을 빈 값으로 설정할 수 있음
+    <ul>
+      <li>Field.blank</li>
+      <li>null은 온전히 데이터베이스와 관련된 사항이고 blank는 데이터의 유효성 검사와 관련된 옵션</li>
+      <li>예를들어 blank가 True라면 해당 필드에 데이터를 입력하지 않아도 유효성 검사를 통과하게 됨</li>
+    </ul>
+  </li>
+  <li>default - 필드의 기본값을 설정하는 옵션으로 값 또는 함수가 들어갈 수 있음
+    <ul>
+      <li>Field.default</li>
+    </ul>
+  </li>
+  <li>db_column
+    <ul>
+      <li>Field.db_column</li>
+      <li>해당 필드에 사용할 데이터베이스 속성 명을 지정, 따로 지정하지 않을 경우 일반적으로 필드의 이름을 사용</li>
+    </ul>
+  </li>
+  <li>그 외 옵션 - https://docs.djangoproject.com/en/3.1/ref/models/fields/#django.db.models.Field.default</li>
+</ul>
+
+<hr />
+
+<h3 id="migrations">Migrations</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 모델(Model)의 변경 사항, 즉 Django 프로젝트의 데이터 구조 변경 사항을 관리하기 위한 Django만의 관리 방법
+* 변경될 때마다 히스토리를 하나씩 만들어 두고 마치 블럭을 갈아 끼우듯 생성한 히스토리를 실제 데이터베이스에 반영
+* 이 모든 과정은 Django의 ORM(Object-Relational Mapping)을 통해 진행됨
+* makemigrations 
+    * 모델의 변경 사항을 인식해서 새로운 마이그레이션을 만듦, 이때 마이그레이션은 각 앱 디렉토리 내 migrations 디렉토리 안쪽에 생성
+* migrate
+    * 생성된 최신 버전의 마이그레이션을 데이터베이스에 반영, 
+    * 만약 이전 마이그레이션으로 되돌리고 싶다면 python manage.py migrate [app_name] {migration_number}를 사용할 수 있음
+* showmigrations
+    * 현재 django 프로젝트의 모든 마이그레이션과 반영 상태를 나타냄
+    * 특정 앱에 대한 것만 보고 싶다면 python manage.py showmigrations [app_name]을 사용할 수 있음
+* sqlmigrate
+    * 인수로 넘겨준 마이그레이션이 ORM을 통해 변경된 SQL문을 출력
+    * sqlmigrate를 통해 모델이 의도한 대로 SQL문으로 변경되어 데이터베이스에 반영되었는지 확인할 수 있음
+* 공식 문서 : https://docs.djangoproject.com/en/2.2/topics/migrations/
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># CMD
+# 생성/변경된 model을 django에 알려주기
+</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">makemigrations</span>
+
+<span class="c1"># 장고에서 제공하는 여러 데이터구조 반영
+</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span>
+
+<span class="c1"># Migration 목록 보기, [X]는 Django에 반영이 된 것을 의미
+</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">showmigrations</span>
+
+<span class="c1"># Migration 파일이 어떻게 OMR을 통해 어떻게 SQL로 변하게 되었는지 보기(python manage.py sqlmigrate [app_name] [migration_number])
+</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">sqlmigrate</span> <span class="n">foods</span> <span class="mi">0001</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="데이터-crud">데이터 CRUD</h3>
+<ul>
+  <li>Django는 Model을 정의하면 ORM을 통해서 데이터베이스에 데이터를 추가하고(Create) 조회하고(Read) 수정하고(Update) 삭제(Delete)할 수 있도록 하는 편리한 기능을 제공</li>
+  <li>이 기능들은 Model의 ‘objects’를 이용해서 수행하게 됨</li>
+  <li>쉽게 말해, objects는 Model을 정의하면 생성되는 데이터베이스 관리 매니저로 데이터베이스와 관련된 편리한 기능을 제공하는 객체</li>
+</ul>
+
+<h3 id="데이터-create">데이터 Create</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* Django Shell에서 진행
+* Django 쉘은 Django 프로젝트를 쉘에서 바로 접근 할 수 있도록 하는 환경 설정이 더해진 것
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># CMD
+# Django Shell 실행
+</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">shell</span>
+
+<span class="c1"># 앱의 모델 가져오기
+</span><span class="kn">from</span> <span class="nn">foods.models</span> <span class="kn">import</span> <span class="n">Menu</span>
+
+<span class="c1"># 데이터 저장 방법 1 '[model].objects.create([field_name=value, ...])'
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="err">“</span><span class="n">코딩에</span> <span class="n">빠진</span> <span class="n">닭</span><span class="err">”</span><span class="p">,</span>
+<span class="p">...</span> <span class="n">description</span><span class="o">=</span><span class="err">“</span><span class="n">주머니가</span> <span class="n">가벼운</span> <span class="n">당신의</span> <span class="n">마음까지</span> <span class="n">생각한</span> <span class="n">가격</span><span class="err">”</span><span class="p">,</span>
+<span class="p">...</span> <span class="n">price</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+<span class="p">...</span> <span class="n">img_path</span><span class="o">=</span><span class="err">“</span><span class="n">foods</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">chicken</span><span class="p">.</span><span class="n">jpg</span><span class="err">”</span><span class="p">)</span>
+
+<span class="c1"># 잘 저장되었는지 확인 - 모든 데이터 조회 ''
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">()</span>
+
+<span class="c1"># 상세 데이터 확인
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">().</span><span class="n">values</span><span class="p">()</span>
+
+<span class="c1"># Django Shell 종료
+</span><span class="nb">exit</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="data-read">Data Read</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">order_by</code> - 정렬 후 데이터 Read</li>
+  <li><code class="language-plaintext highlighter-rouge">count</code> - 데이터의 row 개수 Read</li>
+  <li><code class="language-plaintext highlighter-rouge">exclude</code> - 특정 조건 제외하고 데이터 Read</li>
+  <li><code class="language-plaintext highlighter-rouge">get</code> + 조건 키워드 - 하나의 데이터만 Read, 여러개인 경우 error 발생</li>
+  <li><code class="language-plaintext highlighter-rouge">filter</code> + 조건 키워드 - 여러 데이터를 Read</li>
+  <li>조건 키워드 - 필드명__조건키워드 = “조건”
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">__contains</code> - 일정 문자열을 포함한 데이터 Read</li>
+      <li><code class="language-plaintext highlighter-rouge">__icontains</code> - 지정한 문자열을 대소문자를 구분하지 않고 데이터 Read</li>
+      <li><code class="language-plaintext highlighter-rouge">__range</code> - 일정 범위의 데이터 Read</li>
+      <li><code class="language-plaintext highlighter-rouge">__exact</code> - 대소문자를 구분해서 조건과 정확히 일치 하는지 데이터 Read</li>
+      <li><code class="language-plaintext highlighter-rouge">__iexact</code> - 대소문자를 구분 하지 않고 일치하는 데이터 Read</li>
+      <li><code class="language-plaintext highlighter-rouge">__lt</code> - less than</li>
+      <li><code class="language-plaintext highlighter-rouge">__lte</code> - less than or equal</li>
+      <li><code class="language-plaintext highlighter-rouge">__gt</code> - greater than</li>
+      <li><code class="language-plaintext highlighter-rouge">__gte</code> - greater than or equal</li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">__in</code> - 주어진 리스트 안에 존재하는 자료를 조회</p>
+      </li>
+      <li>그 외 : https://docs.djangoproject.com/en/2.2/ref/models/querysets/#field-lookups</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Django Shell 실행 후, foods 앱의 Menu Class 임포트 후
+</span>
+<span class="c1"># 'price' 가격만 Read
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">().</span><span class="n">values</span><span class="p">(</span><span class="s">'price'</span><span class="p">)</span>
+
+<span class="c1"># 'price'에 따라 오름차순으로 정렬하고 데이터 Read
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'price'</span><span class="p">)</span> <span class="c1"># 내림차순 Menu.objects.order_by('-price')
+</span>
+<span class="c1"># 전체 데이터 개수 세기 '[model].objects.count()'
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="c1"># 데이터 중 "코딩에 빠진 닭"을 제외하고 데이터 Read
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">"코딩에 빠진 닭"</span><span class="p">)</span>
+
+<span class="c1"># id가 1인 데이터 가져오기
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 음식 이름 중에 "코"가 들어간 모든 데이터 Read
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">name__contains</span> <span class="o">=</span> <span class="s">"코"</span><span class="p">)</span>
+
+<span class="c1"># 음식 가격이 2000원에서 10000원 사이인 데이터 Read
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">price__range</span><span class="o">=</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">10000</span><span class="p">))</span>
+
+<span class="c1"># 대소문자를 구분하지 않고 음식의 이름(name)이 'chicken'인 데이터를 모두 조회
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">name__iexact</span><span class="o">=</span><span class="s">'chicken'</span><span class="p">)</span>
+
+<span class="c1"># age가 25세 이상인 데이터 조회
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">age__gt</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="c1"># age가 21세, 25세, 27세인 데이터 조회
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">age__in</span><span class="o">=</span><span class="p">[</span><span class="mi">21</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">27</span><span class="p">])</span>
+
+<span class="c1"># 참고
+# price가 10000원인 데이터를 name에 따라 Read (방법1)
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">price</span><span class="o">=</span><span class="mi">10000</span><span class="p">).</span><span class="n">order_by</span><span class="p">(</span><span class="s">'name'</span><span class="p">)</span>
+
+<span class="c1"># price가 10000원인 데이터를 name에 따라 Read (방법2) - 가독성이 좋기에 방법2 추천
+</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">model</span><span class="p">}.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">price</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'name'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="data-update">Data Update</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Django Shell 실행 후, foods 앱의 Menu Class 임포트 후
+</span>
+<span class="c1"># data에 변경하고 싶은 데이터 저장
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 확인
+</span><span class="n">data</span>
+
+<span class="c1"># data update(데이터 이름을 "코빠닭'으로 수정)
+</span><span class="n">data</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"코빠닭"</span>
+
+<span class="c1"># 확인
+</span>
+<span class="c1"># 저장
+</span><span class="n">data</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="c1"># 전체 데이터 조회해서 저장 잘 되었는지 확인
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="data-delete">Data Delete</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Django Shell 실행 후, foods 앱의 Menu Class 임포트 후
+</span>
+<span class="c1"># data에 삭제하고 싶은 데이터 저장
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 확인
+</span><span class="n">data</span>
+
+<span class="c1"># 삭제
+</span><span class="n">data</span><span class="p">.</span><span class="n">delete</span><span class="p">()</span>
+
+<span class="c1"># 전체 데이터 조회해서 잘 삭제되었는지 확인
+</span><span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="queryset">Queryset</h3>
+<ul>
+  <li>Django의 ORM을 이용해 database와 소통할 때 발생하는 자료형으로 파이썬의 list와 유사</li>
+  <li>Python code를 작성하면(ex. Menu.objects.all().values(‘price’))
+    <ul>
+      <li>Django의 ORM이 이를 자동으로 SQL로 변환</li>
+      <li>이를 바탕으로 database와 소통</li>
+      <li>그 결과 조회된 data가 QuerySet으로 반환</li>
+      <li>이 QuerySet을 리스트처럼 다루어 변환 가능</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 작성된 파이썬 코드가 어떻게 SQL로 변했는지 확인
+</span>
+<span class="c1"># Django Shell 실행 후, foods 앱의 Menu Class 임포트 후
+</span>
+<span class="c1"># SQL로 변환된 것을 확인하고 싶은 Python code 작성
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">name__contains</span><span class="o">=</span><span class="s">"코"</span><span class="p">)</span>
+
+<span class="c1"># SQL 확인
+</span><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">query</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="admin-도구-사용">Admin 도구 사용</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># CMD
+</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
+<span class="c1"># 사용자 이름, 이메일, 비밀번호 입력
+</span>
+<span class="c1"># 관리자 페이지에서 작업 원하는 model 추가
+# 'foods' directory의 admin.py 파일
+</span>
+<span class="kn">from</span> <span class="nn">foods.models</span> <span class="kn">import</span> <span class="n">Menu</span>
+
+<span class="n">admin</span><span class="p">.</span><span class="n">site</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">Menu</span><span class="p">)</span>
+
+<span class="c1"># 서버 실행 후, localhost:8000/admin 으로 접속 
+</span></code></pre></div></div>
+
+<hr />
+
+<h3 id="model-적용하기">Model 적용하기</h3>
+<ul>
+  <li>사례1</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># 'foods' directory의 views.py 파일
+</span>
+<span class="c1"># 모델 import
+</span><span class="kn">from</span> <span class="nn">foods.models</span> <span class="kn">import</span> <span class="n">Menu</span>
+
+<span class="c1"># index 함수 수정
+</span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">today</span><span class="p">().</span><span class="n">date</span>
+    <span class="n">menus</span> <span class="o">=</span> <span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">()</span>
+    <span class="n">context</span><span class="p">[</span><span class="s">"date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">today</span>
+    <span class="n">context</span><span class="p">[</span><span class="s">"menus"</span><span class="p">]</span> <span class="o">=</span> <span class="n">menus</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"foods/index.html"</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
+
+<span class="c1"># 'foods/templates/foods/' directory의 index.html 파일
+</span><span class="p">...</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">menu</span> <span class="ow">in</span> <span class="n">menus</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"food"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="o">%</span> <span class="n">get_static_prefix</span> <span class="o">%</span><span class="p">}{{</span><span class="n">menu</span><span class="p">.</span><span class="n">img_path</span><span class="p">}}</span> <span class="n">width</span><span class="o">=</span><span class="s">"300px"</span> <span class="n">height</span><span class="o">=</span><span class="s">"200px"</span><span class="o">/&gt;</span>
+          <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"info"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">menu</span><span class="p">.</span><span class="n">name</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">menu</span><span class="p">.</span><span class="n">description</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">"#"</span><span class="o">&gt;</span><span class="n">메뉴</span> <span class="n">보기</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+          <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">...</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>사례 2</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># 'menus' directory의 views.py 파일
+# index 함수 수정
+</span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Menu</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">().</span><span class="n">date</span><span class="p">()</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s">'today'</span><span class="p">:</span> <span class="n">today</span><span class="p">}</span>
+    <span class="n">menus</span> <span class="o">=</span> <span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">()</span>
+    <span class="n">context</span><span class="p">[</span><span class="s">'menus'</span><span class="p">]</span> <span class="o">=</span> <span class="n">menus</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'menus/index.html'</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+<span class="c1"># 'menus/templates/menus' directory의 index.html 파일
+# for문 넣기
+</span><span class="p">...</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"food_container"</span><span class="o">&gt;</span>
+   <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">menu</span> <span class="ow">in</span> <span class="n">menus</span> <span class="o">%</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"food"</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="o">%</span><span class="n">get_static_prefix</span><span class="o">%</span><span class="p">}{{</span><span class="n">menu</span><span class="p">.</span><span class="n">img_path</span><span class="p">}}</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"info"</span><span class="o">&gt;</span>
+             <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">menu</span><span class="p">.</span><span class="n">name</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+             <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">menu</span><span class="p">.</span><span class="n">description</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+             <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">"#"</span><span class="o">&gt;</span><span class="n">메뉴</span> <span class="n">보기</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+          <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+   <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="p">...</span>
+
+<span class="c1"># 'menus' directory의 urls.py 파일
+</span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">views</span><span class="p">.</span><span class="n">index</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'food/&lt;int:pk&gt;/'</span><span class="p">,</span> <span class="n">views</span><span class="p">.</span><span class="n">detail</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># 'menus' directory의 views.py 파일
+# detail 함수 추가
+</span><span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">menu</span> <span class="o">=</span> <span class="n">Menu</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'menus/detail.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'menu'</span><span class="p">:</span> <span class="n">menu</span><span class="p">})</span>
+
+<span class="c1"># 'menus/templates/menus' directory의 detail.html 파일
+</span><span class="p">...</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"menu_img"</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="o">%</span><span class="n">get_static_prefix</span><span class="o">%</span><span class="p">}{{</span><span class="n">menu</span><span class="p">.</span><span class="n">img_path</span><span class="p">}}</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"menu_info"</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">menu</span><span class="p">.</span><span class="n">name</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">menu</span><span class="p">.</span><span class="n">name_eng</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">p</span> <span class="n">class</span><span class="o">=</span><span class="s">"menu-desc"</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">menu</span><span class="p">.</span><span class="n">description</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">p</span> <span class="n">class</span><span class="o">=</span><span class="s">"price"</span><span class="o">&gt;&amp;</span><span class="c1">#8361;{{menu.price}}&lt;/p&gt;
+</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"back-main"</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">"/menus"</span><span class="o">&gt;</span><span class="n">돌아가기</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="p">...</span>
+
+<span class="c1"># 'menus/templates/menus' directory의 index.html 파일
+</span><span class="p">...</span>
+<span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">"food/{{menu.id}}"</span><span class="o">&gt;</span><span class="n">메뉴</span> <span class="n">보기</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="p">...</span>
+
+
+</code></pre></div></div>
+
+<hr />
+:ET
