@@ -200,7 +200,6 @@ def solution(s):
 def solution(n):
     return '수박'*(n//2) if n % 2 == 0 else '수박'*(n//2) + '수'
 # 다른 사람의 좋은 풀이
-def solution(s):
 def solution(n):
     return "수박"*(n//2) + "수"*(n%2)
 ```

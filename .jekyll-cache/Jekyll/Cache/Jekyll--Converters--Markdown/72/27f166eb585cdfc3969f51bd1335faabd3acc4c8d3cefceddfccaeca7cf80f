@@ -1,0 +1,94 @@
+I"E<hr />
+<h3 id="sql-übung">SQL Übung</h3>
+<ul>
+  <li>SQL 문법 정리(1)</li>
+  <li>SELECTing columns</li>
+  <li><code class="language-plaintext highlighter-rouge">COUNT</code>을 통해 행개수 산출</li>
+</ul>
+
+<hr />
+
+<h3 id="select--limit">SELECT &amp; LIMIT</h3>
+<p>1) SELECTing single column</p>
+<ul>
+  <li>Get the title column from the films table.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">name</span> <span class="n">FROM</span> <span class="n">people</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>2) SELECTing multiple column</p>
+<ul>
+  <li>Get the title and release year from the films table</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">release_year</span> 
+<span class="n">FROM</span> <span class="n">films</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>2-2) SELECTing multiple column</p>
+<ul>
+  <li>Get all column from the films table</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">films</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>2-3) SELECTing multiple column</p>
+<ul>
+  <li>Get all column from the films table but limit the row as 10</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="c1"># from line 8, 2 rows
+</span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">LIMIT</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="distinct">DISTINCT</h3>
+<p>3) SELECT DISTINCT</p>
+<ul>
+  <li>Get all the unique countries represented in the films table.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">country</span> 
+<span class="n">FROM</span> <span class="n">films</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="count">COUNT</h3>
+<p>4) COUNT(returns the number of rows in one or more columns)</p>
+<ul>
+  <li>Count the number of rows in the people table.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">people</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>4-2) COUNT(returns the number of rows in one or more columns)</p>
+<ul>
+  <li>Count the number of (non-missing) birth dates in the people table.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">birthdate</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">people</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>4-3) COUNT(returns the number of rows in one or more columns)</p>
+<ul>
+  <li>Count the number of unique birth dates in the people table.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">DISTINCT</span> <span class="n">birthdate</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">people</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+:ET

@@ -1,5 +1,5 @@
 ---
-title: "[SQL] ORDER BY & GROUP BY & HAVING"
+title: "[SQL] ORDER BY & CAST & GROUP BY & HAVING"
 layout: single
 date: '14/9/2021'
 toc: true
@@ -17,6 +17,10 @@ tags:
 * ```ORDER BY```를 통해 정렬
     * ```ORDER BY``` 는 ```FROM``` 이후에 작성
     * DEFAULT는 ASCENDING, ```DESC```를 통해 DESCENDING 가능
+    * `CAST`를 통해 자료형을 일시적으로 변환시킬 수 있음
+      * `signed` - 모든 정수(양수, 0, 음수)
+      * `decimal` - 살수(소수점을 포함하는 숫자 포함)
+    * 문자형 기준으로 SORT시, 한 문자씩 그 문자 순서를 비교해 정렬
 <br><br>
 * ```GROUP BY```를 통해 집단 별 통계치 구함
     * ```GROUP BY``` 는 ```FROM``` 이후에 작성
@@ -34,6 +38,15 @@ tags:
 SELECT birthdate, name
 FROM people
 ORDER BY birthdate;
+```
+
+### ORDER BY & CAST
+* registration's data-type is TEXT, order sales table by the number value of registration
+
+```python
+SELECT *
+FROM sales
+ORDER BY CAST(registration_num AS signed)
 ```
 
 ### GROUP BY

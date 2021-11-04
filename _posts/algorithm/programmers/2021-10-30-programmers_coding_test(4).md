@@ -126,3 +126,56 @@ def solution(d, budget):
 ```
 
 ---
+
+### 문제 37
+* 4/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test37.png" align="center">
+</p>
+```python
+def solution(n):
+    ternary = ''
+    while n > 2:
+        ternary = str(n % 3) + ternary
+        n //= 3
+    ternary = str(n) + ternary
+
+    result = 0
+    for i in range(len(ternary)):
+        result += 3**i * int(ternary[i])
+
+    return result
+
+# 다른 사람의 좋은 풀이
+def solution(n):
+    tmp = ''
+    while n:
+        tmp += str(n % 3)
+        n = n // 3
+
+    answer = int(tmp, 3)
+    return answer
+```
+
+---
+
+### 문제 38
+* 4/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test38.png" align="center">
+</p>
+```python
+from math import sqrt
+def solution(left, right):
+    res = 0
+    for num in range(left, right + 1):
+        if num % sqrt(num) == 0:
+        # if int(num ** 0.5) == num ** 0.5: #위와 같음
+                res -= num
+            else:
+                res += num
+
+    return res
+```
+
+---

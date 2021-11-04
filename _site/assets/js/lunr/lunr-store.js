@@ -412,4 +412,22 @@ var store = [{
         "tags": ["SQL"],
         "url": "/sql/codeit_sql1/",
         "teaser": null
+      },{
+        "title": "[Algorithm] 주식 최대 이익",
+        "excerpt":"ALGORITHM 알고리즘 정리(28) 문제 리스트의 형태로 특정 기간에 주식의 가격이 주어집니다. 예. [1, 2, 3, 4, 5] (첫날:1, 둘째날:2, …) 딱 한 번만 해당 주식을 사고 팔았을 때 최대의 수익을 구하는 함수를 구현하시오. 주식은 한 번씩만 사고 팔 수 있으며, 산 당일에 팔 수 없습니다. 함수의 시간 복잡도는 O(n)여야 함...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm28_stock/",
+        "teaser": null
+      },{
+        "title": "[Algorithm] 계단 올라가는 방법의 수(1)",
+        "excerpt":"ALGORITHM 알고리즘 정리(29) 문제 계단을 1칸 혹은 2칸씩만 올라갈 수 있다. 총 n칸을 올라갈 때 올라갈 수 있는 방법의 수를 리턴하는 함수를 구현하시오 예를 들어 계단 4가지를 올라 갈때 가능한 방법은 아래와 같이 총 5가지이다. 1, 1, 1, 1 2, 1, 1 1, 2, 1 1, 1, 2 2, 2...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm29_ways_of_stairs/",
+        "teaser": null
+      },{
+        "title": "[Algorithm] 계단 올라가는 방법의 수(2)",
+        "excerpt":"ALGORITHM 알고리즘 정리(30) 문제 계단을 오를 수 있는 칸 수가 리스트로 주어진다. 총 n칸을 올라갈 때 올라갈 수 있는 방법의 수를 리턴하는 함수를 구현하시오 예를 들어 계단을 오를 수 있는 칸 수가 [1,2,4]이고 총 4칸을 올라 갈때 가능한 방법은 아래와 같이 총 6가지이다. 1, 1, 1, 1 2, 1, 1...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm30_ways_of_stairs2/",
+        "teaser": null
       }]
