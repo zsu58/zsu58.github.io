@@ -179,3 +179,26 @@ def solution(left, right):
 ```
 
 ---
+
+### 문제 39
+* 5/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test39.png" align="center">
+</p>
+```python
+def solution(nums):
+    my_ponketmon = {}
+    for i in nums:
+        if len(my_ponketmon.keys()) == len(nums)//2:
+            return len(my_ponketmon.keys())
+        if i not in my_ponketmon:
+            my_ponketmon[i] = True
+    
+    return len(my_ponketmon.keys())
+
+# 다른 사람의 좋은 풀이
+def solution(ls):
+    return min(len(ls)/2, len(set(ls)))
+```
+
+---
