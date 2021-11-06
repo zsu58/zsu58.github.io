@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">72</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">77</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/sql" class="">SQL (11)</a></li>
+                        <li><a href="/categories/sql" class="">SQL (14)</a></li>
                     
                 
                     
@@ -400,7 +400,7 @@
                     
                 
                     
-                        <li><a href="/categories/codeit" class="">Codeit (31)</a></li>
+                        <li><a href="/categories/codeit" class="">Codeit (33)</a></li>
                     
                 
                     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-31">문제 31</a></li><li><a href="#문제-32">문제 32</a></li><li><a href="#문제-33">문제 33</a></li><li><a href="#문제-34">문제 34</a></li><li><a href="#문제-35">문제 35</a></li><li><a href="#문제-36">문제 36</a></li><li><a href="#문제-37">문제 37</a></li><li><a href="#문제-38">문제 38</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-31">문제 31</a></li><li><a href="#문제-32">문제 32</a></li><li><a href="#문제-33">문제 33</a></li><li><a href="#문제-34">문제 34</a></li><li><a href="#문제-35">문제 35</a></li><li><a href="#문제-36">문제 36</a></li><li><a href="#문제-37">문제 37</a></li><li><a href="#문제-38">문제 38</a></li><li><a href="#문제-39">문제 39</a></li></ul>
 
             </nav>
           </aside>
@@ -706,6 +706,30 @@
 
 <hr />
 
+<h3 id="문제-39">문제 39</h3>
+<ul>
+  <li>5/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test39.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+    <span class="n">my_ponketmon</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_ponketmon</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_ponketmon</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">my_ponketmon</span><span class="p">:</span>
+            <span class="n">my_ponketmon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+    
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_ponketmon</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">ls</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ls</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<hr />
+
         
       </section>
 
@@ -798,7 +822,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/codeit/algorithm30_ways_of_stairs2/" rel="permalink">[Algorithm] 계단 올라가는 방법의 수(2)
+        <a href="/codeit/algorithm32_combination_sum/" rel="permalink">[Algorithm] 리스트 항목의 합 탐색
 </a>
       
     </h2>
@@ -825,7 +849,7 @@
 
     <p class="archive__item-excerpt" itemprop="description">ALGORITHM
 
-  알고리즘 정리(30)
+  알고리즘 정리(32)
 
 </p>
   </article>
@@ -841,7 +865,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/codeit/algorithm29_ways_of_stairs/" rel="permalink">[Algorithm] 계단 올라가는 방법의 수(1)
+        <a href="/sql/codeit_sql4/" rel="permalink">[SQL] SQL 문자열 함수 정리
 </a>
       
     </h2>
@@ -860,92 +884,6 @@
         <i class="far fa-clock" aria-hidden="true"></i>
         
           less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
-
-  알고리즘 정리(29)
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/codeit/algorithm28_stock/" rel="permalink">[Algorithm] 주식 최대 이익
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
-
-  알고리즘 정리(28)
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/sql/codeit_sql1/" rel="permalink">[SQL] SQL 날짜
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
         
       </span>
     
@@ -954,14 +892,102 @@
 
     <p class="archive__item-excerpt" itemprop="description">
 
-SQL 날짜
+SQL 문자열 함수 정리
 
-  SQL 날짜 관련 문법 정리
-  YEAR : DATE형 자료형에서 연도만 추출
-  MONTH : DATE형 자료형에서 월만 추출
-  DAYOFMONTH : DATE형 자료형에서 일만 추출
-  DATEDIFF : DATE형 자료형들 간 날짜 차이 산출
-  CUR...</p>
+  SUBSTRING - 문자열의 일부 추출
+  LENGTH - 문자열 길이 반환
+  UPPER - 문자열을 모두 대문자로 반환
+  LOWER - 문자열을 모두 소문자로 반환
+  LPAD - 문자열의 왼쪽에 특정 문자 붙인 뒤 반환
+  RPAD - 문...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/codeit/algorithm31_find_duplicated2/" rel="permalink">[Algorithm] 효율적으로 중복되는 숫자 찾기2
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(31)
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/codeit_sql3/" rel="permalink">[SQL] SQL COALESCE &amp; IFNULL &amp; CONCAT &amp; IF
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL COALESCE &amp; IFNULL &amp; CONCAT &amp; IF
+
+  COALESCE - NULL 값을 다른 값으로 대체해서 반환, 2개 이상의 조건 가능
+  IFNULL - NULL 값을 다른 값으로 대체해서 반환
+  CONCAT - concatenate...</p>
   </article>
 </div>
 

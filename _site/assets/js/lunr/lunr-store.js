@@ -30,19 +30,19 @@ var store = [{
         "teaser": null
       },{
         "title": "[SQL] WHERE & AND & OR & BETWEEN & IN & IS (NOT) NULL & LIKE",
-        "excerpt":"SQL Übung SQL 문법 정리(2) WHERE을 통해 filter WHERE는 FROM 이후에 작성 WHERE 조건이 여러개일 경우 조건을(AND, OR) 모두 작성해줘야함 BETWEEN을 통해 범위 filter 가장 처음과 마지막은 포함 IN을 통해 (여러개의 OR) 간소화 IS NULL을 통해 NULL filter IS NOT NULL을 통해 NULL이 아닌 값을 filter LIKE을 통해 pattern을 활용하여...","categories": ["SQL"],
+        "excerpt":"SQL Übung SQL 문법 정리(2) WHERE을 통해 filter WHERE는 FROM 이후에 작성 WHERE 조건이 여러개일 경우 조건을(AND, OR) 모두 작성해줘야함 AND &amp; OR은 괄호로 묶어주는 것이 좋음 BETWEEN을 통해 범위 filter 가장 처음과 마지막은 포함 IN을 통해 (여러개의 OR) 간소화 IS NULL을 통해 NULL filter IS NOT NULL을 통해 NULL이...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/sql_2_filter/",
         "teaser": null
       },{
         "title": "[SQL] AVG & SUM & MAX & MIN & AS",
-        "excerpt":"SQL Übung SQL 문법 정리(3) AVG 평균 SUM 합계 MAX 최대값 MIN 최소값 연산자 + - / * % AS를 통해 column의 이름 수정 SUM 1-1) Aggregate functions Get the total duration of all films. SELECT SUM(duration) FROM films; MIN 1-2) Aggregate functions Get the duration of the shortest film...","categories": ["SQL"],
+        "excerpt":"SQL Übung SQL 문법 정리(3) AVG 평균 NULL은 제외하고 계산됨 SUM 합계 MAX 최대값 MIN 최소값 연산자 + - / * % AS를 통해 column의 이름 수정 SUM 1-1) Aggregate functions Get the total duration of all films. SELECT SUM(duration) FROM films; MIN 1-2) Aggregate functions Get the duration of...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/sql_3_aggregate/",
         "teaser": null
       },{
-        "title": "[SQL] ORDER BY & GROUP BY & HAVING",
-        "excerpt":"SQL Übung SQL 문법 정리(4) ORDER BY를 통해 정렬 ORDER BY 는 FROM 이후에 작성 DEFAULT는 ASCENDING, DESC를 통해 DESCENDING 가능 GROUP BY를 통해 집단 별 통계치 구함 GROUP BY 는 FROM 이후에 작성 ORDER BY와 GROUP BY 함께 쓸 경우, GROUP BY → ORDER BY HAVING을 통해 COUNT를 통해...","categories": ["SQL"],
+        "title": "[SQL] ORDER BY & CAST & GROUP BY & HAVING & WITH ROLLUP",
+        "excerpt":"SQL Übung SQL 문법 정리(4) ORDER BY를 통해 정렬 ORDER BY 는 FROM 이후에 작성 DEFAULT는 ASCENDING, DESC를 통해 DESCENDING 가능 CAST를 통해 자료형을 일시적으로 변환시킬 수 있음 signed - 모든 정수(양수, 0, 음수) decimal - 살수(소수점을 포함하는 숫자 포함) 문자형 기준으로 SORT시, 한 문자씩 그 문자 순서를 비교해 정렬...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/sql_4_sorting_grouping/",
         "teaser": null
@@ -402,15 +402,21 @@ var store = [{
         "teaser": null
       },{
         "title": "[UNIX CLI] Command Line(4)",
-        "excerpt":"UNIX COMMAND LINE UNIX CLI 정리(4) bash: shell script 수행 $@ : bash를 통해 shell script를 실행할 때 변수를 받을 수 있게 함 bash bash [shell_script_name]을 통해 shell script(shell 명령어만 폼한된 텍스트 파일)의 명령어를 실행 shell script는 주로 [file_name].sh로 저장 # command를 입력할 shell script를 vim을 이용해 생성 vim print_header.sh...","categories": ["CLI"],
+        "excerpt":"UNIX COMMAND LINE UNIX CLI 정리(4) bash : shell script 수행 $@ : bash를 통해 shell script를 실행할 때 변수를 받을 수 있게 함 for : for loop bash bash [shell_script_name]을 통해 shell script(shell 명령어만 폼한된 텍스트 파일)의 명령어를 실행 shell script는 주로 [file_name].sh로 저장 # command를 입력할 shell script를...","categories": ["CLI"],
         "tags": ["CLI","BACKEND","DATA-ENGINEERING"],
         "url": "/cli/CLI_4/",
         "teaser": null
       },{
-        "title": "[SQL] SQL 날짜",
-        "excerpt":"SQL 날짜 SQL 날짜 관련 문법 정리 YEAR : DATE형 자료형에서 연도만 추출 MONTH : DATE형 자료형에서 월만 추출 DAYOFMONTH : DATE형 자료형에서 일만 추출 DATEDIFF : DATE형 자료형들 간 날짜 차이 산출 CURDATE : 오늘 날짜 DATE_ADD : 날짜 더하기 DATE_SUB : 날짜 빼기 UNIX_TIMESTAMP : DATE 자료형을 Unix...","categories": ["SQL"],
+        "title": "[SQL] SQL 날짜 함수 정리",
+        "excerpt":"SQL 날짜 함수 정리 YEAR : DATE형 자료형에서 연도만 추출 MONTH : DATE형 자료형에서 월만 추출 DAYOFMONTH : DATE형 자료형에서 일만 추출 DATEDIFF : DATE형 자료형들 간 날짜 차이 산출 CURDATE : 오늘 날짜 DATE_ADD : 날짜 더하기 DATE_SUB : 날짜 빼기 UNIX_TIMESTAMP : DATE 자료형을 Unix timestamp(1970년 1월 1일을...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/codeit_sql1/",
+        "teaser": null
+      },{
+        "title": "[SQL] SQL 산술 함수 정리",
+        "excerpt":"SQL 산술 함수 정리 집계함수(ex. SUM, MAX, MIN, AVG 등)은 column에 대한 특징값을 반환 산술함수는 각 row에 대한 산술 연산에 대한 결과값을 반환 STD - 표준편차 ABS - 절대값 SQRT - 제곱근 CEIL - 올림 FLOOR - 내림 ROUND - 반올림 그 외 산술 함수 공식 문서 - 🔗 MYSQL...","categories": ["SQL"],
+        "tags": ["SQL"],
+        "url": "/sql/codeit_sql2/",
         "teaser": null
       },{
         "title": "[Algorithm] 주식 최대 이익",
@@ -429,5 +435,29 @@ var store = [{
         "excerpt":"ALGORITHM 알고리즘 정리(30) 문제 계단을 오를 수 있는 칸 수가 리스트로 주어진다. 총 n칸을 올라갈 때 올라갈 수 있는 방법의 수를 리턴하는 함수를 구현하시오 예를 들어 계단을 오를 수 있는 칸 수가 [1,2,4]이고 총 4칸을 올라 갈때 가능한 방법은 아래와 같이 총 6가지이다. 1, 1, 1, 1 2, 1, 1...","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm30_ways_of_stairs2/",
+        "teaser": null
+      },{
+        "title": "[SQL] SQL COALESCE & IFNULL & CONCAT & IF",
+        "excerpt":"SQL COALESCE &amp; IFNULL &amp; CONCAT &amp; IF COALESCE - NULL 값을 다른 값으로 대체해서 반환, 2개 이상의 조건 가능 IFNULL - NULL 값을 다른 값으로 대체해서 반환 CONCAT - concatenate IF - 조건문 COALESCE height column의 빈 값은 ‘N/A’으로, weight column의 빈 값은 ‘값 비어있음’으로 대체 후 반환하시오 SELECT...","categories": ["SQL"],
+        "tags": ["SQL"],
+        "url": "/sql/codeit_sql3/",
+        "teaser": null
+      },{
+        "title": "[Algorithm] 효율적으로 중복되는 숫자 찾기2",
+        "excerpt":"ALGORITHM 알고리즘 정리(31) 문제 (N + 1)의 크기인 리스트에, 1부터 N까지의 임의의 자연수가 요소로 할당되어 있어, 중복되는 숫자가 최소 1개가 존재 중복되는 어느 숫자 ‘하나’를 가장 효율적으로 찾아 리턴하는 함수를 구현하시오. 단, O(n) 이상의 공간을 사용할 수 없으며, input인 리스트도 변형할 수 없음 def find_same_number(some_list, start=1, end=None): if end ==...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm31_find_duplicated2/",
+        "teaser": null
+      },{
+        "title": "[SQL] SQL 문자열 함수 정리",
+        "excerpt":"SQL 문자열 함수 정리 SUBSTRING - 문자열의 일부 추출 LENGTH - 문자열 길이 반환 UPPER - 문자열을 모두 대문자로 반환 LOWER - 문자열을 모두 소문자로 반환 LPAD - 문자열의 왼쪽에 특정 문자 붙인 뒤 반환 RPAD - 문자열의 오른쪽에 특정 문자 붙인 뒤 반환 TRIM - 문자열의 공백 제거한 뒤...","categories": ["SQL"],
+        "tags": ["SQL"],
+        "url": "/sql/codeit_sql4/",
+        "teaser": null
+      },{
+        "title": "[Algorithm] 리스트 항목의 합 탐색",
+        "excerpt":"ALGORITHM 알고리즘 정리(32) 문제 특정 숫자와, 숫자로 이루어진 리스트가 주어질 때, 리스트 안의 두 요소의 조합으로 특정 숫자가 되는지 확인하는 함수를 구현하시오. # 풀이1 def sum_in_list(search_sum, sorted_list): num_dict = {} for num in sorted_list: if search_sum-num in num_dict.keys(): return True else: num_dict[num] = True return False print(sum_in_list(15, [1, 2, 5,...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm32_combination_sum/",
         "teaser": null
       }]

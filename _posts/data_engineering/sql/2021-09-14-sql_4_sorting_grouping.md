@@ -1,5 +1,5 @@
 ---
-title: "[SQL] ORDER BY & CAST & GROUP BY & HAVING"
+title: "[SQL] ORDER BY & CAST & GROUP BY & HAVING & WITH ROLLUP"
 layout: single
 date: '14/9/2021'
 toc: true
@@ -27,6 +27,8 @@ tags:
     * ```ORDER BY```와 ```GROUP BY``` 함께 쓸 경우, ```GROUP BY``` → ```ORDER BY```
 * ```HAVING```을 통해 ```COUNT```를 통해 산출한 값을 기준으로 filter 가능
     * ```WHERE```뒤에는 ```COUNT``` 올 수 없어 ```HAVING``` 사용
+* ```WITH ROLLUP```을 통해 그룹 별 부분 총계 산출 가능
+    * `GROUPING`을 통해 NULL 값으로 발생하는 문제 해결 가능
 
 ---
 
@@ -108,3 +110,28 @@ LIMIT 5;
 ```
 
 ---
+
+### WITH ROLLUP
+5) WITH ROLLUP
+* 회원들이 태어난 연도, 가입한 해, 그리고 회원들의 성별에 따른 인원 수를 분류하시오. 이때 연도, 해, 그리고 성별 그룹에 따른 부분총계를 구하시오
+
+```python
+SELECT YEAR(birthday) AS b_year, YEAR(sign_up_day) AS s_year, gender, COUNT(*)
+FROM copang_main.member
+GROUP BY YEAR(birthday), YEAR(sign_up_day), gender WITH ROLLUP
+ORDER BY b_year DESC, s_year DESC, gender DESC;
+```
+
+* `WITH ROLLUP`을 사용할 경우 부분 총계시 실제 NULL과 부분 총계에 따른 NULL인지 구분할 수 없음
+* 이를 해결하기 위해 `GROUPING`을 사용하면 실제 NULL은 0으로 출력되어서 구분 가능
+
+```python
+SELECT YEAR(sign_up_day) AS s_year, gender, SUBSTRING(address, 1, 2) AS region,
+GROUPING(YEAR(sign_up_day)), GROUPING(gender), GROUPING(SUBSTRING(address, 1, 2)),
+COUNT(*)
+FROM copang_main.member
+GROUP BY YEAR(sign_up_day), gender, SUBSTRING(address, 1, 2) WITH ROLLUP
+ORDER BY s_year DESC, gender DESC, SUBSTRING(address, 1, 2) DESC;
+```
+---
+

@@ -1,0 +1,151 @@
+I"4<hr />
+<h3 id="sql-übung">SQL Übung</h3>
+<ul>
+  <li>SQL 문법 정리(4)</li>
+  <li><code class="language-plaintext highlighter-rouge">ORDER BY</code>를 통해 정렬
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ORDER BY</code> 는 <code class="language-plaintext highlighter-rouge">FROM</code> 이후에 작성</li>
+      <li>DEFAULT는 ASCENDING, <code class="language-plaintext highlighter-rouge">DESC</code>를 통해 DESCENDING 가능</li>
+      <li><code class="language-plaintext highlighter-rouge">CAST</code>를 통해 자료형을 일시적으로 변환시킬 수 있음
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">signed</code> - 모든 정수(양수, 0, 음수)</li>
+          <li><code class="language-plaintext highlighter-rouge">decimal</code> - 살수(소수점을 포함하는 숫자 포함)</li>
+        </ul>
+      </li>
+      <li>문자형 기준으로 SORT시, 한 문자씩 그 문자 순서를 비교해 정렬
+<br /><br /></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">GROUP BY</code>를 통해 집단 별 통계치 구함
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">GROUP BY</code> 는 <code class="language-plaintext highlighter-rouge">FROM</code> 이후에 작성</li>
+      <li><code class="language-plaintext highlighter-rouge">ORDER BY</code>와 <code class="language-plaintext highlighter-rouge">GROUP BY</code> 함께 쓸 경우, <code class="language-plaintext highlighter-rouge">GROUP BY</code> → <code class="language-plaintext highlighter-rouge">ORDER BY</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">HAVING</code>을 통해 <code class="language-plaintext highlighter-rouge">COUNT</code>를 통해 산출한 값을 기준으로 filter 가능
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">WHERE</code>뒤에는 <code class="language-plaintext highlighter-rouge">COUNT</code> 올 수 없어 <code class="language-plaintext highlighter-rouge">HAVING</code> 사용</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">WITH ROLLUP</code>을 통해 그룹 별 부분 총계 산출 가능
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">GROUPING</code>을 통해 NULL 값으로 발생하는 문제 해결 가능</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="order-by">ORDER BY</h3>
+<p>1) Sorting single columns</p>
+<ul>
+  <li>Get the birth date and name for every person, in order of when they were born</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">birthdate</span><span class="p">,</span> <span class="n">name</span>
+<span class="n">FROM</span> <span class="n">people</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">birthdate</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="order-by--cast">ORDER BY &amp; CAST</h3>
+<ul>
+  <li>registration’s data-type is TEXT, order sales table by the number value of registration</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">sales</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">CAST</span><span class="p">(</span><span class="n">registration_num</span> <span class="n">AS</span> <span class="n">signed</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="group-by">GROUP BY</h3>
+<p>2-1) GROUP BY</p>
+<ul>
+  <li>Get the IMDB score and count of film reviews grouped by IMDB score in the reviews table</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">imdb_score</span><span class="p">,</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">reviews</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">imdb_score</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>2-2) GROUP BY</p>
+<ul>
+  <li>Get the country, release year, and lowest amount grossed per release year per country. Order your results by country and release year.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">country</span><span class="p">,</span> <span class="n">release_year</span><span class="p">,</span> <span class="n">MIN</span><span class="p">(</span><span class="n">gross</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">release_year</span><span class="p">,</span> <span class="n">country</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">country</span><span class="p">,</span> <span class="n">release_year</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="having">HAVING</h3>
+<p>3) HAVING</p>
+<ul>
+  <li>In how many different years were more than 200 movies released?</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">release_year</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">release_year</span>
+<span class="n">HAVING</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="übung">Übung</h3>
+<p>4-1) Übung</p>
+<ul>
+  <li>return the average budget and average gross earnings for films in each year after 1990, if the average budget is greater than $60 million</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">release_year</span><span class="p">,</span> <span class="n">AVG</span><span class="p">(</span><span class="n">budget</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_budget</span><span class="p">,</span> <span class="n">AVG</span><span class="p">(</span><span class="n">gross</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_gross</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">WHERE</span> <span class="n">release_year</span> <span class="o">&gt;</span> <span class="mi">1990</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">release_year</span>
+<span class="n">HAVING</span> <span class="n">AVG</span><span class="p">(</span><span class="n">budget</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">60000000</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">avg_gross</span> <span class="n">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>4-2) Übung</p>
+<ul>
+  <li>Get the country, average budget, and average gross take of countries that have made more than 10 films. Order the result by country name, and limit the number of results displayed to 5. You should alias the averages as avg_budget and avg_gross respectively</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">country</span><span class="p">,</span> <span class="n">AVG</span><span class="p">(</span><span class="n">budget</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_budget</span><span class="p">,</span> <span class="n">AVG</span><span class="p">(</span><span class="n">gross</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_gross</span>
+<span class="n">FROM</span> <span class="n">films</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">country</span>
+<span class="n">HAVING</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">country</span>
+<span class="n">LIMIT</span> <span class="mi">5</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="with-rollup">WITH ROLLUP</h3>
+<p>5) WITH ROLLUP</p>
+<ul>
+  <li>회원들이 태어난 연도, 가입한 해, 그리고 회원들의 성별에 따른 인원 수를 분류하시오. 이때 연도, 해, 그리고 성별 그룹에 따른 부분총계를 구하시오</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">birthday</span><span class="p">)</span> <span class="n">AS</span> <span class="n">b_year</span><span class="p">,</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="n">AS</span> <span class="n">s_year</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">birthday</span><span class="p">),</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">),</span> <span class="n">gender</span> <span class="n">WITH</span> <span class="n">ROLLUP</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">b_year</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">s_year</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">gender</span> <span class="n">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">WITH ROLLUP</code>을 사용할 경우 부분 총계시 실제 NULL과 부분 총계에 따른 NULL인지 구분할 수 없음</li>
+  <li>이를 해결하기 위해 <code class="language-plaintext highlighter-rouge">GROUPING</code>을 사용하면 실제 NULL은 0으로 출력되어서 구분 가능</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="n">AS</span> <span class="n">s_year</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">region</span><span class="p">,</span>
+<span class="n">GROUPING</span><span class="p">(</span><span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)),</span> <span class="n">GROUPING</span><span class="p">(</span><span class="n">gender</span><span class="p">),</span> <span class="n">GROUPING</span><span class="p">(</span><span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
+<span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">),</span> <span class="n">gender</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">WITH</span> <span class="n">ROLLUP</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">s_year</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">gender</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+:ET

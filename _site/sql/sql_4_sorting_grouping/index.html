@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[SQL] ORDER BY &amp; GROUP BY &amp; HAVING - Bibliothek für Data-Engineering</title>
-<meta name="description" content="SQL Übung    SQL 문법 정리(4)   ORDER BY를 통해 정렬            ORDER BY 는 FROM 이후에 작성       DEFAULT는 ASCENDING, DESC를 통해 DESCENDING 가능            GROUP BY를 통해 집단 별 통계치 구함            GROUP BY 는 FROM 이후에 작성       ORDER BY와 GROUP BY 함께 쓸 경우, GROUP BY → ORDER BY           HAVING을 통해 COUNT를 통해 산출한 값을 기준으로 filter 가능            WHERE뒤에는 COUNT 올 수 없어 HAVING 사용">
+<!-- begin _includes/seo.html --><title>[SQL] ORDER BY &amp; CAST &amp; GROUP BY &amp; HAVING &amp; WITH ROLLUP - Bibliothek für Data-Engineering</title>
+<meta name="description" content="SQL Übung    SQL 문법 정리(4)   ORDER BY를 통해 정렬            ORDER BY 는 FROM 이후에 작성       DEFAULT는 ASCENDING, DESC를 통해 DESCENDING 가능       CAST를 통해 자료형을 일시적으로 변환시킬 수 있음                    signed - 모든 정수(양수, 0, 음수)           decimal - 살수(소수점을 포함하는 숫자 포함)                       문자형 기준으로 SORT시, 한 문자씩 그 문자 순서를 비교해 정렬            GROUP BY를 통해 집단 별 통계치 구함            GROUP BY 는 FROM 이후에 작성       ORDER BY와 GROUP BY 함께 쓸 경우, GROUP BY → ORDER BY           HAVING을 통해 COUNT를 통해 산출한 값을 기준으로 filter 가능            WHERE뒤에는 COUNT 올 수 없어 HAVING 사용           WITH ROLLUP을 통해 그룹 별 부분 총계 산출 가능            GROUPING을 통해 NULL 값으로 발생하는 문제 해결 가능">
 
 
   <meta name="author" content="ZSU">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Bibliothek für Data-Engineering">
-<meta property="og:title" content="[SQL] ORDER BY &amp; GROUP BY &amp; HAVING">
+<meta property="og:title" content="[SQL] ORDER BY &amp; CAST &amp; GROUP BY &amp; HAVING &amp; WITH ROLLUP">
 <meta property="og:url" content="http://localhost:4000/sql/sql_4_sorting_grouping/">
 
 
-  <meta property="og:description" content="SQL Übung    SQL 문법 정리(4)   ORDER BY를 통해 정렬            ORDER BY 는 FROM 이후에 작성       DEFAULT는 ASCENDING, DESC를 통해 DESCENDING 가능            GROUP BY를 통해 집단 별 통계치 구함            GROUP BY 는 FROM 이후에 작성       ORDER BY와 GROUP BY 함께 쓸 경우, GROUP BY → ORDER BY           HAVING을 통해 COUNT를 통해 산출한 값을 기준으로 filter 가능            WHERE뒤에는 COUNT 올 수 없어 HAVING 사용">
+  <meta property="og:description" content="SQL Übung    SQL 문법 정리(4)   ORDER BY를 통해 정렬            ORDER BY 는 FROM 이후에 작성       DEFAULT는 ASCENDING, DESC를 통해 DESCENDING 가능       CAST를 통해 자료형을 일시적으로 변환시킬 수 있음                    signed - 모든 정수(양수, 0, 음수)           decimal - 살수(소수점을 포함하는 숫자 포함)                       문자형 기준으로 SORT시, 한 문자씩 그 문자 순서를 비교해 정렬            GROUP BY를 통해 집단 별 통계치 구함            GROUP BY 는 FROM 이후에 작성       ORDER BY와 GROUP BY 함께 쓸 경우, GROUP BY → ORDER BY           HAVING을 통해 COUNT를 통해 산출한 값을 기준으로 filter 가능            WHERE뒤에는 COUNT 올 수 없어 HAVING 사용           WITH ROLLUP을 통해 그룹 별 부분 총계 산출 가능            GROUPING을 통해 NULL 값으로 발생하는 문제 해결 가능">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">72</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">77</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/sql" class="">SQL (11)</a></li>
+                        <li><a href="/categories/sql" class="">SQL (14)</a></li>
                     
                 
                     
@@ -400,7 +400,7 @@
                     
                 
                     
-                        <li><a href="/categories/codeit" class="">Codeit (31)</a></li>
+                        <li><a href="/categories/codeit" class="">Codeit (33)</a></li>
                     
                 
                     
@@ -484,15 +484,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[SQL] ORDER BY &amp; GROUP BY &amp; HAVING">
-    <meta itemprop="description" content="SQL Übung  SQL 문법 정리(4)  ORDER BY를 통해 정렬          ORDER BY 는 FROM 이후에 작성      DEFAULT는 ASCENDING, DESC를 통해 DESCENDING 가능        GROUP BY를 통해 집단 별 통계치 구함          GROUP BY 는 FROM 이후에 작성      ORDER BY와 GROUP BY 함께 쓸 경우, GROUP BY → ORDER BY        HAVING을 통해 COUNT를 통해 산출한 값을 기준으로 filter 가능          WHERE뒤에는 COUNT 올 수 없어 HAVING 사용      ">
+    <meta itemprop="headline" content="[SQL] ORDER BY &amp; CAST &amp; GROUP BY &amp; HAVING &amp; WITH ROLLUP">
+    <meta itemprop="description" content="SQL Übung  SQL 문법 정리(4)  ORDER BY를 통해 정렬          ORDER BY 는 FROM 이후에 작성      DEFAULT는 ASCENDING, DESC를 통해 DESCENDING 가능      CAST를 통해 자료형을 일시적으로 변환시킬 수 있음                  signed - 모든 정수(양수, 0, 음수)          decimal - 살수(소수점을 포함하는 숫자 포함)                    문자형 기준으로 SORT시, 한 문자씩 그 문자 순서를 비교해 정렬        GROUP BY를 통해 집단 별 통계치 구함          GROUP BY 는 FROM 이후에 작성      ORDER BY와 GROUP BY 함께 쓸 경우, GROUP BY → ORDER BY        HAVING을 통해 COUNT를 통해 산출한 값을 기준으로 filter 가능          WHERE뒤에는 COUNT 올 수 없어 HAVING 사용        WITH ROLLUP을 통해 그룹 별 부분 총계 산출 가능          GROUPING을 통해 NULL 값으로 발생하는 문제 해결 가능      ">
     <meta itemprop="datePublished" content="2021-09-14T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[SQL] ORDER BY &amp; GROUP BY &amp; HAVING
+          <h1 id="page-title" class="page__title" itemprop="headline">[SQL] ORDER BY &amp; CAST &amp; GROUP BY &amp; HAVING &amp; WITH ROLLUP
 </h1>
           
 
@@ -508,7 +508,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          2 minute read
         
       </span>
     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#sql-übung">SQL Übung</a></li><li><a href="#order-by">ORDER BY</a></li><li><a href="#group-by">GROUP BY</a></li><li><a href="#having">HAVING</a></li><li><a href="#übung">Übung</a></li></ul>
+              <ul class="toc__menu"><li><a href="#sql-übung">SQL Übung</a></li><li><a href="#order-by">ORDER BY</a></li><li><a href="#order-by--cast">ORDER BY &amp; CAST</a></li><li><a href="#group-by">GROUP BY</a></li><li><a href="#having">HAVING</a></li><li><a href="#übung">Übung</a></li><li><a href="#with-rollup">WITH ROLLUP</a></li></ul>
 
             </nav>
           </aside>
@@ -535,7 +535,14 @@
   <li><code class="language-plaintext highlighter-rouge">ORDER BY</code>를 통해 정렬
     <ul>
       <li><code class="language-plaintext highlighter-rouge">ORDER BY</code> 는 <code class="language-plaintext highlighter-rouge">FROM</code> 이후에 작성</li>
-      <li>DEFAULT는 ASCENDING, <code class="language-plaintext highlighter-rouge">DESC</code>를 통해 DESCENDING 가능
+      <li>DEFAULT는 ASCENDING, <code class="language-plaintext highlighter-rouge">DESC</code>를 통해 DESCENDING 가능</li>
+      <li><code class="language-plaintext highlighter-rouge">CAST</code>를 통해 자료형을 일시적으로 변환시킬 수 있음
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">signed</code> - 모든 정수(양수, 0, 음수)</li>
+          <li><code class="language-plaintext highlighter-rouge">decimal</code> - 살수(소수점을 포함하는 숫자 포함)</li>
+        </ul>
+      </li>
+      <li>문자형 기준으로 SORT시, 한 문자씩 그 문자 순서를 비교해 정렬
 <br /><br /></li>
     </ul>
   </li>
@@ -548,6 +555,11 @@
   <li><code class="language-plaintext highlighter-rouge">HAVING</code>을 통해 <code class="language-plaintext highlighter-rouge">COUNT</code>를 통해 산출한 값을 기준으로 filter 가능
     <ul>
       <li><code class="language-plaintext highlighter-rouge">WHERE</code>뒤에는 <code class="language-plaintext highlighter-rouge">COUNT</code> 올 수 없어 <code class="language-plaintext highlighter-rouge">HAVING</code> 사용</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">WITH ROLLUP</code>을 통해 그룹 별 부분 총계 산출 가능
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">GROUPING</code>을 통해 NULL 값으로 발생하는 문제 해결 가능</li>
     </ul>
   </li>
 </ul>
@@ -563,6 +575,16 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">birthdate</span><span class="p">,</span> <span class="n">name</span>
 <span class="n">FROM</span> <span class="n">people</span>
 <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">birthdate</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="order-by--cast">ORDER BY &amp; CAST</h3>
+<ul>
+  <li>registration’s data-type is TEXT, order sales table by the number value of registration</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">sales</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">CAST</span><span class="p">(</span><span class="n">registration_num</span> <span class="n">AS</span> <span class="n">signed</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h3 id="group-by">GROUP BY</h3>
@@ -630,6 +652,33 @@
 
 <hr />
 
+<h3 id="with-rollup">WITH ROLLUP</h3>
+<p>5) WITH ROLLUP</p>
+<ul>
+  <li>회원들이 태어난 연도, 가입한 해, 그리고 회원들의 성별에 따른 인원 수를 분류하시오. 이때 연도, 해, 그리고 성별 그룹에 따른 부분총계를 구하시오</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">birthday</span><span class="p">)</span> <span class="n">AS</span> <span class="n">b_year</span><span class="p">,</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="n">AS</span> <span class="n">s_year</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">birthday</span><span class="p">),</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">),</span> <span class="n">gender</span> <span class="n">WITH</span> <span class="n">ROLLUP</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">b_year</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">s_year</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">gender</span> <span class="n">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">WITH ROLLUP</code>을 사용할 경우 부분 총계시 실제 NULL과 부분 총계에 따른 NULL인지 구분할 수 없음</li>
+  <li>이를 해결하기 위해 <code class="language-plaintext highlighter-rouge">GROUPING</code>을 사용하면 실제 NULL은 0으로 출력되어서 구분 가능</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="n">AS</span> <span class="n">s_year</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">region</span><span class="p">,</span>
+<span class="n">GROUPING</span><span class="p">(</span><span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)),</span> <span class="n">GROUPING</span><span class="p">(</span><span class="n">gender</span><span class="p">),</span> <span class="n">GROUPING</span><span class="p">(</span><span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
+<span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">),</span> <span class="n">gender</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">WITH</span> <span class="n">ROLLUP</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">s_year</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">gender</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+
         
       </section>
 
@@ -680,7 +729,7 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BSQL%5D+ORDER+BY+%26+GROUP+BY+%26+HAVING%20http%3A%2F%2Flocalhost%3A4000%2Fsql%2Fsql_4_sorting_grouping%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BSQL%5D+ORDER+BY+%26+CAST+%26+GROUP+BY+%26+HAVING+%26+WITH+ROLLUP%20http%3A%2F%2Flocalhost%3A4000%2Fsql%2Fsql_4_sorting_grouping%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fsql%2Fsql_4_sorting_grouping%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -720,7 +769,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/codeit/algorithm30_ways_of_stairs2/" rel="permalink">[Algorithm] 계단 올라가는 방법의 수(2)
+        <a href="/codeit/algorithm32_combination_sum/" rel="permalink">[Algorithm] 리스트 항목의 합 탐색
 </a>
       
     </h2>
@@ -747,7 +796,7 @@
 
     <p class="archive__item-excerpt" itemprop="description">ALGORITHM
 
-  알고리즘 정리(30)
+  알고리즘 정리(32)
 
 </p>
   </article>
@@ -763,7 +812,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/codeit/algorithm29_ways_of_stairs/" rel="permalink">[Algorithm] 계단 올라가는 방법의 수(1)
+        <a href="/sql/codeit_sql4/" rel="permalink">[SQL] SQL 문자열 함수 정리
 </a>
       
     </h2>
@@ -782,92 +831,6 @@
         <i class="far fa-clock" aria-hidden="true"></i>
         
           less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
-
-  알고리즘 정리(29)
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/codeit/algorithm28_stock/" rel="permalink">[Algorithm] 주식 최대 이익
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
-
-  알고리즘 정리(28)
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/sql/codeit_sql1/" rel="permalink">[SQL] SQL 날짜
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
         
       </span>
     
@@ -876,14 +839,102 @@
 
     <p class="archive__item-excerpt" itemprop="description">
 
-SQL 날짜
+SQL 문자열 함수 정리
 
-  SQL 날짜 관련 문법 정리
-  YEAR : DATE형 자료형에서 연도만 추출
-  MONTH : DATE형 자료형에서 월만 추출
-  DAYOFMONTH : DATE형 자료형에서 일만 추출
-  DATEDIFF : DATE형 자료형들 간 날짜 차이 산출
-  CUR...</p>
+  SUBSTRING - 문자열의 일부 추출
+  LENGTH - 문자열 길이 반환
+  UPPER - 문자열을 모두 대문자로 반환
+  LOWER - 문자열을 모두 소문자로 반환
+  LPAD - 문자열의 왼쪽에 특정 문자 붙인 뒤 반환
+  RPAD - 문...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/codeit/algorithm31_find_duplicated2/" rel="permalink">[Algorithm] 효율적으로 중복되는 숫자 찾기2
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(31)
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/codeit_sql3/" rel="permalink">[SQL] SQL COALESCE &amp; IFNULL &amp; CONCAT &amp; IF
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL COALESCE &amp; IFNULL &amp; CONCAT &amp; IF
+
+  COALESCE - NULL 값을 다른 값으로 대체해서 반환, 2개 이상의 조건 가능
+  IFNULL - NULL 값을 다른 값으로 대체해서 반환
+  CONCAT - concatenate...</p>
   </article>
 </div>
 

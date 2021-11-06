@@ -1,0 +1,36 @@
+I"i	<hr />
+<h3 id="sql-übung">SQL Übung</h3>
+<ul>
+  <li>SQL 문법 정리(4)</li>
+  <li><code class="language-plaintext highlighter-rouge">ORDER BY</code>를 통해 정렬
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ORDER BY</code> 는 <code class="language-plaintext highlighter-rouge">FROM</code> 이후에 작성</li>
+      <li>DEFAULT는 ASCENDING, <code class="language-plaintext highlighter-rouge">DESC</code>를 통해 DESCENDING 가능</li>
+      <li><code class="language-plaintext highlighter-rouge">CAST</code>를 통해 자료형을 일시적으로 변환시킬 수 있음
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">signed</code> - 모든 정수(양수, 0, 음수)</li>
+          <li><code class="language-plaintext highlighter-rouge">decimal</code> - 살수(소수점을 포함하는 숫자 포함)</li>
+        </ul>
+      </li>
+      <li>문자형 기준으로 SORT시, 한 문자씩 그 문자 순서를 비교해 정렬
+<br /><br /></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">GROUP BY</code>를 통해 집단 별 통계치 구함
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">GROUP BY</code> 는 <code class="language-plaintext highlighter-rouge">FROM</code> 이후에 작성</li>
+      <li><code class="language-plaintext highlighter-rouge">ORDER BY</code>와 <code class="language-plaintext highlighter-rouge">GROUP BY</code> 함께 쓸 경우, <code class="language-plaintext highlighter-rouge">GROUP BY</code> → <code class="language-plaintext highlighter-rouge">ORDER BY</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">HAVING</code>을 통해 <code class="language-plaintext highlighter-rouge">COUNT</code>를 통해 산출한 값을 기준으로 filter 가능
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">WHERE</code>뒤에는 <code class="language-plaintext highlighter-rouge">COUNT</code> 올 수 없어 <code class="language-plaintext highlighter-rouge">HAVING</code> 사용</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">WITH ROLLUP</code>을 통해 그룹 별 부분 총계 산출 가능
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">GROUPING</code>을 통해 NULL 값으로 발생하는 문제 해결 가능</li>
+    </ul>
+  </li>
+</ul>
+:ET
