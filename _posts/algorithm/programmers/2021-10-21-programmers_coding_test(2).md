@@ -212,7 +212,7 @@ def solution(n):
     <img src="/img/backend/algorithm/coding_test/coding_test20.png" align="center">
 </p>
 ```python
-# 다른 사람의 좋은 풀인
+# 다른 사람의 좋은 풀이
 def solution(n):
     num=set(range(2,n+1))
 
