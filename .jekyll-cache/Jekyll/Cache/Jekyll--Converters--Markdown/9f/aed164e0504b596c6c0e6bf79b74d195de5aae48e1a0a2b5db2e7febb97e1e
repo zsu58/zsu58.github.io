@@ -1,0 +1,45 @@
+I"�<hr />
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(11)</li>
+  <li>Brute Force(3)</li>
+</ul>
+
+<hr />
+
+<h3 id="문제">문제</h3>
+<ul>
+  <li>건물과 건물 사이 쌓일 수 있는 빗물의 양을 구하는 함수를 구현하시오.</li>
+  <li>예를 들어, input 리스트로 [3, 0, 0, 2, 0, 4]가 주어진다면 1번째 건물은 3층, 4번째 건물은 2층, 6번째 건물은 4층이다.</li>
+  <li>빗물은 아래와 같이 총 10칸 만큼 쌓인다</li>
+  <li>0번 인덱스 - 0 (왼쪽 없음, 오른쪽 중 가장 높은 것은이 4층)</li>
+  <li>1번 인덱스 - 3 (왼쪽 중 가장 높은 것이 3층이 오른쪽 중 가장 높은 것이 4층)</li>
+  <li>2번 인덱스 - 3 (왼쪽 중 가장 높은 것이 3층이 오른쪽 중 가장 높은 것이 4층)</li>
+  <li>3번 인덱스 - 1 (왼쪽 중 가장 높은 것이 3층이 오른쪽 중 가장 높은 것이 4층) - 건물 2층</li>
+  <li>4번 인덱스 - 3 (왼쪽 중 가장 높은 것이 3층이 오른쪽 중 가장 높은 것이 4층)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">trapping_rain</span><span class="p">(</span><span class="n">buildings</span><span class="p">):</span>
+    <span class="n">total_height</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">buildings</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">max_left</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">buildings</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">max_right</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">buildings</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+
+        <span class="n">upper_bound</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_left</span><span class="p">,</span> <span class="n">max_right</span><span class="p">)</span>
+
+        <span class="n">total_height</span> <span class="o">+=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">upper_bound</span> <span class="o">-</span> <span class="n">buildings</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">total_height</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">trapping_rain</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">trapping_rain</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="c1"># 시간 복잡도 : O(n^2)
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+6
+</code></pre></div></div>
+
+<hr />
+:ET

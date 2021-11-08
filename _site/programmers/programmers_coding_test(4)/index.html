@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">77</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">79</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -400,7 +400,7 @@
                     
                 
                     
-                        <li><a href="/categories/codeit" class="">Codeit (33)</a></li>
+                        <li><a href="/categories/codeit" class="">Codeit (34)</a></li>
                     
                 
                     
@@ -446,7 +446,7 @@
                     
                 
                     
-                        <li><a href="/categories/programmers" class="">Programmers (4)</a></li>
+                        <li><a href="/categories/programmers" class="">Programmers (5)</a></li>
                     
                 
                     
@@ -508,7 +508,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          2 minute read
         
       </span>
     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-31">문제 31</a></li><li><a href="#문제-32">문제 32</a></li><li><a href="#문제-33">문제 33</a></li><li><a href="#문제-34">문제 34</a></li><li><a href="#문제-35">문제 35</a></li><li><a href="#문제-36">문제 36</a></li><li><a href="#문제-37">문제 37</a></li><li><a href="#문제-38">문제 38</a></li><li><a href="#문제-39">문제 39</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-31">문제 31</a></li><li><a href="#문제-32">문제 32</a></li><li><a href="#문제-33">문제 33</a></li><li><a href="#문제-34">문제 34</a></li><li><a href="#문제-35">문제 35</a></li><li><a href="#문제-36">문제 36</a></li><li><a href="#문제-37">문제 37</a></li><li><a href="#문제-38">문제 38</a></li><li><a href="#문제-39">문제 39</a></li><li><a href="#문제-40">문제 40</a></li></ul>
 
             </nav>
           </aside>
@@ -730,6 +730,67 @@
 
 <hr />
 
+<h3 id="문제-40">문제 40</h3>
+<ul>
+  <li>7/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test4.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">answers</span><span class="p">):</span>
+    <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="n">p1_answer</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+    <span class="n">p2_answer</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+    <span class="n">p3_answer</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">answer</span> <span class="ow">in</span> <span class="n">answers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">p1_answer</span><span class="p">[</span><span class="n">j</span> <span class="o">%</span> <span class="mi">5</span><span class="p">]:</span>
+            <span class="n">p1</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">p2_answer</span><span class="p">[</span><span class="n">j</span> <span class="o">%</span> <span class="mi">8</span><span class="p">]:</span>
+            <span class="n">p2</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">p3_answer</span><span class="p">[</span><span class="n">j</span> <span class="o">%</span> <span class="mi">10</span><span class="p">]:</span>
+            <span class="n">p3</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">max_ans</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">,</span><span class="n">p3</span><span class="p">)</span>
+    <span class="n">best_luck</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">max_ans</span> <span class="o">==</span> <span class="n">p1</span><span class="p">:</span>
+        <span class="n">best_luck</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">max_ans</span> <span class="o">==</span> <span class="n">p2</span><span class="p">:</span>
+        <span class="n">best_luck</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">max_ans</span> <span class="o">==</span> <span class="n">p3</span><span class="p">:</span>
+        <span class="n">best_luck</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">best_luck</span><span class="p">)</span>
+
+<span class="n">solution</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">answers</span><span class="p">):</span>
+    <span class="n">pattern1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">pattern2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">pattern3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">answer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">answers</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">pattern1</span><span class="p">[</span><span class="n">idx</span><span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">pattern1</span><span class="p">)]:</span>
+            <span class="n">score</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">pattern2</span><span class="p">[</span><span class="n">idx</span><span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">pattern2</span><span class="p">)]:</span>
+            <span class="n">score</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">pattern3</span><span class="p">[</span><span class="n">idx</span><span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">pattern3</span><span class="p">)]:</span>
+            <span class="n">score</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="nb">max</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+            <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<hr />
+
         
       </section>
 
@@ -822,6 +883,94 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/programmers/programmers_coding_test(5)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (5)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/codeit/algorithm11_btw_wall_trapped_rain(2)/" rel="permalink">[Algorithm] 벽 사이 빗물 최대량(2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
+
+  알고리즘 정리(33)
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/codeit/algorithm32_combination_sum/" rel="permalink">[Algorithm] 리스트 항목의 합 탐색
 </a>
       
@@ -900,94 +1049,6 @@ SQL 문자열 함수 정리
   LOWER - 문자열을 모두 소문자로 반환
   LPAD - 문자열의 왼쪽에 특정 문자 붙인 뒤 반환
   RPAD - 문...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/codeit/algorithm31_find_duplicated2/" rel="permalink">[Algorithm] 효율적으로 중복되는 숫자 찾기2
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">ALGORITHM
-
-  알고리즘 정리(31)
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/sql/codeit_sql3/" rel="permalink">[SQL] SQL COALESCE &amp; IFNULL &amp; CONCAT &amp; IF
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL COALESCE &amp; IFNULL &amp; CONCAT &amp; IF
-
-  COALESCE - NULL 값을 다른 값으로 대체해서 반환, 2개 이상의 조건 가능
-  IFNULL - NULL 값을 다른 값으로 대체해서 반환
-  CONCAT - concatenate...</p>
   </article>
 </div>
 

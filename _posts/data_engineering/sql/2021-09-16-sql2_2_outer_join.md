@@ -20,6 +20,7 @@ tags:
     * key값이 같은 경우 ```ON``` 대신 ```USING()``` 사용 가능
 * ```CROSS JOIN``` ```ON``` 을 통해 두 데이터의 전체 조합을 가져올 수 있음
 * SQL에서 Multi-line comment 달 경우 ```/*``` Comments ```*/```를 통해 가능
+* 두 개의 테이블 간 공통되는 column이 한가지인 경우, `NATURAL JOIN`을 통해 `ON` 없이도 JOIN 가능
 
 ---
 
@@ -29,8 +30,8 @@ tags:
 
 ```python
 SELECT region, AVG(gdp_percapita) AS avg_gdp
-FROM countries as c
-  LEFT JOIN economies as e
+FROM countries AS c
+  LEFT JOIN economies AS e
     ON c.code = e.code
 WHERE year = 2010
 GROUP BY region

@@ -198,7 +198,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Algorithm] 벽 사이 빗물 최대량 - 무차별 대입",
-        "excerpt":"ALGORITHM 알고리즘 정리(11) Brute Force(3) 벽 사이 빗물 최대량 def trapping_rain(buildings): total_height = 0 for i in range(1, len(buildings) - 1): max_left = max(buildings[:i]) max_right = max(buildings[i:]) upper_bound = min(max_left, max_right) total_height += max(0, upper_bound - buildings[i]) return total_height print(trapping_rain([0, 3, 0, 0, 2, 0, 4])) print(trapping_rain([0, 1, 0, 2,...","categories": ["CODEIT"],
+        "excerpt":"ALGORITHM 알고리즘 정리(11) Brute Force(3) 문제 건물과 건물 사이 쌓일 수 있는 빗물의 양을 구하는 함수를 구현하시오. 예를 들어, input 리스트로 [3, 0, 0, 2, 0, 4]가 주어진다면 1번째 건물은 3층, 4번째 건물은 2층, 6번째 건물은 4층이다. 빗물은 아래와 같이 총 10칸 만큼 쌓인다 0번 인덱스 - 0 (왼쪽 없음,...","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm11_btw_wall_trapped_rain/",
         "teaser": null
@@ -282,7 +282,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Docker] Docker 명령어",
-        "excerpt":"Docker Docker 관련 명령어 정리 Docker 관련 명령어 # 로그인 docker login # image 설치는 docker hub에 접속해서 설치를 희망하는 image의 명령어(pull)를 사용하면 됨 docker pull mysql # 설치되어 있는 이미지 보기 docker images # 컨테이너 생성 (docker run --name [name_of_container] [image]) docker run --name ws2 httpd # 기존의 존재하는...","categories": ["DOCKER"],
+        "excerpt":"Docker Docker 관련 명령어 정리 Docker 관련 명령어 # 로그인 docker login # 터미널에서 docker desktop 실행 open -a docker # image 설치는 docker hub에 접속해서 설치를 희망하는 image의 명령어(pull)를 사용하면 됨 docker pull mysql # 설치되어 있는 이미지 보기 docker images # 컨테이너 생성 (docker run --name [name_of_container] [image])...","categories": ["DOCKER"],
         "tags": ["CLI","BACKEND","DOCKER"],
         "url": "/docker/docker1/",
         "teaser": null
@@ -443,7 +443,7 @@ var store = [{
         "url": "/sql/codeit_sql3/",
         "teaser": null
       },{
-        "title": "[Algorithm] 효율적으로 중복되는 숫자 찾기2",
+        "title": "[Algorithm] 효율적으로 중복되는 숫자 찾기(2)",
         "excerpt":"ALGORITHM 알고리즘 정리(31) 문제 (N + 1)의 크기인 리스트에, 1부터 N까지의 임의의 자연수가 요소로 할당되어 있어, 중복되는 숫자가 최소 1개가 존재 중복되는 어느 숫자 ‘하나’를 가장 효율적으로 찾아 리턴하는 함수를 구현하시오. 단, O(n) 이상의 공간을 사용할 수 없으며, input인 리스트도 변형할 수 없음 def find_same_number(some_list, start=1, end=None): if end ==...","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm31_find_duplicated2/",
@@ -459,5 +459,17 @@ var store = [{
         "excerpt":"ALGORITHM 알고리즘 정리(32) 문제 특정 숫자와, 숫자로 이루어진 리스트가 주어질 때, 리스트 안의 두 요소의 조합으로 특정 숫자가 되는지 확인하는 함수를 구현하시오. # 풀이1 def sum_in_list(search_sum, sorted_list): num_dict = {} for num in sorted_list: if search_sum-num in num_dict.keys(): return True else: num_dict[num] = True return False print(sum_in_list(15, [1, 2, 5,...","categories": ["CODEIT"],
         "tags": ["ALGORITHM"],
         "url": "/codeit/algorithm32_combination_sum/",
+        "teaser": null
+      },{
+        "title": "[Algorithm] 벽 사이 빗물 최대량(2)",
+        "excerpt":"ALGORITHM 알고리즘 정리(33) 문제 건물과 건물 사이 쌓일 수 있는 빗물의 양을 구하는 함수를 구현하시오. 예를 들어, input 리스트로 [3, 0, 0, 2, 0, 4]가 주어진다면 1번째 건물은 3층, 4번째 건물은 2층, 6번째 건물은 4층이다. 빗물은 아래와 같이 총 10칸 만큼 쌓인다 0번 인덱스 - 0 (왼쪽 없음, 오른쪽 중...","categories": ["CODEIT"],
+        "tags": ["ALGORITHM"],
+        "url": "/codeit/algorithm11_btw_wall_trapped_rain(2)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (5)",
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 41 7/11/2021 def solution(array, commands): return [sorted(array[c[0]-1:c[1]])[c[2]-1] for c in commands] 문제 42 7/11/2021 def solution(participant, completion): participant.sort() completion.sort() for i in range(len(participant) - 1): if participant[i] != completion[i]: return participant[i] return participant[-1] # 다른 사람의 좋은 풀이...","categories": ["PROGRAMMERS"],
+        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "url": "/programmers/programmers_coding_test(5)/",
         "teaser": null
       }]
