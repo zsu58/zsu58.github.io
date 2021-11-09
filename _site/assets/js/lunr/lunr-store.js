@@ -48,7 +48,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[SQL] INNER JOIN & USING & CASE WHEN",
-        "excerpt":"SQL Übung SQL JOIN 문법 정리(1) INNER JOIN ON 을 통해 동시에 존재하는 데이터 join key값이 같은 경우 ON 대신 USING() 사용 가능 CASE WHEN &amp; THEN, WHEN &amp; THEN ELSE &amp; END를 통해 조건에 따른 column 만들 수 있음 INTO를 통해 query를 만들 수 있음 INNER JOIN 1-1) INNER...","categories": ["SQL"],
+        "excerpt":"SQL Übung SQL JOIN 문법 정리(1) INNER JOIN ON 을 통해 동시에 존재하는 데이터 join key값이 같은 경우 ON 대신 USING() 사용 가능 CASE WHEN &amp; THEN, WHEN &amp; THEN ELSE &amp; END를 통해 조건에 따른 column 만들 수 있음 INTO를 통해 query를 만들 수 있음 CREATE VIEW INTO를 통해...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/sql2_1_inner_join/",
         "teaser": null
@@ -300,7 +300,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[SQL] Subquery",
-        "excerpt":"SQL Übung SQL JOIN 문법 정리(4) Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것 Subquery (inside WHERE) 가장 많이 사용됨 Select all fields from populations with records of 2015 that are larger than 1.15 times the average life expectancy SELECT * FROM populations WHERE year = '2015' AND life_expectancy...","categories": ["SQL"],
+        "excerpt":"SQL Übung SQL JOIN 문법 정리(4) Subquery - WHERE or HAVING/ SELECT/ FROM 안에 쿼리를 쓰는 것 ANY/SOME : 하나라도 조건을 만족하는 경우가 있으면 반환 ALL : 모든 조건을 만족하는 경우가 있으면 반환 Subquery는 독자적으로도 실행 가능한 비상관 코드와, 그렇지 않은 상관 코드로 구분할 수 있음 비상관 코드의 경우 각...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/sql2_4_subquery/",
         "teaser": null
@@ -414,7 +414,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[SQL] SQL 산술 함수 정리",
-        "excerpt":"SQL 산술 함수 정리 집계함수(ex. SUM, MAX, MIN, AVG 등)은 column에 대한 특징값을 반환 산술함수는 각 row에 대한 산술 연산에 대한 결과값을 반환 STD - 표준편차 ABS - 절대값 SQRT - 제곱근 CEIL - 올림 FLOOR - 내림 ROUND - 반올림 그 외 산술 함수 공식 문서 - 🔗 MYSQL...","categories": ["SQL"],
+        "excerpt":"SQL 산술 함수 정리 집계함수(ex. SUM, MAX, MIN, AVG 등)은 column에 대한 특징값을 반환 산술함수는 각 row에 대한 산술 연산에 대한 결과값을 반환 STD - 표준편차 ABS - 절대값 SQRT - 제곱근 CEIL - 올림 FLOOR - 내림 ROUND - 반올림 그 외 산술 함수 공식 문서 🔗 MYSQL 산술함수...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/codeit_sql2/",
         "teaser": null

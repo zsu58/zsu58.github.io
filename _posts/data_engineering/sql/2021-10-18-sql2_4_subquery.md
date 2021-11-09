@@ -14,11 +14,17 @@ tags:
 ---
 ### SQL Übung 
 * SQL JOIN 문법 정리(4)
-* Subquery - `WHERE`/ `SELECT`/ `FROM` 안에 쿼리를 쓰는 것
+* Subquery - `WHERE` or `HAVING`/ `SELECT`/ `FROM` 안에 쿼리를 쓰는 것
+* `ANY`/`SOME` : 하나라도 조건을 만족하는 경우가 있으면 반환
+* `ALL` : 모든 조건을 만족하는 경우가 있으면 반환
+* Subquery는 독자적으로도 실행 가능한 비상관 코드와, 그렇지 않은 상관 코드로 구분할 수 있음
+* 비상관 코드의 경우 각 Row에 대하여 Subquery가 실행된 결과를 반환
+* `EXISTS` : 존재하면 반환
+* `NOT EXISTS` : 존재하지 않으면 반환
 
 ---
 
-### Subquery (inside WHERE)
+### Subquery (inside WHERE or HAVING)
 * 가장 많이 사용됨
 * Select all fields from populations with records of 2015 that are larger than 1.15 times the average life expectancy
 
@@ -74,3 +80,55 @@ ORDER BY lang_num DESC;
 ```
 
 ---
+
+### ANY & SOME
+* 카테고리가 action인 영화의 view_count 값 중 단 하나라도 큰 영화를 리턴하라
+
+```python
+# 서브쿼리의 결과가 120,1000,3000인 경우, view_count가 120보다 큰 영화들이 리턴됨
+SELECT *
+FROM theater
+WHERE view_count > 
+SOME(
+	SELECT view_count
+    FROM theater
+    WHERE category = 'ACTION'
+)
+```
+
+---
+
+### ALL
+* 카테고리가 action인 영화의 view_count 값들 모두보다 큰 영화를 리턴하라
+
+```python
+# 서브쿼리의 결과가 120,1000,3000인 경우, view_count가 3000보다 큰 영화들이 리턴됨
+SELECT *
+FROM theater
+WHERE view_count > 
+ALL(
+	SELECT view_count
+    FROM theater
+    WHERE category = 'ACTION'
+)
+```
+
+---
+
+### 비상관 & 상관 Subquery
+* member 테이블의 회원 중에서 리뷰를 하나도 남기지 않아서 review 테이블에 관련 정보가 하나도 없는 회원들만 조회하라
+
+```python
+# 상관 Subquery
+SELECT * 
+FROM member
+WHERE NOT EXISTS 
+( 
+  SELECT * 
+  FROM review 
+  WHERE review.mem_id = member.id
+);
+```
+
+---
+

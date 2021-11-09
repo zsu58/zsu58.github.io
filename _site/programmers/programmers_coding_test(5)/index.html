@@ -508,7 +508,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          2 minute read
         
       </span>
     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-41">문제 41</a></li><li><a href="#문제-42">문제 42</a></li><li><a href="#문제-43">문제 43</a></li><li><a href="#문제-44">문제 44</a></li><li><a href="#문제-45">문제 45</a></li><li><a href="#문제-46">문제 46</a></li><li><a href="#문제-47">문제 47</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-41">문제 41</a></li><li><a href="#문제-42">문제 42</a></li><li><a href="#문제-43">문제 43</a></li><li><a href="#문제-44">문제 44</a></li><li><a href="#문제-45">문제 45</a></li><li><a href="#문제-46">문제 46</a></li><li><a href="#문제-47">문제 47</a></li><li><a href="#문제-48">문제 48</a></li></ul>
 
             </nav>
           </aside>
@@ -698,6 +698,69 @@
         <span class="n">a12</span><span class="o">=</span><span class="n">a12</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'1'</span><span class="p">,</span><span class="s">'#'</span><span class="p">)</span>
         <span class="n">a12</span><span class="o">=</span><span class="n">a12</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'0'</span><span class="p">,</span><span class="s">' '</span><span class="p">)</span>
         <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">a12</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-48">문제 48</h3>
+<ul>
+  <li>9/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test48_1.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test48_2.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pick</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">arr</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">return</span> <span class="n">val</span>
+
+<span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">arr</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">moves</span><span class="p">):</span>
+    <span class="n">flip_board</span> <span class="o">=</span> <span class="p">[[</span><span class="o">*</span><span class="n">args</span><span class="p">]</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">board</span><span class="p">)]</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">basket</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">flip_board</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">basket</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">basket</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pick</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">flip_board</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">flip_board</span><span class="p">)</span> <span class="o">==</span> <span class="n">basket</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">pick</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">flip_board</span><span class="p">)</span>
+                <span class="k">del</span><span class="p">(</span><span class="n">basket</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="mi">2</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">basket</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pick</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">flip_board</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">moves</span><span class="p">):</span>
+    <span class="n">stacklist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">stacklist</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">board</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stacklist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">stacklist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">stacklist</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+                        <span class="n">stacklist</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                        <span class="n">stacklist</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                        <span class="n">answer</span> <span class="o">+=</span> <span class="mi">2</span>     
+                <span class="k">break</span>
+
     <span class="k">return</span> <span class="n">answer</span>
 </code></pre></div></div>
 

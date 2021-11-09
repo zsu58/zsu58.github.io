@@ -1,0 +1,116 @@
+I"�<hr />
+<h3 id="sql-übung">SQL Übung</h3>
+<ul>
+  <li>SQL JOIN 문법 정리(3)</li>
+  <li><code class="language-plaintext highlighter-rouge">UNION</code>을 통해 두 데이터 간 합집함을 가져올 수 있음
+    <ul>
+      <li>중복되는 데이터는 한 개만 포함됨</li>
+      <li><code class="language-plaintext highlighter-rouge">UNION</code>되는 데이터 세트의 열 개수가 같아야 함</li>
+      <li><code class="language-plaintext highlighter-rouge">UNION</code>되는 데이터들의 열의 자료형이 같아야 함</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">UNION ALL</code>을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음
+    <ul>
+      <li>중복된 데이터는 2개가 존재</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">INTER</code>을 통해 교집합만 가져올 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">EXCEPT</code>을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음
+<br /><br /></li>
+  <li>SEMI JOIN - <code class="language-plaintext highlighter-rouge">WHERE</code> &amp; <code class="language-plaintext highlighter-rouge">IN</code>에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음</li>
+  <li>ANTI JOIN - <code class="language-plaintext highlighter-rouge">WHERE</code> &amp; <code class="language-plaintext highlighter-rouge">NOT IN</code>에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음</li>
+</ul>
+
+<hr />
+
+<h3 id="union">UNION</h3>
+<ul>
+  <li>Determine all (non-duplicated) country codes in either the cities or the currencies table. The result should be a table with only one field called country_code</li>
+  <li>Sort by country_code in alphabetical order</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">country_code</span>
+  <span class="n">FROM</span> <span class="n">cities</span>
+	<span class="n">UNION</span>
+<span class="n">SELECT</span> <span class="n">code</span>
+  <span class="n">FROM</span> <span class="n">currencies</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">country_code</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="union-all">UNION ALL</h3>
+<ul>
+  <li>Determine all combinations (include duplicates) of country code and year that exist in either the economies or the populations tables. Order by code then year.a table with only one field called country_code</li>
+  <li>The result of the query should only have two columns/fields. Think about how many records this query should result in</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">country_code</span>
+  <span class="n">FROM</span> <span class="n">cities</span>
+	<span class="n">UNION</span>
+<span class="n">SELECT</span> <span class="n">code</span>
+  <span class="n">FROM</span> <span class="n">currencies</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">country_code</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="intersect">INTERSECT</h3>
+<ul>
+  <li>Determine the records in common for country code and year for the economies and populations tables</li>
+  <li>Order by code and then by year, both in ascending order</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">code</span><span class="p">,</span> <span class="n">year</span>
+  <span class="n">FROM</span> <span class="n">economies</span>
+	<span class="n">INTERSECT</span>
+<span class="n">SELECT</span> <span class="n">country_code</span><span class="p">,</span> <span class="n">year</span>
+  <span class="n">FROM</span> <span class="n">populations</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">code</span><span class="p">,</span> <span class="n">year</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="except">EXCEPT</h3>
+<ul>
+  <li>Get the names of cities in cities which are not noted as capital cities in countries as a single field result</li>
+  <li>Order the resulting field in ascending order</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">name</span>
+  <span class="n">FROM</span> <span class="n">cities</span>
+	<span class="n">EXCEPT</span>
+<span class="n">SELECT</span> <span class="n">capital</span>
+  <span class="n">FROM</span> <span class="n">countries</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">name</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="where--in-semi-join">WHERE &amp; IN (Semi-join)</h3>
+<ul>
+  <li>Identify languages spoken in the Middle East</li>
+  <li>Order the result by name in ascending order</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">name</span>
+  <span class="n">FROM</span> <span class="n">languages</span>
+<span class="n">WHERE</span> <span class="n">code</span> <span class="n">IN</span>
+  <span class="p">(</span><span class="n">SELECT</span> <span class="n">code</span>
+   <span class="n">FROM</span> <span class="n">countries</span>
+   <span class="n">WHERE</span> <span class="n">region</span> <span class="o">=</span> <span class="s">'Middle East'</span><span class="p">)</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">name</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="where--not-in-anti-join">WHERE &amp; NOT IN (Anti-join)</h3>
+<ul>
+  <li>Identify the code and name used in Oceanian countries which are included in the countries table but not in the currencies table</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">code</span><span class="p">,</span> <span class="n">name</span>
+  <span class="n">FROM</span> <span class="n">countries</span>
+  <span class="n">WHERE</span> <span class="n">continent</span> <span class="o">=</span> <span class="s">'Oceania'</span>
+  	<span class="n">AND</span> <span class="n">code</span> <span class="n">NOT</span> <span class="n">IN</span>
+  	<span class="p">(</span><span class="n">SELECT</span> <span class="n">code</span> 
+  	 <span class="n">FROM</span> <span class="n">currencies</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+:ET

@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>[SQL] LEFT JOIN &amp; RIGHT JOIN &amp; FULL JOIN &amp; CROSS JOIN - Bibliothek für Data-Engineering</title>
-<meta name="description" content="SQL Übung    SQL JOIN 문법 정리(2)   LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join   RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join   FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join            key값이 같은 경우 ON 대신 USING() 사용 가능           CROSS JOIN ON 을 통해 두 데이터의 전체 조합을 가져올 수 있음   SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능">
+<meta name="description" content="SQL Übung    SQL JOIN 문법 정리(2)   LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join   RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join   FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join            key값이 같은 경우 ON 대신 USING() 사용 가능           CROSS JOIN ON 을 통해 두 데이터의 전체 조합을 가져올 수 있음   SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능   두 개의 테이블 간 공통되는 column이 한가지인 경우, NATURAL JOIN을 통해 ON 없이도 JOIN 가능">
 
 
   <meta name="author" content="ZSU">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/sql/sql2_2_outer_join/">
 
 
-  <meta property="og:description" content="SQL Übung    SQL JOIN 문법 정리(2)   LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join   RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join   FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join            key값이 같은 경우 ON 대신 USING() 사용 가능           CROSS JOIN ON 을 통해 두 데이터의 전체 조합을 가져올 수 있음   SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능">
+  <meta property="og:description" content="SQL Übung    SQL JOIN 문법 정리(2)   LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join   RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join   FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join            key값이 같은 경우 ON 대신 USING() 사용 가능           CROSS JOIN ON 을 통해 두 데이터의 전체 조합을 가져올 수 있음   SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능   두 개의 테이블 간 공통되는 column이 한가지인 경우, NATURAL JOIN을 통해 ON 없이도 JOIN 가능">
 
 
 
@@ -485,7 +485,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[SQL] LEFT JOIN &amp; RIGHT JOIN &amp; FULL JOIN &amp; CROSS JOIN">
-    <meta itemprop="description" content="SQL Übung  SQL JOIN 문법 정리(2)  LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join  RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join  FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join          key값이 같은 경우 ON 대신 USING() 사용 가능        CROSS JOIN ON 을 통해 두 데이터의 전체 조합을 가져올 수 있음  SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능">
+    <meta itemprop="description" content="SQL Übung  SQL JOIN 문법 정리(2)  LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join  RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join  FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join          key값이 같은 경우 ON 대신 USING() 사용 가능        CROSS JOIN ON 을 통해 두 데이터의 전체 조합을 가져올 수 있음  SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능  두 개의 테이블 간 공통되는 column이 한가지인 경우, NATURAL JOIN을 통해 ON 없이도 JOIN 가능">
     <meta itemprop="datePublished" content="2021-09-16T00:00:00+09:00">
     
 
@@ -541,6 +541,7 @@
   </li>
   <li><code class="language-plaintext highlighter-rouge">CROSS JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 두 데이터의 전체 조합을 가져올 수 있음</li>
   <li>SQL에서 Multi-line comment 달 경우 <code class="language-plaintext highlighter-rouge">/*</code> Comments <code class="language-plaintext highlighter-rouge">*/</code>를 통해 가능</li>
+  <li>두 개의 테이블 간 공통되는 column이 한가지인 경우, <code class="language-plaintext highlighter-rouge">NATURAL JOIN</code>을 통해 <code class="language-plaintext highlighter-rouge">ON</code> 없이도 JOIN 가능</li>
 </ul>
 
 <hr />
@@ -552,8 +553,8 @@
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">region</span><span class="p">,</span> <span class="n">AVG</span><span class="p">(</span><span class="n">gdp_percapita</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_gdp</span>
-<span class="n">FROM</span> <span class="n">countries</span> <span class="k">as</span> <span class="n">c</span>
-  <span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">economies</span> <span class="k">as</span> <span class="n">e</span>
+<span class="n">FROM</span> <span class="n">countries</span> <span class="n">AS</span> <span class="n">c</span>
+  <span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">economies</span> <span class="n">AS</span> <span class="n">e</span>
     <span class="n">ON</span> <span class="n">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">code</span>
 <span class="n">WHERE</span> <span class="n">year</span> <span class="o">=</span> <span class="mi">2010</span>
 <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">region</span>
@@ -728,7 +729,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          2 minute read
         
       </span>
     

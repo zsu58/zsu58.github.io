@@ -37,7 +37,6 @@ SELECT country_code
   FROM cities
 	UNION
 SELECT code
-  -- From currencies
   FROM currencies
 ORDER BY country_code;
 ```
@@ -52,7 +51,6 @@ SELECT country_code
   FROM cities
 	UNION
 SELECT code
-  -- From currencies
   FROM currencies
 ORDER BY country_code;
 ```

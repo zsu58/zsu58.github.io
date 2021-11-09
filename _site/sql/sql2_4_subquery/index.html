@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>[SQL] Subquery - Bibliothek für Data-Engineering</title>
-<meta name="description" content="SQL Übung    SQL JOIN 문법 정리(4)   Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것">
+<meta name="description" content="SQL Übung    SQL JOIN 문법 정리(4)   Subquery - WHERE or HAVING/ SELECT/ FROM 안에 쿼리를 쓰는 것   ANY/SOME : 하나라도 조건을 만족하는 경우가 있으면 반환   ALL : 모든 조건을 만족하는 경우가 있으면 반환   Subquery는 독자적으로도 실행 가능한 비상관 코드와, 그렇지 않은 상관 코드로 구분할 수 있음   비상관 코드의 경우 각 Row에 대하여 Subquery가 실행된 결과를 반환   EXISTS : 존재하면 반환   NOT EXISTS : 존재하지 않으면 반환">
 
 
   <meta name="author" content="ZSU">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/sql/sql2_4_subquery/">
 
 
-  <meta property="og:description" content="SQL Übung    SQL JOIN 문법 정리(4)   Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것">
+  <meta property="og:description" content="SQL Übung    SQL JOIN 문법 정리(4)   Subquery - WHERE or HAVING/ SELECT/ FROM 안에 쿼리를 쓰는 것   ANY/SOME : 하나라도 조건을 만족하는 경우가 있으면 반환   ALL : 모든 조건을 만족하는 경우가 있으면 반환   Subquery는 독자적으로도 실행 가능한 비상관 코드와, 그렇지 않은 상관 코드로 구분할 수 있음   비상관 코드의 경우 각 Row에 대하여 Subquery가 실행된 결과를 반환   EXISTS : 존재하면 반환   NOT EXISTS : 존재하지 않으면 반환">
 
 
 
@@ -485,7 +485,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[SQL] Subquery">
-    <meta itemprop="description" content="SQL Übung  SQL JOIN 문법 정리(4)  Subquery - WHERE/ SELECT/ FROM 안에 쿼리를 쓰는 것">
+    <meta itemprop="description" content="SQL Übung  SQL JOIN 문법 정리(4)  Subquery - WHERE or HAVING/ SELECT/ FROM 안에 쿼리를 쓰는 것  ANY/SOME : 하나라도 조건을 만족하는 경우가 있으면 반환  ALL : 모든 조건을 만족하는 경우가 있으면 반환  Subquery는 독자적으로도 실행 가능한 비상관 코드와, 그렇지 않은 상관 코드로 구분할 수 있음  비상관 코드의 경우 각 Row에 대하여 Subquery가 실행된 결과를 반환  EXISTS : 존재하면 반환  NOT EXISTS : 존재하지 않으면 반환">
     <meta itemprop="datePublished" content="2021-10-18T00:00:00+09:00">
     
 
@@ -508,7 +508,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#sql-übung">SQL Übung</a></li><li><a href="#subquery-inside-where">Subquery (inside WHERE)</a></li><li><a href="#subquery-inside-select">Subquery (inside SELECT)</a></li><li><a href="#subquery-inside-from">Subquery (inside FROM)</a></li></ul>
+              <ul class="toc__menu"><li><a href="#sql-übung">SQL Übung</a></li><li><a href="#subquery-inside-where-or-having">Subquery (inside WHERE or HAVING)</a></li><li><a href="#subquery-inside-select">Subquery (inside SELECT)</a></li><li><a href="#subquery-inside-from">Subquery (inside FROM)</a></li><li><a href="#any--some">ANY &amp; SOME</a></li><li><a href="#all">ALL</a></li><li><a href="#비상관--상관-subquery">비상관 &amp; 상관 Subquery</a></li></ul>
 
             </nav>
           </aside>
@@ -532,12 +532,18 @@
 <h3 id="sql-übung">SQL Übung</h3>
 <ul>
   <li>SQL JOIN 문법 정리(4)</li>
-  <li>Subquery - <code class="language-plaintext highlighter-rouge">WHERE</code>/ <code class="language-plaintext highlighter-rouge">SELECT</code>/ <code class="language-plaintext highlighter-rouge">FROM</code> 안에 쿼리를 쓰는 것</li>
+  <li>Subquery - <code class="language-plaintext highlighter-rouge">WHERE</code> or <code class="language-plaintext highlighter-rouge">HAVING</code>/ <code class="language-plaintext highlighter-rouge">SELECT</code>/ <code class="language-plaintext highlighter-rouge">FROM</code> 안에 쿼리를 쓰는 것</li>
+  <li><code class="language-plaintext highlighter-rouge">ANY</code>/<code class="language-plaintext highlighter-rouge">SOME</code> : 하나라도 조건을 만족하는 경우가 있으면 반환</li>
+  <li><code class="language-plaintext highlighter-rouge">ALL</code> : 모든 조건을 만족하는 경우가 있으면 반환</li>
+  <li>Subquery는 독자적으로도 실행 가능한 비상관 코드와, 그렇지 않은 상관 코드로 구분할 수 있음</li>
+  <li>비상관 코드의 경우 각 Row에 대하여 Subquery가 실행된 결과를 반환</li>
+  <li><code class="language-plaintext highlighter-rouge">EXISTS</code> : 존재하면 반환</li>
+  <li><code class="language-plaintext highlighter-rouge">NOT EXISTS</code> : 존재하지 않으면 반환</li>
 </ul>
 
 <hr />
 
-<h3 id="subquery-inside-where">Subquery (inside WHERE)</h3>
+<h3 id="subquery-inside-where-or-having">Subquery (inside WHERE or HAVING)</h3>
 <ul>
   <li>가장 많이 사용됨</li>
   <li>Select all fields from populations with records of 2015 that are larger than 1.15 times the average life expectancy</li>
@@ -596,6 +602,61 @@
 </code></pre></div></div>
 
 <hr />
+
+<h3 id="any--some">ANY &amp; SOME</h3>
+<ul>
+  <li>카테고리가 action인 영화의 view_count 값 중 단 하나라도 큰 영화를 리턴하라</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 서브쿼리의 결과가 120,1000,3000인 경우, view_count가 120보다 큰 영화들이 리턴됨
+</span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">theater</span>
+<span class="n">WHERE</span> <span class="n">view_count</span> <span class="o">&gt;</span> 
+<span class="n">SOME</span><span class="p">(</span>
+	<span class="n">SELECT</span> <span class="n">view_count</span>
+    <span class="n">FROM</span> <span class="n">theater</span>
+    <span class="n">WHERE</span> <span class="n">category</span> <span class="o">=</span> <span class="s">'ACTION'</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="all">ALL</h3>
+<ul>
+  <li>카테고리가 action인 영화의 view_count 값들 모두보다 큰 영화를 리턴하라</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 서브쿼리의 결과가 120,1000,3000인 경우, view_count가 3000보다 큰 영화들이 리턴됨
+</span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">theater</span>
+<span class="n">WHERE</span> <span class="n">view_count</span> <span class="o">&gt;</span> 
+<span class="n">ALL</span><span class="p">(</span>
+	<span class="n">SELECT</span> <span class="n">view_count</span>
+    <span class="n">FROM</span> <span class="n">theater</span>
+    <span class="n">WHERE</span> <span class="n">category</span> <span class="o">=</span> <span class="s">'ACTION'</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="비상관--상관-subquery">비상관 &amp; 상관 Subquery</h3>
+<ul>
+  <li>member 테이블의 회원 중에서 리뷰를 하나도 남기지 않아서 review 테이블에 관련 정보가 하나도 없는 회원들만 조회하라</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 상관 Subquery
+</span><span class="n">SELECT</span> <span class="o">*</span> 
+<span class="n">FROM</span> <span class="n">member</span>
+<span class="n">WHERE</span> <span class="n">NOT</span> <span class="n">EXISTS</span> 
+<span class="p">(</span> 
+  <span class="n">SELECT</span> <span class="o">*</span> 
+  <span class="n">FROM</span> <span class="n">review</span> 
+  <span class="n">WHERE</span> <span class="n">review</span><span class="p">.</span><span class="n">mem_id</span> <span class="o">=</span> <span class="n">member</span><span class="p">.</span><span class="nb">id</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
 
         
       </section>
@@ -705,7 +766,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          2 minute read
         
       </span>
     

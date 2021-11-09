@@ -20,6 +20,7 @@ tags:
 <br><br>
 * ```CASE WHEN``` & ```THEN```, ```WHEN``` & ```THEN``` ```ELSE``` & ```END```를 통해 조건에 따른 column 만들 수 있음
 * ```INTO```를 통해 query를 만들 수 있음
+* `CREATE VIEW` `INTO`를 통해 가상의 table을 만들 수 있음
 
 ---
 
@@ -87,8 +88,8 @@ FROM populations AS p1
 ```
 ---
 
-### CASE_WHEN & INTO
-4) CASE_WHEN & INTO
+### CASE WHEN & INTO
+4) CASE WHEN & INTO
 * Using the populations table focused only for the year 2015, create a new field aliased as popsize_group to organize population size into 'large' (> 50 million), 'medium' (> 1 million), and 'small' groups
 * Write a query to join countries_plus AS c on the left with pop_plus AS p on the right matching on the country code fields
 * Sort the data based on geosize_group, in ascending order so that large appears on top
@@ -111,6 +112,21 @@ FROM countries_plus as c
   INNER JOIN pop_plus as p
     ON c.code = p.country_code
 ORDER BY geosize_group;
+```
+
+---
+
+### CREATE VIEW INTO
+5) CREATE VIEW INTO
+* CREATE VIEW name_of_view INTO
+* 분석에 자주 사용되는 review가 2개 이상인 고객들의 id가 담겨있는 테이블을 만들어라
+
+```python
+CREATE VIEW more_than_two_order AS
+SELECT mem_id
+FROM review
+GROUP BY mem_id
+HAVING COUNT(mem_id) > 2
 ```
 
 ---

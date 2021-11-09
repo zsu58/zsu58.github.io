@@ -177,3 +177,65 @@ def solution(n, arr1, arr2):
 ```
 
 ---
+
+### 문제 48
+* 9/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test48_1.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test48_2.png" align="center">
+</p>
+```python
+def pick(n, arr):
+    for i in range(5):
+        if arr[n-1][i] != 0:
+            val = arr[n-1][i]
+            arr[n-1][i] = 0
+            return val
+
+def check(n, arr):
+    for i in range(5):
+        if arr[n-1][i] != 0:
+            return arr[n-1][i]
+
+def solution(board, moves):
+    flip_board = [[*args] for args in zip(*board)]
+
+    res = 0
+    basket = []
+    for i in range(len(moves)):
+        if check(moves[i], flip_board) is None:
+            pass
+        elif len(basket) == 0:
+            basket.append(pick(moves[i], flip_board))
+        else:
+            if check(moves[i], flip_board) == basket[-1]:
+                pick(moves[i], flip_board)
+                del(basket[-1])
+                res += 2
+            else:
+                basket.append(pick(moves[i], flip_board))
+
+    return res
+
+# 다른 사람의 좋은 풀이
+def solution(board, moves):
+    stacklist = []
+    answer = 0
+
+    for i in moves:
+        for j in range(len(board)):
+            if board[j][i-1] != 0:
+                stacklist.append(board[j][i-1])
+                board[j][i-1] = 0
+
+                if len(stacklist) > 1:
+                    if stacklist[-1] == stacklist[-2]:
+                        stacklist.pop(-1)
+                        stacklist.pop(-1)
+                        answer += 2     
+                break
+
+    return answer
+```
+
+---

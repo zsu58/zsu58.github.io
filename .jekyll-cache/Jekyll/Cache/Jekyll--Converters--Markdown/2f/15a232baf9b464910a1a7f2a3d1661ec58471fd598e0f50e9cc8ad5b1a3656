@@ -1,9 +1,0 @@
-I"Y<hr />
-
-<h3 id="unix-command-line">UNIX COMMAND LINE</h3>
-<ul>
-  <li>UNIX CLI 정리(4)</li>
-  <li><code class="language-plaintext highlighter-rouge">bash</code>: shell script 수행</li>
-  <li><code class="language-plaintext highlighter-rouge">$@</code> : bash를 통해 shell script를 실행할 때 변수를 받을 수 있게 함</li>
-</ul>
-:ET

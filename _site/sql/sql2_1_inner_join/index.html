@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#sql-übung">SQL Übung</a></li><li><a href="#inner-join">INNER JOIN</a></li><li><a href="#inner-join--using">INNER JOIN &amp; USING</a></li><li><a href="#self-join">SELF JOIN</a></li><li><a href="#case_when--into">CASE_WHEN &amp; INTO</a></li></ul>
+              <ul class="toc__menu"><li><a href="#sql-übung">SQL Übung</a></li><li><a href="#inner-join">INNER JOIN</a></li><li><a href="#inner-join--using">INNER JOIN &amp; USING</a></li><li><a href="#self-join">SELF JOIN</a></li><li><a href="#case-when--into">CASE WHEN &amp; INTO</a></li><li><a href="#create-view-into">CREATE VIEW INTO</a></li></ul>
 
             </nav>
           </aside>
@@ -542,6 +542,7 @@
   </li>
   <li><code class="language-plaintext highlighter-rouge">CASE WHEN</code> &amp; <code class="language-plaintext highlighter-rouge">THEN</code>, <code class="language-plaintext highlighter-rouge">WHEN</code> &amp; <code class="language-plaintext highlighter-rouge">THEN</code> <code class="language-plaintext highlighter-rouge">ELSE</code> &amp; <code class="language-plaintext highlighter-rouge">END</code>를 통해 조건에 따른 column 만들 수 있음</li>
   <li><code class="language-plaintext highlighter-rouge">INTO</code>를 통해 query를 만들 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">CREATE VIEW</code> <code class="language-plaintext highlighter-rouge">INTO</code>를 통해 가상의 table을 만들 수 있음</li>
 </ul>
 
 <hr />
@@ -615,8 +616,8 @@
 </code></pre></div></div>
 <hr />
 
-<h3 id="case_when--into">CASE_WHEN &amp; INTO</h3>
-<p>4) CASE_WHEN &amp; INTO</p>
+<h3 id="case-when--into">CASE WHEN &amp; INTO</h3>
+<p>4) CASE WHEN &amp; INTO</p>
 <ul>
   <li>Using the populations table focused only for the year 2015, create a new field aliased as popsize_group to organize population size into ‘large’ (&gt; 50 million), ‘medium’ (&gt; 1 million), and ‘small’ groups</li>
   <li>Write a query to join countries_plus AS c on the left with pop_plus AS p on the right matching on the country code fields</li>
@@ -640,6 +641,22 @@
   <span class="n">INNER</span> <span class="n">JOIN</span> <span class="n">pop_plus</span> <span class="k">as</span> <span class="n">p</span>
     <span class="n">ON</span> <span class="n">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">country_code</span>
 <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">geosize_group</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="create-view-into">CREATE VIEW INTO</h3>
+<p>5) CREATE VIEW INTO</p>
+<ul>
+  <li>CREATE VIEW name_of_view INTO</li>
+  <li>분석에 자주 사용되는 review가 2개 이상인 고객들의 id가 담겨있는 테이블을 만들어라</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CREATE</span> <span class="n">VIEW</span> <span class="n">more_than_two_order</span> <span class="n">AS</span>
+<span class="n">SELECT</span> <span class="n">mem_id</span>
+<span class="n">FROM</span> <span class="n">review</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">mem_id</span>
+<span class="n">HAVING</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">mem_id</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span>
 </code></pre></div></div>
 
 <hr />
@@ -752,7 +769,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          2 minute read
         
       </span>
     
