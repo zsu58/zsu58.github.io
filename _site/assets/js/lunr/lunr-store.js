@@ -472,4 +472,10 @@ var store = [{
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(5)/",
         "teaser": null
+      },{
+        "title": "[SQL] Hackerrank SQL 연습문제(1)",
+        "excerpt":" SQL Übung - Hackerrank     SQL 문제 풀이를 통한 SQL 연습     Revising the Select Query I     10/11/2021          SELECT * FROM city WHERE countrycode=\"USA\" AND population &gt; 100000   Revising the Select Query II     10/11/2021          SELECT name FROM city WHERE population &gt; 120000 AND countrycode=\"USA\"  ","categories": ["SQL"],
+        "tags": ["SQL"],
+        "url": "/sql/hackerrank(1)/",
+        "teaser": null
       }]
