@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">80</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">81</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/sql" class="">SQL (15)</a></li>
+                        <li><a href="/categories/sql" class="">SQL (16)</a></li>
                     
                 
                     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#sql-übung---hackerrank">SQL Übung - Hackerrank</a></li><li><a href="#revising-the-select-query-i">Revising the Select Query I</a></li><li><a href="#revising-the-select-query-ii">Revising the Select Query II</a></li></ul>
+              <ul class="toc__menu"><li><a href="#sql-übung---hackerrank">SQL Übung - Hackerrank</a></li><li><a href="#revising-the-select-query-i">Revising the Select Query I</a></li><li><a href="#revising-the-select-query-ii">Revising the Select Query II</a></li><li><a href="#select-all">Select All</a></li><li><a href="#select-by-id">Select By ID</a></li><li><a href="#japanese-cities-attributes">Japanese Cities’ Attributes</a></li><li><a href="#japanese-cities-names">Japanese Cities’ Names</a></li><li><a href="#weather-observation-station-1">Weather Observation Station 1</a></li><li><a href="#weather-observation-station-3">Weather Observation Station 3</a></li><li><a href="#weather-observation-station-4">Weather Observation Station 4</a></li><li><a href="#weather-observation-station-5">Weather Observation Station 5</a></li></ul>
 
             </nav>
           </aside>
@@ -559,9 +559,107 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">name</span>
 <span class="n">FROM</span> <span class="n">city</span>
 <span class="n">WHERE</span> <span class="n">population</span> <span class="o">&gt;</span> <span class="mi">120000</span>
-<span class="n">AND</span> <span class="n">countrycode</span><span class="o">=</span><span class="s">"USA"</span>
+<span class="n">AND</span> <span class="n">countrycode</span><span class="o">=</span><span class="s">"USA"</span><span class="p">;</span>
 </code></pre></div></div>
 
+<h3 id="select-all">Select All</h3>
+<ul>
+  <li>10/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql3.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">city</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="select-by-id">Select By ID</h3>
+<ul>
+  <li>10/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql4.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">city</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">1661</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="japanese-cities-attributes">Japanese Cities’ Attributes</h3>
+<ul>
+  <li>11/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql5.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">city</span>
+<span class="n">WHERE</span> <span class="n">countrycode</span> <span class="o">=</span> <span class="s">'JPN'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="japanese-cities-names">Japanese Cities’ Names</h3>
+<ul>
+  <li>11/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql6.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">name</span>
+<span class="n">FROM</span> <span class="n">city</span>
+<span class="n">WHERE</span> <span class="n">countrycode</span> <span class="o">=</span> <span class="s">'JPN'</span>
+</code></pre></div></div>
+
+<h3 id="weather-observation-station-1">Weather Observation Station 1</h3>
+<ul>
+  <li>11/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql7.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">city</span><span class="p">,</span> <span class="n">state</span>
+<span class="n">FROM</span> <span class="n">station</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="weather-observation-station-3">Weather Observation Station 3</h3>
+<ul>
+  <li>11/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql8.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">station</span>
+<span class="n">WHERE</span> <span class="n">ID</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="weather-observation-station-4">Weather Observation Station 4</h3>
+<ul>
+  <li>11/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql9.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">-</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">DISTINCT</span><span class="p">(</span><span class="n">city</span><span class="p">))</span>
+<span class="n">FROM</span> <span class="n">station</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="weather-observation-station-5">Weather Observation Station 5</h3>
+<ul>
+  <li>11/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql10.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">SELECT</span> <span class="n">city</span><span class="p">,</span> <span class="n">LENGTH</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">station</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">LENGTH</span><span class="p">(</span><span class="n">city</span><span class="p">)</span> <span class="n">ASC</span><span class="p">,</span> <span class="n">city</span>
+<span class="n">LIMIT</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">UNION</span>
+<span class="p">(</span><span class="n">SELECT</span> <span class="n">city</span><span class="p">,</span> <span class="n">LENGTH</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">station</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">LENGTH</span><span class="p">(</span><span class="n">city</span><span class="p">)</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">city</span>
+<span class="n">LIMIT</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
 
         
       </section>
@@ -628,7 +726,8 @@
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/sql/hackerrank(2)/" class="pagination--pager" title="[SQL] Hackerrank SQL 연습문제(2)
+">Next</a>
     
   </nav>
 
@@ -642,6 +741,51 @@
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/hackerrank(2)/" rel="permalink">[SQL] Hackerrank SQL 연습문제(2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung - Hackerrank
+
+  SQL 문제 풀이를 통한 SQL 연습
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -770,54 +914,6 @@ ALGORITHM Übung - Programmers
   알고리즘 정리(32)
 
 </p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/sql/codeit_sql4/" rel="permalink">[SQL] SQL 문자열 함수 정리
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL 문자열 함수 정리
-
-  SUBSTRING - 문자열의 일부 추출
-  LENGTH - 문자열 길이 반환
-  UPPER - 문자열을 모두 대문자로 반환
-  LOWER - 문자열을 모두 소문자로 반환
-  LPAD - 문자열의 왼쪽에 특정 문자 붙인 뒤 반환
-  RPAD - 문...</p>
   </article>
 </div>
 

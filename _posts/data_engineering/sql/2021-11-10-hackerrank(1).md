@@ -62,3 +62,74 @@ FROM city
 WHERE id = 1661;
 ```
 
+### Japanese Cities' Attributes
+* 11/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql5.png" align="center">
+</p>
+```python
+SELECT *
+FROM city
+WHERE countrycode = 'JPN';
+```
+
+### Japanese Cities' Names
+* 11/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql6.png" align="center">
+</p>
+```python
+SELECT name
+FROM city
+WHERE countrycode = 'JPN'
+```
+
+
+
+### Weather Observation Station 1
+* 11/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql7.png" align="center">
+</p>
+```python
+SELECT city, state
+FROM station;
+```
+
+### Weather Observation Station 3
+* 11/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql8.png" align="center">
+</p>
+```python
+SELECT DISTINCT(city)
+FROM station
+WHERE ID % 2 = 0;
+```
+
+### Weather Observation Station 4
+* 11/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql9.png" align="center">
+</p>
+```python
+SELECT COUNT(*) - COUNT(DISTINCT(city))
+FROM station;
+```
+
+### Weather Observation Station 5
+* 11/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql10.png" align="center">
+</p>
+```python
+(SELECT city, LENGTH(city)
+FROM station
+ORDER BY LENGTH(city) ASC, city
+LIMIT 1)
+UNION
+(SELECT city, LENGTH(city)
+FROM station
+ORDER BY LENGTH(city) DESC, city
+LIMIT 1)
+```

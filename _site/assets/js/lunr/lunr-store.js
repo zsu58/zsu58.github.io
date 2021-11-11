@@ -17,7 +17,7 @@ var store = [{
         "url": "/python/iter/",
         "teaser": null
       },{
-        "title": "[SQL] SELECT & FROM & DISTINCT &COUNT & LIMIT",
+        "title": "[SQL] SELECT & FROM & DISTINCT & COUNT & LIMIT",
         "excerpt":"SQL Übung SQL 문법 정리(1) SELECTing columns COUNT을 통해 행개수 산출 SELECT &amp; LIMIT 1) SELECTing single column Get the title column from the films table. SELECT name FROM people; 2) SELECTing multiple column Get the title and release year from the films table SELECT title, release_year FROM films; 2-2)...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/sql_1_select/",
@@ -474,8 +474,14 @@ var store = [{
         "teaser": null
       },{
         "title": "[SQL] Hackerrank SQL 연습문제(1)",
-        "excerpt":" SQL Übung - Hackerrank     SQL 문제 풀이를 통한 SQL 연습     Revising the Select Query I     10/11/2021          SELECT * FROM city WHERE countrycode=\"USA\" AND population &gt; 100000   Revising the Select Query II     10/11/2021          SELECT name FROM city WHERE population &gt; 120000 AND countrycode=\"USA\"  ","categories": ["SQL"],
+        "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Revising the Select Query I 10/11/2021 SELECT * FROM city WHERE countrycode=\"USA\" AND population &gt; 100000 Revising the Select Query II 10/11/2021 SELECT name FROM city WHERE population &gt; 120000 AND countrycode=\"USA\"; Select All 10/11/2021 SELECT * FROM city; Select...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/hackerrank(1)/",
+        "teaser": null
+      },{
+        "title": "[SQL] Hackerrank SQL 연습문제(2)",
+        "excerpt":" SQL Übung - Hackerrank     SQL 문제 풀이를 통한 SQL 연습     Weather Observation Station 6     11/11/2021          SELECT DISTINCT(city) FROM station WHERE SUBSTRING(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u');   ","categories": ["SQL"],
+        "tags": ["SQL"],
+        "url": "/sql/hackerrank(2)/",
         "teaser": null
       }]

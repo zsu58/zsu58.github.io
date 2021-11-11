@@ -321,6 +321,10 @@
 <lastmod>2021-11-10T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/sql/hackerrank(2)/</loc>
+<lastmod>2021-11-11T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/storage/2021-09-15-Python_Backend-CH1/</loc>
 </url>
 <url>
@@ -406,5 +410,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/page16/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page17/</loc>
 </url>
 </urlset>
