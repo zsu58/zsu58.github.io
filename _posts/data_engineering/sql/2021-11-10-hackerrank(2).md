@@ -28,4 +28,71 @@ FROM station
 WHERE SUBSTRING(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u');
 ```
 
+### Weather Observation Station 7
+* 13/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql12.png" align="center">
+</p>
+```python
+SELECT DISTINCT(city)
+FROM station
+WHERE SUBSTRING(city, -1, 1) IN ('a', 'e', 'i', 'o', 'u');
+```
 
+### Weather Observation Station 8
+* 13/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql13.png" align="center">
+</p>
+```python
+SELECT city
+FROM station
+WHERE SUBSTRING(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u')
+AND SUBSTRING(city, -1, 1) IN ('a', 'e', 'i', 'o', 'u');
+```
+
+### Weather Observation Station 9
+* 13/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql14.png" align="center">
+</p>
+```python
+SELECT DISTINCT(city)
+FROM station
+WHERE SUBSTRING(city, 1, 1) NOT IN ("a", "e", "i", "o", "u");
+```
+
+### Weather Observation Station 10
+* 13/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql15.png" align="center">
+</p>
+```python
+SELECT DISTINCT(city)
+FROM station
+WHERE SUBSTRING(city, -1, 1) NOT IN ("a", "e", "i", "o", "u");
+```
+
+### Weather Observation Station 11
+* 13/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql16.png" align="center">
+</p>
+```python
+SELECT DISTINCT(city)
+FROM station
+WHERE SUBSTRING(city, -1, 1) NOT IN ("a", "e", "i", "o", "u")
+OR SUBSTRING(city, 1, 1) NOT IN ("a", "e", "i", "o", "u");
+```
+
+### Weather Observation Station 12
+* 13/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql17.png" align="center">
+</p>
+```python
+SELECT DISTINCT(city)
+FROM station
+WHERE SUBSTRING(city, -1, 1) NOT IN ("a", "e", "i", "o", "u")
+AND SUBSTRING(city, 1, 1) NOT IN ("a", "e", "i", "o", "u");
+```

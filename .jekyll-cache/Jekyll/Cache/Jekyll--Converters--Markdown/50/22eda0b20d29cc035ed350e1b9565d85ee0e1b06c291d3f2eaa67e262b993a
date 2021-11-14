@@ -1,0 +1,95 @@
+I"%<hr />
+<h3 id="sql-übung---hackerrank">SQL Übung - Hackerrank</h3>
+<ul>
+  <li>SQL 문제 풀이를 통한 SQL 연습</li>
+</ul>
+
+<hr />
+
+<h3 id="weather-observation-station-6">Weather Observation Station 6</h3>
+<ul>
+  <li>11/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql11.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">station</span>
+<span class="n">WHERE</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">IN</span> <span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'i'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="s">'u'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="weather-observation-station-7">Weather Observation Station 7</h3>
+<ul>
+  <li>13/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql12.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">station</span>
+<span class="n">WHERE</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">IN</span> <span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'i'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="s">'u'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="weather-observation-station-8">Weather Observation Station 8</h3>
+<ul>
+  <li>13/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql13.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">city</span>
+<span class="n">FROM</span> <span class="n">station</span>
+<span class="n">WHERE</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">IN</span> <span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'i'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="s">'u'</span><span class="p">)</span>
+<span class="n">AND</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">IN</span> <span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'i'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="s">'u'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="weather-observation-station-9">Weather Observation Station 9</h3>
+<ul>
+  <li>13/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql14.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">station</span>
+<span class="n">WHERE</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"i"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"u"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="weather-observation-station-10">Weather Observation Station 10</h3>
+<ul>
+  <li>13/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql15.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">station</span>
+<span class="n">WHERE</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"i"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"u"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="weather-observation-station-11">Weather Observation Station 11</h3>
+<ul>
+  <li>13/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql16.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">station</span>
+<span class="n">WHERE</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"i"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"u"</span><span class="p">)</span>
+<span class="n">OR</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"i"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"u"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="weather-observation-station-12">Weather Observation Station 12</h3>
+<ul>
+  <li>13/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql17.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">station</span>
+<span class="n">WHERE</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"i"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"u"</span><span class="p">)</span>
+<span class="n">AND</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"i"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"u"</span><span class="p">);</span>
+</code></pre></div></div>
+:ET

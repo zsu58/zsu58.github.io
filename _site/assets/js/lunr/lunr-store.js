@@ -480,7 +480,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[SQL] Hackerrank SQL 연습문제(2)",
-        "excerpt":" SQL Übung - Hackerrank     SQL 문제 풀이를 통한 SQL 연습     Weather Observation Station 6     11/11/2021          SELECT DISTINCT(city) FROM station WHERE SUBSTRING(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u');   ","categories": ["SQL"],
+        "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Weather Observation Station 6 11/11/2021 SELECT DISTINCT(city) FROM station WHERE SUBSTRING(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u'); Weather Observation Station 7 13/11/2021 SELECT DISTINCT(city) FROM station WHERE SUBSTRING(city, -1, 1) IN ('a', 'e', 'i', 'o', 'u'); Weather Observation...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/hackerrank(2)/",
         "teaser": null

@@ -1,4 +1,4 @@
-I"�d<hr />
+I"��<hr />
 <h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
 <ul>
   <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
@@ -230,6 +230,100 @@
                         <span class="n">stacklist</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
                         <span class="n">answer</span> <span class="o">+=</span> <span class="mi">2</span>     
                 <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-49">문제 49</h3>
+<ul>
+  <li>13/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test49_1.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test49_2.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">ref_left</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">'*2'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'*5'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'*8'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'*0'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">'12'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'42'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'72'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'22'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'52'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'82'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'02'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s">'15'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'45'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'75'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'25'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'55'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'85'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'05'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">'18'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'48'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'78'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'28'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'58'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'88'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'08'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">'10'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'40'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'70'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'20'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'50'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'80'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'00'</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+
+    <span class="n">ref_right</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">'#2'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'#5'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'#8'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'#0'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">'32'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'62'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'92'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'22'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'52'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'82'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'02'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s">'35'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'65'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'95'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'25'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'55'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'85'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'05'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">'38'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'68'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'98'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'28'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'58'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'88'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'08'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">'30'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'60'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'90'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'20'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'50'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'80'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'00'</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+
+    <span class="n">all_hand</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="n">l_hand</span> <span class="o">=</span> <span class="s">"*"</span>
+    <span class="n">r_hand</span> <span class="o">=</span> <span class="s">"#"</span>
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]:</span>
+            <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'R'</span>
+            <span class="n">r_hand</span> <span class="o">=</span> <span class="n">num</span>
+        <span class="k">elif</span> <span class="n">num</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]:</span>
+            <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'L'</span>
+            <span class="n">l_hand</span> <span class="o">=</span> <span class="n">num</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ref_right</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">r_hand</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)]</span> <span class="o">&lt;</span> <span class="n">ref_left</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">l_hand</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)]:</span>
+                <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'R'</span>
+                <span class="n">RHand</span> <span class="o">=</span> <span class="n">num</span>
+            <span class="k">elif</span> <span class="n">ref_right</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">r_hand</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="n">ref_left</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">l_hand</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)]:</span>
+                <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'L'</span>
+                <span class="n">l_hand</span> <span class="o">=</span> <span class="n">num</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">hand</span> <span class="o">==</span> <span class="s">"right"</span><span class="p">:</span>
+                    <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'R'</span>
+                    <span class="n">r_hand</span> <span class="o">=</span> <span class="n">num</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'L'</span>
+                    <span class="n">l_hand</span> <span class="o">=</span> <span class="n">num</span>
+
+    <span class="k">return</span> <span class="n">all_hand</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">hand</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="n">key_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">:(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">3</span><span class="p">:(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+                <span class="mi">4</span><span class="p">:(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">5</span><span class="p">:(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">6</span><span class="p">:(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+                <span class="mi">7</span><span class="p">:(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">8</span><span class="p">:(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">9</span><span class="p">:(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+                <span class="s">'*'</span><span class="p">:(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">:(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s">'#'</span><span class="p">:(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)}</span>
+
+    <span class="n">lhand</span> <span class="o">=</span> <span class="s">'*'</span>
+    <span class="n">rhand</span> <span class="o">=</span> <span class="s">'#'</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]:</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="s">'L'</span>
+            <span class="n">lhand</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">]:</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="s">'R'</span>
+            <span class="n">rhand</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">else</span><span class="p">:</span>  
+            <span class="n">curPos</span> <span class="o">=</span> <span class="n">key_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">lPos</span> <span class="o">=</span> <span class="n">key_dict</span><span class="p">[</span><span class="n">lhand</span><span class="p">]</span>
+            <span class="n">rPos</span> <span class="o">=</span> <span class="n">key_dict</span><span class="p">[</span><span class="n">rhand</span><span class="p">]</span>
+            <span class="n">ldist</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">curPos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">lPos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">curPos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">lPos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">rdist</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">curPos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">rPos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">curPos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">rPos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">ldist</span> <span class="o">&lt;</span> <span class="n">rdist</span><span class="p">:</span>
+                <span class="n">answer</span> <span class="o">+=</span> <span class="s">'L'</span>
+                <span class="n">lhand</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">elif</span> <span class="n">ldist</span> <span class="o">&gt;</span> <span class="n">rdist</span><span class="p">:</span>
+                <span class="n">answer</span> <span class="o">+=</span> <span class="s">'R'</span>
+                <span class="n">rhand</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">hand</span> <span class="o">==</span> <span class="s">'left'</span><span class="p">:</span>
+                    <span class="n">answer</span> <span class="o">+=</span> <span class="s">'L'</span>
+                    <span class="n">lhand</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">answer</span> <span class="o">+=</span> <span class="s">'R'</span>
+                    <span class="n">rhand</span> <span class="o">=</span> <span class="n">i</span>
 
     <span class="k">return</span> <span class="n">answer</span>
 </code></pre></div></div>
