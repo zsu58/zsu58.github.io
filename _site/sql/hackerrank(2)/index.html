@@ -508,7 +508,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#sql-übung---hackerrank">SQL Übung - Hackerrank</a></li><li><a href="#weather-observation-station-6">Weather Observation Station 6</a></li><li><a href="#weather-observation-station-7">Weather Observation Station 7</a></li><li><a href="#weather-observation-station-8">Weather Observation Station 8</a></li><li><a href="#weather-observation-station-9">Weather Observation Station 9</a></li><li><a href="#weather-observation-station-10">Weather Observation Station 10</a></li><li><a href="#weather-observation-station-11">Weather Observation Station 11</a></li><li><a href="#weather-observation-station-12">Weather Observation Station 12</a></li></ul>
+              <ul class="toc__menu"><li><a href="#sql-übung---hackerrank">SQL Übung - Hackerrank</a></li><li><a href="#weather-observation-station-6">Weather Observation Station 6</a></li><li><a href="#weather-observation-station-7">Weather Observation Station 7</a></li><li><a href="#weather-observation-station-8">Weather Observation Station 8</a></li><li><a href="#weather-observation-station-9">Weather Observation Station 9</a></li><li><a href="#weather-observation-station-10">Weather Observation Station 10</a></li><li><a href="#weather-observation-station-11">Weather Observation Station 11</a></li><li><a href="#weather-observation-station-12">Weather Observation Station 12</a></li><li><a href="#higher-than-75-marks">Higher Than 75 Marks</a></li><li><a href="#employee-names">Employee Names</a></li></ul>
 
             </nav>
           </aside>
@@ -621,6 +621,31 @@
 <span class="n">FROM</span> <span class="n">station</span>
 <span class="n">WHERE</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"i"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"u"</span><span class="p">)</span>
 <span class="n">AND</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"i"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"u"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="higher-than-75-marks">Higher Than 75 Marks</h3>
+<ul>
+  <li>15/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql18.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">Name</span>
+<span class="n">FROM</span> <span class="n">Students</span>
+<span class="n">WHERE</span> <span class="n">Marks</span> <span class="o">&gt;</span> <span class="mi">75</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">RIGHT</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">ID</span> <span class="n">ASC</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="employee-names">Employee Names</h3>
+<ul>
+  <li>15/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql19.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">Name</span>
+<span class="n">FROM</span> <span class="n">Employee</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">name</span><span class="p">;</span>
 </code></pre></div></div>
 
         

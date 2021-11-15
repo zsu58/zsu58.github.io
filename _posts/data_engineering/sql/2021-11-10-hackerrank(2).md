@@ -96,3 +96,26 @@ FROM station
 WHERE SUBSTRING(city, -1, 1) NOT IN ("a", "e", "i", "o", "u")
 AND SUBSTRING(city, 1, 1) NOT IN ("a", "e", "i", "o", "u");
 ```
+
+### Higher Than 75 Marks
+* 15/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql18.png" align="center">
+</p>
+```python
+SELECT Name
+FROM Students
+WHERE Marks > 75
+ORDER BY RIGHT(Name, 3), ID ASC;
+```
+
+### Employee Names
+* 15/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql19.png" align="center">
+</p>
+```python
+SELECT Name
+FROM Employee
+ORDER BY name;
+```
