@@ -247,39 +247,34 @@ def solution(board, moves):
     <img src="/img/backend/algorithm/coding_test/coding_test49_2.png" align="center">
 </p>
 ```python
-    ref_left = {
-        '*2': 4, '*5': 3, '*8': 2, '*0': 1,
-        '12': 1, '42': 2, '72': 3, '22': 0, '52': 1, '82': 2, '02': 3,
-        '15': 2, '45': 1, '75': 2, '25': 1, '55': 0, '85': 1, '05': 2,
-        '18': 3, '48': 2, '78': 1, '28': 2, '58': 1, '88': 0, '08': 1,
-        '10': 4, '40': 3, '70': 2, '20': 3, '50': 2, '80': 1, '00': 0
-    }
-
-    ref_right = {
-        '#2': 4, '#5': 3, '#8': 2, '#0': 1,
-        '32': 1, '62': 2, '92': 3, '22': 0, '52': 1, '82': 2, '02': 3,
-        '35': 2, '65': 1, '95': 2, '25': 1, '55': 0, '85': 1, '05': 2,
-        '38': 3, '68': 2, '98': 1, '28': 2, '58': 1, '88': 0, '08': 1,
-        '30': 4, '60': 3, '90': 2, '20': 3, '50': 2, '80': 1, '00': 0
-    }
-
-    all_hand = ''
+def solution(numbers, hand):
+    
+    ref = {1:(0,0), 2:(1,0), 3:(2,0),
+           4:(0,1), 5:(1,1), 6:(2,1),
+           7:(0,2), 8:(1,2), 9:(2,2),
+           "*":(0,3), 0:(1,3), "#":(2,3)}
+    
     l_hand = "*"
     r_hand = "#"
+
+    all_hand = ''
     for num in numbers:
-        if num in [3, 6, 9]:
+        if num in [3,6,9]:
             all_hand += 'R'
             r_hand = num
-        elif num in [1, 4, 7]:
+        elif num in [1,4,7]:
             all_hand += 'L'
             l_hand = num
         else:
-            if ref_right[str(r_hand) + str(num)] < ref_left[str(l_hand) + str(num)]:
-                all_hand += 'R'
-                RHand = num
-            elif ref_right[str(r_hand) + str(num)] > ref_left[str(l_hand) + str(num)]:
+            left_move = abs(ref[l_hand][0] - ref[num][0]) + abs(ref[l_hand][1] - ref[num][1])
+            right_move = abs(ref[r_hand][0] - ref[num][0]) + abs(ref[r_hand][1] - ref[num][1])
+            
+            if left_move < right_move:
                 all_hand += 'L'
                 l_hand = num
+            elif left_move > right_move:
+                all_hand += 'R'
+                r_hand = num
             else:
                 if hand == "right":
                     all_hand += 'R'
@@ -287,48 +282,27 @@ def solution(board, moves):
                 else:
                     all_hand += 'L'
                     l_hand = num
-
+    
     return all_hand
+```
 
-# 다른 사람의 좋은 풀이
-def solution(numbers, hand):
-    answer = ''
-    key_dict = {1:(0,0),2:(0,1),3:(0,2),
-                4:(1,0),5:(1,1),6:(1,2),
-                7:(2,0),8:(2,1),9:(2,2),
-                '*':(3,0),0:(3,1),'#':(3,2)}
+---
 
-    lhand = '*'
-    rhand = '#'
-    for i in numbers:
-        if i in [1,4,7]:
-            answer += 'L'
-            lhand = i
-        elif i in [3,6,9]:
-            answer += 'R'
-            rhand = i
-        else:  
-            curPos = key_dict[i] (0,0)
-            lPos = key_dict[lhand]
-            rPos = key_dict[rhand]
-            ldist = abs(curPos[0]-lPos[0]) + abs(curPos[1]-lPos[1])
-            rdist = abs(curPos[0]-rPos[0]) + abs(curPos[1]-rPos[1])
+### 문제 50
+* 15/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test50_1.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test50_2.png" align="center">
+</p>
+```python
+def solution(s):
+    string_to_number = {"zero":"0", "one":"1", "two":"2", "three":"3", "four":"4",
+                        "five":"5", "six":"6", "seven":"7", "eight":"8", "nine":"9"}
 
-            if ldist < rdist:
-                answer += 'L'
-                lhand = i
-            elif ldist > rdist:
-                answer += 'R'
-                rhand = i
-            else:
-                if hand == 'left':
-                    answer += 'L'
-                    lhand = i
-                else:
-                    answer += 'R'
-                    rhand = i
+    for key,value in string_to_number.keys():
+        s = s.replace(key, value)
 
-    return answer
+    return int(s)
 ```
 
 ---
