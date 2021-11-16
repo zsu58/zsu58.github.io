@@ -484,4 +484,16 @@ var store = [{
         "tags": ["SQL"],
         "url": "/sql/hackerrank(2)/",
         "teaser": null
+      },{
+        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)",
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 41 7/11/2021 import re def solution(new_id): new_id = new_id.lower() new_id = \"\".join(re.findall(\"[\\w\\_\\-\\.]\", new_id)) while \"..\" in new_id: new_id = new_id.replace(\"..\", \".\") if len(new_id) &gt; 0 and new_id[-1] == \".\": new_id = new_id[:-1] if len(new_id) &gt; 0 and new_id[0]...","categories": ["PROGRAMMERS"],
+        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "url": "/programmers/programmers_coding_test(6)/",
+        "teaser": null
+      },{
+        "title": "[SQL] Hackerrank SQL 연습문제(3)",
+        "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Weather Observation Station 6 16/11/2021 SELECT CASE WHEN A+B&gt;C AND A+C&gt;B AND B+C&gt;A THEN CASE WHEN A=B AND B=C AND A=C THEN \"Equilateral\" WHEN A=B OR B=C OR A=C THEN \"Isosceles\" ELSE \"Scalene\" END ELSE \"Not A Triangle\" END FROM...","categories": ["SQL"],
+        "tags": ["SQL"],
+        "url": "/sql/hackerrank(3)/",
+        "teaser": null
       }]

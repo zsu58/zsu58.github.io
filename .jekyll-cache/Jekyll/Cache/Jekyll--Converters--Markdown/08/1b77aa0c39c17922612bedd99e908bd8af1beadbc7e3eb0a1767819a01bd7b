@@ -1,0 +1,31 @@
+I"�<hr />
+<h3 id="sql-übung---hackerrank">SQL Übung - Hackerrank</h3>
+<ul>
+  <li>SQL 문제 풀이를 통한 SQL 연습</li>
+</ul>
+
+<hr />
+
+<h3 id="weather-observation-station-6">Weather Observation Station 6</h3>
+<ul>
+  <li>16/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql21.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> 
+    <span class="n">CASE</span> 
+        <span class="n">WHEN</span> <span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="o">&gt;</span><span class="n">C</span> <span class="n">AND</span> <span class="n">A</span><span class="o">+</span><span class="n">C</span><span class="o">&gt;</span><span class="n">B</span> <span class="n">AND</span> <span class="n">B</span><span class="o">+</span><span class="n">C</span><span class="o">&gt;</span><span class="n">A</span>
+        <span class="n">THEN</span>
+            <span class="n">CASE</span> 
+                <span class="n">WHEN</span> <span class="n">A</span><span class="o">=</span><span class="n">B</span> <span class="n">AND</span> <span class="n">B</span><span class="o">=</span><span class="n">C</span> <span class="n">AND</span> <span class="n">A</span><span class="o">=</span><span class="n">C</span> 
+                    <span class="n">THEN</span> <span class="s">"Equilateral"</span>
+                <span class="n">WHEN</span> <span class="n">A</span><span class="o">=</span><span class="n">B</span> <span class="n">OR</span> <span class="n">B</span><span class="o">=</span><span class="n">C</span> <span class="n">OR</span> <span class="n">A</span><span class="o">=</span><span class="n">C</span> 
+                    <span class="n">THEN</span> <span class="s">"Isosceles"</span>
+                <span class="n">ELSE</span> <span class="s">"Scalene"</span>
+            <span class="n">END</span>
+        <span class="n">ELSE</span> <span class="s">"Not A Triangle"</span>
+    <span class="n">END</span>
+<span class="n">FROM</span> <span class="n">triangles</span><span class="p">;</span>
+</code></pre></div></div>
+:ET

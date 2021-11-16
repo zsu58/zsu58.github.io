@@ -119,3 +119,17 @@ SELECT Name
 FROM Employee
 ORDER BY name;
 ```
+
+### Employee Salaries
+* 16/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql20.png" align="center">
+</p>
+```python
+SELECT name
+FROM Employee
+WHERE salary > 2000
+AND months < 10
+ORDER BY employee_id;
+```
+
