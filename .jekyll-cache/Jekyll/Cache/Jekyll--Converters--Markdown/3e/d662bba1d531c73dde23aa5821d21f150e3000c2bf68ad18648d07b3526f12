@@ -1,0 +1,56 @@
+I"�<hr />
+<h3 id="sql-übung---hackerrank">SQL Übung - Hackerrank</h3>
+<ul>
+  <li>SQL 문제 풀이를 통한 SQL 연습</li>
+</ul>
+
+<hr />
+
+<h3 id="type-of-triangle">Type of Triangle</h3>
+<ul>
+  <li>16/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql21.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> 
+    <span class="n">CASE</span> 
+        <span class="n">WHEN</span> <span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="o">&gt;</span><span class="n">C</span> <span class="n">AND</span> <span class="n">A</span><span class="o">+</span><span class="n">C</span><span class="o">&gt;</span><span class="n">B</span> <span class="n">AND</span> <span class="n">B</span><span class="o">+</span><span class="n">C</span><span class="o">&gt;</span><span class="n">A</span>
+        <span class="n">THEN</span>
+            <span class="n">CASE</span> 
+                <span class="n">WHEN</span> <span class="n">A</span><span class="o">=</span><span class="n">B</span> <span class="n">AND</span> <span class="n">B</span><span class="o">=</span><span class="n">C</span> <span class="n">AND</span> <span class="n">A</span><span class="o">=</span><span class="n">C</span> 
+                    <span class="n">THEN</span> <span class="s">"Equilateral"</span>
+                <span class="n">WHEN</span> <span class="n">A</span><span class="o">=</span><span class="n">B</span> <span class="n">OR</span> <span class="n">B</span><span class="o">=</span><span class="n">C</span> <span class="n">OR</span> <span class="n">A</span><span class="o">=</span><span class="n">C</span> 
+                    <span class="n">THEN</span> <span class="s">"Isosceles"</span>
+                <span class="n">ELSE</span> <span class="s">"Scalene"</span>
+            <span class="n">END</span>
+        <span class="n">ELSE</span> <span class="s">"Not A Triangle"</span>
+    <span class="n">END</span>
+<span class="n">FROM</span> <span class="n">triangles</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="the-pads">The PADS</h3>
+<ul>
+  <li>17/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql22_1.png" align="center" />
+    <img src="/img/data_engineering/sql/hackerrank_sql22_2.png" align="center" />
+    <img src="/img/data_engineering/sql/hackerrank_sql22_3.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">--</span> <span class="n">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span>
+<span class="o">--</span>     <span class="n">CASE</span> 
+<span class="o">--</span>         <span class="n">WHEN</span> <span class="n">Occupation</span> <span class="o">=</span> <span class="s">"Doctor"</span> <span class="n">THEN</span> <span class="s">"(D)"</span>
+<span class="o">--</span>         <span class="n">WHEN</span> <span class="n">Occupation</span> <span class="o">=</span> <span class="s">"Actor"</span> <span class="n">THEN</span> <span class="s">"(A)"</span>
+<span class="o">--</span>         <span class="n">WHEN</span> <span class="n">Occupation</span> <span class="o">=</span> <span class="s">"Singer"</span> <span class="n">THEN</span> <span class="s">"(S)"</span>
+<span class="o">--</span>         <span class="n">ELSE</span> <span class="s">"(P)"</span> 
+<span class="o">--</span>         <span class="n">END</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span> <span class="s">"("</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">Occupation</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s">")"</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">OCCUPATIONS</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">Name</span><span class="p">;</span>
+<span class="n">SElECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="s">"There are a total of "</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span> <span class="s">" "</span><span class="p">,</span> <span class="n">LOWER</span><span class="p">(</span><span class="n">Occupation</span><span class="p">),</span> <span class="s">"s."</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">OCCUPATIONS</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">Occupation</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">);</span>
+</code></pre></div></div>
+:ET

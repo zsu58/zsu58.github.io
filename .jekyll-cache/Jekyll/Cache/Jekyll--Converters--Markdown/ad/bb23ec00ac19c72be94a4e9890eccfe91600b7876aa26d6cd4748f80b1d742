@@ -1,4 +1,4 @@
-I"<hr />
+I"�(<hr />
 <h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
 <ul>
   <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
@@ -6,9 +6,9 @@
 
 <hr />
 
-<h3 id="문제-41">문제 41</h3>
+<h3 id="문제-51">문제 51</h3>
 <ul>
-  <li>7/11/2021</li>
+  <li>16/11/2021</li>
 </ul>
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test51_1.png" align="center" />
@@ -51,6 +51,31 @@
     <span class="n">st</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'^[.]|[.]$'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">st</span><span class="p">)</span>
     <span class="n">st</span> <span class="o">=</span> <span class="n">st</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">st</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">st</span> <span class="o">+</span> <span class="s">""</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">st</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">st</span><span class="p">))])</span>
     <span class="k">return</span> <span class="n">st</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-52">문제 52</h3>
+<ul>
+  <li>17/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test52_1.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test52_2.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">lottos</span><span class="p">,</span> <span class="n">win_nums</span><span class="p">):</span>
+    <span class="n">prizeDict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
+
+    <span class="n">wins</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">zeros</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># zeros = lottos.count(0)
+</span>    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">lottos</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">win_nums</span><span class="p">:</span>
+            <span class="n">wins</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">zeros</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">prizeDict</span><span class="p">[</span><span class="n">wins</span> <span class="o">+</span> <span class="n">zeros</span><span class="p">],</span> <span class="n">prizeDict</span><span class="p">[</span><span class="n">wins</span><span class="p">]]</span>
 </code></pre></div></div>
 
 <hr />

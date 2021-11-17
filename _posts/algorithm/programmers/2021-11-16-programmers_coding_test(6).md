@@ -19,7 +19,7 @@ tags:
 ---
 
 ### 문제 51
-* 7/11/2021
+* 16/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test51_1.png" align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test51_2.png" align="center">
@@ -62,6 +62,30 @@ def solution(new_id):
     st = re.sub('^[.]|[.]$', '', st)
     st = st if len(st) > 2 else st + "".join([st[-1] for i in range(3-len(st))])
     return st
+```
+
+---
+
+### 문제 52
+* 17/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test52_1.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test52_2.png" align="center">
+</p>
+```python
+def solution(lottos, win_nums):
+    prizeDict = {6: 1, 5: 2, 4: 3, 3: 4, 2: 5, 1: 6, 0: 6}
+
+    wins = 0
+    zeros = 0
+    # zeros = lottos.count(0)
+    for num in lottos:
+        if num in win_nums:
+            wins += 1
+        if num == 0:
+            zeros += 1
+
+    return [prizeDict[wins + zeros], prizeDict[wins]]
 ```
 
 ---

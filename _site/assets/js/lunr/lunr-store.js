@@ -473,26 +473,26 @@ var store = [{
         "url": "/programmers/programmers_coding_test(5)/",
         "teaser": null
       },{
-        "title": "[SQL] Hackerrank SQL 연습문제(1)",
+        "title": "[SQL] Hackerrank SQL 연습문제 (1)",
         "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Revising the Select Query I 10/11/2021 SELECT * FROM city WHERE countrycode=\"USA\" AND population &gt; 100000 Revising the Select Query II 10/11/2021 SELECT name FROM city WHERE population &gt; 120000 AND countrycode=\"USA\"; Select All 10/11/2021 SELECT * FROM city; Select...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/hackerrank(1)/",
         "teaser": null
       },{
-        "title": "[SQL] Hackerrank SQL 연습문제(2)",
+        "title": "[SQL] Hackerrank SQL 연습문제 (2)",
         "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Weather Observation Station 6 11/11/2021 SELECT DISTINCT(city) FROM station WHERE SUBSTRING(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u'); Weather Observation Station 7 13/11/2021 SELECT DISTINCT(city) FROM station WHERE SUBSTRING(city, -1, 1) IN ('a', 'e', 'i', 'o', 'u'); Weather Observation...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/hackerrank(2)/",
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)",
-        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 41 7/11/2021 import re def solution(new_id): new_id = new_id.lower() new_id = \"\".join(re.findall(\"[\\w\\_\\-\\.]\", new_id)) while \"..\" in new_id: new_id = new_id.replace(\"..\", \".\") if len(new_id) &gt; 0 and new_id[-1] == \".\": new_id = new_id[:-1] if len(new_id) &gt; 0 and new_id[0]...","categories": ["PROGRAMMERS"],
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 51 16/11/2021 import re def solution(new_id): new_id = new_id.lower() new_id = \"\".join(re.findall(\"[\\w\\_\\-\\.]\", new_id)) while \"..\" in new_id: new_id = new_id.replace(\"..\", \".\") if len(new_id) &gt; 0 and new_id[-1] == \".\": new_id = new_id[:-1] if len(new_id) &gt; 0 and new_id[0]...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(6)/",
         "teaser": null
       },{
-        "title": "[SQL] Hackerrank SQL 연습문제(3)",
-        "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Weather Observation Station 6 16/11/2021 SELECT CASE WHEN A+B&gt;C AND A+C&gt;B AND B+C&gt;A THEN CASE WHEN A=B AND B=C AND A=C THEN \"Equilateral\" WHEN A=B OR B=C OR A=C THEN \"Isosceles\" ELSE \"Scalene\" END ELSE \"Not A Triangle\" END FROM...","categories": ["SQL"],
+        "title": "[SQL] Hackerrank SQL 연습문제 (3)",
+        "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Type of Triangle 16/11/2021 SELECT CASE WHEN A+B&gt;C AND A+C&gt;B AND B+C&gt;A THEN CASE WHEN A=B AND B=C AND A=C THEN \"Equilateral\" WHEN A=B OR B=C OR A=C THEN \"Isosceles\" ELSE \"Scalene\" END ELSE \"Not A Triangle\" END FROM triangles;...","categories": ["SQL"],
         "tags": ["SQL"],
         "url": "/sql/hackerrank(3)/",
         "teaser": null

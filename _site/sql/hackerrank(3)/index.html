@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[SQL] Hackerrank SQL 연습문제(3) - Bibliothek für Data-Engineering</title>
+<!-- begin _includes/seo.html --><title>[SQL] Hackerrank SQL 연습문제 (3) - Bibliothek für Data-Engineering</title>
 <meta name="description" content="SQL Übung - Hackerrank    SQL 문제 풀이를 통한 SQL 연습">
 
 
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Bibliothek für Data-Engineering">
-<meta property="og:title" content="[SQL] Hackerrank SQL 연습문제(3)">
+<meta property="og:title" content="[SQL] Hackerrank SQL 연습문제 (3)">
 <meta property="og:url" content="http://localhost:4000/sql/hackerrank(3)/">
 
 
@@ -484,7 +484,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[SQL] Hackerrank SQL 연습문제(3)">
+    <meta itemprop="headline" content="[SQL] Hackerrank SQL 연습문제 (3)">
     <meta itemprop="description" content="SQL Übung - Hackerrank  SQL 문제 풀이를 통한 SQL 연습">
     <meta itemprop="datePublished" content="2021-11-16T00:00:00+09:00">
     
@@ -492,7 +492,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[SQL] Hackerrank SQL 연습문제(3)
+          <h1 id="page-title" class="page__title" itemprop="headline">[SQL] Hackerrank SQL 연습문제 (3)
 </h1>
           
 
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#sql-übung---hackerrank">SQL Übung - Hackerrank</a></li><li><a href="#weather-observation-station-6">Weather Observation Station 6</a></li></ul>
+              <ul class="toc__menu"><li><a href="#sql-übung---hackerrank">SQL Übung - Hackerrank</a></li><li><a href="#type-of-triangle">Type of Triangle</a></li><li><a href="#the-pads">The PADS</a></li></ul>
 
             </nav>
           </aside>
@@ -536,7 +536,7 @@
 
 <hr />
 
-<h3 id="weather-observation-station-6">Weather Observation Station 6</h3>
+<h3 id="type-of-triangle">Type of Triangle</h3>
 <ul>
   <li>16/11/2021</li>
 </ul>
@@ -557,6 +557,31 @@
         <span class="n">ELSE</span> <span class="s">"Not A Triangle"</span>
     <span class="n">END</span>
 <span class="n">FROM</span> <span class="n">triangles</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="the-pads">The PADS</h3>
+<ul>
+  <li>17/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql22_1.png" align="center" />
+    <img src="/img/data_engineering/sql/hackerrank_sql22_2.png" align="center" />
+    <img src="/img/data_engineering/sql/hackerrank_sql22_3.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">--</span> <span class="n">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span>
+<span class="o">--</span>     <span class="n">CASE</span> 
+<span class="o">--</span>         <span class="n">WHEN</span> <span class="n">Occupation</span> <span class="o">=</span> <span class="s">"Doctor"</span> <span class="n">THEN</span> <span class="s">"(D)"</span>
+<span class="o">--</span>         <span class="n">WHEN</span> <span class="n">Occupation</span> <span class="o">=</span> <span class="s">"Actor"</span> <span class="n">THEN</span> <span class="s">"(A)"</span>
+<span class="o">--</span>         <span class="n">WHEN</span> <span class="n">Occupation</span> <span class="o">=</span> <span class="s">"Singer"</span> <span class="n">THEN</span> <span class="s">"(S)"</span>
+<span class="o">--</span>         <span class="n">ELSE</span> <span class="s">"(P)"</span> 
+<span class="o">--</span>         <span class="n">END</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span> <span class="s">"("</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">Occupation</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s">")"</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">OCCUPATIONS</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">Name</span><span class="p">;</span>
+<span class="n">SElECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="s">"There are a total of "</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span> <span class="s">" "</span><span class="p">,</span> <span class="n">LOWER</span><span class="p">(</span><span class="n">Occupation</span><span class="p">),</span> <span class="s">"s."</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">OCCUPATIONS</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">Occupation</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">);</span>
 </code></pre></div></div>
 
         
@@ -609,7 +634,7 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BSQL%5D+Hackerrank+SQL+%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C%283%29%20http%3A%2F%2Flocalhost%3A4000%2Fsql%2Fhackerrank%283%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BSQL%5D+Hackerrank+SQL+%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C+%283%29%20http%3A%2F%2Flocalhost%3A4000%2Fsql%2Fhackerrank%283%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fsql%2Fhackerrank%283%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -666,7 +691,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -693,7 +718,7 @@ ALGORITHM Übung - Programmers
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/sql/hackerrank(2)/" rel="permalink">[SQL] Hackerrank SQL 연습문제(2)
+        <a href="/sql/hackerrank(2)/" rel="permalink">[SQL] Hackerrank SQL 연습문제 (2)
 </a>
       
     </h2>
@@ -738,7 +763,7 @@ SQL Übung - Hackerrank
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/sql/hackerrank(1)/" rel="permalink">[SQL] Hackerrank SQL 연습문제(1)
+        <a href="/sql/hackerrank(1)/" rel="permalink">[SQL] Hackerrank SQL 연습문제 (1)
 </a>
       
     </h2>

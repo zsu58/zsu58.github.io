@@ -508,7 +508,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-41">문제 41</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#문제-51">문제 51</a></li><li><a href="#문제-52">문제 52</a></li></ul>
 
             </nav>
           </aside>
@@ -536,9 +536,9 @@
 
 <hr />
 
-<h3 id="문제-41">문제 41</h3>
+<h3 id="문제-51">문제 51</h3>
 <ul>
-  <li>7/11/2021</li>
+  <li>16/11/2021</li>
 </ul>
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test51_1.png" align="center" />
@@ -581,6 +581,31 @@
     <span class="n">st</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'^[.]|[.]$'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">st</span><span class="p">)</span>
     <span class="n">st</span> <span class="o">=</span> <span class="n">st</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">st</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">st</span> <span class="o">+</span> <span class="s">""</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">st</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">st</span><span class="p">))])</span>
     <span class="k">return</span> <span class="n">st</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-52">문제 52</h3>
+<ul>
+  <li>17/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test52_1.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test52_2.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">lottos</span><span class="p">,</span> <span class="n">win_nums</span><span class="p">):</span>
+    <span class="n">prizeDict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
+
+    <span class="n">wins</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">zeros</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># zeros = lottos.count(0)
+</span>    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">lottos</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">win_nums</span><span class="p">:</span>
+            <span class="n">wins</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">zeros</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">prizeDict</span><span class="p">[</span><span class="n">wins</span> <span class="o">+</span> <span class="n">zeros</span><span class="p">],</span> <span class="n">prizeDict</span><span class="p">[</span><span class="n">wins</span><span class="p">]]</span>
 </code></pre></div></div>
 
 <hr />
@@ -648,11 +673,11 @@
       
   <nav class="pagination">
     
-      <a href="/sql/hackerrank(2)/" class="pagination--pager" title="[SQL] Hackerrank SQL 연습문제(2)
+      <a href="/sql/hackerrank(2)/" class="pagination--pager" title="[SQL] Hackerrank SQL 연습문제 (2)
 ">Previous</a>
     
     
-      <a href="/sql/hackerrank(3)/" class="pagination--pager" title="[SQL] Hackerrank SQL 연습문제(3)
+      <a href="/sql/hackerrank(3)/" class="pagination--pager" title="[SQL] Hackerrank SQL 연습문제 (3)
 ">Next</a>
     
   </nav>
@@ -677,7 +702,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/sql/hackerrank(3)/" rel="permalink">[SQL] Hackerrank SQL 연습문제(3)
+        <a href="/sql/hackerrank(3)/" rel="permalink">[SQL] Hackerrank SQL 연습문제 (3)
 </a>
       
     </h2>
@@ -722,7 +747,7 @@ SQL Übung - Hackerrank
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/sql/hackerrank(2)/" rel="permalink">[SQL] Hackerrank SQL 연습문제(2)
+        <a href="/sql/hackerrank(2)/" rel="permalink">[SQL] Hackerrank SQL 연습문제 (2)
 </a>
       
     </h2>
@@ -767,7 +792,7 @@ SQL Übung - Hackerrank
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/sql/hackerrank(1)/" rel="permalink">[SQL] Hackerrank SQL 연습문제(1)
+        <a href="/sql/hackerrank(1)/" rel="permalink">[SQL] Hackerrank SQL 연습문제 (1)
 </a>
       
     </h2>

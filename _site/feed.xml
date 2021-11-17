@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-16T22:02:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[SQL] Hackerrank SQL 연습문제(3)</title><link href="http://localhost:4000/sql/hackerrank(3)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제(3)" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(3)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(3)/">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-17T21:01:18+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[SQL] Hackerrank SQL 연습문제 (3)</title><link href="http://localhost:4000/sql/hackerrank(3)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제 (3)" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(3)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(3)/">&lt;hr /&gt;
 &lt;h3 id=&quot;sql-übung---hackerrank&quot;&gt;SQL Übung - Hackerrank&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;SQL 문제 풀이를 통한 SQL 연습&lt;/li&gt;
@@ -6,7 +6,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;weather-observation-station-6&quot;&gt;Weather Observation Station 6&lt;/h3&gt;
+&lt;h3 id=&quot;type-of-triangle&quot;&gt;Type of Triangle&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;16/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -27,6 +27,31 @@
         &lt;span class=&quot;n&quot;&gt;ELSE&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Not A Triangle&quot;&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;END&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;triangles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;the-pads&quot;&gt;The PADS&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;17/11/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/data_engineering/sql/hackerrank_sql22_1.png&quot; align=&quot;center&quot; /&gt;
+    &lt;img src=&quot;/img/data_engineering/sql/hackerrank_sql22_2.png&quot; align=&quot;center&quot; /&gt;
+    &lt;img src=&quot;/img/data_engineering/sql/hackerrank_sql22_3.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;CASE&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Doctor&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(D)&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Actor&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(A)&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Singer&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(S)&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;ELSE&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(P)&quot;&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;END&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBSTRING&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OCCUPATIONS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;SElECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;There are a total of &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LOWER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;s.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OCCUPATIONS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="SQL" /><summary type="html">SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습</summary></entry><entry><title type="html">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)</title><link href="http://localhost:4000/programmers/programmers_coding_test(6)/" rel="alternate" type="text/html" title="[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers_coding_test(6)</id><content type="html" xml:base="http://localhost:4000/programmers/programmers_coding_test(6)/">&lt;hr /&gt;
 &lt;h3 id=&quot;algorithm-übung---programmers&quot;&gt;ALGORITHM Übung - Programmers&lt;/h3&gt;
 &lt;ul&gt;
@@ -35,9 +60,9 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-41&quot;&gt;문제 41&lt;/h3&gt;
+&lt;h3 id=&quot;문제-51&quot;&gt;문제 51&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;7/11/2021&lt;/li&gt;
+  &lt;li&gt;16/11/2021&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p align=&quot;center&quot;&gt;
     &lt;img src=&quot;/img/backend/algorithm/coding_test/coding_test51_1.png&quot; align=&quot;center&quot; /&gt;
@@ -82,7 +107,32 @@
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;st&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="PROGRAMMERS" /><category term="ALGORITHM" /><category term="PROGRAMMERS" /><summary type="html">ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry><entry><title type="html">[SQL] Hackerrank SQL 연습문제(2)</title><link href="http://localhost:4000/sql/hackerrank(2)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제(2)" /><published>2021-11-11T00:00:00+09:00</published><updated>2021-11-11T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(2)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(2)/">&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제-52&quot;&gt;문제 52&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;17/11/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/backend/algorithm/coding_test/coding_test52_1.png&quot; align=&quot;center&quot; /&gt;
+    &lt;img src=&quot;/img/backend/algorithm/coding_test/coding_test52_2.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lottos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;win_nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;prizeDict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;wins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# zeros = lottos.count(0)
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lottos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;win_nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;wins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prizeDict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prizeDict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="PROGRAMMERS" /><category term="ALGORITHM" /><category term="PROGRAMMERS" /><summary type="html">ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry><entry><title type="html">[SQL] Hackerrank SQL 연습문제 (2)</title><link href="http://localhost:4000/sql/hackerrank(2)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제 (2)" /><published>2021-11-11T00:00:00+09:00</published><updated>2021-11-11T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(2)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(2)/">&lt;hr /&gt;
 &lt;h3 id=&quot;sql-übung---hackerrank&quot;&gt;SQL Übung - Hackerrank&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;SQL 문제 풀이를 통한 SQL 연습&lt;/li&gt;
@@ -214,7 +264,7 @@
 &lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;months&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="SQL" /><summary type="html">SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습</summary></entry><entry><title type="html">[SQL] Hackerrank SQL 연습문제(1)</title><link href="http://localhost:4000/sql/hackerrank(1)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제(1)" /><published>2021-11-10T00:00:00+09:00</published><updated>2021-11-10T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(1)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(1)/">&lt;hr /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="SQL" /><summary type="html">SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습</summary></entry><entry><title type="html">[SQL] Hackerrank SQL 연습문제 (1)</title><link href="http://localhost:4000/sql/hackerrank(1)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제 (1)" /><published>2021-11-10T00:00:00+09:00</published><updated>2021-11-10T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(1)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(1)/">&lt;hr /&gt;
 &lt;h3 id=&quot;sql-übung---hackerrank&quot;&gt;SQL Übung - Hackerrank&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;SQL 문제 풀이를 통한 SQL 연습&lt;/li&gt;

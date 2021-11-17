@@ -1,5 +1,5 @@
 ---
-title: "[SQL] Hackerrank SQL 연습문제(3)"
+title: "[SQL] Hackerrank SQL 연습문제 (3)"
 layout: single
 date: '16/11/2021'
 toc: true
@@ -17,7 +17,7 @@ tags:
 
 ---
 
-### Weather Observation Station 6
+### Type of Triangle
 * 16/11/2021
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql21.png" align="center">
@@ -37,4 +37,28 @@ SELECT
         ELSE "Not A Triangle"
     END
 FROM triangles;
+```
+
+### The PADS
+* 17/11/2021
+<p align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql22_1.png" align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql22_2.png" align="center">
+    <img src="/img/data_engineering/sql/hackerrank_sql22_3.png" align="center">
+</p>
+```python
+-- SELECT CONCAT(Name,
+--     CASE 
+--         WHEN Occupation = "Doctor" THEN "(D)"
+--         WHEN Occupation = "Actor" THEN "(A)"
+--         WHEN Occupation = "Singer" THEN "(S)"
+--         ELSE "(P)" 
+--         END)
+SELECT CONCAT(Name, "(", SUBSTRING(Occupation, 1, 1), ")")
+FROM OCCUPATIONS
+ORDER BY Name;
+SElECT CONCAT("There are a total of ", COUNT(*), " ", LOWER(Occupation), "s.")
+FROM OCCUPATIONS
+GROUP BY Occupation
+ORDER BY COUNT(*);
 ```

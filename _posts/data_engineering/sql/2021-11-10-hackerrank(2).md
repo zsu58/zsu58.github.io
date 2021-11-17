@@ -1,5 +1,5 @@
 ---
-title: "[SQL] Hackerrank SQL 연습문제(2)"
+title: "[SQL] Hackerrank SQL 연습문제 (2)"
 layout: single
 date: '11/11/2021'
 toc: true
