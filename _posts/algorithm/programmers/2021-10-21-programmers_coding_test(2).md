@@ -18,7 +18,7 @@ tags:
 
 ---
 
-### 문제 11
+### 정수 제곱근 판별
 * 21/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test11.png" align="center">
@@ -40,7 +40,7 @@ def solution(n):
 
 ---
 
-### 문제 12
+### 정수 내림차순으로 배치하기
 * 21/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test12.png" align="center">
@@ -63,7 +63,7 @@ def solution(n):
 
 ---
 
-### 문제 13
+### 자연수 뒤집어 배열로 만들기
 * 21/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test13.png" align="center">
@@ -83,16 +83,13 @@ def solution(n):s
 
 ---
 
-### 문제 14
+### 자릿수 더하기
 * 21/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test14.png" align="center">
 </p>
 ```python
 def solution(n):
-    num_list = [int(i) for i in str(n)]
-    return sum(num_list)
-
     return [int(i) for i in result]
 
 # 다른 사람의 좋은 풀이
@@ -104,7 +101,7 @@ def solution(n):
 
 ---
 
-### 문제 15
+### 이상한 문자 만들기
 * 21/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test15.png" align="center">
@@ -128,7 +125,7 @@ def solution(s):
 
 ---
 
-### 문제 16
+### 약수의 합
 * 21/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test16.png" align="center">
@@ -144,7 +141,7 @@ def solution(n):
 
 ---
 
-### 문제 17
+### 시저 암호
 * 21/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test17.png" align="center">
@@ -170,7 +167,7 @@ def solution(s, n):
 
 ---
 
-### 문제 18
+### 문자열을 정수로 바꾸기
 * 22/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test18.png" align="center">
@@ -191,7 +188,7 @@ def solution(s):
 
 ---
 
-### 문제 19
+### 수박수박수박수박수박수?
 * 22/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test19.png" align="center">
@@ -206,7 +203,7 @@ def solution(n):
 
 ---
 
-### 문제 20
+### 소수 찾기
 * 23/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test20.png" align="center">

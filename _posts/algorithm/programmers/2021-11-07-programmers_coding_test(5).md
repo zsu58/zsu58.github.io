@@ -18,7 +18,7 @@ tags:
 
 ---
 
-### 문제 41
+### K번째수
 * 7/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test41.png" align="center">
@@ -30,7 +30,7 @@ def solution(array, commands):
 
 ---
 
-### 문제 42
+### 완주하지 못한 선수
 * 7/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test42.png" align="center">
@@ -56,7 +56,7 @@ def solution(participant, completion):
 
 ---
 
-### 문제 43
+### 소수 만들기
 * 7/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test43.png" align="center">
@@ -82,7 +82,7 @@ def solution(nums):
 
 ---
 
-### 문제 44
+### 내적
 * 8/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test44.png" align="center">
@@ -101,7 +101,7 @@ solution = lambda x, y: sum(a*b for a, b in zip(x, y))
 
 ---
 
-### 문제 45
+### 음양 더하기
 * 8/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test45.png" align="center">
@@ -112,7 +112,7 @@ solution = lambda x, y: sum(a if b else -1 * a for a, b in zip(x,y))
 
 ---
 
-### 문제 46
+### 없는 숫자 더하기
 * 8/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test46.png" align="center">
@@ -124,7 +124,7 @@ def solution(numbers):
 
 ---
 
-### 문제 47
+### [1차] 비밀지도
 * 8/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test47_1.png" align="center">
@@ -178,7 +178,7 @@ def solution(n, arr1, arr2):
 
 ---
 
-### 문제 48
+### 크레인 인형뽑기 게임
 * 9/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test48_1.png" align="center">
@@ -240,7 +240,7 @@ def solution(board, moves):
 
 ---
 
-### 문제 49
+### 키패드 누르기
 * 13/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test49_1.png" align="center">
@@ -288,7 +288,7 @@ def solution(numbers, hand):
 
 ---
 
-### 문제 50
+### 숫자 문자열과 영단어
 * 15/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test50_1.png" align="center">

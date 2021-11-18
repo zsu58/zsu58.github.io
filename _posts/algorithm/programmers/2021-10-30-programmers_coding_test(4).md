@@ -18,7 +18,7 @@ tags:
 
 ---
 
-### 문제 31
+### 부족한 금액 계산하기
 * 30/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test31.png" align="center">
@@ -30,7 +30,7 @@ def solution(price, money, count):
 
 ---
 
-### 문제 32
+### 나머지가 1이 되는 수 찾기
 * 31/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test32.png" align="center">
@@ -44,7 +44,7 @@ def solution(n):
 
 ---
 
-### 문제 33
+### 최소직사각형
 * 1/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test33.png" align="center">
@@ -63,7 +63,7 @@ def solution(sizes):
 
 ---
 
-### 문제 34
+### 2016년
 * 2/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test34.png" align="center">
@@ -78,7 +78,7 @@ def solution(a, b):
 
 ---
 
-### 문제 35
+### 두 개 뽑아서 더하기
 * 3/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test35.png" align="center">
@@ -94,7 +94,7 @@ def solution(numbers):
 
 ---
 
-### 문제 36
+### 예산
 * 3/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test36.png" align="center">
@@ -114,7 +114,7 @@ def solution(d, budget):
 
 ---
 
-### 문제 37
+### 3진법 뒤집기
 * 4/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test37.png" align="center">
@@ -146,7 +146,7 @@ def solution(n):
 
 ---
 
-### 문제 38
+### 약수의 개수와 덧셈
 * 4/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test38.png" align="center">
@@ -167,7 +167,8 @@ def solution(left, right):
 
 ---
 
-### 문제 39
+### 폰켓몬
+
 * 5/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test39.png" align="center">
@@ -190,7 +191,7 @@ def solution(ls):
 
 ---
 
-### 문제 40
+### 모의고사
 * 7/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test4.png" align="center">

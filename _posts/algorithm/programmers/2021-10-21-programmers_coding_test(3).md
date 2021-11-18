@@ -18,7 +18,7 @@ tags:
 
 ---
 
-### 문제 21
+### 서울에서 김서방 찾기
 * 24/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test21.png" align="center">
@@ -36,7 +36,7 @@ def solution(seoul):
 
 ---
 
-### 문제 22
+### 문자열 다루기 기본
 * 24/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test22.png" align="center">
@@ -54,19 +54,20 @@ def solution(s):
 
 ---
 
-### 문제 23
+### 문자열 내림차순으로 배치하기
 * 24/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test23.png" align="center">
 </p>
 ```python
+# 다른 사람의 좋은 풀이
 def solution(s):
     return ''.join(sorted(s, reverse=True))
 ```
 
 ---
 
-### 문제 24
+### 문자열 내 p와 y의 개수
 * 25/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test24.png" align="center">
@@ -92,7 +93,7 @@ def solution(s):
 
 ---
 
-### 문제 25
+### 문자열 내 마음대로 정렬하기
 * 26/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test25.png" align="center">
@@ -106,7 +107,7 @@ def solution(strings, n):
 
 ---
 
-### 문제 26
+### 두 정수 사이의 합
 * 26/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test26.png" align="center">
@@ -122,7 +123,7 @@ def solution(a, b):
 
 ---
 
-### 문제 27
+### 나누어 떨어지는 숫자 배열
 * 27/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test27.png" align="center">
@@ -135,7 +136,7 @@ def solution(arr, divisor):
 
 ---
 
-### 문제 28
+### 같은 숫자는 싫어
 * 27/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test28.png" align="center">
@@ -151,14 +152,14 @@ def solution(arr):
 
 ---
 
-### 문제 29
+### 가운데 글자 가져오기
 * 29/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test29.png" align="center">
 </p>
 ```python
 def solution(s):
-    return s[len(s)%2] if len(s) % 2 == 1 else s[(len(s)%2)-1] + s[len(s)%2]
+    return s[len(s)//2] if len(s) % 2 == 1 else s[(len(s)//2)-1] + s[len(s)//2]
 
 # 다른 사람의 좋은 풀이
 def solution(s):
@@ -167,7 +168,7 @@ def solution(s):
 
 ---
 
-### 문제 30
+### [1차] 다트 게임
 * 29/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test30_1.png" align="center">

@@ -18,7 +18,7 @@ tags:
 
 ---
 
-### 문제 1
+### x만큼 간격이 있는 n개의 숫자
 * 18/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test1.png" align="center">
@@ -30,7 +30,7 @@ def solution(x, n):
 
 ---
 
-### 문제 2
+### 행렬의 덧셈
 * 18/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test2.png" align="center">
@@ -42,7 +42,7 @@ def solution(arr1, arr2):
 
 ---
 
-### 문제 3
+### 직사각형 별찍기
 * 18/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test3.png" align="center">
@@ -55,7 +55,7 @@ for _ in range(b):
 
 ---
 
-### 문제 4
+### 핸드폰 번호 가리기
 * 19/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test4.png" align="center">
@@ -67,7 +67,7 @@ def solution(phone_number):
 
 ---
 
-### 문제 5
+### 하샤드 수
 * 19/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test5.png" align="center">
@@ -90,7 +90,7 @@ def solution(n):
 
 ---
 
-### 문제 6
+### 평균 구하기
 * 19/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test6.png" align="center">
@@ -103,7 +103,7 @@ def solution(arr):
 ---
 
 
-### 문제 7
+### 콜라츠 추측
 * 19/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test7.png" align="center">
@@ -127,7 +127,7 @@ def solution(num):
 
 ---
 
-### 문제 8
+### 최대공약수와 최소공배수
 * 19/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test8.png" align="center">
@@ -144,7 +144,7 @@ def solution(n, m):
 
 ---
 
-### 문제 9
+### 짝수와 홀수
 * 20/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test9.png" align="center">
@@ -156,7 +156,7 @@ def solution(num):
 
 ---
 
-### 문제 10
+### 제일 작은 수 제거하기
 * 20/10/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test10.png" align="center">

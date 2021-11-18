@@ -18,7 +18,7 @@ tags:
 
 ---
 
-### 문제 51
+### 신규 아이디 추천
 * 16/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test51_1.png" align="center">
@@ -66,7 +66,7 @@ def solution(new_id):
 
 ---
 
-### 문제 52
+### 로또의 최고 순위와 최저 순위
 * 17/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test52_1.png" align="center">
@@ -86,6 +86,35 @@ def solution(lottos, win_nums):
             zeros += 1
 
     return [prizeDict[wins + zeros], prizeDict[wins]]
+```
+
+---
+
+### 체육복
+* 18/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test53.png" align="center">
+</p>
+```python
+def solution(n, lost, reserve):
+
+    lost, reserve = set(lost).difference(reserve), set(reserve).difference(lost)
+
+    reserve_dict = {i: True for i in reserve}
+
+    total_lost = len(lost)
+    for i in lost:
+        if i-1 in reserve_dict.keys():
+            total_lost -= 1
+            del (reserve_dict[i-1])
+        elif i in reserve_dict.keys():
+            total_lost -= 1
+            del (reserve_dict[i])
+        elif i+1 in reserve_dict.keys():
+            total_lost -= 1
+            del (reserve_dict[i+1])
+
+    return n - total_lost
 ```
 
 ---
