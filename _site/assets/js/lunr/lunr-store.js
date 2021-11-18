@@ -294,7 +294,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (1)",
-        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 1 18/10/2021 def solution(x, n): return [x + x*i for i in range(n)] 문제 2 18/10/2021 def solution(arr1, arr2): return [[sum(j) for j in zip(*i)] for i in zip(arr1, arr2)] 문제 3 18/10/2021 a, b = map(int, input().strip().split('...","categories": ["PROGRAMMERS"],
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 x만큼 간격이 있는 n개의 숫자 18/10/2021 def solution(x, n): return [x + x*i for i in range(n)] 행렬의 덧셈 18/10/2021 def solution(arr1, arr2): return [[sum(j) for j in zip(*i)] for i in zip(arr1, arr2)] 직사각형 별찍기 18/10/2021 a, b...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(1)/",
         "teaser": null
@@ -336,7 +336,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (2)",
-        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 11 21/10/2021 from math import sqrt def solution(n): return int((sqrt(n)+1)**2) if sqrt(n) == int(sqrt(n)) else -1 # 다른 사람의 좋은 풀이 def solution(n): sqrt = n ** (1/2) if sqrt % 1 == 0: return (sqrt + 1)...","categories": ["PROGRAMMERS"],
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 정수 제곱근 판별 21/10/2021 from math import sqrt def solution(n): return int((sqrt(n)+1)**2) if sqrt(n) == int(sqrt(n)) else -1 # 다른 사람의 좋은 풀이 def solution(n): sqrt = n ** (1/2) if sqrt % 1 == 0: return (sqrt +...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(2)/",
         "teaser": null
@@ -348,7 +348,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (3)",
-        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 21 24/10/2021 def solution(seoul): for i in range(len(seoul)): if seoul[i] == \"Kim\": return \"김서방은 \"+ str(i)+\"에 있다\" # 다른 사람의 좋은 풀이 def solution(seoul): return \"김서방은 {}에 있다\".format(seoul.index(\"Kim\")) 문제 22 24/10/2021 if len(s) == 4 or len(s) ==...","categories": ["PROGRAMMERS"],
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 서울에서 김서방 찾기 24/10/2021 def solution(seoul): for i in range(len(seoul)): if seoul[i] == \"Kim\": return \"김서방은 \"+ str(i)+\"에 있다\" # 다른 사람의 좋은 풀이 def solution(seoul): return \"김서방은 {}에 있다\".format(seoul.index(\"Kim\")) 문자열 다루기 기본 24/10/2021 if len(s) == 4 or...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(3)/",
         "teaser": null
@@ -372,7 +372,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (4)",
-        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 31 30/10/2021 def solution(price, money, count): return max(sum([price*i for i in range(1,count+1)])-money,0) 문제 32 31/10/2021 def solution(n): for i in range(1,n): if n%i == 1: return i 문제 33 1/11/2021 def solution(sizes): max_size = max(sizes[0]) min_size = min(sizes[0])...","categories": ["PROGRAMMERS"],
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 부족한 금액 계산하기 30/10/2021 def solution(price, money, count): return max(sum([price*i for i in range(1,count+1)])-money,0) 나머지가 1이 되는 수 찾기 31/10/2021 def solution(n): for i in range(1,n): if n%i == 1: return i 최소직사각형 1/11/2021 def solution(sizes): max_size = max(sizes[0])...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(4)/",
         "teaser": null
@@ -468,7 +468,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (5)",
-        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 41 7/11/2021 def solution(array, commands): return [sorted(array[c[0]-1:c[1]])[c[2]-1] for c in commands] 문제 42 7/11/2021 def solution(participant, completion): participant.sort() completion.sort() for i in range(len(participant) - 1): if participant[i] != completion[i]: return participant[i] return participant[-1] # 다른 사람의 좋은 풀이...","categories": ["PROGRAMMERS"],
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 K번째수 7/11/2021 def solution(array, commands): return [sorted(array[c[0]-1:c[1]])[c[2]-1] for c in commands] 완주하지 못한 선수 7/11/2021 def solution(participant, completion): participant.sort() completion.sort() for i in range(len(participant) - 1): if participant[i] != completion[i]: return participant[i] return participant[-1] # 다른 사람의 좋은 풀이...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(5)/",
         "teaser": null
@@ -486,7 +486,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)",
-        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 51 16/11/2021 import re def solution(new_id): new_id = new_id.lower() new_id = \"\".join(re.findall(\"[\\w\\_\\-\\.]\", new_id)) while \"..\" in new_id: new_id = new_id.replace(\"..\", \".\") if len(new_id) &gt; 0 and new_id[-1] == \".\": new_id = new_id[:-1] if len(new_id) &gt; 0 and new_id[0]...","categories": ["PROGRAMMERS"],
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 신규 아이디 추천 16/11/2021 import re def solution(new_id): new_id = new_id.lower() new_id = \"\".join(re.findall(\"[\\w\\_\\-\\.]\", new_id)) while \"..\" in new_id: new_id = new_id.replace(\"..\", \".\") if len(new_id) &gt; 0 and new_id[-1] == \".\": new_id = new_id[:-1] if len(new_id) &gt; 0 and...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(6)/",
         "teaser": null

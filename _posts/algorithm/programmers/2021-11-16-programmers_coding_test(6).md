@@ -118,3 +118,32 @@ def solution(n, lost, reserve):
 ```
 
 ---
+
+### 실패율
+* 18/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test54_1.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test54_2.png" align="center">
+</p>
+```python
+def solution(N, stages):
+    stageDict = {stage:0 for stage in range(1,N+2)}
+
+    for stage in stages:
+        stageDict[stage] += 1
+
+    failRate = []
+    passedPeople = len(stages)
+    for stage, people in stageDict.items():
+        if passedPeople == 0:
+            failRate.append([stage, 0])
+        else:
+            failRate.append([stage, people / passedPeople])
+        passedPeople -= people
+    del(failRate[-1])
+
+    failRate.sort(key=lambda x: x[1], reverse=True)
+    return [i[0] for i in failRate]
+```
+
+---

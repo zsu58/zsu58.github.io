@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-17T21:01:18+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[SQL] Hackerrank SQL 연습문제 (3)</title><link href="http://localhost:4000/sql/hackerrank(3)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제 (3)" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(3)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(3)/">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-18T17:53:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[SQL] Hackerrank SQL 연습문제 (3)</title><link href="http://localhost:4000/sql/hackerrank(3)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제 (3)" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(3)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(3)/">&lt;hr /&gt;
 &lt;h3 id=&quot;sql-übung---hackerrank&quot;&gt;SQL Übung - Hackerrank&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;SQL 문제 풀이를 통한 SQL 연습&lt;/li&gt;
@@ -60,7 +60,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-51&quot;&gt;문제 51&lt;/h3&gt;
+&lt;h3 id=&quot;신규-아이디-추천&quot;&gt;신규 아이디 추천&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;16/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -109,7 +109,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-52&quot;&gt;문제 52&lt;/h3&gt;
+&lt;h3 id=&quot;로또의-최고-순위와-최저-순위&quot;&gt;로또의 최고 순위와 최저 순위&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;17/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -130,6 +130,66 @@
             &lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
 
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prizeDict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prizeDict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;체육복&quot;&gt;체육복&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;18/11/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/backend/algorithm/coding_test/coding_test53.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reserve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;lost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reserve&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;difference&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reserve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reserve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;difference&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;reserve_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reserve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;total_lost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reserve_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;total_lost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;del&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reserve_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reserve_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;total_lost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;del&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reserve_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reserve_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;total_lost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;del&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reserve_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total_lost&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;실패율&quot;&gt;실패율&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;18/11/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/backend/algorithm/coding_test/coding_test54_1.png&quot; align=&quot;center&quot; /&gt;
+    &lt;img src=&quot;/img/backend/algorithm/coding_test/coding_test54_2.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;stageDict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;stageDict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;failRate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;passedPeople&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;people&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stageDict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;passedPeople&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;failRate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;failRate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;people&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;passedPeople&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;passedPeople&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;people&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;del&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;failRate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;failRate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;failRate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;</content><author><name>ZSU</name></author><category term="PROGRAMMERS" /><category term="ALGORITHM" /><category term="PROGRAMMERS" /><summary type="html">ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry><entry><title type="html">[SQL] Hackerrank SQL 연습문제 (2)</title><link href="http://localhost:4000/sql/hackerrank(2)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제 (2)" /><published>2021-11-11T00:00:00+09:00</published><updated>2021-11-11T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(2)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(2)/">&lt;hr /&gt;
@@ -403,7 +463,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-41&quot;&gt;문제 41&lt;/h3&gt;
+&lt;h3 id=&quot;k번째수&quot;&gt;K번째수&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;7/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -416,7 +476,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-42&quot;&gt;문제 42&lt;/h3&gt;
+&lt;h3 id=&quot;완주하지-못한-선수&quot;&gt;완주하지 못한 선수&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;7/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -443,7 +503,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-43&quot;&gt;문제 43&lt;/h3&gt;
+&lt;h3 id=&quot;소수-만들기&quot;&gt;소수 만들기&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;7/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -470,7 +530,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-44&quot;&gt;문제 44&lt;/h3&gt;
+&lt;h3 id=&quot;내적&quot;&gt;내적&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;8/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -490,7 +550,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-45&quot;&gt;문제 45&lt;/h3&gt;
+&lt;h3 id=&quot;음양-더하기&quot;&gt;음양 더하기&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;8/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -502,7 +562,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-46&quot;&gt;문제 46&lt;/h3&gt;
+&lt;h3 id=&quot;없는-숫자-더하기&quot;&gt;없는 숫자 더하기&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;8/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -515,7 +575,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-47&quot;&gt;문제 47&lt;/h3&gt;
+&lt;h3 id=&quot;1차-비밀지도&quot;&gt;[1차] 비밀지도&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;8/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -570,7 +630,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-48&quot;&gt;문제 48&lt;/h3&gt;
+&lt;h3 id=&quot;크레인-인형뽑기-게임&quot;&gt;크레인 인형뽑기 게임&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;9/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -633,7 +693,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-49&quot;&gt;문제 49&lt;/h3&gt;
+&lt;h3 id=&quot;키패드-누르기&quot;&gt;키패드 누르기&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;13/11/2021&lt;/li&gt;
 &lt;/ul&gt;
@@ -682,7 +742,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;문제-50&quot;&gt;문제 50&lt;/h3&gt;
+&lt;h3 id=&quot;숫자-문자열과-영단어&quot;&gt;숫자 문자열과 영단어&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;15/11/2021&lt;/li&gt;
 &lt;/ul&gt;

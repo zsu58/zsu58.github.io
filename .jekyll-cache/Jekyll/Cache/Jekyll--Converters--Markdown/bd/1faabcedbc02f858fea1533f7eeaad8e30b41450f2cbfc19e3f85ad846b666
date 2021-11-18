@@ -1,4 +1,4 @@
-I"Pa<hr />
+I"(c<hr />
 <h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
 <ul>
   <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
@@ -6,7 +6,7 @@
 
 <hr />
 
-<h3 id="문제-21">문제 21</h3>
+<h3 id="서울에서-김서방-찾기">서울에서 김서방 찾기</h3>
 <ul>
   <li>24/10/2021</li>
 </ul>
@@ -25,7 +25,7 @@
 
 <hr />
 
-<h3 id="문제-22">문제 22</h3>
+<h3 id="문자열-다루기-기본">문자열 다루기 기본</h3>
 <ul>
   <li>24/10/2021</li>
 </ul>
@@ -44,20 +44,21 @@
 
 <hr />
 
-<h3 id="문제-23">문제 23</h3>
+<h3 id="문자열-내림차순으로-배치하기">문자열 내림차순으로 배치하기</h3>
 <ul>
   <li>24/10/2021</li>
 </ul>
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test23.png" align="center" />
 </p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="k">return</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
 </code></pre></div></div>
 
 <hr />
 
-<h3 id="문제-24">문제 24</h3>
+<h3 id="문자열-내-p와-y의-개수">문자열 내 p와 y의 개수</h3>
 <ul>
   <li>25/10/2021</li>
 </ul>
@@ -84,7 +85,7 @@
 
 <hr />
 
-<h3 id="문제-25">문제 25</h3>
+<h3 id="문자열-내-마음대로-정렬하기">문자열 내 마음대로 정렬하기</h3>
 <ul>
   <li>26/10/2021</li>
 </ul>
@@ -99,7 +100,7 @@
 
 <hr />
 
-<h3 id="문제-26">문제 26</h3>
+<h3 id="두-정수-사이의-합">두 정수 사이의 합</h3>
 <ul>
   <li>26/10/2021</li>
 </ul>
@@ -116,7 +117,7 @@
 
 <hr />
 
-<h3 id="문제-27">문제 27</h3>
+<h3 id="나누어-떨어지는-숫자-배열">나누어 떨어지는 숫자 배열</h3>
 <ul>
   <li>27/10/2021</li>
 </ul>
@@ -130,7 +131,7 @@
 
 <hr />
 
-<h3 id="문제-28">문제 28</h3>
+<h3 id="같은-숫자는-싫어">같은 숫자는 싫어</h3>
 <ul>
   <li>27/10/2021</li>
 </ul>
@@ -147,7 +148,7 @@
 
 <hr />
 
-<h3 id="문제-29">문제 29</h3>
+<h3 id="가운데-글자-가져오기">가운데 글자 가져오기</h3>
 <ul>
   <li>29/10/2021</li>
 </ul>
@@ -155,7 +156,7 @@
     <img src="/img/backend/algorithm/coding_test/coding_test29.png" align="center" />
 </p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">s</span><span class="p">[(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">s</span><span class="p">[(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span>
 
 <span class="c1"># 다른 사람의 좋은 풀이
 </span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
@@ -164,7 +165,7 @@
 
 <hr />
 
-<h3 id="문제-30">문제 30</h3>
+<h3 id="1차-다트-게임">[1차] 다트 게임</h3>
 <ul>
   <li>29/10/2021</li>
 </ul>

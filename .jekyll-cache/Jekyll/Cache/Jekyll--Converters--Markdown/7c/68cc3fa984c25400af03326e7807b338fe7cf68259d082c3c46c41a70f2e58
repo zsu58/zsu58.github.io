@@ -1,4 +1,4 @@
-I"QO<hr />
+I"�N<hr />
 <h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
 <ul>
   <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
@@ -6,7 +6,7 @@
 
 <hr />
 
-<h3 id="문제-11">문제 11</h3>
+<h3 id="정수-제곱근-판별">정수 제곱근 판별</h3>
 <ul>
   <li>21/10/2021</li>
 </ul>
@@ -29,7 +29,7 @@
 
 <hr />
 
-<h3 id="문제-12">문제 12</h3>
+<h3 id="정수-내림차순으로-배치하기">정수 내림차순으로 배치하기</h3>
 <ul>
   <li>21/10/2021</li>
 </ul>
@@ -53,7 +53,7 @@
 
 <hr />
 
-<h3 id="문제-13">문제 13</h3>
+<h3 id="자연수-뒤집어-배열로-만들기">자연수 뒤집어 배열로 만들기</h3>
 <ul>
   <li>21/10/2021</li>
 </ul>
@@ -74,7 +74,7 @@
 
 <hr />
 
-<h3 id="문제-14">문제 14</h3>
+<h3 id="자릿수-더하기">자릿수 더하기</h3>
 <ul>
   <li>21/10/2021</li>
 </ul>
@@ -82,9 +82,6 @@
     <img src="/img/backend/algorithm/coding_test/coding_test14.png" align="center" />
 </p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">num_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">num_list</span><span class="p">)</span>
-
     <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span>
 
 <span class="c1"># 다른 사람의 좋은 풀이
@@ -96,7 +93,7 @@
 
 <hr />
 
-<h3 id="문제-15">문제 15</h3>
+<h3 id="이상한-문자-만들기">이상한 문자 만들기</h3>
 <ul>
   <li>21/10/2021</li>
 </ul>
@@ -121,7 +118,7 @@
 
 <hr />
 
-<h3 id="문제-16">문제 16</h3>
+<h3 id="약수의-합">약수의 합</h3>
 <ul>
   <li>21/10/2021</li>
 </ul>
@@ -138,7 +135,7 @@
 
 <hr />
 
-<h3 id="문제-17">문제 17</h3>
+<h3 id="시저-암호">시저 암호</h3>
 <ul>
   <li>21/10/2021</li>
 </ul>
@@ -165,7 +162,7 @@
 
 <hr />
 
-<h3 id="문제-18">문제 18</h3>
+<h3 id="문자열을-정수로-바꾸기">문자열을 정수로 바꾸기</h3>
 <ul>
   <li>22/10/2021</li>
 </ul>
@@ -187,7 +184,7 @@
 
 <hr />
 
-<h3 id="문제-19">문제 19</h3>
+<h3 id="수박수박수박수박수박수">수박수박수박수박수박수?</h3>
 <ul>
   <li>22/10/2021</li>
 </ul>
@@ -203,7 +200,7 @@
 
 <hr />
 
-<h3 id="문제-20">문제 20</h3>
+<h3 id="소수-찾기">소수 찾기</h3>
 <ul>
   <li>23/10/2021</li>
 </ul>
