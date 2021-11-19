@@ -39,3 +39,15 @@ def solution(arr):
 
 ---
 
+### JadenCase 문자열 만들기
+* 19/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test56.png" align="center">
+</p>
+```python
+def solution(s):
+    return " ".join([word.capitalize() for word in s.split(" ")])
+```
+
+---
+
