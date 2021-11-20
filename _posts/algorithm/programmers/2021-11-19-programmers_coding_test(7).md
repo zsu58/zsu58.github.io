@@ -25,16 +25,15 @@ tags:
 </p>
 ```python
 def solution(arr):
-    answer = 1
-    def gcd(n,m):
-        while m:
-            n , m = m, n%m
-        return n
-
+    def gcd(x, y):
+        while(x):
+            x, y =  y%x, x 
+        return y
+    
+    res = 1
     for i in arr:
-        answer *= i//gcd(answer,i)
-
-    return answer
+        res *=  i // gcd(res, i)
+    return res
 ```
 
 ---
@@ -51,3 +50,14 @@ def solution(s):
 
 ---
 
+### 행렬의 곱셈
+* 19/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test57.png" align="center">
+</p>
+```python
+def solution(arr1, arr2):
+    return [[sum(a * b for a, b in zip(row_a, column_b)) for column_b in zip(*arr2)] for row_a in arr1]
+```
+
+---
