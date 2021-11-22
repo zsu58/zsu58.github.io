@@ -1,4 +1,24 @@
-I"�
+I"�
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/programmers/programmers_coding_test(7)/">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.11.19
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category" rel="tag">PROGRAMMERS</a>
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
 <div class="list__item">
     <article class="archive-item">
         <div>

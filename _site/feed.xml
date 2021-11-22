@@ -1,58 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-18T17:53:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[SQL] Hackerrank SQL 연습문제 (3)</title><link href="http://localhost:4000/sql/hackerrank(3)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제 (3)" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(3)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(3)/">&lt;hr /&gt;
-&lt;h3 id=&quot;sql-übung---hackerrank&quot;&gt;SQL Übung - Hackerrank&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-21T14:45:46+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)</title><link href="http://localhost:4000/programmers/programmers_coding_test(7)/" rel="alternate" type="text/html" title="[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)" /><published>2021-11-19T00:00:00+09:00</published><updated>2021-11-19T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers_coding_test(7)</id><content type="html" xml:base="http://localhost:4000/programmers/programmers_coding_test(7)/">&lt;hr /&gt;
+&lt;h3 id=&quot;algorithm-übung---programmers&quot;&gt;ALGORITHM Übung - Programmers&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;SQL 문제 풀이를 통한 SQL 연습&lt;/li&gt;
+  &lt;li&gt;알고리즘 문제 풀이를 통한 코딩 테스트 연습&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;type-of-triangle&quot;&gt;Type of Triangle&lt;/h3&gt;
+&lt;h3 id=&quot;n개의-최소공배수&quot;&gt;N개의 최소공배수&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;16/11/2021&lt;/li&gt;
+  &lt;li&gt;19/11/2021&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;/img/data_engineering/sql/hackerrank_sql21.png&quot; align=&quot;center&quot; /&gt;
+    &lt;img src=&quot;/img/backend/algorithm/coding_test/coding_test55.png&quot; align=&quot;center&quot; /&gt;
 &lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;CASE&lt;/span&gt; 
-        &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;CASE&lt;/span&gt; 
-                &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; 
-                    &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Equilateral&quot;&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; 
-                    &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Isosceles&quot;&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;ELSE&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Scalene&quot;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;END&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ELSE&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Not A Triangle&quot;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;END&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;triangles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; 
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;the-pads&quot;&gt;The PADS&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;jadencase-문자열-만들기&quot;&gt;JadenCase 문자열 만들기&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;17/11/2021&lt;/li&gt;
+  &lt;li&gt;19/11/2021&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;/img/data_engineering/sql/hackerrank_sql22_1.png&quot; align=&quot;center&quot; /&gt;
-    &lt;img src=&quot;/img/data_engineering/sql/hackerrank_sql22_2.png&quot; align=&quot;center&quot; /&gt;
-    &lt;img src=&quot;/img/data_engineering/sql/hackerrank_sql22_3.png&quot; align=&quot;center&quot; /&gt;
+    &lt;img src=&quot;/img/backend/algorithm/coding_test/coding_test56.png&quot; align=&quot;center&quot; /&gt;
 &lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;CASE&lt;/span&gt; 
-&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Doctor&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(D)&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Actor&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(A)&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Singer&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(S)&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;ELSE&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(P)&quot;&lt;/span&gt; 
-&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;END&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBSTRING&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OCCUPATIONS&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;SElECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;There are a total of &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LOWER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;s.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OCCUPATIONS&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="SQL" /><summary type="html">SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습</summary></entry><entry><title type="html">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)</title><link href="http://localhost:4000/programmers/programmers_coding_test(6)/" rel="alternate" type="text/html" title="[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers_coding_test(6)</id><content type="html" xml:base="http://localhost:4000/programmers/programmers_coding_test(6)/">&lt;hr /&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;capitalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;행렬의-곱셈&quot;&gt;행렬의 곱셈&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;19/11/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/backend/algorithm/coding_test/coding_test57.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;column_b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;column_b&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row_a&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="PROGRAMMERS" /><category term="ALGORITHM" /><category term="PROGRAMMERS" /><summary type="html">ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry><entry><title type="html">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)</title><link href="http://localhost:4000/programmers/programmers_coding_test(6)/" rel="alternate" type="text/html" title="[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/programmers/programmers_coding_test(6)</id><content type="html" xml:base="http://localhost:4000/programmers/programmers_coding_test(6)/">&lt;hr /&gt;
 &lt;h3 id=&quot;algorithm-übung---programmers&quot;&gt;ALGORITHM Übung - Programmers&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;알고리즘 문제 풀이를 통한 코딩 테스트 연습&lt;/li&gt;
@@ -192,7 +191,61 @@
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;failRate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="PROGRAMMERS" /><category term="ALGORITHM" /><category term="PROGRAMMERS" /><summary type="html">ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry><entry><title type="html">[SQL] Hackerrank SQL 연습문제 (2)</title><link href="http://localhost:4000/sql/hackerrank(2)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제 (2)" /><published>2021-11-11T00:00:00+09:00</published><updated>2021-11-11T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(2)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(2)/">&lt;hr /&gt;
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="PROGRAMMERS" /><category term="ALGORITHM" /><category term="PROGRAMMERS" /><summary type="html">ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry><entry><title type="html">[SQL] Hackerrank SQL 연습문제 (3)</title><link href="http://localhost:4000/sql/hackerrank(3)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제 (3)" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(3)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(3)/">&lt;hr /&gt;
+&lt;h3 id=&quot;sql-übung---hackerrank&quot;&gt;SQL Übung - Hackerrank&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;SQL 문제 풀이를 통한 SQL 연습&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;type-of-triangle&quot;&gt;Type of Triangle&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;16/11/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/data_engineering/sql/hackerrank_sql21.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;CASE&lt;/span&gt; 
+        &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;CASE&lt;/span&gt; 
+                &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; 
+                    &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Equilateral&quot;&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; 
+                    &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Isosceles&quot;&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;ELSE&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Scalene&quot;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;END&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ELSE&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Not A Triangle&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;END&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;triangles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;the-pads&quot;&gt;The PADS&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;17/11/2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;/img/data_engineering/sql/hackerrank_sql22_1.png&quot; align=&quot;center&quot; /&gt;
+    &lt;img src=&quot;/img/data_engineering/sql/hackerrank_sql22_2.png&quot; align=&quot;center&quot; /&gt;
+    &lt;img src=&quot;/img/data_engineering/sql/hackerrank_sql22_3.png&quot; align=&quot;center&quot; /&gt;
+&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;CASE&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Doctor&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(D)&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Actor&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(A)&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;WHEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Singer&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;THEN&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(S)&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;ELSE&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(P)&quot;&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;END&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;(&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBSTRING&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OCCUPATIONS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;SElECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;There are a total of &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LOWER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;s.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OCCUPATIONS&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Occupation&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="SQL" /><summary type="html">SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습</summary></entry><entry><title type="html">[SQL] Hackerrank SQL 연습문제 (2)</title><link href="http://localhost:4000/sql/hackerrank(2)/" rel="alternate" type="text/html" title="[SQL] Hackerrank SQL 연습문제 (2)" /><published>2021-11-11T00:00:00+09:00</published><updated>2021-11-11T00:00:00+09:00</updated><id>http://localhost:4000/sql/hackerrank(2)</id><content type="html" xml:base="http://localhost:4000/sql/hackerrank(2)/">&lt;hr /&gt;
 &lt;h3 id=&quot;sql-übung---hackerrank&quot;&gt;SQL Übung - Hackerrank&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;SQL 문제 풀이를 통한 SQL 연습&lt;/li&gt;
@@ -961,61 +1014,4 @@ False
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;3
 5
 3
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="CODEIT" /><category term="ALGORITHM" /><summary type="html">ALGORITHM 알고리즘 정리(31)</summary></entry><entry><title type="html">[SQL] SQL COALESCE &amp;amp; IFNULL &amp;amp; CONCAT &amp;amp; IF</title><link href="http://localhost:4000/sql/codeit_sql3/" rel="alternate" type="text/html" title="[SQL] SQL COALESCE &amp;amp; IFNULL &amp;amp; CONCAT &amp;amp; IF" /><published>2021-11-04T00:00:00+09:00</published><updated>2021-11-04T00:00:00+09:00</updated><id>http://localhost:4000/sql/codeit_sql3</id><content type="html" xml:base="http://localhost:4000/sql/codeit_sql3/">&lt;hr /&gt;
-&lt;h3 id=&quot;sql-coalesce--ifnull--concat--if&quot;&gt;SQL COALESCE &amp;amp; IFNULL &amp;amp; CONCAT &amp;amp; IF&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COALESCE&lt;/code&gt; - NULL 값을 다른 값으로 대체해서 반환, 2개 이상의 조건 가능&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IFNULL&lt;/code&gt; - NULL 값을 다른 값으로 대체해서 반환&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CONCAT&lt;/code&gt; - concatenate&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IF&lt;/code&gt; - 조건문&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;coalesce&quot;&gt;COALESCE&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;height column의 빈 값은 ‘N/A’으로, weight column의 빈 값은 ‘값 비어있음’으로 대체 후 반환하시오&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COALESCE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'N/A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COALESCE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'값 비어있음'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copang_main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;height colum이 비어 있다면 wight column의 2.3배로, weight column도 비어있다면 ‘N/A’으로 대체 후 반환하시오&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;COALESCE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'N/A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copang_main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;ifnull&quot;&gt;IFNULL&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;한 열에 height 뒤 ‘cm,’ weight 뒤 ‘kg’을 붙인 뒤 한 column으로 반환하시오&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IFNULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'N/A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copang_main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;concat&quot;&gt;CONCAT&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;한 열에 height 뒤 ‘cm,’ weight 뒤 ‘kg’을 붙인 뒤 한 column으로 반환하시오&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'cm, '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'kg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copang_main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;if&quot;&gt;IF&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;IF(조건, TRUE시 반환값, FALSE시 반환값)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'N/A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copang_main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="SQL" /><summary type="html">SQL COALESCE &amp;amp; IFNULL &amp;amp; CONCAT &amp;amp; IF COALESCE - NULL 값을 다른 값으로 대체해서 반환, 2개 이상의 조건 가능 IFNULL - NULL 값을 다른 값으로 대체해서 반환 CONCAT - concatenate IF - 조건문</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="CODEIT" /><category term="ALGORITHM" /><summary type="html">ALGORITHM 알고리즘 정리(31)</summary></entry></feed>

@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[SQL] SELECT &amp; FROM &amp; DISTINCT &amp; COUNT &amp; LIMIT - Bibliothek für Data-Engineering</title>
-<meta name="description" content="SQL Übung    SQL 문법 정리(1)   SELECTing columns   COUNT을 통해 행개수 산출">
+<!-- begin _includes/seo.html --><title>[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1) - Bibliothek für Data-Engineering</title>
+<meta name="description" content="ALGORITHM Übung - Programmers    알고리즘 문제 풀이를 통한 코딩 테스트 연습">
 
 
   <meta name="author" content="ZSU">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Bibliothek für Data-Engineering">
-<meta property="og:title" content="[SQL] SELECT &amp; FROM &amp; DISTINCT &amp; COUNT &amp; LIMIT">
-<meta property="og:url" content="http://localhost:4000/sql/sql_1_select/">
+<meta property="og:title" content="[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)">
+<meta property="og:url" content="http://localhost:4000/programmers/programmers_coding_test(7)/">
 
 
-  <meta property="og:description" content="SQL Übung    SQL 문법 정리(1)   SELECTing columns   COUNT을 통해 행개수 산출">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2021-09-13T00:00:00+09:00">
+  <meta property="og:description" content="ALGORITHM Übung - Programmers    알고리즘 문제 풀이를 통한 코딩 테스트 연습">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2021-11-19T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/sql/sql_1_select/">
+
+<link rel="canonical" href="http://localhost:4000/programmers/programmers_coding_test(7)/">
 
 
 
@@ -484,15 +484,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[SQL] SELECT &amp; FROM &amp; DISTINCT &amp; COUNT &amp; LIMIT">
-    <meta itemprop="description" content="SQL Übung  SQL 문법 정리(1)  SELECTing columns  COUNT을 통해 행개수 산출">
-    <meta itemprop="datePublished" content="2021-09-13T00:00:00+09:00">
+    <meta itemprop="headline" content="[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)">
+    <meta itemprop="description" content="ALGORITHM Übung - Programmers  알고리즘 문제 풀이를 통한 코딩 테스트 연습">
+    <meta itemprop="datePublished" content="2021-11-19T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[SQL] SELECT &amp; FROM &amp; DISTINCT &amp; COUNT &amp; LIMIT
+          <h1 id="page-title" class="page__title" itemprop="headline">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)
 </h1>
           
 
@@ -523,101 +523,62 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#sql-übung">SQL Übung</a></li><li><a href="#select--limit">SELECT &amp; LIMIT</a></li><li><a href="#distinct">DISTINCT</a></li><li><a href="#count">COUNT</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#n개의-최소공배수">N개의 최소공배수</a></li><li><a href="#jadencase-문자열-만들기">JadenCase 문자열 만들기</a></li><li><a href="#행렬의-곱셈">행렬의 곱셈</a></li></ul>
 
             </nav>
           </aside>
         
         <hr />
-<h3 id="sql-übung">SQL Übung</h3>
+<h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
 <ul>
-  <li>SQL 문법 정리(1)</li>
-  <li>SELECTing columns</li>
-  <li><code class="language-plaintext highlighter-rouge">COUNT</code>을 통해 행개수 산출</li>
+  <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
 </ul>
 
 <hr />
 
-<h3 id="select--limit">SELECT &amp; LIMIT</h3>
-<p>1) SELECTing single column</p>
+<h3 id="n개의-최소공배수">N개의 최소공배수</h3>
 <ul>
-  <li>Get the title column from the films table.</li>
+  <li>19/11/2021</li>
 </ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">name</span> <span class="n">FROM</span> <span class="n">people</span><span class="p">;</span>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test55.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span>  <span class="n">y</span><span class="o">%</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> 
+        <span class="k">return</span> <span class="n">y</span>
+    
+    <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">*=</span>  <span class="n">i</span> <span class="o">//</span> <span class="n">gcd</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
 </code></pre></div></div>
 
-<p>2) SELECTing multiple column</p>
-<ul>
-  <li>Get the title and release year from the films table</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">release_year</span> 
-<span class="n">FROM</span> <span class="n">films</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>2-2) SELECTing multiple column</p>
-<ul>
-  <li>Get all column from the films table</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="n">films</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>2-3) SELECTing multiple column</p>
-<ul>
-  <li>Get all column from the films table but limit the row as 10</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="n">films</span>
-<span class="n">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
-
-<span class="c1"># from line 8, 2 rows
-</span><span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="n">films</span>
-<span class="n">LIMIT</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">;</span>
-</code></pre></div></div>
 <hr />
 
-<h3 id="distinct">DISTINCT</h3>
-<p>3) SELECT DISTINCT</p>
+<h3 id="jadencase-문자열-만들기">JadenCase 문자열 만들기</h3>
 <ul>
-  <li>Get all the unique countries represented in the films table.</li>
+  <li>19/11/2021</li>
 </ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">country</span> 
-<span class="n">FROM</span> <span class="n">films</span><span class="p">;</span>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test56.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">" "</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">word</span><span class="p">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">s</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">)])</span>
 </code></pre></div></div>
+
 <hr />
 
-<h3 id="count">COUNT</h3>
-<p>4) COUNT(returns the number of rows in one or more columns)</p>
+<h3 id="행렬의-곱셈">행렬의 곱셈</h3>
 <ul>
-  <li>Count the number of rows in the people table.</li>
+  <li>19/11/2021</li>
 </ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">people</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>4-2) COUNT(returns the number of rows in one or more columns)</p>
-<ul>
-  <li>Count the number of (non-missing) birth dates in the people table.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">birthdate</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">people</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>4-3) COUNT(returns the number of rows in one or more columns)</p>
-<ul>
-  <li>Count the number of unique birth dates in the people table.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">DISTINCT</span> <span class="n">birthdate</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">people</span><span class="p">;</span>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test57.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">row_a</span><span class="p">,</span> <span class="n">column_b</span><span class="p">))</span> <span class="k">for</span> <span class="n">column_b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">arr2</span><span class="p">)]</span> <span class="k">for</span> <span class="n">row_a</span> <span class="ow">in</span> <span class="n">arr1</span><span class="p">]</span>
 </code></pre></div></div>
 
 <hr />
@@ -637,7 +598,9 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#sql" class="page__taxonomy-item" rel="tag">SQL</a>
+      <a href="/tags/#algorithm" class="page__taxonomy-item" rel="tag">ALGORITHM</a><span class="sep">, </span>
+    
+      <a href="/tags/#programmers" class="page__taxonomy-item" rel="tag">PROGRAMMERS</a>
     
     </span>
   </p>
@@ -654,7 +617,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#sql" class="page__taxonomy-item" rel="tag">SQL</a>
+      <a href="/categories/#programmers" class="page__taxonomy-item" rel="tag">PROGRAMMERS</a>
     
     </span>
   </p>
@@ -662,7 +625,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-13T00:00:00+09:00">September 13, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-11-19T00:00:00+09:00">November 19, 2021</time></p>
 
 
       </footer>
@@ -672,23 +635,22 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BSQL%5D+SELECT+%26+FROM+%26+DISTINCT+%26+COUNT+%26+LIMIT%20http%3A%2F%2Flocalhost%3A4000%2Fsql%2Fsql_1_select%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BALGORITHM%5D+Programmers+ALGORITHM+%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C+Lv2+%281%29%20http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers_coding_test%287%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fsql%2Fsql_1_select%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers_coding_test%287%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fsql%2Fsql_1_select%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers_coding_test%287%29%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/python/iter/" class="pagination--pager" title="[Python] Iter &amp; Next
+      <a href="/sql/hackerrank(3)/" class="pagination--pager" title="[SQL] Hackerrank SQL 연습문제 (3)
 ">Previous</a>
     
     
-      <a href="/python/generator/" class="pagination--pager" title="[Python] Generator
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -702,51 +664,6 @@
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/programmers/programmers_coding_test(7)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-ALGORITHM Übung - Programmers
-
-  알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
-  </article>
-</div>
-
         
           
 
@@ -866,6 +783,51 @@ ALGORITHM Übung - Programmers
         <i class="far fa-clock" aria-hidden="true"></i>
         
           1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+SQL Übung - Hackerrank
+
+  SQL 문제 풀이를 통한 SQL 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/sql/hackerrank(1)/" rel="permalink">[SQL] Hackerrank SQL 연습문제 (1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
         
       </span>
     

@@ -496,4 +496,10 @@ var store = [{
         "tags": ["SQL"],
         "url": "/sql/hackerrank(3)/",
         "teaser": null
+      },{
+        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)",
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 N개의 최소공배수 19/11/2021 def solution(arr): def gcd(x, y): while(x): x, y = y%x, x return y res = 1 for i in arr: res *= i // gcd(res, i) return res JadenCase 문자열 만들기 19/11/2021 def solution(s): return \"...","categories": ["PROGRAMMERS"],
+        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "url": "/programmers/programmers_coding_test(7)/",
+        "teaser": null
       }]
