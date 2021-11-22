@@ -85,3 +85,24 @@ def solution(n):
 ```
 
 ---
+
+### 최댓값과 최솟값
+* 22/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test59.png" align="center">
+</p>
+```python
+def solution(s):
+    valList = list(s.split(" "))
+    minVal = int(valList[0])
+    maxVal = int(valList[0])
+    for i in valList:
+        maxVal = max(maxVal, int(i))
+        minVal = min(minVal, int(i))
+    return str(minVal) + " " + str(maxVal)
+```
+
+---
+
+
+
