@@ -104,5 +104,31 @@ def solution(s):
 
 ---
 
+### 숫자의 표현
+* 23/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test60.png" align="center">
+</p>
+```python
+def solution(n):
+    answer = 0
+    for i in range(1, n+1):
+        sum =0
+        for j in range(i, n+1):
+            sum += j
+            if sum == n:
+                answer += 1
+                break
+            elif sum > n:
+                break
+    return answer
+
+# 다른 사람의 좋은 풀이
+def expressions(num):
+    return len([i  for i in range(1,num+1,2) if num % i is 0])
+```
+
+---
+
 
 
