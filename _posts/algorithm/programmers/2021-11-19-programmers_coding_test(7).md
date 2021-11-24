@@ -130,5 +130,23 @@ def expressions(num):
 
 ---
 
+### 
+* 24/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test61.png" align="center">
+</p>
+```python
+def solution(n):
+    
+    numOne = bin(n).count("1")
+    while True:
+        n += 1
+        if bin(n).count("1") == numOne:
+            break
+    return n
+```
+
+---
+
 
 
