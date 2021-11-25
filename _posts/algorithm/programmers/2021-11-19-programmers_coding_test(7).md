@@ -130,7 +130,7 @@ def expressions(num):
 
 ---
 
-### 
+### 다음 큰 숫자
 * 24/11/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test61.png" align="center">
@@ -148,5 +148,62 @@ def solution(n):
 
 ---
 
+### [3차] n진수 게임
+* 25/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test62.png" align="center">
+</p>
+```python
+def convert(num, n):
+    convertDict = {10:"A", 11:"B", 12:"C", 13:"D", 14:"E", 15:"F"}
 
+    if num == 0:
+        return "0"
+
+    ans = ""
+    while (num):
+        if num%n in convertDict.keys():
+            ans = convertDict[num%n] + ans
+        else:
+            ans = str(num%n) + ans
+        num //= n
+    return ans
+
+def solution(n, t, m, p):
+
+    replies = ""
+    num = 0
+    while (len(replies) < t*m):
+        replies += convert(num, n)
+        num += 1
+
+    return replies[p-1:t*m:m]
+
+# 다른 사람의 좋은 풀이
+def solution(n, t, m, p):
+    data = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
+    numbers = "0"
+    for number in range(1, t*m):
+        temp = []
+        while number > 0:
+            temp.append(data[number%n])
+            number //= n
+        numbers += "".join(reversed(temp))
+
+    return numbers[p-1:t*m:m]
+
+# 참고 : 10진수 숫자를 n진수로 바꾸는 함수
+def convert(num, n):
+
+    if num == 0:
+        return "0"
+
+    ans = ""
+    while (num):
+        ans = str(num%n) + ans
+        num //= n
+    return ans
+```
+
+---
 
