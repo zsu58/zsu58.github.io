@@ -1,12 +1,12 @@
 ---
-title: "[SQL] LEFT JOIN & RIGHT JOIN & FULL JOIN & CROSS JOIN"
+title: "[MySQL] LEFT JOIN & RIGHT JOIN & FULL JOIN & CROSS JOIN"
 layout: single
 date: '16/9/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
 categories:
-  - SQL
+  - MYSQL
 tags:
   - SQL
 ---
@@ -16,7 +16,7 @@ tags:
 * SQL JOIN 문법 정리(2)
 * ```LEFT JOIN``` ```ON``` 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join
 * ```RIGHT JOIN``` ```ON``` 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join
-* ```FULL JOIN``` ```ON``` 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join
+* ```FULL JOIN``` ```ON``` 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join, MySQL에서는 불가능
     * key값이 같은 경우 ```ON``` 대신 ```USING()``` 사용 가능
 * ```CROSS JOIN``` ```ON``` 을 통해 두 데이터의 전체 조합을 가져올 수 있음
 * SQL에서 Multi-line comment 달 경우 ```/*``` Comments ```*/```를 통해 가능
@@ -71,6 +71,7 @@ ORDER BY city, language;
 * Next, full join this result with currencies on the right
 * Use LIKE to choose the Melanesia and Micronesia regions
 * Select the fields corresponding to the country name AS country, region, language name AS language, and basic and fractional units of currency
+* MySQL에서는 UNION을 통해 해당 부분 대체
 
 ```python
 SELECT c1.name AS country, region, l.name AS language,

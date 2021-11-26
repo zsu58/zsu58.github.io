@@ -17,10 +17,10 @@ var store = [{
         "url": "/python/iter/",
         "teaser": null
       },{
-        "title": "[SQL] SELECT & FROM & DISTINCT & COUNT & LIMIT",
-        "excerpt":"SQL Übung SQL 문법 정리(1) SELECTing columns COUNT을 통해 행개수 산출 SELECT &amp; LIMIT 1) SELECTing single column Get the title column from the films table. SELECT name FROM people; 2) SELECTing multiple column Get the title and release year from the films table SELECT title, release_year FROM films; 2-2)...","categories": ["SQL"],
+        "title": "[MySQL] SELECT & FROM & DISTINCT & COUNT & LIMIT",
+        "excerpt":"SQL Übung SQL 문법 정리(1) SELECTing columns COUNT을 통해 행개수 산출 SELECT &amp; LIMIT 1) SELECTing single column Get the title column from the films table. SELECT name FROM people; 2) SELECTing multiple column Get the title and release year from the films table SELECT title, release_year FROM films; 2-2)...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/sql_1_select/",
+        "url": "/mysql/sql_1_select/",
         "teaser": null
       },{
         "title": "[Python] Generator",
@@ -29,34 +29,34 @@ var store = [{
         "url": "/python/generator/",
         "teaser": null
       },{
-        "title": "[SQL] WHERE & AND & OR & BETWEEN & IN & IS (NOT) NULL & LIKE",
-        "excerpt":"SQL Übung SQL 문법 정리(2) WHERE을 통해 filter WHERE는 FROM 이후에 작성 WHERE 조건이 여러개일 경우 조건을(AND, OR) 모두 작성해줘야함 AND &amp; OR은 괄호로 묶어주는 것이 좋음 BETWEEN을 통해 범위 filter 가장 처음과 마지막은 포함 IN을 통해 (여러개의 OR) 간소화 IS NULL을 통해 NULL filter IS NOT NULL을 통해 NULL이...","categories": ["SQL"],
+        "title": "[MySQL] WHERE & AND & OR & BETWEEN & IN & IS (NOT) NULL & LIKE",
+        "excerpt":"SQL Übung SQL 문법 정리(2) WHERE을 통해 filter WHERE는 FROM 이후에 작성 WHERE 조건이 여러개일 경우 조건을(AND, OR) 모두 작성해줘야함 AND &amp; OR은 괄호로 묶어주는 것이 좋음 BETWEEN을 통해 범위 filter 가장 처음과 마지막은 포함 IN을 통해 (여러개의 OR) 간소화 IS NULL을 통해 NULL filter IS NOT NULL을 통해 NULL이...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/sql_2_filter/",
+        "url": "/mysql/sql_2_filter/",
         "teaser": null
       },{
-        "title": "[SQL] AVG & SUM & MAX & MIN & AS",
-        "excerpt":"SQL Übung SQL 문법 정리(3) AVG 평균 NULL은 제외하고 계산됨 SUM 합계 MAX 최대값 MIN 최소값 연산자 + - / * % AS를 통해 column의 이름 수정 SUM 1-1) Aggregate functions Get the total duration of all films. SELECT SUM(duration) FROM films; MIN 1-2) Aggregate functions Get the duration of...","categories": ["SQL"],
+        "title": "[MySQL] AVG & SUM & MAX & MIN & AS",
+        "excerpt":"SQL Übung SQL 문법 정리(3) AVG 평균 NULL은 제외하고 계산됨 SUM 합계 MAX 최대값 MIN 최소값 연산자 + - / * % AS를 통해 column의 이름 수정 SUM 1-1) Aggregate functions Get the total duration of all films. SELECT SUM(duration) FROM films; MIN 1-2) Aggregate functions Get the duration of...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/sql_3_aggregate/",
+        "url": "/mysql/sql_3_aggregate/",
         "teaser": null
       },{
-        "title": "[SQL] ORDER BY & CAST & GROUP BY & HAVING & WITH ROLLUP",
-        "excerpt":"SQL Übung SQL 문법 정리(4) ORDER BY를 통해 정렬 ORDER BY 는 FROM 이후에 작성 DEFAULT는 ASCENDING, DESC를 통해 DESCENDING 가능 CAST를 통해 자료형을 일시적으로 변환시킬 수 있음 signed - 모든 정수(양수, 0, 음수) decimal - 살수(소수점을 포함하는 숫자 포함) 문자형 기준으로 SORT시, 한 문자씩 그 문자 순서를 비교해 정렬...","categories": ["SQL"],
+        "title": "[MySQL] ORDER BY & CAST & GROUP BY & HAVING & WITH ROLLUP",
+        "excerpt":"SQL Übung SQL 문법 정리(4) ORDER BY를 통해 정렬 ORDER BY 는 FROM 이후에 작성 DEFAULT는 ASCENDING, DESC를 통해 DESCENDING 가능 CAST를 통해 자료형을 일시적으로 변환시킬 수 있음 signed - 모든 정수(양수, 0, 음수) decimal - 살수(소수점을 포함하는 숫자 포함) 문자형 기준으로 SORT시, 한 문자씩 그 문자 순서를 비교해 정렬...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/sql_4_sorting_grouping/",
+        "url": "/mysql/sql_4_sorting_grouping/",
         "teaser": null
       },{
-        "title": "[SQL] INNER JOIN & USING & CASE WHEN",
-        "excerpt":"SQL Übung SQL JOIN 문법 정리(1) INNER JOIN ON 을 통해 동시에 존재하는 데이터 join key값이 같은 경우 ON 대신 USING() 사용 가능 CASE WHEN &amp; THEN, WHEN &amp; THEN ELSE &amp; END를 통해 조건에 따른 column 만들 수 있음 INTO를 통해 query를 만들 수 있음 CREATE VIEW INTO를 통해...","categories": ["SQL"],
+        "title": "[MySQL] INNER JOIN & USING & CASE WHEN",
+        "excerpt":"SQL Übung SQL JOIN 문법 정리(1) INNER JOIN ON 을 통해 동시에 존재하는 데이터 join key값이 같은 경우 ON 대신 USING() 사용 가능 CASE WHEN &amp; THEN, WHEN &amp; THEN ELSE &amp; END를 통해 조건에 따른 column 만들 수 있음 INTO를 통해 query를 만들 수 있음 CREATE VIEW INTO를 통해...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/sql2_1_inner_join/",
+        "url": "/mysql/sql2_1_inner_join/",
         "teaser": null
       },{
-        "title": "[SQL] LEFT JOIN & RIGHT JOIN & FULL JOIN & CROSS JOIN",
-        "excerpt":"SQL Übung SQL JOIN 문법 정리(2) LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join key값이 같은 경우 ON 대신 USING() 사용 가능 CROSS JOIN ON...","categories": ["SQL"],
+        "title": "[MySQL] LEFT JOIN & RIGHT JOIN & FULL JOIN & CROSS JOIN",
+        "excerpt":"SQL Übung SQL JOIN 문법 정리(2) LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join key값이 같은 경우 ON 대신 USING() 사용 가능 CROSS JOIN ON...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/sql2_2_outer_join/",
+        "url": "/mysql/sql2_2_outer_join/",
         "teaser": null
       },{
         "title": "[Python] Dplyr to Pandas",
@@ -269,10 +269,10 @@ var store = [{
         "url": "/codeit/algorithm22_maximum_profits_brute_force/",
         "teaser": null
       },{
-        "title": "[SQL] Programmers SQL 연습문제 (1)",
-        "excerpt":"SQL Übung - Programmers SQL 문제 풀이를 통한 연습 문제 1 16/10/2021 SELECT * FROM ANIMAL_INS ORDER BY ANIMAL_ID; 문제 2 16/10/2021 SELECT NAME, DATETIME FROM ANIMAL_INS ORDER BY ANIMAL_ID DESC; 문제 3 16/10/2021 SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION = 'Sick' ORDER BY ANIMAL_ID; 문제 4 16/10/2021 SELECT...","categories": ["SQL"],
+        "title": "[MySQL] Programmers SQL 연습문제 (1)",
+        "excerpt":"SQL Übung - Programmers SQL 문제 풀이를 통한 연습 문제 1 16/10/2021 SELECT * FROM ANIMAL_INS ORDER BY ANIMAL_ID; 문제 2 16/10/2021 SELECT NAME, DATETIME FROM ANIMAL_INS ORDER BY ANIMAL_ID DESC; 문제 3 16/10/2021 SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION = 'Sick' ORDER BY ANIMAL_ID; 문제 4 16/10/2021 SELECT...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/sql_practice_programmers(1)/",
+        "url": "/mysql/sql_practice_programmers(1)/",
         "teaser": null
       },{
         "title": "[Algorithm] 거듭제곱",
@@ -287,10 +287,10 @@ var store = [{
         "url": "/docker/docker1/",
         "teaser": null
       },{
-        "title": "[SQL] UNION & INTER & EXCEPT",
-        "excerpt":"SQL Übung SQL JOIN 문법 정리(3) UNION을 통해 두 데이터 간 합집함을 가져올 수 있음 중복되는 데이터는 한 개만 포함됨 UNION되는 데이터 세트의 열 개수가 같아야 함 UNION되는 데이터들의 열의 자료형이 같아야 함 UNION ALL을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음 중복된 데이터는 2개가 존재 INTER을...","categories": ["SQL"],
+        "title": "[MySQL] UNION & INTER & EXCEPT",
+        "excerpt":"SQL Übung SQL JOIN 문법 정리(3) UNION을 통해 두 데이터 간 합집함을 가져올 수 있음 중복되는 데이터는 한 개만 포함됨 UNION되는 데이터 세트의 열 개수가 같아야 함 UNION되는 데이터들의 열의 자료형이 같아야 함 UNION ALL을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음 중복된 데이터는 2개가 존재 INTER을...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/sql2_3_set_theory_clauses/",
+        "url": "/mysql/sql2_3_set_theory_clauses/",
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (1)",
@@ -299,10 +299,10 @@ var store = [{
         "url": "/programmers/programmers_coding_test(1)/",
         "teaser": null
       },{
-        "title": "[SQL] Subquery",
-        "excerpt":"SQL Übung SQL JOIN 문법 정리(4) Subquery - WHERE or HAVING/ SELECT/ FROM 안에 쿼리를 쓰는 것 ANY/SOME : 하나라도 조건을 만족하는 경우가 있으면 반환 ALL : 모든 조건을 만족하는 경우가 있으면 반환 Subquery는 독자적으로도 실행 가능한 비상관 코드와, 그렇지 않은 상관 코드로 구분할 수 있음 비상관 코드의 경우 각...","categories": ["SQL"],
+        "title": "[MySQL] Subquery",
+        "excerpt":"SQL Übung SQL JOIN 문법 정리(4) Subquery - WHERE or HAVING/ SELECT/ FROM 안에 쿼리를 쓰는 것 ANY/SOME : 하나라도 조건을 만족하는 경우가 있으면 반환 ALL : 모든 조건을 만족하는 경우가 있으면 반환 Subquery는 독자적으로도 실행 가능한 비상관 코드와, 그렇지 않은 상관 코드로 구분할 수 있음 비상관 코드의 경우 각...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/sql2_4_subquery/",
+        "url": "/mysql/sql2_4_subquery/",
         "teaser": null
       },{
         "title": "[Python] Data manipulation with pandas(1)",
@@ -341,10 +341,10 @@ var store = [{
         "url": "/programmers/programmers_coding_test(2)/",
         "teaser": null
       },{
-        "title": "[SQL] Programmers SQL 연습문제 (2)",
-        "excerpt":"SQL Übung - Programmers SQL 문제 풀이를 통한 연습 문제 11 22/10/2021 SELECT MIN(DATETIME) FROM ANIMAL_INS; 문제 12 22/10/2021 SELECT COUNT(*) FROM ANIMAL_INS; 문제 13 22/10/2021 SELECT COUNT(DISTINCT NAME) FROM ANIMAL_INS; 문제 14 22/10/2021 SELECT ANIMAL_TYPE, COUNT(ANIMAL_TYPE) AS count FROM ANIMAL_INS GROUP BY ANIMAL_TYPE ORDER BY ANIMAL_TYPE ASC 문제 15...","categories": ["SQL"],
+        "title": "[MySQL] Programmers SQL 연습문제 (2)",
+        "excerpt":"SQL Übung - Programmers SQL 문제 풀이를 통한 연습 문제 11 22/10/2021 SELECT MIN(DATETIME) FROM ANIMAL_INS; 문제 12 22/10/2021 SELECT COUNT(*) FROM ANIMAL_INS; 문제 13 22/10/2021 SELECT COUNT(DISTINCT NAME) FROM ANIMAL_INS; 문제 14 22/10/2021 SELECT ANIMAL_TYPE, COUNT(ANIMAL_TYPE) AS count FROM ANIMAL_INS GROUP BY ANIMAL_TYPE ORDER BY ANIMAL_TYPE ASC 문제 15...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/sql_practice_programmers(2)/",
+        "url": "/mysql/sql_practice_programmers(2)/",
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (3)",
@@ -407,16 +407,16 @@ var store = [{
         "url": "/cli/CLI_4/",
         "teaser": null
       },{
-        "title": "[SQL] SQL 날짜 함수 정리",
-        "excerpt":"SQL 날짜 함수 정리 YEAR : DATE형 자료형에서 연도만 추출 MONTH : DATE형 자료형에서 월만 추출 DAYOFMONTH : DATE형 자료형에서 일만 추출 DATEDIFF : DATE형 자료형들 간 날짜 차이 산출 CURDATE : 오늘 날짜 DATE_ADD : 날짜 더하기 DATE_SUB : 날짜 빼기 UNIX_TIMESTAMP : DATE 자료형을 Unix timestamp(1970년 1월 1일을...","categories": ["SQL"],
+        "title": "[MySQL] SQL 날짜 함수 정리",
+        "excerpt":"SQL 날짜 함수 정리 YEAR : DATE형 자료형에서 연도만 추출 MONTH : DATE형 자료형에서 월만 추출 DAYOFMONTH : DATE형 자료형에서 일만 추출 DATEDIFF : DATE형 자료형들 간 날짜 차이 산출 CURDATE : 오늘 날짜 DATE_ADD : 날짜 더하기 DATE_SUB : 날짜 빼기 UNIX_TIMESTAMP : DATE 자료형을 Unix timestamp(1970년 1월 1일을...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/codeit_sql1/",
+        "url": "/mysql/codeit_sql1/",
         "teaser": null
       },{
-        "title": "[SQL] SQL 산술 함수 정리",
-        "excerpt":"SQL 산술 함수 정리 집계함수(ex. SUM, MAX, MIN, AVG 등)은 column에 대한 특징값을 반환 산술함수는 각 row에 대한 산술 연산에 대한 결과값을 반환 STD - 표준편차 ABS - 절대값 SQRT - 제곱근 CEIL - 올림 FLOOR - 내림 ROUND - 반올림 그 외 산술 함수 공식 문서 🔗 MYSQL 산술함수...","categories": ["SQL"],
+        "title": "[MySQL] SQL 산술 함수 정리",
+        "excerpt":"SQL 산술 함수 정리 집계함수(ex. SUM, MAX, MIN, AVG 등)은 column에 대한 특징값을 반환 산술함수는 각 row에 대한 산술 연산에 대한 결과값을 반환 STD - 표준편차 ABS - 절대값 SQRT - 제곱근 CEIL - 올림 FLOOR - 내림 ROUND - 반올림 그 외 산술 함수 공식 문서 🔗 MYSQL 산술함수...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/codeit_sql2/",
+        "url": "/mysql/codeit_sql2/",
         "teaser": null
       },{
         "title": "[Algorithm] 주식 최대 이익",
@@ -437,10 +437,10 @@ var store = [{
         "url": "/codeit/algorithm30_ways_of_stairs2/",
         "teaser": null
       },{
-        "title": "[SQL] SQL COALESCE & IFNULL & CONCAT & IF",
-        "excerpt":"SQL COALESCE &amp; IFNULL &amp; CONCAT &amp; IF COALESCE - NULL 값을 다른 값으로 대체해서 반환, 2개 이상의 조건 가능 IFNULL - NULL 값을 다른 값으로 대체해서 반환 CONCAT - concatenate IF - 조건문 COALESCE height column의 빈 값은 ‘N/A’으로, weight column의 빈 값은 ‘값 비어있음’으로 대체 후 반환하시오 SELECT...","categories": ["SQL"],
+        "title": "[MySQL] SQL COALESCE & IFNULL & CONCAT & IF",
+        "excerpt":"SQL COALESCE &amp; IFNULL &amp; CONCAT &amp; IF COALESCE - NULL 값을 다른 값으로 대체해서 반환, 2개 이상의 조건 가능 IFNULL - NULL 값을 다른 값으로 대체해서 반환 CONCAT - concatenate IF - 조건문 COALESCE height column의 빈 값은 ‘N/A’으로, weight column의 빈 값은 ‘값 비어있음’으로 대체 후 반환하시오 SELECT...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/codeit_sql3/",
+        "url": "/mysql/codeit_sql3/",
         "teaser": null
       },{
         "title": "[Algorithm] 효율적으로 중복되는 숫자 찾기(2)",
@@ -449,10 +449,10 @@ var store = [{
         "url": "/codeit/algorithm31_find_duplicated2/",
         "teaser": null
       },{
-        "title": "[SQL] SQL 문자열 함수 정리",
-        "excerpt":"SQL 문자열 함수 정리 SUBSTRING - 문자열의 일부 추출 LENGTH - 문자열 길이 반환 UPPER - 문자열을 모두 대문자로 반환 LOWER - 문자열을 모두 소문자로 반환 LPAD - 문자열의 왼쪽에 특정 문자 붙인 뒤 반환 RPAD - 문자열의 오른쪽에 특정 문자 붙인 뒤 반환 TRIM - 문자열의 공백 제거한 뒤...","categories": ["SQL"],
+        "title": "[MySQL] SQL 문자열 함수 정리",
+        "excerpt":"SQL 문자열 함수 정리 SUBSTRING - 문자열의 일부 추출 LENGTH - 문자열 길이 반환 UPPER - 문자열을 모두 대문자로 반환 LOWER - 문자열을 모두 소문자로 반환 LPAD - 문자열의 왼쪽에 특정 문자 붙인 뒤 반환 RPAD - 문자열의 오른쪽에 특정 문자 붙인 뒤 반환 TRIM - 문자열의 공백 제거한 뒤...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/codeit_sql4/",
+        "url": "/mysql/codeit_sql4/",
         "teaser": null
       },{
         "title": "[Algorithm] 리스트 항목의 합 탐색",
@@ -473,16 +473,16 @@ var store = [{
         "url": "/programmers/programmers_coding_test(5)/",
         "teaser": null
       },{
-        "title": "[SQL] Hackerrank SQL 연습문제 (1)",
-        "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Revising the Select Query I 10/11/2021 SELECT * FROM city WHERE countrycode=\"USA\" AND population &gt; 100000 Revising the Select Query II 10/11/2021 SELECT name FROM city WHERE population &gt; 120000 AND countrycode=\"USA\"; Select All 10/11/2021 SELECT * FROM city; Select...","categories": ["SQL"],
+        "title": "[MySQL] Hackerrank SQL 연습문제 (1)",
+        "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Revising the Select Query I 10/11/2021 SELECT * FROM city WHERE countrycode=\"USA\" AND population &gt; 100000 Revising the Select Query II 10/11/2021 SELECT name FROM city WHERE population &gt; 120000 AND countrycode=\"USA\"; Select All 10/11/2021 SELECT * FROM city; Select...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/hackerrank(1)/",
+        "url": "/mysql/hackerrank(1)/",
         "teaser": null
       },{
-        "title": "[SQL] Hackerrank SQL 연습문제 (2)",
-        "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Weather Observation Station 6 11/11/2021 SELECT DISTINCT(city) FROM station WHERE SUBSTRING(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u'); Weather Observation Station 7 13/11/2021 SELECT DISTINCT(city) FROM station WHERE SUBSTRING(city, -1, 1) IN ('a', 'e', 'i', 'o', 'u'); Weather Observation...","categories": ["SQL"],
+        "title": "[MySQL] Hackerrank SQL 연습문제 (2)",
+        "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Weather Observation Station 6 11/11/2021 SELECT DISTINCT(city) FROM station WHERE SUBSTRING(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u'); Weather Observation Station 7 13/11/2021 SELECT DISTINCT(city) FROM station WHERE SUBSTRING(city, -1, 1) IN ('a', 'e', 'i', 'o', 'u'); Weather Observation...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/hackerrank(2)/",
+        "url": "/mysql/hackerrank(2)/",
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)",
@@ -491,10 +491,10 @@ var store = [{
         "url": "/programmers/programmers_coding_test(6)/",
         "teaser": null
       },{
-        "title": "[SQL] Hackerrank SQL 연습문제 (3)",
-        "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Type of Triangle 16/11/2021 SELECT CASE WHEN A+B&gt;C AND A+C&gt;B AND B+C&gt;A THEN CASE WHEN A=B AND B=C AND A=C THEN \"Equilateral\" WHEN A=B OR B=C OR A=C THEN \"Isosceles\" ELSE \"Scalene\" END ELSE \"Not A Triangle\" END FROM triangles;...","categories": ["SQL"],
+        "title": "[MySQL] Hackerrank SQL 연습문제 (3)",
+        "excerpt":"SQL Übung - Hackerrank SQL 문제 풀이를 통한 SQL 연습 Type of Triangle 16/11/2021 SELECT CASE WHEN A+B&gt;C AND A+C&gt;B AND B+C&gt;A THEN CASE WHEN A=B AND B=C AND A=C THEN \"Equilateral\" WHEN A=B OR B=C OR A=C THEN \"Isosceles\" ELSE \"Scalene\" END ELSE \"Not A Triangle\" END FROM triangles;...","categories": ["MYSQL"],
         "tags": ["SQL"],
-        "url": "/sql/hackerrank(3)/",
+        "url": "/mysql/hackerrank(3)/",
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)",

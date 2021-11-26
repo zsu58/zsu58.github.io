@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/sql" class="">SQL (17)</a></li>
+                        <li><a href="/categories/mysql" class="">MySQL (17)</a></li>
                     
                 
                     
@@ -508,7 +508,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#n개의-최소공배수">N개의 최소공배수</a></li><li><a href="#jadencase-문자열-만들기">JadenCase 문자열 만들기</a></li><li><a href="#행렬의-곱셈">행렬의 곱셈</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#n개의-최소공배수">N개의 최소공배수</a></li><li><a href="#jadencase-문자열-만들기">JadenCase 문자열 만들기</a></li><li><a href="#행렬의-곱셈">행렬의 곱셈</a></li><li><a href="#피보나치-수">피보나치 수</a></li><li><a href="#최댓값과-최솟값">최댓값과 최솟값</a></li><li><a href="#숫자의-표현">숫자의 표현</a></li><li><a href="#다음-큰-숫자">다음 큰 숫자</a></li><li><a href="#3차-n진수-게임">[3차] n진수 게임</a></li></ul>
 
             </nav>
           </aside>
@@ -572,7 +572,7 @@
 
 <h3 id="행렬의-곱셈">행렬의 곱셈</h3>
 <ul>
-  <li>19/11/2021</li>
+  <li>20/11/2021</li>
 </ul>
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test57.png" align="center" />
@@ -582,6 +582,157 @@
 </code></pre></div></div>
 
 <hr />
+
+<h3 id="피보나치-수">피보나치 수</h3>
+<ul>
+  <li>21/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test58.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">fiboList</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">fiboList</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">fiboList</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">fiboList</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">fiboList</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">%</span><span class="mi">1234567</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    
+    <span class="k">return</span> <span class="n">b</span><span class="o">%</span><span class="mi">1234567</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="최댓값과-최솟값">최댓값과 최솟값</h3>
+<ul>
+  <li>22/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test59.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">valList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">))</span>
+    <span class="n">minVal</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">valList</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">maxVal</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">valList</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">valList</span><span class="p">:</span>
+        <span class="n">maxVal</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">maxVal</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="n">minVal</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">minVal</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">minVal</span><span class="p">)</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">maxVal</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="숫자의-표현">숫자의 표현</h3>
+<ul>
+  <li>23/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test60.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">sum</span> <span class="o">=</span><span class="mi">0</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="nb">sum</span> <span class="o">+=</span> <span class="n">j</span>
+            <span class="k">if</span> <span class="nb">sum</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+                <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="nb">sum</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">:</span>
+                <span class="k">break</span>
+    <span class="k">return</span> <span class="n">answer</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">expressions</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">([</span><span class="n">i</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">num</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="n">i</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">])</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="다음-큰-숫자">다음 큰 숫자</h3>
+<ul>
+  <li>24/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test61.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    
+    <span class="n">numOne</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">n</span><span class="p">).</span><span class="n">count</span><span class="p">(</span><span class="s">"1"</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="nb">bin</span><span class="p">(</span><span class="n">n</span><span class="p">).</span><span class="n">count</span><span class="p">(</span><span class="s">"1"</span><span class="p">)</span> <span class="o">==</span> <span class="n">numOne</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">return</span> <span class="n">n</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3차-n진수-게임">[3차] n진수 게임</h3>
+<ul>
+  <li>25/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test62.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">convertDict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">10</span><span class="p">:</span><span class="s">"A"</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span><span class="s">"B"</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span><span class="s">"C"</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="s">"D"</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="s">"E"</span><span class="p">,</span> <span class="mi">15</span><span class="p">:</span><span class="s">"F"</span><span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"0"</span>
+
+    <span class="n">ans</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">num</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">num</span><span class="o">%</span><span class="n">n</span> <span class="ow">in</span> <span class="n">convertDict</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="n">convertDict</span><span class="p">[</span><span class="n">num</span><span class="o">%</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">ans</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="o">%</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">ans</span>
+        <span class="n">num</span> <span class="o">//=</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">ans</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+
+    <span class="n">replies</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">replies</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">t</span><span class="o">*</span><span class="n">m</span><span class="p">):</span>
+        <span class="n">replies</span> <span class="o">+=</span> <span class="n">convert</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">replies</span><span class="p">[</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">t</span><span class="o">*</span><span class="n">m</span><span class="p">:</span><span class="n">m</span><span class="p">]</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s">"0"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">,</span> <span class="s">"3"</span><span class="p">,</span> <span class="s">"4"</span><span class="p">,</span> <span class="s">"5"</span><span class="p">,</span> <span class="s">"6"</span><span class="p">,</span> <span class="s">"7"</span><span class="p">,</span> <span class="s">"8"</span><span class="p">,</span> <span class="s">"9"</span><span class="p">,</span> <span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">,</span> <span class="s">"D"</span><span class="p">,</span> <span class="s">"E"</span><span class="p">,</span> <span class="s">"F"</span><span class="p">]</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="s">"0"</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">*</span><span class="n">m</span><span class="p">):</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">temp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">number</span><span class="o">%</span><span class="n">n</span><span class="p">])</span>
+            <span class="n">number</span> <span class="o">//=</span> <span class="n">n</span>
+        <span class="n">numbers</span> <span class="o">+=</span> <span class="s">""</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">numbers</span><span class="p">[</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">t</span><span class="o">*</span><span class="n">m</span><span class="p">:</span><span class="n">m</span><span class="p">]</span>
+
+<span class="c1"># 참고 : 10진수 숫자를 n진수로 바꾸는 함수
+</span><span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"0"</span>
+
+    <span class="n">ans</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">num</span><span class="p">):</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="o">%</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">ans</span>
+        <span class="n">num</span> <span class="o">//=</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">ans</span>
+</code></pre></div></div>
+
+<hr />
+
 
         
       </section>
@@ -646,7 +797,7 @@
       
   <nav class="pagination">
     
-      <a href="/sql/hackerrank(3)/" class="pagination--pager" title="[SQL] Hackerrank SQL 연습문제 (3)
+      <a href="/mysql/hackerrank(3)/" class="pagination--pager" title="[MySQL] Hackerrank SQL 연습문제 (3)
 ">Previous</a>
     
     
@@ -674,7 +825,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/sql/hackerrank(3)/" rel="permalink">[SQL] Hackerrank SQL 연습문제 (3)
+        <a href="/mysql/hackerrank(3)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (3)
 </a>
       
     </h2>
@@ -764,7 +915,7 @@ ALGORITHM Übung - Programmers
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/sql/hackerrank(2)/" rel="permalink">[SQL] Hackerrank SQL 연습문제 (2)
+        <a href="/mysql/hackerrank(2)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (2)
 </a>
       
     </h2>
@@ -809,7 +960,7 @@ SQL Übung - Hackerrank
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/sql/hackerrank(1)/" rel="permalink">[SQL] Hackerrank SQL 연습문제 (1)
+        <a href="/mysql/hackerrank(1)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (1)
 </a>
       
     </h2>

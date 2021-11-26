@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/sql" class="">SQL (17)</a></li>
+                        <li><a href="/categories/mysql" class="">MySQL (17)</a></li>
                     
                 
                     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#docker">Docker</a></li><li><a href="#docker-관련-명령어">Docker 관련 명령어</a></li><li><a href="#mysql--postgresql-in-docker">MySQL &amp; PostgreSQL in Docker</a></li></ul>
+              <ul class="toc__menu"><li><a href="#docker">Docker</a></li><li><a href="#docker-관련-명령어">Docker 관련 명령어</a></li><li><a href="#mysql--postgresql-in-docker">MySQL &amp; PostgreSQL in Docker</a></li><li><a href="#docker-mysql-sql-dump">DOCKER MYSQL sql dump</a></li></ul>
 
             </nav>
           </aside>
@@ -584,6 +584,27 @@
 <span class="c1"># postgresql 컨테이너 생성
 </span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">postgresql1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5432</span><span class="p">:</span><span class="mi">5432</span> <span class="o">-</span><span class="n">e</span> <span class="n">POSTGRES_PASSWORD</span><span class="o">=</span><span class="mi">1234</span> <span class="o">-</span><span class="n">e</span> <span class="n">POSTGRES_USER</span><span class="o">=</span><span class="n">carl020958</span> <span class="o">-</span><span class="n">e</span> <span class="n">POSTGRES_DB</span><span class="o">=</span><span class="n">first_postgres</span> <span class="o">-</span><span class="n">d</span> <span class="n">postgres</span>
 </code></pre></div></div>
+
+<hr />
+
+<h3 id="docker-mysql-sql-dump">DOCKER MYSQL sql dump</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># local directory에서 docker container으로 cp docker cp [file/directory] [container_id:/home]
+</span><span class="n">docker</span> <span class="n">cp</span> <span class="n">emp</span> <span class="n">fad2828c2116</span><span class="p">:</span><span class="o">/</span><span class="n">home</span>
+<span class="n">docker</span> <span class="n">cp</span> <span class="n">employees</span> <span class="n">fad2828c2116</span><span class="p">:</span><span class="o">/</span><span class="n">home</span>
+
+<span class="c1"># docker을 통해 MySQL 서버에 로그인 docker exec -it [mysql container_id] /bin/bash
+</span><span class="n">docker</span> <span class="k">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">mysql1</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+
+<span class="c1"># mysql -p[password]
+</span><span class="n">mysql</span> <span class="o">-</span><span class="n">p1234</span>
+
+<span class="c1"># mysql 서버에서 실행
+</span><span class="n">source</span> <span class="n">home</span><span class="o">/</span><span class="n">emp</span><span class="o">/</span><span class="n">createTable</span><span class="p">.</span><span class="n">sql</span>
+<span class="n">source</span> <span class="n">home</span><span class="o">/</span><span class="n">emp</span><span class="o">/</span><span class="n">insertTable</span><span class="p">.</span><span class="n">sql</span>
+<span class="n">soure</span> <span class="n">home</span><span class="o">/</span><span class="n">employees</span><span class="o">/</span><span class="n">employees</span><span class="p">.</span><span class="n">sql</span>
+<span class="c1"># employees.sql의 source의 directory 확인!
+</span></code></pre></div></div>
 
 <hr />
 
@@ -656,7 +677,7 @@
 ">Previous</a>
     
     
-      <a href="/sql/sql2_3_set_theory_clauses/" class="pagination--pager" title="[SQL] UNION &amp; INTER &amp; EXCEPT
+      <a href="/mysql/sql2_3_set_theory_clauses/" class="pagination--pager" title="[MySQL] UNION &amp; INTER &amp; EXCEPT
 ">Next</a>
     
   </nav>
@@ -699,7 +720,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -726,7 +747,7 @@ ALGORITHM Übung - Programmers
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/sql/hackerrank(3)/" rel="permalink">[SQL] Hackerrank SQL 연습문제 (3)
+        <a href="/mysql/hackerrank(3)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (3)
 </a>
       
     </h2>
@@ -816,7 +837,7 @@ ALGORITHM Übung - Programmers
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/sql/hackerrank(2)/" rel="permalink">[SQL] Hackerrank SQL 연습문제 (2)
+        <a href="/mysql/hackerrank(2)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (2)
 </a>
       
     </h2>

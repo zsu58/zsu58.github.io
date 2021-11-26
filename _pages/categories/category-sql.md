@@ -1,11 +1,11 @@
 ---
-title: "Data-Engineering - SQL"
+title: "Data-Engineering - MySQL"
 layout: archive
-permalink: categories/sql
+permalink: categories/mysql
 author_profile: true
 sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.SQL %}
+{% assign posts = site.categories.MYSQL %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {%endfor %}

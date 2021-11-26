@@ -1,0 +1,4 @@
+# 사이드바에 새로운 것 추가하는 경우
+1) category를 꼭 신경써서 저장, 카테고리에 따라 연동됨
+2) _pages/categories에 md파일 추가, 이전파일들 참고해서 만들면 됨
+3) _inclues/nav_list_main 수정(추가) (<ul> </ul> 부분)

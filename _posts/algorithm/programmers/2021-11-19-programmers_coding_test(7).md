@@ -207,3 +207,25 @@ def convert(num, n):
 
 ---
 
+### A Correct Parenthesis
+* 26/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test63.png" align="center">
+</p>
+```python
+def solution(s):
+
+    openP = 0
+    for p in s:
+        if p == "(":
+            openP += 1
+        else:
+            openP -= 1
+        if openP < 0:
+            return False
+
+    return openP == 0
+```
+
+---
+

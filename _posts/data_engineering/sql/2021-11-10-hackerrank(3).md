@@ -1,12 +1,12 @@
 ---
-title: "[SQL] Hackerrank SQL 연습문제 (3)"
+title: "[MySQL] Hackerrank SQL 연습문제 (3)"
 layout: single
 date: '16/11/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
 categories:
-  - SQL
+  - MYSQL
 tags:
   - SQL
 ---

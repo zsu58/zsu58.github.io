@@ -17,8 +17,8 @@
                 <!--sql 카테고리 글들을 모아둔 페이지인 /categories/sql 주소의 글로 링크 연결-->
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
-                    {% if category[0] == "SQL" %}
-                        <li><a href="/categories/sql" class="">SQL ({{category[1].size}})</a></li>
+                    {% if category[0] == "MYSQL" %}
+                        <li><a href="/categories/mysql" class="">MySQL ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
