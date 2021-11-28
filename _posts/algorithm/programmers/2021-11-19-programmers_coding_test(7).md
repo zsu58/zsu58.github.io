@@ -229,3 +229,21 @@ def solution(s):
 
 ---
 
+### 땅따먹기
+* 28/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test64.png" align="center">
+</p>
+```python
+def solution(land):
+    for i in range(1,len(land)):
+        for j in range(4):
+            land[i][j] += max(land[i-1][:j] + land[i-1][j+1:])
+    return max(land[-1])
+```
+
+---
+
+
+
+
