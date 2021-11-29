@@ -1,10 +1,10 @@
-I"�#<hr />
+I"@$<hr />
 <h3 id="sql-übung">SQL Übung</h3>
 <ul>
   <li>SQL JOIN 문법 정리(2)</li>
   <li><code class="language-plaintext highlighter-rouge">LEFT JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join</li>
   <li><code class="language-plaintext highlighter-rouge">RIGHT JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join</li>
-  <li><code class="language-plaintext highlighter-rouge">FULL JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join
+  <li><code class="language-plaintext highlighter-rouge">FULL JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join, MySQL에서는 불가능
     <ul>
       <li>key값이 같은 경우 <code class="language-plaintext highlighter-rouge">ON</code> 대신 <code class="language-plaintext highlighter-rouge">USING()</code> 사용 가능</li>
     </ul>
@@ -64,6 +64,7 @@
   <li>Next, full join this result with currencies on the right</li>
   <li>Use LIKE to choose the Melanesia and Micronesia regions</li>
   <li>Select the fields corresponding to the country name AS country, region, language name AS language, and basic and fractional units of currency</li>
+  <li>MySQL에서는 UNION을 통해 해당 부분 대체</li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">c1</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">country</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">language</span><span class="p">,</span>

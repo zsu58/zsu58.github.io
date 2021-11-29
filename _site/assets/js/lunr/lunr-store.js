@@ -54,7 +54,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[MySQL] LEFT JOIN & RIGHT JOIN & FULL JOIN & CROSS JOIN",
-        "excerpt":"SQL Übung SQL JOIN 문법 정리(2) LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join key값이 같은 경우 ON 대신 USING() 사용 가능 CROSS JOIN ON...","categories": ["MYSQL"],
+        "excerpt":"SQL Übung SQL JOIN 문법 정리(2) LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join, MySQL에서는 불가능 key값이 같은 경우 ON 대신 USING() 사용 가능 CROSS...","categories": ["MYSQL"],
         "tags": ["SQL"],
         "url": "/mysql/sql2_2_outer_join/",
         "teaser": null
@@ -501,5 +501,11 @@ var store = [{
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 N개의 최소공배수 19/11/2021 def solution(arr): def gcd(x, y): while(x): x, y = y%x, x return y res = 1 for i in arr: res *= i // gcd(res, i) return res JadenCase 문자열 만들기 19/11/2021 def solution(s): return \"...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(7)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)",
+        "excerpt":" ALGORITHM Übung - Programmers     알고리즘 문제 풀이를 통한 코딩 테스트 연습     [3차] 파일명 정렬     29/11/2021               import re  def solution(files):     files = sorted(files, key=lambda x:                                 (re.findall(r\"[a-zA-Z-.\\s]+\", x.lower())[0],                                 int(re.findall(r\"[0-9]+\", x)[0]))                    )     return files     ","categories": ["PROGRAMMERS"],
+        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "url": "/programmers/programmers_coding_test(8)/",
         "teaser": null
       }]

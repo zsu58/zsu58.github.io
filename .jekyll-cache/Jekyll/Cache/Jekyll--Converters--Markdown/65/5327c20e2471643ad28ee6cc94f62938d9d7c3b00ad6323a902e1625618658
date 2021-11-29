@@ -1,4 +1,5 @@
-I"�<hr />
+I"
+<hr />
 <h3 id="sql-übung">SQL Übung</h3>
 <ul>
   <li>SQL JOIN 문법 정리(3)</li>
@@ -14,8 +15,8 @@
       <li>중복된 데이터는 2개가 존재</li>
     </ul>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">INTER</code>을 통해 교집합만 가져올 수 있음</li>
-  <li><code class="language-plaintext highlighter-rouge">EXCEPT</code>을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음
+  <li><code class="language-plaintext highlighter-rouge">INTER</code>을 통해 교집합만 가져올 수 있음 - MySQL에서는 Subquery로 해결</li>
+  <li><code class="language-plaintext highlighter-rouge">EXCEPT</code>을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음 - MySQL에서는 Subquery로 해결
 <br /><br /></li>
   <li>SEMI JOIN - <code class="language-plaintext highlighter-rouge">WHERE</code> &amp; <code class="language-plaintext highlighter-rouge">IN</code>에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음</li>
   <li>ANTI JOIN - <code class="language-plaintext highlighter-rouge">WHERE</code> &amp; <code class="language-plaintext highlighter-rouge">NOT IN</code>에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음</li>

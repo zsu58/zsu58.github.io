@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">84</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">85</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -446,7 +446,7 @@
                     
                 
                     
-                        <li><a href="/categories/programmers" class="">Programmers (7)</a></li>
+                        <li><a href="/categories/programmers" class="">Programmers (8)</a></li>
                     
                 
                     
@@ -508,7 +508,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          2 minute read
         
       </span>
     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#n개의-최소공배수">N개의 최소공배수</a></li><li><a href="#jadencase-문자열-만들기">JadenCase 문자열 만들기</a></li><li><a href="#행렬의-곱셈">행렬의 곱셈</a></li><li><a href="#피보나치-수">피보나치 수</a></li><li><a href="#최댓값과-최솟값">최댓값과 최솟값</a></li><li><a href="#숫자의-표현">숫자의 표현</a></li><li><a href="#다음-큰-숫자">다음 큰 숫자</a></li><li><a href="#3차-n진수-게임">[3차] n진수 게임</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#n개의-최소공배수">N개의 최소공배수</a></li><li><a href="#jadencase-문자열-만들기">JadenCase 문자열 만들기</a></li><li><a href="#행렬의-곱셈">행렬의 곱셈</a></li><li><a href="#피보나치-수">피보나치 수</a></li><li><a href="#최댓값과-최솟값">최댓값과 최솟값</a></li><li><a href="#숫자의-표현">숫자의 표현</a></li><li><a href="#다음-큰-숫자">다음 큰 숫자</a></li><li><a href="#3차-n진수-게임">[3차] n진수 게임</a></li><li><a href="#a-correct-parenthesis">A Correct Parenthesis</a></li><li><a href="#땅따먹기">땅따먹기</a></li></ul>
 
             </nav>
           </aside>
@@ -733,6 +733,45 @@
 
 <hr />
 
+<h3 id="a-correct-parenthesis">A Correct Parenthesis</h3>
+<ul>
+  <li>26/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test63.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+
+    <span class="n">openP</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="s">"("</span><span class="p">:</span>
+            <span class="n">openP</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">openP</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">openP</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">return</span> <span class="n">openP</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="땅따먹기">땅따먹기</h3>
+<ul>
+  <li>28/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test64.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">land</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">land</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">land</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">max</span><span class="p">(</span><span class="n">land</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">land</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">land</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></div>
+
+<hr />
+
 
         
       </section>
@@ -801,7 +840,8 @@
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/programmers/programmers_coding_test(8)/" class="pagination--pager" title="[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
+">Next</a>
     
   </nav>
 
@@ -815,6 +855,51 @@
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers_coding_test(8)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -934,51 +1019,6 @@ ALGORITHM Übung - Programmers
         <i class="far fa-clock" aria-hidden="true"></i>
         
           1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL Übung - Hackerrank
-
-  SQL 문제 풀이를 통한 SQL 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/hackerrank(1)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (1)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
         
       </span>
     

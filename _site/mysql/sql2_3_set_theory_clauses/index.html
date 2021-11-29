@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>[MySQL] UNION &amp; INTER &amp; EXCEPT - Bibliothek für Data-Engineering</title>
-<meta name="description" content="SQL Übung    SQL JOIN 문법 정리(3)   UNION을 통해 두 데이터 간 합집함을 가져올 수 있음            중복되는 데이터는 한 개만 포함됨       UNION되는 데이터 세트의 열 개수가 같아야 함       UNION되는 데이터들의 열의 자료형이 같아야 함           UNION ALL을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음            중복된 데이터는 2개가 존재           INTER을 통해 교집합만 가져올 수 있음   EXCEPT을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음    SEMI JOIN - WHERE &amp; IN에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음   ANTI JOIN - WHERE &amp; NOT IN에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음">
+<meta name="description" content="SQL Übung    SQL JOIN 문법 정리(3)   UNION을 통해 두 데이터 간 합집함을 가져올 수 있음            중복되는 데이터는 한 개만 포함됨       UNION되는 데이터 세트의 열 개수가 같아야 함       UNION되는 데이터들의 열의 자료형이 같아야 함           UNION ALL을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음            중복된 데이터는 2개가 존재           INTER을 통해 교집합만 가져올 수 있음 - MySQL에서는 Subquery로 해결   EXCEPT을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음 - MySQL에서는 Subquery로 해결    SEMI JOIN - WHERE &amp; IN에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음   ANTI JOIN - WHERE &amp; NOT IN에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음">
 
 
   <meta name="author" content="ZSU">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/mysql/sql2_3_set_theory_clauses/">
 
 
-  <meta property="og:description" content="SQL Übung    SQL JOIN 문법 정리(3)   UNION을 통해 두 데이터 간 합집함을 가져올 수 있음            중복되는 데이터는 한 개만 포함됨       UNION되는 데이터 세트의 열 개수가 같아야 함       UNION되는 데이터들의 열의 자료형이 같아야 함           UNION ALL을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음            중복된 데이터는 2개가 존재           INTER을 통해 교집합만 가져올 수 있음   EXCEPT을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음    SEMI JOIN - WHERE &amp; IN에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음   ANTI JOIN - WHERE &amp; NOT IN에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음">
+  <meta property="og:description" content="SQL Übung    SQL JOIN 문법 정리(3)   UNION을 통해 두 데이터 간 합집함을 가져올 수 있음            중복되는 데이터는 한 개만 포함됨       UNION되는 데이터 세트의 열 개수가 같아야 함       UNION되는 데이터들의 열의 자료형이 같아야 함           UNION ALL을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음            중복된 데이터는 2개가 존재           INTER을 통해 교집합만 가져올 수 있음 - MySQL에서는 Subquery로 해결   EXCEPT을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음 - MySQL에서는 Subquery로 해결    SEMI JOIN - WHERE &amp; IN에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음   ANTI JOIN - WHERE &amp; NOT IN에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">84</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">85</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -446,7 +446,7 @@
                     
                 
                     
-                        <li><a href="/categories/programmers" class="">Programmers (7)</a></li>
+                        <li><a href="/categories/programmers" class="">Programmers (8)</a></li>
                     
                 
                     
@@ -485,7 +485,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[MySQL] UNION &amp; INTER &amp; EXCEPT">
-    <meta itemprop="description" content="SQL Übung  SQL JOIN 문법 정리(3)  UNION을 통해 두 데이터 간 합집함을 가져올 수 있음          중복되는 데이터는 한 개만 포함됨      UNION되는 데이터 세트의 열 개수가 같아야 함      UNION되는 데이터들의 열의 자료형이 같아야 함        UNION ALL을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음          중복된 데이터는 2개가 존재        INTER을 통해 교집합만 가져올 수 있음  EXCEPT을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음  SEMI JOIN - WHERE &amp; IN에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음  ANTI JOIN - WHERE &amp; NOT IN에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음">
+    <meta itemprop="description" content="SQL Übung  SQL JOIN 문법 정리(3)  UNION을 통해 두 데이터 간 합집함을 가져올 수 있음          중복되는 데이터는 한 개만 포함됨      UNION되는 데이터 세트의 열 개수가 같아야 함      UNION되는 데이터들의 열의 자료형이 같아야 함        UNION ALL을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음          중복된 데이터는 2개가 존재        INTER을 통해 교집합만 가져올 수 있음 - MySQL에서는 Subquery로 해결  EXCEPT을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음 - MySQL에서는 Subquery로 해결  SEMI JOIN - WHERE &amp; IN에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음  ANTI JOIN - WHERE &amp; NOT IN에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음">
     <meta itemprop="datePublished" content="2021-10-17T00:00:00+09:00">
     
 
@@ -544,8 +544,8 @@
       <li>중복된 데이터는 2개가 존재</li>
     </ul>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">INTER</code>을 통해 교집합만 가져올 수 있음</li>
-  <li><code class="language-plaintext highlighter-rouge">EXCEPT</code>을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음
+  <li><code class="language-plaintext highlighter-rouge">INTER</code>을 통해 교집합만 가져올 수 있음 - MySQL에서는 Subquery로 해결</li>
+  <li><code class="language-plaintext highlighter-rouge">EXCEPT</code>을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음 - MySQL에서는 Subquery로 해결
 <br /><br /></li>
   <li>SEMI JOIN - <code class="language-plaintext highlighter-rouge">WHERE</code> &amp; <code class="language-plaintext highlighter-rouge">IN</code>에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음</li>
   <li>ANTI JOIN - <code class="language-plaintext highlighter-rouge">WHERE</code> &amp; <code class="language-plaintext highlighter-rouge">NOT IN</code>에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음</li>
@@ -734,6 +734,51 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/programmers/programmers_coding_test(8)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/programmers/programmers_coding_test(7)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)
 </a>
       
@@ -752,7 +797,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          2 minute read
         
       </span>
     
@@ -854,51 +899,6 @@ SQL Übung - Hackerrank
 ALGORITHM Übung - Programmers
 
   알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/hackerrank(2)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (2)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL Übung - Hackerrank
-
-  SQL 문제 풀이를 통한 SQL 연습
 
 </p>
   </article>

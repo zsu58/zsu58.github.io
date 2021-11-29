@@ -1,4 +1,4 @@
-I"�O<hr />
+I"�\<hr />
 <h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
 <ul>
   <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
@@ -199,6 +199,45 @@
         <span class="n">ans</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="o">%</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">ans</span>
         <span class="n">num</span> <span class="o">//=</span> <span class="n">n</span>
     <span class="k">return</span> <span class="n">ans</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="a-correct-parenthesis">A Correct Parenthesis</h3>
+<ul>
+  <li>26/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test63.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+
+    <span class="n">openP</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="s">"("</span><span class="p">:</span>
+            <span class="n">openP</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">openP</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">openP</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">return</span> <span class="n">openP</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="땅따먹기">땅따먹기</h3>
+<ul>
+  <li>28/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test64.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">land</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">land</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">land</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">max</span><span class="p">(</span><span class="n">land</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">land</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">land</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </code></pre></div></div>
 
 <hr />

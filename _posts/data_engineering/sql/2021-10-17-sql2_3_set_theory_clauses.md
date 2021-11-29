@@ -20,8 +20,8 @@ tags:
     * `UNION`되는 데이터들의 열의 자료형이 같아야 함
 * `UNION ALL`을 통해 두 데이터 간 합집합 + 교집합을 가져올 수 있음
     * 중복된 데이터는 2개가 존재
-* `INTER`을 통해 교집합만 가져올 수 있음
-* `EXCEPT`을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음
+* `INTER`을 통해 교집합만 가져올 수 있음 - MySQL에서는 Subquery로 해결
+* `EXCEPT`을 통해 두 데이터 간 교집합을 제외한 한 데이터만 가져올 수 있음 - MySQL에서는 Subquery로 해결
 <br><br>
 * SEMI JOIN - `WHERE` & `IN`에 원하는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음
 * ANTI JOIN - `WHERE` & `NOT IN`에 원하지 않는 데이터를 조건으로 입력해, 다른 데이터를 filter할 수 있음

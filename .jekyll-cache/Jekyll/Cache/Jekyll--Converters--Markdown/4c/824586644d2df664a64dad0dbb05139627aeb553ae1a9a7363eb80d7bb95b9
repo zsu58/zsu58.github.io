@@ -1,10 +1,10 @@
-I"*<hr />
+I"D<hr />
 <h3 id="sql-übung">SQL Übung</h3>
 <ul>
   <li>SQL JOIN 문법 정리(2)</li>
   <li><code class="language-plaintext highlighter-rouge">LEFT JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join</li>
   <li><code class="language-plaintext highlighter-rouge">RIGHT JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join</li>
-  <li><code class="language-plaintext highlighter-rouge">FULL JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join
+  <li><code class="language-plaintext highlighter-rouge">FULL JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join, MySQL에서는 불가능
     <ul>
       <li>key값이 같은 경우 <code class="language-plaintext highlighter-rouge">ON</code> 대신 <code class="language-plaintext highlighter-rouge">USING()</code> 사용 가능</li>
     </ul>
