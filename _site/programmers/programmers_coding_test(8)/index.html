@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#3차-파일명-정렬">[3차] 파일명 정렬</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#3차-파일명-정렬">[3차] 파일명 정렬</a></li><li><a href="#3차-압축">[3차] 압축</a></li></ul>
 
             </nav>
           </aside>
@@ -552,6 +552,35 @@
                                 <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s">"[0-9]+"</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
                    <span class="p">)</span>
     <span class="k">return</span> <span class="n">files</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3차-압축">[3차] 압축</h3>
+<ul>
+  <li>30/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test66_1.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test66_2.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">wordDict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="s">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">27</span><span class="p">)))</span>
+
+    <span class="n">number</span> <span class="o">=</span> <span class="mi">27</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">msg</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">wordDict</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">msg</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">wordDict</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">wordDict</span><span class="p">[</span><span class="n">msg</span><span class="p">[:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="n">wordDict</span><span class="p">[</span><span class="n">msg</span><span class="p">[:</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">number</span>
+        <span class="n">number</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">wordDict</span><span class="p">[</span><span class="n">msg</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">answer</span>
 </code></pre></div></div>
 
 <hr />

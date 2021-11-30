@@ -37,3 +37,31 @@ def solution(files):
 
 ---
 
+### [3차] 압축
+* 30/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test66_1.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test66_2.png" align="center">
+</p>
+```python
+def solution(msg):
+    wordDict = dict(zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ", range(1,27)))
+
+    number = 27
+    answer = []
+    while msg not in wordDict.keys():
+        i = 1
+        while msg[:i] in wordDict.keys():
+            i += 1
+        answer.append(wordDict[msg[:i-1]])
+        wordDict[msg[:i]] = number
+        number += 1
+        msg = msg[i-1:]
+
+    answer.append(wordDict[msg])
+
+    return answer
+```
+
+---
+

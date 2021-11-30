@@ -504,7 +504,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)",
-        "excerpt":" ALGORITHM Übung - Programmers     알고리즘 문제 풀이를 통한 코딩 테스트 연습     [3차] 파일명 정렬     29/11/2021               import re  def solution(files):     files = sorted(files, key=lambda x:                                 (re.findall(r\"[a-zA-Z-.\\s]+\", x.lower())[0],                                 int(re.findall(r\"[0-9]+\", x)[0]))                    )     return files     ","categories": ["PROGRAMMERS"],
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 [3차] 파일명 정렬 29/11/2021 import re def solution(files): files = sorted(files, key=lambda x: (re.findall(r\"[a-zA-Z-.\\s]+\", x.lower())[0], int(re.findall(r\"[0-9]+\", x)[0])) ) return files [3차] 압축 30/11/2021 def solution(msg): wordDict = dict(zip(\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", range(1,27))) number = 27 answer = [] while msg not in...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(8)/",
         "teaser": null
