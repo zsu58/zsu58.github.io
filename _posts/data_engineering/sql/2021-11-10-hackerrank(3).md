@@ -22,7 +22,7 @@ tags:
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql21.png" align="center">
 </p>
-```python
+```sql
 SELECT 
     CASE 
         WHEN A+B>C AND A+C>B AND B+C>A
@@ -46,7 +46,7 @@ FROM triangles;
     <img src="/img/data_engineering/sql/hackerrank_sql22_2.png" align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql22_3.png" align="center">
 </p>
-```python
+```sql
 -- SELECT CONCAT(Name,
 --     CASE 
 --         WHEN Occupation = "Doctor" THEN "(D)"

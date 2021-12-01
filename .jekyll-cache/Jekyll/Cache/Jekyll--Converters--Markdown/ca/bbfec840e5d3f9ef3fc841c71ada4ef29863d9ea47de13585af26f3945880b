@@ -1,0 +1,149 @@
+I"�A<hr />
+<h3 id="mysql-table">MySQL Table</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CREATE TABLE</code> - 테이블 만들기</li>
+  <li><code class="language-plaintext highlighter-rouge">INSERT INTO</code> - 테이블에 데이터(행) 추가</li>
+  <li><code class="language-plaintext highlighter-rouge">ALTER</code> - 테이블의 속성 수정</li>
+  <li><code class="language-plaintext highlighter-rouge">SET</code> - 테이블 속성 설정</li>
+  <li><code class="language-plaintext highlighter-rouge">UPDATE</code> &amp; <code class="language-plaintext highlighter-rouge">SET</code> - 테이블의 데이터 수정</li>
+  <li><code class="language-plaintext highlighter-rouge">DELETE</code> - 테이블의 데이터 삭제</li>
+</ul>
+
+<hr />
+
+<h3 id="create-table">CREATE TABLE</h3>
+<ul>
+  <li>CREATE TABLE [table_name] (columns)</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="err">방법</span><span class="mi">1</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">userTbl</span><span class="p">(</span>
+	<span class="n">uNo</span> <span class="nb">INT</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="c1">-- PRIMARY KEY가 있으니 NOT NULL 빼도 됨, 붙여도 상관없음</span>
+	<span class="n">uID</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span><span class="p">,</span>
+	<span class="n">uName</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+	<span class="n">uAge</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">CHECK</span><span class="p">(</span><span class="n">uAge</span> <span class="k">BETWEEN</span> <span class="mi">0</span> <span class="k">AND</span> <span class="mi">120</span><span class="p">),</span>
+	<span class="n">uAddr</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="s1">'서울'</span><span class="p">,</span>
+	<span class="n">mob1</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">CHECK</span><span class="p">(</span><span class="n">mob1</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'010'</span><span class="p">,</span> <span class="s1">'011'</span><span class="p">,</span> <span class="s1">'019'</span><span class="p">)),</span>
+	<span class="n">mob2</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+	<span class="n">uDate</span> <span class="nb">DATETIME</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="n">NOW</span><span class="p">()</span>
+<span class="p">);</span>
+
+<span class="o">#</span> <span class="err">방법</span><span class="mi">2</span> <span class="o">-</span> <span class="k">Constraint</span><span class="err">을</span> <span class="err">더</span> <span class="err">명확하게</span> <span class="err">볼</span> <span class="err">수</span> <span class="err">있음</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">userTbl</span><span class="p">(</span>
+	<span class="n">uNo</span> <span class="nb">INT</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+	<span class="n">uID</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+	<span class="n">uName</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+	<span class="n">uAge</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+	<span class="n">uAddr</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="s1">'서울'</span><span class="p">,</span> <span class="c1">-- DEFAULT는 제약조건에 대한 이름을 만들 수 없음</span>
+	<span class="n">mob1</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+	<span class="n">mob2</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+	<span class="n">uDate</span> <span class="nb">DATETIME</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="n">NOW</span><span class="p">(),</span>
+	
+	<span class="k">CONSTRAINT</span> <span class="n">userTbl_uNo_pk</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">uNo</span><span class="p">),</span>
+	<span class="k">CONSTRAINT</span> <span class="n">userTbl_uID_uk</span> <span class="k">UNIQUE</span><span class="p">(</span><span class="n">uID</span><span class="p">),</span>
+	<span class="k">CONSTRAINT</span> <span class="n">userTbl_uAGE_ck</span> <span class="k">CHECK</span><span class="p">(</span><span class="n">uAge</span> <span class="k">BETWEEN</span> <span class="mi">0</span> <span class="k">AND</span> <span class="mi">120</span><span class="p">),</span>
+	<span class="k">CONSTRAINT</span> <span class="n">userTbl_mob1_ck</span> <span class="k">CHECK</span><span class="p">(</span><span class="n">mob1</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'010'</span><span class="p">,</span> <span class="s1">'011'</span><span class="p">,</span> <span class="s1">'019'</span><span class="p">))</span>
+<span class="p">);</span>
+
+<span class="o">#</span> <span class="err">기존에</span> <span class="err">존재하는</span> <span class="err">테이블</span> <span class="err">자체를</span> <span class="err">복사</span><span class="p">,</span> <span class="err">다만</span> <span class="err">이</span> <span class="err">경우</span> <span class="err">데이터만</span> <span class="err">복사되며</span><span class="p">,</span> <span class="k">constraint</span><span class="p">,</span> <span class="k">foreign</span> <span class="k">key</span><span class="p">,</span> <span class="k">index</span> <span class="err">등은</span> <span class="err">복사</span> <span class="err">안</span> <span class="err">됨</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">dept4</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dept</span><span class="p">;</span>
+
+<span class="o">#</span> <span class="err">비어있는</span> <span class="err">테이블</span> <span class="err">생성후</span><span class="p">,</span> <span class="err">테이블</span> <span class="err">값</span> <span class="err">복사</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">dept5</span> <span class="p">(</span><span class="n">deptno</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+					<span class="n">dname</span>  <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+					<span class="n">loc</span>    <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+					
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">dept5</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dept</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="insert-into">INSERT INTO</h3>
+<ul>
+  <li>INSERT INTO [table_name] VALUES(values)</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="err">방법</span><span class="mi">1</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">dept2</span><span class="p">(</span><span class="n">deptno</span><span class="p">,</span> <span class="n">dname</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="s1">'IT'</span><span class="p">,</span><span class="s1">'SEOUL'</span><span class="p">);</span>
+
+<span class="o">#</span> <span class="err">방법</span><span class="mi">2</span> <span class="p">(</span><span class="k">column</span> <span class="n">name</span><span class="err">과</span> <span class="k">values</span> <span class="err">순서는</span> <span class="err">맞아야</span> <span class="err">함</span><span class="p">)</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">dept2</span><span class="p">(</span><span class="n">dname</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">deptno</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'OP'</span><span class="p">,</span><span class="s1">'BUSAN'</span><span class="p">,</span><span class="mi">60</span><span class="p">);</span>
+
+<span class="o">#</span> <span class="err">방법</span><span class="mi">3</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">dept2</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="s1">'MKT'</span><span class="p">,</span> <span class="s1">'JEJU'</span><span class="p">),</span>
+						<span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="s1">'DEV'</span><span class="p">,</span> <span class="s1">'JEJU'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="alter">ALTER</h3>
+<ul>
+  <li>ALTER TABLE [table_name] [command_to_alter]</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="n">auto_increment</span><span class="err">의</span> <span class="err">시작을</span> <span class="mi">100</span><span class="err">으로</span> <span class="err">설정</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">dept3</span> <span class="n">AUTO_INCREMENT</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="o">#</span> <span class="k">constraint</span> <span class="err">추가</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">uTbl</span> 
+<span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="n">uTbl_uNo_pk</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">uNo</span><span class="p">);</span>
+
+<span class="o">#</span> <span class="k">column</span><span class="err">에</span> <span class="err">대한</span> <span class="k">default</span> <span class="err">설정할</span> <span class="err">경우</span> <span class="err">경우</span> <span class="s1">'add'</span><span class="err">가</span> <span class="err">아닌</span> <span class="s1">'alter'</span><span class="err">임</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">uTbl</span>
+<span class="k">ALTER</span> <span class="k">COLUMN</span> <span class="n">uAddr</span> <span class="k">SET</span> <span class="k">DEFAULT</span> <span class="s1">'서울'</span><span class="p">;</span>
+
+<span class="o">#</span> <span class="n">weight</span> <span class="k">column</span> <span class="err">추가</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">uTbl</span>
+<span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">weight</span> <span class="nb">smallint</span><span class="p">;</span>
+
+<span class="o">#</span> <span class="n">weight</span> <span class="k">column</span> <span class="err">삭제</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">uTbl</span>
+<span class="k">DROP</span> <span class="k">COLUMN</span> <span class="n">weight</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="set">SET</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="n">auto_increment</span><span class="err">를</span> <span class="mi">3</span><span class="err">씩</span> <span class="err">하도록</span> <span class="err">함</span>
+<span class="k">SET</span> <span class="o">@@</span><span class="n">AUTO_INCREMENT_INCREMENT</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="update-set">UPDATE SET</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="mi">90</span><span class="err">번</span> <span class="err">부서의</span> <span class="err">위치를</span> <span class="n">LA</span><span class="err">로</span> <span class="err">수정</span>
+<span class="k">UPDATE</span> <span class="n">dept2</span>
+<span class="k">SET</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">'LA'</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">deptno</span><span class="o">=</span><span class="mi">90</span><span class="p">);</span>
+
+<span class="o">#</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">90</span><span class="err">번</span> <span class="err">부서의</span> <span class="err">위치를</span> <span class="n">JEJU</span><span class="err">로</span> <span class="err">수정하시오</span>
+<span class="k">UPDATE</span> <span class="n">dept2</span>
+<span class="k">SET</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">'JEJU'</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">deptno</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">90</span><span class="p">));</span>
+
+<span class="o">#</span> <span class="mi">80</span><span class="err">번</span> <span class="err">부서의</span> <span class="err">이름은</span> <span class="k">ADMIN</span><span class="p">,</span> <span class="err">위치는</span> <span class="n">BUSAN</span> <span class="err">으로</span> <span class="err">수정해주세요</span>
+<span class="k">UPDATE</span> <span class="n">dept2</span> 
+<span class="k">SET</span> <span class="n">dname</span> <span class="o">=</span> <span class="s1">'ADMIN'</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">'BUSAN'</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">deptno</span> <span class="o">=</span> <span class="mi">80</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="delete">DELETE</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="err">부서번호가</span> <span class="mi">80</span><span class="err">인</span> <span class="err">데이터</span> <span class="err">삭제</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">dept2</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">deptno</span> <span class="o">=</span> <span class="mi">80</span><span class="p">);</span>
+
+<span class="o">#</span> <span class="mi">70</span><span class="err">번</span> <span class="err">부서이면서</span><span class="p">,</span> <span class="err">위치가</span> <span class="n">Jeju</span><span class="err">인</span> <span class="err">데이터</span> <span class="err">삭제</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">dept2</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">deptno</span> <span class="o">=</span> <span class="mi">70</span><span class="p">)</span>
+<span class="k">AND</span> <span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">'JEJU'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+:ET

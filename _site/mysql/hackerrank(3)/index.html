@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">85</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">87</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/mysql" class="">MySQL (17)</a></li>
+                        <li><a href="/categories/mysql" class="">MySQL (19)</a></li>
                     
                 
                     
@@ -543,20 +543,20 @@
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql21.png" align="center" />
 </p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> 
-    <span class="n">CASE</span> 
-        <span class="n">WHEN</span> <span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="o">&gt;</span><span class="n">C</span> <span class="n">AND</span> <span class="n">A</span><span class="o">+</span><span class="n">C</span><span class="o">&gt;</span><span class="n">B</span> <span class="n">AND</span> <span class="n">B</span><span class="o">+</span><span class="n">C</span><span class="o">&gt;</span><span class="n">A</span>
-        <span class="n">THEN</span>
-            <span class="n">CASE</span> 
-                <span class="n">WHEN</span> <span class="n">A</span><span class="o">=</span><span class="n">B</span> <span class="n">AND</span> <span class="n">B</span><span class="o">=</span><span class="n">C</span> <span class="n">AND</span> <span class="n">A</span><span class="o">=</span><span class="n">C</span> 
-                    <span class="n">THEN</span> <span class="s">"Equilateral"</span>
-                <span class="n">WHEN</span> <span class="n">A</span><span class="o">=</span><span class="n">B</span> <span class="n">OR</span> <span class="n">B</span><span class="o">=</span><span class="n">C</span> <span class="n">OR</span> <span class="n">A</span><span class="o">=</span><span class="n">C</span> 
-                    <span class="n">THEN</span> <span class="s">"Isosceles"</span>
-                <span class="n">ELSE</span> <span class="s">"Scalene"</span>
-            <span class="n">END</span>
-        <span class="n">ELSE</span> <span class="s">"Not A Triangle"</span>
-    <span class="n">END</span>
-<span class="n">FROM</span> <span class="n">triangles</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> 
+    <span class="k">CASE</span> 
+        <span class="k">WHEN</span> <span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="o">&gt;</span><span class="k">C</span> <span class="k">AND</span> <span class="n">A</span><span class="o">+</span><span class="k">C</span><span class="o">&gt;</span><span class="n">B</span> <span class="k">AND</span> <span class="n">B</span><span class="o">+</span><span class="k">C</span><span class="o">&gt;</span><span class="n">A</span>
+        <span class="k">THEN</span>
+            <span class="k">CASE</span> 
+                <span class="k">WHEN</span> <span class="n">A</span><span class="o">=</span><span class="n">B</span> <span class="k">AND</span> <span class="n">B</span><span class="o">=</span><span class="k">C</span> <span class="k">AND</span> <span class="n">A</span><span class="o">=</span><span class="k">C</span> 
+                    <span class="k">THEN</span> <span class="nv">"Equilateral"</span>
+                <span class="k">WHEN</span> <span class="n">A</span><span class="o">=</span><span class="n">B</span> <span class="k">OR</span> <span class="n">B</span><span class="o">=</span><span class="k">C</span> <span class="k">OR</span> <span class="n">A</span><span class="o">=</span><span class="k">C</span> 
+                    <span class="k">THEN</span> <span class="nv">"Isosceles"</span>
+                <span class="k">ELSE</span> <span class="nv">"Scalene"</span>
+            <span class="k">END</span>
+        <span class="k">ELSE</span> <span class="nv">"Not A Triangle"</span>
+    <span class="k">END</span>
+<span class="k">FROM</span> <span class="n">triangles</span><span class="p">;</span>
 </code></pre></div></div>
 
 <h3 id="the-pads">The PADS</h3>
@@ -568,20 +568,20 @@
     <img src="/img/data_engineering/sql/hackerrank_sql22_2.png" align="center" />
     <img src="/img/data_engineering/sql/hackerrank_sql22_3.png" align="center" />
 </p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">--</span> <span class="n">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span>
-<span class="o">--</span>     <span class="n">CASE</span> 
-<span class="o">--</span>         <span class="n">WHEN</span> <span class="n">Occupation</span> <span class="o">=</span> <span class="s">"Doctor"</span> <span class="n">THEN</span> <span class="s">"(D)"</span>
-<span class="o">--</span>         <span class="n">WHEN</span> <span class="n">Occupation</span> <span class="o">=</span> <span class="s">"Actor"</span> <span class="n">THEN</span> <span class="s">"(A)"</span>
-<span class="o">--</span>         <span class="n">WHEN</span> <span class="n">Occupation</span> <span class="o">=</span> <span class="s">"Singer"</span> <span class="n">THEN</span> <span class="s">"(S)"</span>
-<span class="o">--</span>         <span class="n">ELSE</span> <span class="s">"(P)"</span> 
-<span class="o">--</span>         <span class="n">END</span><span class="p">)</span>
-<span class="n">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span> <span class="s">"("</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">Occupation</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s">")"</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">OCCUPATIONS</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">Name</span><span class="p">;</span>
-<span class="n">SElECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="s">"There are a total of "</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span> <span class="s">" "</span><span class="p">,</span> <span class="n">LOWER</span><span class="p">(</span><span class="n">Occupation</span><span class="p">),</span> <span class="s">"s."</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">OCCUPATIONS</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">Occupation</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">);</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- SELECT CONCAT(Name,</span>
+<span class="c1">--     CASE </span>
+<span class="c1">--         WHEN Occupation = "Doctor" THEN "(D)"</span>
+<span class="c1">--         WHEN Occupation = "Actor" THEN "(A)"</span>
+<span class="c1">--         WHEN Occupation = "Singer" THEN "(S)"</span>
+<span class="c1">--         ELSE "(P)" </span>
+<span class="c1">--         END)</span>
+<span class="k">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span> <span class="nv">"("</span><span class="p">,</span> <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">Occupation</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nv">")"</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">OCCUPATIONS</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">Name</span><span class="p">;</span>
+<span class="k">SElECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="nv">"There are a total of "</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span> <span class="nv">" "</span><span class="p">,</span> <span class="k">LOWER</span><span class="p">(</span><span class="n">Occupation</span><span class="p">),</span> <span class="nv">"s."</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">OCCUPATIONS</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">Occupation</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">);</span>
 </code></pre></div></div>
 
         
@@ -674,6 +674,99 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/mysql/encore_sql2/" rel="permalink">[MySQL] VIEW
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE VIEW - 가상의 테이블 만들기
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/mysql/encore_sql1/" rel="permalink">[MySQL] DDL &amp; DML
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE TABLE - 테이블 만들기
+  INSERT INTO - 테이블에 데이터(행) 추가
+  ALTER - 테이블의 속성 수정
+  SET - 테이블 속성 설정
+  UPDATE &amp; SET - 테이블의 데이터 수정
+  DELETE - 테이블...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/programmers/programmers_coding_test(8)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
 </a>
       
@@ -749,96 +842,6 @@ ALGORITHM Übung - Programmers
 ALGORITHM Übung - Programmers
 
   알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/programmers/programmers_coding_test(6)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-ALGORITHM Übung - Programmers
-
-  알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/hackerrank(2)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (2)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL Übung - Hackerrank
-
-  SQL 문제 풀이를 통한 SQL 연습
 
 </p>
   </article>

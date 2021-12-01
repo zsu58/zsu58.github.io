@@ -22,7 +22,7 @@ tags:
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql1.png" align="center">
 </p>
-```python
+```sql
 SELECT *
 FROM city
 WHERE countrycode="USA"
@@ -34,7 +34,7 @@ AND population > 100000
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql2.png" align="center">
 </p>
-```python
+```sql
 SELECT name
 FROM city
 WHERE population > 120000
@@ -46,7 +46,7 @@ AND countrycode="USA";
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql3.png" align="center">
 </p>
-```python
+```sql
 SELECT *
 FROM city;
 ```
@@ -56,7 +56,7 @@ FROM city;
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql4.png" align="center">
 </p>
-```python
+```sql
 SELECT *
 FROM city
 WHERE id = 1661;
@@ -67,7 +67,7 @@ WHERE id = 1661;
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql5.png" align="center">
 </p>
-```python
+```sql
 SELECT *
 FROM city
 WHERE countrycode = 'JPN';
@@ -78,7 +78,7 @@ WHERE countrycode = 'JPN';
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql6.png" align="center">
 </p>
-```python
+```sql
 SELECT name
 FROM city
 WHERE countrycode = 'JPN'
@@ -91,7 +91,7 @@ WHERE countrycode = 'JPN'
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql7.png" align="center">
 </p>
-```python
+```sql
 SELECT city, state
 FROM station;
 ```
@@ -101,7 +101,7 @@ FROM station;
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql8.png" align="center">
 </p>
-```python
+```sql
 SELECT DISTINCT(city)
 FROM station
 WHERE ID % 2 = 0;
@@ -112,7 +112,7 @@ WHERE ID % 2 = 0;
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql9.png" align="center">
 </p>
-```python
+```sql
 SELECT COUNT(*) - COUNT(DISTINCT(city))
 FROM station;
 ```
@@ -122,7 +122,7 @@ FROM station;
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql10.png" align="center">
 </p>
-```python
+```sql
 (SELECT city, LENGTH(city)
 FROM station
 ORDER BY LENGTH(city) ASC, city

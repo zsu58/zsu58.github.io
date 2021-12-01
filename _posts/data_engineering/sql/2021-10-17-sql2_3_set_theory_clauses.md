@@ -32,7 +32,7 @@ tags:
 * Determine all (non-duplicated) country codes in either the cities or the currencies table. The result should be a table with only one field called country_code
 * Sort by country_code in alphabetical order
 
-```python
+```sql
 SELECT country_code
   FROM cities
 	UNION
@@ -46,7 +46,7 @@ ORDER BY country_code;
 * Determine all combinations (include duplicates) of country code and year that exist in either the economies or the populations tables. Order by code then year.a table with only one field called country_code
 * The result of the query should only have two columns/fields. Think about how many records this query should result in
 
-```python
+```sql
 SELECT country_code
   FROM cities
 	UNION
@@ -60,7 +60,7 @@ ORDER BY country_code;
 * Determine the records in common for country code and year for the economies and populations tables
 * Order by code and then by year, both in ascending order
 
-```python
+```sql
 SELECT code, year
   FROM economies
 	INTERSECT
@@ -74,7 +74,7 @@ ORDER BY code, year;
 * Get the names of cities in cities which are not noted as capital cities in countries as a single field result
 * Order the resulting field in ascending order
 
-```python
+```sql
 SELECT name
   FROM cities
 	EXCEPT
@@ -88,7 +88,7 @@ ORDER BY name;
 * Identify languages spoken in the Middle East
 * Order the result by name in ascending order
 
-```python
+```sql
 SELECT DISTINCT name
   FROM languages
 WHERE code IN
@@ -102,7 +102,7 @@ ORDER BY name;
 ### WHERE & NOT IN (Anti-join)
 * Identify the code and name used in Oceanian countries which are included in the countries table but not in the currencies table
 
-```python
+```sql
 SELECT code, name
   FROM countries
   WHERE continent = 'Oceania'

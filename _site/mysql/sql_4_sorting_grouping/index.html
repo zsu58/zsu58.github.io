@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">85</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">87</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/mysql" class="">MySQL (17)</a></li>
+                        <li><a href="/categories/mysql" class="">MySQL (19)</a></li>
                     
                 
                     
@@ -572,9 +572,9 @@
   <li>Get the birth date and name for every person, in order of when they were born</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">birthdate</span><span class="p">,</span> <span class="n">name</span>
-<span class="n">FROM</span> <span class="n">people</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">birthdate</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">birthdate</span><span class="p">,</span> <span class="n">name</span>
+<span class="k">FROM</span> <span class="n">people</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">birthdate</span><span class="p">;</span>
 </code></pre></div></div>
 
 <h3 id="order-by--cast">ORDER BY &amp; CAST</h3>
@@ -582,9 +582,9 @@
   <li>registration’s data-type is TEXT, order sales table by the number value of registration</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="n">sales</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">CAST</span><span class="p">(</span><span class="n">registration_num</span> <span class="n">AS</span> <span class="n">signed</span><span class="p">)</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">sales</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="k">CAST</span><span class="p">(</span><span class="n">registration_num</span> <span class="k">AS</span> <span class="nb">signed</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h3 id="group-by">GROUP BY</h3>
@@ -593,9 +593,9 @@
   <li>Get the IMDB score and count of film reviews grouped by IMDB score in the reviews table</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">imdb_score</span><span class="p">,</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">reviews</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">imdb_score</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">imdb_score</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">reviews</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">imdb_score</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>2-2) GROUP BY</p>
@@ -603,10 +603,10 @@
   <li>Get the country, release year, and lowest amount grossed per release year per country. Order your results by country and release year.</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">country</span><span class="p">,</span> <span class="n">release_year</span><span class="p">,</span> <span class="n">MIN</span><span class="p">(</span><span class="n">gross</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">films</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">release_year</span><span class="p">,</span> <span class="n">country</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">country</span><span class="p">,</span> <span class="n">release_year</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">country</span><span class="p">,</span> <span class="n">release_year</span><span class="p">,</span> <span class="k">MIN</span><span class="p">(</span><span class="n">gross</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">films</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">release_year</span><span class="p">,</span> <span class="n">country</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">country</span><span class="p">,</span> <span class="n">release_year</span><span class="p">;</span>
 </code></pre></div></div>
 <hr />
 
@@ -616,10 +616,10 @@
   <li>In how many different years were more than 200 movies released?</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">release_year</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">films</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">release_year</span>
-<span class="n">HAVING</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">release_year</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">films</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">release_year</span>
+<span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">;</span>
 </code></pre></div></div>
 <hr />
 
@@ -629,12 +629,12 @@
   <li>return the average budget and average gross earnings for films in each year after 1990, if the average budget is greater than $60 million</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">release_year</span><span class="p">,</span> <span class="n">AVG</span><span class="p">(</span><span class="n">budget</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_budget</span><span class="p">,</span> <span class="n">AVG</span><span class="p">(</span><span class="n">gross</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_gross</span>
-<span class="n">FROM</span> <span class="n">films</span>
-<span class="n">WHERE</span> <span class="n">release_year</span> <span class="o">&gt;</span> <span class="mi">1990</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">release_year</span>
-<span class="n">HAVING</span> <span class="n">AVG</span><span class="p">(</span><span class="n">budget</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">60000000</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">avg_gross</span> <span class="n">DESC</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">release_year</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">budget</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_budget</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">gross</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_gross</span>
+<span class="k">FROM</span> <span class="n">films</span>
+<span class="k">WHERE</span> <span class="n">release_year</span> <span class="o">&gt;</span> <span class="mi">1990</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">release_year</span>
+<span class="k">HAVING</span> <span class="k">AVG</span><span class="p">(</span><span class="n">budget</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">60000000</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">avg_gross</span> <span class="k">DESC</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>4-2) Übung</p>
@@ -642,12 +642,12 @@
   <li>Get the country, average budget, and average gross take of countries that have made more than 10 films. Order the result by country name, and limit the number of results displayed to 5. You should alias the averages as avg_budget and avg_gross respectively</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">country</span><span class="p">,</span> <span class="n">AVG</span><span class="p">(</span><span class="n">budget</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_budget</span><span class="p">,</span> <span class="n">AVG</span><span class="p">(</span><span class="n">gross</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_gross</span>
-<span class="n">FROM</span> <span class="n">films</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">country</span>
-<span class="n">HAVING</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">country</span>
-<span class="n">LIMIT</span> <span class="mi">5</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">country</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">budget</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_budget</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">gross</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_gross</span>
+<span class="k">FROM</span> <span class="n">films</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">country</span>
+<span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">country</span>
+<span class="k">LIMIT</span> <span class="mi">5</span><span class="p">;</span>
 </code></pre></div></div>
 
 <hr />
@@ -658,10 +658,10 @@
   <li>회원들이 태어난 연도, 가입한 해, 그리고 회원들의 성별에 따른 인원 수를 분류하시오. 이때 연도, 해, 그리고 성별 그룹에 따른 부분총계를 구하시오</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">birthday</span><span class="p">)</span> <span class="n">AS</span> <span class="n">b_year</span><span class="p">,</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="n">AS</span> <span class="n">s_year</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">birthday</span><span class="p">),</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">),</span> <span class="n">gender</span> <span class="n">WITH</span> <span class="n">ROLLUP</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">b_year</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">s_year</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">gender</span> <span class="n">DESC</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="nb">YEAR</span><span class="p">(</span><span class="n">birthday</span><span class="p">)</span> <span class="k">AS</span> <span class="n">b_year</span><span class="p">,</span> <span class="nb">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="k">AS</span> <span class="n">s_year</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="nb">YEAR</span><span class="p">(</span><span class="n">birthday</span><span class="p">),</span> <span class="nb">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">),</span> <span class="n">gender</span> <span class="k">WITH</span> <span class="k">ROLLUP</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">b_year</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">s_year</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">gender</span> <span class="k">DESC</span><span class="p">;</span>
 </code></pre></div></div>
 
 <ul>
@@ -669,12 +669,12 @@
   <li>이를 해결하기 위해 <code class="language-plaintext highlighter-rouge">GROUPING</code>을 사용하면 실제 NULL은 0으로 출력되어서 구분 가능</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="n">AS</span> <span class="n">s_year</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">region</span><span class="p">,</span>
-<span class="n">GROUPING</span><span class="p">(</span><span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)),</span> <span class="n">GROUPING</span><span class="p">(</span><span class="n">gender</span><span class="p">),</span> <span class="n">GROUPING</span><span class="p">(</span><span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
-<span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">),</span> <span class="n">gender</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">WITH</span> <span class="n">ROLLUP</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">s_year</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">gender</span> <span class="n">DESC</span><span class="p">,</span> <span class="n">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">DESC</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="nb">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="k">AS</span> <span class="n">s_year</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">region</span><span class="p">,</span>
+<span class="k">GROUPING</span><span class="p">(</span><span class="nb">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)),</span> <span class="k">GROUPING</span><span class="p">(</span><span class="n">gender</span><span class="p">),</span> <span class="k">GROUPING</span><span class="p">(</span><span class="k">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
+<span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="nb">YEAR</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">),</span> <span class="n">gender</span><span class="p">,</span> <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">WITH</span> <span class="k">ROLLUP</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">s_year</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">gender</span> <span class="k">DESC</span><span class="p">,</span> <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">DESC</span><span class="p">;</span>
 </code></pre></div></div>
 <hr />
 
@@ -769,6 +769,99 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/mysql/encore_sql2/" rel="permalink">[MySQL] VIEW
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE VIEW - 가상의 테이블 만들기
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/mysql/encore_sql1/" rel="permalink">[MySQL] DDL &amp; DML
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE TABLE - 테이블 만들기
+  INSERT INTO - 테이블에 데이터(행) 추가
+  ALTER - 테이블의 속성 수정
+  SET - 테이블 속성 설정
+  UPDATE &amp; SET - 테이블의 데이터 수정
+  DELETE - 테이블...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/programmers/programmers_coding_test(8)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
 </a>
       
@@ -833,96 +926,6 @@ ALGORITHM Übung - Programmers
         <i class="far fa-clock" aria-hidden="true"></i>
         
           2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-ALGORITHM Übung - Programmers
-
-  알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/hackerrank(3)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (3)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL Übung - Hackerrank
-
-  SQL 문제 풀이를 통한 SQL 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/programmers/programmers_coding_test(6)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
         
       </span>
     

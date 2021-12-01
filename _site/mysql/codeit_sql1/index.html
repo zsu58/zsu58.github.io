@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">85</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">87</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/mysql" class="">MySQL (17)</a></li>
+                        <li><a href="/categories/mysql" class="">MySQL (19)</a></li>
                     
                 
                     
@@ -555,9 +555,9 @@
   <li>1992년에 태어난 회원들만 조회</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
-<span class="n">WHERE</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">birthday</span><span class="p">)</span> <span class="o">=</span> <span class="s">'1992'</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
+<span class="k">WHERE</span> <span class="nb">YEAR</span><span class="p">(</span><span class="n">birthday</span><span class="p">)</span> <span class="o">=</span> <span class="s1">'1992'</span>
 </code></pre></div></div>
 <hr />
 
@@ -566,9 +566,9 @@
   <li>7, 8월에 가입한 회원들만 조회</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
-<span class="n">WHERE</span> <span class="n">MONTH</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
+<span class="k">WHERE</span> <span class="k">MONTH</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
 </code></pre></div></div>
 <hr />
 
@@ -577,9 +577,9 @@
   <li>각 달의 15일~31일에 가입했던 회원들만 조회</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
-<span class="n">WHERE</span> <span class="n">DAYOFMONTH</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="n">BETWEEN</span> <span class="mi">15</span> <span class="n">AND</span> <span class="mi">31</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span>
+<span class="k">WHERE</span> <span class="n">DAYOFMONTH</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="k">BETWEEN</span> <span class="mi">15</span> <span class="k">AND</span> <span class="mi">31</span>
 </code></pre></div></div>
 <hr />
 
@@ -588,8 +588,8 @@
   <li>회원가입한 날짜와 2019-01-01 간 차이 산출</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">email</span><span class="p">,</span> <span class="n">sign_up_day</span><span class="p">,</span> <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">,</span> <span class="s">'2019-01-01'</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">email</span><span class="p">,</span> <span class="n">sign_up_day</span><span class="p">,</span> <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">,</span> <span class="s1">'2019-01-01'</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span><span class="p">;</span>
 </code></pre></div></div>
 <hr />
 
@@ -598,8 +598,8 @@
   <li>회원가입한 날짜와 오늘 날짜 간 차이 산출</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">email</span><span class="p">,</span> <span class="n">sign_up_day</span><span class="p">,</span> <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">,</span> <span class="n">CURDATE</span><span class="p">())</span>
-<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">email</span><span class="p">,</span> <span class="n">sign_up_day</span><span class="p">,</span> <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">,</span> <span class="n">CURDATE</span><span class="p">())</span>
+<span class="k">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span><span class="p">;</span>
 </code></pre></div></div>
 <hr />
 
@@ -609,13 +609,13 @@
   <li>DATE_SUB([variable_name], INTERVAL [number] DAY)</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 가입일(sign_up_day) 기준으로 300일 이후의 날짜 산출
-</span><span class="n">SELECT</span> <span class="n">email</span><span class="p">,</span> <span class="n">sign_up_day</span><span class="p">,</span> <span class="n">DATE_ADD</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">,</span> <span class="n">INTERVAL</span> <span class="mi">300</span> <span class="n">DAY</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="err">가입일</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="err">기준으로</span> <span class="mi">300</span><span class="err">일</span> <span class="err">이후의</span> <span class="err">날짜</span> <span class="err">산출</span>
+<span class="k">SELECT</span> <span class="n">email</span><span class="p">,</span> <span class="n">sign_up_day</span><span class="p">,</span> <span class="n">DATE_ADD</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">,</span> <span class="n">INTERVAL</span> <span class="mi">300</span> <span class="k">DAY</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span><span class="p">;</span>
 
-<span class="c1"># 가입일(sign_up_day) 기준으로 300일 전의 날짜 산출
-</span><span class="n">SELECT</span> <span class="n">email</span><span class="p">,</span> <span class="n">sign_up_day</span><span class="p">,</span> <span class="n">DATE_SUB</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">,</span> <span class="n">INTERVAL</span> <span class="mi">300</span> <span class="n">DAY</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span><span class="p">;</span>
+<span class="o">#</span> <span class="err">가입일</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">)</span> <span class="err">기준으로</span> <span class="mi">300</span><span class="err">일</span> <span class="err">전의</span> <span class="err">날짜</span> <span class="err">산출</span>
+<span class="k">SELECT</span> <span class="n">email</span><span class="p">,</span> <span class="n">sign_up_day</span><span class="p">,</span> <span class="n">DATE_SUB</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">,</span> <span class="n">INTERVAL</span> <span class="mi">300</span> <span class="k">DAY</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span><span class="p">;</span>
 </code></pre></div></div>
 <hr />
 
@@ -624,8 +624,8 @@
   <li>sign_up_day의 날짜값을 Unix Timestamp로 변환</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">email</span><span class="p">,</span> <span class="n">sign_up_day</span><span class="p">,</span> <span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">UNIX_TIMESTAMP</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">))</span>
-<span class="n">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">email</span><span class="p">,</span> <span class="n">sign_up_day</span><span class="p">,</span> <span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">UNIX_TIMESTAMP</span><span class="p">(</span><span class="n">sign_up_day</span><span class="p">))</span>
+<span class="k">FROM</span> <span class="n">copang_main</span><span class="p">.</span><span class="n">member</span><span class="p">;</span>
 </code></pre></div></div>
 
 <hr />
@@ -720,6 +720,99 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/mysql/encore_sql2/" rel="permalink">[MySQL] VIEW
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE VIEW - 가상의 테이블 만들기
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/mysql/encore_sql1/" rel="permalink">[MySQL] DDL &amp; DML
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE TABLE - 테이블 만들기
+  INSERT INTO - 테이블에 데이터(행) 추가
+  ALTER - 테이블의 속성 수정
+  SET - 테이블 속성 설정
+  UPDATE &amp; SET - 테이블의 데이터 수정
+  DELETE - 테이블...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/programmers/programmers_coding_test(8)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
 </a>
       
@@ -784,96 +877,6 @@ ALGORITHM Übung - Programmers
         <i class="far fa-clock" aria-hidden="true"></i>
         
           2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-ALGORITHM Übung - Programmers
-
-  알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/hackerrank(3)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (3)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL Übung - Hackerrank
-
-  SQL 문제 풀이를 통한 SQL 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/programmers/programmers_coding_test(6)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
         
       </span>
     

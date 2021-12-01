@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">85</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">87</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/mysql" class="">MySQL (17)</a></li>
+                        <li><a href="/categories/mysql" class="">MySQL (19)</a></li>
                     
                 
                     
@@ -543,8 +543,8 @@
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers11.png" align="center" />
 </p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">MIN</span><span class="p">(</span><span class="n">DATETIME</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">ANIMAL_INS</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">MIN</span><span class="p">(</span><span class="nb">DATETIME</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">ANIMAL_INS</span><span class="p">;</span>
 </code></pre></div></div>
 
 <hr />
@@ -556,8 +556,8 @@
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers12.png" align="center" />
 </p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">ANIMAL_INS</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">ANIMAL_INS</span><span class="p">;</span>
 </code></pre></div></div>
 
 <hr />
@@ -569,8 +569,8 @@
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers13.png" align="center" />
 </p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">DISTINCT</span> <span class="n">NAME</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">ANIMAL_INS</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">NAME</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">ANIMAL_INS</span><span class="p">;</span>
 </code></pre></div></div>
 
 <hr />
@@ -582,10 +582,10 @@
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers14.png" align="center" />
 </p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">ANIMAL_TYPE</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">ANIMAL_TYPE</span><span class="p">)</span> <span class="n">AS</span> <span class="n">count</span>
-<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">ANIMAL_TYPE</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">ANIMAL_TYPE</span> <span class="n">ASC</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">ANIMAL_TYPE</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">ANIMAL_TYPE</span><span class="p">)</span> <span class="k">AS</span> <span class="k">count</span>
+<span class="k">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">ANIMAL_TYPE</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">ANIMAL_TYPE</span> <span class="k">ASC</span>
 </code></pre></div></div>
 
 <hr />
@@ -597,12 +597,12 @@
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers15.png" align="center" />
 </p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span>
-<span class="n">FROM</span> <span class="n">ANIMAL_INS</span>
-<span class="n">WHERE</span> <span class="n">NAME</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">NAME</span>
-<span class="n">HAVING</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">NAME</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">NAME</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">ANIMAL_INS</span>
+<span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">NAME</span>
+<span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">NAME</span><span class="p">;</span>
 </code></pre></div></div>
 
 <hr />
@@ -614,11 +614,11 @@
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers16.png" align="center" />
 </p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">DATETIME</span><span class="p">,</span> <span class="s">"%H"</span><span class="p">)</span> <span class="n">AS</span> <span class="n">HOUR</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">AS</span> <span class="n">COUNT</span>
-<span class="n">FROM</span> <span class="n">ANIMAL_OUTS</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">HOUR</span>
-<span class="n">HAVING</span> <span class="n">HOUR</span> <span class="n">BETWEEN</span> <span class="mi">9</span> <span class="n">AND</span> <span class="mi">19</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">HOUR</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">DATE_FORMAT</span><span class="p">(</span><span class="nb">DATETIME</span><span class="p">,</span> <span class="nv">"%H"</span><span class="p">)</span> <span class="k">AS</span> <span class="n">HOUR</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="k">COUNT</span>
+<span class="k">FROM</span> <span class="n">ANIMAL_OUTS</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">HOUR</span>
+<span class="k">HAVING</span> <span class="n">HOUR</span> <span class="k">BETWEEN</span> <span class="mi">9</span> <span class="k">AND</span> <span class="mi">19</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">HOUR</span>
 </code></pre></div></div>
 
 <hr />
@@ -713,6 +713,99 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/mysql/encore_sql2/" rel="permalink">[MySQL] VIEW
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE VIEW - 가상의 테이블 만들기
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/mysql/encore_sql1/" rel="permalink">[MySQL] DDL &amp; DML
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE TABLE - 테이블 만들기
+  INSERT INTO - 테이블에 데이터(행) 추가
+  ALTER - 테이블의 속성 수정
+  SET - 테이블 속성 설정
+  UPDATE &amp; SET - 테이블의 데이터 수정
+  DELETE - 테이블...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/programmers/programmers_coding_test(8)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
 </a>
       
@@ -777,96 +870,6 @@ ALGORITHM Übung - Programmers
         <i class="far fa-clock" aria-hidden="true"></i>
         
           2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-ALGORITHM Übung - Programmers
-
-  알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/hackerrank(3)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (3)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL Übung - Hackerrank
-
-  SQL 문제 풀이를 통한 SQL 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/programmers/programmers_coding_test(6)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
         
       </span>
     

@@ -29,7 +29,7 @@ tags:
 * Join the tables countries (left) and economies (right) aliasing countries AS c and economies AS e
 * From this join, SELECT: c.code, aliased as country_code, & name, year, and inflation_rate, not aliased.
 
-```python
+```sql
 SELECT c.code AS country_code, name, year, inflation_rate
 FROM countries AS c
   INNER JOIN economies AS e
@@ -40,7 +40,7 @@ FROM countries AS c
 * For each country, you want to get the country name, its region, the fertility rate, and the unemployment rate for both 2010 and 2015
 * match the year of population & economics table
 
-```python
+```sql
 SELECT c.code, name, region, e.year, fertility_rate, unemployment_rate
   FROM countries AS c
   INNER JOIN populations AS p
@@ -55,7 +55,7 @@ SELECT c.code, name, region, e.year, fertility_rate, unemployment_rate
 * Inner join countries on the left and languages on the right with USING(code)
 * Select the fields corresponding to: country name AS country, continent name, language name AS language, and whether or not the language is official
 
-```python
+```sql
 SELECT c.name AS country, continent, l.name AS language, official
   FROM countries AS c
   INNER JOIN languages AS l
@@ -72,7 +72,7 @@ SELECT c.name AS country, continent, l.name AS language, official
     * the percentage growth from A to B can be calculated as (B−A)/A*100.0
 
 
-```python
+```sql
 SELECT p1.country_code,
        p1.size AS size2010, 
        p2.size AS size2015,
@@ -81,10 +81,6 @@ FROM populations AS p1
   INNER JOIN populations AS p2
     ON p1.country_code = p2.country_code
         AND p1.year = p2.year - 5;
-```
-
-```python
-
 ```
 ---
 
@@ -95,7 +91,7 @@ FROM populations AS p1
 * Sort the data based on geosize_group, in ascending order so that large appears on top
 * Select the name, continent, geosize_group, and popsize_group fields
 
-```python
+```sql
 SELECT country_code, size,
   CASE WHEN size > 50000000
             THEN 'large'
@@ -121,7 +117,7 @@ ORDER BY geosize_group;
 * CREATE VIEW name_of_view INTO
 * 분석에 자주 사용되는 review가 2개 이상인 고객들의 id가 담겨있는 테이블을 만들어라
 
-```python
+```sql
 CREATE VIEW more_than_two_order AS
 SELECT mem_id
 FROM review

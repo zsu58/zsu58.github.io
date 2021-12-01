@@ -22,7 +22,7 @@ tags:
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql11.png" align="center">
 </p>
-```python
+```sql
 SELECT DISTINCT(city)
 FROM station
 WHERE SUBSTRING(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u');
@@ -33,7 +33,7 @@ WHERE SUBSTRING(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u');
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql12.png" align="center">
 </p>
-```python
+```sql
 SELECT DISTINCT(city)
 FROM station
 WHERE SUBSTRING(city, -1, 1) IN ('a', 'e', 'i', 'o', 'u');
@@ -44,7 +44,7 @@ WHERE SUBSTRING(city, -1, 1) IN ('a', 'e', 'i', 'o', 'u');
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql13.png" align="center">
 </p>
-```python
+```sql
 SELECT city
 FROM station
 WHERE SUBSTRING(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u')
@@ -56,7 +56,7 @@ AND SUBSTRING(city, -1, 1) IN ('a', 'e', 'i', 'o', 'u');
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql14.png" align="center">
 </p>
-```python
+```sql
 SELECT DISTINCT(city)
 FROM station
 WHERE SUBSTRING(city, 1, 1) NOT IN ("a", "e", "i", "o", "u");
@@ -67,7 +67,7 @@ WHERE SUBSTRING(city, 1, 1) NOT IN ("a", "e", "i", "o", "u");
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql15.png" align="center">
 </p>
-```python
+```sql
 SELECT DISTINCT(city)
 FROM station
 WHERE SUBSTRING(city, -1, 1) NOT IN ("a", "e", "i", "o", "u");
@@ -78,7 +78,7 @@ WHERE SUBSTRING(city, -1, 1) NOT IN ("a", "e", "i", "o", "u");
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql16.png" align="center">
 </p>
-```python
+```sql
 SELECT DISTINCT(city)
 FROM station
 WHERE SUBSTRING(city, -1, 1) NOT IN ("a", "e", "i", "o", "u")
@@ -90,7 +90,7 @@ OR SUBSTRING(city, 1, 1) NOT IN ("a", "e", "i", "o", "u");
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql17.png" align="center">
 </p>
-```python
+```sql
 SELECT DISTINCT(city)
 FROM station
 WHERE SUBSTRING(city, -1, 1) NOT IN ("a", "e", "i", "o", "u")
@@ -102,7 +102,7 @@ AND SUBSTRING(city, 1, 1) NOT IN ("a", "e", "i", "o", "u");
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql18.png" align="center">
 </p>
-```python
+```sql
 SELECT Name
 FROM Students
 WHERE Marks > 75
@@ -114,7 +114,7 @@ ORDER BY RIGHT(Name, 3), ID ASC;
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql19.png" align="center">
 </p>
-```python
+```sql
 SELECT Name
 FROM Employee
 ORDER BY name;
@@ -125,7 +125,7 @@ ORDER BY name;
 <p align="center">
     <img src="/img/data_engineering/sql/hackerrank_sql20.png" align="center">
 </p>
-```python
+```sql
 SELECT name
 FROM Employee
 WHERE salary > 2000

@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>[MySQL] LEFT JOIN &amp; RIGHT JOIN &amp; FULL JOIN &amp; CROSS JOIN - Bibliothek für Data-Engineering</title>
-<meta name="description" content="SQL Übung    SQL JOIN 문법 정리(2)   LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join   RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join   FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join, MySQL에서는 불가능            key값이 같은 경우 ON 대신 USING() 사용 가능           CROSS JOIN ON 을 통해 두 데이터의 전체 조합을 가져올 수 있음   SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능   두 개의 테이블 간 공통되는 column이 한가지인 경우, NATURAL JOIN을 통해 ON 없이도 JOIN 가능">
+<meta name="description" content="SQL Übung    SQL JOIN 문법 정리(2)   LEFT JOIN ON 을 통해 왼쪽 테이블을 기준으로 오른쪽 테이블을 join   RIGHT JOIN ON 을 통해 오른쪽 테이블을 기준으로 왼쪽 테이블을 join   FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 테이블을 join, MySQL에서는 불가능            key값이 같은 경우 ON 대신 USING() 사용 가능           CROSS JOIN ON 을 통해 두 테이블의 전체 조합을 가져올 수 있음   SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능   두 테이블 간 공통되는 column이 한가지인 경우, NATURAL JOIN을 통해 ON 없이도 JOIN 가능   WHERE을 이용하여 JOIN 할 수 있음">
 
 
   <meta name="author" content="ZSU">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/mysql/sql2_2_outer_join/">
 
 
-  <meta property="og:description" content="SQL Übung    SQL JOIN 문법 정리(2)   LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join   RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join   FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join, MySQL에서는 불가능            key값이 같은 경우 ON 대신 USING() 사용 가능           CROSS JOIN ON 을 통해 두 데이터의 전체 조합을 가져올 수 있음   SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능   두 개의 테이블 간 공통되는 column이 한가지인 경우, NATURAL JOIN을 통해 ON 없이도 JOIN 가능">
+  <meta property="og:description" content="SQL Übung    SQL JOIN 문법 정리(2)   LEFT JOIN ON 을 통해 왼쪽 테이블을 기준으로 오른쪽 테이블을 join   RIGHT JOIN ON 을 통해 오른쪽 테이블을 기준으로 왼쪽 테이블을 join   FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 테이블을 join, MySQL에서는 불가능            key값이 같은 경우 ON 대신 USING() 사용 가능           CROSS JOIN ON 을 통해 두 테이블의 전체 조합을 가져올 수 있음   SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능   두 테이블 간 공통되는 column이 한가지인 경우, NATURAL JOIN을 통해 ON 없이도 JOIN 가능   WHERE을 이용하여 JOIN 할 수 있음">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">85</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">87</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/mysql" class="">MySQL (17)</a></li>
+                        <li><a href="/categories/mysql" class="">MySQL (19)</a></li>
                     
                 
                     
@@ -485,7 +485,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[MySQL] LEFT JOIN &amp; RIGHT JOIN &amp; FULL JOIN &amp; CROSS JOIN">
-    <meta itemprop="description" content="SQL Übung  SQL JOIN 문법 정리(2)  LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join  RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join  FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join, MySQL에서는 불가능          key값이 같은 경우 ON 대신 USING() 사용 가능        CROSS JOIN ON 을 통해 두 데이터의 전체 조합을 가져올 수 있음  SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능  두 개의 테이블 간 공통되는 column이 한가지인 경우, NATURAL JOIN을 통해 ON 없이도 JOIN 가능">
+    <meta itemprop="description" content="SQL Übung  SQL JOIN 문법 정리(2)  LEFT JOIN ON 을 통해 왼쪽 테이블을 기준으로 오른쪽 테이블을 join  RIGHT JOIN ON 을 통해 오른쪽 테이블을 기준으로 왼쪽 테이블을 join  FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 테이블을 join, MySQL에서는 불가능          key값이 같은 경우 ON 대신 USING() 사용 가능        CROSS JOIN ON 을 통해 두 테이블의 전체 조합을 가져올 수 있음  SQL에서 Multi-line comment 달 경우 /* Comments */를 통해 가능  두 테이블 간 공통되는 column이 한가지인 경우, NATURAL JOIN을 통해 ON 없이도 JOIN 가능  WHERE을 이용하여 JOIN 할 수 있음">
     <meta itemprop="datePublished" content="2021-09-16T00:00:00+09:00">
     
 
@@ -508,7 +508,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          2 minute read
         
       </span>
     
@@ -523,7 +523,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#sql-übung">SQL Übung</a></li><li><a href="#left-join">LEFT JOIN</a></li><li><a href="#right-join">RIGHT JOIN</a></li><li><a href="#full-join">FULL JOIN</a></li><li><a href="#cross-join">CROSS JOIN</a></li></ul>
+              <ul class="toc__menu"><li><a href="#sql-übung">SQL Übung</a></li><li><a href="#left-join">LEFT JOIN</a></li><li><a href="#right-join">RIGHT JOIN</a></li><li><a href="#full-join">FULL JOIN</a></li><li><a href="#cross-join">CROSS JOIN</a></li><li><a href="#join-using-where">JOIN USING WHERE</a></li></ul>
 
             </nav>
           </aside>
@@ -532,16 +532,17 @@
 <h3 id="sql-übung">SQL Übung</h3>
 <ul>
   <li>SQL JOIN 문법 정리(2)</li>
-  <li><code class="language-plaintext highlighter-rouge">LEFT JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join</li>
-  <li><code class="language-plaintext highlighter-rouge">RIGHT JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join</li>
-  <li><code class="language-plaintext highlighter-rouge">FULL JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join, MySQL에서는 불가능
+  <li><code class="language-plaintext highlighter-rouge">LEFT JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 왼쪽 테이블을 기준으로 오른쪽 테이블을 join</li>
+  <li><code class="language-plaintext highlighter-rouge">RIGHT JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 오른쪽 테이블을 기준으로 왼쪽 테이블을 join</li>
+  <li><code class="language-plaintext highlighter-rouge">FULL JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 왼쪽 전체와 오른쪽 전체 테이블을 join, MySQL에서는 불가능
     <ul>
       <li>key값이 같은 경우 <code class="language-plaintext highlighter-rouge">ON</code> 대신 <code class="language-plaintext highlighter-rouge">USING()</code> 사용 가능</li>
     </ul>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">CROSS JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 두 데이터의 전체 조합을 가져올 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">CROSS JOIN</code> <code class="language-plaintext highlighter-rouge">ON</code> 을 통해 두 테이블의 전체 조합을 가져올 수 있음</li>
   <li>SQL에서 Multi-line comment 달 경우 <code class="language-plaintext highlighter-rouge">/*</code> Comments <code class="language-plaintext highlighter-rouge">*/</code>를 통해 가능</li>
-  <li>두 개의 테이블 간 공통되는 column이 한가지인 경우, <code class="language-plaintext highlighter-rouge">NATURAL JOIN</code>을 통해 <code class="language-plaintext highlighter-rouge">ON</code> 없이도 JOIN 가능</li>
+  <li>두 테이블 간 공통되는 column이 한가지인 경우, <code class="language-plaintext highlighter-rouge">NATURAL JOIN</code>을 통해 <code class="language-plaintext highlighter-rouge">ON</code> 없이도 JOIN 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">WHERE</code>을 이용하여 JOIN 할 수 있음</li>
 </ul>
 
 <hr />
@@ -552,38 +553,38 @@
   <li>Determine the average gross domestic product (GDP) per capita by region in 2010</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">region</span><span class="p">,</span> <span class="n">AVG</span><span class="p">(</span><span class="n">gdp_percapita</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_gdp</span>
-<span class="n">FROM</span> <span class="n">countries</span> <span class="n">AS</span> <span class="n">c</span>
-  <span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">economies</span> <span class="n">AS</span> <span class="n">e</span>
-    <span class="n">ON</span> <span class="n">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">code</span>
-<span class="n">WHERE</span> <span class="n">year</span> <span class="o">=</span> <span class="mi">2010</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">region</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">avg_gdp</span> <span class="n">DESC</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">region</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">gdp_percapita</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_gdp</span>
+<span class="k">FROM</span> <span class="n">countries</span> <span class="k">AS</span> <span class="k">c</span>
+  <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">economies</span> <span class="k">AS</span> <span class="n">e</span>
+    <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">code</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2010</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">region</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">avg_gdp</span> <span class="k">DESC</span><span class="p">;</span>
 </code></pre></div></div>
 <hr />
 
 <h3 id="right-join">RIGHT JOIN</h3>
 <p>2) RIGHT JOIN</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/*</span>
-<span class="n">SELECT</span> <span class="n">cities</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">city</span><span class="p">,</span> <span class="n">urbanarea_pop</span><span class="p">,</span> <span class="n">countries</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">country</span><span class="p">,</span>
-       <span class="n">indep_year</span><span class="p">,</span> <span class="n">languages</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">language</span><span class="p">,</span> <span class="n">percent</span>
-<span class="n">FROM</span> <span class="n">cities</span>
-  <span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">countries</span>
-    <span class="n">ON</span> <span class="n">cities</span><span class="p">.</span><span class="n">country_code</span> <span class="o">=</span> <span class="n">countries</span><span class="p">.</span><span class="n">code</span>
-  <span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">languages</span>
-    <span class="n">ON</span> <span class="n">countries</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">languages</span><span class="p">.</span><span class="n">code</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">city</span><span class="p">,</span> <span class="n">language</span><span class="p">;</span>
-<span class="o">*/</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+SELECT cities.name AS city, urbanarea_pop, countries.name AS country,
+       indep_year, languages.name AS language, percent
+FROM cities
+  LEFT JOIN countries
+    ON cities.country_code = countries.code
+  LEFT JOIN languages
+    ON countries.code = languages.code
+ORDER BY city, language;
+*/</span>
 
-<span class="c1"># 위와 같음
-</span><span class="n">SELECT</span> <span class="n">cities</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">city</span><span class="p">,</span> <span class="n">urbanarea_pop</span><span class="p">,</span> <span class="n">countries</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">country</span><span class="p">,</span> <span class="n">indep_year</span><span class="p">,</span> <span class="n">languages</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">language</span><span class="p">,</span> <span class="n">percent</span>
-<span class="n">FROM</span> <span class="n">languages</span>
-  <span class="n">RIGHT</span> <span class="n">JOIN</span> <span class="n">countries</span>
-    <span class="n">ON</span> <span class="n">languages</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">countries</span><span class="p">.</span><span class="n">code</span>
-  <span class="n">RIGHT</span> <span class="n">JOIN</span> <span class="n">cities</span>
-    <span class="n">ON</span> <span class="n">countries</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">cities</span><span class="p">.</span><span class="n">country_code</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">city</span><span class="p">,</span> <span class="n">language</span><span class="p">;</span>
+<span class="o">#</span> <span class="err">위와</span> <span class="err">같음</span>
+<span class="k">SELECT</span> <span class="n">cities</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">city</span><span class="p">,</span> <span class="n">urbanarea_pop</span><span class="p">,</span> <span class="n">countries</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">country</span><span class="p">,</span> <span class="n">indep_year</span><span class="p">,</span> <span class="n">languages</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="k">language</span><span class="p">,</span> <span class="n">percent</span>
+<span class="k">FROM</span> <span class="n">languages</span>
+  <span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">countries</span>
+    <span class="k">ON</span> <span class="n">languages</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">countries</span><span class="p">.</span><span class="n">code</span>
+  <span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">cities</span>
+    <span class="k">ON</span> <span class="n">countries</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">cities</span><span class="p">.</span><span class="n">country_code</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">city</span><span class="p">,</span> <span class="k">language</span><span class="p">;</span>
 </code></pre></div></div>
 <hr />
 
@@ -597,14 +598,14 @@
   <li>MySQL에서는 UNION을 통해 해당 부분 대체</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">c1</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">country</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">language</span><span class="p">,</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">c1</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">country</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="k">language</span><span class="p">,</span>
        <span class="n">basic_unit</span><span class="p">,</span> <span class="n">frac_unit</span>
-<span class="n">FROM</span> <span class="n">countries</span> <span class="n">AS</span> <span class="n">c1</span>
-  <span class="n">FULL</span> <span class="n">JOIN</span> <span class="n">languages</span> <span class="n">AS</span> <span class="n">l</span>
-    <span class="n">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span>
-  <span class="n">FULL</span> <span class="n">JOIN</span> <span class="n">currencies</span> <span class="n">AS</span> <span class="n">c2</span>
-    <span class="n">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span>
-<span class="n">WHERE</span> <span class="n">region</span> <span class="n">LIKE</span> <span class="s">'M%esia'</span><span class="p">;</span>
+<span class="k">FROM</span> <span class="n">countries</span> <span class="k">AS</span> <span class="n">c1</span>
+  <span class="k">FULL</span> <span class="k">JOIN</span> <span class="n">languages</span> <span class="k">AS</span> <span class="n">l</span>
+    <span class="k">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span>
+  <span class="k">FULL</span> <span class="k">JOIN</span> <span class="n">currencies</span> <span class="k">AS</span> <span class="n">c2</span>
+    <span class="k">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">region</span> <span class="k">LIKE</span> <span class="s1">'M%esia'</span><span class="p">;</span>
 </code></pre></div></div>
 <hr />
 
@@ -614,12 +615,65 @@
   <li>Explore languages potentially and most frequently spoken in the cities of Hyderabad, India and Hyderabad, Pakistan</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">c</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">city</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">language</span>
-<span class="n">FROM</span> <span class="n">cities</span> <span class="n">AS</span> <span class="n">c</span>        
-  <span class="n">CROSS</span> <span class="n">JOIN</span> <span class="n">languages</span> <span class="n">AS</span> <span class="n">l</span>
-<span class="n">WHERE</span> <span class="n">c</span><span class="p">.</span><span class="n">name</span> <span class="n">LIKE</span> <span class="s">'Hyder%'</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">city</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="k">language</span>
+<span class="k">FROM</span> <span class="n">cities</span> <span class="k">AS</span> <span class="k">c</span>        
+  <span class="k">CROSS</span> <span class="k">JOIN</span> <span class="n">languages</span> <span class="k">AS</span> <span class="n">l</span>
+<span class="k">WHERE</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span> <span class="k">LIKE</span> <span class="s1">'Hyder%'</span><span class="p">;</span>
 </code></pre></div></div>
 
+<hr />
+
+<h3 id="join-using-where">JOIN USING WHERE</h3>
+<p>4-1) JOIN USING WHERE(1)</p>
+<ul>
+  <li>smith의 이름, 소속 부서명은?</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">ename</span><span class="p">,</span> <span class="n">dname</span>
+<span class="k">FROM</span> <span class="n">emp</span><span class="p">,</span> <span class="n">dept</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">emp</span><span class="p">.</span><span class="n">deptno</span> <span class="o">=</span> <span class="n">dept</span><span class="p">.</span><span class="n">deptno</span><span class="p">)</span>
+<span class="k">AND</span> <span class="p">(</span><span class="n">ename</span> <span class="o">=</span> <span class="s1">'SMITH'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>4-2) JOIN USING WHERE(2)</p>
+<ul>
+  <li>부서이름별 평균급여가 2000이 넘는 부서와 평균급여는?</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">)</span> <span class="s1">'평균급여'</span>
+<span class="k">FROM</span> <span class="n">dept</span> <span class="n">d</span><span class="p">,</span> <span class="n">emp</span> <span class="n">e</span> 
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="p">)</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">d</span><span class="p">.</span><span class="n">dname</span>
+<span class="k">HAVING</span>  <span class="k">AVG</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2000</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>4-3) JOIN USING WHERE(3)</p>
+<ul>
+  <li>Research 부서 소속 직원들의 부서명, 부서번호, 이름, 사번, 급여, 급여등급은?</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">empno</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">grade</span>
+<span class="k">FROM</span> <span class="n">emp</span> <span class="n">e</span><span class="p">,</span> <span class="n">salgrade</span> <span class="n">s</span><span class="p">,</span> <span class="n">dept</span> <span class="n">d</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">)</span>
+<span class="k">AND</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">sal</span> <span class="k">BETWEEN</span> <span class="n">s</span><span class="p">.</span><span class="n">losal</span> <span class="k">AND</span> <span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="p">)</span>
+<span class="k">AND</span> <span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">dname</span> <span class="o">=</span> <span class="s1">'RESEARCH'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>4-4) JOIN USING WHERE(4)</p>
+<ul>
+  <li>4 급여등급에 해당하는 직원들의 이름, 사번, 부서명, 급여등급과 그 직원들의 부하직원의 이름, 사번, 부서명, 급여등급은?</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">e1</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span> <span class="n">e1</span><span class="p">.</span><span class="n">empno</span><span class="p">,</span> <span class="n">d1</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span> <span class="n">s1</span><span class="p">.</span><span class="n">grade</span><span class="p">,</span> 
+	   <span class="n">e2</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span> <span class="n">e2</span><span class="p">.</span><span class="n">empno</span><span class="p">,</span> <span class="n">d2</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span> <span class="n">s2</span><span class="p">.</span><span class="n">grade</span>
+<span class="k">FROM</span> <span class="n">emp</span> <span class="n">e1</span><span class="p">,</span> <span class="n">emp</span> <span class="n">e2</span><span class="p">,</span> <span class="n">dept</span> <span class="n">d1</span><span class="p">,</span> <span class="n">dept</span> <span class="n">d2</span><span class="p">,</span> <span class="n">salgrade</span> <span class="n">s1</span><span class="p">,</span> <span class="n">salgrade</span> <span class="n">s2</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">e1</span><span class="p">.</span><span class="n">empno</span> <span class="o">=</span> <span class="n">e2</span><span class="p">.</span><span class="n">mgr</span><span class="p">)</span>
+<span class="k">AND</span> <span class="p">(</span><span class="n">e2</span><span class="p">.</span><span class="n">deptno</span> <span class="o">=</span> <span class="n">d2</span><span class="p">.</span><span class="n">deptno</span><span class="p">)</span>
+<span class="k">AND</span> <span class="p">(</span><span class="n">e1</span><span class="p">.</span><span class="n">deptno</span> <span class="o">=</span> <span class="n">d1</span><span class="p">.</span><span class="n">deptno</span><span class="p">)</span>
+<span class="k">AND</span> <span class="p">(</span><span class="n">e1</span><span class="p">.</span><span class="n">sal</span> <span class="k">BETWEEN</span> <span class="n">s1</span><span class="p">.</span><span class="n">losal</span> <span class="k">AND</span> <span class="n">s1</span><span class="p">.</span><span class="n">hisal</span><span class="p">)</span>
+<span class="k">AND</span> <span class="p">(</span><span class="n">e2</span><span class="p">.</span><span class="n">sal</span> <span class="k">BETWEEN</span> <span class="n">s2</span><span class="p">.</span><span class="n">losal</span> <span class="k">AND</span> <span class="n">s2</span><span class="p">.</span><span class="n">hisal</span><span class="p">)</span>
+<span class="k">AND</span> <span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="n">grade</span> <span class="o">=</span> <span class="mi">4</span><span class="p">);</span>
+</code></pre></div></div>
 <hr />
 
         
@@ -712,6 +766,99 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/mysql/encore_sql2/" rel="permalink">[MySQL] VIEW
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE VIEW - 가상의 테이블 만들기
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/mysql/encore_sql1/" rel="permalink">[MySQL] DDL &amp; DML
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE TABLE - 테이블 만들기
+  INSERT INTO - 테이블에 데이터(행) 추가
+  ALTER - 테이블의 속성 수정
+  SET - 테이블 속성 설정
+  UPDATE &amp; SET - 테이블의 데이터 수정
+  DELETE - 테이블...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/programmers/programmers_coding_test(8)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
 </a>
       
@@ -776,96 +923,6 @@ ALGORITHM Übung - Programmers
         <i class="far fa-clock" aria-hidden="true"></i>
         
           2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-ALGORITHM Übung - Programmers
-
-  알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/hackerrank(3)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (3)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL Übung - Hackerrank
-
-  SQL 문제 풀이를 통한 SQL 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/programmers/programmers_coding_test(6)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
         
       </span>
     

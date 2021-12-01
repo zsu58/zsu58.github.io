@@ -22,7 +22,7 @@ tags:
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers1.png" align="center">
 </p>
-```python
+```sql
 SELECT *
 FROM ANIMAL_INS
 ORDER BY ANIMAL_ID;
@@ -36,7 +36,7 @@ ORDER BY ANIMAL_ID;
     <img src="/img/data_engineering/sql/sql_programmers2.png" align="center">
 </p>
 
-```python
+```sql
 SELECT NAME, DATETIME
 FROM ANIMAL_INS
 ORDER BY ANIMAL_ID DESC;
@@ -50,7 +50,7 @@ ORDER BY ANIMAL_ID DESC;
     <img src="/img/data_engineering/sql/sql_programmers3.png" align="center">
 </p>
 
-```python
+```sql
 SELECT ANIMAL_ID, NAME
 FROM ANIMAL_INS
 WHERE INTAKE_CONDITION = 'Sick'
@@ -65,7 +65,7 @@ ORDER BY ANIMAL_ID;
     <img src="/img/data_engineering/sql/sql_programmers4.png" align="center">
 </p>
 
-```python
+```sql
 SELECT ANIMAL_ID, NAME
 FROM ANIMAL_INS
 WHERE INTAKE_CONDITION <> 'Aged'
@@ -80,7 +80,7 @@ ORDER BY ANIMAL_ID;
     <img src="/img/data_engineering/sql/sql_programmers5.png" align="center">
 </p>
 
-```python
+```sql
 SELECT ANIMAL_ID, NAME
 FROM ANIMAL_INS;
 ```
@@ -93,7 +93,7 @@ FROM ANIMAL_INS;
     <img src="/img/data_engineering/sql/sql_programmers6.png" align="center">
 </p>
 
-```python
+```sql
 SELECT ANIMAL_ID, NAME, DATETIME
 FROM ANIMAL_INS
 ORDER BY NAME, DATETIME DESC;
@@ -107,7 +107,7 @@ ORDER BY NAME, DATETIME DESC;
     <img src="/img/data_engineering/sql/sql_programmers7.png" align="center">
 </p>
 
-```python
+```sql
 SELECT NAME
 FROM ANIMAL_INS
 ORDER BY DATETIME
@@ -122,7 +122,7 @@ LIMIT 1;
     <img src="/img/data_engineering/sql/sql_programmers8.png" align="center">
 </p>
 
-```python
+```sql
 SELECT MAX(DATETIME)
 FROM ANIMAL_INS;
 ```
@@ -135,7 +135,7 @@ FROM ANIMAL_INS;
     <img src="/img/data_engineering/sql/sql_programmers9.png" align="center">
 </p>
 
-```python
+```sql
 SELECT ANIMAL_ID
 FROM ANIMAL_INS
 WHERE NAME IS NULL
@@ -149,7 +149,7 @@ WHERE NAME IS NULL
     <img src="/img/data_engineering/sql/sql_programmers10.png" align="center">
 </p>
 
-```python
+```sql
 SELECT ANIMAL_ID
 FROM ANIMAL_INS
 WHERE NAME IS NOT NULL

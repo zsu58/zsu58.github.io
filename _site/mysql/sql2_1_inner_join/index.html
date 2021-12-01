@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">85</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">87</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -308,7 +308,7 @@
                     
                 
                     
-                        <li><a href="/categories/mysql" class="">MySQL (17)</a></li>
+                        <li><a href="/categories/mysql" class="">MySQL (19)</a></li>
                     
                 
                     
@@ -554,10 +554,10 @@
   <li>From this join, SELECT: c.code, aliased as country_code, &amp; name, year, and inflation_rate, not aliased.</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">c</span><span class="p">.</span><span class="n">code</span> <span class="n">AS</span> <span class="n">country_code</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">inflation_rate</span>
-<span class="n">FROM</span> <span class="n">countries</span> <span class="n">AS</span> <span class="n">c</span>
-  <span class="n">INNER</span> <span class="n">JOIN</span> <span class="n">economies</span> <span class="n">AS</span> <span class="n">e</span>
-    <span class="n">ON</span> <span class="n">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">code</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">code</span> <span class="k">AS</span> <span class="n">country_code</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">year</span><span class="p">,</span> <span class="n">inflation_rate</span>
+<span class="k">FROM</span> <span class="n">countries</span> <span class="k">AS</span> <span class="k">c</span>
+  <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">economies</span> <span class="k">AS</span> <span class="n">e</span>
+    <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">code</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>1-2) INNER JOIN</p>
@@ -566,12 +566,12 @@
   <li>match the year of population &amp; economics table</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">c</span><span class="p">.</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">year</span><span class="p">,</span> <span class="n">fertility_rate</span><span class="p">,</span> <span class="n">unemployment_rate</span>
-  <span class="n">FROM</span> <span class="n">countries</span> <span class="n">AS</span> <span class="n">c</span>
-  <span class="n">INNER</span> <span class="n">JOIN</span> <span class="n">populations</span> <span class="n">AS</span> <span class="n">p</span>
-    <span class="n">ON</span> <span class="n">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">country_code</span>
-  <span class="n">INNER</span> <span class="n">JOIN</span> <span class="n">economies</span> <span class="n">AS</span> <span class="n">e</span>
-    <span class="n">ON</span> <span class="n">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">code</span> <span class="n">AND</span> <span class="n">p</span><span class="p">.</span><span class="n">year</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">year</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="nb">year</span><span class="p">,</span> <span class="n">fertility_rate</span><span class="p">,</span> <span class="n">unemployment_rate</span>
+  <span class="k">FROM</span> <span class="n">countries</span> <span class="k">AS</span> <span class="k">c</span>
+  <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">populations</span> <span class="k">AS</span> <span class="n">p</span>
+    <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">country_code</span>
+  <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">economies</span> <span class="k">AS</span> <span class="n">e</span>
+    <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">code</span> <span class="k">AND</span> <span class="n">p</span><span class="p">.</span><span class="nb">year</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="nb">year</span><span class="p">;</span>
 </code></pre></div></div>
 <hr />
 
@@ -582,10 +582,10 @@
   <li>Select the fields corresponding to: country name AS country, continent name, language name AS language, and whether or not the language is official</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">c</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">country</span><span class="p">,</span> <span class="n">continent</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">language</span><span class="p">,</span> <span class="n">official</span>
-  <span class="n">FROM</span> <span class="n">countries</span> <span class="n">AS</span> <span class="n">c</span>
-  <span class="n">INNER</span> <span class="n">JOIN</span> <span class="n">languages</span> <span class="n">AS</span> <span class="n">l</span>
-    <span class="n">USING</span><span class="p">(</span><span class="n">code</span><span class="p">);</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">country</span><span class="p">,</span> <span class="n">continent</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="k">language</span><span class="p">,</span> <span class="n">official</span>
+  <span class="k">FROM</span> <span class="n">countries</span> <span class="k">AS</span> <span class="k">c</span>
+  <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">languages</span> <span class="k">AS</span> <span class="n">l</span>
+    <span class="k">USING</span><span class="p">(</span><span class="n">code</span><span class="p">);</span>
 </code></pre></div></div>
 <hr />
 
@@ -602,17 +602,14 @@
   </li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">p1</span><span class="p">.</span><span class="n">country_code</span><span class="p">,</span>
-       <span class="n">p1</span><span class="p">.</span><span class="n">size</span> <span class="n">AS</span> <span class="n">size2010</span><span class="p">,</span> 
-       <span class="n">p2</span><span class="p">.</span><span class="n">size</span> <span class="n">AS</span> <span class="n">size2015</span><span class="p">,</span>
-       <span class="p">((</span><span class="n">p2</span><span class="p">.</span><span class="n">size</span> <span class="o">-</span> <span class="n">p1</span><span class="p">.</span><span class="n">size</span><span class="p">)</span><span class="o">/</span><span class="n">p1</span><span class="p">.</span><span class="n">size</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">)</span> <span class="n">AS</span> <span class="n">growth_perc</span>
-<span class="n">FROM</span> <span class="n">populations</span> <span class="n">AS</span> <span class="n">p1</span>
-  <span class="n">INNER</span> <span class="n">JOIN</span> <span class="n">populations</span> <span class="n">AS</span> <span class="n">p2</span>
-    <span class="n">ON</span> <span class="n">p1</span><span class="p">.</span><span class="n">country_code</span> <span class="o">=</span> <span class="n">p2</span><span class="p">.</span><span class="n">country_code</span>
-        <span class="n">AND</span> <span class="n">p1</span><span class="p">.</span><span class="n">year</span> <span class="o">=</span> <span class="n">p2</span><span class="p">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">5</span><span class="p">;</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">p1</span><span class="p">.</span><span class="n">country_code</span><span class="p">,</span>
+       <span class="n">p1</span><span class="p">.</span><span class="k">size</span> <span class="k">AS</span> <span class="n">size2010</span><span class="p">,</span> 
+       <span class="n">p2</span><span class="p">.</span><span class="k">size</span> <span class="k">AS</span> <span class="n">size2015</span><span class="p">,</span>
+       <span class="p">((</span><span class="n">p2</span><span class="p">.</span><span class="k">size</span> <span class="o">-</span> <span class="n">p1</span><span class="p">.</span><span class="k">size</span><span class="p">)</span><span class="o">/</span><span class="n">p1</span><span class="p">.</span><span class="k">size</span> <span class="o">*</span> <span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="k">AS</span> <span class="n">growth_perc</span>
+<span class="k">FROM</span> <span class="n">populations</span> <span class="k">AS</span> <span class="n">p1</span>
+  <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">populations</span> <span class="k">AS</span> <span class="n">p2</span>
+    <span class="k">ON</span> <span class="n">p1</span><span class="p">.</span><span class="n">country_code</span> <span class="o">=</span> <span class="n">p2</span><span class="p">.</span><span class="n">country_code</span>
+        <span class="k">AND</span> <span class="n">p1</span><span class="p">.</span><span class="nb">year</span> <span class="o">=</span> <span class="n">p2</span><span class="p">.</span><span class="nb">year</span> <span class="o">-</span> <span class="mi">5</span><span class="p">;</span>
 </code></pre></div></div>
 <hr />
 
@@ -625,22 +622,22 @@
   <li>Select the name, continent, geosize_group, and popsize_group fields</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SELECT</span> <span class="n">country_code</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span>
-  <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">size</span> <span class="o">&gt;</span> <span class="mi">50000000</span>
-            <span class="n">THEN</span> <span class="s">'large'</span>
-       <span class="n">WHEN</span> <span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1000000</span>
-            <span class="n">THEN</span> <span class="s">'medium'</span>
-       <span class="n">ELSE</span> <span class="s">'small'</span> <span class="n">END</span>
-       <span class="n">AS</span> <span class="n">popsize_group</span>
-<span class="n">INTO</span> <span class="n">pop_plus</span>       
-<span class="n">FROM</span> <span class="n">populations</span>
-<span class="n">WHERE</span> <span class="n">year</span> <span class="o">=</span> <span class="mi">2015</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">country_code</span><span class="p">,</span> <span class="k">size</span><span class="p">,</span>
+  <span class="k">CASE</span> <span class="k">WHEN</span> <span class="k">size</span> <span class="o">&gt;</span> <span class="mi">50000000</span>
+            <span class="k">THEN</span> <span class="s1">'large'</span>
+       <span class="k">WHEN</span> <span class="k">size</span> <span class="o">&gt;</span> <span class="mi">1000000</span>
+            <span class="k">THEN</span> <span class="s1">'medium'</span>
+       <span class="k">ELSE</span> <span class="s1">'small'</span> <span class="k">END</span>
+       <span class="k">AS</span> <span class="n">popsize_group</span>
+<span class="k">INTO</span> <span class="n">pop_plus</span>       
+<span class="k">FROM</span> <span class="n">populations</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2015</span><span class="p">;</span>
 
-<span class="n">SELECT</span> <span class="n">name</span><span class="p">,</span> <span class="n">continent</span><span class="p">,</span> <span class="n">geosize_group</span><span class="p">,</span> <span class="n">popsize_group</span>
-<span class="n">FROM</span> <span class="n">countries_plus</span> <span class="k">as</span> <span class="n">c</span>
-  <span class="n">INNER</span> <span class="n">JOIN</span> <span class="n">pop_plus</span> <span class="k">as</span> <span class="n">p</span>
-    <span class="n">ON</span> <span class="n">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">country_code</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">geosize_group</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">name</span><span class="p">,</span> <span class="n">continent</span><span class="p">,</span> <span class="n">geosize_group</span><span class="p">,</span> <span class="n">popsize_group</span>
+<span class="k">FROM</span> <span class="n">countries_plus</span> <span class="k">as</span> <span class="k">c</span>
+  <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">pop_plus</span> <span class="k">as</span> <span class="n">p</span>
+    <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">country_code</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">geosize_group</span><span class="p">;</span>
 </code></pre></div></div>
 
 <hr />
@@ -652,11 +649,11 @@
   <li>분석에 자주 사용되는 review가 2개 이상인 고객들의 id가 담겨있는 테이블을 만들어라</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CREATE</span> <span class="n">VIEW</span> <span class="n">more_than_two_order</span> <span class="n">AS</span>
-<span class="n">SELECT</span> <span class="n">mem_id</span>
-<span class="n">FROM</span> <span class="n">review</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">mem_id</span>
-<span class="n">HAVING</span> <span class="n">COUNT</span><span class="p">(</span><span class="n">mem_id</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">more_than_two_order</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">mem_id</span>
+<span class="k">FROM</span> <span class="n">review</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">mem_id</span>
+<span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">mem_id</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span>
 </code></pre></div></div>
 
 <hr />
@@ -751,6 +748,99 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/mysql/encore_sql2/" rel="permalink">[MySQL] VIEW
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE VIEW - 가상의 테이블 만들기
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/mysql/encore_sql1/" rel="permalink">[MySQL] DDL &amp; DML
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE TABLE - 테이블 만들기
+  INSERT INTO - 테이블에 데이터(행) 추가
+  ALTER - 테이블의 속성 수정
+  SET - 테이블 속성 설정
+  UPDATE &amp; SET - 테이블의 데이터 수정
+  DELETE - 테이블...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/programmers/programmers_coding_test(8)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
 </a>
       
@@ -815,96 +905,6 @@ ALGORITHM Übung - Programmers
         <i class="far fa-clock" aria-hidden="true"></i>
         
           2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-ALGORITHM Übung - Programmers
-
-  알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/hackerrank(3)/" rel="permalink">[MySQL] Hackerrank SQL 연습문제 (3)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-SQL Übung - Hackerrank
-
-  SQL 문제 풀이를 통한 SQL 연습
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/programmers/programmers_coding_test(6)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (6)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
         
       </span>
     

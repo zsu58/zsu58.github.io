@@ -54,7 +54,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[MySQL] LEFT JOIN & RIGHT JOIN & FULL JOIN & CROSS JOIN",
-        "excerpt":"SQL Übung SQL JOIN 문법 정리(2) LEFT JOIN ON 을 통해 왼쪽 데이터를 기준으로 오른쪽 데이터를 join RIGHT JOIN ON 을 통해 오른쪽 데이터를 기준으로 왼쪽 데이터를 join FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 데이터를 join, MySQL에서는 불가능 key값이 같은 경우 ON 대신 USING() 사용 가능 CROSS...","categories": ["MYSQL"],
+        "excerpt":"SQL Übung SQL JOIN 문법 정리(2) LEFT JOIN ON 을 통해 왼쪽 테이블을 기준으로 오른쪽 테이블을 join RIGHT JOIN ON 을 통해 오른쪽 테이블을 기준으로 왼쪽 테이블을 join FULL JOIN ON 을 통해 왼쪽 전체와 오른쪽 전체 테이블을 join, MySQL에서는 불가능 key값이 같은 경우 ON 대신 USING() 사용 가능 CROSS...","categories": ["MYSQL"],
         "tags": ["SQL"],
         "url": "/mysql/sql2_2_outer_join/",
         "teaser": null
@@ -507,5 +507,17 @@ var store = [{
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 [3차] 파일명 정렬 29/11/2021 import re def solution(files): files = sorted(files, key=lambda x: (re.findall(r\"[a-zA-Z-.\\s]+\", x.lower())[0], int(re.findall(r\"[0-9]+\", x)[0])) ) return files [3차] 압축 30/11/2021 def solution(msg): wordDict = dict(zip(\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", range(1,27))) number = 27 answer = [] while msg not in...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(8)/",
+        "teaser": null
+      },{
+        "title": "[MySQL] DDL & DML",
+        "excerpt":"MySQL Table CREATE TABLE - 테이블 만들기 INSERT INTO - 테이블에 데이터(행) 추가 ALTER - 테이블의 속성 수정 SET - 테이블 속성 설정 UPDATE &amp; SET - 테이블의 데이터 수정 DELETE - 테이블의 데이터 삭제 CREATE TABLE CREATE TABLE [table_name] (columns) # 방법1 CREATE TABLE userTbl( uNo INT AUTO_INCREMENT PRIMARY...","categories": ["MYSQL"],
+        "tags": ["SQL"],
+        "url": "/mysql/encore_sql1/",
+        "teaser": null
+      },{
+        "title": "[MySQL] VIEW",
+        "excerpt":"MySQL Table CREATE VIEW - 가상의 테이블 만들기 CREATE VIEW CREATE VIEW [view_name] AS [table] 생성된 View에서는 일반 table처럼 작업(select, join, update, delete, insert 등)을 할 수 있음 View에서 insert를 한 경우 insert한 데이터는 원래 데이터가 있는 테이블에 추가됨 단, View는 View 생성 조건에 따라 데이터가 보여짐 만약 View 조건...","categories": ["MYSQL"],
+        "tags": ["SQL"],
+        "url": "/mysql/encore_sql2/",
         "teaser": null
       }]

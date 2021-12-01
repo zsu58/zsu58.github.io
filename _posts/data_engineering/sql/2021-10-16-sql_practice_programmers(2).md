@@ -22,7 +22,7 @@ tags:
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers11.png" align="center">
 </p>
-```python
+```sql
 SELECT MIN(DATETIME)
 FROM ANIMAL_INS;
 ```
@@ -34,7 +34,7 @@ FROM ANIMAL_INS;
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers12.png" align="center">
 </p>
-```python
+```sql
 SELECT COUNT(*)
 FROM ANIMAL_INS;
 ```
@@ -46,7 +46,7 @@ FROM ANIMAL_INS;
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers13.png" align="center">
 </p>
-```python
+```sql
 SELECT COUNT(DISTINCT NAME)
 FROM ANIMAL_INS;
 ```
@@ -58,7 +58,7 @@ FROM ANIMAL_INS;
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers14.png" align="center">
 </p>
-```python
+```sql
 SELECT ANIMAL_TYPE, COUNT(ANIMAL_TYPE) AS count
 FROM ANIMAL_INS
 GROUP BY ANIMAL_TYPE
@@ -72,7 +72,7 @@ ORDER BY ANIMAL_TYPE ASC
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers15.png" align="center">
 </p>
-```python
+```sql
 SELECT NAME, COUNT(NAME)
 FROM ANIMAL_INS
 WHERE NAME IS NOT NULL
@@ -88,7 +88,7 @@ ORDER BY NAME;
 <p align="center">
     <img src="/img/data_engineering/sql/sql_programmers16.png" align="center">
 </p>
-```python
+```sql
 SELECT DATE_FORMAT(DATETIME, "%H") AS HOUR, COUNT(*) AS COUNT
 FROM ANIMAL_OUTS
 GROUP BY HOUR

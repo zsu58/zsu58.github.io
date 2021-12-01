@@ -33,7 +33,7 @@ tags:
 1-1) Aggregate functions
 * Get the total duration of all films.
 
-```python
+```sql
 SELECT SUM(duration)
 FROM films;
 ```
@@ -44,7 +44,7 @@ FROM films;
 1-2) Aggregate functions
 * Get the duration of the shortest film
 
-```python
+```sql
 SELECT MIN(duration)
 FROM films;
 ```
@@ -54,7 +54,7 @@ FROM films;
 1-3) Aggregate functions
 * Get the average amount grossed by all films whose titles start with the letter 'A'
 
-```python
+```sql
 SELECT AVG(gross)
 FROM films
 WHERE title LIKE 'A%';
@@ -65,7 +65,7 @@ WHERE title LIKE 'A%';
 1-4) Aggregate functions
 * Get the amount grossed by the best performing film between 2000 and 2012, inclusive
 
-```python
+```sql
 SELECT MAX(gross)
 FROM films
 WHERE release_year BETWEEN 2000 AND 2012;
@@ -76,7 +76,7 @@ WHERE release_year BETWEEN 2000 AND 2012;
 2) Arithmetic
 * 나누기 할 때 자료형(float/ int) 주의
 
-```python
+```sql
 SELECT (10 / 3);
 SELECT (10.0 / 3.0);
 ```
@@ -89,7 +89,7 @@ SELECT (10.0 / 3.0);
 3-1) AS aliasing
 * Get the title and net profit (the amount a film grossed, minus its budget) for all films. Alias the net profit as net_profit
 
-```python
+```sql
 SELECT title, gross-budget AS net_profit
 FROM films;
 ```
@@ -97,7 +97,7 @@ FROM films;
 3-2) AS aliasing
 * Get the average duration in hours for all films, aliased as avg_duration_hours
 
-```python
+```sql
 SELECT AVG(duration)/60.0 as avg_duration_hours
 FROM films;
 ```
@@ -105,7 +105,7 @@ FROM films;
 4-1) More aliasing
 * Get the percentage of people who are no longer alive. Alias the result as percentage_dead
 
-```python
+```sql
 SELECT 100.0 * COUNT(*)/8397 AS percentage_dead
 FROM people
 WHERE deathdate IS NOT NULL;
@@ -119,7 +119,7 @@ WHERE deathdate IS NOT NULL;
 4-2) More aliasing
 * Get the number of decades the films table covers. Alias the result as number_of_decades. The top half of your fraction should be enclosed in parentheses
 
-```python
+```sql
 SELECT (MAX(release_year) - MIN(release_year)) / 10 AS number_of_decades
 FROM films;
 ```

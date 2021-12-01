@@ -28,7 +28,7 @@ tags:
 * 가장 많이 사용됨
 * Select all fields from populations with records of 2015 that are larger than 1.15 times the average life expectancy
 
-```python
+```sql
 SELECT *
   FROM populations
 WHERE year = '2015'
@@ -44,7 +44,7 @@ WHERE year = '2015'
 * GET the country and number of cities per country
 * Order the result in descending order of the number and limit the result to 9 countries
 
-```python
+```sql
 SELECT countries.name AS country, COUNT(*) AS cities_num
   FROM cities
     INNER JOIN countries
@@ -69,7 +69,7 @@ LIMIT 9;
 * 이 경우, `AS`로 alias 해야 함!
 * Get the number of languages spoken for each country, identified by the country's local name
 
-```python
+```sql
 SELECT local_name, subquery.lang_num
   FROM countries,
   	(SELECT code, COUNT(*) AS lang_num
@@ -84,7 +84,7 @@ ORDER BY lang_num DESC;
 ### ANY & SOME
 * 카테고리가 action인 영화의 view_count 값 중 단 하나라도 큰 영화를 리턴하라
 
-```python
+```sql
 # 서브쿼리의 결과가 120,1000,3000인 경우, view_count가 120보다 큰 영화들이 리턴됨
 SELECT *
 FROM theater
@@ -101,7 +101,7 @@ SOME(
 ### ALL
 * 카테고리가 action인 영화의 view_count 값들 모두보다 큰 영화를 리턴하라
 
-```python
+```sql
 # 서브쿼리의 결과가 120,1000,3000인 경우, view_count가 3000보다 큰 영화들이 리턴됨
 SELECT *
 FROM theater
@@ -118,7 +118,7 @@ ALL(
 ### 비상관 & 상관 Subquery
 * member 테이블의 회원 중에서 리뷰를 하나도 남기지 않아서 review 테이블에 관련 정보가 하나도 없는 회원들만 조회하라
 
-```python
+```sql
 # 상관 Subquery
 SELECT * 
 FROM member
