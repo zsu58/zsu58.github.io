@@ -1,0 +1,161 @@
+I"�I<hr />
+<h3 id="java---mysql-jdbc-연결-mac">JAVA - MYSQL JDBC 연결 [MAC]</h3>
+
+<hr />
+
+<h3 id="jdbc-다운로드">JDBC 다운로드</h3>
+<ul>
+  <li>Select Operating System: Platfrom Independent 클릭</li>
+  <li>Platform Independent (Architecture Independent), ZIP Archive 다운로드</li>
+  <li>다운로드 사이트 : https://dev.mysql.com/downloads/connector/j/</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span> <span class="n">아래의</span> <span class="n">경로로</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">java</span><span class="o">-</span><span class="mf">8.0</span><span class="o">.</span><span class="mi">27</span><span class="o">.</span><span class="na">jar</span> <span class="n">파일</span> <span class="n">옮기기</span>
+<span class="err">#</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">jdk1</span><span class="o">.</span><span class="mf">8.0_202</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">ext</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="java에-mysql-connector-java-versionjar-추가">JAVA에 mysql-connector-java-[version].jar 추가</h3>
+<ul>
+  <li>패키지별로 추가해야 함</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span> <span class="mi">1</span><span class="o">)</span> <span class="n">패키지</span> <span class="n">폴더</span> <span class="n">우클릭</span> <span class="o">-</span> <span class="nc">Build</span> <span class="nc">Path</span> <span class="o">-</span> <span class="nc">Configure</span> <span class="nc">Build</span> <span class="nc">Path</span> <span class="n">클릭</span>
+<span class="err">#</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">Libraries</span> <span class="o">-</span> <span class="nc">Add</span> <span class="n">external</span> <span class="no">JARS</span> <span class="n">클릭</span> <span class="o">-</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">java</span><span class="o">-[</span><span class="n">version</span><span class="o">].</span><span class="na">jar</span> <span class="n">추가</span> <span class="o">-</span> <span class="nc">Apply</span> <span class="n">and</span> <span class="n">close</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="java에서-연결-확인">JAVA에서 연결 확인</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>                                         
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="err">[</span><span class="nc">CLASS_NAME</span><span class="o">]</span> <span class="o">{</span> <span class="c1">// Class 이름 수정</span>
+
+<span class="kd">static</span> <span class="nc">String</span> <span class="n">url</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+<span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="nc">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="k">try</span><span class="o">{</span>
+        <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">).</span><span class="na">newInstance</span><span class="o">();</span> 
+            <span class="n">conn</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:mysql://localhost:3306/[DB]"</span><span class="o">,</span> 
+                                               <span class="s">"[ID]"</span><span class="o">,</span> 
+                                               <span class="s">"[PASSWORD]"</span><span class="o">);</span> <span class="c1">//URL,UID,PWD        </span>
+            <span class="k">if</span><span class="o">(</span><span class="n">conn</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"연결실패"</span><span class="o">);</span>
+            <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"연결성공"</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">ce</span><span class="o">){</span>
+            <span class="n">ce</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>            
+        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">SQLException</span> <span class="n">se</span><span class="o">){</span>
+            <span class="n">se</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>    
+        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+            <span class="k">try</span><span class="o">{</span> <span class="c1">// 연결 해제</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">rs</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>        <span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>            <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">pstmt</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>    <span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>        <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">stmt</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>    <span class="n">stmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>        <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">conn</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>    <span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>        <span class="o">}</span>
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">SQLException</span> <span class="n">se2</span><span class="o">){</span>
+                <span class="n">se2</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="java-mysql">JAVA-MYSQL</h3>
+<ul>
+  <li>JDBC 연결을 활용해 MySQL의 empDB 데이터베이스 dept10 테이블의 데이터를 수정</li>
+  <li>부서위치를 바꿀 부서번호를 입력해, 입력받은 부서번호의 위치(loc)을 바꾸시오</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.DriverManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.PreparedStatement</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyConn03</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+		<span class="nc">String</span> <span class="n">jdbcDriver</span> <span class="o">=</span> <span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">;</span>
+		<span class="nc">String</span> <span class="n">jdbcUrl</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost:3306/empDB?serverTimezone=UTC"</span><span class="o">;</span>
+		<span class="nc">String</span> <span class="n">dbUser</span> <span class="o">=</span> <span class="s">"root"</span><span class="o">;</span>
+		<span class="nc">String</span> <span class="n">dbPwd</span> <span class="o">=</span> <span class="s">"1234"</span><span class="o">;</span>
+		
+		<span class="nc">String</span> <span class="n">sqlSelect</span> <span class="o">=</span> <span class="s">"SELECT * FROM dept10"</span><span class="o">;</span>
+		<span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// for dynmaic query</span>
+		<span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+		<span class="kt">int</span> <span class="n">iDeptno</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> 
+		<span class="nc">String</span> <span class="n">sLoc</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+		<span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"부서위치를 바꿀 부서번호를 입력하시오 =&gt;"</span><span class="o">);</span>
+		<span class="n">iDeptno</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iDeptno</span> <span class="o">+</span> <span class="s">"번 부서번호가 바뀔 위치를 입력하시오 =&gt;"</span><span class="o">);</span>
+		<span class="n">sLoc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+		
+		<span class="nc">String</span> <span class="n">sqlUpdate</span> <span class="o">=</span> <span class="s">"UPDATE dept10 \n"</span> <span class="o">+</span> 
+							<span class="s">"SET loc = ? \n"</span> <span class="o">+</span> 
+							<span class="s">"WHERE (deptno = ?)"</span><span class="o">;</span>
+		
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="c1">// 1. JDBC 드라이버 로드</span>
+			<span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">jdbcDriver</span><span class="o">);</span> <span class="c1">// Library에 있는 "String" 이름의 클래스를 가져와라</span>
+			
+			<span class="c1">// 2. Database Connection 연결</span>
+			<span class="n">conn</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">jdbcUrl</span><span class="o">,</span> <span class="n">dbUser</span><span class="o">,</span> <span class="n">dbPwd</span><span class="o">);</span>
+			
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Connection 연결"</span><span class="o">);</span>
+			
+			<span class="c1">// 3. Statement 생성</span>
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sqlUpdate</span><span class="o">);</span>
+			
+			<span class="c1">// 4. SQL 전송 (executeQuery(), exectueUpdate()) </span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">sLoc</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">iDeptno</span><span class="o">);</span>
+			
+			<span class="kt">int</span> <span class="n">resultCount</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span> <span class="c1">// 정상인 경우 보통 숫자 1 반환</span>
+			
+			<span class="c1">// 5. Result set(Sql 결과) 받기</span>
+			<span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">sqlSelect</span><span class="o">);</span>
+				
+			<span class="k">if</span> <span class="o">(</span><span class="n">resultCount</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"데이터 정상적으로 추가됨"</span><span class="o">);}</span> 
+			<span class="k">else</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"데이터 정상적으로 입력 안됨"</span><span class="o">);}</span>
+			
+			<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%d | %-10s | %-10s \n"</span><span class="o">,</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">2</span><span class="o">),</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"loc"</span><span class="o">));}</span>
+			
+			<span class="c1">// 6. Database Connection 해제</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Connection 해제"</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span> 
+			<span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"SQL 연결 안됨"</span><span class="o">);</span>
+				<span class="o">}</span>
+			<span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"드라이버 로드 실패"</span><span class="o">);</span>
+				<span class="o">}</span>
+				
+	<span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+:ET

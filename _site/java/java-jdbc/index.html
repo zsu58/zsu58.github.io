@@ -1,0 +1,1074 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[JAVA] MySQL JDBC 연결 [MAC] - Bibliothek für Data-Engineering</title>
+<meta name="description" content="JAVA - MYSQL JDBC 연결 [MAC]">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[JAVA] MySQL JDBC 연결 [MAC]">
+<meta property="og:url" content="http://localhost:4000/java/java-jdbc/">
+
+
+  <meta property="og:description" content="JAVA - MYSQL JDBC 연결 [MAC]">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-12-01T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/java/java-jdbc/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Kategorie</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://stingy-camp-e37.notion.site/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/armi_made.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">88</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Data-Enginnering</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--sql 카테고리 글들을 모아둔 페이지인 /categories/sql 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a href="/categories/mysql" class="">MySQL (19)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/docker" class="">Docker (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Algorithm</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/codeit" class="">Codeit (34)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/leetcode" class="">LeetCode (2)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/programmers" class="">Programmers (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/java" class="">Java (1)</a></li>
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[JAVA] MySQL JDBC 연결 [MAC]">
+    <meta itemprop="description" content="JAVA - MYSQL JDBC 연결 [MAC]">
+    <meta itemprop="datePublished" content="2021-12-01T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[JAVA] MySQL JDBC 연결 [MAC]
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#java---mysql-jdbc-연결-mac">JAVA - MYSQL JDBC 연결 [MAC]</a></li><li><a href="#jdbc-다운로드">JDBC 다운로드</a></li><li><a href="#java에-mysql-connector-java-versionjar-추가">JAVA에 mysql-connector-java-[version].jar 추가</a></li><li><a href="#java에서-연결-확인">JAVA에서 연결 확인</a></li><li><a href="#java-mysql">JAVA-MYSQL</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="java---mysql-jdbc-연결-mac">JAVA - MYSQL JDBC 연결 [MAC]</h3>
+
+<hr />
+
+<h3 id="jdbc-다운로드">JDBC 다운로드</h3>
+<ul>
+  <li>Select Operating System: Platfrom Independent 클릭</li>
+  <li>Platform Independent (Architecture Independent), ZIP Archive 다운로드</li>
+  <li><a href="https://dev.mysql.com/downloads/connector/j/">🔗 다운로드 링크</a></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span> <span class="n">아래의</span> <span class="n">경로로</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">java</span><span class="o">-</span><span class="mf">8.0</span><span class="o">.</span><span class="mi">27</span><span class="o">.</span><span class="na">jar</span> <span class="n">파일</span> <span class="n">옮기기</span>
+<span class="err">#</span> <span class="o">/</span><span class="nc">Library</span><span class="o">/</span><span class="nc">Java</span><span class="o">/</span><span class="nc">JavaVirtualMachines</span><span class="o">/</span><span class="n">jdk1</span><span class="o">.</span><span class="mf">8.0_202</span><span class="o">.</span><span class="na">jdk</span><span class="o">/</span><span class="nc">Contents</span><span class="o">/</span><span class="nc">Home</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">ext</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="java에-mysql-connector-java-versionjar-추가">JAVA에 mysql-connector-java-[version].jar 추가</h3>
+<ul>
+  <li>패키지별로 추가해야 함</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span> <span class="mi">1</span><span class="o">)</span> <span class="n">패키지</span> <span class="n">폴더</span> <span class="n">우클릭</span> <span class="o">-</span> <span class="nc">Build</span> <span class="nc">Path</span> <span class="o">-</span> <span class="nc">Configure</span> <span class="nc">Build</span> <span class="nc">Path</span> <span class="n">클릭</span>
+<span class="err">#</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">Libraries</span> <span class="o">-</span> <span class="nc">Add</span> <span class="n">external</span> <span class="no">JARS</span> <span class="n">클릭</span> <span class="o">-</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">java</span><span class="o">-[</span><span class="n">version</span><span class="o">].</span><span class="na">jar</span> <span class="n">추가</span> <span class="o">-</span> <span class="nc">Apply</span> <span class="n">and</span> <span class="n">close</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="java에서-연결-확인">JAVA에서 연결 확인</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>                                         
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="err">[</span><span class="nc">CLASS_NAME</span><span class="o">]</span> <span class="o">{</span> <span class="c1">// Class 이름 수정</span>
+
+<span class="kd">static</span> <span class="nc">String</span> <span class="n">url</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+<span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="nc">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="k">try</span><span class="o">{</span>
+        <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">).</span><span class="na">newInstance</span><span class="o">();</span> 
+            <span class="n">conn</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:mysql://localhost:3306/[DB]"</span><span class="o">,</span> 
+                                               <span class="s">"[ID]"</span><span class="o">,</span> 
+                                               <span class="s">"[PASSWORD]"</span><span class="o">);</span> <span class="c1">//URL,UID,PWD        </span>
+            <span class="k">if</span><span class="o">(</span><span class="n">conn</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"연결실패"</span><span class="o">);</span>
+            <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"연결성공"</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">ce</span><span class="o">){</span>
+            <span class="n">ce</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>            
+        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">SQLException</span> <span class="n">se</span><span class="o">){</span>
+            <span class="n">se</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>    
+        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+            <span class="k">try</span><span class="o">{</span> <span class="c1">// 연결 해제</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">rs</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>        <span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>            <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">pstmt</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>    <span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>        <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">stmt</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>    <span class="n">stmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>        <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">conn</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>    <span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>        <span class="o">}</span>
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">SQLException</span> <span class="n">se2</span><span class="o">){</span>
+                <span class="n">se2</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="java-mysql">JAVA-MYSQL</h3>
+<ul>
+  <li>JDBC 연결을 활용해 MySQL의 empDB 데이터베이스 dept10 테이블의 데이터를 수정</li>
+  <li>부서위치를 바꿀 부서번호를 입력해, 입력받은 부서번호의 위치(loc)을 바꾸시오</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.DriverManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.PreparedStatement</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyConn03</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+		<span class="nc">String</span> <span class="n">jdbcDriver</span> <span class="o">=</span> <span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">;</span>
+		<span class="nc">String</span> <span class="n">jdbcUrl</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost:3306/empDB?serverTimezone=UTC"</span><span class="o">;</span>
+		<span class="nc">String</span> <span class="n">dbUser</span> <span class="o">=</span> <span class="s">"root"</span><span class="o">;</span>
+		<span class="nc">String</span> <span class="n">dbPwd</span> <span class="o">=</span> <span class="s">"1234"</span><span class="o">;</span>
+		
+		<span class="nc">String</span> <span class="n">sqlSelect</span> <span class="o">=</span> <span class="s">"SELECT * FROM dept10"</span><span class="o">;</span>
+		<span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// for dynmaic query</span>
+		<span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+		<span class="kt">int</span> <span class="n">iDeptno</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> 
+		<span class="nc">String</span> <span class="n">sLoc</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+		<span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"부서위치를 바꿀 부서번호를 입력하시오 =&gt;"</span><span class="o">);</span>
+		<span class="n">iDeptno</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iDeptno</span> <span class="o">+</span> <span class="s">"번 부서번호가 바뀔 위치를 입력하시오 =&gt;"</span><span class="o">);</span>
+		<span class="n">sLoc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+		
+		<span class="nc">String</span> <span class="n">sqlUpdate</span> <span class="o">=</span> <span class="s">"UPDATE dept10 \n"</span> <span class="o">+</span> 
+							<span class="s">"SET loc = ? \n"</span> <span class="o">+</span> 
+							<span class="s">"WHERE (deptno = ?)"</span><span class="o">;</span>
+		
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="c1">// 1. JDBC 드라이버 로드</span>
+			<span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">jdbcDriver</span><span class="o">);</span> <span class="c1">// Library에 있는 "String" 이름의 클래스를 가져와라</span>
+			
+			<span class="c1">// 2. Database Connection 연결</span>
+			<span class="n">conn</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">jdbcUrl</span><span class="o">,</span> <span class="n">dbUser</span><span class="o">,</span> <span class="n">dbPwd</span><span class="o">);</span>
+			
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Connection 연결"</span><span class="o">);</span>
+			
+			<span class="c1">// 3. Statement 생성</span>
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sqlUpdate</span><span class="o">);</span>
+			
+			<span class="c1">// 4. SQL 전송 (executeQuery(), exectueUpdate()) </span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">sLoc</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">iDeptno</span><span class="o">);</span>
+			
+			<span class="kt">int</span> <span class="n">resultCount</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span> <span class="c1">// 정상인 경우 보통 숫자 1 반환</span>
+			
+			<span class="c1">// 5. Result set(Sql 결과) 받기</span>
+			<span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">sqlSelect</span><span class="o">);</span>
+				
+			<span class="k">if</span> <span class="o">(</span><span class="n">resultCount</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"데이터 정상적으로 추가됨"</span><span class="o">);}</span> 
+			<span class="k">else</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"데이터 정상적으로 입력 안됨"</span><span class="o">);}</span>
+			
+			<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%d | %-10s | %-10s \n"</span><span class="o">,</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">2</span><span class="o">),</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"loc"</span><span class="o">));}</span>
+			
+			<span class="c1">// 6. Database Connection 해제</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Connection 해제"</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span> 
+			<span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"SQL 연결 안됨"</span><span class="o">);</span>
+				<span class="o">}</span>
+			<span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"드라이버 로드 실패"</span><span class="o">);</span>
+				<span class="o">}</span>
+				
+	<span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#java" class="page__taxonomy-item" rel="tag">JAVA</a><span class="sep">, </span>
+    
+      <a href="/tags/#jdbc" class="page__taxonomy-item" rel="tag">JDBC</a><span class="sep">, </span>
+    
+      <a href="/tags/#mysql" class="page__taxonomy-item" rel="tag">MYSQL</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#java" class="page__taxonomy-item" rel="tag">JAVA</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-12-01T00:00:00+09:00">December 1, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BJAVA%5D+MySQL+JDBC+%EC%97%B0%EA%B2%B0+%5BMAC%5D%20http%3A%2F%2Flocalhost%3A4000%2Fjava%2Fjava-jdbc%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjava%2Fjava-jdbc%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjava%2Fjava-jdbc%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/mysql/encore_sql2/" class="pagination--pager" title="[MySQL] VIEW
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/mysql/encore_sql2/" rel="permalink">[MySQL] VIEW
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE VIEW - 가상의 테이블 만들기
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/mysql/encore_sql1/" rel="permalink">[MySQL] DDL &amp; DML
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE TABLE - 테이블 만들기
+  INSERT INTO - 테이블에 데이터(행) 추가
+  ALTER - 테이블의 속성 수정
+  SET - 테이블 속성 설정
+  UPDATE &amp; SET - 테이블의 데이터 수정
+  DELETE - 테이블...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers_coding_test(8)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers_coding_test(7)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

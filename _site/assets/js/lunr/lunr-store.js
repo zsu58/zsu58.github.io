@@ -360,13 +360,13 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] LeetCode 1725. Number Of Rectangles That Can Form The Largest Square",
-        "excerpt":" ALGORITHM Übung - LeetCode     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제  문제 링크   코드  class Solution(object):     def countGoodRectangles(self, rectangles):         rect_list = [min(rectangle) for rectangle in range(rectangles)]         maxLen = max(rect_list)          result = 0         return sum([i for i in rect_list if maxLen == i])    ","categories": ["LEETCODE"],
+        "excerpt":" ALGORITHM Übung - LeetCode     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제     🔗 문제 링크   코드  class Solution(object):     def countGoodRectangles(self, rectangles):         rect_list = [min(rectangle) for rectangle in range(rectangles)]         maxLen = max(rect_list)          result = 0         return sum([i for i in rect_list if maxLen == i])    ","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
         "url": "/leetcode/leetcode_recursion1-copy/",
         "teaser": null
       },{
         "title": "[ALGORITHM] LeetCode 1. Two Sum",
-        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 문제 링크 코드 # 풀이1 - Brute Force class Solution(object): def twoSum(self, nums, target): \"\"\" :type nums: List[int] :type target: int :rtype: List[int] \"\"\" for i in range(len(nums)): for j in range(i+1,len(nums)): if nums[i] + nums[j] == target:...","categories": ["LEETCODE"],
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 풀이1 - Brute Force class Solution(object): def twoSum(self, nums, target): \"\"\" :type nums: List[int] :type target: int :rtype: List[int] \"\"\" for i in range(len(nums)): for j in range(i+1,len(nums)): if nums[i] + nums[j] ==...","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
         "url": "/leetcode/leetcode_top100_liked(1)/",
         "teaser": null
@@ -519,5 +519,11 @@ var store = [{
         "excerpt":"MySQL Table CREATE VIEW - 가상의 테이블 만들기 CREATE VIEW CREATE VIEW [view_name] AS [table] 생성된 View에서는 일반 table처럼 작업(select, join, update, delete, insert 등)을 할 수 있음 View에서 insert를 한 경우 insert한 데이터는 원래 데이터가 있는 테이블에 추가됨 단, View는 View 생성 조건에 따라 데이터가 보여짐 만약 View 조건...","categories": ["MYSQL"],
         "tags": ["SQL"],
         "url": "/mysql/encore_sql2/",
+        "teaser": null
+      },{
+        "title": "[JAVA] MySQL JDBC 연결 [MAC]",
+        "excerpt":"JAVA - MYSQL JDBC 연결 [MAC] JDBC 다운로드 Select Operating System: Platfrom Independent 클릭 Platform Independent (Architecture Independent), ZIP Archive 다운로드 🔗 다운로드 링크 # 아래의 경로로 mysql-connector-java-8.0.27.jar 파일 옮기기 # /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/ext JAVA에 mysql-connector-java-[version].jar 추가 패키지별로 추가해야 함 # 1) 패키지 폴더 우클릭 - Build Path - Configure Build Path...","categories": ["JAVA"],
+        "tags": ["JAVA","JDBC","MYSQL"],
+        "url": "/java/java-jdbc/",
         "teaser": null
       }]

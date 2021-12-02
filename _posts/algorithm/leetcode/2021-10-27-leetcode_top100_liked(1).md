@@ -19,7 +19,7 @@ tags:
 ---
 
 ### 문제
-<a href="https://leetcode.com/problems/two-sum/">문제 링크</a>
+* [🔗 문제 링크](https://leetcode.com/problems/two-sum/)
 
 ### 코드
 ```python

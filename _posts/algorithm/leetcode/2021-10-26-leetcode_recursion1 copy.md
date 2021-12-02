@@ -19,7 +19,7 @@ tags:
 ---
 
 ### 문제
-<a href="https://leetcode.com/problems/number-of-rectangles-that-can-form-the-largest-square/">문제 링크</a>
+* [🔗 문제 링크](https://leetcode.com/problems/number-of-rectangles-that-can-form-the-largest-square/)
 
 ### 코드
 ```python
