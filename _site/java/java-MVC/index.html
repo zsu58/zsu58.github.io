@@ -1,0 +1,1349 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[JAVA] MVC - Bibliothek für Data-Engineering</title>
+<meta name="description" content="JAVA - MVC">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[JAVA] MVC">
+<meta property="og:url" content="http://localhost:4000/java/java-MVC/">
+
+
+  <meta property="og:description" content="JAVA - MVC">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-12-02T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/java/java-MVC/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Kategorie</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://stingy-camp-e37.notion.site/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/armi_made.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">89</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Data-Enginnering</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--sql 카테고리 글들을 모아둔 페이지인 /categories/sql 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a href="/categories/mysql" class="">MySQL (19)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/docker" class="">Docker (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Algorithm</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/codeit" class="">Codeit (34)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/leetcode" class="">LeetCode (2)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/programmers" class="">Programmers (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/java" class="">Java (2)</a></li>
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[JAVA] MVC">
+    <meta itemprop="description" content="JAVA - MVC">
+    <meta itemprop="datePublished" content="2021-12-02T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[JAVA] MVC
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#java---mvc">JAVA - MVC</a></li><li><a href="#java-mvc-패턴-구현-계획">JAVA MVC 패턴 구현 계획</a></li><li><a href="#db-connection-class-db-connection">DB Connection Class (DB Connection)</a></li><li><a href="#data-객체-vodto">Data 객체 (VO/DTO)</a></li><li><a href="#crud-처리-객체-dao">CRUD 처리 객체 (DAO)</a></li><li><a href="#main-class">Main Class</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="java---mvc">JAVA - MVC</h3>
+
+<hr />
+
+<h3 id="java-mvc-패턴-구현-계획">JAVA MVC 패턴 구현 계획</h3>
+<ul>
+  <li>DB Connection Class (DB Connection) :</li>
+  <li>Data 객체 (VO/DTO)</li>
+  <li>CRUD 처리 객체 (DAO)</li>
+  <li>Main Class</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//======</span>
+<span class="c1">// MVC</span>
+<span class="c1">//======</span>
+
+<span class="c1">// 1) DB Connection Class (DB Connection) :</span>
+	<span class="c1">// 1) JDBC 드라이버 로드	</span>
+	<span class="c1">// 2) Database Connection 연결</span>
+	<span class="c1">// 6 Database Connection 해제</span>
+
+<span class="c1">// 2) Data 객체 (VO/DTO) : </span>
+	<span class="n">ex</span><span class="o">)</span> <span class="nc">Emp</span> <span class="nc">Class</span>
+		<span class="n">맴버</span> <span class="n">필드</span>
+            <span class="kd">private</span> <span class="kt">int</span> <span class="n">empno</span><span class="o">;</span>
+            <span class="kd">private</span> <span class="nc">String</span> <span class="n">ename</span><span class="o">;</span>
+            <span class="kd">private</span> <span class="nc">String</span> <span class="n">job</span><span class="o">;</span>
+            <span class="kd">private</span> <span class="kt">int</span> <span class="n">mgr</span><span class="o">;</span>
+            <span class="kd">private</span> <span class="nc">String</span> <span class="n">hiredate</span><span class="o">;</span>
+            <span class="kd">private</span> <span class="kt">int</span> <span class="n">sal</span><span class="o">;</span>
+            <span class="kd">private</span> <span class="kt">int</span> <span class="n">comm</span><span class="o">;</span>
+            <span class="kd">private</span> <span class="kt">int</span> <span class="n">deptno</span><span class="o">;</span>
+
+		<span class="n">맴버</span> <span class="n">생성자</span>
+            <span class="nc">EmpVO</span><span class="o">()</span> <span class="o">{}</span>
+            <span class="nc">EmpVO</span><span class="o">(</span><span class="kt">int</span> <span class="n">empno</span><span class="o">,</span> <span class="nc">String</span> <span class="n">ename</span><span class="o">,</span> <span class="nc">String</span> <span class="n">job</span><span class="o">,</span> <span class="kt">int</span> <span class="n">mgr</span><span class="o">,</span> 
+                         <span class="nc">String</span> <span class="n">hiredate</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sal</span><span class="o">,</span> <span class="kt">int</span> <span class="n">comm</span><span class="o">,</span> <span class="kt">int</span> <span class="n">deptno</span><span class="o">)</span>
+
+		<span class="n">맴버</span> <span class="n">메소드</span>
+            <span class="kt">int</span> <span class="nf">getEmpno</span><span class="o">()</span> <span class="o">{}</span> <span class="nc">String</span> <span class="nf">getEname</span><span class="o">()</span> <span class="o">{}</span> <span class="nc">String</span> <span class="nf">getJob</span><span class="o">()</span> <span class="o">{}</span>
+            <span class="kt">int</span> <span class="nf">getMgr</span><span class="o">()</span> <span class="o">{}</span> <span class="nc">String</span> <span class="nf">getHiredate</span><span class="o">()</span> <span class="o">{}</span> <span class="kt">int</span> <span class="nf">getSal</span><span class="o">()</span> <span class="o">{}</span> 
+            <span class="kt">int</span> <span class="nf">getComm</span><span class="o">()</span> <span class="o">{}</span> <span class="kt">int</span> <span class="nf">getDeptno</span><span class="o">()</span> <span class="o">{}</span>
+
+<span class="mi">3</span><span class="o">)</span> <span class="no">CRUD</span> <span class="n">처리</span> <span class="n">객체</span> <span class="o">(</span><span class="no">DAO</span><span class="o">):</span>
+	<span class="n">ex</span><span class="o">)</span> <span class="nc">Dept</span> <span class="no">CRUD</span> <span class="nc">Class</span>
+
+	<span class="c1">// 3) Statement 생성</span>
+	<span class="c1">// 4) SQL 전송 (executeQuery(), exectueUpdate())</span>
+	<span class="c1">// 5) Result set(Sql 결과) 받기</span>
+
+	<span class="n">selectEmp</span><span class="o">(){}</span>
+	<span class="n">insertEmp</span><span class="o">(){}</span>
+	<span class="n">updateEmp</span><span class="o">(){}</span>
+	<span class="n">deleteEmp</span><span class="o">(){}</span>
+	<span class="n">listEmp</span><span class="o">(){}</span>
+
+<span class="c1">//------</span>
+<span class="c1">// 실행</span>
+<span class="c1">//------</span>
+<span class="mi">4</span><span class="o">)</span> <span class="nc">Main</span> <span class="n">기반</span> <span class="nc">Class</span>
+
+<span class="nf">main</span><span class="o">(){</span>
+	<span class="c1">// 사원 관리 시스템</span>
+
+	<span class="k">while</span><span class="o">(){</span>
+		<span class="mi">1</span><span class="o">.</span> <span class="n">사원</span> <span class="n">검색</span>
+		<span class="mi">2</span><span class="o">.</span> <span class="n">사원</span> <span class="n">추가</span>
+		<span class="mi">3</span><span class="o">.</span> <span class="n">사원</span> <span class="n">정보수정</span>
+		<span class="mi">4</span><span class="o">.</span> <span class="n">사원</span> <span class="n">삭제</span>
+		<span class="mi">5</span><span class="o">.</span> <span class="n">전체</span> <span class="n">사원</span> <span class="n">조회</span>
+		<span class="mi">6</span><span class="o">.</span> <span class="n">시스템</span> <span class="n">종료</span>
+	<span class="o">}</span>
+	<span class="c1">// 사원 관리 시스템 종료</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="db-connection-class-db-connection">DB Connection Class (DB Connection)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.DriverManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DBconn</span> <span class="o">{</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Connection</span> <span class="nf">getConnection</span> <span class="o">()</span> <span class="o">{</span>
+		<span class="nc">String</span> <span class="n">jdbcDriver</span> <span class="o">=</span> <span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">;</span>
+		<span class="nc">String</span> <span class="n">jdbcUrl</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost:3306/empDB?serverTimezone=UTC"</span><span class="o">;</span>
+		<span class="nc">String</span> <span class="n">dbUser</span> <span class="o">=</span> <span class="s">"root"</span><span class="o">;</span>
+		<span class="nc">String</span> <span class="n">dbPwd</span> <span class="o">=</span> <span class="s">"1234"</span><span class="o">;</span>
+		<span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">jdbcDriver</span><span class="o">);</span>
+			<span class="n">conn</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">jdbcUrl</span><span class="o">,</span> <span class="n">dbUser</span><span class="o">,</span> <span class="n">dbPwd</span><span class="o">);</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">conn</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"연결 실패"</span><span class="o">);}</span>
+			<span class="k">else</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"연결 성공"</span><span class="o">);}</span>
+			<span class="o">}</span>
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">ce</span><span class="o">){</span>
+			<span class="n">ce</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">se</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">se</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+		
+		<span class="k">return</span> <span class="n">conn</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="data-객체-vodto">Data 객체 (VO/DTO)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EmpVO</span> <span class="o">{</span>
+	<span class="c1">// member field</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">empno</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">ename</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">job</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">mgr</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">hiredate</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">sal</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">comm</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">deptno</span><span class="o">;</span>
+	
+	<span class="c1">// constructor</span>
+	<span class="kd">public</span> <span class="nf">EmpVO</span><span class="o">()</span> <span class="o">{}</span>
+	<span class="kd">public</span> <span class="nf">EmpVO</span><span class="o">(</span><span class="kt">int</span> <span class="n">empno</span><span class="o">,</span> <span class="nc">String</span> <span class="n">ename</span><span class="o">,</span> <span class="nc">String</span> <span class="n">job</span><span class="o">,</span> <span class="kt">int</span> <span class="n">mgr</span><span class="o">,</span> 
+				 <span class="nc">String</span> <span class="n">hiredate</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sal</span><span class="o">,</span> <span class="kt">int</span> <span class="n">comm</span><span class="o">,</span> <span class="kt">int</span> <span class="n">deptno</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">empno</span> <span class="o">=</span> <span class="n">empno</span><span class="o">;</span> <span class="k">this</span><span class="o">.</span><span class="na">ename</span> <span class="o">=</span> <span class="n">ename</span><span class="o">;</span> <span class="k">this</span><span class="o">.</span><span class="na">job</span> <span class="o">=</span> <span class="n">job</span><span class="o">;</span> <span class="k">this</span><span class="o">.</span><span class="na">mgr</span> <span class="o">=</span> <span class="n">mgr</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">hiredate</span> <span class="o">=</span> <span class="n">hiredate</span><span class="o">;</span> <span class="k">this</span><span class="o">.</span><span class="na">sal</span> <span class="o">=</span> <span class="n">sal</span><span class="o">;</span> <span class="k">this</span><span class="o">.</span><span class="na">comm</span> <span class="o">=</span> <span class="n">comm</span><span class="o">;</span> <span class="k">this</span><span class="o">.</span><span class="na">deptno</span> <span class="o">=</span> <span class="n">deptno</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="c1">// getter method</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getEmpno</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">empno</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getEname</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">ename</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getJob</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">job</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMgr</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">mgr</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getHiredate</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">hiredate</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSal</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">sal</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getComm</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">comm</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getDeptno</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">deptno</span><span class="o">;}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="s">"[ "</span> <span class="o">+</span> <span class="n">empno</span> <span class="o">+</span> <span class="s">" | "</span> <span class="o">+</span> <span class="n">ename</span> <span class="o">+</span> <span class="s">" | "</span> <span class="o">+</span> <span class="n">job</span> <span class="o">+</span> <span class="s">" | "</span> <span class="o">+</span> <span class="n">mgr</span> <span class="o">+</span> <span class="s">" |"</span> <span class="o">+</span> 
+				<span class="n">hiredate</span> <span class="o">+</span> <span class="s">" | "</span> <span class="o">+</span> <span class="n">sal</span> <span class="o">+</span> <span class="s">" | "</span> <span class="o">+</span> <span class="n">comm</span> <span class="o">+</span> <span class="s">" | "</span> <span class="o">+</span> <span class="n">deptno</span> <span class="o">+</span> <span class="s">" ]"</span><span class="o">;</span>
+	<span class="o">}</span>	
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="crud-처리-객체-dao">CRUD 처리 객체 (DAO)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.Statement</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.PreparedStatement</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EmpDAO</span> <span class="o">{</span>
+	
+    <span class="c1">// DAO singleton</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">EmpDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EmpDAO</span><span class="o">();</span>
+	
+	<span class="kd">private</span> <span class="nf">EmpDAO</span><span class="o">()</span> <span class="o">{};</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">EmpDAO</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="n">dao</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+    <span class="c1">// Read</span>
+	<span class="nc">EmpVO</span> <span class="nf">selectEmp</span><span class="o">(</span><span class="kt">int</span> <span class="n">empno</span><span class="o">,</span> <span class="nc">Connection</span> <span class="n">conn</span><span class="o">){</span>
+		
+		<span class="nc">EmpVO</span> <span class="n">emp</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="nc">String</span> <span class="n">sqlSelect</span> <span class="o">=</span> <span class="s">"SELECT * \n"</span> <span class="o">+</span> 
+							   <span class="s">"FROM emp4 \n"</span> <span class="o">+</span> 
+							   <span class="s">"WHERE (empno = ?)"</span><span class="o">;</span>
+			<span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sqlSelect</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">empno</span><span class="o">);</span>
+			
+			<span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+				<span class="n">emp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EmpVO</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"empno"</span><span class="o">),</span> 
+								<span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"ename"</span><span class="o">),</span>
+								<span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"job"</span><span class="o">),</span>
+								<span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"mgr"</span><span class="o">),</span>
+								<span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"hiredate"</span><span class="o">),</span>
+								<span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"sal"</span><span class="o">),</span>
+								<span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"comm"</span><span class="o">),</span>
+								<span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"deptno"</span><span class="o">));</span>
+							<span class="o">}</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+				<span class="o">}</span>
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"selectEmp Error"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">emp</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+    <span class="c1">// Create</span>
+	<span class="kt">int</span> <span class="nf">insertEmp</span><span class="o">(</span><span class="nc">EmpVO</span> <span class="n">emp</span><span class="o">,</span> <span class="nc">Connection</span> <span class="n">conn</span><span class="o">){</span>
+		
+		<span class="kt">int</span> <span class="n">resultValue</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="nc">String</span> <span class="n">sqlInsert</span> <span class="o">=</span> <span class="s">"INSERT INTO emp4 VALUES(?,?,?,?,?,?,?,?)"</span><span class="o">;</span>
+			<span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sqlInsert</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">emp</span><span class="o">.</span><span class="na">getEmpno</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">emp</span><span class="o">.</span><span class="na">getEname</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">emp</span><span class="o">.</span><span class="na">getJob</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">emp</span><span class="o">.</span><span class="na">getMgr</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">emp</span><span class="o">.</span><span class="na">getHiredate</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">emp</span><span class="o">.</span><span class="na">getSal</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">emp</span><span class="o">.</span><span class="na">getComm</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">8</span><span class="o">,</span> <span class="n">emp</span><span class="o">.</span><span class="na">getDeptno</span><span class="o">());</span>
+		
+		<span class="n">resultValue</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+		<span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+				<span class="o">}</span>
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"insertEmp Error"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">resultValue</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+    <span class="c1">// Update</span>
+	<span class="kt">int</span> <span class="nf">updateEmp</span><span class="o">(</span><span class="nc">EmpVO</span> <span class="n">emp</span><span class="o">,</span> <span class="nc">Connection</span> <span class="n">conn</span><span class="o">)</span> <span class="o">{</span>
+		
+		<span class="kt">int</span> <span class="n">resultValue</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="nc">String</span> <span class="n">sqlUpdate</span> <span class="o">=</span> <span class="s">"UPDATE emp4 \n"</span> <span class="o">+</span>
+					 		   <span class="s">"SET sal = ? \n"</span> <span class="o">+</span>
+					 		   <span class="s">"WHERE (empno = ?)"</span><span class="o">;</span>
+			<span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sqlUpdate</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">emp</span><span class="o">.</span><span class="na">getSal</span><span class="o">());</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">emp</span><span class="o">.</span><span class="na">getEmpno</span><span class="o">());</span>
+
+			<span class="n">resultValue</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"updateEmp Error"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">resultValue</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+    <span class="c1">// Delete</span>
+	<span class="kt">int</span> <span class="nf">deleteEmp</span><span class="o">(</span><span class="kt">int</span> <span class="n">empno</span><span class="o">,</span> <span class="nc">Connection</span> <span class="n">conn</span><span class="o">)</span> <span class="o">{</span>
+		
+		<span class="kt">int</span> <span class="n">resultValue</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="nc">String</span> <span class="n">sqlDelete</span> <span class="o">=</span> <span class="s">"DELETE FROM emp4 \n"</span> <span class="o">+</span>
+							   <span class="s">"WHERE (empno = ?)"</span><span class="o">;</span>
+			<span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sqlDelete</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">empno</span><span class="o">);</span>
+
+			<span class="n">resultValue</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"deleteEmp Error"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">resultValue</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+    <span class="c1">// Read (All)</span>
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">EmpVO</span><span class="o">&gt;</span> <span class="nf">listEmp</span><span class="o">(</span><span class="nc">Connection</span> <span class="n">conn</span><span class="o">){</span>
+		
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">EmpVO</span><span class="o">&gt;</span> <span class="n">empList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="nc">String</span> <span class="n">sqlSelectAll</span> <span class="o">=</span> <span class="s">"SELECT * \n"</span> <span class="o">+</span>
+								  <span class="s">"FROM emp4"</span><span class="o">;</span>
+			<span class="nc">PreparedStatement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sqlSelectAll</span><span class="o">);</span>
+			<span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+			<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+				<span class="n">empList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">EmpVO</span><span class="o">(</span>
+							<span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"empno"</span><span class="o">),</span> 
+							<span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"ename"</span><span class="o">),</span>
+							<span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"job"</span><span class="o">),</span>
+							<span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"mgr"</span><span class="o">),</span>
+							<span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"hiredate"</span><span class="o">),</span>
+							<span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"sal"</span><span class="o">),</span>
+							<span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"comm"</span><span class="o">),</span>
+							<span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"deptno"</span><span class="o">)));</span>
+			<span class="o">}</span>
+			<span class="n">stmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"listEmp Error"</span><span class="o">);</span>
+		<span class="o">}</span>	
+		<span class="k">return</span> <span class="n">empList</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="main-class">Main Class</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EmpMain</span> <span class="o">{</span>
+
+	<span class="kd">static</span> <span class="nc">EmpDAO</span> <span class="n">eDao</span> <span class="o">=</span> <span class="nc">EmpDAO</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+	
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">selectE</span><span class="o">(</span><span class="kt">int</span> <span class="n">empno</span><span class="o">,</span> <span class="nc">Connection</span> <span class="n">conn</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">EmpVO</span> <span class="n">emp</span> <span class="o">=</span> <span class="n">eDao</span><span class="o">.</span><span class="na">selectEmp</span><span class="o">(</span><span class="n">empno</span><span class="o">,</span> <span class="n">conn</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">emp</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">insertE</span><span class="o">(</span><span class="nc">EmpVO</span> <span class="n">emp</span><span class="o">,</span> <span class="nc">Connection</span> <span class="n">conn</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">resultValue</span> <span class="o">=</span> <span class="n">eDao</span><span class="o">.</span><span class="na">insertEmp</span><span class="o">(</span><span class="n">emp</span><span class="o">,</span> <span class="n">conn</span><span class="o">);</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">resultValue</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"데이터 정상적으로 추가 안됨"</span><span class="o">);}</span>
+		<span class="k">else</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"데이터 정상적으로 추가됨"</span><span class="o">);}</span>
+	<span class="o">}</span>
+
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">updateE</span><span class="o">(</span><span class="nc">EmpVO</span> <span class="n">emp</span><span class="o">,</span> <span class="nc">Connection</span> <span class="n">conn</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">resultValue</span> <span class="o">=</span> <span class="n">eDao</span><span class="o">.</span><span class="na">updateEmp</span><span class="o">(</span><span class="n">emp</span><span class="o">,</span> <span class="n">conn</span><span class="o">);</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">resultValue</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"데이터 정상적으로 수정 안됨"</span><span class="o">);}</span>
+		<span class="k">else</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"데이터 정상적으로 수정됨"</span><span class="o">);}</span>
+	<span class="o">}</span>
+
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">deleteE</span><span class="o">(</span><span class="kt">int</span> <span class="n">empno</span><span class="o">,</span> <span class="nc">Connection</span> <span class="n">conn</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">resultValue</span> <span class="o">=</span> <span class="n">eDao</span><span class="o">.</span><span class="na">deleteEmp</span><span class="o">(</span><span class="n">empno</span><span class="o">,</span> <span class="n">conn</span><span class="o">);</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">resultValue</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"데이터 정상적으로 삭제 안됨"</span><span class="o">);}</span>
+		<span class="k">else</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"데이터 정상적으로 삭제됨"</span><span class="o">);}</span>		
+	<span class="o">}</span>
+	
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">listEmp</span><span class="o">(</span><span class="nc">Connection</span> <span class="n">conn</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">EmpVO</span><span class="o">&gt;</span> <span class="n">empList</span> <span class="o">=</span> <span class="n">eDao</span><span class="o">.</span><span class="na">listEmp</span><span class="o">(</span><span class="n">conn</span><span class="o">);</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">EmpVO</span> <span class="n">emp</span> <span class="o">:</span> <span class="n">empList</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">emp</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+    
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=============================="</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"------ 사원 관리 시스템 시작 ------"</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=============================="</span><span class="o">);</span>
+		<span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		
+			<span class="k">try</span> <span class="o">{</span>
+				<span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="nc">DBconn</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+				<span class="kt">int</span> <span class="n">empno</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="nc">String</span> <span class="n">ename</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="nc">String</span> <span class="n">job</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="kt">int</span> <span class="n">mgr</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> 
+				<span class="nc">String</span> <span class="n">hiredate</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="kt">int</span> <span class="n">sal</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="kt">int</span> <span class="n">comm</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="kt">int</span> <span class="n">deptno</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+				<span class="nc">EmpVO</span> <span class="n">emp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EmpVO</span><span class="o">();</span>
+				
+				<span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"==== 1. 사원 검색 | 2. 사원 추가 | 3. 사원 정보수정 | 4. 사원 삭제 | 5. 전체 사원 조희 | 6. 시스템 종료 ===="</span><span class="o">);</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"희망하는 서비스에 해당하는 번호를 입력해주세요 =&gt; "</span><span class="o">);</span>
+				
+				<span class="kt">int</span> <span class="n">choiceNum</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+				<span class="k">switch</span> <span class="o">(</span><span class="n">choiceNum</span><span class="o">)</span> <span class="o">{</span>
+					<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"========== [1. 검색] =========="</span><span class="o">);</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"검색할 사원의 사원번호를 입력하세요 =&gt;"</span><span class="o">);</span>
+						<span class="n">empno</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		
+						<span class="k">try</span> <span class="o">{</span>
+							<span class="n">selectE</span><span class="o">(</span><span class="n">empno</span><span class="o">,</span> <span class="n">conn</span><span class="o">);</span>
+						<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+							<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"입력한 사원번호에 해당하는 사원이 존재하지 않습니다."</span><span class="o">);</span>
+						<span class="o">}</span>
+						<span class="k">break</span><span class="o">;</span>
+						
+					<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"========== [2. 추가] =========="</span><span class="o">);</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"새롭게 추가할 사원의 사원번호를 입력하세요 예) 7000 =&gt;"</span><span class="o">);</span> <span class="n">empno</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span> 
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"새롭게 추가할 사원의 이름을 입력하세요 예) 홍길동 =&gt;"</span><span class="o">);</span> <span class="n">ename</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">next</span><span class="o">();</span> 
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"새롭게 추가할 사원의 직무를 입력하세요 예) CLERK =&gt;"</span><span class="o">);</span> <span class="n">job</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">next</span><span class="o">();</span> 
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"새롭게 추가할 사원의 상사의 사원번호를 입력하세요 예) 8000 =&gt;"</span><span class="o">);</span> <span class="n">mgr</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span> 
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"새롭게 입력할 사원의 입사일을 입력하세요 예) 2000-01-01 =&gt;"</span><span class="o">);</span> <span class="n">hiredate</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">next</span><span class="o">();</span> 
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"새롭게 추가할 사원의 급여를 입력하세요 예) 800 =&gt;"</span><span class="o">);</span> <span class="n">sal</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"새롭게 추가할 사원의 commission을 입력하세요 예) 0 =&gt;"</span><span class="o">);</span> <span class="n">comm</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"새롭게 추가할 사원의 부서번호를 입력하세요 예) 10 =&gt;"</span><span class="o">);</span> <span class="n">deptno</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+						<span class="n">emp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EmpVO</span><span class="o">(</span><span class="n">empno</span><span class="o">,</span> <span class="n">ename</span><span class="o">,</span> <span class="n">job</span><span class="o">,</span> <span class="n">mgr</span><span class="o">,</span> <span class="n">hiredate</span><span class="o">,</span> <span class="n">sal</span><span class="o">,</span> <span class="n">comm</span><span class="o">,</span> <span class="n">deptno</span><span class="o">);</span>
+						
+						<span class="n">insertE</span><span class="o">(</span><span class="n">emp</span><span class="o">,</span> <span class="n">conn</span><span class="o">);</span>
+						<span class="k">break</span><span class="o">;</span>
+						
+					<span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"========== [3. 수정] =========="</span><span class="o">);</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"수정할 사원의 사원번호를 입력하세요 =&gt;"</span><span class="o">);</span> <span class="n">empno</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"수정할 사원의 급여를 입력하세요 =&gt;"</span><span class="o">);</span> <span class="n">sal</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+						
+						<span class="n">emp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EmpVO</span><span class="o">(</span><span class="n">empno</span><span class="o">,</span> <span class="n">ename</span><span class="o">,</span> <span class="n">job</span><span class="o">,</span> <span class="n">mgr</span><span class="o">,</span> <span class="n">hiredate</span><span class="o">,</span> <span class="n">sal</span><span class="o">,</span> <span class="n">comm</span><span class="o">,</span> <span class="n">deptno</span><span class="o">);</span>
+						<span class="n">updateE</span><span class="o">(</span><span class="n">emp</span><span class="o">,</span> <span class="n">conn</span><span class="o">);</span>
+						<span class="k">break</span><span class="o">;</span>
+						
+					<span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"========== [4. 삭제] =========="</span><span class="o">);</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"삭제할 사원의 사원번호를 입력하세요 =&gt;"</span><span class="o">);</span> <span class="n">empno</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+						
+						<span class="n">deleteE</span><span class="o">(</span><span class="n">empno</span><span class="o">,</span> <span class="n">conn</span><span class="o">);</span>
+						<span class="k">break</span><span class="o">;</span>
+						
+					<span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"========== [5. 전체 조회] =========="</span><span class="o">);</span>
+						<span class="n">listEmp</span><span class="o">(</span><span class="n">conn</span><span class="o">);</span>
+						<span class="k">break</span><span class="o">;</span>
+						
+					<span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"========== [6. 시스템 종료] =========="</span><span class="o">);</span>
+						<span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+						<span class="k">return</span><span class="o">;</span>
+					<span class="k">default</span><span class="o">:</span>
+						<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"1번부터 6번 사이의 숫자를 입력해주세요"</span><span class="o">);</span>
+					<span class="o">}</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"==시스템 문제 발생=="</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="n">sc</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#java" class="page__taxonomy-item" rel="tag">JAVA</a><span class="sep">, </span>
+    
+      <a href="/tags/#mvc" class="page__taxonomy-item" rel="tag">MVC</a><span class="sep">, </span>
+    
+      <a href="/tags/#mysql" class="page__taxonomy-item" rel="tag">MYSQL</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#java" class="page__taxonomy-item" rel="tag">JAVA</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-12-02T00:00:00+09:00">December 2, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BJAVA%5D+MVC%20http%3A%2F%2Flocalhost%3A4000%2Fjava%2Fjava-MVC%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjava%2Fjava-MVC%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fjava%2Fjava-MVC%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/java/java-jdbc/" class="pagination--pager" title="[JAVA] MySQL JDBC 연결 [MAC]
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/java/java-jdbc/" rel="permalink">[JAVA] MySQL JDBC 연결 [MAC]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+JAVA - MYSQL JDBC 연결 [MAC]
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/mysql/encore_sql2/" rel="permalink">[MySQL] VIEW
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE VIEW - 가상의 테이블 만들기
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/mysql/encore_sql1/" rel="permalink">[MySQL] DDL &amp; DML
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MySQL Table
+
+  CREATE TABLE - 테이블 만들기
+  INSERT INTO - 테이블에 데이터(행) 추가
+  ALTER - 테이블의 속성 수정
+  SET - 테이블 속성 설정
+  UPDATE &amp; SET - 테이블의 데이터 수정
+  DELETE - 테이블...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers_coding_test(8)/" rel="permalink">[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - Programmers
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
