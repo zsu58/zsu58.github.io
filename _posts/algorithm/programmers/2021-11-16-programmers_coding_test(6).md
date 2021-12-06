@@ -98,7 +98,7 @@ def solution(lottos, win_nums):
 ```python
 def solution(n, lost, reserve):
 
-    lost, reserve = set(lost).difference(reserve), set(reserve).difference(lost)
+    lost, reserve = set(lost).difference(set(reserve)), set(reserve).difference(set(lost))
 
     reserve_dict = {i: True for i in reserve}
 
@@ -107,9 +107,6 @@ def solution(n, lost, reserve):
         if i-1 in reserve_dict.keys():
             total_lost -= 1
             del (reserve_dict[i-1])
-        elif i in reserve_dict.keys():
-            total_lost -= 1
-            del (reserve_dict[i])
         elif i+1 in reserve_dict.keys():
             total_lost -= 1
             del (reserve_dict[i+1])

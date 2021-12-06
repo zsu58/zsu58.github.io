@@ -532,4 +532,10 @@ var store = [{
         "tags": ["JAVA","MVC","MYSQL"],
         "url": "/java/java-MVC/",
         "teaser": null
+      },{
+        "title": "[ALGORITHM] Stack & Queue",
+        "excerpt":"ALGORITHM 알고리즘 스터디(1) Stack &amp; Queue(Deque) Stack 책을 쌓은 것처럼 차곡차곡 쌓아 올린 형태의 자료구조로 LIFO(Last In First Out)라고도 함 시간 순서에 따라 자료가 쌓이기에 가장 마지막에 삽입된 자료가 가장 먼저 삭제되는 구조적인 특징을 가짐 대표적인 기능으로는 push(삽입), pop(삭제), peek(가장 마지막으로 추가된 자료 조회)가 존재 대표적으로 웹 브라우저에서 이전 페이지...","categories": ["STUDY_ALGORITHM"],
+        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "url": "/study_algorithm/algorithm_study1/",
+        "teaser": null
       }]

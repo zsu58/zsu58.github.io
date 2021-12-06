@@ -198,55 +198,22 @@ def solution(ls):
 </p>
 ```python
 def solution(answers):
-    p1, p2, p3 = 0, 0, 0
-    p1_answer = {0: 1, 1: 2, 2: 3, 3: 4, 4: 5}
-    p2_answer = {0: 2, 1: 1, 2: 2, 3: 3, 4: 2, 5: 4, 6: 2, 7: 5}
-    p3_answer = {0: 3, 1: 3, 2: 1, 3: 1, 4: 2, 5: 2, 6: 4, 7: 4, 8: 5, 9: 5}
+    answer_dict = {1:(1,2,3,4,5),
+                   2:(2,1,2,3,2,4,2,5),
+                   3:(3,3,1,1,2,2,4,4,5,5)}
 
-    j = 0
-    for answer in answers:
-        if answer == p1_answer[j % 5]:
-            p1 += 1
-        if answer == p2_answer[j % 8]:
-            p2 += 1
-        if answer == p3_answer[j % 10]:
-            p3 += 1
-        j += 1
-
-    max_ans = max(p1,p2,p3)
-    best_luck = []
-    if max_ans == p1:
-        best_luck.append(1)
-    if max_ans == p2:
-        best_luck.append(2)
-    if max_ans == p3:
-        best_luck.append(3)
-
-    return sorted(best_luck)
+    res={1:0,2:0,3:0}
+    for i in range(len(answers)):
+        if answer_dict[1][i%5] == answers[i]:
+            res[1] += 1
+        if answer_dict[2][i%8] == answers[i]:
+            res[2] += 1
+        if answer_dict[3][i%10] == answers[i]:
+            res[3] += 1
+    
+    return [k for k,v in res.items() if v == max(res.values())]
 
 solution([1,3,2,4,2])
-
-# 다른 사람의 좋은 풀이
-def solution(answers):
-    pattern1 = [1,2,3,4,5]
-    pattern2 = [2,1,2,3,2,4,2,5]
-    pattern3 = [3,3,1,1,2,2,4,4,5,5]
-    score = [0, 0, 0]
-    result = []
-
-    for idx, answer in enumerate(answers):
-        if answer == pattern1[idx%len(pattern1)]:
-            score[0] += 1
-        if answer == pattern2[idx%len(pattern2)]:
-            score[1] += 1
-        if answer == pattern3[idx%len(pattern3)]:
-            score[2] += 1
-
-    for idx, s in enumerate(score):
-        if s == max(score):
-            result.append(idx+1)
-
-    return result
 ```
 
 ---

@@ -1,4 +1,4 @@
-I"�D<hr />
+I"RC<hr />
 <h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
 <ul>
   <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
@@ -89,7 +89,7 @@
 </p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">lost</span><span class="p">,</span> <span class="n">reserve</span><span class="p">):</span>
 
-    <span class="n">lost</span><span class="p">,</span> <span class="n">reserve</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">lost</span><span class="p">).</span><span class="n">difference</span><span class="p">(</span><span class="n">reserve</span><span class="p">),</span> <span class="nb">set</span><span class="p">(</span><span class="n">reserve</span><span class="p">).</span><span class="n">difference</span><span class="p">(</span><span class="n">lost</span><span class="p">)</span>
+    <span class="n">lost</span><span class="p">,</span> <span class="n">reserve</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">lost</span><span class="p">).</span><span class="n">difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">reserve</span><span class="p">)),</span> <span class="nb">set</span><span class="p">(</span><span class="n">reserve</span><span class="p">).</span><span class="n">difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">lost</span><span class="p">))</span>
 
     <span class="n">reserve_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="bp">True</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">reserve</span><span class="p">}</span>
 
@@ -98,9 +98,6 @@
         <span class="k">if</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span> <span class="ow">in</span> <span class="n">reserve_dict</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="n">total_lost</span> <span class="o">-=</span> <span class="mi">1</span>
             <span class="k">del</span> <span class="p">(</span><span class="n">reserve_dict</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">reserve_dict</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">total_lost</span> <span class="o">-=</span> <span class="mi">1</span>
-            <span class="k">del</span> <span class="p">(</span><span class="n">reserve_dict</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
         <span class="k">elif</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="ow">in</span> <span class="n">reserve_dict</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="n">total_lost</span> <span class="o">-=</span> <span class="mi">1</span>
             <span class="k">del</span> <span class="p">(</span><span class="n">reserve_dict</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>

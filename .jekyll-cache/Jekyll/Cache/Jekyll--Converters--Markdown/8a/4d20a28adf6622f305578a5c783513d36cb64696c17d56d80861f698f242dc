@@ -1,4 +1,4 @@
-I"<hr />
+I"�<hr />
 <h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
 <ul>
   <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
@@ -55,4 +55,31 @@
 
 <hr />
 
+<h3 id="주식가격">주식가격</h3>
+<ul>
+  <li>30/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test67.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">prices</span><span class="p">):</span>
+    
+    <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># loop for every price
+</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)):</span>
+        <span class="n">times</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># loop for every price after the current price
+</span>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># plus 1 second
+</span>            <span class="n">times</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="c1"># if the price is bigger than the current price, stop
+</span>            <span class="k">if</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+                    <span class="k">break</span>
+
+        <span class="n">ans</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">ans</span>
+</code></pre></div></div>
+
+<hr />
 :ET

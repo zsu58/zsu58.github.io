@@ -65,3 +65,29 @@ def solution(msg):
 
 ---
 
+### 주식가격
+* 30/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test67.png" align="center">
+</p>
+```python
+def solution(prices):
+    
+    ans = []
+    # loop for every price
+    for i in range(len(prices)):
+        times = 0
+        # loop for every price after the current price
+        for j in range(len(prices)-i-1):
+            # plus 1 second
+            times += 1
+            # if the price is bigger than the current price, stop
+            if prices[i] > prices[i+j+1]:
+                    break
+
+        ans.append(times)
+        
+    return ans
+```
+
+---
