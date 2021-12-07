@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">90</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">91</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -447,7 +447,7 @@
                     
                 
                     
-                        <li><a href="/categories/leetcode" class="">LeetCode (2)</a></li>
+                        <li><a href="/categories/leetcode" class="">LeetCode (3)</a></li>
                     
                 
                     
@@ -590,7 +590,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -605,7 +605,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#3차-파일명-정렬">[3차] 파일명 정렬</a></li><li><a href="#3차-압축">[3차] 압축</a></li><li><a href="#주식가격">주식가격</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#3차-파일명-정렬">[3차] 파일명 정렬</a></li><li><a href="#3차-압축">[3차] 압축</a></li><li><a href="#주식가격">주식가격</a></li><li><a href="#기능개발">기능개발</a></li></ul>
 
             </nav>
           </aside>
@@ -695,6 +695,62 @@
 
 <hr />
 
+<h3 id="기능개발">기능개발</h3>
+<ul>
+  <li>30/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test67.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">progresses</span><span class="p">,</span> <span class="n">speeds</span><span class="p">):</span>
+    <span class="c1"># used deque for leftpop
+</span>    <span class="n">progresses</span><span class="p">,</span><span class="n">speeds</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">progresses</span><span class="p">),</span><span class="n">deque</span><span class="p">(</span><span class="n">speeds</span><span class="p">)</span>
+    
+    <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># loop until progresses is empty
+</span>    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">progresses</span><span class="p">):</span>
+        <span class="c1"># for every loop add each speed to progress
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">progresses</span><span class="p">)):</span>
+            <span class="n">progresses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">speeds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># initalize number counting numbers of progress above 100
+</span>        <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># loop until the progresses[0] is below 100
+</span>        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">progresses</span><span class="p">)</span> <span class="ow">and</span> <span class="n">progresses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="n">progresses</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="n">speeds</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="c1"># add num for every progresses[0] above 100
+</span>            <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># add num to ans if num is bigger than 0
+</span>        <span class="k">if</span> <span class="n">num</span><span class="p">:</span>
+            <span class="n">ans</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ans</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="n">ef</span> <span class="n">solution</span><span class="p">(</span><span class="n">progresses</span><span class="p">,</span> <span class="n">speeds</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">progresses</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">speeds</span><span class="p">)</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">progresses</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">progresses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">time</span><span class="o">*</span><span class="n">speeds</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="n">progresses</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">speeds</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">time</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>
+
+<hr />
+
         
       </section>
 
@@ -777,6 +833,51 @@
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/leetcode/leetcode_algorithm_interview(1)/" rel="permalink">[ALGORITHM] LeetCode 125. Valid Palindrome
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - LeetCode
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -903,51 +1004,6 @@ JAVA - MVC
     <p class="archive__item-excerpt" itemprop="description">
 
 JAVA - MYSQL JDBC 연결 [MAC]
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/mysql/encore_sql2/" rel="permalink">[MySQL] VIEW
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-MySQL Table
-
-  CREATE VIEW - 가상의 테이블 만들기
-
 </p>
   </article>
 </div>

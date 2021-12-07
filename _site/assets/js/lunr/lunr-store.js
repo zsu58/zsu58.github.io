@@ -368,7 +368,7 @@ var store = [{
         "title": "[ALGORITHM] LeetCode 1. Two Sum",
         "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 풀이1 - Brute Force class Solution(object): def twoSum(self, nums, target): \"\"\" :type nums: List[int] :type target: int :rtype: List[int] \"\"\" for i in range(len(nums)): for j in range(i+1,len(nums)): if nums[i] + nums[j] ==...","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
-        "url": "/leetcode/leetcode_top100_liked(1)/",
+        "url": "/leetcode/leetcode_top100_liked(1)-copy/",
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (4)",
@@ -537,5 +537,11 @@ var store = [{
         "excerpt":"ALGORITHM 알고리즘 스터디(1) Stack &amp; Queue(Deque) Stack 책을 쌓은 것처럼 차곡차곡 쌓아 올린 형태의 자료구조로 LIFO(Last In First Out)라고도 함 시간 순서에 따라 자료가 쌓이기에 가장 마지막에 삽입된 자료가 가장 먼저 삭제되는 구조적인 특징을 가짐 대표적인 기능으로는 push(삽입), pop(삭제), peek(가장 마지막으로 추가된 자료 조회)가 존재 대표적으로 웹 브라우저에서 이전 페이지...","categories": ["STUDY_ALGORITHM"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/study_algorithm/algorithm_study1/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 125. Valid Palindrome",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 import re class Solution: def palindrome(s: str) -&gt; bool: # extract alphabets and add all the elements as non-capital alphabets in a list str_list = list(map(lambda x: x.lower(), re.findall('[a-zA-Z0-9]', str))) for...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_algorithm_interview(1)/",
         "teaser": null
       }]

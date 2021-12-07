@@ -91,3 +91,58 @@ def solution(prices):
 ```
 
 ---
+
+### 기능개발
+* 30/11/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test67.png" align="center">
+</p>
+```python
+from collections import deque
+
+
+def solution(progresses, speeds):
+    # used deque for leftpop
+    progresses,speeds = deque(progresses),deque(speeds)
+    
+    ans = []
+    # loop until progresses is empty
+    while len(progresses):
+        # for every loop add each speed to progress
+        for i in range(len(progresses)):
+            progresses[i] += speeds[i]
+        # initalize number counting numbers of progress above 100
+        num = 0
+        # loop until the progresses[0] is below 100
+        while len(progresses) and progresses[0] >= 100:
+            progresses.popleft()
+            speeds.popleft()
+            # add num for every progresses[0] above 100
+            num += 1
+        # add num to ans if num is bigger than 0
+        if num:
+            ans.append(num)
+    return ans
+
+# 다른 사람의 좋은 풀이
+ef solution(progresses, speeds):
+    print(progresses)
+    print(speeds)
+    answer = []
+    time = 0
+    count = 0
+    while len(progresses)> 0:
+        if (progresses[0] + time*speeds[0]) >= 100:
+            progresses.pop(0)
+            speeds.pop(0)
+            count += 1
+        else:
+            if count > 0:
+                answer.append(count)
+                count = 0
+            time += 1
+    answer.append(count)
+    return answer
+```
+
+---
