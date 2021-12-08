@@ -1,0 +1,33 @@
+I"�
+<hr />
+<h3 id="algorithm-übung---leetcode">ALGORITHM Übung - LeetCode</h3>
+<ul>
+  <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
+</ul>
+
+<hr />
+
+<h3 id="문제">문제</h3>
+<ul>
+  <li><a href="https://leetcode.com/problems/reverse-string/">🔗 문제 링크</a></li>
+</ul>
+
+<h3 id="코드">코드</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 나의 풀이
+</span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">reverseString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">s</span><span class="p">.</span><span class="n">reverse</span><span class="p">()</span>
+
+<span class="c1"># 투 포인터를 이용한 방식의 풀이
+</span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">reverseString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">left</span><span class="p">,</span><span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
+            <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">],</span><span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">],</span><span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span>
+            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
+        
+</code></pre></div></div>
+
+<hr />
+:ET

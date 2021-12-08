@@ -1,4 +1,4 @@
-I"�2<hr />
+I"dC<hr />
 <h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
 <ul>
   <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
@@ -57,7 +57,7 @@
 
 <h3 id="주식가격">주식가격</h3>
 <ul>
-  <li>30/11/2021</li>
+  <li>1/12/2021</li>
 </ul>
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test67.png" align="center" />
@@ -85,10 +85,10 @@
 
 <h3 id="기능개발">기능개발</h3>
 <ul>
-  <li>30/11/2021</li>
+  <li>2/12/2021</li>
 </ul>
 <p align="center">
-    <img src="/img/backend/algorithm/coding_test/coding_test67.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test68.png" align="center" />
 </p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 
@@ -135,6 +135,49 @@
             <span class="n">time</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="다리를-지나는-트럭">다리를 지나는 트럭</h3>
+<ul>
+  <li>8/12/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test69.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">bridge_length</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">truck_weights</span><span class="p">):</span>
+    
+    <span class="c1"># initialize bridge
+</span>    <span class="n">bridge</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">bridge_length</span><span class="p">)]</span>
+
+    <span class="c1"># variables
+</span>    <span class="n">truck_weights</span><span class="p">.</span><span class="n">reverse</span><span class="p">()</span> <span class="c1"># reversed to pop
+</span>    <span class="n">total_weight</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">truck_weights</span><span class="p">)</span> <span class="c1"># to loop until total_weight is 0
+</span>    <span class="n">sec</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># total seconds
+</span>    <span class="n">sum_bridge</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># total truck weight on bridge
+</span>    
+    <span class="k">while</span> <span class="n">total_weight</span><span class="p">:</span>
+        <span class="c1"># subtract first element of bridge from total_weight &amp; sum_bridge
+</span>        <span class="n">total_weight</span> <span class="o">-=</span> <span class="n">bridge</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">sum_bridge</span> <span class="o">-=</span> <span class="n">bridge</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># slice to delete first element of bridge
+</span>        <span class="n">bridge</span> <span class="o">=</span> <span class="n">bridge</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> 
+        
+        <span class="c1"># add new truck to bridge when there is a truck left &amp; sum_bridge+new truck &lt;= weight
+</span>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">truck_weights</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">sum_bridge</span><span class="o">+</span><span class="n">truck_weights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">weight</span><span class="p">:</span>
+            <span class="n">sum_bridge</span> <span class="o">+=</span> <span class="n">truck_weights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">bridge</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">truck_weights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">truck_weights</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="c1"># if not add 0(blank space) to bridge
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bridge</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        
+        <span class="c1"># add 1 second
+</span>        <span class="n">sec</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="k">return</span> <span class="n">sec</span>
 </code></pre></div></div>
 
 <hr />

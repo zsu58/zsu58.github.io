@@ -37,7 +37,6 @@ class Solution:
                 return False
         return True
 
-
 # 더 좋은 풀이 (굳이 리스트로 만들지 않아도 되고, 슬랑이싱을 활용하는게 더 좋음)
 import re
 

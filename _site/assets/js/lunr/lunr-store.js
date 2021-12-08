@@ -368,7 +368,7 @@ var store = [{
         "title": "[ALGORITHM] LeetCode 1. Two Sum",
         "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 풀이1 - Brute Force class Solution(object): def twoSum(self, nums, target): \"\"\" :type nums: List[int] :type target: int :rtype: List[int] \"\"\" for i in range(len(nums)): for j in range(i+1,len(nums)): if nums[i] + nums[j] ==...","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
-        "url": "/leetcode/leetcode_top100_liked(1)-copy/",
+        "url": "/leetcode/leetcode_top100_liked(1)/",
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (4)",
@@ -543,5 +543,17 @@ var store = [{
         "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 import re class Solution: def palindrome(s: str) -&gt; bool: # extract alphabets and add all the elements as non-capital alphabets in a list str_list = list(map(lambda x: x.lower(), re.findall('[a-zA-Z0-9]', str))) for...","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
         "url": "/leetcode/leetcode_algorithm_interview(1)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 344. Reverse String",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 class Solution: def reverseString(self, s: List[str]) -&gt; None: s.reverse() # 투 포인터를 이용한 방식의 풀이 class Solution: def reverseString(self, s: List[str]) -&gt; None: left,right = 0,len(s)-1 while left &lt; right: s[left],s[right]...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_algorithm_interview(2)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 937. Reorder Data in Log Files",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 class Solution: def reorderLogFiles(self, logs: List[str]) -&gt; List[str]: d_list = [] l_list = [] for log in logs: if log.split(\" \")[1].isalpha(): l_list.append(log) else: d_list.append(log) # l_list.sort(key=lambda x: (\" \".join(x.split()[1:]), x.split()[0])) #...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_algorithm_interview(3)/",
         "teaser": null
       }]

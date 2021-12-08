@@ -237,3 +237,4 @@ print("my queue contains:", dq)
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/programmers/programmers_coding_test(8)/#주식가격)
 * [🔗 링크2](https://carl020958.github.io/programmers/programmers_coding_test(8)/#기능개발)
+* [🔗 링크3](https://carl020958.github.io/programmers/programmers_coding_test(8)/#다리를 지나는 트럭)

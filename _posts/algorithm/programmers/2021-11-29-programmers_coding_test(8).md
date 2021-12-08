@@ -66,7 +66,7 @@ def solution(msg):
 ---
 
 ### 주식가격
-* 30/11/2021
+* 1/12/2021
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test67.png" align="center">
 </p>
@@ -93,9 +93,9 @@ def solution(prices):
 ---
 
 ### 기능개발
-* 30/11/2021
+* 2/12/2021
 <p align="center">
-    <img src="/img/backend/algorithm/coding_test/coding_test67.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test68.png" align="center">
 </p>
 ```python
 from collections import deque
@@ -143,6 +143,48 @@ ef solution(progresses, speeds):
             time += 1
     answer.append(count)
     return answer
+```
+
+---
+
+### 다리를 지나는 트럭
+* 8/12/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test69.png" align="center">
+</p>
+```python
+def solution(bridge_length, weight, truck_weights):
+    
+    # initialize bridge
+    bridge = [0 for _ in range(0,bridge_length)]
+
+    # variables
+    truck_weights.reverse() # reversed to pop
+    total_weight = sum(truck_weights) # to loop until total_weight is 0
+    sec = 0 # total seconds
+    sum_bridge = 0 # total truck weight on bridge
+    
+    while total_weight:
+        # subtract first element of bridge from total_weight & sum_bridge
+        total_weight -= bridge[0]
+        sum_bridge -= bridge[0]
+        # slice to delete first element of bridge
+        bridge = bridge[1:] 
+        
+        # add new truck to bridge when there is a truck left & sum_bridge+new truck <= weight
+        if len(truck_weights) > 0 and sum_bridge+truck_weights[-1] <= weight:
+            sum_bridge += truck_weights[-1]
+            bridge.append(truck_weights[-1])
+            truck_weights.pop()
+
+        # if not add 0(blank space) to bridge
+        else:
+            bridge.append(0)
+        
+        # add 1 second
+        sec += 1
+        
+    return sec
 ```
 
 ---

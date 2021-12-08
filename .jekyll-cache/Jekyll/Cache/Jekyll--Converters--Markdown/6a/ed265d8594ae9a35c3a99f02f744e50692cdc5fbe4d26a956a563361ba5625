@@ -1,4 +1,4 @@
-I",<hr />
+I"+<hr />
 <h3 id="algorithm-übung---leetcode">ALGORITHM Übung - LeetCode</h3>
 <ul>
   <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
@@ -25,7 +25,6 @@
             <span class="k">if</span> <span class="n">str_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">str_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">]:</span>
                 <span class="k">return</span> <span class="bp">False</span>
         <span class="k">return</span> <span class="bp">True</span>
-
 
 <span class="c1"># 더 좋은 풀이 (굳이 리스트로 만들지 않아도 되고, 슬랑이싱을 활용하는게 더 좋음)
 </span><span class="kn">import</span> <span class="nn">re</span>
