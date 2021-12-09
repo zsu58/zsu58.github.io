@@ -185,6 +185,33 @@ def solution(bridge_length, weight, truck_weights):
         sec += 1
         
     return sec
+
+# deque를 이용하면 더 빠르게 구현 가능
+from collections import deque
+
+
+def solution(bridge_length, weight, truck_weights):
+    bridge = deque([0 for _ in range(0,bridge_length)])
+    truck_weights = deque(truck_weights)
+    total_weight = sum(truck_weights)
+    sec = 0
+    sum_bridge = 0
+    
+    while total_weight:
+        total_weight -= bridge[0]
+        sum_bridge -= bridge[0]
+        bridge.popleft()
+        
+        if len(truck_weights) > 0 and sum_bridge+truck_weights[0] <= weight:
+            sum_bridge += truck_weights[0]
+            bridge.append(truck_weights[0])
+            truck_weights.popleft()
+        else:
+            bridge.append(0)
+        
+        sec += 1
+        
+    return sec
 ```
 
 ---
