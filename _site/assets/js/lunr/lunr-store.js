@@ -365,12 +365,6 @@ var store = [{
         "url": "/leetcode/leetcode_recursion1-copy/",
         "teaser": null
       },{
-        "title": "[ALGORITHM] LeetCode 1. Two Sum",
-        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 풀이1 - Brute Force class Solution(object): def twoSum(self, nums, target): \"\"\" :type nums: List[int] :type target: int :rtype: List[int] \"\"\" for i in range(len(nums)): for j in range(i+1,len(nums)): if nums[i] + nums[j] ==...","categories": ["LEETCODE"],
-        "tags": ["ALGORITHM","LEETCODE"],
-        "url": "/leetcode/leetcode_top100_liked(1)/",
-        "teaser": null
-      },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (4)",
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 부족한 금액 계산하기 30/10/2021 def solution(price, money, count): return max(sum([price*i for i in range(1,count+1)])-money,0) 나머지가 1이 되는 수 찾기 31/10/2021 def solution(n): for i in range(1,n): if n%i == 1: return i 최소직사각형 1/11/2021 def solution(sizes): max_size = max(sizes[0])...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
@@ -552,8 +546,56 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] LeetCode 937. Reorder Data in Log Files",
-        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 class Solution: def reorderLogFiles(self, logs: List[str]) -&gt; List[str]: d_list = [] l_list = [] for log in logs: if log.split(\" \")[1].isalpha(): l_list.append(log) else: d_list.append(log) # l_list.sort(key=lambda x: (\" \".join(x.split()[1:]), x.split()[0])) #...","categories": ["LEETCODE"],
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 class Solution: def reorderLogFiles(self, logs: List[str]) -&gt; List[str]: d_list,l_list = [],[] for log in logs: if log.split(\" \")[1].isalpha(): l_list.append(log) else: d_list.append(log) # l_list.sort(key=lambda x: (\" \".join(x.split()[1:]), x.split()[0])) # list를 기준으로 sort할...","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
         "url": "/leetcode/leetcode_algorithm_interview(3)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 819. Most Common Word",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 from collections import Counter import re class Solution: def mostCommonWord(self, paragraph: str, banned: List[str]) -&gt; str: # [\\W] = [^\\w] = [^a-zA-Z_] paragraph_list = re.sub('[^a-zA-Z]', \" \", paragraph).lower().split() for c in...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_algorithm_interview(4)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 49. Group Anagrams",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 class Solution: def groupAnagrams(self, strs: List[str]) -&gt; List[List[str]]: word_dict = {} for str in strs: s = \"\".join(sorted(list(str))) if s in word_dict.keys(): word_dict[s].append(str) else: word_dict[s] = [str] return [v for v...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_algorithm_interview(5)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 1. Two Sum",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 풀이1 - Brute Force class Solution(object): def twoSum(self, nums, target): for i in range(len(nums)): for j in range(i+1,len(nums)): if nums[i] + nums[j] == target: return [i,j] # 풀이2 - Hash Map 이용 class...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_algorithm_interview(6)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 561. Array Partition I",
+        "excerpt":" ALGORITHM Übung - LeetCode     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제     🔗 문제 링크   코드  class Solution:     def arrayPairSum(self, nums: List[int]) -&gt; int:         return sum(sorted(nums)[::2])    ","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_algorithm_interview(7)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 5. Longest Palindromic Substring",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 class Solution: def longestPalindrome(self, s: str) -&gt; str: def ispalindrome(s: str) -&gt; str: return s == s[::-1] for i in range(len(s)): for j in range(i+1): if ispalindrome(s[j:len(s)-i + j]): return s[j:len(s)-i...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_algorithm_interview(8)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 # Definition for singly-linked list. # class ListNode: # def __init__(self, val=0, next=None): # self.val = val # self.next = next class Solution: def isPalindrome(self, head: Optional[ListNode]) -&gt; bool: linked_list =...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_algorithm_interview(10)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 class Solution: def maxProfit(self, prices: List[int]) -&gt; int: min_price = prices[0] max_profit = 0 for i in range(1,len(prices)): max_profit = max(max_profit, prices[i]-min_price) min_price = min(min_price, prices[i]) if len(prices) &lt; 0 or...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_algorithm_interview(9)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] 완전탐색(Brute-Force) & 이분탐색",
+        "excerpt":"ALGORITHM 알고리즘 스터디(2) 탐색 완전탐색(Brute-Force) 이분탐색 깊이우선탐색 너비우선탐색 문자열탐색 KMP(Knuth-Morris-Pratt) BM(Boyer-Moore) 완전탐색 가능한 모든 경우의 수를 탐색 효율성의 관점에서는 최악 구현방법 반복문 재귀함수 cf. 재귀함수는 동적 계획법/ 백트래킹/ 탐욕법에서도 사용됨 # card 안에 8의 순서를 찾는 함수 (반복문) def solution(card): for i in range(len(card)): if card[i] == 8: return i...","categories": ["STUDY_ALGORITHM"],
+        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "url": "/study_algorithm/algorithm_study2/",
         "teaser": null
       }]

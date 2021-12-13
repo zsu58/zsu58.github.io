@@ -1,4 +1,4 @@
-I"�<hr />
+I"m<hr />
 <h3 id="algorithm-übung---leetcode">ALGORITHM Übung - LeetCode</h3>
 <ul>
   <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
@@ -15,8 +15,7 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 나의 풀이
 </span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">reorderLogFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="n">d_list</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">l_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">d_list</span><span class="p">,</span><span class="n">l_list</span> <span class="o">=</span> <span class="p">[],[]</span>
         <span class="k">for</span> <span class="n">log</span> <span class="ow">in</span> <span class="n">logs</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">log</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">)[</span><span class="mi">1</span><span class="p">].</span><span class="n">isalpha</span><span class="p">():</span>
                 <span class="n">l_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>

@@ -1,0 +1,96 @@
+I"�<hr />
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 스터디(2)</li>
+  <li>탐색
+    <ul>
+      <li>완전탐색(Brute-Force)</li>
+      <li>이분탐색</li>
+      <li>깊이우선탐색</li>
+      <li>너비우선탐색</li>
+      <li>문자열탐색</li>
+      <li>KMP(Knuth-Morris-Pratt)</li>
+      <li>BM(Boyer-Moore)</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="완전탐색">완전탐색</h3>
+<ul>
+  <li>가능한 모든 경우의 수를 탐색</li>
+  <li>효율성의 관점에서는 최악</li>
+  <li>구현방법
+    <ul>
+      <li>반복문</li>
+      <li>재귀함수
+        <ul>
+          <li>cf. 재귀함수는 동적 계획법/ 백트래킹/ 탐욕법에서도 사용됨</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># card 안에 8의 순서를 찾는 함수 (반복문)
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">card</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">card</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">card</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># card 안에 8의 순서를 찾는 함수 (재귀문)
+</span><span class="k">def</span> <span class="nf">solution2</span><span class="p">(</span><span class="n">card</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">card</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">idx</span>
+    <span class="k">return</span> <span class="n">solution2</span><span class="p">(</span><span class="n">card</span><span class="p">,</span> <span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cards</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">solution</span><span class="p">(</span><span class="n">cards</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">solution2</span><span class="p">(</span><span class="n">cards</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+5
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="이분탐색">이분탐색</h3>
+<ul>
+  <li>오름차순으로 <u><b>정렬된</b></u> 리스트에서 특정 값의 위치를 찾는 알고리즘</li>
+  <li>중간의 값을 선택하여 찾고자 하는 값과의 크고 작음을 비교함</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># card 안에 8의 순서를 찾는 이분탐색 함수
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">card</span><span class="p">):</span>
+    <span class="n">l</span><span class="p">,</span><span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">card</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+        <span class="k">if</span> <span class="n">card</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">m</span>
+        <span class="k">elif</span> <span class="n">card</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">card</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">m</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cards</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">solution</span><span class="p">(</span><span class="n">cards</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="관련-알고리즘-풀이">관련 알고리즘 풀이</h3>
+<ul>
+  <li><a href="https://carl020958.github.io/programmers/programmers_coding_test(4)/#모의고사">🔗 링크1</a></li>
+  <li><a href="https://carl020958.github.io/programmers/programmers_coding_test(2)/#소수-찾기">🔗 링크2</a></li>
+</ul>
+
+:ET
