@@ -212,8 +212,10 @@ def solution(n):
 ```python
 # 다른 사람의 좋은 풀이
 def solution(n):
+    # all possible answer
     num=set(range(2,n+1))
 
+    # Sieve of Eratosthenes, delete number and its multiple(starting from 2*number) 
     for i in range(2,n+1):
         if i in num:
             num-=set(range(2*i,n+1,i))

@@ -38,6 +38,24 @@ class Solution:
             iter = iter.next
         
         return linked_list == linked_list[::-1]
+
+# pop을 이용한 풀이
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        q: Deque = collections.deque()
+        if not head:
+            return True
+        
+        node = head
+        while node is not None:
+            q.append(node.val)
+            node = node.next
+            
+        while len(q) > 1:
+            if q.popleft() != q.pop():
+                return False
+        
+        return True
 ```
 
 ---

@@ -598,4 +598,10 @@ var store = [{
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/study_algorithm/algorithm_study2/",
         "teaser": null
+      },{
+        "title": "[ALGORITHM] BOJ 10816. 숫자 카드 2",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys from collections import Counter def num_of_cards(cards,interest): c = Counter(cards) return [c[i] for i in interest] if __name__ == \"__main__\": n = int(input()) cards = list(map(int,sys.stdin.readline().split())) m = int(input()) interest = list(map(int,sys.stdin.readline().split())) print('...","categories": ["BOJ"],
+        "tags": ["ALGORITHM","BOJ"],
+        "url": "/boj/boj(1)/",
+        "teaser": null
       }]

@@ -11,40 +11,17 @@
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
-        <span class="nav__sub-title">Data-Enginnering</span>
+        <span class="nav__sub-title">Algorithm</span>
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
-                <!--sql 카테고리 글들을 모아둔 페이지인 /categories/sql 주소의 글로 링크 연결-->
+                <!--boj 카테고리 글들을 모아둔 페이지인 /categories/boj 주소의 글로 링크 연결-->
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
-                    {% if category[0] == "MYSQL" %}
-                        <li><a href="/categories/mysql" class="">MySQL ({{category[1].size}})</a></li>
+                    {% if category[0] == "BOJ" %}
+                        <li><a href="/categories/boj" class="">BOJ ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "CLI" %}
-                        <li><a href="/categories/cli" class="">Cli ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "DOCKER" %}
-                        <li><a href="/categories/docker" class="">Docker ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        <span class="nav__sub-title">Back-end</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "DJANGO" %}
-                        <li><a href="/categories/django" class="">Django ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        <span class="nav__sub-title">Algorithm</span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "CODEIT" %}
@@ -73,18 +50,48 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Programming</span>
+        <span class="nav__sub-title">Back-end</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "PYTHON" %}
-                        <li><a href="/categories/python" class="">Python ({{category[1].size}})</a></li>
+                    {% if category[0] == "DJANGO" %}
+                        <li><a href="/categories/django" class="">Django ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Data-Enginnering</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "CLI" %}
+                        <li><a href="/categories/cli" class="">Cli ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "DOCKER" %}
+                        <li><a href="/categories/docker" class="">Docker ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "MYSQL" %}
+                        <li><a href="/categories/mysql" class="">MySQL ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "JAVA" %}
                         <li><a href="/categories/java" class="">Java ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "PYTHON" %}
+                        <li><a href="/categories/python" class="">Python ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
