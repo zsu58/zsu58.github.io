@@ -215,3 +215,45 @@ def solution(bridge_length, weight, truck_weights):
 ```
 
 ---
+
+### 가장 큰 정사각형 찾기
+* 15/12/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test70.png" align="center">
+</p>
+```python
+def solution(board):
+    if len(board) < 2:
+        return max(board[0])
+
+    if len(board[0]) < 2:
+        return max(zip(*board))
+
+    max_num = 0
+    num_one = 0
+    for i in range(1,len(board)):
+        for j in range(1,len(board[0])):
+            if board[i][j]:
+                board[i][j] = min(board[i-1][j-1], board[i-1][j], board[i][j-1]) + 1
+                if board[i][j] > max_num: 
+                    max_num = board[i][j]
+            if board[i][j] == 1:
+                num_one = 1
+
+    return max_num ** 2
+
+# 조금 더 깔끔한 풀이
+def solution(board):
+    for i in range(1,len(board)):
+        for j in range(1,len(board[0])):
+            if board[i][j]:
+                board[i][j] = min(board[i-1][j-1], board[i-1][j], board[i][j-1]) + 1
+
+    max_num = 0
+    for i in range(len(board)):
+        max_num = max(max_num, max(board[i]))
+
+    return max_num ** 2
+```
+
+---
