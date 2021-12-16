@@ -257,3 +257,43 @@ def solution(board):
 ```
 
 ---
+
+### 방문 길이
+* 16/12/2021
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test70.png" align="center">
+</p>
+```python
+def solution(dirs):
+    move = {"U": (0, 1), "D": (0, -1), "L": (-1, 0), "R": (1, 0)}
+    moved = set()
+
+    current, after = [0, 0], [0, 0]
+    moves = 0
+    for d in dirs:
+        if (-5 <= current[0] + move[d][0] <= 5) and (-5 <= current[1] + move[d][1] <= 5):
+            after[0] = current[0] + move[d][0]
+            after[1] = current[1] + move[d][1]
+            if str(current + after) not in moved:
+                moved.add(str(current + after))
+                moved.add(str(after + current))
+                moves += 1
+        current[0],current[1] = after[0],after[1]
+
+    return moves
+
+# 다른 사람의 좋은 풀이
+def solution(dirs):
+    s = set()
+    d = {'U': (0,1), 'D': (0, -1), 'R': (1, 0), 'L': (-1, 0)}
+    x, y = 0, 0
+    for i in dirs:
+        nx, ny = x + d[i][0], y + d[i][1]
+        if -5 <= nx <= 5 and -5 <= ny <= 5:
+            s.add((x,y,nx,ny))
+            s.add((nx,ny,x,y))
+            x, y = nx, ny
+    return len(s)/2
+```
+
+---
