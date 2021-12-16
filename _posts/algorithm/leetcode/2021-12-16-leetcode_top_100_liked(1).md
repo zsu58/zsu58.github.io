@@ -1,5 +1,5 @@
 ---
-title: "[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock"
+title: "[ALGORITHM] LeetCode 2. Add Two Numbers"
 layout: single
 date: '16/12/2021'
 toc: true
