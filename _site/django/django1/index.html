@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">101</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">103</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -374,7 +374,7 @@
                     
                 
                     
-                        <li><a href="/categories/leetcode" class="">LeetCode (11)</a></li>
+                        <li><a href="/categories/leetcode" class="">LeetCode (12)</a></li>
                     
                 
                     
@@ -507,7 +507,7 @@
                     
                 
                     
-                        <li><a href="/categories/docker" class="">Docker (1)</a></li>
+                        <li><a href="/categories/docker" class="">Docker (2)</a></li>
                     
                 
                     
@@ -683,7 +683,7 @@
 
 <span class="c1">### Git 관련 터미널 툴
 # 1)TIG(깃 커밋 히스토리를 터미널에서 보여주는 툴)
-</span><span class="n">homebrew</span> <span class="n">install</span> <span class="n">tig</span>
+</span><span class="n">brew</span> <span class="n">install</span> <span class="n">tig</span>
 <span class="c1"># 2)Diff So Fancy(git diff의 출력 화면을 터미널상에서 더 보기 쉽게 출력해주는 깃 플러그인)
 </span><span class="n">brew</span> <span class="n">install</span> <span class="n">diff</span><span class="o">-</span><span class="n">so</span><span class="o">-</span><span class="n">fancy</span>
 
@@ -711,34 +711,34 @@
 <span class="c1"># ZSH plugin 중 zsh-syntax-highlighting &amp; history-substring-search 추천
 </span>
 <span class="c1"># ZSH로 변경 후 CONDA가 실행되지 않는 경우, ZSH상에서 콘다의 경로를 PATH 환경 변수에 포함
-</span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s">"/Users/ZSU/Miniconda3/bin:$PATH
+</span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s">"/Users/ZSU/Miniconda3/bin:$PATH"</span>
 
-# plugin 'zsh-autosuggestion' not found 해결
+<span class="c1"># plugin 'zsh-autosuggestion' not found 해결
 # 1) 설치(terminal)
-brew install zsh-autosuggestions
+</span><span class="n">brew</span> <span class="n">install</span> <span class="n">zsh</span><span class="o">-</span><span class="n">autosuggestions</span>
 
-# 2) 설치2(terminal)
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+<span class="c1"># 2) 설치2(terminal)
+</span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">users</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">autosuggestions</span> <span class="err">$</span><span class="p">{</span><span class="n">ZSH_CUSTOM</span><span class="p">:</span><span class="o">-~/</span><span class="p">.</span><span class="n">oh</span><span class="o">-</span><span class="n">my</span><span class="o">-</span><span class="n">zsh</span><span class="o">/</span><span class="n">custom</span><span class="p">}</span><span class="o">/</span><span class="n">plugins</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">autosuggestions</span>
 
-# 3) .zshrc plugin에 추가(vim ~/.zshrc)
-plugins=( [plugins...] zsh-syntax-highlighting)
+<span class="c1"># 3) .zshrc plugin에 추가(vim ~/.zshrc)
+</span><span class="n">plugins</span><span class="o">=</span><span class="p">(</span> <span class="p">[</span><span class="n">plugins</span><span class="p">...]</span> <span class="n">zsh</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">highlighting</span><span class="p">)</span>
 
-# 4) 업데이트(terminal)
-source ~/.zshrc
+<span class="c1"># 4) 업데이트(terminal)
+</span><span class="n">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span>
 
-# plugin 'zsh-syntax-highlighting' not found 해결
+<span class="c1"># plugin 'zsh-syntax-highlighting' not found 해결
 # 1) 설치(terminal)
-brew install zsh-syntax-highlighting
+</span><span class="n">brew</span> <span class="n">install</span> <span class="n">zsh</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">highlighting</span>
 
-# 2) 설치2(terminal)
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+<span class="c1"># 2) 설치2(terminal)
+</span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">users</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">highlighting</span><span class="p">.</span><span class="n">git</span> <span class="err">$</span><span class="p">{</span><span class="n">ZSH_CUSTOM</span><span class="p">:</span><span class="o">-~/</span><span class="p">.</span><span class="n">oh</span><span class="o">-</span><span class="n">my</span><span class="o">-</span><span class="n">zsh</span><span class="o">/</span><span class="n">custom</span><span class="p">}</span><span class="o">/</span><span class="n">plugins</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">highlighting</span>
 
-# 3) plugin에 추가(vim ~/.zshrc)
-plugins=([plugins...] zsh-syntax-highlighting)
+<span class="c1"># 3) plugin에 추가(vim ~/.zshrc)
+</span><span class="n">plugins</span><span class="o">=</span><span class="p">([</span><span class="n">plugins</span><span class="p">...]</span> <span class="n">zsh</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">highlighting</span><span class="p">)</span>
 
-# 4) 업데이트(terminal)
-source ~/.zshrc
-</span></code></pre></div></div>
+<span class="c1"># 4) 업데이트(terminal)
+</span><span class="n">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span>
+</code></pre></div></div>
 
 <hr />
 
@@ -945,7 +945,7 @@ source ~/.zshrc
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/boj/boj(1)/" rel="permalink">[ALGORITHM] BOJ 10816. 숫자 카드 2
+        <a href="/docker/docker2/" rel="permalink">[Docker] Docker Image 복사
 </a>
       
     </h2>
@@ -972,9 +972,11 @@ source ~/.zshrc
 
     <p class="archive__item-excerpt" itemprop="description">
 
-ALGORITHM Übung - LeetCode
+Docker Image 복사
 
-  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+  
+    Docker 이미지 다른 컴퓨터로 복사하기
+  
 
 </p>
   </article>
@@ -990,59 +992,7 @@ ALGORITHM Übung - LeetCode
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/study_algorithm/algorithm_study2/" rel="permalink">[ALGORITHM] 완전탐색(Brute-Force) &amp; 이분탐색
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-ALGORITHM
-
-  알고리즘 스터디(2)
-  탐색
-    
-      완전탐색(Brute-Force)
-      이분탐색
-      깊이우선탐색
-      너비우선탐색
-      문자열탐색
-      KMP(Knuth-Morris-Pratt)
-      BM(Boyer-Mo...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/leetcode/leetcode_algorithm_interview(9)/" rel="permalink">[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock
+        <a href="/leetcode/leetcode_top_100_liked(1)/" rel="permalink">[ALGORITHM] LeetCode 2. Add Two Numbers
 </a>
       
     </h2>
@@ -1088,6 +1038,51 @@ ALGORITHM Übung - LeetCode
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/leetcode/leetcode_algorithm_interview(10)/" rel="permalink">[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - LeetCode
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj(1)/" rel="permalink">[ALGORITHM] BOJ 10816. 숫자 카드 2
 </a>
       
     </h2>

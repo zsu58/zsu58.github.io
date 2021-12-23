@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">101</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">103</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -374,7 +374,7 @@
                     
                 
                     
-                        <li><a href="/categories/leetcode" class="">LeetCode (11)</a></li>
+                        <li><a href="/categories/leetcode" class="">LeetCode (12)</a></li>
                     
                 
                     
@@ -507,7 +507,7 @@
                     
                 
                     
-                        <li><a href="/categories/docker" class="">Docker (1)</a></li>
+                        <li><a href="/categories/docker" class="">Docker (2)</a></li>
                     
                 
                     
@@ -676,8 +676,8 @@
 
 <span class="k">def</span> <span class="nf">num_of_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">,</span><span class="n">interest</span><span class="p">):</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">cards</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">interest</span><span class="p">]</span>
-
+    <span class="k">return</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">interest</span><span class="p">]</span> <span class="c1"># if not in interest 0
+</span>
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
     <span class="n">cards</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
@@ -755,7 +755,8 @@
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/leetcode/leetcode_algorithm_interview(10)/" class="pagination--pager" title="[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock
+">Next</a>
     
   </nav>
 
@@ -779,7 +780,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/study_algorithm/algorithm_study2/" rel="permalink">[ALGORITHM] 완전탐색(Brute-Force) &amp; 이분탐색
+        <a href="/docker/docker2/" rel="permalink">[Docker] Docker Image 복사
 </a>
       
     </h2>
@@ -806,18 +807,13 @@
 
     <p class="archive__item-excerpt" itemprop="description">
 
-ALGORITHM
+Docker Image 복사
 
-  알고리즘 스터디(2)
-  탐색
-    
-      완전탐색(Brute-Force)
-      이분탐색
-      깊이우선탐색
-      너비우선탐색
-      문자열탐색
-      KMP(Knuth-Morris-Pratt)
-      BM(Boyer-Mo...</p>
+  
+    Docker 이미지 다른 컴퓨터로 복사하기
+  
+
+</p>
   </article>
 </div>
 
@@ -831,7 +827,7 @@ ALGORITHM
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/leetcode/leetcode_algorithm_interview(9)/" rel="permalink">[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock
+        <a href="/leetcode/leetcode_top_100_liked(1)/" rel="permalink">[ALGORITHM] LeetCode 2. Add Two Numbers
 </a>
       
     </h2>
@@ -921,7 +917,7 @@ ALGORITHM Übung - LeetCode
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/leetcode/leetcode_algorithm_interview(8)/" rel="permalink">[ALGORITHM] LeetCode 5. Longest Palindromic Substring
+        <a href="/study_algorithm/algorithm_study2/" rel="permalink">[ALGORITHM] 완전탐색(Brute-Force) &amp; 이분탐색
 </a>
       
     </h2>
@@ -948,11 +944,18 @@ ALGORITHM Übung - LeetCode
 
     <p class="archive__item-excerpt" itemprop="description">
 
-ALGORITHM Übung - LeetCode
+ALGORITHM
 
-  알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
+  알고리즘 스터디(2)
+  탐색
+    
+      완전탐색(Brute-Force)
+      이분탐색
+      깊이우선탐색
+      너비우선탐색
+      문자열탐색
+      KMP(Knuth-Morris-Pratt)
+      BM(Boyer-Mo...</p>
   </article>
 </div>
 

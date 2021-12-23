@@ -362,7 +362,7 @@ var store = [{
         "title": "[ALGORITHM] LeetCode 1725. Number Of Rectangles That Can Form The Largest Square",
         "excerpt":" ALGORITHM Übung - LeetCode     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제     🔗 문제 링크   코드  class Solution(object):     def countGoodRectangles(self, rectangles):         rect_list = [min(rectangle) for rectangle in range(rectangles)]         maxLen = max(rect_list)          result = 0         return sum([i for i in rect_list if maxLen == i])    ","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
-        "url": "/leetcode/leetcode_recursion1-copy/",
+        "url": "/leetcode/leetcode_recursion1/",
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (4)",
@@ -582,12 +582,6 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock",
-        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 # Definition for singly-linked list. # class ListNode: # def __init__(self, val=0, next=None): # self.val = val # self.next = next class Solution: def isPalindrome(self, head: Optional[ListNode]) -&gt; bool: linked_list =...","categories": ["LEETCODE"],
-        "tags": ["ALGORITHM","LEETCODE"],
-        "url": "/leetcode/leetcode_algorithm_interview(10)/",
-        "teaser": null
-      },{
-        "title": "[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock",
         "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 class Solution: def maxProfit(self, prices: List[int]) -&gt; int: min_price = prices[0] max_profit = 0 for i in range(1,len(prices)): max_profit = max(max_profit, prices[i]-min_price) min_price = min(min_price, prices[i]) if len(prices) &lt; 0 or...","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
         "url": "/leetcode/leetcode_algorithm_interview(9)/",
@@ -600,8 +594,26 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] BOJ 10816. 숫자 카드 2",
-        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys from collections import Counter def num_of_cards(cards,interest): c = Counter(cards) return [c[i] for i in interest] if __name__ == \"__main__\": n = int(input()) cards = list(map(int,sys.stdin.readline().split())) m = int(input()) interest = list(map(int,sys.stdin.readline().split())) print('...","categories": ["BOJ"],
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys from collections import Counter def num_of_cards(cards,interest): c = Counter(cards) return [c[i] for i in interest] # if not in interest 0 if __name__ == \"__main__\": n = int(input()) cards = list(map(int,sys.stdin.readline().split())) m...","categories": ["BOJ"],
         "tags": ["ALGORITHM","BOJ"],
         "url": "/boj/boj(1)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 # Definition for singly-linked list. # class ListNode: # def __init__(self, val=0, next=None): # self.val = val # self.next = next class Solution: def isPalindrome(self, head: Optional[ListNode]) -&gt; bool: linked_list =...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_algorithm_interview(10)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] LeetCode 2. Add Two Numbers",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 # Definition for singly-linked list. # class ListNode: # def __init__(self, val=0, next=None): # self.val = val # self.next = next class Solution: def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:...","categories": ["LEETCODE"],
+        "tags": ["ALGORITHM","LEETCODE"],
+        "url": "/leetcode/leetcode_top_100_liked(1)/",
+        "teaser": null
+      },{
+        "title": "[Docker] Docker Image 복사",
+        "excerpt":"Docker Image 복사 Docker 이미지 다른 컴퓨터로 복사하기 # 복사하고 싶은 docker image 정보 확인 docker images # 해당 docker image를 tar 파일로 변환 docker save -o [tar file name] [repository_name:tag_name] docker save -o mysql1.tar mysql1:lernen # [file_name].tar을 다른 컴퓨터로 옮기기 # image를 업로드하기 docker load -i &lt;path to image...","categories": ["DOCKER"],
+        "tags": ["CLI","BACKEND","DOCKER"],
+        "url": "/docker/docker2/",
         "teaser": null
       }]
