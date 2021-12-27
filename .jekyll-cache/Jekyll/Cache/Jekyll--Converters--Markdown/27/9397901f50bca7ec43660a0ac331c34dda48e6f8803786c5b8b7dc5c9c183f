@@ -1,4 +1,4 @@
-I"�D<hr />
+I"�D<hr />
 <p><b>DJANGO WEB DEVELOPMENT</b></p>
 <h3 id="1-개발환경-구성하기">1. 개발환경 구성하기</h3>
 
@@ -40,7 +40,7 @@
 </span><span class="n">sudo</span> <span class="o">-</span><span class="n">s</span> <span class="s">'echo /usr/local/bin/zsh &gt;&gt; /etc/shells'</span> <span class="o">&amp;&amp;</span> <span class="n">chsh</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">zsh</span> 
 
 <span class="c1"># 터미널 창을 닫고 새로 열면 ZSH이 default shell로 변경됨
-# 다음 명령어를 통해 ZSHdㅣ 정상적으로 default shell로 변경됐는지 확인
+# 다음 명령어를 통해 ZSH이 정상적으로 default shell로 변경됐는지 확인
 </span><span class="n">echo</span> <span class="err">$</span><span class="n">SHELL</span>
 
 <span class="c1"># Oh My Zsh

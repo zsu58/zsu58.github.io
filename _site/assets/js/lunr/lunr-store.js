@@ -616,4 +616,10 @@ var store = [{
         "tags": ["CLI","BACKEND","DOCKER"],
         "url": "/docker/docker2/",
         "teaser": null
+      },{
+        "title": "[MySQL] Jupyter Notebook & Docker MySql 연동",
+        "excerpt":"# install sqlalchemy, ipython-sql in Jupyter notebook import sys !conda install --yes --prefix {sys.prefix} sqlalchemy conda install -c conda-forge ipython-sql # load sql extension %load_ext sql # connect DB %sql mysql://root:1234@0.0.0.0:3306/testDB -- create table %%sql DROP TABLE IF EXISTS testTbl; CREATE TABLE testTbl( value int ) -- insert data into...","categories": ["MYSQL"],
+        "tags": ["SQL","DOCKER"],
+        "url": "/mysql/sql_python1/",
+        "teaser": null
       }]
