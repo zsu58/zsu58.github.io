@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>[MySQL] Jupyter Notebook &amp; Docker MySql 연동 - Bibliothek für Data-Engineering</title>
-<meta name="description" content="# install sqlalchemy, ipython-sql in Jupyter notebook import sys !conda install --yes --prefix {sys.prefix} sqlalchemy conda install -c conda-forge ipython-sql">
+<meta name="description" content="환경구성    install sqlalchemy, ipython-sql in Jupyter notebook">
 
 
   <meta name="author" content="ZSU">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/mysql/sql_python1/">
 
 
-  <meta property="og:description" content="# install sqlalchemy, ipython-sql in Jupyter notebook import sys !conda install --yes --prefix {sys.prefix} sqlalchemy conda install -c conda-forge ipython-sql">
+  <meta property="og:description" content="환경구성    install sqlalchemy, ipython-sql in Jupyter notebook">
 
 
 
@@ -614,7 +614,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[MySQL] Jupyter Notebook &amp; Docker MySql 연동">
-    <meta itemprop="description" content="# install sqlalchemy, ipython-sql in Jupyter notebookimport sys!conda install --yes --prefix {sys.prefix} sqlalchemyconda install -c conda-forge ipython-sql">
+    <meta itemprop="description" content="환경구성  install sqlalchemy, ipython-sql in Jupyter notebook">
     <meta itemprop="datePublished" content="2021-12-27T00:00:00+09:00">
     
 
@@ -652,13 +652,17 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              
+              <ul class="toc__menu"><li><a href="#환경구성">환경구성</a></li><li><a href="#연결">연결</a></li><li><a href="#sql-table-생성-및-데이터-추가">SQL Table 생성 및 데이터 추가</a></li><li><a href="#pandas-df">Pandas DF</a></li><li><a href="#sql-주의사항">SQL 주의사항</a></li></ul>
 
             </nav>
           </aside>
         
-        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># install sqlalchemy, ipython-sql in Jupyter notebook
-</span><span class="kn">import</span> <span class="nn">sys</span>
+        <h3 id="환경구성">환경구성</h3>
+<ul>
+  <li>install sqlalchemy, ipython-sql in Jupyter notebook</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
 <span class="err">!</span><span class="n">conda</span> <span class="n">install</span> <span class="o">--</span><span class="n">yes</span> <span class="o">--</span><span class="n">prefix</span> <span class="p">{</span><span class="n">sys</span><span class="p">.</span><span class="n">prefix</span><span class="p">}</span> <span class="n">sqlalchemy</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">ipython</span><span class="o">-</span><span class="n">sql</span>
 </code></pre></div></div>
@@ -666,10 +670,22 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># load sql extension
 </span><span class="o">%</span><span class="n">load_ext</span> <span class="n">sql</span>
 </code></pre></div></div>
+<hr />
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># connect DB
-</span><span class="o">%</span><span class="n">sql</span> <span class="n">mysql</span><span class="p">:</span><span class="o">//</span><span class="n">root</span><span class="p">:</span><span class="mi">1234</span><span class="o">@</span><span class="mf">0.0</span><span class="p">.</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">3306</span><span class="o">/</span><span class="n">testDB</span>
+<h3 id="연결">연결</h3>
+<ul>
+  <li>connect DB</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">sql</span> <span class="n">mysql</span><span class="p">:</span><span class="o">//</span><span class="n">root</span><span class="p">:</span><span class="mi">1234</span><span class="o">@</span><span class="mf">0.0</span><span class="p">.</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">3306</span><span class="o">/</span><span class="n">testDB</span>
 </code></pre></div></div>
+<hr />
+
+<h3 id="sql-table-생성-및-데이터-추가">SQL Table 생성 및 데이터 추가</h3>
+<ul>
+  <li>create table</li>
+  <li>insert data into table</li>
+</ul>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- create table </span>
 <span class="o">%%</span><span class="k">sql</span>
@@ -683,6 +699,9 @@
 <span class="o">%%</span><span class="k">sql</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">testTbl</span> <span class="k">VALUES</span> <span class="p">(</span><span class="k">NULL</span><span class="p">),(</span><span class="k">NULL</span><span class="p">),(</span><span class="mi">0</span><span class="p">),(</span><span class="mi">1</span><span class="p">),(</span><span class="mi">2</span><span class="p">),(</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
+<hr />
+
+<h3 id="pandas-df">Pandas DF</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Convert to pandas DataFrame
 </span><span class="n">result</span> <span class="o">=</span> <span class="o">%</span><span class="n">sql</span> <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">testTbl</span>
@@ -742,6 +761,13 @@
   </tbody>
 </table>
 </div>
+<hr />
+
+<h3 id="sql-주의사항">SQL 주의사항</h3>
+<ul>
+  <li>COUNT(변수)는 null을 count하지 않음</li>
+  <li>COUNT(숫자)는 숫자에 상관 없이 전체 행의 개수 반환</li>
+</ul>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="k">sql</span>
 <span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">value</span><span class="p">)</span>
@@ -906,9 +932,7 @@
 
 Docker Image 복사
 
-  
-    Docker 이미지 다른 컴퓨터로 복사하기
-  
+  Docker 이미지 다른 컴퓨터로 복사하기
 
 </p>
   </article>

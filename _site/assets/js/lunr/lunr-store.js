@@ -618,7 +618,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[MySQL] Jupyter Notebook & Docker MySql 연동",
-        "excerpt":"# install sqlalchemy, ipython-sql in Jupyter notebook import sys !conda install --yes --prefix {sys.prefix} sqlalchemy conda install -c conda-forge ipython-sql # load sql extension %load_ext sql # connect DB %sql mysql://root:1234@0.0.0.0:3306/testDB -- create table %%sql DROP TABLE IF EXISTS testTbl; CREATE TABLE testTbl( value int ) -- insert data into...","categories": ["MYSQL"],
+        "excerpt":"환경구성 install sqlalchemy, ipython-sql in Jupyter notebook import sys !conda install --yes --prefix {sys.prefix} sqlalchemy conda install -c conda-forge ipython-sql # load sql extension %load_ext sql 연결 connect DB %sql mysql://root:1234@0.0.0.0:3306/testDB SQL Table 생성 및 데이터 추가 create table insert data into table -- create table %%sql DROP TABLE IF...","categories": ["MYSQL"],
         "tags": ["SQL","DOCKER"],
         "url": "/mysql/sql_python1/",
         "teaser": null

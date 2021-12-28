@@ -1,6 +1,0 @@
-I"x<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># install sqlalchemy, ipython-sql in Jupyter notebook
-</span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="err">!</span><span class="n">conda</span> <span class="n">install</span> <span class="o">--</span><span class="n">yes</span> <span class="o">--</span><span class="n">prefix</span> <span class="p">{</span><span class="n">sys</span><span class="p">.</span><span class="n">prefix</span><span class="p">}</span> <span class="n">sqlalchemy</span>
-<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">ipython</span><span class="o">-</span><span class="n">sql</span>
-</code></pre></div></div>
-:ET
