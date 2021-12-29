@@ -1,12 +1,12 @@
 ---
-title: "[MySQL] Subquery"
+title: "[SQL] Subquery"
 layout: single
 date: '18/10/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
 categories:
-  - MYSQL
+  - SQL
 tags:
   - SQL
 ---

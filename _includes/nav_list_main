@@ -75,8 +75,8 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "MYSQL" %}
-                        <li><a href="/categories/mysql" class="">MySQL ({{category[1].size}})</a></li>
+                    {% if category[0] == "SQL" %}
+                        <li><a href="/categories/sql" class="">SQL ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

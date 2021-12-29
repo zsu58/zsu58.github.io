@@ -1,12 +1,12 @@
 ---
-title: "[MySQL] AVG & SUM & MAX & MIN & AS"
+title: "[SQL] AVG & SUM & MAX & MIN & AS"
 layout: single
 date: '14/9/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
 categories:
-  - MYSQL
+  - SQL
 tags:
   - SQL
 ---

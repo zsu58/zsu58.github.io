@@ -1,12 +1,12 @@
 ---
-title: "[MySQL] ORDER BY & CAST & GROUP BY & HAVING & WITH ROLLUP"
+title: "[SQL] ORDER BY & CAST & GROUP BY & HAVING & WITH ROLLUP"
 layout: single
 date: '14/9/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
 categories:
-  - MYSQL
+  - SQL
 tags:
   - SQL
 ---

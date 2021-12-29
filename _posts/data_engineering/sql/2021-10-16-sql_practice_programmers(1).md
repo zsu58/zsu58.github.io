@@ -1,12 +1,12 @@
 ---
-title: "[MySQL] Programmers SQL 연습문제 (1)"
+title: "[SQL] Programmers SQL 연습문제 (1)"
 layout: single
 date: '16/10/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
 categories:
-  - MYSQL
+  - SQL
 tags:
   - SQL
 ---

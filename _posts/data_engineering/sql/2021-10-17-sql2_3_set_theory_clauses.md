@@ -1,12 +1,12 @@
 ---
-title: "[MySQL] UNION & INTER & EXCEPT"
+title: "[SQL] UNION & INTER & EXCEPT"
 layout: single
 date: '17/10/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
 categories:
-  - MYSQL
+  - SQL
 tags:
   - SQL
 ---

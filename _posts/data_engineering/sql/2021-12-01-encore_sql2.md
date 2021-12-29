@@ -6,9 +6,9 @@ toc: true
 toc_sticky: true
 toc_label: Table of Contents
 categories:
-  - MYSQL
-tags:
   - SQL
+tags:
+  - MYSQL
 ---
 
 ---
