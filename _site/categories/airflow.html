@@ -9,32 +9,28 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[ALGORITHM] BOJ 10816. 숫자 카드 2 - Bibliothek für Data-Engineering</title>
-<meta name="description" content="ALGORITHM Übung - LeetCode    알고리즘 문제 풀이를 통한 코딩 테스트 연습">
+<!-- begin _includes/seo.html --><title>Data-Engineering - Airflow - Bibliothek für Data-Engineering</title>
+<meta name="description" content="Eine Bibliothek">
 
 
   <meta name="author" content="ZSU">
   
-  <meta property="article:author" content="ZSU">
-  
 
 
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Bibliothek für Data-Engineering">
-<meta property="og:title" content="[ALGORITHM] BOJ 10816. 숫자 카드 2">
-<meta property="og:url" content="http://localhost:4000/boj/boj(1)/">
+<meta property="og:title" content="Data-Engineering - Airflow">
+<meta property="og:url" content="http://localhost:4000/categories/airflow">
 
 
-  <meta property="og:description" content="ALGORITHM Übung - LeetCode    알고리즘 문제 풀이를 통한 코딩 테스트 연습">
-
-
-
+  <meta property="og:description" content="Eine Bibliothek">
 
 
 
 
-  <meta property="article:published_time" content="2021-12-14T00:00:00+09:00">
+
+
 
 
 
@@ -45,7 +41,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/boj/boj(1)/">
+<link rel="canonical" href="http://localhost:4000/categories/airflow">
 
 
 
@@ -109,7 +105,7 @@
 
   </head>
 
-  <body class="layout--single">
+  <body class="layout--archive">
     <nav class="skip-links">
   <h2 class="screen-reader-text">Skip links</h2>
   <ul>
@@ -663,347 +659,34 @@
 
 
 
-  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[ALGORITHM] BOJ 10816. 숫자 카드 2">
-    <meta itemprop="description" content="ALGORITHM Übung - LeetCode  알고리즘 문제 풀이를 통한 코딩 테스트 연습">
-    <meta itemprop="datePublished" content="2021-12-14T00:00:00+09:00">
+  <div class="archive">
     
-
-    <div class="page__inner-wrap">
-      
-        <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[ALGORITHM] BOJ 10816. 숫자 카드 2
-</h1>
-          
-
-  <p class="page__meta">
+      <h1 id="page-title" class="page__title">Data-Engineering - Airflow</h1>
     
-
     
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/airflow/airflow1/">[Apache Airflow] Airflow Installation on Docker</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.12.29
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
         
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-        </header>
-      
-
-      <section class="page__content" itemprop="text">
-        
-          <aside class="sidebar__right sticky">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---leetcode">ALGORITHM Übung - LeetCode</a></li><li><a href="#문제">문제</a></li><li><a href="#코드">코드</a></li></ul>
-
-            </nav>
-          </aside>
-        
-        <hr />
-<h3 id="algorithm-übung---leetcode">ALGORITHM Übung - LeetCode</h3>
-<ul>
-  <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
-</ul>
-
-<hr />
-
-<h3 id="문제">문제</h3>
-<ul>
-  <li><a href="https://www.acmicpc.net/problem/10816">🔗 문제 링크</a></li>
-</ul>
-
-<h3 id="코드">코드</h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-
-<span class="k">def</span> <span class="nf">num_of_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">,</span><span class="n">interest</span><span class="p">):</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">cards</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">interest</span><span class="p">]</span> <span class="c1"># if not in interest 0
-</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
-    <span class="n">cards</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
-    <span class="n">interest</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">' '</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">num_of_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">,</span> <span class="n">interest</span><span class="p">)))</span>
-</code></pre></div></div>
-
-<hr />
-
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/tags/#algorithm" class="page__taxonomy-item" rel="tag">ALGORITHM</a><span class="sep">, </span>
-    
-      <a href="/tags/#boj" class="page__taxonomy-item" rel="tag">BOJ</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/categories/#boj" class="page__taxonomy-item" rel="tag">BOJ</a>
-    
-    </span>
-  </p>
-
-
-        
-
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-12-14T00:00:00+09:00">December 14, 2021</time></p>
-
-
-      </footer>
-
-      <section class="page__share">
-  
-    <h4 class="page__share-title">Share on</h4>
-  
-
-  <a href="https://twitter.com/intent/tweet?text=%5BALGORITHM%5D+BOJ+10816.+%EC%88%AB%EC%9E%90+%EC%B9%B4%EB%93%9C+2%20http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj%281%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj%281%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fboj%2Fboj%281%29%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
-
-      
-  <nav class="pagination">
-    
-      <a href="/study_algorithm/algorithm_study2/" class="pagination--pager" title="[ALGORITHM] 완전탐색(Brute-Force) &amp; 이분탐색
-">Previous</a>
-    
-    
-      <a href="/leetcode/leetcode_algorithm_interview(10)/" class="pagination--pager" title="[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock
-">Next</a>
-    
-  </nav>
-
-    </div>
-
-    
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h4 class="page__related-title">You may also enjoy</h4>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/airflow/airflow1/" rel="permalink">[Apache Airflow] Airflow Installation on Docker
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Airflow on Docker
-
-  Docker을 통한 Apache Airflow 설치
-
-</p>
-  </article>
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#airflow" class="page__taxonomy-item-category" rel="tag">AIRFLOW</a>
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
 </div>
 
-        
-          
 
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/sql/postgres_python1/" rel="permalink">[Postgres] Jupyter Notebook &amp; Docker Postgres 연동
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">환경구성
-
-  install psycopg2 in Jupyter notebook
-
-</p>
-  </article>
+  </div>
 </div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/sql/mysql_python1/" rel="permalink">[MySQL] Jupyter Notebook &amp; Docker MySql 연동
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">환경구성
-
-  install sqlalchemy, ipython-sql in Jupyter notebook
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/docker/docker2/" rel="permalink">[Docker] Docker Image 복사
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Docker Image 복사
-
-  Docker 이미지 다른 컴퓨터로 복사하기
-
-</p>
-  </article>
-</div>
-
-        
-      </div>
-    </div>
-  
-  
-</div>
-
     </div>
 
     

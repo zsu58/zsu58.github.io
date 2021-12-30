@@ -1,4 +1,4 @@
-I"�<hr />
+I"�<hr />
 <h3 id="airflow-on-docker">Airflow on Docker</h3>
 <ul>
   <li>Docker을 통한 Apache Airflow 설치</li>
@@ -40,7 +40,7 @@ docker-compose down
 
 <h3 id="ref">ref</h3>
 <ul>
-  <li>https://airflow.apache.org/docs/apache-airflow/2.1.4/start/docker.html</li>
-  <li>https://jybaek.tistory.com/922</li>
+  <li><a href="https://airflow.apache.org/docs/apache-airflow/2.1.4/start/docker.html">🔗 공식 문서</a></li>
+  <li><a href="https://jybaek.tistory.com/922">🔗 참고 블로그</a></li>
 </ul>
 :ET
