@@ -61,6 +61,13 @@
         <span class="nav__sub-title">Data-Enginnering</span>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "AIRFLOW" %}
+                        <li><a href="/categories/AIRFLOW" class="">Airflow ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "CLI" %}
                         <li><a href="/categories/cli" class="">Cli ({{category[1].size}})</a></li>
                     {% endif %}
