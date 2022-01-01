@@ -1,0 +1,36 @@
+I"�<hr />
+<h3 id="mysql--postgres-in-docker">MySQL &amp; Postgres in Docker</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># mysql 컨테이너 생성, -p 옵션으로 포트 지정/ 컨테이너 이미지에서 사용할 포트, -e로 환경변수 설정, -d는 백그라운드로 실행한다는 의미
+</span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">3306</span><span class="p">:</span><span class="mi">3306</span> <span class="o">--</span><span class="n">name</span> <span class="n">mysql1</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="mi">1234</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_DATABASE</span><span class="o">=</span><span class="n">first_db</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_USER</span><span class="o">=</span><span class="n">carl020958</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_PASSWORD</span><span class="o">=</span><span class="mi">1234</span> <span class="o">-</span><span class="n">d</span> <span class="n">mysql</span><span class="p">:</span><span class="n">latest</span>
+
+<span class="c1"># apple silicon
+</span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">platform</span> <span class="n">linux</span><span class="o">/</span><span class="n">amd64</span> <span class="o">-</span><span class="n">p</span> <span class="mi">3306</span><span class="p">:</span><span class="mi">3306</span> <span class="o">--</span><span class="n">name</span> <span class="n">todolist</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="mi">1234</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_DATABASE</span><span class="o">=</span><span class="n">dbname</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_USER</span><span class="o">=</span><span class="n">carl020958</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_PASSWORD</span><span class="o">=</span><span class="mi">1234</span> <span class="o">-</span><span class="n">d</span> <span class="n">mysql</span><span class="p">:</span><span class="mf">5.7</span>
+        
+<span class="c1"># postgresql 컨테이너 생성
+</span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">postgresql1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5432</span><span class="p">:</span><span class="mi">5432</span> <span class="o">-</span><span class="n">e</span> <span class="n">POSTGRES_PASSWORD</span><span class="o">=</span><span class="mi">1234</span> <span class="o">-</span><span class="n">e</span> <span class="n">POSTGRES_USER</span><span class="o">=</span><span class="n">carl020958</span> <span class="o">-</span><span class="n">e</span> <span class="n">POSTGRES_DB</span><span class="o">=</span><span class="n">first_postgres</span> <span class="o">-</span><span class="n">d</span> <span class="n">postgres</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="docker-mysql-sql-dump">DOCKER MYSQL sql dump</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># local directory에서 docker container으로 cp docker cp [file/directory] [container_id:/home]
+</span><span class="n">docker</span> <span class="n">cp</span> <span class="n">emp</span> <span class="n">fad2828c2116</span><span class="p">:</span><span class="o">/</span><span class="n">home</span>
+<span class="n">docker</span> <span class="n">cp</span> <span class="n">employees</span> <span class="n">fad2828c2116</span><span class="p">:</span><span class="o">/</span><span class="n">home</span>
+
+<span class="c1"># docker을 통해 MySQL 서버에 로그인 docker exec -it [mysql container_id] /bin/bash
+</span><span class="n">docker</span> <span class="k">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">mysql1</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+
+<span class="c1"># mysql -p[password]
+</span><span class="n">mysql</span> <span class="o">-</span><span class="n">p1234</span>
+
+<span class="c1"># mysql 서버에서 실행
+</span><span class="n">source</span> <span class="n">home</span><span class="o">/</span><span class="n">emp</span><span class="o">/</span><span class="n">createTable</span><span class="p">.</span><span class="n">sql</span>
+<span class="n">source</span> <span class="n">home</span><span class="o">/</span><span class="n">emp</span><span class="o">/</span><span class="n">insertTable</span><span class="p">.</span><span class="n">sql</span>
+<span class="n">soure</span> <span class="n">home</span><span class="o">/</span><span class="n">employees</span><span class="o">/</span><span class="n">employees</span><span class="p">.</span><span class="n">sql</span>
+<span class="c1"># employees.sql의 source의 directory 확인!
+</span></code></pre></div></div>
+
+<hr />
+:ET

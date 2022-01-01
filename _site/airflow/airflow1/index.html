@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">106</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">107</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -550,7 +550,7 @@
                     
                 
                     
-                        <li><a href="/categories/docker" class="">Docker (2)</a></li>
+                        <li><a href="/categories/docker" class="">Docker (3)</a></li>
                     
                 
                     
@@ -688,7 +688,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -703,7 +703,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#airflow-on-docker">Airflow on Docker</a></li><li><a href="#ref">ref</a></li></ul>
+              <ul class="toc__menu"><li><a href="#airflow-on-docker">Airflow on Docker</a></li><li><a href="#airflow-docker-설치">Airflow-Docker 설치</a></li><li><a href="#환경">환경</a></li><li><a href="#ref">ref</a></li></ul>
 
             </nav>
           </aside>
@@ -716,6 +716,7 @@
 
 <hr />
 
+<h3 id="airflow-docker-설치">Airflow-Docker 설치</h3>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># make folder and cd</span>
 <span class="nb">mkdir </span>airflow-docker
 <span class="nb">cd </span>airflow-docker
@@ -747,11 +748,33 @@ docker-compose up
 <span class="c"># end airflow</span>
 docker-compose down
 </code></pre></div></div>
+<hr />
+
+<h3 id="환경">환경</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># airflow 명령어 사용하기 위한 venv 구성</span>
+<span class="c"># airflow 설치한 폴더로 cd</span>
+python3 <span class="nt">-m</span> venv airflow1
+<span class="nb">source </span>airflow1/bin/activate
+
+<span class="c"># airflow에서 사용할 module 설치</span>
+pip3 <span class="nb">install </span>wheel
+
+<span class="c"># airflow 설치(버전 유의)</span>
+pip3 <span class="nb">install </span>apache-airflow<span class="o">==</span>2.1.4
+
+<span class="c"># initialize metadatabase &amp; generate folders and files needed by airflow</span>
+airflow db init
+
+<span class="c"># create user</span>
+docker-compose run airflow-worker <span class="nb">users </span>create <span class="nt">-u</span> zsu <span class="nt">-p</span> abcd <span class="nt">-f</span> jisu <span class="nt">-l</span> park <span class="nt">-r</span> Admin <span class="nt">-e</span> carl020958@korea.ac.kr
+</code></pre></div></div>
 
 <h3 id="ref">ref</h3>
 <ul>
   <li><a href="https://airflow.apache.org/docs/apache-airflow/2.1.4/start/docker.html">🔗 공식 문서</a></li>
   <li><a href="https://jybaek.tistory.com/922">🔗 참고 블로그</a></li>
+  <li><a href="https://devbull.xyz/python-create-environment/">🔗 가상환경 관련</a></li>
 </ul>
 
         
@@ -1066,7 +1089,7 @@ ALGORITHM Übung - LeetCode
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2022 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

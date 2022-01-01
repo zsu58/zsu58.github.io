@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>[Docker] Docker 명령어 - Bibliothek für Data-Engineering</title>
-<meta name="description" content="Docker    Docker 관련 명령어 정리">
+<meta name="description" content="Docker 명령어    Docker 관련 명령어 정리">
 
 
   <meta name="author" content="ZSU">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/docker/docker1/">
 
 
-  <meta property="og:description" content="Docker    Docker 관련 명령어 정리">
+  <meta property="og:description" content="Docker 명령어    Docker 관련 명령어 정리">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">106</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">107</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -550,7 +550,7 @@
                     
                 
                     
-                        <li><a href="/categories/docker" class="">Docker (2)</a></li>
+                        <li><a href="/categories/docker" class="">Docker (3)</a></li>
                     
                 
                     
@@ -665,7 +665,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[Docker] Docker 명령어">
-    <meta itemprop="description" content="Docker  Docker 관련 명령어 정리">
+    <meta itemprop="description" content="Docker 명령어  Docker 관련 명령어 정리">
     <meta itemprop="datePublished" content="2021-10-17T00:00:00+09:00">
     
 
@@ -688,7 +688,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          less than 1 minute read
         
       </span>
     
@@ -703,13 +703,13 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#docker">Docker</a></li><li><a href="#docker-관련-명령어">Docker 관련 명령어</a></li><li><a href="#mysql--postgresql-in-docker">MySQL &amp; PostgreSQL in Docker</a></li><li><a href="#docker-mysql-sql-dump">DOCKER MYSQL sql dump</a></li></ul>
+              <ul class="toc__menu"><li><a href="#docker-명령어">Docker 명령어</a></li><li><a href="#docker-관련-명령어">Docker 관련 명령어</a></li></ul>
 
             </nav>
           </aside>
         
         <hr />
-<h3 id="docker">Docker</h3>
+<h3 id="docker-명령어">Docker 명령어</h3>
 <ul>
   <li>Docker 관련 명령어 정리</li>
 </ul>
@@ -718,73 +718,24 @@
 
 <h3 id="docker-관련-명령어">Docker 관련 명령어</h3>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 로그인
-</span><span class="n">docker</span> <span class="n">login</span>
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># create container(docker container run -d(background) -p[localhost port:container port] [image_name] --name [name_of container])</span>
+docker container run -d -p 80:80 nginx --name webserver
 
-<span class="c1"># 터미널에서 docker desktop 실행
-</span><span class="nb">open</span> <span class="o">-</span><span class="n">a</span> <span class="n">docker</span>
+<span class="c"># list of running containers (give option -a to sell all containers)</span>
+docker container ls -a
 
-<span class="c1"># image 설치는 docker hub에 접속해서 설치를 희망하는 image의 명령어(pull)를 사용하면 됨
-</span><span class="n">docker</span> <span class="n">pull</span> <span class="n">mysql</span>
+<span class="c"># show logs of container(docker container logs [name_of_container/ container id])</span>
+docker container logs webserver1
 
-<span class="c1"># 설치되어 있는 이미지 보기
-</span><span class="n">docker</span> <span class="n">images</span>
+<span class="c"># show process list of container(docker container top [name_of_container/ container id])</span>
+docker container top webserver1
 
-<span class="c1"># 컨테이너 생성 (docker run --name [name_of_container] [image])
-</span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">ws2</span> <span class="n">httpd</span>
+<span class="c"># stop container (docker stop [name_of_container/ container_id])</span>
+docker stop webserver1
 
-<span class="c1"># 기존의 존재하는 컨테이너 실행 (docker start [name_of_container/ container_id]
-</span><span class="n">docker</span> <span class="n">start</span> <span class="n">ws2</span>
-
-<span class="c1"># 컨테이너의 로그 보기, 옵션으로 -f 주면 실시간으로 로그 확인 가능 (docker logs -f [name_of_container])
-</span><span class="n">docker</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="n">ws2</span>
-
-<span class="c1"># 컨테이너 보기, -a 옵션을 통해 모든 컨테이너 다 볼 수 있음, default는 실행중인 컨테이너만 표시
-</span><span class="n">docker</span> <span class="n">ps</span>
-
-<span class="c1"># 컨테이너 실행 종료 (docker stop [name_of_container/ container_id])
-</span><span class="n">docker</span> <span class="n">stop</span> <span class="n">a2</span>
-
-<span class="c1"># 컨테이너 삭제 (docker rm [name_of_container/ container_id])
-</span><span class="n">docker</span> <span class="n">rm</span> <span class="n">a2</span>
-
-<span class="c1"># 이미지 삭제 (docker rmi [image_id])
-</span><span class="n">docker</span> <span class="n">rmi</span> <span class="n">httpd</span>
-
+<span class="c"># remove container (docker rm [name_of_container/ container_id])</span>
+docker rm webserver1
 </code></pre></div></div>
-
-<h3 id="mysql--postgresql-in-docker">MySQL &amp; PostgreSQL in Docker</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># mysql 컨테이너 생성, -p 옵션으로 포트 지정/ 컨테이너 이미지에서 사용할 포트, -e로 환경변수 설정, -d는 백그라운드로 실행한다는 의미
-</span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">3306</span><span class="p">:</span><span class="mi">3306</span> <span class="o">--</span><span class="n">name</span> <span class="n">mysql1</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="mi">1234</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_DATABASE</span><span class="o">=</span><span class="n">first_db</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_USER</span><span class="o">=</span><span class="n">carl020958</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_PASSWORD</span><span class="o">=</span><span class="mi">1234</span> <span class="o">-</span><span class="n">d</span> <span class="n">mysql</span><span class="p">:</span><span class="n">latest</span>
-
-<span class="c1"># apple silicon
-</span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">platform</span> <span class="n">linux</span><span class="o">/</span><span class="n">amd64</span> <span class="o">-</span><span class="n">p</span> <span class="mi">3306</span><span class="p">:</span><span class="mi">3306</span> <span class="o">--</span><span class="n">name</span> <span class="n">todolist</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="mi">1234</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_DATABASE</span><span class="o">=</span><span class="n">dbname</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_USER</span><span class="o">=</span><span class="n">carl020958</span> <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_PASSWORD</span><span class="o">=</span><span class="mi">1234</span> <span class="o">-</span><span class="n">d</span> <span class="n">mysql</span><span class="p">:</span><span class="mf">5.7</span>
-        
-<span class="c1"># postgresql 컨테이너 생성
-</span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">postgresql1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5432</span><span class="p">:</span><span class="mi">5432</span> <span class="o">-</span><span class="n">e</span> <span class="n">POSTGRES_PASSWORD</span><span class="o">=</span><span class="mi">1234</span> <span class="o">-</span><span class="n">e</span> <span class="n">POSTGRES_USER</span><span class="o">=</span><span class="n">carl020958</span> <span class="o">-</span><span class="n">e</span> <span class="n">POSTGRES_DB</span><span class="o">=</span><span class="n">first_postgres</span> <span class="o">-</span><span class="n">d</span> <span class="n">postgres</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="docker-mysql-sql-dump">DOCKER MYSQL sql dump</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># local directory에서 docker container으로 cp docker cp [file/directory] [container_id:/home]
-</span><span class="n">docker</span> <span class="n">cp</span> <span class="n">emp</span> <span class="n">fad2828c2116</span><span class="p">:</span><span class="o">/</span><span class="n">home</span>
-<span class="n">docker</span> <span class="n">cp</span> <span class="n">employees</span> <span class="n">fad2828c2116</span><span class="p">:</span><span class="o">/</span><span class="n">home</span>
-
-<span class="c1"># docker을 통해 MySQL 서버에 로그인 docker exec -it [mysql container_id] /bin/bash
-</span><span class="n">docker</span> <span class="k">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">mysql1</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
-
-<span class="c1"># mysql -p[password]
-</span><span class="n">mysql</span> <span class="o">-</span><span class="n">p1234</span>
-
-<span class="c1"># mysql 서버에서 실행
-</span><span class="n">source</span> <span class="n">home</span><span class="o">/</span><span class="n">emp</span><span class="o">/</span><span class="n">createTable</span><span class="p">.</span><span class="n">sql</span>
-<span class="n">source</span> <span class="n">home</span><span class="o">/</span><span class="n">emp</span><span class="o">/</span><span class="n">insertTable</span><span class="p">.</span><span class="n">sql</span>
-<span class="n">soure</span> <span class="n">home</span><span class="o">/</span><span class="n">employees</span><span class="o">/</span><span class="n">employees</span><span class="p">.</span><span class="n">sql</span>
-<span class="c1"># employees.sql의 source의 directory 확인!
-</span></code></pre></div></div>
 
 <hr />
 
@@ -900,7 +851,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -1103,7 +1054,7 @@ Docker Image 복사
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2021 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2022 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

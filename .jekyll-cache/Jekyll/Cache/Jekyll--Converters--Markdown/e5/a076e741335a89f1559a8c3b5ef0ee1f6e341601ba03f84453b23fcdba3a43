@@ -1,0 +1,31 @@
+I"x<hr />
+<h3 id="docker-명령어">Docker 명령어</h3>
+<ul>
+  <li>Docker 관련 명령어 정리</li>
+</ul>
+
+<hr />
+
+<h3 id="docker-관련-명령어">Docker 관련 명령어</h3>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># create container(docker container run -d(background) -p[localhost port:container port] [image_name] --name [name_of container])</span>
+docker container run -d -p 80:80 nginx --name webserver
+
+<span class="c"># list of running containers (give option -a to sell all containers)</span>
+docker container ls -a
+
+<span class="c"># show logs of container(docker container logs [name_of_container/ container id])</span>
+docker container logs webserver1
+
+<span class="c"># show process list of container(docker container top [name_of_container/ container id])</span>
+docker container top webserver1
+
+<span class="c"># stop container (docker stop [name_of_container/ container_id])</span>
+docker stop webserver1
+
+<span class="c"># remove container (docker rm [name_of_container/ container_id])</span>
+docker rm webserver1
+</code></pre></div></div>
+
+<hr />
+:ET

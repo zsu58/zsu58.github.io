@@ -282,7 +282,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Docker] Docker 명령어",
-        "excerpt":"Docker Docker 관련 명령어 정리 Docker 관련 명령어 # 로그인 docker login # 터미널에서 docker desktop 실행 open -a docker # image 설치는 docker hub에 접속해서 설치를 희망하는 image의 명령어(pull)를 사용하면 됨 docker pull mysql # 설치되어 있는 이미지 보기 docker images # 컨테이너 생성 (docker run --name [name_of_container] [image])...","categories": ["DOCKER"],
+        "excerpt":"Docker 명령어 Docker 관련 명령어 정리 Docker 관련 명령어 # create container(docker container run -d(background) -p[localhost port:container port] [image_name] --name [name_of container]) docker container run -d -p 80:80 nginx --name webserver # list of running containers (give option -a to sell all containers) docker container ls -a # show logs...","categories": ["DOCKER"],
         "tags": ["CLI","BACKEND","DOCKER"],
         "url": "/docker/docker1/",
         "teaser": null
@@ -497,6 +497,12 @@ var store = [{
         "url": "/programmers/programmers_coding_test(7)/",
         "teaser": null
       },{
+        "title": "[Docker] Docker MySql & Postgres",
+        "excerpt":"MySQL &amp; Postgres in Docker # mysql 컨테이너 생성, -p 옵션으로 포트 지정/ 컨테이너 이미지에서 사용할 포트, -e로 환경변수 설정, -d는 백그라운드로 실행한다는 의미 docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=first_db -e MYSQL_USER=carl020958 -e MYSQL_PASSWORD=1234 -d mysql:latest # apple silicon docker run --platform linux/amd64 -p 3306:3306 --name...","categories": ["DOCKER"],
+        "tags": ["SQK","DOCKER"],
+        "url": "/docker/docker3/",
+        "teaser": null
+      },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)",
         "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 [3차] 파일명 정렬 29/11/2021 import re def solution(files): files = sorted(files, key=lambda x: (re.findall(r\"[a-zA-Z-.\\s]+\", x.lower())[0], int(re.findall(r\"[0-9]+\", x)[0])) ) return files [3차] 압축 30/11/2021 def solution(msg): wordDict = dict(zip(\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", range(1,27))) number = 27 answer = [] while msg not in...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
@@ -630,7 +636,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Apache Airflow] Airflow Installation on Docker",
-        "excerpt":"Airflow on Docker Docker을 통한 Apache Airflow 설치 # make folder and cd mkdir airflow-docker cd airflow-docker # docker-compose.yaml file download(check version) curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.1.4/docker-compose.yaml' # make folders for dags &amp; plugins &amp; logs mkdir ./dags ./plugins ./logs # On Linux &amp; Mac OS, the quick-start needs to know your...","categories": ["AIRFLOW"],
+        "excerpt":"Airflow on Docker Docker을 통한 Apache Airflow 설치 Airflow-Docker 설치 # make folder and cd mkdir airflow-docker cd airflow-docker # docker-compose.yaml file download(check version) curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.1.4/docker-compose.yaml' # make folders for dags &amp; plugins &amp; logs mkdir ./dags ./plugins ./logs # On Linux &amp; Mac OS, the quick-start needs to...","categories": ["AIRFLOW"],
         "tags": ["AIRFLOW","DOCKER"],
         "url": "/airflow/airflow1/",
         "teaser": null
