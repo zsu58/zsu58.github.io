@@ -281,8 +281,8 @@ var store = [{
         "url": "/codeit/algorithm23_powers/",
         "teaser": null
       },{
-        "title": "[Docker] Docker 명령어",
-        "excerpt":"Docker 명령어 Docker 관련 명령어 정리 Docker 관련 명령어 # create container(docker container run -d(background) -p[localhost port:container port] [image_name] --name [name_of container]) docker container run -d -p 80:80 nginx --name webserver # list of running containers (give option -a to sell all containers) docker container ls -a # show logs...","categories": ["DOCKER"],
+        "title": "[Docker] Docker 명령어 & 기본 설정",
+        "excerpt":"Docker 기본 명령어 Docker 관련 기본 명령어 Docker bash-completion 설정 Docker 기본 명령어 # see version docker version # see info of docer docker info # create container w(docker container run -d(background) -p[host:container] [image_name] --name [container_name]) docker container run -d -p 80:80 nginx --name webserver # list of running containers...","categories": ["DOCKER"],
         "tags": ["CLI","BACKEND","DOCKER"],
         "url": "/docker/docker1/",
         "teaser": null
@@ -499,7 +499,7 @@ var store = [{
       },{
         "title": "[Docker] Docker MySql & Postgres",
         "excerpt":"MySQL &amp; Postgres in Docker # mysql 컨테이너 생성, -p 옵션으로 포트 지정/ 컨테이너 이미지에서 사용할 포트, -e로 환경변수 설정, -d는 백그라운드로 실행한다는 의미 docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=first_db -e MYSQL_USER=carl020958 -e MYSQL_PASSWORD=1234 -d mysql:latest # apple silicon docker run --platform linux/amd64 -p 3306:3306 --name...","categories": ["DOCKER"],
-        "tags": ["SQK","DOCKER"],
+        "tags": ["SQL","DOCKER"],
         "url": "/docker/docker3/",
         "teaser": null
       },{
@@ -639,5 +639,17 @@ var store = [{
         "excerpt":"Airflow on Docker Docker을 통한 Apache Airflow 설치 Airflow-Docker 설치 # make folder and cd mkdir airflow-docker cd airflow-docker # docker-compose.yaml file download(check version) curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.1.4/docker-compose.yaml' # make folders for dags &amp; plugins &amp; logs mkdir ./dags ./plugins ./logs # On Linux &amp; Mac OS, the quick-start needs to...","categories": ["AIRFLOW"],
         "tags": ["AIRFLOW","DOCKER"],
         "url": "/airflow/airflow1/",
+        "teaser": null
+      },{
+        "title": "[Docker] Docker Shell Inside Containers",
+        "excerpt":"Getting a Shell Inside Containers # start new container interactively (docker container run -it) docker container run -it --name proxy nginx # run additional command in existing container (docker container exec -it) docker container exec -it proxy bash # ------ # Ubuntu # ------ # exec의 경우에는 additional command, start의...","categories": ["DOCKER"],
+        "tags": ["DOCKER"],
+        "url": "/docker/docker4/",
+        "teaser": null
+      },{
+        "title": "[Docker] Docker Network",
+        "excerpt":"Docker Network Priate &amp; Pulbic Comms in Containers CLI Management of Virtual Networks Docker DNS(Domain Name System) &amp; How Containers Find Each Other Priate &amp; Pulbic Comms in Containers docker container run -p 80:80 --name webhost -d nginx # 어떤 host port에서 container port으로 forward되는지 확인 (docker container port [container_name(id)])...","categories": ["DOCKER"],
+        "tags": ["DOCKER"],
+        "url": "/docker/docker5/",
         "teaser": null
       }]

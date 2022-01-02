@@ -1,0 +1,5 @@
+I"<h3 id="getting-a-shell-inside-containers">Getting a Shell Inside Containers</h3>
+<p>```bash</p>
+<h1 id="start-new-container-interactively-docker-container-run--it">start new container interactively (docker container run -it)</h1>
+<p>docker container run -it –name proxy nginx</p>
+:ET

@@ -1,19 +1,19 @@
-I"�<hr />
+I"+<hr />
 <h3 id="docker-image-복사">Docker Image 복사</h3>
 <ul>
   <li>Docker 이미지 다른 컴퓨터로 복사하기</li>
 </ul>
 
-<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 복사하고 싶은 docker image 정보 확인</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 복사하고 싶은 docker image 정보 확인</span>
 docker images
 
 <span class="c"># 해당 docker image를 tar 파일로 변환 docker save -o [tar file name] [repository_name:tag_name]</span>
-docker save -o mysql1.tar mysql1:lernen
+docker save <span class="nt">-o</span> mysql1.tar mysql1:lernen
 
 <span class="c"># [file_name].tar을 다른 컴퓨터로 옮기기</span>
 
 <span class="c"># image를 업로드하기 docker load -i &lt;path to image tar file&gt;</span>
-docker load -i mysql1.tar
+docker load <span class="nt">-i</span> mysql1.tar
 
 <span class="c"># 최종 확인</span>
 docker images
