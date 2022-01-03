@@ -1,9 +1,29 @@
-I"
+I"�
 <div class="list__item">
     <article class="archive-item">
         <div>
             <span>
-              <a href="/docker/docker5/">[Docker] Docker Network</a>
+              <a href="/docker/docker6/">[Docker] Docker Network2</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2022.01.03
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#docker" class="page__taxonomy-item-category" rel="tag">DOCKER</a>
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/docker/docker5/">[Docker] Docker Network1</a>
             </span>
             <small> 
               <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2022.01.02

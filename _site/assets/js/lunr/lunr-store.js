@@ -647,9 +647,15 @@ var store = [{
         "url": "/docker/docker4/",
         "teaser": null
       },{
-        "title": "[Docker] Docker Network",
-        "excerpt":"Docker Network Priate &amp; Pulbic Comms in Containers CLI Management of Virtual Networks Docker DNS(Domain Name System) &amp; How Containers Find Each Other Priate &amp; Pulbic Comms in Containers docker container run -p 80:80 --name webhost -d nginx # 어떤 host port에서 container port으로 forward되는지 확인 (docker container port [container_name(id)])...","categories": ["DOCKER"],
+        "title": "[Docker] Docker Network1",
+        "excerpt":"Docker Network1 Priate &amp; Pulbic Comms in Containers CLI Management of Virtual Networks Docker DNS(Domain Name System) &amp; How Containers Find Each Other Priate &amp; Pulbic Comms in Containers docker container run -p 80:80 --name webhost -d nginx # 어떤 host port에서 container port으로 forward되는지 확인 (docker container port [container_name(id)])...","categories": ["DOCKER"],
         "tags": ["DOCKER"],
         "url": "/docker/docker5/",
+        "teaser": null
+      },{
+        "title": "[Docker] Docker Network2",
+        "excerpt":"Docker Network2 Docker CLI Testing Docker DNS Round Robin Test Docker CLI Testing # centos7 # --rm option을 통해 해당 container 종료 시 자동 삭제 docker container run --rm -it centos:7 bash # root yum update curl curl --version # ubuntu14.04 docker container run --rm -it ubuntu:14.04 bash # root...","categories": ["DOCKER"],
+        "tags": ["DOCKER"],
+        "url": "/docker/docker6/",
         "teaser": null
       }]

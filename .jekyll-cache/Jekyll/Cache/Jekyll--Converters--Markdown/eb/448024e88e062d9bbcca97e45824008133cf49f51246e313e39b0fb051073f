@@ -1,5 +1,5 @@
-I"y<hr />
-<h3 id="docker-network">Docker Network</h3>
+I"�<hr />
+<h3 id="docker-network1">Docker Network1</h3>
 <ul>
   <li>Priate &amp; Pulbic Comms in Containers</li>
   <li>CLI Management of Virtual Networks</li>
@@ -10,18 +10,20 @@
 
 <h3 id="priate--pulbic-comms-in-containers">Priate &amp; Pulbic Comms in Containers</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker container run <span class="nt">-p</span> 80:80 <span class="nt">--name</span> webhost <span class="nt">-d</span> nginx
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+docker container run <span class="nt">-p</span> 80:80 <span class="nt">--name</span> webhost <span class="nt">-d</span> nginx
 
 <span class="c"># 어떤 host port에서 container port으로 forward되는지 확인 (docker container port [container_name(id)])</span>
 docker container port webhost
 
-<span class="c"># get container IP (docker container inspect --format '' [container_name(id)])</span>
-docker container inspect <span class="nt">--format</span> <span class="s1">''</span> webhost
+<span class="c"># get container IP (docker container inspect --format '{{ NetWorkSettings.IPAddress }}' [container_name(id)])</span>
+docker container inspect <span class="nt">--format</span> <span class="s1">'{{ .NetworkSettings.IPAddress }}'</span> webhost
 
 <span class="c"># check my ip</span>
 ipconfig getifaddr en0
 
 <span class="c"># container IP and my IP is different!</span>
+
 </code></pre></div></div>
 <hr />
 

@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Docker] Docker Network - Bibliothek für Data-Engineering</title>
-<meta name="description" content="Docker Network    Priate &amp; Pulbic Comms in Containers   CLI Management of Virtual Networks   Docker DNS(Domain Name System) &amp; How Containers Find Each Other">
+<!-- begin _includes/seo.html --><title>[Docker] Docker Network1 - Bibliothek für Data-Engineering</title>
+<meta name="description" content="Docker Network1    Priate &amp; Pulbic Comms in Containers   CLI Management of Virtual Networks   Docker DNS(Domain Name System) &amp; How Containers Find Each Other">
 
 
   <meta name="author" content="ZSU">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Bibliothek für Data-Engineering">
-<meta property="og:title" content="[Docker] Docker Network">
+<meta property="og:title" content="[Docker] Docker Network1">
 <meta property="og:url" content="http://localhost:4000/docker/docker5/">
 
 
-  <meta property="og:description" content="Docker Network    Priate &amp; Pulbic Comms in Containers   CLI Management of Virtual Networks   Docker DNS(Domain Name System) &amp; How Containers Find Each Other">
+  <meta property="og:description" content="Docker Network1    Priate &amp; Pulbic Comms in Containers   CLI Management of Virtual Networks   Docker DNS(Domain Name System) &amp; How Containers Find Each Other">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">109</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">110</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -550,7 +550,7 @@
                     
                 
                     
-                        <li><a href="/categories/docker" class="">Docker (5)</a></li>
+                        <li><a href="/categories/docker" class="">Docker (6)</a></li>
                     
                 
                     
@@ -664,15 +664,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Docker] Docker Network">
-    <meta itemprop="description" content="Docker Network  Priate &amp; Pulbic Comms in Containers  CLI Management of Virtual Networks  Docker DNS(Domain Name System) &amp; How Containers Find Each Other">
+    <meta itemprop="headline" content="[Docker] Docker Network1">
+    <meta itemprop="description" content="Docker Network1  Priate &amp; Pulbic Comms in Containers  CLI Management of Virtual Networks  Docker DNS(Domain Name System) &amp; How Containers Find Each Other">
     <meta itemprop="datePublished" content="2022-01-02T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[Docker] Docker Network
+          <h1 id="page-title" class="page__title" itemprop="headline">[Docker] Docker Network1
 </h1>
           
 
@@ -703,13 +703,13 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#docker-network">Docker Network</a></li><li><a href="#priate--pulbic-comms-in-containers">Priate &amp; Pulbic Comms in Containers</a></li><li><a href="#cli-management-of-virtual-networks">CLI Management of Virtual Networks</a></li><li><a href="#docker-dnsdomain-name-system--how-containers-find-each-other">Docker DNS(Domain Name System) &amp; How Containers Find Each Other</a></li></ul>
+              <ul class="toc__menu"><li><a href="#docker-network1">Docker Network1</a></li><li><a href="#priate--pulbic-comms-in-containers">Priate &amp; Pulbic Comms in Containers</a></li><li><a href="#cli-management-of-virtual-networks">CLI Management of Virtual Networks</a></li><li><a href="#docker-dnsdomain-name-system--how-containers-find-each-other">Docker DNS(Domain Name System) &amp; How Containers Find Each Other</a></li></ul>
 
             </nav>
           </aside>
         
         <hr />
-<h3 id="docker-network">Docker Network</h3>
+<h3 id="docker-network1">Docker Network1</h3>
 <ul>
   <li>Priate &amp; Pulbic Comms in Containers</li>
   <li>CLI Management of Virtual Networks</li>
@@ -720,18 +720,20 @@
 
 <h3 id="priate--pulbic-comms-in-containers">Priate &amp; Pulbic Comms in Containers</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker container run <span class="nt">-p</span> 80:80 <span class="nt">--name</span> webhost <span class="nt">-d</span> nginx
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+docker container run <span class="nt">-p</span> 80:80 <span class="nt">--name</span> webhost <span class="nt">-d</span> nginx
 
 <span class="c"># 어떤 host port에서 container port으로 forward되는지 확인 (docker container port [container_name(id)])</span>
 docker container port webhost
 
-<span class="c"># get container IP (docker container inspect --format '' [container_name(id)])</span>
-docker container inspect <span class="nt">--format</span> <span class="s1">''</span> webhost
+<span class="c"># get container IP (docker container inspect --format '{{ NetWorkSettings.IPAddress }}' [container_name(id)])</span>
+docker container inspect <span class="nt">--format</span> <span class="s1">'{{ .NetworkSettings.IPAddress }}'</span> webhost
 
 <span class="c"># check my ip</span>
 ipconfig getifaddr en0
 
 <span class="c"># container IP and my IP is different!</span>
+
 </code></pre></div></div>
 <hr />
 
@@ -822,7 +824,7 @@ docker container <span class="nb">exec</span> <span class="nt">-it</span> my_ngi
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BDocker%5D+Docker+Network%20http%3A%2F%2Flocalhost%3A4000%2Fdocker%2Fdocker5%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BDocker%5D+Docker+Network1%20http%3A%2F%2Flocalhost%3A4000%2Fdocker%2Fdocker5%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdocker%2Fdocker5%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -837,7 +839,8 @@ docker container <span class="nb">exec</span> <span class="nt">-it</span> my_ngi
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/docker/docker6/" class="pagination--pager" title="[Docker] Docker Network2
+">Next</a>
     
   </nav>
 
@@ -851,6 +854,52 @@ docker container <span class="nb">exec</span> <span class="nt">-it</span> my_ngi
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/docker/docker6/" rel="permalink">[Docker] Docker Network2
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Docker Network2
+
+  Docker CLI Testing
+  Docker DNS Round Robin Test
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -977,49 +1026,6 @@ Airflow on Docker
     <p class="archive__item-excerpt" itemprop="description">환경구성
 
   install psycopg2 in Jupyter notebook
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/sql/mysql_python1/" rel="permalink">[MySQL] Jupyter Notebook &amp; Docker MySql 연동
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">환경구성
-
-  install sqlalchemy, ipython-sql in Jupyter notebook
 
 </p>
   </article>
