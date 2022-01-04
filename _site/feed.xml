@@ -1,4 +1,141 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-03T14:10:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[Docker] Docker Network2</title><link href="http://localhost:4000/docker/docker6/" rel="alternate" type="text/html" title="[Docker] Docker Network2" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-01-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker6</id><content type="html" xml:base="http://localhost:4000/docker/docker6/">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-04T12:31:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[Docker] Docker Prune</title><link href="http://localhost:4000/docker/docker9/" rel="alternate" type="text/html" title="[Docker] Docker Prune" /><published>2022-01-04T00:00:00+09:00</published><updated>2022-01-04T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker9</id><content type="html" xml:base="http://localhost:4000/docker/docker9/">&lt;hr /&gt;
+&lt;h3 id=&quot;docker-cleaning-up&quot;&gt;Docker Cleaning Up&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;prune command to clean up images, volumes, build cache, and containers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;docker-clean-up&quot;&gt;Docker clean up&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# displays information regarding the amount of disk space used by the docker daemon&lt;/span&gt;
+docker system &lt;span class=&quot;nb&quot;&gt;df&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes&lt;/span&gt;
+docker system prune
+
+docker image prune
+docker container prune
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;ref&quot;&gt;ref&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/engine/reference/commandline/system_prune/&quot;&gt;🔗 공식 문서&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.lainyzine.com/ko/article/docker-prune-usage-remove-unused-docker-objects/&quot;&gt;🔗 참고 블로그&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Cleaning Up prune command to clean up images, volumes, build cache, and containers</summary></entry><entry><title type="html">[Docker] Docker Persistent Data</title><link href="http://localhost:4000/docker/docker10/" rel="alternate" type="text/html" title="[Docker] Docker Persistent Data" /><published>2022-01-04T00:00:00+09:00</published><updated>2022-01-04T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker10</id><content type="html" xml:base="http://localhost:4000/docker/docker10/">&lt;hr /&gt;
+&lt;h3 id=&quot;docker-persistent-data&quot;&gt;Docker Persistent Data&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;containers are usually immutable(unchangeable) &amp;amp; ephemeral(temporary)&lt;/li&gt;
+  &lt;li&gt;which means that containers should never change when containers are re-deployed&lt;/li&gt;
+  &lt;li&gt;then the problem arises for unique data like databases&lt;/li&gt;
+  &lt;li&gt;these unique data are called persistent data&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Data Volumes&lt;/strong&gt; &amp;amp; &lt;strong&gt;Bind Mounts&lt;/strong&gt; is used to solve the problem&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Data Volumes&lt;/strong&gt; - configuration option that creates a special locations outside the container’s union file system to store unique data&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bind Mounts&lt;/strong&gt; - sharing or mounting a host directory or file into a container&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;data-volumes&quot;&gt;Data Volumes&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# pull mysql image &lt;/span&gt;
+docker image pull mysql:latest
+
+&lt;span class=&quot;c&quot;&gt;# run container&lt;/span&gt;
+docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; mysql_test &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;MYSQL_ALLOW_EMPTY_PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true &lt;/span&gt;mysql:latest
+
+&lt;span class=&quot;c&quot;&gt;# mysql_test container의 설정 부분, 설정 중 volume을 확인&lt;/span&gt;
+docker container inspect mysql_test
+&lt;span class=&quot;c&quot;&gt;# destination - container가 데이터를 적재한다고 생각하는 곳&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# source - 실제 데이터가 적대되어 있는 곳&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# docker container를 통해 만든 모든 데이터를 확인할 수 있음, 이 volume은 container가 삭제되어도 남아 있음&lt;/span&gt;
+docker volume &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 하지만 volume이 어떤 volume인지 분간하기가 어렵기에 container을 run할 때 volume에 name을 주는 것이 좋음&lt;/span&gt;
+docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; mysql_test1 &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;MYSQL_ALLOW_EMPTY_PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; mysql-db:/var/lib/mysql mysql:latest
+
+&lt;span class=&quot;c&quot;&gt;# mysql_test2도 mysql_test1과 같은 db를 사용&lt;/span&gt;
+docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; mysql_test2 &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;MYSQL_ALLOW_EMPTY_PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; mysql-db:/var/lib/mysql mysql:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;bind-mounts&quot;&gt;Bind Mounts&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Persistent Data containers are usually immutable(unchangeable) &amp;amp; ephemeral(temporary) which means that containers should never change when containers are re-deployed then the problem arises for unique data like databases these unique data are called persistent data Data Volumes &amp;amp; Bind Mounts is used to solve the problem Data Volumes - configuration option that creates a special locations outside the container’s union file system to store unique data Bind Mounts - sharing or mounting a host directory or file into a container</summary></entry><entry><title type="html">[Docker] Docker Image2 - Building Images</title><link href="http://localhost:4000/docker/docker8/" rel="alternate" type="text/html" title="[Docker] Docker Image2 - Building Images" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-01-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker8</id><content type="html" xml:base="http://localhost:4000/docker/docker8/">&lt;hr /&gt;
+&lt;h3 id=&quot;docker-image2---building-images&quot;&gt;Docker Image2 - Building Images&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Dockerfile Build&lt;/li&gt;
+  &lt;li&gt;Dockerfile Build Example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;dockerfile-build&quot;&gt;Dockerfile Build&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Dockerfile이 있는 repository에서 진행 (docker image build -t [image_name] .)&lt;/span&gt;
+docker image build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; custom_nginx &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# dockerfile에 적혀 있는 순서대로 build하며, 변경이 없는 부분은 cache를 이용하고 변경된 부분만 새롭게 build하므로&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 변경이 없는 부분을 위에, 변경이 많은 부분은 아래에 적는 것이 좋음&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;dockerfile-build-example&quot;&gt;Dockerfile Build Example&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Dockerfile
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# - you should use the 'node' official image, with the alpine 6.x branch (node:6-alpine)&lt;/span&gt;
+FROM node:6-alpine
+&lt;span class=&quot;c&quot;&gt;# - this app listens on port 3000, but the container should launch on port 80&lt;/span&gt;
+EXPOSE 3000
+&lt;span class=&quot;c&quot;&gt;# - then it should use alpine package manager to install tini: 'apk add --update tini'&lt;/span&gt;
+RUN apk add &lt;span class=&quot;nt&quot;&gt;--update&lt;/span&gt; tini
+&lt;span class=&quot;c&quot;&gt;# - then it should create directory /usr/src/app for app files with 'mkdir -p /usr/src/app'&lt;/span&gt;
+RUN &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /usr/src/app
+&lt;span class=&quot;c&quot;&gt;# - Node uses a &quot;package manager&quot;, so it needs to copy in package.json file&lt;/span&gt;
+WORKDIR /usr/src/app
+COPY package.json package.json 
+&lt;span class=&quot;c&quot;&gt;# - then it needs to run 'npm install' to install dependencies from that file&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# - to keep it clean and small, run 'npm cache clean --force' after above&lt;/span&gt;
+RUN npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; npm cache clean &lt;span class=&quot;nt&quot;&gt;--force&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# - then it needs to copy in all files from current directory&lt;/span&gt;
+COPY &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# - then it needs to start container with command '/sbin/tini -- node ./bin/www'&lt;/span&gt;
+CMD &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tini&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;--&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;node&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;./bin/www&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;local에서 확인
+```bash
+    &lt;h1 id=&quot;build&quot;&gt;build&lt;/h1&gt;
+    &lt;p&gt;docker build -t testnode .&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;run-container&quot;&gt;run container&lt;/h1&gt;
+&lt;p&gt;docker container run –rm -p 80:3000 testnode&lt;/p&gt;
+
+&lt;h1 id=&quot;check&quot;&gt;check&lt;/h1&gt;
+&lt;p&gt;localhost:80&lt;/p&gt;
+
+&lt;h1 id=&quot;docker-hub에-올리고-download&quot;&gt;docker hub에 올리고 download&lt;/h1&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+* docker hub에 올린 뒤, pull해서 확인
+```bash
+# docker image tagging
+docker tag testnode:latest carl020958/testing_node:latest
+
+# pushing to docker hub
+docker push carl020958/testing_node:latest
+
+# remove docker image
+docker image rm -f 3b6
+
+# run container
+docker container run --rm -p 80:3000 carl020958/testing_node
+
+# check
+localhost:80
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Image2 - Building Images Dockerfile Build Dockerfile Build Example</summary></entry><entry><title type="html">[Docker] Docker Network2</title><link href="http://localhost:4000/docker/docker6/" rel="alternate" type="text/html" title="[Docker] Docker Network2" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-01-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker6</id><content type="html" xml:base="http://localhost:4000/docker/docker6/">&lt;hr /&gt;
 &lt;h3 id=&quot;docker-network2&quot;&gt;Docker Network2&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Docker CLI Testing&lt;/li&gt;
@@ -41,42 +178,41 @@ docker container run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span
 &lt;span class=&quot;c&quot;&gt;# use the code below to test DNS Round Robin 2&lt;/span&gt;
 docker container run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--net&lt;/span&gt; dns_test centos curl &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; search:9200
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Network2 Docker CLI Testing Docker DNS Round Robin Test</summary></entry><entry><title type="html">[Docker] Docker Shell Inside Containers</title><link href="http://localhost:4000/docker/docker4/" rel="alternate" type="text/html" title="[Docker] Docker Shell Inside Containers" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-01-02T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker4</id><content type="html" xml:base="http://localhost:4000/docker/docker4/">&lt;h3 id=&quot;getting-a-shell-inside-containers&quot;&gt;Getting a Shell Inside Containers&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# start new container interactively (docker container run -it)&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; proxy nginx
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Network2 Docker CLI Testing Docker DNS Round Robin Test</summary></entry><entry><title type="html">[Docker] Docker Image1</title><link href="http://localhost:4000/docker/docker7/" rel="alternate" type="text/html" title="[Docker] Docker Image1" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-01-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker7</id><content type="html" xml:base="http://localhost:4000/docker/docker7/">&lt;hr /&gt;
+&lt;h3 id=&quot;docker-image1&quot;&gt;Docker Image1&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Docker Image &amp;amp; Layers&lt;/li&gt;
+  &lt;li&gt;Docker Image Tagging &amp;amp; Pushing to Docker Hub&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;span class=&quot;c&quot;&gt;# run additional command in existing container (docker container exec -it)&lt;/span&gt;
-docker container &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; proxy bash
+&lt;hr /&gt;
 
+&lt;h3 id=&quot;docker-image--layers&quot;&gt;Docker Image &amp;amp; Layers&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# show history of image layers (docker image history [image_name])&lt;/span&gt;
+docker image &lt;span class=&quot;nb&quot;&gt;history &lt;/span&gt;nginx:latest
 
-&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Ubuntu&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# exec의 경우에는 additional command, start의 경우에는 해당 container를 시작, 또한 ubuntu는 argument로 bash 줄 필요 없음&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# ubuntu container는 이미 설치되어 있음&lt;/span&gt;
-docker container start &lt;span class=&quot;nt&quot;&gt;-ai&lt;/span&gt; ubuntu
-
-&lt;span class=&quot;c&quot;&gt;# container 안의 ubuntu는 일반적인 ubuntu와 다르게 minimal함, 따라서 아래처럼 필요한 부분들은 따로 설치가 필요&lt;/span&gt;
-apt-get update
-apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; curl
-
-
-&lt;span class=&quot;c&quot;&gt;# -----&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Mysql&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# -----&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# mysql shell에서 ps 실행하고 싶은 경우&lt;/span&gt;
-apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; procps
-ps
-
-
-&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Alpine&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# alpine은 기본적으로 bash가 없기에 sh로 접속&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; alpine sh
+&lt;span class=&quot;c&quot;&gt;# returns JSON metadata about the image (docker image inspect [image_name])&lt;/span&gt;
+docker image inspect nginx
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
 
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Getting a Shell Inside Containers ```bash start new container interactively (docker container run -it) docker container run -it –name proxy nginx</summary></entry><entry><title type="html">[Docker] Docker Network1</title><link href="http://localhost:4000/docker/docker5/" rel="alternate" type="text/html" title="[Docker] Docker Network1" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-01-02T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker5</id><content type="html" xml:base="http://localhost:4000/docker/docker5/">&lt;hr /&gt;
+&lt;h3 id=&quot;docker-image-tagging--pushing-to-docker-hub&quot;&gt;Docker Image Tagging &amp;amp; Pushing to Docker Hub&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# assigns one or more tags to an image (docker image tag [source_image[:tag]] [target_image[:tag]]&lt;/span&gt;
+docker image tag nginx zsu/nginx
+
+&lt;span class=&quot;c&quot;&gt;# login to docker hub&lt;/span&gt;
+docker login
+
+&lt;span class=&quot;c&quot;&gt;# can check docker profile&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; .docker/config.json
+
+&lt;span class=&quot;c&quot;&gt;# push to dockerhub (docker image push [user]/[image_name]:[tag])&lt;/span&gt;
+docker image push zsu/nginx:testing
+
+&lt;span class=&quot;c&quot;&gt;# login to docker hub stores authentication key, so don't forget to logout to protect your account&lt;/span&gt;
+docker &lt;span class=&quot;nb&quot;&gt;logout&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Image1 Docker Image &amp;amp; Layers Docker Image Tagging &amp;amp; Pushing to Docker Hub</summary></entry><entry><title type="html">[Docker] Docker Network1</title><link href="http://localhost:4000/docker/docker5/" rel="alternate" type="text/html" title="[Docker] Docker Network1" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-01-02T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker5</id><content type="html" xml:base="http://localhost:4000/docker/docker5/">&lt;hr /&gt;
 &lt;h3 id=&quot;docker-network1&quot;&gt;Docker Network1&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Priate &amp;amp; Pulbic Comms in Containers&lt;/li&gt;
@@ -140,7 +276,42 @@ docker container &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span cla
 
 &lt;span class=&quot;c&quot;&gt;# recommended to create custom network, docker compose makes this easier&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Network1 Priate &amp;amp; Pulbic Comms in Containers CLI Management of Virtual Networks Docker DNS(Domain Name System) &amp;amp; How Containers Find Each Other</summary></entry><entry><title type="html">[Apache Airflow] Airflow Installation on Docker</title><link href="http://localhost:4000/airflow/airflow1/" rel="alternate" type="text/html" title="[Apache Airflow] Airflow Installation on Docker" /><published>2021-12-29T00:00:00+09:00</published><updated>2021-12-29T00:00:00+09:00</updated><id>http://localhost:4000/airflow/airflow1</id><content type="html" xml:base="http://localhost:4000/airflow/airflow1/">&lt;hr /&gt;
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Network1 Priate &amp;amp; Pulbic Comms in Containers CLI Management of Virtual Networks Docker DNS(Domain Name System) &amp;amp; How Containers Find Each Other</summary></entry><entry><title type="html">[Docker] Docker Shell Inside Containers</title><link href="http://localhost:4000/docker/docker4/" rel="alternate" type="text/html" title="[Docker] Docker Shell Inside Containers" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-01-02T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker4</id><content type="html" xml:base="http://localhost:4000/docker/docker4/">&lt;h3 id=&quot;getting-a-shell-inside-containers&quot;&gt;Getting a Shell Inside Containers&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# start new container interactively (docker container run -it)&lt;/span&gt;
+docker container run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; proxy nginx
+
+&lt;span class=&quot;c&quot;&gt;# run additional command in existing container (docker container exec -it)&lt;/span&gt;
+docker container &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; proxy bash
+
+
+&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Ubuntu&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# exec의 경우에는 additional command, start의 경우에는 해당 container를 시작, 또한 ubuntu는 argument로 bash 줄 필요 없음&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ubuntu container는 이미 설치되어 있음&lt;/span&gt;
+docker container start &lt;span class=&quot;nt&quot;&gt;-ai&lt;/span&gt; ubuntu
+
+&lt;span class=&quot;c&quot;&gt;# container 안의 ubuntu는 일반적인 ubuntu와 다르게 minimal함, 따라서 아래처럼 필요한 부분들은 따로 설치가 필요&lt;/span&gt;
+apt-get update
+apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; curl
+
+
+&lt;span class=&quot;c&quot;&gt;# -----&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Mysql&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# -----&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# mysql shell에서 ps 실행하고 싶은 경우&lt;/span&gt;
+apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; procps
+ps
+
+
+&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Alpine&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# alpine은 기본적으로 bash가 없기에 sh로 접속&lt;/span&gt;
+docker container run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; alpine sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Getting a Shell Inside Containers ```bash start new container interactively (docker container run -it) docker container run -it –name proxy nginx</summary></entry><entry><title type="html">[Apache Airflow] Airflow Installation on Docker</title><link href="http://localhost:4000/airflow/airflow1/" rel="alternate" type="text/html" title="[Apache Airflow] Airflow Installation on Docker" /><published>2021-12-29T00:00:00+09:00</published><updated>2021-12-29T00:00:00+09:00</updated><id>http://localhost:4000/airflow/airflow1</id><content type="html" xml:base="http://localhost:4000/airflow/airflow1/">&lt;hr /&gt;
 &lt;h3 id=&quot;airflow-on-docker&quot;&gt;Airflow on Docker&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Docker을 통한 Apache Airflow 설치&lt;/li&gt;
@@ -516,144 +687,4 @@ INSERT INTO name_geschlecht VALUES('ae', 'Unisex')
             &lt;td&gt;2&lt;/td&gt;
         &lt;/tr&gt;
     &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="MYSQL" /><category term="DOCKER" /><summary type="html">환경구성 install sqlalchemy, ipython-sql in Jupyter notebook</summary></entry><entry><title type="html">[Docker] Docker Image 복사</title><link href="http://localhost:4000/docker/docker2/" rel="alternate" type="text/html" title="[Docker] Docker Image 복사" /><published>2021-12-23T00:00:00+09:00</published><updated>2021-12-23T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker2</id><content type="html" xml:base="http://localhost:4000/docker/docker2/">&lt;hr /&gt;
-&lt;h3 id=&quot;docker-image-복사&quot;&gt;Docker Image 복사&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Docker 이미지 다른 컴퓨터로 복사하기&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 복사하고 싶은 docker image 정보 확인&lt;/span&gt;
-docker images
-
-&lt;span class=&quot;c&quot;&gt;# 해당 docker image를 tar 파일로 변환 docker save -o [tar file name] [repository_name:tag_name]&lt;/span&gt;
-docker save &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; mysql1.tar mysql1:lernen
-
-&lt;span class=&quot;c&quot;&gt;# [file_name].tar을 다른 컴퓨터로 옮기기&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# image를 업로드하기 docker load -i &amp;lt;path to image tar file&amp;gt;&lt;/span&gt;
-docker load &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; mysql1.tar
-
-&lt;span class=&quot;c&quot;&gt;# 최종 확인&lt;/span&gt;
-docker images
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="CLI" /><category term="BACKEND" /><category term="DOCKER" /><summary type="html">Docker Image 복사 Docker 이미지 다른 컴퓨터로 복사하기</summary></entry><entry><title type="html">[ALGORITHM] LeetCode 2. Add Two Numbers</title><link href="http://localhost:4000/leetcode/leetcode_top_100_liked(1)/" rel="alternate" type="text/html" title="[ALGORITHM] LeetCode 2. Add Two Numbers" /><published>2021-12-16T00:00:00+09:00</published><updated>2021-12-16T00:00:00+09:00</updated><id>http://localhost:4000/leetcode/leetcode_top_100_liked(1)</id><content type="html" xml:base="http://localhost:4000/leetcode/leetcode_top_100_liked(1)/">&lt;hr /&gt;
-&lt;h3 id=&quot;algorithm-übung---leetcode&quot;&gt;ALGORITHM Übung - LeetCode&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;알고리즘 문제 풀이를 통한 코딩 테스트 연습&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;문제&quot;&gt;문제&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://leetcode.com/problems/add-two-numbers/&quot;&gt;🔗 문제 링크&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;코드&quot;&gt;코드&lt;/h3&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 나의 풀이
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addTwoNumbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Optional&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Optional&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Optional&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;iter1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iter1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iter1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;iter1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iter1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iter1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;iter2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iter2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iter2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;iter2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iter2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iter2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;num3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;node_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;node_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="LEETCODE" /><category term="ALGORITHM" /><category term="LEETCODE" /><summary type="html">ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry><entry><title type="html">[ALGORITHM] BOJ 10816. 숫자 카드 2</title><link href="http://localhost:4000/boj/boj(1)/" rel="alternate" type="text/html" title="[ALGORITHM] BOJ 10816. 숫자 카드 2" /><published>2021-12-14T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj(1)</id><content type="html" xml:base="http://localhost:4000/boj/boj(1)/">&lt;hr /&gt;
-&lt;h3 id=&quot;algorithm-übung---leetcode&quot;&gt;ALGORITHM Übung - LeetCode&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;알고리즘 문제 풀이를 통한 코딩 테스트 연습&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;문제&quot;&gt;문제&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10816&quot;&gt;🔗 문제 링크&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;코드&quot;&gt;코드&lt;/h3&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Counter&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;num_of_cards&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cards&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cards&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# if not in interest 0
-&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;cards&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;interest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_of_cards&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cards&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="BOJ" /><category term="ALGORITHM" /><category term="BOJ" /><summary type="html">ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry><entry><title type="html">[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock</title><link href="http://localhost:4000/leetcode/leetcode_algorithm_interview(10)/" rel="alternate" type="text/html" title="[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock" /><published>2021-12-14T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>http://localhost:4000/leetcode/leetcode_algorithm_interview(10)</id><content type="html" xml:base="http://localhost:4000/leetcode/leetcode_algorithm_interview(10)/">&lt;hr /&gt;
-&lt;h3 id=&quot;algorithm-übung---leetcode&quot;&gt;ALGORITHM Übung - LeetCode&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;알고리즘 문제 풀이를 통한 코딩 테스트 연습&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;문제&quot;&gt;문제&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://leetcode.com/problems/palindrome-linked-list/submissions/&quot;&gt;🔗 문제 링크&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;코드&quot;&gt;코드&lt;/h3&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 나의 풀이
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPalindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Optional&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;linked_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-        &lt;span class=&quot;nb&quot;&gt;iter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;iter&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;linked_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;iter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;nb&quot;&gt;iter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;iter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
-        
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linked_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linked_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# pop을 이용한 풀이
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPalindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Optional&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Deque&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
-        
-        &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
-            
-        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;popleft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-        
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="LEETCODE" /><category term="ALGORITHM" /><category term="LEETCODE" /><summary type="html">ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry></feed>
+&lt;/table&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="MYSQL" /><category term="DOCKER" /><summary type="html">환경구성 install sqlalchemy, ipython-sql in Jupyter notebook</summary></entry></feed>

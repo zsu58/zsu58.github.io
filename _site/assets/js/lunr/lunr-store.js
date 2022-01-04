@@ -658,4 +658,28 @@ var store = [{
         "tags": ["DOCKER"],
         "url": "/docker/docker6/",
         "teaser": null
+      },{
+        "title": "[Docker] Docker Image1",
+        "excerpt":"Docker Image1 Docker Image &amp; Layers Docker Image Tagging &amp; Pushing to Docker Hub Docker Image &amp; Layers # show history of image layers (docker image history [image_name]) docker image history nginx:latest # returns JSON metadata about the image (docker image inspect [image_name]) docker image inspect nginx Docker Image Tagging...","categories": ["DOCKER"],
+        "tags": ["DOCKER"],
+        "url": "/docker/docker7/",
+        "teaser": null
+      },{
+        "title": "[Docker] Docker Image2 - Building Images",
+        "excerpt":"Docker Image2 - Building Images Dockerfile Build Dockerfile Build Example Dockerfile Build # Dockerfile이 있는 repository에서 진행 (docker image build -t [image_name] .) docker image build -t custom_nginx . # dockerfile에 적혀 있는 순서대로 build하며, 변경이 없는 부분은 cache를 이용하고 변경된 부분만 새롭게 build하므로 # 변경이 없는 부분을 위에, 변경이...","categories": ["DOCKER"],
+        "tags": ["DOCKER"],
+        "url": "/docker/docker8/",
+        "teaser": null
+      },{
+        "title": "[Docker] Docker Persistent Data",
+        "excerpt":"Docker Persistent Data containers are usually immutable(unchangeable) &amp; ephemeral(temporary) which means that containers should never change when containers are re-deployed then the problem arises for unique data like databases these unique data are called persistent data Data Volumes &amp; Bind Mounts is used to solve the problem Data Volumes -...","categories": ["DOCKER"],
+        "tags": ["DOCKER"],
+        "url": "/docker/docker10/",
+        "teaser": null
+      },{
+        "title": "[Docker] Docker Prune",
+        "excerpt":"Docker Cleaning Up prune command to clean up images, volumes, build cache, and containers Docker clean up # displays information regarding the amount of disk space used by the docker daemon docker system df # Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes docker system...","categories": ["DOCKER"],
+        "tags": ["DOCKER"],
+        "url": "/docker/docker9/",
+        "teaser": null
       }]

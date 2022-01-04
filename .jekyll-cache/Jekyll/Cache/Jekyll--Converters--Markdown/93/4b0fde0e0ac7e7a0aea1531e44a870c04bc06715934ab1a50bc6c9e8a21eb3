@@ -1,0 +1,37 @@
+I"¿<hr />
+<h3 id="docker-image1">Docker Image1</h3>
+<ul>
+  <li>Docker Image &amp; Layers</li>
+  <li>Docker Image Tagging &amp; Pushing to Docker Hub</li>
+</ul>
+
+<hr />
+
+<h3 id="docker-image--layers">Docker Image &amp; Layers</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># show history of image layers (docker image history [image_name])</span>
+docker image <span class="nb">history </span>nginx:latest
+
+<span class="c"># returns JSON metadata about the image (docker image inspect [image_name])</span>
+docker image inspect nginx
+</code></pre></div></div>
+<hr />
+
+<h3 id="docker-image-tagging--pushing-to-docker-hub">Docker Image Tagging &amp; Pushing to Docker Hub</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># assigns one or more tags to an image (docker image tag [source_image[:tag]] [target_image[:tag]]</span>
+docker image tag nginx zsu/nginx
+
+<span class="c"># login to docker hub</span>
+docker login
+
+<span class="c"># can check docker profile</span>
+<span class="nb">cat</span> .docker/config.json
+
+<span class="c"># push to dockerhub (docker image push [user]/[image_name]:[tag])</span>
+docker image push zsu/nginx:testing
+
+<span class="c"># login to docker hub stores authentication key, so don't forget to logout to protect your account</span>
+docker <span class="nb">logout</span>
+</code></pre></div></div>
+<hr />
+
+:ET
