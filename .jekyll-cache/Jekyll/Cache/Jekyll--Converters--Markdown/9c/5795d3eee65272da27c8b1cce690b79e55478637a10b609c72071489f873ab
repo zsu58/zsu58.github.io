@@ -1,4 +1,4 @@
-I"´<hr />
+I"³<hr />
 <h3 id="docker-network2">Docker Network2</h3>
 <ul>
   <li>Docker CLI Testing</li>
@@ -42,5 +42,4 @@ docker container run <span class="nt">--rm</span> <span class="nt">--net</span> 
 docker container run <span class="nt">--rm</span> <span class="nt">--net</span> dns_test centos curl <span class="nt">-s</span> search:9200
 </code></pre></div></div>
 <hr />
-
 :ET

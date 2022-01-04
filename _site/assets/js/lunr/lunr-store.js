@@ -677,6 +677,12 @@ var store = [{
         "url": "/docker/docker10/",
         "teaser": null
       },{
+        "title": "[Docker] Docker Compose",
+        "excerpt":"Docker Compose Basic Docker compose commands Build a Compose File For a Multi-Container Service Compose for Run-Time Building and Multi-Container Development Basic Docker compose commands # pwd에 docker-compose.yml 존재, docker-compose 시작 (docker compose up) docker-compose up # docker compose 종료 (docker-compose down) docker-compose down Build a Compose File FOr a...","categories": ["DOCKER"],
+        "tags": ["DOCKER"],
+        "url": "/docker/docker11/",
+        "teaser": null
+      },{
         "title": "[Docker] Docker Prune",
         "excerpt":"Docker Cleaning Up prune command to clean up images, volumes, build cache, and containers Docker clean up # displays information regarding the amount of disk space used by the docker daemon docker system df # Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes docker system...","categories": ["DOCKER"],
         "tags": ["DOCKER"],

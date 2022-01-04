@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">114</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">115</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -550,7 +550,7 @@
                     
                 
                     
-                        <li><a href="/categories/docker" class="">Docker (10)</a></li>
+                        <li><a href="/categories/docker" class="">Docker (11)</a></li>
                     
                 
                     
@@ -728,8 +728,10 @@ docker image build <span class="nt">-t</span> custom_nginx <span class="nb">.</s
 
 <h3 id="dockerfile-build-example">Dockerfile Build Example</h3>
 <ul>
-  <li>Dockerfile
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># - you should use the 'node' official image, with the alpine 6.x branch (node:6-alpine)</span>
+  <li>Dockerfile</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># - you should use the 'node' official image, with the alpine 6.x branch (node:6-alpine)</span>
 FROM node:6-alpine
 <span class="c"># - this app listens on port 3000, but the container should launch on port 80</span>
 EXPOSE 3000
@@ -747,38 +749,40 @@ RUN npm <span class="nb">install</span> <span class="o">&amp;&amp;</span> npm ca
 COPY <span class="nb">.</span> <span class="nb">.</span>
 <span class="c"># - then it needs to start container with command '/sbin/tini -- node ./bin/www'</span>
 CMD <span class="o">[</span><span class="s2">"tini"</span>, <span class="s2">"--"</span>, <span class="s2">"node"</span>, <span class="s2">"./bin/www"</span><span class="o">]</span>
-</code></pre></div>    </div>
-  </li>
-  <li>local에서 확인
-```bash
-    <h1 id="build">build</h1>
-    <p>docker build -t testnode .</p>
-  </li>
+</code></pre></div></div>
+<ul>
+  <li>local에서 확인</li>
 </ul>
 
-<h1 id="run-container">run container</h1>
-<p>docker container run –rm -p 80:3000 testnode</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># build</span>
+docker build <span class="nt">-t</span> testnode <span class="nb">.</span>
 
-<h1 id="check">check</h1>
-<p>localhost:80</p>
+<span class="c"># run container</span>
+docker container run <span class="nt">--rm</span> <span class="nt">-p</span> 80:3000 testnode
 
-<h1 id="docker-hub에-올리고-download">docker hub에 올리고 download</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-* docker hub에 올린 뒤, pull해서 확인
-```bash
-# docker image tagging
+<span class="c"># check</span>
+localhost:80
+
+<span class="c"># docker hub에 올리고 download</span>
+</code></pre></div></div>
+
+<ul>
+  <li>docker hub에 올린 뒤, pull해서 확인</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># docker image tagging</span>
 docker tag testnode:latest carl020958/testing_node:latest
 
-# pushing to docker hub
+<span class="c"># pushing to docker hub</span>
 docker push carl020958/testing_node:latest
 
-# remove docker image
-docker image rm -f 3b6
+<span class="c"># remove docker image</span>
+docker image <span class="nb">rm</span> <span class="nt">-f</span> 3b6
 
-# run container
-docker container run --rm -p 80:3000 carl020958/testing_node
+<span class="c"># run container</span>
+docker container run <span class="nt">--rm</span> <span class="nt">-p</span> 80:3000 carl020958/testing_node
 
-# check
+<span class="c"># check</span>
 localhost:80
 </code></pre></div></div>
 <hr />
@@ -919,6 +923,51 @@ Docker Cleaning Up
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/docker/docker11/" rel="permalink">[Docker] Docker Compose
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Docker Compose
+
+  Basic Docker compose commands
+  Build a Compose File For a Multi-Container Service
+  Compose for Run-Time Building and Multi-Container De...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/docker/docker10/" rel="permalink">[Docker] Docker Persistent Data
 </a>
       
@@ -994,52 +1043,6 @@ Docker Image1
 
   Docker Image &amp; Layers
   Docker Image Tagging &amp; Pushing to Docker Hub
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/docker/docker6/" rel="permalink">[Docker] Docker Network2
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Docker Network2
-
-  Docker CLI Testing
-  Docker DNS Round Robin Test
 
 </p>
   </article>

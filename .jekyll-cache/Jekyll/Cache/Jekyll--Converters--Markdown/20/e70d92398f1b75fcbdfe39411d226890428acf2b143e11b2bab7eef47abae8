@@ -1,5 +1,4 @@
-I"�
-<hr />
+I"p<hr />
 <h3 id="docker-persistent-data">Docker Persistent Data</h3>
 <ul>
   <li>containers are usually immutable(unchangeable) &amp; ephemeral(temporary)</li>
@@ -36,8 +35,46 @@ docker container run <span class="nt">-d</span> <span class="nt">--name</span> m
 </code></pre></div></div>
 <hr />
 
+<h3 id="database-upgrade-practice-using-named-volumes">Database Upgrade Practice Using Named Volumes</h3>
+<ul>
+  <li>Upgrading Database with Named Volumes</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># create a postgres container with named volume psql-data using version 9.6.1</span>
+docker container run <span class="nt">-d</span> <span class="nt">--name</span> postgres_test1 <span class="nt">-v</span> psql-data:/var/lib/postgresql/data postgres:9.6.1
+
+<span class="c"># check log &amp; stop container</span>
+docker container logs postgres_test1
+docker container stop postgres_test1
+
+<span class="c"># create a new postgres container with same named volume psql-data using version 9.6.2</span>
+docker container run <span class="nt">-d</span> <span class="nt">--name</span> postgres_test2 <span class="nt">-v</span> psql-data:/var/lib/postgresql/data postgres:9.6.2
+
+<span class="c"># check log &amp; stop container</span>
+docker container logs postgres_test2
+docker container stop postgres_test2
+</code></pre></div></div>
+<hr />
+
 <h3 id="bind-mounts">Bind Mounts</h3>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># (terminal1) pwd에 index.html 존재 ($(pwd)는 현재 pwd, 즉 현재 wd와 colon 뒤 container의 wd를 일치시킬 것임)</span>
+docker container run <span class="nt">-d</span> <span class="nt">--name</span> nginx <span class="nt">-p</span> 80:80 <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>:/usr/share/nginx/html nginx
+
+<span class="c"># (terminal2) open a new terminal (command+shift+d)</span>
+<span class="c"># (terminal2) get a shell inside nginx container</span>
+docker container <span class="nb">exec</span> <span class="nt">-it</span> nginx bash
+
+<span class="c"># (terminal2) cd</span>
+<span class="nb">cd </span>usr/share/nginx/html
+<span class="nb">ls</span> <span class="nt">-al</span>
+<span class="c"># - you can see Dockerfile &amp; index.html</span>
+
+<span class="c"># (terminal1) make a new file in the original wd</span>
+<span class="nb">touch </span>test.txt
+
+<span class="c"># (terminal2)</span>
+<span class="nb">ls</span> <span class="nt">-al</span>
+<span class="c"># - you can see the test.txt file!</span>
 </code></pre></div></div>
 <hr />
 :ET

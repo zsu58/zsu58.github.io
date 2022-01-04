@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-04T13:39:01+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[Docker] Docker Prune</title><link href="http://localhost:4000/docker/docker9/" rel="alternate" type="text/html" title="[Docker] Docker Prune" /><published>2022-01-04T00:00:00+09:00</published><updated>2022-01-04T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker9</id><content type="html" xml:base="http://localhost:4000/docker/docker9/">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-04T22:48:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[Docker] Docker Prune</title><link href="http://localhost:4000/docker/docker9/" rel="alternate" type="text/html" title="[Docker] Docker Prune" /><published>2022-01-04T00:00:00+09:00</published><updated>2022-01-04T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker9</id><content type="html" xml:base="http://localhost:4000/docker/docker9/">&lt;hr /&gt;
 &lt;h3 id=&quot;docker-cleaning-up&quot;&gt;Docker Cleaning Up&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;prune command to clean up images, volumes, build cache, and containers&lt;/li&gt;
@@ -59,10 +59,178 @@ docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span c
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;bind-mounts&quot;&gt;Bind Mounts&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;h3 id=&quot;database-upgrade-practice-using-named-volumes&quot;&gt;Database Upgrade Practice Using Named Volumes&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Upgrading Database with Named Volumes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# create a postgres container with named volume psql-data using version 9.6.1&lt;/span&gt;
+docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; postgres_test1 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; psql-data:/var/lib/postgresql/data postgres:9.6.1
+
+&lt;span class=&quot;c&quot;&gt;# check log &amp;amp; stop container&lt;/span&gt;
+docker container logs postgres_test1
+docker container stop postgres_test1
+
+&lt;span class=&quot;c&quot;&gt;# create a new postgres container with same named volume psql-data using version 9.6.2&lt;/span&gt;
+docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; postgres_test2 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; psql-data:/var/lib/postgresql/data postgres:9.6.2
+
+&lt;span class=&quot;c&quot;&gt;# check log &amp;amp; stop container&lt;/span&gt;
+docker container logs postgres_test2
+docker container stop postgres_test2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Persistent Data containers are usually immutable(unchangeable) &amp;amp; ephemeral(temporary) which means that containers should never change when containers are re-deployed then the problem arises for unique data like databases these unique data are called persistent data Data Volumes &amp;amp; Bind Mounts is used to solve the problem Data Volumes - configuration option that creates a special locations outside the container’s union file system to store unique data Bind Mounts - sharing or mounting a host directory or file into a container</summary></entry><entry><title type="html">[Docker] Docker Image2 - Building Images</title><link href="http://localhost:4000/docker/docker8/" rel="alternate" type="text/html" title="[Docker] Docker Image2 - Building Images" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-01-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker8</id><content type="html" xml:base="http://localhost:4000/docker/docker8/">&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;bind-mounts&quot;&gt;Bind Mounts&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# (terminal1) pwd에 index.html 존재 ($(pwd)는 현재 pwd, 즉 현재 wd와 colon 뒤 container의 wd를 일치시킬 것임)&lt;/span&gt;
+docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; nginx &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 80:80 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;:/usr/share/nginx/html nginx
+
+&lt;span class=&quot;c&quot;&gt;# (terminal2) open a new terminal (command+shift+d)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# (terminal2) get a shell inside nginx container&lt;/span&gt;
+docker container &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; nginx bash
+
+&lt;span class=&quot;c&quot;&gt;# (terminal2) cd&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;usr/share/nginx/html
+&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-al&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# - you can see Dockerfile &amp;amp; index.html&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# (terminal1) make a new file in the original wd&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;test.txt
+
+&lt;span class=&quot;c&quot;&gt;# (terminal2)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-al&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# - you can see the test.txt file!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Persistent Data containers are usually immutable(unchangeable) &amp;amp; ephemeral(temporary) which means that containers should never change when containers are re-deployed then the problem arises for unique data like databases these unique data are called persistent data Data Volumes &amp;amp; Bind Mounts is used to solve the problem Data Volumes - configuration option that creates a special locations outside the container’s union file system to store unique data Bind Mounts - sharing or mounting a host directory or file into a container</summary></entry><entry><title type="html">[Docker] Docker Compose</title><link href="http://localhost:4000/docker/docker11/" rel="alternate" type="text/html" title="[Docker] Docker Compose" /><published>2022-01-04T00:00:00+09:00</published><updated>2022-01-04T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker11</id><content type="html" xml:base="http://localhost:4000/docker/docker11/">&lt;hr /&gt;
+&lt;h3 id=&quot;docker-compose&quot;&gt;Docker Compose&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Basic Docker compose commands&lt;/li&gt;
+  &lt;li&gt;Build a Compose File For a Multi-Container Service&lt;/li&gt;
+  &lt;li&gt;Compose for Run-Time Building and Multi-Container Development&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;basic-docker-compose-commands&quot;&gt;Basic Docker compose commands&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# pwd에 docker-compose.yml 존재, docker-compose 시작 (docker compose up)&lt;/span&gt;
+docker-compose up
+
+&lt;span class=&quot;c&quot;&gt;# docker compose 종료 (docker-compose down)&lt;/span&gt;
+docker-compose down
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;build-a-compose-file-for-a-multi-container-service&quot;&gt;Build a Compose File FOr a Multi-Container Service&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;build a drupal content management system&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# use Drupal image along with postgres image&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# use ports to expose Drupal on 8060 for localhost:8060&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# set POSTGRES_PASSWORD for postgres&lt;/span&gt;
+version: &lt;span class=&quot;s1&quot;&gt;'2'&lt;/span&gt;
+
+services:
+  drupal:
+    image: drupal
+    ports:
+      - 8050:80
+    volumes:
+      - /var/www/html/modules
+      - /var/www/html/profiles
+      - /var/www/html/themes
+      - /var/www/html/sites
+
+  postgres:
+    image: postgres
+    environment: 
+       - &lt;span class=&quot;nv&quot;&gt;POSTGRES_PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1234
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Drupal DB&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# walk through Drupal via browser&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Drupal assumes DB is localhost so it has to be changed to 'postgres'&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# volume까지 삭제&lt;/span&gt;
+docker-compose down &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;compose-for-run-time-building-and-multi-container-development&quot;&gt;Compose for Run-Time Building and Multi-Container Development&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Build custom drupal image for local testing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# assignment instruction&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## Dockerfile&lt;/span&gt;
+- First you need to build a custom Dockerfile &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;this directory, &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;FROM drupal:8.8.2&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; NOTE: &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;it fails to build, try the latest 8 branch version with &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;FROM drupal:8&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+- Then RUN apt package manager &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;to &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git: &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; git&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+- Remember to cleanup after your apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;with &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /var/lib/apt/lists/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; and use &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\`&lt;/span&gt; and &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; properly. You can find examples of them &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;drupal official image. More on this below under Compose file.
+- Then change &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;WORKDIR /var/www/html/themes&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+- Then use git to clone the theme with: &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;RUN git clone &lt;span class=&quot;nt&quot;&gt;--branch&lt;/span&gt; 8.x-3.x &lt;span class=&quot;nt&quot;&gt;--single-branch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--depth&lt;/span&gt; 1 https://git.drupalcode.org/project/bootstrap.git&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+- Combine that line with this line, as we need to change permissions on files and don&lt;span class=&quot;s1&quot;&gt;'t want to use another image layer to do that (it creates size bloat). This drupal container runs as www-data user but the build actually runs as root, so often we have to do things like `chown` to change file owners to the proper user: `chown -R www-data:www-data bootstrap`. Remember the first line needs a `\` at end to signify the next line is included in the command, and at start of next line you should have `&amp;amp;&amp;amp;` to signify &quot;if first command succeeds then also run this command&quot;
+- Then, just to be safe, change the working directory back to its default (from drupal image) at `/var/www/html`
+
+## Compose File
+- We'&lt;/span&gt;re going to build a custom image &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;this compose file &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;drupal service. Use Compose file from previous assignment &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;Drupal to start with, and we&lt;span class=&quot;s1&quot;&gt;'ll add to it, as well as change image name.
+- Rename image to `custom-drupal` as we want to make a new image based on the official `drupal:8.8.2`.
+- We want to build the default Dockerfile in this directory by adding `build: .` to the `drupal` service. When we add a build + image value to a compose service, it knows to use the image name to write to in our image cache, rather then pull from Docker Hub.
+- For the `postgres:12.1` service, you need the same password as in previous assignment, but also add a volume for `drupal-data:/var/lib/postgresql/data` so the database will persist across Compose restarts.
+
+## Start Containers, Configure Drupal
+- Start containers like before, configure Drupal web install like before.
+- After website comes up, click on `Appearance` in top bar, and notice a new theme called `Bootstrap` is there. That'&lt;/span&gt;s the one we added with our custom Dockerfile.
+- Click &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;Install and &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;as default&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; Then click &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;Back to site&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;top left&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; and the website interface should look different. You&lt;span class=&quot;s1&quot;&gt;'ve successfully installed and activated a new theme in your own custom image without installing anything on your host other than Docker!
+- If you exit (ctrl-c) and then `docker-compose down` it will delete containers, but not the volumes, so on next `docker-compose up` everything will be as it was.
+- To totally clean up volumes, add `-v` to `down` command.
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Dockerfile&lt;/span&gt;
+FROM drupal:8.8.2
+
+RUN apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; git &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /var/lib/apt/lists/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+
+WORKDIR /var/www/html/themes
+
+RUN git clone &lt;span class=&quot;nt&quot;&gt;--branch&lt;/span&gt; 8.x-3.x &lt;span class=&quot;nt&quot;&gt;--single-branch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--depth&lt;/span&gt; 1 https://git.drupalcode.org/project/bootstrap.git &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;chown&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; www-data:www-data bootstrap
+
+WORKDIR /var/www/html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# docker-compose.yml&lt;/span&gt;
+version: &lt;span class=&quot;s1&quot;&gt;'2'&lt;/span&gt;
+
+services:
+  drupal:
+    image: custom-drupal
+    build: &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+    ports:
+      - 8050:80
+    volumes:
+      - /var/www/html/modules
+      - /var/www/html/profiles
+      - /var/www/html/themes
+      - /var/www/html/sites
+
+
+  postgres:
+    image: postgres:12.1
+    environment: 
+      - &lt;span class=&quot;nv&quot;&gt;POSTGRES_PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1234
+    volumes:
+      - drupal-data:/var/lib/postgresql/data
+
+volumes:
+  drupal-data:
+  drupal-modules:
+  drupal-profiles:
+  drupal-themes:
+  drupal-sites:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Compose Basic Docker compose commands Build a Compose File For a Multi-Container Service Compose for Run-Time Building and Multi-Container Development</summary></entry><entry><title type="html">[Docker] Docker Image2 - Building Images</title><link href="http://localhost:4000/docker/docker8/" rel="alternate" type="text/html" title="[Docker] Docker Image2 - Building Images" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-01-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker8</id><content type="html" xml:base="http://localhost:4000/docker/docker8/">&lt;hr /&gt;
 &lt;h3 id=&quot;docker-image2---building-images&quot;&gt;Docker Image2 - Building Images&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Dockerfile Build&lt;/li&gt;
@@ -82,8 +250,10 @@ docker image build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; custom_nginx
 
 &lt;h3 id=&quot;dockerfile-build-example&quot;&gt;Dockerfile Build Example&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Dockerfile
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# - you should use the 'node' official image, with the alpine 6.x branch (node:6-alpine)&lt;/span&gt;
+  &lt;li&gt;Dockerfile&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# - you should use the 'node' official image, with the alpine 6.x branch (node:6-alpine)&lt;/span&gt;
 FROM node:6-alpine
 &lt;span class=&quot;c&quot;&gt;# - this app listens on port 3000, but the container should launch on port 80&lt;/span&gt;
 EXPOSE 3000
@@ -101,38 +271,40 @@ RUN npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&qu
 COPY &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# - then it needs to start container with command '/sbin/tini -- node ./bin/www'&lt;/span&gt;
 CMD &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tini&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;--&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;node&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;./bin/www&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;local에서 확인
-```bash
-    &lt;h1 id=&quot;build&quot;&gt;build&lt;/h1&gt;
-    &lt;p&gt;docker build -t testnode .&lt;/p&gt;
-  &lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;local에서 확인&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;run-container&quot;&gt;run container&lt;/h1&gt;
-&lt;p&gt;docker container run –rm -p 80:3000 testnode&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# build&lt;/span&gt;
+docker build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; testnode &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
 
-&lt;h1 id=&quot;check&quot;&gt;check&lt;/h1&gt;
-&lt;p&gt;localhost:80&lt;/p&gt;
+&lt;span class=&quot;c&quot;&gt;# run container&lt;/span&gt;
+docker container run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 80:3000 testnode
 
-&lt;h1 id=&quot;docker-hub에-올리고-download&quot;&gt;docker hub에 올리고 download&lt;/h1&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-* docker hub에 올린 뒤, pull해서 확인
-```bash
-# docker image tagging
+&lt;span class=&quot;c&quot;&gt;# check&lt;/span&gt;
+localhost:80
+
+&lt;span class=&quot;c&quot;&gt;# docker hub에 올리고 download&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;docker hub에 올린 뒤, pull해서 확인&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# docker image tagging&lt;/span&gt;
 docker tag testnode:latest carl020958/testing_node:latest
 
-# pushing to docker hub
+&lt;span class=&quot;c&quot;&gt;# pushing to docker hub&lt;/span&gt;
 docker push carl020958/testing_node:latest
 
-# remove docker image
-docker image rm -f 3b6
+&lt;span class=&quot;c&quot;&gt;# remove docker image&lt;/span&gt;
+docker image &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; 3b6
 
-# run container
-docker container run --rm -p 80:3000 carl020958/testing_node
+&lt;span class=&quot;c&quot;&gt;# run container&lt;/span&gt;
+docker container run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 80:3000 carl020958/testing_node
 
-# check
+&lt;span class=&quot;c&quot;&gt;# check&lt;/span&gt;
 localhost:80
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Image2 - Building Images Dockerfile Build Dockerfile Build Example</summary></entry><entry><title type="html">[Docker] Docker Network2</title><link href="http://localhost:4000/docker/docker6/" rel="alternate" type="text/html" title="[Docker] Docker Network2" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-01-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker6</id><content type="html" xml:base="http://localhost:4000/docker/docker6/">&lt;hr /&gt;
@@ -535,156 +707,4 @@ INSERT INTO name_geschlecht VALUES('ae', 'Unisex')
             &lt;td&gt;Unisex&lt;/td&gt;
         &lt;/tr&gt;
     &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="POSTGRES" /><category term="DOCKER" /><summary type="html">환경구성 install psycopg2 in Jupyter notebook</summary></entry><entry><title type="html">[MySQL] Jupyter Notebook &amp;amp; Docker MySql 연동</title><link href="http://localhost:4000/sql/mysql_python1/" rel="alternate" type="text/html" title="[MySQL] Jupyter Notebook &amp;amp; Docker MySql 연동" /><published>2021-12-27T00:00:00+09:00</published><updated>2021-12-27T00:00:00+09:00</updated><id>http://localhost:4000/sql/mysql_python1</id><content type="html" xml:base="http://localhost:4000/sql/mysql_python1/">&lt;h3 id=&quot;환경구성&quot;&gt;환경구성&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;install sqlalchemy, ipython-sql in Jupyter notebook&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqlalchemy&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;conda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conda&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forge&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ipython&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# load sql extension
-&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load_ext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;연결&quot;&gt;연결&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;connect DB&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mysql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1234&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3306&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;testDB&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;sql-table-생성-및-데이터-추가&quot;&gt;SQL Table 생성 및 데이터 추가&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;create table&lt;/li&gt;
-  &lt;li&gt;insert data into table&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;-- create table &lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;sql&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;DROP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IF&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;EXISTS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testTbl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testTbl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;-- insert data into table&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;sql&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testTbl&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;VALUES&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;pandas-df&quot;&gt;Pandas DF&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Convert to pandas DataFrame
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testTbl&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div&gt;
-&lt;style scoped=&quot;&quot;&gt;
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-&lt;/style&gt;
-&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr style=&quot;text-align: right;&quot;&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;value&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;0&lt;/th&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;1&lt;/th&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;2&lt;/th&gt;
-      &lt;td&gt;0.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;3&lt;/th&gt;
-      &lt;td&gt;1.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;4&lt;/th&gt;
-      &lt;td&gt;2.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;5&lt;/th&gt;
-      &lt;td&gt;3.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;6&lt;/th&gt;
-      &lt;td&gt;3.0&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;sql-주의사항&quot;&gt;SQL 주의사항&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;COUNT(변수)는 null을 count하지 않음&lt;/li&gt;
-  &lt;li&gt;COUNT(숫자)는 숫자에 상관 없이 전체 행의 개수 반환&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;sql&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;DISTINCT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testTbl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;table&gt;
-    &lt;thead&gt;
-        &lt;tr&gt;
-            &lt;th&gt;COUNT(1)&lt;/th&gt;
-            &lt;th&gt;COUNT(value)&lt;/th&gt;
-            &lt;th&gt;COUNT(DISTINCT value)&lt;/th&gt;
-        &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-        &lt;tr&gt;
-            &lt;td&gt;7&lt;/td&gt;
-            &lt;td&gt;5&lt;/td&gt;
-            &lt;td&gt;4&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;-- Null인 경우 &quot;=&quot;가 아닌 &quot;IS&quot;로 확인해야 함&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;sql&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testTbl&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;table&gt;
-    &lt;thead&gt;
-        &lt;tr&gt;
-            &lt;th&gt;COUNT(1)&lt;/th&gt;
-        &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-        &lt;tr&gt;
-            &lt;td&gt;2&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="MYSQL" /><category term="DOCKER" /><summary type="html">환경구성 install sqlalchemy, ipython-sql in Jupyter notebook</summary></entry></feed>
+&lt;/table&gt;</content><author><name>ZSU</name></author><category term="SQL" /><category term="POSTGRES" /><category term="DOCKER" /><summary type="html">환경구성 install psycopg2 in Jupyter notebook</summary></entry></feed>

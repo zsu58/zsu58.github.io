@@ -1,0 +1,132 @@
+I")<hr />
+<h3 id="docker-compose">Docker Compose</h3>
+<ul>
+  <li>Basic Docker compose commands</li>
+  <li>Build a Compose File For a Multi-Container Service</li>
+  <li>Compose for Run-Time Building and Multi-Container Development</li>
+</ul>
+
+<hr />
+
+<h3 id="basic-docker-compose-commands">Basic Docker compose commands</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># pwd에 docker-compose.yml 존재, docker-compose 시작 (docker compose up)</span>
+docker-compose up
+
+<span class="c"># docker compose 종료 (docker-compose down)</span>
+docker-compose down
+</code></pre></div></div>
+<hr />
+
+<h3 id="build-a-compose-file-for-a-multi-container-service">Build a Compose File FOr a Multi-Container Service</h3>
+<ul>
+  <li>build a drupal content management system</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># use Drupal image along with postgres image</span>
+<span class="c"># use ports to expose Drupal on 8060 for localhost:8060</span>
+<span class="c"># set POSTGRES_PASSWORD for postgres</span>
+version: <span class="s1">'2'</span>
+
+services:
+  drupal:
+    image: drupal
+    ports:
+      - 8050:80
+    volumes:
+      - /var/www/html/modules
+      - /var/www/html/profiles
+      - /var/www/html/themes
+      - /var/www/html/sites
+
+  postgres:
+    image: postgres
+    environment: 
+       - <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>1234
+</code></pre></div></div>
+
+<ul>
+  <li>Drupal DB</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># walk through Drupal via browser</span>
+<span class="c"># Drupal assumes DB is localhost so it has to be changed to 'postgres'</span>
+
+<span class="c"># volume까지 삭제</span>
+docker-compose down <span class="nt">-v</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="compose-for-run-time-building-and-multi-container-development">Compose for Run-Time Building and Multi-Container Development</h3>
+<ul>
+  <li>Build custom drupal image for local testing</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># assignment instruction</span>
+<span class="c">## Dockerfile</span>
+- First you need to build a custom Dockerfile <span class="k">in </span>this directory, <span class="sb">`</span>FROM drupal:8.8.2<span class="sb">`</span> NOTE: <span class="k">if </span>it fails to build, try the latest 8 branch version with <span class="sb">`</span>FROM drupal:8<span class="sb">`</span>
+- Then RUN apt package manager <span class="nb">command </span>to <span class="nb">install </span>git: <span class="sb">`</span>apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nb">install</span> <span class="nt">-y</span> git<span class="sb">`</span>
+- Remember to cleanup after your apt <span class="nb">install </span>with <span class="sb">`</span><span class="nb">rm</span> <span class="nt">-rf</span> /var/lib/apt/lists/<span class="k">*</span><span class="sb">`</span> and use <span class="sb">`</span><span class="se">\`</span> and <span class="sb">`</span><span class="o">&amp;&amp;</span><span class="sb">`</span> properly. You can find examples of them <span class="k">in </span>drupal official image. More on this below under Compose file.
+- Then change <span class="sb">`</span>WORKDIR /var/www/html/themes<span class="sb">`</span>
+- Then use git to clone the theme with: <span class="sb">`</span>RUN git clone <span class="nt">--branch</span> 8.x-3.x <span class="nt">--single-branch</span> <span class="nt">--depth</span> 1 https://git.drupalcode.org/project/bootstrap.git<span class="sb">`</span>
+- Combine that line with this line, as we need to change permissions on files and don<span class="s1">'t want to use another image layer to do that (it creates size bloat). This drupal container runs as www-data user but the build actually runs as root, so often we have to do things like `chown` to change file owners to the proper user: `chown -R www-data:www-data bootstrap`. Remember the first line needs a `\` at end to signify the next line is included in the command, and at start of next line you should have `&amp;&amp;` to signify "if first command succeeds then also run this command"
+- Then, just to be safe, change the working directory back to its default (from drupal image) at `/var/www/html`
+
+## Compose File
+- We'</span>re going to build a custom image <span class="k">in </span>this compose file <span class="k">for </span>drupal service. Use Compose file from previous assignment <span class="k">for </span>Drupal to start with, and we<span class="s1">'ll add to it, as well as change image name.
+- Rename image to `custom-drupal` as we want to make a new image based on the official `drupal:8.8.2`.
+- We want to build the default Dockerfile in this directory by adding `build: .` to the `drupal` service. When we add a build + image value to a compose service, it knows to use the image name to write to in our image cache, rather then pull from Docker Hub.
+- For the `postgres:12.1` service, you need the same password as in previous assignment, but also add a volume for `drupal-data:/var/lib/postgresql/data` so the database will persist across Compose restarts.
+
+## Start Containers, Configure Drupal
+- Start containers like before, configure Drupal web install like before.
+- After website comes up, click on `Appearance` in top bar, and notice a new theme called `Bootstrap` is there. That'</span>s the one we added with our custom Dockerfile.
+- Click <span class="sb">`</span>Install and <span class="nb">set </span>as default<span class="sb">`</span><span class="nb">.</span> Then click <span class="sb">`</span>Back to site<span class="sb">`</span> <span class="o">(</span><span class="k">in </span>top left<span class="o">)</span> and the website interface should look different. You<span class="s1">'ve successfully installed and activated a new theme in your own custom image without installing anything on your host other than Docker!
+- If you exit (ctrl-c) and then `docker-compose down` it will delete containers, but not the volumes, so on next `docker-compose up` everything will be as it was.
+- To totally clean up volumes, add `-v` to `down` command.
+</span></code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Dockerfile</span>
+FROM drupal:8.8.2
+
+RUN apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nb">install</span> <span class="nt">-y</span> git <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> <span class="nb">rm</span> <span class="nt">-rf</span> /var/lib/apt/lists/<span class="k">*</span>
+
+WORKDIR /var/www/html/themes
+
+RUN git clone <span class="nt">--branch</span> 8.x-3.x <span class="nt">--single-branch</span> <span class="nt">--depth</span> 1 https://git.drupalcode.org/project/bootstrap.git <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> <span class="nb">chown</span> <span class="nt">-R</span> www-data:www-data bootstrap
+
+WORKDIR /var/www/html
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># docker-compose.yml</span>
+version: <span class="s1">'2'</span>
+
+services:
+  drupal:
+    image: custom-drupal
+    build: <span class="nb">.</span>
+    ports:
+      - 8050:80
+    volumes:
+      - /var/www/html/modules
+      - /var/www/html/profiles
+      - /var/www/html/themes
+      - /var/www/html/sites
+
+
+  postgres:
+    image: postgres:12.1
+    environment: 
+      - <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>1234
+    volumes:
+      - drupal-data:/var/lib/postgresql/data
+
+volumes:
+  drupal-data:
+  drupal-modules:
+  drupal-profiles:
+  drupal-themes:
+  drupal-sites:
+</code></pre></div></div>
+:ET
