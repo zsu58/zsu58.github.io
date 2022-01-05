@@ -1,5 +1,5 @@
 ---
-title: "[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock"
+title: "[ALGORITHM] LeetCode 234. Palindrome Linked List"
 layout: single
 date: '14/12/2021'
 toc: true

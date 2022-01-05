@@ -284,7 +284,7 @@ var store = [{
         "title": "[Docker] Docker 명령어 & 기본 설정",
         "excerpt":"Docker 기본 명령어 Docker 관련 기본 명령어 Docker bash-completion 설정 Docker 기본 명령어 # see version docker version # see info of docer docker info # create container w(docker container run -d(background) -p[host:container] [image_name] --name [container_name]) docker container run -d -p 80:80 nginx --name webserver # list of running containers...","categories": ["DOCKER"],
         "tags": ["CLI","BACKEND","DOCKER"],
-        "url": "/docker/docker1/",
+        "url": "/docker/docker_udemy1/",
         "teaser": null
       },{
         "title": "[SQL] UNION & INTER & EXCEPT",
@@ -500,7 +500,7 @@ var store = [{
         "title": "[Docker] Docker MySql & Postgres",
         "excerpt":"MySQL &amp; Postgres in Docker # mysql 컨테이너 생성, -p 옵션으로 포트 지정/ 컨테이너 이미지에서 사용할 포트, -e로 환경변수 설정, -d는 백그라운드로 실행한다는 의미 docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=first_db -e MYSQL_USER=carl020958 -e MYSQL_PASSWORD=1234 -d mysql:latest # apple silicon docker run --platform linux/amd64 -p 3306:3306 --name...","categories": ["DOCKER"],
         "tags": ["SQL","DOCKER"],
-        "url": "/docker/docker3/",
+        "url": "/docker/docker2/",
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)",
@@ -620,7 +620,7 @@ var store = [{
         "title": "[Docker] Docker Image 복사",
         "excerpt":"Docker Image 복사 Docker 이미지 다른 컴퓨터로 복사하기 # 복사하고 싶은 docker image 정보 확인 docker images # 해당 docker image를 tar 파일로 변환 docker save -o [tar file name] [repository_name:tag_name] docker save -o mysql1.tar mysql1:lernen # [file_name].tar을 다른 컴퓨터로 옮기기 # image를 업로드하기 docker load -i &lt;path to image...","categories": ["DOCKER"],
         "tags": ["CLI","BACKEND","DOCKER"],
-        "url": "/docker/docker2/",
+        "url": "/docker/docker1/",
         "teaser": null
       },{
         "title": "[MySQL] Jupyter Notebook & Docker MySql 연동",
@@ -644,48 +644,60 @@ var store = [{
         "title": "[Docker] Docker Shell Inside Containers",
         "excerpt":"Getting a Shell Inside Containers # start new container interactively (docker container run -it) docker container run -it --name proxy nginx # run additional command in existing container (docker container exec -it) docker container exec -it proxy bash # ------ # Ubuntu # ------ # exec의 경우에는 additional command, start의...","categories": ["DOCKER"],
         "tags": ["DOCKER"],
-        "url": "/docker/docker4/",
+        "url": "/docker/docker_udemy2/",
         "teaser": null
       },{
         "title": "[Docker] Docker Network1",
         "excerpt":"Docker Network1 Priate &amp; Pulbic Comms in Containers CLI Management of Virtual Networks Docker DNS(Domain Name System) &amp; How Containers Find Each Other Priate &amp; Pulbic Comms in Containers docker container run -p 80:80 --name webhost -d nginx # 어떤 host port에서 container port으로 forward되는지 확인 (docker container port [container_name(id)])...","categories": ["DOCKER"],
         "tags": ["DOCKER"],
-        "url": "/docker/docker5/",
+        "url": "/docker/docker_udemy3/",
         "teaser": null
       },{
         "title": "[Docker] Docker Network2",
         "excerpt":"Docker Network2 Docker CLI Testing Docker DNS Round Robin Test Docker CLI Testing # centos7 # --rm option을 통해 해당 container 종료 시 자동 삭제 docker container run --rm -it centos:7 bash # root yum update curl curl --version # ubuntu14.04 docker container run --rm -it ubuntu:14.04 bash # root...","categories": ["DOCKER"],
         "tags": ["DOCKER"],
-        "url": "/docker/docker6/",
+        "url": "/docker/docker_udemy4/",
         "teaser": null
       },{
         "title": "[Docker] Docker Image1",
         "excerpt":"Docker Image1 Docker Image &amp; Layers Docker Image Tagging &amp; Pushing to Docker Hub Docker Image &amp; Layers # show history of image layers (docker image history [image_name]) docker image history nginx:latest # returns JSON metadata about the image (docker image inspect [image_name]) docker image inspect nginx Docker Image Tagging...","categories": ["DOCKER"],
         "tags": ["DOCKER"],
-        "url": "/docker/docker7/",
+        "url": "/docker/docker_udemy5/",
         "teaser": null
       },{
         "title": "[Docker] Docker Image2 - Building Images",
         "excerpt":"Docker Image2 - Building Images Dockerfile Build Dockerfile Build Example Dockerfile Build # Dockerfile이 있는 repository에서 진행 (docker image build -t [image_name] .) docker image build -t custom_nginx . # dockerfile에 적혀 있는 순서대로 build하며, 변경이 없는 부분은 cache를 이용하고 변경된 부분만 새롭게 build하므로 # 변경이 없는 부분을 위에, 변경이...","categories": ["DOCKER"],
         "tags": ["DOCKER"],
-        "url": "/docker/docker8/",
-        "teaser": null
-      },{
-        "title": "[Docker] Docker Persistent Data",
-        "excerpt":"Docker Persistent Data containers are usually immutable(unchangeable) &amp; ephemeral(temporary) which means that containers should never change when containers are re-deployed then the problem arises for unique data like databases these unique data are called persistent data Data Volumes &amp; Bind Mounts is used to solve the problem Data Volumes -...","categories": ["DOCKER"],
-        "tags": ["DOCKER"],
-        "url": "/docker/docker10/",
-        "teaser": null
-      },{
-        "title": "[Docker] Docker Compose",
-        "excerpt":"Docker Compose Basic Docker compose commands Build a Compose File For a Multi-Container Service Compose for Run-Time Building and Multi-Container Development Basic Docker compose commands # pwd에 docker-compose.yml 존재, docker-compose 시작 (docker compose up) docker-compose up # docker compose 종료 (docker-compose down) docker-compose down Build a Compose File FOr a...","categories": ["DOCKER"],
-        "tags": ["DOCKER"],
-        "url": "/docker/docker11/",
+        "url": "/docker/docker_udemy6/",
         "teaser": null
       },{
         "title": "[Docker] Docker Prune",
         "excerpt":"Docker Cleaning Up prune command to clean up images, volumes, build cache, and containers Docker clean up # displays information regarding the amount of disk space used by the docker daemon docker system df # Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes docker system...","categories": ["DOCKER"],
         "tags": ["DOCKER"],
-        "url": "/docker/docker9/",
+        "url": "/docker/docker_udemy7/",
+        "teaser": null
+      },{
+        "title": "[Docker] Docker Persistent Data",
+        "excerpt":"Docker Persistent Data containers are usually immutable(unchangeable) &amp; ephemeral(temporary) which means that containers should never change when containers are re-deployed then the problem arises for unique data like databases these unique data are called persistent data Data Volumes &amp; Bind Mounts is used to solve the problem Data Volumes -...","categories": ["DOCKER"],
+        "tags": ["DOCKER"],
+        "url": "/docker/docker_udemy8/",
+        "teaser": null
+      },{
+        "title": "[Docker] Docker Compose",
+        "excerpt":"Docker Compose Basic Docker compose commands Build a Compose File For a Multi-Container Service Compose for Run-Time Building and Multi-Container Development Basic Docker compose commands # pwd에 docker-compose.yml 존재, docker-compose 시작 (docker compose up) docker-compose up # docker compose 종료 (docker-compose down) docker-compose down Build a Compose File FOr a...","categories": ["DOCKER"],
+        "tags": ["DOCKER"],
+        "url": "/docker/docker_udemy9/",
+        "teaser": null
+      },{
+        "title": "[Docker] Docker Jupyter Notebook & PySpark",
+        "excerpt":"Docker - Jupyter Notebook &amp; PySpark  # run container docker container run --name jupyter_pyspark -p 10000:8888 -v $(pwd):/home/jovyan/work jupyter/pyspark-notebook:latest  # stop container docker container stop jupyter_pyspark  # restart container docker start -a jupyter_pyspark    ref     🔗 Docker Hub   🔗 Docker-Jupyter 공식 문서1   🔗 Docker-Jupyter 공식 문서2   🔗 참고 블로그  ","categories": ["DOCKER"],
+        "tags": ["DOCKER"],
+        "url": "/docker/docker3/",
+        "teaser": null
+      },{
+        "title": "[PySpark] DataFrame Basics",
+        "excerpt":"PySpark DataFrame Basics PySpark Basic1 DataFrame Schema PySpark Basic2 PySpark Basic1 from pyspark.sql import SparkSession # start spark session by applying it spark = SparkSession.builder.appName(\"Basics\").getOrCreate() # read data df = spark.read.json(\"people.json\") # show dataframe df.show() +----+-------+ | age| name| +----+-------+ |null|Michael| | 30| Andy| | 19| Justin| +----+-------+ # show...","categories": ["PYSPARK"],
+        "tags": ["PYTHON","PYSPARK","DOCKER"],
+        "url": "/pyspark/pyspark1/",
         "teaser": null
       }]

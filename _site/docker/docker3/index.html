@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Docker] Docker MySql &amp; Postgres - Bibliothek für Data-Engineering</title>
-<meta name="description" content="MySQL &amp; Postgres in Docker">
+<!-- begin _includes/seo.html --><title>[Docker] Docker Jupyter Notebook &amp; PySpark - Bibliothek für Data-Engineering</title>
+<meta name="description" content="Docker - Jupyter Notebook &amp; PySpark ```bash run container docker container run –name jupyter_pyspark -p 10000:8888 -v $(pwd):/home/jovyan/work jupyter/pyspark-notebook:latest">
 
 
   <meta name="author" content="ZSU">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Bibliothek für Data-Engineering">
-<meta property="og:title" content="[Docker] Docker MySql &amp; Postgres">
+<meta property="og:title" content="[Docker] Docker Jupyter Notebook &amp; PySpark">
 <meta property="og:url" content="http://localhost:4000/docker/docker3/">
 
 
-  <meta property="og:description" content="MySQL &amp; Postgres in Docker">
+  <meta property="og:description" content="Docker - Jupyter Notebook &amp; PySpark ```bash run container docker container run –name jupyter_pyspark -p 10000:8888 -v $(pwd):/home/jovyan/work jupyter/pyspark-notebook:latest">
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-  <meta property="article:published_time" content="2021-11-24T00:00:00+09:00">
+  <meta property="article:published_time" content="2022-01-05T00:00:00+09:00">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">115</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">117</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -331,6 +331,8 @@
                 
                     
                 
+                    
+                
             </ul>
             <ul>
                 
@@ -344,6 +346,8 @@
                 
                     
                         <li><a href="/categories/codeit" class="">Codeit (34)</a></li>
+                    
+                
                     
                 
                     
@@ -389,6 +393,8 @@
                 
                     
                 
+                    
+                
             </ul>
             <ul>
                 
@@ -406,6 +412,8 @@
                 
                     
                         <li><a href="/categories/programmers" class="">Programmers (8)</a></li>
+                    
+                
                     
                 
                     
@@ -447,6 +455,8 @@
                 
                     
                 
+                    
+                
             </ul>
         <span class="nav__sub-title">Back-end</span>
             <ul>
@@ -459,6 +469,8 @@
                 
                     
                         <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
                     
                 
                     
@@ -507,6 +519,8 @@
                         <li><a href="/categories/airflow" class="">Airflow (1)</a></li>
                     
                 
+                    
+                
             </ul>
             <ul>
                 
@@ -536,6 +550,8 @@
                 
                     
                 
+                    
+                
             </ul>
             <ul>
                 
@@ -550,7 +566,38 @@
                     
                 
                     
-                        <li><a href="/categories/docker" class="">Docker (11)</a></li>
+                        <li><a href="/categories/docker" class="">Docker (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
                     
                 
                     
@@ -572,6 +619,8 @@
                 
                     
                         <li><a href="/categories/sql" class="">SQL (21)</a></li>
+                    
+                
                     
                 
                     
@@ -624,11 +673,15 @@
                 
                     
                 
+                    
+                
             </ul>
             <ul>
                 
                     
                         <li><a href="/categories/python" class="">Python (12)</a></li>
+                    
+                
                     
                 
                     
@@ -664,15 +717,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Docker] Docker MySql &amp; Postgres">
-    <meta itemprop="description" content="MySQL &amp; Postgres in Docker">
-    <meta itemprop="datePublished" content="2021-11-24T00:00:00+09:00">
+    <meta itemprop="headline" content="[Docker] Docker Jupyter Notebook &amp; PySpark">
+    <meta itemprop="description" content="Docker - Jupyter Notebook &amp; PySpark```bashrun containerdocker container run –name jupyter_pyspark -p 10000:8888 -v $(pwd):/home/jovyan/work jupyter/pyspark-notebook:latest">
+    <meta itemprop="datePublished" content="2022-01-05T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[Docker] Docker MySql &amp; Postgres
+          <h1 id="page-title" class="page__title" itemprop="headline">[Docker] Docker Jupyter Notebook &amp; PySpark
 </h1>
           
 
@@ -703,49 +756,30 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#mysql--postgres-in-docker">MySQL &amp; Postgres in Docker</a></li><li><a href="#docker-mysql-sql-dump">DOCKER MYSQL sql dump</a></li></ul>
+              <ul class="toc__menu"><li><a href="#docker---jupyter-notebook--pyspark">Docker - Jupyter Notebook &amp; PySpark</a></li><li><a href="#ref">ref</a></li></ul>
 
             </nav>
           </aside>
         
-        <hr />
-<h3 id="mysql--postgres-in-docker">MySQL &amp; Postgres in Docker</h3>
+        <h3 id="docker---jupyter-notebook--pyspark">Docker - Jupyter Notebook &amp; PySpark</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># run container</span>
+docker container run <span class="nt">--name</span> jupyter_pyspark <span class="nt">-p</span> 10000:8888 <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>:/home/jovyan/work jupyter/pyspark-notebook:latest
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mysql 컨테이너 생성, -p 옵션으로 포트 지정/ 컨테이너 이미지에서 사용할 포트, -e로 환경변수 설정, -d는 백그라운드로 실행한다는 의미</span>
-docker run <span class="nt">-p</span> 3306:3306 <span class="nt">--name</span> mysql1 <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-e</span> <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>first_db <span class="nt">-e</span> <span class="nv">MYSQL_USER</span><span class="o">=</span>carl020958 <span class="nt">-e</span> <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> mysql:latest
+<span class="c"># stop container</span>
+docker container stop jupyter_pyspark
 
-<span class="c"># apple silicon</span>
-docker run <span class="nt">--platform</span> linux/amd64 <span class="nt">-p</span> 3306:3306 <span class="nt">--name</span> todolist <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-e</span> <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>dbname <span class="nt">-e</span> <span class="nv">MYSQL_USER</span><span class="o">=</span>carl020958 <span class="nt">-e</span> <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> mysql:5.7
-        
-<span class="c"># postgresql 컨테이너 생성</span>
-docker run <span class="nt">--name</span> postgresql1 <span class="nt">-p</span> 5432:5432 <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-e</span> <span class="nv">POSTGRES_USER</span><span class="o">=</span>carl020958 <span class="nt">-e</span> <span class="nv">POSTGRES_DB</span><span class="o">=</span>first_postgres <span class="nt">-d</span> postgres
+<span class="c"># restart container</span>
+docker start <span class="nt">-a</span> jupyter_pyspark
 </code></pre></div></div>
-
 <hr />
 
-<h3 id="docker-mysql-sql-dump">DOCKER MYSQL sql dump</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># local directory에서 docker container으로 cp (docker cp [file/directory] [container_id:/home])</span>
-docker <span class="nb">cp </span>emp fad2828c2116:/home
-docker <span class="nb">cp </span>employees fad2828c2116:/home
-
-<span class="c"># docker을 통해 MySQL 서버에 로그인 (docker exec -it [mysql container_name(id)] bash)</span>
-docker <span class="nb">exec</span> <span class="nt">-it</span> mysql1 bash
-
-<span class="c"># mysql -p</span>
-mysql <span class="nt">-p</span>
-
-<span class="c"># enter password</span>
-1234
-
-<span class="c"># mysql 서버에서 실행</span>
-<span class="nb">source </span>home/emp/createTable.sql
-<span class="nb">source </span>home/emp/insertTable.sql
-soure home/employees/employees.sql
-<span class="c"># employees.sql의 source의 directory 확인!</span>
-</code></pre></div></div>
-
-<hr />
+<h3 id="ref">ref</h3>
+<ul>
+  <li><a href="https://hub.docker.com/r/jupyter/pyspark-notebook">🔗 Docker Hub</a></li>
+  <li><a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/specifics.html#apache-spark">🔗 Docker-Jupyter 공식 문서1</a></li>
+  <li><a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/running.html">🔗 Docker-Jupyter 공식 문서2</a></li>
+  <li><a href="https://pearlluck.tistory.com/615">🔗 참고 블로그</a></li>
+</ul>
 
         
       </section>
@@ -762,9 +796,7 @@ soure home/employees/employees.sql
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#docker" class="page__taxonomy-item" rel="tag">DOCKER</a><span class="sep">, </span>
-    
-      <a href="/tags/#sql" class="page__taxonomy-item" rel="tag">SQL</a>
+      <a href="/tags/#docker" class="page__taxonomy-item" rel="tag">DOCKER</a>
     
     </span>
   </p>
@@ -789,7 +821,7 @@ soure home/employees/employees.sql
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-11-24T00:00:00+09:00">November 24, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-01-05T00:00:00+09:00">January 5, 2022</time></p>
 
 
       </footer>
@@ -799,7 +831,7 @@ soure home/employees/employees.sql
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BDocker%5D+Docker+MySql+%26+Postgres%20http%3A%2F%2Flocalhost%3A4000%2Fdocker%2Fdocker3%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BDocker%5D+Docker+Jupyter+Notebook+%26+PySpark%20http%3A%2F%2Flocalhost%3A4000%2Fdocker%2Fdocker3%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdocker%2Fdocker3%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -810,11 +842,11 @@ soure home/employees/employees.sql
       
   <nav class="pagination">
     
-      <a href="/programmers/programmers_coding_test(7)/" class="pagination--pager" title="[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (1)
+      <a href="/docker/docker_udemy9/" class="pagination--pager" title="[Docker] Docker Compose
 ">Previous</a>
     
     
-      <a href="/programmers/programmers_coding_test(8)/" class="pagination--pager" title="[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)
+      <a href="/pyspark/pyspark1/" class="pagination--pager" title="[PySpark] DataFrame Basics
 ">Next</a>
     
   </nav>
@@ -839,7 +871,7 @@ soure home/employees/employees.sql
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/docker/docker9/" rel="permalink">[Docker] Docker Prune
+        <a href="/pyspark/pyspark1/" rel="permalink">[PySpark] DataFrame Basics
 </a>
       
     </h2>
@@ -857,7 +889,7 @@ soure home/employees/employees.sql
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -866,9 +898,11 @@ soure home/employees/employees.sql
 
     <p class="archive__item-excerpt" itemprop="description">
 
-Docker Cleaning Up
+PySpark DataFrame Basics
 
-  prune command to clean up images, volumes, build cache, and containers
+  PySpark Basic1
+  DataFrame Schema
+  PySpark Basic2
 
 </p>
   </article>
@@ -884,7 +918,7 @@ Docker Cleaning Up
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/docker/docker11/" rel="permalink">[Docker] Docker Compose
+        <a href="/docker/docker_udemy9/" rel="permalink">[Docker] Docker Compose
 </a>
       
     </h2>
@@ -929,7 +963,7 @@ Docker Compose
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/docker/docker10/" rel="permalink">[Docker] Docker Persistent Data
+        <a href="/docker/docker_udemy8/" rel="permalink">[Docker] Docker Persistent Data
 </a>
       
     </h2>
@@ -973,7 +1007,7 @@ Docker Persistent Data
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/docker/docker8/" rel="permalink">[Docker] Docker Image2 - Building Images
+        <a href="/docker/docker_udemy7/" rel="permalink">[Docker] Docker Prune
 </a>
       
     </h2>
@@ -991,7 +1025,7 @@ Docker Persistent Data
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          less than 1 minute read
         
       </span>
     
@@ -1000,10 +1034,9 @@ Docker Persistent Data
 
     <p class="archive__item-excerpt" itemprop="description">
 
-Docker Image2 - Building Images
+Docker Cleaning Up
 
-  Dockerfile Build
-  Dockerfile Build Example
+  prune command to clean up images, volumes, build cache, and containers
 
 </p>
   </article>
