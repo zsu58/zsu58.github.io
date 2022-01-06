@@ -16,10 +16,10 @@ tags:
 ### ALGORITHM
 * 알고리즘 스터디(2)
 * 탐색
-    * 완전탐색(Brute-Force)
-    * 이분탐색
-    * 깊이우선탐색
-    * 너비우선탐색
+    * **완전탐색(Brute-Force)**
+    * **이분탐색(Binary Search)**
+    * 깊이우선탐색(Depth First Search)
+    * 너비우선탐색(Breadth First Search)
     * 문자열탐색
     * KMP(Knuth-Morris-Pratt)
     * BM(Boyer-Moore)
