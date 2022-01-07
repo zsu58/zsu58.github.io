@@ -23,6 +23,7 @@ tags:
     * 문자열탐색
     * KMP(Knuth-Morris-Pratt)
     * BM(Boyer-Moore)
+
 ---
 
 ### 깊이우선탐색(Depth First Search)
@@ -89,5 +90,5 @@ return answer
 
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/boj/boj(2)/)
-* [🔗 링크2]()
-* [🔗 링크2]()
+* [🔗 링크2](https://carl020958.github.io/boj/boj(3)/)
+* [🔗 링크3]()
