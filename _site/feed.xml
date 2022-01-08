@@ -1,4 +1,467 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-05T14:20:12+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[PySpark] DataFrame Basics</title><link href="http://localhost:4000/pyspark/pyspark1/" rel="alternate" type="text/html" title="[PySpark] DataFrame Basics" /><published>2022-01-05T00:00:00+09:00</published><updated>2022-01-05T00:00:00+09:00</updated><id>http://localhost:4000/pyspark/pyspark1</id><content type="html" xml:base="http://localhost:4000/pyspark/pyspark1/">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-08T15:23:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[Apache Airflow] Using API</title><link href="http://localhost:4000/airflow/airflow_udemy4/" rel="alternate" type="text/html" title="[Apache Airflow] Using API" /><published>2022-01-08T00:00:00+09:00</published><updated>2022-01-08T00:00:00+09:00</updated><id>http://localhost:4000/airflow/airflow_udemy4</id><content type="html" xml:base="http://localhost:4000/airflow/airflow_udemy4/">&lt;hr /&gt;
+&lt;h3 id=&quot;using-api&quot;&gt;Using API&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Sensor Operator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;sensor-operator&quot;&gt;Sensor Operator&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;path - AIRFLOW_HOME/dag/user_processing.py&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# user_processing.py
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.providers.sqlite.operators.sqlite&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SqliteOperator&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# added
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.providers.http.sensors.http&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpSensor&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;datetime&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;start_date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2022&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;'user_processing'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;schedule_interval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'@daily'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;catchup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Define tasks/operators
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;creating_table&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SqliteOperator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;creating_table&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sqlite_conn_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;db_sqlite&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+            CREATE TABLE users (
+                firstname TEXT NOT NULL,
+                lastname TEXT NOT NULL,
+                country TEXT NOT NULL,
+                username TEXT NOT NULL,
+                password TEXT NOT NULL,
+                email TEXT NOT NULL PRIMARY KEY
+            );
+            &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# added sensor Operator
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;is_api_available&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpSensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;is_api_available&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;http_conn_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;user_api&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# the endpoint of the url
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;endpoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;api/&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;add-connection-in-airflow-webserver&quot;&gt;Add Connection in Airflow Webserver&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# http provider was pre-installed when installing airflow&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# pip3 install 'apache-airflow-providers-http'&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# airflow webserver - Admin - Connections - + (추가)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 1) Conn Id: python dag파일의 sqlite_conn_id 이름&lt;/span&gt;
+is_api_available
+&lt;span class=&quot;c&quot;&gt;# 2) Conn Type: 해당하는 connection&lt;/span&gt;
+HTTP
+&lt;span class=&quot;c&quot;&gt;# 3) description: 자유롭게 작성&lt;/span&gt;
+API &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;getting &lt;span class=&quot;nb&quot;&gt;users&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 4) Host: API URL address (endpoint는 dag file에 존재(api/))&lt;/span&gt;
+https://randomuser.me/
+&lt;span class=&quot;c&quot;&gt;# 확인&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;test-airflow-task&quot;&gt;Test Airflow Task&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;allows to test a specific task
+    &lt;ul&gt;
+      &lt;li&gt;1) without checking for dependencies&lt;/li&gt;
+      &lt;li&gt;2) neither storing any medata related to the task&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# test my task (airflow tasks test [py_file] [dag_name] [execution_date])&lt;/span&gt;
+airflow tasks &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;user_processing is_api_available 2022-01-07
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="AIRFLOW" /><category term="AIRFLOW" /><category term="DOCKER" /><summary type="html">Using API Sensor Operator</summary></entry><entry><title type="html">[Apache Airflow] Airflow Dag</title><link href="http://localhost:4000/airflow/airflow_udemy2/" rel="alternate" type="text/html" title="[Apache Airflow] Airflow Dag" /><published>2022-01-08T00:00:00+09:00</published><updated>2022-01-08T00:00:00+09:00</updated><id>http://localhost:4000/airflow/airflow_udemy2</id><content type="html" xml:base="http://localhost:4000/airflow/airflow_udemy2/">&lt;hr /&gt;
+&lt;h3 id=&quot;airflow-dag&quot;&gt;Airflow Dag&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Airflow Dag
+    &lt;ul&gt;
+      &lt;li&gt;Create Airflow Dag File&lt;/li&gt;
+      &lt;li&gt;Add Connection in Airflow Webserver&lt;/li&gt;
+      &lt;li&gt;Test Airflow Task&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;create-airflow-dag-file&quot;&gt;Create Airflow Dag File&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;path - AIRFLOW_HOME/dag/user_processing.py&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# user_processing.py
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.providers.sqlite.operators.sqlite&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SqliteOperator&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;datetime&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;start_date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2022&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;'user_processing'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;schedule_interval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'@daily'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;catchup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Transfer Operator
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;creating_table&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SqliteOperator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;creating_table&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sqlite_conn_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;db_sqlite&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+            CREATE TABLE users (
+                firstname TEXT NOT NULL,
+                lastname TEXT NOT NULL,
+                country TEXT NOT NULL,
+                username TEXT NOT NULL,
+                password TEXT NOT NULL,
+                email TEXT NOT NULL PRIMARY KEY
+            );
+            &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;add-connectionprovider-in-airflow-webserver&quot;&gt;Add Connection(Provider) in Airflow Webserver&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Sqlite Connection을 위한 provider(python package) 설치
+    &lt;ul&gt;
+      &lt;li&gt;A provider is an an independent python package that brings everything your need to interact with a service or a tool such as Spark or AWS&lt;/li&gt;
+      &lt;li&gt;A provider contains types, operators, hooks and so on&lt;/li&gt;
+      &lt;li&gt;Can check installed provider with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;airflow providers list&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'apache-airflow-providers-sqlite'&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# airflow webserver - Admin - Connections - + (추가)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 1) Conn Id: python dag파일의 sqlite_conn_id 이름&lt;/span&gt;
+db_sqlite 
+&lt;span class=&quot;c&quot;&gt;# 2) Conn Type: 해당하는 connection&lt;/span&gt;
+Sqlite
+&lt;span class=&quot;c&quot;&gt;# 3) description: 자유롭게 작성&lt;/span&gt;
+sqlite connection to the db
+&lt;span class=&quot;c&quot;&gt;# 4) Host: airflow.db의 path&lt;/span&gt;
+/Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/airflow/airflow.db
+&lt;span class=&quot;c&quot;&gt;# 확인&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;test-airflow-task&quot;&gt;Test Airflow Task&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;allows to test a specific task
+    &lt;ul&gt;
+      &lt;li&gt;1) without checking for dependencies&lt;/li&gt;
+      &lt;li&gt;2) neither storing any medata related to the task&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# test my task (airflow tasks test [py_file] [dag_name] [execution_date])&lt;/span&gt;
+airflow tasks &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;user_processing creating_table 2022-01-07
+
+&lt;span class=&quot;c&quot;&gt;# sqlite3 shell&lt;/span&gt;
+sqlite3 airflow.db
+
+&lt;span class=&quot;c&quot;&gt;# list all tables to check whether the table is successfully added&lt;/span&gt;
+.tables
+
+&lt;span class=&quot;c&quot;&gt;# execute a sql command to check data&lt;/span&gt;
+SELECT &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; FROM &lt;span class=&quot;nb&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;ref&quot;&gt;ref&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://airflow.apache.org/docs/apache-airflow-providers/packages-ref.html&quot;&gt;🔗 Airflow-Provider 공식문서&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>ZSU</name></author><category term="AIRFLOW" /><category term="AIRFLOW" /><category term="DOCKER" /><summary type="html">Airflow Dag Airflow Dag Create Airflow Dag File Add Connection in Airflow Webserver Test Airflow Task</summary></entry><entry><title type="html">[Apache Airflow] Airflow Operator</title><link href="http://localhost:4000/airflow/airflow_udemy1/" rel="alternate" type="text/html" title="[Apache Airflow] Airflow Operator" /><published>2022-01-08T00:00:00+09:00</published><updated>2022-01-08T00:00:00+09:00</updated><id>http://localhost:4000/airflow/airflow_udemy1</id><content type="html" xml:base="http://localhost:4000/airflow/airflow_udemy1/">&lt;hr /&gt;
+&lt;h3 id=&quot;airflow-operator&quot;&gt;Airflow Operator&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;A task in data pipeline that defines &lt;strong&gt;one task&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;to know which task has a problem&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;1) Action Operator: Execute an action&lt;/li&gt;
+  &lt;li&gt;2) Transfer Operator: Transfer data&lt;/li&gt;
+  &lt;li&gt;3) Sensors: Wait for a condition to be met before executing the next task&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>ZSU</name></author><category term="AIRFLOW" /><category term="AIRFLOW" /><category term="DOCKER" /><summary type="html">Airflow Operator A task in data pipeline that defines one task to know which task has a problem 1) Action Operator: Execute an action 2) Transfer Operator: Transfer data 3) Sensors: Wait for a condition to be met before executing the next task</summary></entry><entry><title type="html">[Apache Airflow] Using API</title><link href="http://localhost:4000/airflow/airflow_udemy3/" rel="alternate" type="text/html" title="[Apache Airflow] Using API" /><published>2022-01-08T00:00:00+09:00</published><updated>2022-01-08T00:00:00+09:00</updated><id>http://localhost:4000/airflow/airflow_udemy3</id><content type="html" xml:base="http://localhost:4000/airflow/airflow_udemy3/">&lt;hr /&gt;
+&lt;h3 id=&quot;using-api&quot;&gt;Using API&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Sensor Operator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;sensor-operator&quot;&gt;Sensor Operator&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;path - AIRFLOW_HOME/dag/user_processing.py&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# user_processing.py
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.providers.sqlite.operators.sqlite&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SqliteOperator&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# added
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.providers.http.sensors.http&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpSensor&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;datetime&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;start_date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2022&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;'user_processing'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;schedule_interval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'@daily'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;catchup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Define tasks/operators
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;creating_table&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SqliteOperator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;creating_table&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sqlite_conn_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;db_sqlite&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+            CREATE TABLE users (
+                firstname TEXT NOT NULL,
+                lastname TEXT NOT NULL,
+                country TEXT NOT NULL,
+                username TEXT NOT NULL,
+                password TEXT NOT NULL,
+                email TEXT NOT NULL PRIMARY KEY
+            );
+            &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# added sensor Operator
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;is_api_available&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpSensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;is_api_available&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;http_conn_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;user_api&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# the endpoint of the url
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;endpoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;api/&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;add-connection-in-airflow-webserver&quot;&gt;Add Connection in Airflow Webserver&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# http provider was pre-installed when installing airflow&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# pip3 install 'apache-airflow-providers-http'&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# airflow webserver - Admin - Connections - + (추가)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 1) Conn Id: python dag파일의 sqlite_conn_id 이름&lt;/span&gt;
+is_api_available
+&lt;span class=&quot;c&quot;&gt;# 2) Conn Type: 해당하는 connection&lt;/span&gt;
+HTTP
+&lt;span class=&quot;c&quot;&gt;# 3) description: 자유롭게 작성&lt;/span&gt;
+API &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;getting &lt;span class=&quot;nb&quot;&gt;users&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 4) Host: API URL address (endpoint는 dag file에 존재(api/))&lt;/span&gt;
+https://randomuser.me/
+&lt;span class=&quot;c&quot;&gt;# 확인&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;test-airflow-task&quot;&gt;Test Airflow Task&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;allows to test a specific task
+    &lt;ul&gt;
+      &lt;li&gt;1) without checking for dependencies&lt;/li&gt;
+      &lt;li&gt;2) neither storing any medata related to the task&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# test my task (airflow tasks test [py_file] [dag_name] [execution_date])&lt;/span&gt;
+airflow tasks &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;user_processing is_api_available 2022-01-07
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="AIRFLOW" /><category term="AIRFLOW" /><category term="DOCKER" /><summary type="html">Using API Sensor Operator</summary></entry><entry><title type="html">[Apache Airflow] Airflow Installation on Local(Mac)</title><link href="http://localhost:4000/airflow/airflow2/" rel="alternate" type="text/html" title="[Apache Airflow] Airflow Installation on Local(Mac)" /><published>2022-01-07T00:00:00+09:00</published><updated>2022-01-07T00:00:00+09:00</updated><id>http://localhost:4000/airflow/airflow2</id><content type="html" xml:base="http://localhost:4000/airflow/airflow2/">&lt;hr /&gt;
+&lt;h3 id=&quot;airflow-on-localmac&quot;&gt;Airflow on Local(Mac)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Airflow Installation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;airflow-installation&quot;&gt;Airflow Installation&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# make folder and cd&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;airflow
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;airflow
+ 
+&lt;span class=&quot;c&quot;&gt;# create python virtual environment &amp;amp; activate&lt;/span&gt;
+python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; venv airflow1
+&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;airflow1/bin/activate
+
+&lt;span class=&quot;c&quot;&gt;# install python module used by airflow&lt;/span&gt;
+pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;wheel
+
+&lt;span class=&quot;c&quot;&gt;# install airflow&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;AIRFLOW_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;AIRFLOW_VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2.1.4
+&lt;span class=&quot;nv&quot;&gt;PYTHON_VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;python &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; 2 | &lt;span class=&quot;nb&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;.&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; 1-2&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;CONSTRAINT_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://raw.githubusercontent.com/apache/airflow/constraints-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;AIRFLOW_VERSION&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/constraints-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PYTHON_VERSION&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.txt&quot;&lt;/span&gt;
+pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;apache-airflow==&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;AIRFLOW_VERSION&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--constraint&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;CONSTRAINT_URL&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# set airflow_home path($(pwd)) on .zshrc&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;AIRFLOW_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/airflow
+
+&lt;span class=&quot;c&quot;&gt;# initialize meta store meta database needed by airflow&lt;/span&gt;
+airflow db init
+
+&lt;span class=&quot;c&quot;&gt;# check airflow webserver&lt;/span&gt;
+airflow webserver
+
+&lt;span class=&quot;c&quot;&gt;# start airflow scheduler&lt;/span&gt;
+airflow scheduler
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# create user&lt;/span&gt;
+airflow &lt;span class=&quot;nb&quot;&gt;users &lt;/span&gt;create &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; admin &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; admin &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; jisu &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; park &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; Admin &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; carl020958@korea.ac.kr
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;ref&quot;&gt;ref&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://airflow.apache.org/docs/apache-airflow/stable/start/local.html&quot;&gt;🔗 공식문서&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>ZSU</name></author><category term="AIRFLOW" /><category term="AIRFLOW" /><category term="DOCKER" /><summary type="html">Airflow on Local(Mac) Airflow Installation</summary></entry><entry><title type="html">[ALGORITHM] BOJ 2606. 바이러스</title><link href="http://localhost:4000/boj/boj(3)/" rel="alternate" type="text/html" title="[ALGORITHM] BOJ 2606. 바이러스" /><published>2022-01-07T00:00:00+09:00</published><updated>2022-01-07T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj(3)</id><content type="html" xml:base="http://localhost:4000/boj/boj(3)/">&lt;hr /&gt;
+&lt;h3 id=&quot;algorithm-übung---leetcode&quot;&gt;ALGORITHM Übung - LeetCode&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;알고리즘 문제 풀이를 통한 코딩 테스트 연습&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제&quot;&gt;문제&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2606&quot;&gt;🔗 문제 링크&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;코드&quot;&gt;코드&lt;/h3&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# dfs method
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# mark visited
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# make graph by adjacency list
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# make list to check whether visited
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# delete computer 1
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="BOJ" /><category term="ALGORITHM" /><category term="BOJ" /><summary type="html">ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry><entry><title type="html">[ALGORITHM] BOJ 1260. DFS와 BFS</title><link href="http://localhost:4000/boj/boj(2)/" rel="alternate" type="text/html" title="[ALGORITHM] BOJ 1260. DFS와 BFS" /><published>2022-01-06T00:00:00+09:00</published><updated>2022-01-06T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj(2)</id><content type="html" xml:base="http://localhost:4000/boj/boj(2)/">&lt;hr /&gt;
+&lt;h3 id=&quot;algorithm-übung---leetcode&quot;&gt;ALGORITHM Übung - LeetCode&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;알고리즘 문제 풀이를 통한 코딩 테스트 연습&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;문제&quot;&gt;문제&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1260&quot;&gt;🔗 문제 링크&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;코드&quot;&gt;코드&lt;/h3&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# dfs method
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# mark visited
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# bfs method
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dq&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;popleft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;dq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# make graph by adjacency list
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# to visit the number with the lowest number first
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# make list to check whether visited
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# reset visited for bfs
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;bfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="BOJ" /><category term="ALGORITHM" /><category term="BOJ" /><summary type="html">ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습</summary></entry><entry><title type="html">[Docker] Docker Jupyter Notebook &amp;amp; PySpark</title><link href="http://localhost:4000/docker/docker3/" rel="alternate" type="text/html" title="[Docker] Docker Jupyter Notebook &amp;amp; PySpark" /><published>2022-01-05T00:00:00+09:00</published><updated>2022-01-05T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker3</id><content type="html" xml:base="http://localhost:4000/docker/docker3/">&lt;h3 id=&quot;docker---jupyter-notebook--pyspark&quot;&gt;Docker - Jupyter Notebook &amp;amp; PySpark&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# run container&lt;/span&gt;
+docker container run &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; jupyter_pyspark &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 10000:8888 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;:/home/jovyan/work jupyter/pyspark-notebook:latest
+
+&lt;span class=&quot;c&quot;&gt;# stop container&lt;/span&gt;
+docker container stop jupyter_pyspark
+
+&lt;span class=&quot;c&quot;&gt;# restart container&lt;/span&gt;
+docker start &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; jupyter_pyspark
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;ref&quot;&gt;ref&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/r/jupyter/pyspark-notebook&quot;&gt;🔗 Docker Hub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jupyter-docker-stacks.readthedocs.io/en/latest/using/specifics.html#apache-spark&quot;&gt;🔗 Docker-Jupyter 공식 문서1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jupyter-docker-stacks.readthedocs.io/en/latest/using/running.html&quot;&gt;🔗 Docker-Jupyter 공식 문서2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pearlluck.tistory.com/615&quot;&gt;🔗 참고 블로그&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker - Jupyter Notebook &amp;amp; PySpark ```bash run container docker container run –name jupyter_pyspark -p 10000:8888 -v $(pwd):/home/jovyan/work jupyter/pyspark-notebook:latest</summary></entry><entry><title type="html">[PySpark] DataFrame Basics</title><link href="http://localhost:4000/pyspark/pyspark1/" rel="alternate" type="text/html" title="[PySpark] DataFrame Basics" /><published>2022-01-05T00:00:00+09:00</published><updated>2022-01-05T00:00:00+09:00</updated><id>http://localhost:4000/pyspark/pyspark1</id><content type="html" xml:base="http://localhost:4000/pyspark/pyspark1/">&lt;hr /&gt;
 &lt;h3 id=&quot;pyspark-dataframe-basics&quot;&gt;PySpark DataFrame Basics&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;PySpark Basic1&lt;/li&gt;
@@ -221,25 +684,7 @@
 +---+----+
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="PYSPARK" /><category term="PYTHON" /><category term="PYSPARK" /><category term="DOCKER" /><summary type="html">PySpark DataFrame Basics PySpark Basic1 DataFrame Schema PySpark Basic2</summary></entry><entry><title type="html">[Docker] Docker Jupyter Notebook &amp;amp; PySpark</title><link href="http://localhost:4000/docker/docker3/" rel="alternate" type="text/html" title="[Docker] Docker Jupyter Notebook &amp;amp; PySpark" /><published>2022-01-05T00:00:00+09:00</published><updated>2022-01-05T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker3</id><content type="html" xml:base="http://localhost:4000/docker/docker3/">&lt;h3 id=&quot;docker---jupyter-notebook--pyspark&quot;&gt;Docker - Jupyter Notebook &amp;amp; PySpark&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# run container&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; jupyter_pyspark &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 10000:8888 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;:/home/jovyan/work jupyter/pyspark-notebook:latest
-
-&lt;span class=&quot;c&quot;&gt;# stop container&lt;/span&gt;
-docker container stop jupyter_pyspark
-
-&lt;span class=&quot;c&quot;&gt;# restart container&lt;/span&gt;
-docker start &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; jupyter_pyspark
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;ref&quot;&gt;ref&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/r/jupyter/pyspark-notebook&quot;&gt;🔗 Docker Hub&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://jupyter-docker-stacks.readthedocs.io/en/latest/using/specifics.html#apache-spark&quot;&gt;🔗 Docker-Jupyter 공식 문서1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://jupyter-docker-stacks.readthedocs.io/en/latest/using/running.html&quot;&gt;🔗 Docker-Jupyter 공식 문서2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://pearlluck.tistory.com/615&quot;&gt;🔗 참고 블로그&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker - Jupyter Notebook &amp;amp; PySpark ```bash run container docker container run –name jupyter_pyspark -p 10000:8888 -v $(pwd):/home/jovyan/work jupyter/pyspark-notebook:latest</summary></entry><entry><title type="html">[Docker] Docker Compose</title><link href="http://localhost:4000/docker/docker_udemy9/" rel="alternate" type="text/html" title="[Docker] Docker Compose" /><published>2022-01-04T00:00:00+09:00</published><updated>2022-01-04T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker_udemy9</id><content type="html" xml:base="http://localhost:4000/docker/docker_udemy9/">&lt;hr /&gt;
+&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="PYSPARK" /><category term="PYTHON" /><category term="PYSPARK" /><category term="DOCKER" /><summary type="html">PySpark DataFrame Basics PySpark Basic1 DataFrame Schema PySpark Basic2</summary></entry><entry><title type="html">[Docker] Docker Compose</title><link href="http://localhost:4000/docker/docker_udemy9/" rel="alternate" type="text/html" title="[Docker] Docker Compose" /><published>2022-01-04T00:00:00+09:00</published><updated>2022-01-04T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker_udemy9</id><content type="html" xml:base="http://localhost:4000/docker/docker_udemy9/">&lt;hr /&gt;
 &lt;h3 id=&quot;docker-compose&quot;&gt;Docker Compose&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Basic Docker compose commands&lt;/li&gt;
@@ -369,359 +814,4 @@ volumes:
   drupal-profiles:
   drupal-themes:
   drupal-sites:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Compose Basic Docker compose commands Build a Compose File For a Multi-Container Service Compose for Run-Time Building and Multi-Container Development</summary></entry><entry><title type="html">[Docker] Docker Prune</title><link href="http://localhost:4000/docker/docker_udemy7/" rel="alternate" type="text/html" title="[Docker] Docker Prune" /><published>2022-01-04T00:00:00+09:00</published><updated>2022-01-04T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker_udemy7</id><content type="html" xml:base="http://localhost:4000/docker/docker_udemy7/">&lt;hr /&gt;
-&lt;h3 id=&quot;docker-cleaning-up&quot;&gt;Docker Cleaning Up&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;prune command to clean up images, volumes, build cache, and containers&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;docker-clean-up&quot;&gt;Docker clean up&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# displays information regarding the amount of disk space used by the docker daemon&lt;/span&gt;
-docker system &lt;span class=&quot;nb&quot;&gt;df&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes&lt;/span&gt;
-docker system prune
-
-docker image prune
-docker container prune
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;ref&quot;&gt;ref&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/engine/reference/commandline/system_prune/&quot;&gt;🔗 공식 문서&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.lainyzine.com/ko/article/docker-prune-usage-remove-unused-docker-objects/&quot;&gt;🔗 참고 블로그&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Cleaning Up prune command to clean up images, volumes, build cache, and containers</summary></entry><entry><title type="html">[Docker] Docker Persistent Data</title><link href="http://localhost:4000/docker/docker_udemy8/" rel="alternate" type="text/html" title="[Docker] Docker Persistent Data" /><published>2022-01-04T00:00:00+09:00</published><updated>2022-01-04T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker_udemy8</id><content type="html" xml:base="http://localhost:4000/docker/docker_udemy8/">&lt;hr /&gt;
-&lt;h3 id=&quot;docker-persistent-data&quot;&gt;Docker Persistent Data&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;containers are usually immutable(unchangeable) &amp;amp; ephemeral(temporary)&lt;/li&gt;
-  &lt;li&gt;which means that containers should never change when containers are re-deployed&lt;/li&gt;
-  &lt;li&gt;then the problem arises for unique data like databases&lt;/li&gt;
-  &lt;li&gt;these unique data are called persistent data&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Data Volumes&lt;/strong&gt; &amp;amp; &lt;strong&gt;Bind Mounts&lt;/strong&gt; is used to solve the problem&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Data Volumes&lt;/strong&gt; - configuration option that creates a special locations outside the container’s union file system to store unique data&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Bind Mounts&lt;/strong&gt; - sharing or mounting a host directory or file into a container&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;data-volumes&quot;&gt;Data Volumes&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# pull mysql image &lt;/span&gt;
-docker image pull mysql:latest
-
-&lt;span class=&quot;c&quot;&gt;# run container&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; mysql_test &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;MYSQL_ALLOW_EMPTY_PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true &lt;/span&gt;mysql:latest
-
-&lt;span class=&quot;c&quot;&gt;# mysql_test container의 설정 부분, 설정 중 volume을 확인&lt;/span&gt;
-docker container inspect mysql_test
-&lt;span class=&quot;c&quot;&gt;# destination - container가 데이터를 적재한다고 생각하는 곳&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# source - 실제 데이터가 적대되어 있는 곳&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# docker container를 통해 만든 모든 데이터를 확인할 수 있음, 이 volume은 container가 삭제되어도 남아 있음&lt;/span&gt;
-docker volume &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# 하지만 volume이 어떤 volume인지 분간하기가 어렵기에 container을 run할 때 volume에 name을 주는 것이 좋음&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; mysql_test1 &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;MYSQL_ALLOW_EMPTY_PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; mysql-db:/var/lib/mysql mysql:latest
-
-&lt;span class=&quot;c&quot;&gt;# mysql_test2도 mysql_test1과 같은 db를 사용&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; mysql_test2 &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;MYSQL_ALLOW_EMPTY_PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; mysql-db:/var/lib/mysql mysql:latest
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;database-upgrade-practice-using-named-volumes&quot;&gt;Database Upgrade Practice Using Named Volumes&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Upgrading Database with Named Volumes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# create a postgres container with named volume psql-data using version 9.6.1&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; postgres_test1 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; psql-data:/var/lib/postgresql/data postgres:9.6.1
-
-&lt;span class=&quot;c&quot;&gt;# check log &amp;amp; stop container&lt;/span&gt;
-docker container logs postgres_test1
-docker container stop postgres_test1
-
-&lt;span class=&quot;c&quot;&gt;# create a new postgres container with same named volume psql-data using version 9.6.2&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; postgres_test2 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; psql-data:/var/lib/postgresql/data postgres:9.6.2
-
-&lt;span class=&quot;c&quot;&gt;# check log &amp;amp; stop container&lt;/span&gt;
-docker container logs postgres_test2
-docker container stop postgres_test2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;bind-mounts&quot;&gt;Bind Mounts&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# (terminal1) pwd에 index.html 존재 ($(pwd)는 현재 pwd, 즉 현재 wd와 colon 뒤 container의 wd를 일치시킬 것임)&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; nginx &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 80:80 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;:/usr/share/nginx/html nginx
-
-&lt;span class=&quot;c&quot;&gt;# (terminal2) open a new terminal (command+shift+d)&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# (terminal2) get a shell inside nginx container&lt;/span&gt;
-docker container &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; nginx bash
-
-&lt;span class=&quot;c&quot;&gt;# (terminal2) cd&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;usr/share/nginx/html
-&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-al&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# - you can see Dockerfile &amp;amp; index.html&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# (terminal1) make a new file in the original wd&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;test.txt
-
-&lt;span class=&quot;c&quot;&gt;# (terminal2)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-al&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# - you can see the test.txt file!&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Persistent Data containers are usually immutable(unchangeable) &amp;amp; ephemeral(temporary) which means that containers should never change when containers are re-deployed then the problem arises for unique data like databases these unique data are called persistent data Data Volumes &amp;amp; Bind Mounts is used to solve the problem Data Volumes - configuration option that creates a special locations outside the container’s union file system to store unique data Bind Mounts - sharing or mounting a host directory or file into a container</summary></entry><entry><title type="html">[Docker] Docker Image2 - Building Images</title><link href="http://localhost:4000/docker/docker_udemy6/" rel="alternate" type="text/html" title="[Docker] Docker Image2 - Building Images" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-01-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker_udemy6</id><content type="html" xml:base="http://localhost:4000/docker/docker_udemy6/">&lt;hr /&gt;
-&lt;h3 id=&quot;docker-image2---building-images&quot;&gt;Docker Image2 - Building Images&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Dockerfile Build&lt;/li&gt;
-  &lt;li&gt;Dockerfile Build Example&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;dockerfile-build&quot;&gt;Dockerfile Build&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Dockerfile이 있는 repository에서 진행 (docker image build -t [image_name] .)&lt;/span&gt;
-docker image build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; custom_nginx &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# dockerfile에 적혀 있는 순서대로 build하며, 변경이 없는 부분은 cache를 이용하고 변경된 부분만 새롭게 build하므로&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# 변경이 없는 부분을 위에, 변경이 많은 부분은 아래에 적는 것이 좋음&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;dockerfile-build-example&quot;&gt;Dockerfile Build Example&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Dockerfile&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# - you should use the 'node' official image, with the alpine 6.x branch (node:6-alpine)&lt;/span&gt;
-FROM node:6-alpine
-&lt;span class=&quot;c&quot;&gt;# - this app listens on port 3000, but the container should launch on port 80&lt;/span&gt;
-EXPOSE 3000
-&lt;span class=&quot;c&quot;&gt;# - then it should use alpine package manager to install tini: 'apk add --update tini'&lt;/span&gt;
-RUN apk add &lt;span class=&quot;nt&quot;&gt;--update&lt;/span&gt; tini
-&lt;span class=&quot;c&quot;&gt;# - then it should create directory /usr/src/app for app files with 'mkdir -p /usr/src/app'&lt;/span&gt;
-RUN &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /usr/src/app
-&lt;span class=&quot;c&quot;&gt;# - Node uses a &quot;package manager&quot;, so it needs to copy in package.json file&lt;/span&gt;
-WORKDIR /usr/src/app
-COPY package.json package.json 
-&lt;span class=&quot;c&quot;&gt;# - then it needs to run 'npm install' to install dependencies from that file&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# - to keep it clean and small, run 'npm cache clean --force' after above&lt;/span&gt;
-RUN npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; npm cache clean &lt;span class=&quot;nt&quot;&gt;--force&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# - then it needs to copy in all files from current directory&lt;/span&gt;
-COPY &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# - then it needs to start container with command '/sbin/tini -- node ./bin/www'&lt;/span&gt;
-CMD &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tini&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;--&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;node&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;./bin/www&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;local에서 확인&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# build&lt;/span&gt;
-docker build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; testnode &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# run container&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 80:3000 testnode
-
-&lt;span class=&quot;c&quot;&gt;# check&lt;/span&gt;
-localhost:80
-
-&lt;span class=&quot;c&quot;&gt;# docker hub에 올리고 download&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;docker hub에 올린 뒤, pull해서 확인&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# docker image tagging&lt;/span&gt;
-docker tag testnode:latest carl020958/testing_node:latest
-
-&lt;span class=&quot;c&quot;&gt;# pushing to docker hub&lt;/span&gt;
-docker push carl020958/testing_node:latest
-
-&lt;span class=&quot;c&quot;&gt;# remove docker image&lt;/span&gt;
-docker image &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; 3b6
-
-&lt;span class=&quot;c&quot;&gt;# run container&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 80:3000 carl020958/testing_node
-
-&lt;span class=&quot;c&quot;&gt;# check&lt;/span&gt;
-localhost:80
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Image2 - Building Images Dockerfile Build Dockerfile Build Example</summary></entry><entry><title type="html">[Docker] Docker Network2</title><link href="http://localhost:4000/docker/docker_udemy4/" rel="alternate" type="text/html" title="[Docker] Docker Network2" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-01-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker_udemy4</id><content type="html" xml:base="http://localhost:4000/docker/docker_udemy4/">&lt;hr /&gt;
-&lt;h3 id=&quot;docker-network2&quot;&gt;Docker Network2&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Docker CLI Testing&lt;/li&gt;
-  &lt;li&gt;Docker DNS Round Robin Test&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;docker-cli-testing&quot;&gt;Docker CLI Testing&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# centos7&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# --rm option을 통해 해당 container 종료 시 자동 삭제&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; centos:7 bash
-
-&lt;span class=&quot;c&quot;&gt;# root&lt;/span&gt;
-yum update curl
-
-curl &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# ubuntu14.04&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; ubuntu:14.04 bash
-
-&lt;span class=&quot;c&quot;&gt;# root&lt;/span&gt;
-apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; curl
-
-curl--version
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;docker-dns-round-robin-test&quot;&gt;Docker DNS Round Robin Test&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# create network &lt;/span&gt;
-docker network create dns_test
-
-&lt;span class=&quot;c&quot;&gt;# create 2 elasticsearch:2 container in dns_test network&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--net&lt;/span&gt; dns_test &lt;span class=&quot;nt&quot;&gt;--net-alias&lt;/span&gt; search elasticsearch:2
-docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--net&lt;/span&gt; dns_test &lt;span class=&quot;nt&quot;&gt;--net-alias&lt;/span&gt; search elasticsearch:2
-
-&lt;span class=&quot;c&quot;&gt;# use the code below to test DNS Round Robin 1&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--net&lt;/span&gt; dns_test alpine:3.10 nslookup search
-
-&lt;span class=&quot;c&quot;&gt;# use the code below to test DNS Round Robin 2&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--net&lt;/span&gt; dns_test centos curl &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; search:9200
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Network2 Docker CLI Testing Docker DNS Round Robin Test</summary></entry><entry><title type="html">[Docker] Docker Image1</title><link href="http://localhost:4000/docker/docker_udemy5/" rel="alternate" type="text/html" title="[Docker] Docker Image1" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-01-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker_udemy5</id><content type="html" xml:base="http://localhost:4000/docker/docker_udemy5/">&lt;hr /&gt;
-&lt;h3 id=&quot;docker-image1&quot;&gt;Docker Image1&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Docker Image &amp;amp; Layers&lt;/li&gt;
-  &lt;li&gt;Docker Image Tagging &amp;amp; Pushing to Docker Hub&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;docker-image--layers&quot;&gt;Docker Image &amp;amp; Layers&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# show history of image layers (docker image history [image_name])&lt;/span&gt;
-docker image &lt;span class=&quot;nb&quot;&gt;history &lt;/span&gt;nginx:latest
-
-&lt;span class=&quot;c&quot;&gt;# returns JSON metadata about the image (docker image inspect [image_name])&lt;/span&gt;
-docker image inspect nginx
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;docker-image-tagging--pushing-to-docker-hub&quot;&gt;Docker Image Tagging &amp;amp; Pushing to Docker Hub&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# assigns one or more tags to an image (docker image tag [source_image[:tag]] [target_image[:tag]]&lt;/span&gt;
-docker image tag nginx zsu/nginx
-
-&lt;span class=&quot;c&quot;&gt;# login to docker hub&lt;/span&gt;
-docker login
-
-&lt;span class=&quot;c&quot;&gt;# can check docker profile&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; .docker/config.json
-
-&lt;span class=&quot;c&quot;&gt;# push to dockerhub (docker image push [user]/[image_name]:[tag])&lt;/span&gt;
-docker image push zsu/nginx:testing
-
-&lt;span class=&quot;c&quot;&gt;# login to docker hub stores authentication key, so don't forget to logout to protect your account&lt;/span&gt;
-docker &lt;span class=&quot;nb&quot;&gt;logout&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Image1 Docker Image &amp;amp; Layers Docker Image Tagging &amp;amp; Pushing to Docker Hub</summary></entry><entry><title type="html">[Docker] Docker Network1</title><link href="http://localhost:4000/docker/docker_udemy3/" rel="alternate" type="text/html" title="[Docker] Docker Network1" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-01-02T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker_udemy3</id><content type="html" xml:base="http://localhost:4000/docker/docker_udemy3/">&lt;hr /&gt;
-&lt;h3 id=&quot;docker-network1&quot;&gt;Docker Network1&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Priate &amp;amp; Pulbic Comms in Containers&lt;/li&gt;
-  &lt;li&gt;CLI Management of Virtual Networks&lt;/li&gt;
-  &lt;li&gt;Docker DNS(Domain Name System) &amp;amp; How Containers Find Each Other&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;priate--pulbic-comms-in-containers&quot;&gt;Priate &amp;amp; Pulbic Comms in Containers&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 80:80 &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; webhost &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nginx
-
-&lt;span class=&quot;c&quot;&gt;# 어떤 host port에서 container port으로 forward되는지 확인 (docker container port [container_name(id)])&lt;/span&gt;
-docker container port webhost
-
-&lt;span class=&quot;c&quot;&gt;# get container IP (docker container inspect --format '{{ NetWorkSettings.IPAddress }}' [container_name(id)])&lt;/span&gt;
-docker container inspect &lt;span class=&quot;nt&quot;&gt;--format&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{{ .NetworkSettings.IPAddress }}'&lt;/span&gt; webhost
-
-&lt;span class=&quot;c&quot;&gt;# check my ip&lt;/span&gt;
-ipconfig getifaddr en0
-
-&lt;span class=&quot;c&quot;&gt;# container IP and my IP is different!&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;cli-management-of-virtual-networks&quot;&gt;CLI Management of Virtual Networks&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# show network list&lt;/span&gt;
-docker network &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# inspect a network (docker container inspect [network_name])&lt;/span&gt;
-docker network inspect bridge
-
-&lt;span class=&quot;c&quot;&gt;# create a network (docker network create --driver), default driver == bridge&lt;/span&gt;
-docker network create my_app_net
-
-&lt;span class=&quot;c&quot;&gt;# my_app_net network에 container 생성 (--network option을 통해 지정)&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; new_nginx &lt;span class=&quot;nt&quot;&gt;--network&lt;/span&gt; my_app_net nginx
-
-&lt;span class=&quot;c&quot;&gt;# 확인&lt;/span&gt;
-docker network inspect my_app_net
-
-&lt;span class=&quot;c&quot;&gt;# attach a network to container (docker container connect [network_name(id)] [container_name(id)])&lt;/span&gt;
-docker network connect a123acbd7d0a webhost
-
-&lt;span class=&quot;c&quot;&gt;# detach a network from container (docker container disconnect [network_name(id)] [container_name(id)])&lt;/span&gt;
-docker network disconnect a123acbd7d0a webhost
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;docker-dnsdomain-name-system--how-containers-find-each-other&quot;&gt;Docker DNS(Domain Name System) &amp;amp; How Containers Find Each Other&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 현재 my_app_net이라는 network에 new_nginx이라는 container만 존재&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# create my_nginx container in my_app_net network&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; my_nginx &lt;span class=&quot;nt&quot;&gt;--network&lt;/span&gt; my_app_net nginx:alpine
-
-&lt;span class=&quot;c&quot;&gt;# send ping from my_nginx to new_nginx (available cuz they are in the same network my_app_net)&lt;/span&gt;
-docker container &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; my_nginx ping new_nginx
-
-&lt;span class=&quot;c&quot;&gt;# recommended to create custom network, docker compose makes this easier&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Network1 Priate &amp;amp; Pulbic Comms in Containers CLI Management of Virtual Networks Docker DNS(Domain Name System) &amp;amp; How Containers Find Each Other</summary></entry><entry><title type="html">[Docker] Docker Shell Inside Containers</title><link href="http://localhost:4000/docker/docker_udemy2/" rel="alternate" type="text/html" title="[Docker] Docker Shell Inside Containers" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-01-02T00:00:00+09:00</updated><id>http://localhost:4000/docker/docker_udemy2</id><content type="html" xml:base="http://localhost:4000/docker/docker_udemy2/">&lt;h3 id=&quot;getting-a-shell-inside-containers&quot;&gt;Getting a Shell Inside Containers&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# start new container interactively (docker container run -it)&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; proxy nginx
-
-&lt;span class=&quot;c&quot;&gt;# run additional command in existing container (docker container exec -it)&lt;/span&gt;
-docker container &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; proxy bash
-
-
-&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Ubuntu&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# exec의 경우에는 additional command, start의 경우에는 해당 container를 시작, 또한 ubuntu는 argument로 bash 줄 필요 없음&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# ubuntu container는 이미 설치되어 있음&lt;/span&gt;
-docker container start &lt;span class=&quot;nt&quot;&gt;-ai&lt;/span&gt; ubuntu
-
-&lt;span class=&quot;c&quot;&gt;# container 안의 ubuntu는 일반적인 ubuntu와 다르게 minimal함, 따라서 아래처럼 필요한 부분들은 따로 설치가 필요&lt;/span&gt;
-apt-get update
-apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; curl
-
-
-&lt;span class=&quot;c&quot;&gt;# -----&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Mysql&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# -----&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# mysql shell에서 ps 실행하고 싶은 경우&lt;/span&gt;
-apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; procps
-ps
-
-
-&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Alpine&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# ------&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# alpine은 기본적으로 bash가 없기에 sh로 접속&lt;/span&gt;
-docker container run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; alpine sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Getting a Shell Inside Containers ```bash start new container interactively (docker container run -it) docker container run -it –name proxy nginx</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="DOCKER" /><category term="DOCKER" /><summary type="html">Docker Compose Basic Docker compose commands Build a Compose File For a Multi-Container Service Compose for Run-Time Building and Multi-Container Development</summary></entry></feed>

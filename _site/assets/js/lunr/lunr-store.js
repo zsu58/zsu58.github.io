@@ -594,7 +594,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] 완전탐색(Brute-Force) & 이분탐색",
-        "excerpt":"ALGORITHM 알고리즘 스터디(2) 탐색 완전탐색(Brute-Force) 이분탐색 깊이우선탐색 너비우선탐색 문자열탐색 KMP(Knuth-Morris-Pratt) BM(Boyer-Moore) 완전탐색 가능한 모든 경우의 수를 탐색 효율성의 관점에서는 최악 구현방법 반복문 재귀함수 cf. 재귀함수는 동적 계획법/ 백트래킹/ 탐욕법에서도 사용됨 # card 안에 8의 순서를 찾는 함수 (반복문) def solution(card): for i in range(len(card)): if card[i] == 8: return i...","categories": ["STUDY_ALGORITHM"],
+        "excerpt":"ALGORITHM 알고리즘 스터디(2) 탐색 완전탐색(Brute-Force) 이분탐색(Binary Search) 깊이우선탐색(Depth First Search) 너비우선탐색(Breadth First Search) 문자열탐색 KMP(Knuth-Morris-Pratt) BM(Boyer-Moore) 완전탐색 가능한 모든 경우의 수를 탐색 효율성의 관점에서는 최악 구현방법 반복문 재귀함수 cf. 재귀함수는 동적 계획법/ 백트래킹/ 탐욕법에서도 사용됨 # card 안에 8의 순서를 찾는 함수 (반복문) def solution(card): for i in range(len(card)): if...","categories": ["STUDY_ALGORITHM"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/study_algorithm/algorithm_study2/",
         "teaser": null
@@ -605,7 +605,7 @@ var store = [{
         "url": "/boj/boj(1)/",
         "teaser": null
       },{
-        "title": "[ALGORITHM] LeetCode 121. Best Time to Buy and Sell Stock",
+        "title": "[ALGORITHM] LeetCode 234. Palindrome Linked List",
         "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 # 나의 풀이 # Definition for singly-linked list. # class ListNode: # def __init__(self, val=0, next=None): # self.val = val # self.next = next class Solution: def isPalindrome(self, head: Optional[ListNode]) -&gt; bool: linked_list =...","categories": ["LEETCODE"],
         "tags": ["ALGORITHM","LEETCODE"],
         "url": "/leetcode/leetcode_algorithm_interview(10)/",
@@ -623,6 +623,12 @@ var store = [{
         "url": "/docker/docker1/",
         "teaser": null
       },{
+        "title": "[ALGORITHM] 깊이우선탐색(Depth First Search) & 너비우선탐색(Breadth First Search)",
+        "excerpt":"ALGORITHM 알고리즘 스터디(3) 탐색 완전탐색(Brute-Force) 이분탐색(Binary Search) 깊이우선탐색(Depth First Search) 너비우선탐색(Breadth First Search) 문자열탐색 KMP(Knuth-Morris-Pratt) BM(Boyer-Moore) 깊이우선탐색(Depth First Search) 하나의 경우의 수에 대하여 모든 경우의 수를 조사하면서 해를 찾는 과정 이때 스텍을 활용할 수 있음 # 미로찾기 while len(stack) &gt; 0: now = stack.pop() if now == dest: return True...","categories": ["STUDY_ALGORITHM"],
+        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "url": "/study_algorithm/algorithm_study3/",
+        "teaser": null
+      },{
         "title": "[MySQL] Jupyter Notebook & Docker MySql 연동",
         "excerpt":"환경구성 install sqlalchemy, ipython-sql in Jupyter notebook import sys !conda install --yes --prefix {sys.prefix} sqlalchemy conda install -c conda-forge ipython-sql # load sql extension %load_ext sql 연결 connect DB %sql mysql://root:1234@0.0.0.0:3306/testDB SQL Table 생성 및 데이터 추가 create table insert data into table -- create table %%sql DROP TABLE IF...","categories": ["SQL"],
         "tags": ["MYSQL","DOCKER"],
@@ -636,7 +642,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Apache Airflow] Airflow Installation on Docker",
-        "excerpt":"Airflow on Docker Docker을 통한 Apache Airflow 설치 Airflow-Docker 설치 # make folder and cd mkdir airflow-docker cd airflow-docker # docker-compose.yaml file download(check version) curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.1.4/docker-compose.yaml' # make folders for dags &amp; plugins &amp; logs mkdir ./dags ./plugins ./logs # On Linux &amp; Mac OS, the quick-start needs to...","categories": ["AIRFLOW"],
+        "excerpt":"Airflow on Docker Airflow-Docker Installation Docker Airflow CLI Airflow-Docker Installation # make folder and cd mkdir airflow-docker cd airflow-docker # docker-compose.yaml file download(check version) curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.1.4/docker-compose.yaml' # make folders for dags &amp; plugins &amp; logs mkdir ./dags ./plugins ./logs # On Linux &amp; Mac OS, the quick-start needs to...","categories": ["AIRFLOW"],
         "tags": ["AIRFLOW","DOCKER"],
         "url": "/airflow/airflow1/",
         "teaser": null
@@ -699,5 +705,47 @@ var store = [{
         "excerpt":"PySpark DataFrame Basics PySpark Basic1 DataFrame Schema PySpark Basic2 PySpark Basic1 from pyspark.sql import SparkSession # start spark session by applying it spark = SparkSession.builder.appName(\"Basics\").getOrCreate() # read data df = spark.read.json(\"people.json\") # show dataframe df.show() +----+-------+ | age| name| +----+-------+ |null|Michael| | 30| Andy| | 19| Justin| +----+-------+ # show...","categories": ["PYSPARK"],
         "tags": ["PYTHON","PYSPARK","DOCKER"],
         "url": "/pyspark/pyspark1/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] BOJ 1260. DFS와 BFS",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys from collections import deque # dfs method def dfs(n): print(n, end=' ') # mark visited visited[n] = True for i in graph[n]: if not visited[i]: dfs(i) # bfs method def bfs(n): dq...","categories": ["BOJ"],
+        "tags": ["ALGORITHM","BOJ"],
+        "url": "/boj/boj(2)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] BOJ 2606. 바이러스",
+        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys # dfs method def dfs(n): for i in graph[n]: if not visited[i]: # mark visited visited[i] = True dfs(i) if __name__ == \"__main__\": n = int(sys.stdin.readline()) c = int(sys.stdin.readline()) # make graph...","categories": ["BOJ"],
+        "tags": ["ALGORITHM","BOJ"],
+        "url": "/boj/boj(3)/",
+        "teaser": null
+      },{
+        "title": "[Apache Airflow] Airflow Installation on Local(Mac)",
+        "excerpt":"Airflow on Local(Mac) Airflow Installation Airflow Installation # make folder and cd mkdir airflow cd airflow # create python virtual environment &amp; activate python3 -m venv airflow1 source airflow1/bin/activate # install python module used by airflow pip3 install wheel # install airflow AIRFLOW_HOME=$(pwd) AIRFLOW_VERSION=2.1.4 PYTHON_VERSION=\"$(python --version | cut -d \"...","categories": ["AIRFLOW"],
+        "tags": ["AIRFLOW","DOCKER"],
+        "url": "/airflow/airflow2/",
+        "teaser": null
+      },{
+        "title": "[Apache Airflow] Airflow Operator",
+        "excerpt":" Airflow Operator     A task in data pipeline that defines one task            to know which task has a problem           1) Action Operator: Execute an action   2) Transfer Operator: Transfer data   3) Sensors: Wait for a condition to be met before executing the next task  ","categories": ["AIRFLOW"],
+        "tags": ["AIRFLOW","DOCKER"],
+        "url": "/airflow/airflow_udemy1/",
+        "teaser": null
+      },{
+        "title": "[Apache Airflow] Airflow Dag",
+        "excerpt":"Airflow Dag Airflow Dag Create Airflow Dag File Add Connection in Airflow Webserver Test Airflow Task Create Airflow Dag File path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py from airflow.models import DAG from airflow.providers.sqlite.operators.sqlite import SqliteOperator from datetime import datetime default_args = { \"start_date\": datetime(2022, 1, 7), } with DAG( 'user_processing', schedule_interval='@daily', default_args=default_args,...","categories": ["AIRFLOW"],
+        "tags": ["AIRFLOW","DOCKER"],
+        "url": "/airflow/airflow_udemy2/",
+        "teaser": null
+      },{
+        "title": "[Apache Airflow] Using API",
+        "excerpt":"Using API Sensor Operator Sensor Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py from airflow.models import DAG from airflow.providers.sqlite.operators.sqlite import SqliteOperator # added from airflow.providers.http.sensors.http import HttpSensor from datetime import datetime default_args = { \"start_date\": datetime(2022, 1, 7), } with DAG( 'user_processing', schedule_interval='@daily', default_args=default_args, catchup=False ) as dag: # Define tasks/operators creating_table...","categories": ["AIRFLOW"],
+        "tags": ["AIRFLOW","DOCKER"],
+        "url": "/airflow/airflow_udemy3/",
+        "teaser": null
+      },{
+        "title": "[Apache Airflow] Using API",
+        "excerpt":"Using API Sensor Operator Sensor Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py from airflow.models import DAG from airflow.providers.sqlite.operators.sqlite import SqliteOperator # added from airflow.providers.http.sensors.http import HttpSensor from datetime import datetime default_args = { \"start_date\": datetime(2022, 1, 7), } with DAG( 'user_processing', schedule_interval='@daily', default_args=default_args, catchup=False ) as dag: # Define tasks/operators creating_table...","categories": ["AIRFLOW"],
+        "tags": ["AIRFLOW","DOCKER"],
+        "url": "/airflow/airflow_udemy4/",
         "teaser": null
       }]

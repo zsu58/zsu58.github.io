@@ -1,0 +1,14 @@
+I"ˆ<hr />
+
+<h3 id="airflow-operator">Airflow Operator</h3>
+<ul>
+  <li>A task in data pipeline that defines <strong>one task</strong>
+    <ul>
+      <li>to know which task has a problem</li>
+    </ul>
+  </li>
+  <li>1) Action Operator: Execute an action</li>
+  <li>2) Transfer Operator: Transfer data</li>
+  <li>3) Sensors: Wait for a condition to be met before executing the next task</li>
+</ul>
+:ET

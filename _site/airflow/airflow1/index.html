@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>[Apache Airflow] Airflow Installation on Docker - Bibliothek für Data-Engineering</title>
-<meta name="description" content="Airflow on Docker    Docker을 통한 Apache Airflow 설치">
+<meta name="description" content="Airflow on Docker    Airflow-Docker Installation   Docker Airflow CLI">
 
 
   <meta name="author" content="ZSU">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/airflow/airflow1/">
 
 
-  <meta property="og:description" content="Airflow on Docker    Docker을 통한 Apache Airflow 설치">
+  <meta property="og:description" content="Airflow on Docker    Airflow-Docker Installation   Docker Airflow CLI">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">117</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">125</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -326,7 +326,7 @@
                     
                 
                     
-                        <li><a href="/categories/boj" class="">BOJ (1)</a></li>
+                        <li><a href="/categories/boj" class="">BOJ (3)</a></li>
                     
                 
                     
@@ -448,7 +448,7 @@
                     
                 
                     
-                        <li><a href="/categories/study_algorithm" class="">Study (2)</a></li>
+                        <li><a href="/categories/study_algorithm" class="">Study (3)</a></li>
                     
                 
                     
@@ -516,7 +516,7 @@
                     
                 
                     
-                        <li><a href="/categories/airflow" class="">Airflow (1)</a></li>
+                        <li><a href="/categories/airflow" class="">Airflow (6)</a></li>
                     
                 
                     
@@ -718,7 +718,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[Apache Airflow] Airflow Installation on Docker">
-    <meta itemprop="description" content="Airflow on Docker  Docker을 통한 Apache Airflow 설치">
+    <meta itemprop="description" content="Airflow on Docker  Airflow-Docker Installation  Docker Airflow CLI">
     <meta itemprop="datePublished" content="2021-12-29T00:00:00+09:00">
     
 
@@ -741,7 +741,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          less than 1 minute read
         
       </span>
     
@@ -756,7 +756,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#airflow-on-docker">Airflow on Docker</a></li><li><a href="#airflow-docker-설치">Airflow-Docker 설치</a></li><li><a href="#환경">환경</a></li><li><a href="#ref">ref</a></li></ul>
+              <ul class="toc__menu"><li><a href="#airflow-on-docker">Airflow on Docker</a></li><li><a href="#airflow-docker-installation">Airflow-Docker Installation</a></li><li><a href="#docker-airflow-cli">Docker Airflow CLI</a></li><li><a href="#ref">ref</a></li></ul>
 
             </nav>
           </aside>
@@ -764,12 +764,13 @@
         <hr />
 <h3 id="airflow-on-docker">Airflow on Docker</h3>
 <ul>
-  <li>Docker을 통한 Apache Airflow 설치</li>
+  <li>Airflow-Docker Installation</li>
+  <li>Docker Airflow CLI</li>
 </ul>
 
 <hr />
 
-<h3 id="airflow-docker-설치">Airflow-Docker 설치</h3>
+<h3 id="airflow-docker-installation">Airflow-Docker Installation</h3>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># make folder and cd</span>
 <span class="nb">mkdir </span>airflow-docker
 <span class="nb">cd </span>airflow-docker
@@ -803,24 +804,18 @@ docker-compose down
 </code></pre></div></div>
 <hr />
 
-<h3 id="환경">환경</h3>
+<h3 id="docker-airflow-cli">Docker Airflow CLI</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># airflow 명령어 사용하기 위한 venv 구성</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># create user</span>
+docker-compose run airflow-worker <span class="nb">users </span>create <span class="nt">-u</span> zsu <span class="nt">-p</span> abcd <span class="nt">-f</span> jisu <span class="nt">-l</span> park <span class="nt">-r</span> Admin <span class="nt">-e</span> carl020958@korea.ac.kr
+
+<span class="c"># airflow 명령어 사용하기 위한 venv 구성</span>
 <span class="c"># airflow 설치한 폴더로 cd</span>
 python3 <span class="nt">-m</span> venv airflow1
 <span class="nb">source </span>airflow1/bin/activate
 
-<span class="c"># airflow에서 사용할 module 설치</span>
-pip3 <span class="nb">install </span>wheel
-
-<span class="c"># airflow 설치(버전 유의)</span>
+<span class="c"># install airflow</span>
 pip3 <span class="nb">install </span>apache-airflow<span class="o">==</span>2.1.4
-
-<span class="c"># initialize metadatabase &amp; generate folders and files needed by airflow</span>
-airflow db init
-
-<span class="c"># create user</span>
-docker-compose run airflow-worker <span class="nb">users </span>create <span class="nt">-u</span> zsu <span class="nt">-p</span> abcd <span class="nt">-f</span> jisu <span class="nt">-l</span> park <span class="nt">-r</span> Admin <span class="nt">-e</span> carl020958@korea.ac.kr
 </code></pre></div></div>
 
 <h3 id="ref">ref</h3>
@@ -922,7 +917,7 @@ docker-compose run airflow-worker <span class="nb">users </span>create <span cla
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/pyspark/pyspark1/" rel="permalink">[PySpark] DataFrame Basics
+        <a href="/airflow/airflow_udemy4/" rel="permalink">[Apache Airflow] Using API
 </a>
       
     </h2>
@@ -949,11 +944,9 @@ docker-compose run airflow-worker <span class="nb">users </span>create <span cla
 
     <p class="archive__item-excerpt" itemprop="description">
 
-PySpark DataFrame Basics
+Using API
 
-  PySpark Basic1
-  DataFrame Schema
-  PySpark Basic2
+  Sensor Operator
 
 </p>
   </article>
@@ -969,7 +962,103 @@ PySpark DataFrame Basics
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/docker/docker3/" rel="permalink">[Docker] Docker Jupyter Notebook &amp; PySpark
+        <a href="/airflow/airflow_udemy3/" rel="permalink">[Apache Airflow] Using API
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Using API
+
+  Sensor Operator
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/airflow/airflow_udemy2/" rel="permalink">[Apache Airflow] Airflow Dag
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Airflow Dag
+
+  Airflow Dag
+    
+      Create Airflow Dag File
+      Add Connection in Airflow Webserver
+      Test Airflow Task
+    
+  
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/airflow/airflow_udemy1/" rel="permalink">[Apache Airflow] Airflow Operator
 </a>
       
     </h2>
@@ -994,99 +1083,16 @@ PySpark DataFrame Basics
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Docker - Jupyter Notebook &amp; PySpark
-```bash
-run container
-docker container run –name jupyter_pyspark -p 10000:8888 -v $(pwd):/home/jovyan/work jupyter/py...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/docker/docker_udemy9/" rel="permalink">[Docker] Docker Compose
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          3 minute read
-        
-      </span>
-    
-  </p>
-
-
     <p class="archive__item-excerpt" itemprop="description">
 
-Docker Compose
+Airflow Operator
 
-  Basic Docker compose commands
-  Build a Compose File For a Multi-Container Service
-  Compose for Run-Time Building and Multi-Container De...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+  A task in data pipeline that defines one task
     
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/docker/docker_udemy8/" rel="permalink">[Docker] Docker Persistent Data
-</a>
-      
-    </h2>
+      to know which task has a problem
     
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Docker Persistent Data
-
-  containers are usually immutable(unchangeable) &amp; ephemeral(temporary)
-  which means that containers should never change when ...</p>
+  
+  1) Action Operator: Execute an acti...</p>
   </article>
 </div>
 
