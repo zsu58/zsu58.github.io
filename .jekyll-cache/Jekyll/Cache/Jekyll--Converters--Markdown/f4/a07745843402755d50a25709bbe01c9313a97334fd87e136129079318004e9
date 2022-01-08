@@ -1,0 +1,51 @@
+I"Ì<hr />
+<h3 id="storing-users-using-bash-operator">Storing Users Using Bash Operator‚Äù</h3>
+<ul>
+  <li>Transfer(Bash) Operator</li>
+</ul>
+
+<hr />
+
+<h3 id="transferbash-operator">Transfer(Bash) Operator</h3>
+<ul>
+  <li>path - AIRFLOW_HOME/dag/user_processing.py</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># user_processing.py
+</span><span class="p">...</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.bash</span> <span class="kn">import</span> <span class="n">BashOperator</span>
+
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
+  <span class="p">...</span>
+<span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="c1"># Transfer Operator
+</span>    <span class="n">storing_user</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"storing_user"</span><span class="p">,</span>
+        <span class="n">bash_command</span><span class="o">=</span><span class="s">'echo -e ".separator ","</span><span class="se">\n</span><span class="s">.import /tmp/processed_user.csv users" | sqlite3 /Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/airflow/airflow.db'</span>
+    <span class="p">)</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="test-airflow-task">Test Airflow Task</h3>
+<ul>
+  <li>allows to test a specific task
+    <ul>
+      <li>1) without checking for dependencies</li>
+      <li>2) neither storing any medata related to the task</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># check before task</span>
+sqlite3 airflow.db
+SELECT <span class="k">*</span> FROM <span class="nb">users</span><span class="p">;</span>
+
+<span class="c"># test my task (airflow tasks test [py_file] [dag_name] [execution_date])</span>
+airflow tasks <span class="nb">test </span>user_processing storing_user 2022-01-07
+
+<span class="c"># check after task</span>
+sqlite3 airflow.db
+SELECT <span class="k">*</span> FROM <span class="nb">users</span><span class="p">;</span>
+</code></pre></div></div>
+
+:ET

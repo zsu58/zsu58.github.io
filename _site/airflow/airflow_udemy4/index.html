@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Apache Airflow] Using API - Bibliothek für Data-Engineering</title>
-<meta name="description" content="Using API    Sensor Operator">
+<!-- begin _includes/seo.html --><title>[Apache Airflow] Extracting Users Using API - Bibliothek für Data-Engineering</title>
+<meta name="description" content="Extracting Users Using API    Action Operator   Test Airflow Task">
 
 
   <meta name="author" content="ZSU">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Bibliothek für Data-Engineering">
-<meta property="og:title" content="[Apache Airflow] Using API">
+<meta property="og:title" content="[Apache Airflow] Extracting Users Using API">
 <meta property="og:url" content="http://localhost:4000/airflow/airflow_udemy4/">
 
 
-  <meta property="og:description" content="Using API    Sensor Operator">
+  <meta property="og:description" content="Extracting Users Using API    Action Operator   Test Airflow Task">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">125</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">127</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -516,7 +516,7 @@
                     
                 
                     
-                        <li><a href="/categories/airflow" class="">Airflow (6)</a></li>
+                        <li><a href="/categories/airflow" class="">Airflow (8)</a></li>
                     
                 
                     
@@ -717,15 +717,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Apache Airflow] Using API">
-    <meta itemprop="description" content="Using API  Sensor Operator">
+    <meta itemprop="headline" content="[Apache Airflow] Extracting Users Using API">
+    <meta itemprop="description" content="Extracting Users Using API  Action Operator  Test Airflow Task">
     <meta itemprop="datePublished" content="2022-01-08T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[Apache Airflow] Using API
+          <h1 id="page-title" class="page__title" itemprop="headline">[Apache Airflow] Extracting Users Using API
 </h1>
           
 
@@ -741,7 +741,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          less than 1 minute read
         
       </span>
     
@@ -756,84 +756,45 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#using-api">Using API</a></li><li><a href="#sensor-operator">Sensor Operator</a></li><li><a href="#add-connection-in-airflow-webserver">Add Connection in Airflow Webserver</a></li><li><a href="#test-airflow-task">Test Airflow Task</a></li></ul>
+              <ul class="toc__menu"><li><a href="#extracting-users-using-api">Extracting Users Using API</a></li><li><a href="#action-operator">Action Operator</a></li><li><a href="#test-airflow-task">Test Airflow Task</a></li></ul>
 
             </nav>
           </aside>
         
         <hr />
-<h3 id="using-api">Using API</h3>
+<h3 id="extracting-users-using-api">Extracting Users Using API</h3>
 <ul>
-  <li>Sensor Operator</li>
+  <li>Action Operator</li>
+  <li>Test Airflow Task</li>
 </ul>
 
 <hr />
 
-<h3 id="sensor-operator">Sensor Operator</h3>
+<h3 id="action-operator">Action Operator</h3>
 <ul>
   <li>path - AIRFLOW_HOME/dag/user_processing.py</li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># user_processing.py
-</span><span class="kn">from</span> <span class="nn">airflow.models</span> <span class="kn">import</span> <span class="n">DAG</span>
-<span class="kn">from</span> <span class="nn">airflow.providers.sqlite.operators.sqlite</span> <span class="kn">import</span> <span class="n">SqliteOperator</span>
-<span class="c1"># added
-</span><span class="kn">from</span> <span class="nn">airflow.providers.http.sensors.http</span> <span class="kn">import</span> <span class="n">HttpSensor</span>
-
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"start_date"</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
-<span class="p">}</span>
+</span><span class="p">...</span>
+<span class="kn">from</span> <span class="nn">airflow.providers.http.operators.http</span> <span class="kn">import</span> <span class="n">SimpleHttpOperator</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
 <span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
-    <span class="s">'user_processing'</span><span class="p">,</span>
-    <span class="n">schedule_interval</span><span class="o">=</span><span class="s">'@daily'</span><span class="p">,</span>
-    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
-    <span class="n">catchup</span><span class="o">=</span><span class="bp">False</span>
+  <span class="p">...</span>
 <span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="c1"># Define tasks/operators
-</span>    <span class="n">creating_table</span> <span class="o">=</span> <span class="n">SqliteOperator</span><span class="p">(</span>
-        <span class="n">task_id</span><span class="o">=</span><span class="s">"creating_table"</span><span class="p">,</span>
-        <span class="n">sqlite_conn_id</span><span class="o">=</span><span class="s">"db_sqlite"</span><span class="p">,</span>
-        <span class="n">sql</span><span class="o">=</span><span class="s">"""
-            CREATE TABLE users (
-                firstname TEXT NOT NULL,
-                lastname TEXT NOT NULL,
-                country TEXT NOT NULL,
-                username TEXT NOT NULL,
-                password TEXT NOT NULL,
-                email TEXT NOT NULL PRIMARY KEY
-            );
-            """</span>
+    <span class="c1"># Action Operator
+</span>    <span class="n">extracting_user</span> <span class="o">=</span> <span class="n">SimpleHttpOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">"extracting_user"</span><span class="p">,</span>
+    <span class="n">http_conn_id</span><span class="o">=</span><span class="s">"user_api"</span><span class="p">,</span>
+    <span class="n">endpoint</span><span class="o">=</span><span class="s">"api/"</span><span class="p">,</span>
+    <span class="c1"># used GET cuz there's no need to send any data
+</span>    <span class="n">method</span><span class="o">=</span><span class="s">"GET"</span><span class="p">,</span>
+    <span class="c1"># get the text and bring it in json form
+</span>    <span class="n">response_filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">response</span><span class="p">:</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">),</span>
+    <span class="c1"># print the response
+</span>    <span class="n">log_response</span><span class="o">=</span><span class="bp">True</span>
     <span class="p">)</span>
-
-    <span class="c1"># added sensor Operator
-</span>    <span class="n">is_api_available</span> <span class="o">=</span> <span class="n">HttpSensor</span><span class="p">(</span>
-        <span class="n">task_id</span><span class="o">=</span><span class="s">"is_api_available"</span><span class="p">,</span>
-        <span class="n">http_conn_id</span><span class="o">=</span><span class="s">"user_api"</span><span class="p">,</span>
-        <span class="c1"># the endpoint of the url
-</span>        <span class="n">endpoint</span><span class="o">=</span><span class="s">"api/"</span>
-    <span class="p">)</span>
-
-</code></pre></div></div>
-<hr />
-
-<h3 id="add-connection-in-airflow-webserver">Add Connection in Airflow Webserver</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># http provider was pre-installed when installing airflow</span>
-<span class="c"># pip3 install 'apache-airflow-providers-http'</span>
-
-<span class="c"># airflow webserver - Admin - Connections - + (추가)</span>
-<span class="c"># 1) Conn Id: python dag파일의 sqlite_conn_id 이름</span>
-is_api_available
-<span class="c"># 2) Conn Type: 해당하는 connection</span>
-HTTP
-<span class="c"># 3) description: 자유롭게 작성</span>
-API <span class="k">for </span>getting <span class="nb">users</span>
-<span class="c"># 4) Host: API URL address (endpoint는 dag file에 존재(api/))</span>
-https://randomuser.me/
-<span class="c"># 확인</span>
 </code></pre></div></div>
 <hr />
 
@@ -847,9 +808,11 @@ https://randomuser.me/
   </li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># test my task (airflow tasks test [py_file] [dag_name] [execution_date])</span>
-airflow tasks <span class="nb">test </span>user_processing is_api_available 2022-01-07
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cf. Http Connection is already established in Airflow Webserver</span>
+<span class="c"># test my task (airflow tasks test [py_file] [dag_name] [execution_date])</span>
+airflow tasks <span class="nb">test </span>user_processing extracting_user 2022-01-07
 </code></pre></div></div>
+
 
         
       </section>
@@ -903,7 +866,7 @@ airflow tasks <span class="nb">test </span>user_processing is_api_available 2022
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BApache+Airflow%5D+Using+API%20http%3A%2F%2Flocalhost%3A4000%2Fairflow%2Fairflow_udemy4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BApache+Airflow%5D+Extracting+Users+Using+API%20http%3A%2F%2Flocalhost%3A4000%2Fairflow%2Fairflow_udemy4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fairflow%2Fairflow_udemy4%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -918,7 +881,8 @@ airflow tasks <span class="nb">test </span>user_processing is_api_available 2022
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/airflow/airflow_udemy5/" class="pagination--pager" title="[Apache Airflow] Processing Users Using Python Operator
+">Next</a>
     
   </nav>
 
@@ -932,6 +896,96 @@ airflow tasks <span class="nb">test </span>user_processing is_api_available 2022
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/airflow/airflow_udemy6/" rel="permalink">[Apache Airflow] Storing Users Using Bash Operator
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Storing Users Using Bash Operator”
+
+  Transfer(Bash) Operator
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/airflow/airflow_udemy5/" rel="permalink">[Apache Airflow] Processing Users Using Python Operator
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Processing Users Using Python Operator”
+
+  Action Operator
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -960,7 +1014,7 @@ airflow tasks <span class="nb">test </span>user_processing is_api_available 2022
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          less than 1 minute read
         
       </span>
     
@@ -972,6 +1026,8 @@ airflow tasks <span class="nb">test </span>user_processing is_api_available 2022
 Using API
 
   Sensor Operator
+  Add Connection in Airflow Webserver
+  Test Airflow Task
 
 </p>
   </article>
@@ -1023,99 +1079,6 @@ Airflow Dag
       Test Airflow Task
     
   
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/airflow/airflow_udemy1/" rel="permalink">[Apache Airflow] Airflow Operator
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Airflow Operator
-
-  A task in data pipeline that defines one task
-    
-      to know which task has a problem
-    
-  
-  1) Action Operator: Execute an acti...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/airflow/airflow2/" rel="permalink">[Apache Airflow] Airflow Installation on Local(Mac)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Airflow on Local(Mac)
-
-  Airflow Installation
 
 </p>
   </article>

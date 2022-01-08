@@ -738,14 +738,26 @@ var store = [{
         "teaser": null
       },{
         "title": "[Apache Airflow] Using API",
-        "excerpt":"Using API Sensor Operator Sensor Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py from airflow.models import DAG from airflow.providers.sqlite.operators.sqlite import SqliteOperator # added from airflow.providers.http.sensors.http import HttpSensor from datetime import datetime default_args = { \"start_date\": datetime(2022, 1, 7), } with DAG( 'user_processing', schedule_interval='@daily', default_args=default_args, catchup=False ) as dag: # Define tasks/operators creating_table...","categories": ["AIRFLOW"],
+        "excerpt":"Using API Sensor Operator Add Connection in Airflow Webserver Test Airflow Task Sensor Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py ... from airflow.providers.http.sensors.http import HttpSensor with DAG( ... ) as dag: # Sensor Operator is_api_available = HttpSensor( task_id=\"is_api_available\", http_conn_id=\"user_api\", # the endpoint of the url endpoint=\"api/\" ) Add Connection in Airflow...","categories": ["AIRFLOW"],
         "tags": ["AIRFLOW","DOCKER"],
         "url": "/airflow/airflow_udemy3/",
         "teaser": null
       },{
-        "title": "[Apache Airflow] Using API",
-        "excerpt":"Using API Sensor Operator Sensor Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py from airflow.models import DAG from airflow.providers.sqlite.operators.sqlite import SqliteOperator # added from airflow.providers.http.sensors.http import HttpSensor from datetime import datetime default_args = { \"start_date\": datetime(2022, 1, 7), } with DAG( 'user_processing', schedule_interval='@daily', default_args=default_args, catchup=False ) as dag: # Define tasks/operators creating_table...","categories": ["AIRFLOW"],
+        "title": "[Apache Airflow] Extracting Users Using API",
+        "excerpt":"Extracting Users Using API Action Operator Test Airflow Task Action Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py ... from airflow.providers.http.operators.http import SimpleHttpOperator import json with DAG( ... ) as dag: # Action Operator extracting_user = SimpleHttpOperator( task_id=\"extracting_user\", http_conn_id=\"user_api\", endpoint=\"api/\", # used GET cuz there's no need to send any data method=\"GET\",...","categories": ["AIRFLOW"],
         "tags": ["AIRFLOW","DOCKER"],
         "url": "/airflow/airflow_udemy4/",
+        "teaser": null
+      },{
+        "title": "[Apache Airflow] Processing Users Using Python Operator",
+        "excerpt":"Processing Users Using Python Operator” Action Operator Action Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py ... from airflow.operators.python import PythonOperator from pandas import json_normalize import json # user process method def _processing_user(task_instance): # get data from extracting user users = task_instance.xcom_pull(task_ids=[\"extracting_user\"]) # check error if not len(users) or \"results\" not in...","categories": ["AIRFLOW"],
+        "tags": ["AIRFLOW","DOCKER"],
+        "url": "/airflow/airflow_udemy5/",
+        "teaser": null
+      },{
+        "title": "[Apache Airflow] Storing Users Using Bash Operator",
+        "excerpt":"Storing Users Using Bash Operator” Transfer(Bash) Operator Transfer(Bash) Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py ... from airflow.operators.bash import BashOperator with DAG( ... ) as dag: # Transfer Operator storing_user = BashOperator( task_id=\"storing_user\", bash_command='echo -e \".separator \",\"\\n.import /tmp/processed_user.csv users\" | sqlite3 /Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/airflow/airflow.db' ) Test Airflow Task allows to test a specific...","categories": ["AIRFLOW"],
+        "tags": ["AIRFLOW","DOCKER"],
+        "url": "/airflow/airflow_udemy6/",
         "teaser": null
       }]

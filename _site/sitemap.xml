@@ -501,6 +501,14 @@
 <lastmod>2022-01-08T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/airflow/airflow_udemy5/</loc>
+<lastmod>2022-01-08T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/airflow/airflow_udemy6/</loc>
+<lastmod>2022-01-08T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/storage/2021-09-15-Python_Backend-CH1/</loc>
 </url>
 <url>
@@ -628,5 +636,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/page25/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page26/</loc>
 </url>
 </urlset>
