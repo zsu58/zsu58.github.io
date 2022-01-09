@@ -485,6 +485,10 @@
 <lastmod>2022-01-07T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/airflow/airflow3/</loc>
+<lastmod>2022-01-08T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/airflow/airflow_udemy1/</loc>
 <lastmod>2022-01-08T00:00:00+09:00</lastmod>
 </url>
@@ -507,6 +511,10 @@
 <url>
 <loc>http://localhost:4000/airflow/airflow_udemy6/</loc>
 <lastmod>2022-01-08T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/error/mysql_error1/</loc>
+<lastmod>2022-01-09T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/storage/2021-09-15-Python_Backend-CH1/</loc>
@@ -540,6 +548,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/categories/docker</loc>
+</url>
+<url>
+<loc>http://localhost:4000/categories/error</loc>
 </url>
 <url>
 <loc>http://localhost:4000/categories/java</loc>

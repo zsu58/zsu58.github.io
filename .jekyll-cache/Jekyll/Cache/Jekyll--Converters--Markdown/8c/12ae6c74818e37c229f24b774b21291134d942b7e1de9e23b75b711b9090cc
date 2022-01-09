@@ -1,5 +1,0 @@
-I"<h3 id="docker---jupyter-notebook--pyspark">Docker - Jupyter Notebook &amp; PySpark</h3>
-<p>```bash</p>
-<h1 id="run-container">run container</h1>
-<p>docker container run –name jupyter_pyspark -p 10000:8888 -v $(pwd):/home/jovyan/work jupyter/pyspark-notebook:latest</p>
-:ET

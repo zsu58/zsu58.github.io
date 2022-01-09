@@ -1,0 +1,19 @@
+I"�<hr />
+
+<h3 id="oserror-mysql_config-not-found">OSError: mysql_config not found</h3>
+<ul>
+  <li>상황
+    <ul>
+      <li>Python 가상환경에서 mysqlclient를 설치하고자 함</li>
+      <li>HomeBrew에서 mysql은 최신버전(8.x)으로 설치했음</li>
+      <li>.zshrc에 mysql 환경설정도 함</li>
+      <li>설치 과정에서 OSError: mysql_config not found</li>
+    </ul>
+  </li>
+  <li>해결
+    <ul>
+      <li>mysql을 (5.7)으로 설치</li>
+    </ul>
+  </li>
+</ul>
+:ET

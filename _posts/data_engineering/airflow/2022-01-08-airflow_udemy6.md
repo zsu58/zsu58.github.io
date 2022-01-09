@@ -13,7 +13,7 @@ tags:
 ---
 
 ---
-### Storing Users Using Bash Operator"
+### Storing Users Using Bash Operator
 * Transfer(Bash) Operator
 
 ---
@@ -54,5 +54,3 @@ airflow tasks test user_processing storing_user 2022-01-07
 sqlite3 airflow.db
 SELECT * FROM users;
 ```
-
-

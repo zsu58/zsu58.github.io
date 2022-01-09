@@ -498,7 +498,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Docker] Docker MySql & Postgres",
-        "excerpt":"MySQL &amp; Postgres in Docker # mysql 컨테이너 생성, -p 옵션으로 포트 지정/ 컨테이너 이미지에서 사용할 포트, -e로 환경변수 설정, -d는 백그라운드로 실행한다는 의미 docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=first_db -e MYSQL_USER=carl020958 -e MYSQL_PASSWORD=1234 -d mysql:latest # apple silicon docker run --platform linux/amd64 -p 3306:3306 --name...","categories": ["DOCKER"],
+        "excerpt":"MySQL &amp; Postgres in Docker # mysql container run mkdir ms_db docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_USER=carl020958 -e MYSQL_PASSWORD=1234 -d -v /Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/db/ms_db:/var/lib/mysql mysql:5.7.19 # apple silicon docker run --platform linux/amd64 -p 3306:3306 --name todolist -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=dbname -e MYSQL_USER=carl020958 -e MYSQL_PASSWORD=1234 -d mysql:5.7 # postgresql...","categories": ["DOCKER"],
         "tags": ["SQL","DOCKER"],
         "url": "/docker/docker2/",
         "teaser": null
@@ -725,6 +725,12 @@ var store = [{
         "url": "/airflow/airflow2/",
         "teaser": null
       },{
+        "title": "[Apache Airflow] Airflow DB to Postgres(Docker)",
+        "excerpt":"Airflow DB to Postgres(Docker) 🔗 Airflow Local에 설치 Postgres Container 설치 PostgreSQL DB 및 DB User 생성 airflow.cfg 수정1 pycopg2-binary 설치 airflow db 초기화 airflow.cfg 수정2 Postgres Container 설치 # 폴더 생성 mkdir pg_db # container 생성 docker run -p 5432:5432 --name postgres1 -e POSTGRES_PASSWORD=1234 -d -v /Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/db/pg_db:/var/lib/postgresql/data postgres #...","categories": ["AIRFLOW"],
+        "tags": ["AIRFLOW","DOCKER"],
+        "url": "/airflow/airflow3/",
+        "teaser": null
+      },{
         "title": "[Apache Airflow] Airflow Operator",
         "excerpt":" Airflow Operator     A task in data pipeline that defines one task            to know which task has a problem           1) Action Operator: Execute an action   2) Transfer Operator: Transfer data   3) Sensors: Wait for a condition to be met before executing the next task  ","categories": ["AIRFLOW"],
         "tags": ["AIRFLOW","DOCKER"],
@@ -756,8 +762,14 @@ var store = [{
         "teaser": null
       },{
         "title": "[Apache Airflow] Storing Users Using Bash Operator",
-        "excerpt":"Storing Users Using Bash Operator” Transfer(Bash) Operator Transfer(Bash) Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py ... from airflow.operators.bash import BashOperator with DAG( ... ) as dag: # Transfer Operator storing_user = BashOperator( task_id=\"storing_user\", bash_command='echo -e \".separator \",\"\\n.import /tmp/processed_user.csv users\" | sqlite3 /Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/airflow/airflow.db' ) Test Airflow Task allows to test a specific...","categories": ["AIRFLOW"],
+        "excerpt":"Storing Users Using Bash Operator Transfer(Bash) Operator Transfer(Bash) Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py ... from airflow.operators.bash import BashOperator with DAG( ... ) as dag: # Transfer Operator storing_user = BashOperator( task_id=\"storing_user\", bash_command='echo -e \".separator \",\"\\n.import /tmp/processed_user.csv users\" | sqlite3 /Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/airflow/airflow.db' ) Test Airflow Task allows to test a specific...","categories": ["AIRFLOW"],
         "tags": ["AIRFLOW","DOCKER"],
         "url": "/airflow/airflow_udemy6/",
+        "teaser": null
+      },{
+        "title": "[Error] OSError: mysql_config not found",
+        "excerpt":" OSError: mysql_config not found     상황            Python 가상환경에서 mysqlclient를 설치하고자 함       HomeBrew에서 mysql은 최신버전(8.x)으로 설치했음       .zshrc에 mysql 환경설정도 함       설치 과정에서 OSError: mysql_config not found           해결            mysql을 (5.7)으로 설치             Solution  brew remove mysql brew install mysql@5.7 brew link --force mysql@5.7 echo 'export PATH=\"/usr/local/opt/mysql@5.7/bin:$PATH\"' &gt;&gt; ~/.zshrc   ref     🔗 참고  ","categories": ["ERROR"],
+        "tags": ["MYSQL","PYTHON"],
+        "url": "/error/mysql_error1/",
         "teaser": null
       }]
