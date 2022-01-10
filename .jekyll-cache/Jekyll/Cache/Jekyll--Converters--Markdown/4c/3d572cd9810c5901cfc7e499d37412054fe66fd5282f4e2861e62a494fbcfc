@@ -1,0 +1,33 @@
+I"<hr />
+
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li>Inspecting dataframe
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.info()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">.shape</code></li>
+      <li><code class="language-plaintext highlighter-rouge">.describe</code></li>
+    </ul>
+  </li>
+  <li>Sort
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.sort_values()</code></li>
+    </ul>
+  </li>
+  <li>select
+    <ul>
+      <li>df<code class="language-plaintext highlighter-rouge">[['column1', 'column2']]</code></li>
+    </ul>
+  </li>
+  <li>filter
+    <ul>
+      <li>df<code class="language-plaintext highlighter-rouge">[df[column] == 'condition']</code></li>
+    </ul>
+  </li>
+  <li>mutate
+    <ul>
+      <li>df<code class="language-plaintext highlighter-rouge">[column] = df[column] + 1</code></li>
+    </ul>
+  </li>
+</ul>
+:ET

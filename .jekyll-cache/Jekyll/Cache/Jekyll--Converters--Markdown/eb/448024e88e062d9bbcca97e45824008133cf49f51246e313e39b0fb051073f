@@ -1,0 +1,66 @@
+I"�<hr />
+<h3 id="docker-network1">Docker Network1</h3>
+<ul>
+  <li>Priate &amp; Pulbic Comms in Containers</li>
+  <li>CLI Management of Virtual Networks</li>
+  <li>Docker DNS(Domain Name System) &amp; How Containers Find Each Other</li>
+</ul>
+
+<hr />
+
+<h3 id="priate--pulbic-comms-in-containers">Priate &amp; Pulbic Comms in Containers</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+docker container run <span class="nt">-p</span> 80:80 <span class="nt">--name</span> webhost <span class="nt">-d</span> nginx
+
+<span class="c"># 어떤 host port에서 container port으로 forward되는지 확인 (docker container port [container_name(id)])</span>
+docker container port webhost
+
+<span class="c"># get container IP (docker container inspect --format '{{ NetWorkSettings.IPAddress }}' [container_name(id)])</span>
+docker container inspect <span class="nt">--format</span> <span class="s1">'{{ .NetworkSettings.IPAddress }}'</span> webhost
+
+<span class="c"># check my ip</span>
+ipconfig getifaddr en0
+
+<span class="c"># container IP and my IP is different!</span>
+
+</code></pre></div></div>
+<hr />
+
+<h3 id="cli-management-of-virtual-networks">CLI Management of Virtual Networks</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># show network list</span>
+docker network <span class="nb">ls</span>
+
+<span class="c"># inspect a network (docker container inspect [network_name])</span>
+docker network inspect bridge
+
+<span class="c"># create a network (docker network create --driver), default driver == bridge</span>
+docker network create my_app_net
+
+<span class="c"># my_app_net network에 container 생성 (--network option을 통해 지정)</span>
+docker container run <span class="nt">-d</span> <span class="nt">--name</span> new_nginx <span class="nt">--network</span> my_app_net nginx
+
+<span class="c"># 확인</span>
+docker network inspect my_app_net
+
+<span class="c"># attach a network to container (docker container connect [network_name(id)] [container_name(id)])</span>
+docker network connect a123acbd7d0a webhost
+
+<span class="c"># detach a network from container (docker container disconnect [network_name(id)] [container_name(id)])</span>
+docker network disconnect a123acbd7d0a webhost
+</code></pre></div></div>
+<hr />
+
+<h3 id="docker-dnsdomain-name-system--how-containers-find-each-other">Docker DNS(Domain Name System) &amp; How Containers Find Each Other</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 현재 my_app_net이라는 network에 new_nginx이라는 container만 존재</span>
+
+<span class="c"># create my_nginx container in my_app_net network</span>
+docker container run <span class="nt">-d</span> <span class="nt">--name</span> my_nginx <span class="nt">--network</span> my_app_net nginx:alpine
+
+<span class="c"># send ping from my_nginx to new_nginx (available cuz they are in the same network my_app_net)</span>
+docker container <span class="nb">exec</span> <span class="nt">-it</span> my_nginx ping new_nginx
+
+<span class="c"># recommended to create custom network, docker compose makes this easier</span>
+</code></pre></div></div>
+<hr />
+:ET

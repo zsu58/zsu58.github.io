@@ -1,0 +1,77 @@
+I"r<hr />
+<h3 id="unix-command-line">UNIX COMMAND LINE</h3>
+<ul>
+  <li>UNIX CLI 정리(3)</li>
+  <li><code class="language-plaintext highlighter-rouge">echo</code>를 통해 variable의 name, value을 print할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">=</code>를 통해 shell variable 생성 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">for [variable] in [list] ; do [body] ; done</code>를 통해 for loop 실행</li>
+</ul>
+
+<hr />
+
+<h3 id="echo">echo</h3>
+<ul>
+  <li>variable의 value를 print할 시 <code class="language-plaintext highlighter-rouge">$</code>를 앞에 붙여줘야 함</li>
+  <li>대표적인 variable
+    <ul>
+      <li>OSTYPE : User’s OS type</li>
+      <li>HOME : User’s home directory</li>
+      <li>PWD : User’s present working directory</li>
+      <li>SHELL : Current shell program</li>
+      <li>USER : User’s ID</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">echo</span> <span class="n">USER</span> <span class="c1"># USER
+</span>
+<span class="n">echo</span> <span class="err">$</span><span class="n">USER</span> <span class="c1"># jisu
+</span>
+</code></pre></div></div>
+<hr />
+
+<h3>=</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">=</code> 앞,뒤에 공백이 있으면 안됨</li>
+  <li>assign된 변수를 호출할 때는 <code class="language-plaintext highlighter-rouge">$</code>를 사용해야 함</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># assign iris.cvs as example
+</span><span class="n">example</span><span class="o">=</span><span class="n">iris</span><span class="p">.</span><span class="n">csv</span>
+
+<span class="c1"># print the first line of example(iris.csv)
+</span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="err">$</span><span class="n">example</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="-1">=</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">=</code> 앞,뒤에 공백이 있으면 안됨</li>
+  <li>assign된 변수를 호출할 때는 <code class="language-plaintext highlighter-rouge">$</code>를 사용해야 함</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># assign iris.cvs as example
+</span><span class="n">example</span><span class="o">=</span><span class="n">iris</span><span class="p">.</span><span class="n">csv</span>
+
+<span class="c1"># print the first line of example(iris.csv)
+</span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="err">$</span><span class="n">example</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="for">for</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">for [variable] in [list] ; do [body] ; done</code></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># print all the filename in pwd
+</span><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="o">*</span><span class="p">;</span> <span class="n">do</span> <span class="n">echo</span> <span class="err">$</span><span class="n">filename</span><span class="p">;</span> <span class="n">done</span>
+
+<span class="c1"># print the last row of rows including 2017-07 from all the files in directory seasonal 
+</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">seasonal</span><span class="o">/*</span><span class="p">.</span><span class="n">csv</span><span class="p">;</span> <span class="n">do</span> <span class="n">grep</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">07</span> <span class="err">$</span><span class="n">f</span> <span class="o">|</span> <span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span><span class="p">;</span> <span class="n">done</span>
+
+<span class="c1"># print all the file names and the second row in directory seasonal
+</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">seasonal</span><span class="o">/*</span><span class="p">.</span><span class="n">csv</span><span class="p">;</span> <span class="n">do</span> <span class="n">echo</span> <span class="err">$</span><span class="n">f</span><span class="p">;</span> <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">2</span> <span class="err">$</span><span class="n">f</span> <span class="o">|</span> <span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span><span class="p">;</span> <span class="n">done</span>
+</code></pre></div></div>
+
+<hr />
+:ET

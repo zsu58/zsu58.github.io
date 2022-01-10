@@ -1,0 +1,65 @@
+I"A<hr />
+<h3 id="using-api">Using API</h3>
+<ul>
+  <li>Sensor Operator</li>
+  <li>Add Connection in Airflow Webserver</li>
+  <li>Test Airflow Task</li>
+</ul>
+
+<hr />
+
+<h3 id="sensor-operator">Sensor Operator</h3>
+<ul>
+  <li>path - AIRFLOW_HOME/dag/user_processing.py</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># user_processing.py
+</span><span class="p">...</span>
+<span class="kn">from</span> <span class="nn">airflow.providers.http.sensors.http</span> <span class="kn">import</span> <span class="n">HttpSensor</span>
+
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
+  <span class="p">...</span>
+<span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="c1"># Sensor Operator
+</span>    <span class="n">is_api_available</span> <span class="o">=</span> <span class="n">HttpSensor</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"is_api_available"</span><span class="p">,</span>
+        <span class="n">http_conn_id</span><span class="o">=</span><span class="s">"user_api"</span><span class="p">,</span>
+        <span class="c1"># the endpoint of the url
+</span>        <span class="n">endpoint</span><span class="o">=</span><span class="s">"api/"</span>
+    <span class="p">)</span>
+
+</code></pre></div></div>
+<hr />
+
+<h3 id="add-connection-in-airflow-webserver">Add Connection in Airflow Webserver</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># http provider was pre-installed when installing airflow</span>
+<span class="c"># pip3 install 'apache-airflow-providers-http'</span>
+
+<span class="c"># airflow webserver - Admin - Connections - + (추가)</span>
+<span class="c"># 1) Conn Id: python dag파일의 sqlite_conn_id 이름</span>
+user_api
+<span class="c"># 2) Conn Type: 해당하는 connection</span>
+HTTP
+<span class="c"># 3) description: 자유롭게 작성</span>
+API <span class="k">for </span>getting <span class="nb">users</span>
+<span class="c"># 4) Host: API URL address (endpoint는 dag file에 존재(api/))</span>
+https://randomuser.me/
+<span class="c"># 확인</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="test-airflow-task">Test Airflow Task</h3>
+<ul>
+  <li>allows to test a specific task
+    <ul>
+      <li>1) without checking for dependencies</li>
+      <li>2) neither storing any medata related to the task</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># test my task (airflow tasks test [py_file] [dag_name] [execution_date])</span>
+airflow tasks <span class="nb">test </span>user_processing is_api_available 2022-01-07
+</code></pre></div></div>
+:ET

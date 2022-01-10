@@ -1,0 +1,18 @@
+I"K<hr />
+
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li>Slicing and Indexing DataFrames
+    <ul>
+      <li>pandas에는 index와 loc을 사용해 더 깔끔한 코드로 subsetting을 수 있음</li>
+      <li>그러나 data가 index로 활용된 측면에서 이는 tidy data는 아님(이 문제는 .reset_index를 통해 해결 가능)</li>
+      <li>개인적으로 dataframe 정렬 후 slicing을 통해 dataframe을 subsetting할 때 유용할 수 있을 것이라고 생각</li>
+      <li><code class="language-plaintext highlighter-rouge">.set_index()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">.reset_index()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">.loc()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">.sort_index()</code></li>
+    </ul>
+  </li>
+</ul>
+
+:ET

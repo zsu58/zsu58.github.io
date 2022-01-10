@@ -1,0 +1,13 @@
+I"�<hr />
+
+<h3 id="airflow-db-to-postgresdocker">Airflow DB to Postgres(Docker)</h3>
+<ul>
+  <li><a href="https://carl020958.github.io/airflow/airflow2/">🔗 Airflow Local에 설치</a></li>
+  <li>Postgres Container 설치</li>
+  <li>PostgreSQL DB 및 DB User 생성</li>
+  <li>airflow.cfg 수정1</li>
+  <li>pycopg2-binary 설치</li>
+  <li>airflow db 초기화</li>
+  <li>airflow.cfg 수정2</li>
+</ul>
+:ET

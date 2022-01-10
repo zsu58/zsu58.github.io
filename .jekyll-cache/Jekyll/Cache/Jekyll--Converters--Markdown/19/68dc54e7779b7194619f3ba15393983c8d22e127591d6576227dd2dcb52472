@@ -1,0 +1,13 @@
+I"�<hr />
+<h3 id="sql-übung">SQL Übung</h3>
+<ul>
+  <li>SQL JOIN 문법 정리(4)</li>
+  <li>Subquery - <code class="language-plaintext highlighter-rouge">WHERE</code> or <code class="language-plaintext highlighter-rouge">HAVING</code>/ <code class="language-plaintext highlighter-rouge">SELECT</code>/ <code class="language-plaintext highlighter-rouge">FROM</code> 안에 쿼리를 쓰는 것</li>
+  <li><code class="language-plaintext highlighter-rouge">ANY</code>/<code class="language-plaintext highlighter-rouge">SOME</code> : 하나라도 조건을 만족하는 경우가 있으면 반환</li>
+  <li><code class="language-plaintext highlighter-rouge">ALL</code> : 모든 조건을 만족하는 경우가 있으면 반환</li>
+  <li>Subquery는 독자적으로도 실행 가능한 비상관 코드와, 그렇지 않은 상관 코드로 구분할 수 있음</li>
+  <li>비상관 코드의 경우 각 Row에 대하여 Subquery가 실행된 결과를 반환</li>
+  <li><code class="language-plaintext highlighter-rouge">EXISTS</code> : 존재하면 반환</li>
+  <li><code class="language-plaintext highlighter-rouge">NOT EXISTS</code> : 존재하지 않으면 반환</li>
+</ul>
+:ET

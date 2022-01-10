@@ -1,0 +1,36 @@
+I"�<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 정리(27)</li>
+</ul>
+
+<hr />
+
+<h3 id="divide--conquer">Divide &amp; Conquer</h3>
+<ul>
+  <li>리스트에는 며칠 동안의 수익이 담겨 있습니다.</li>
+  <li>예를 들어서 [7, -3, 4, -8]이라면 첫 날에는 7달러를 벌었고, 둘째 날에는 3달러를 잃었고, 셋째 날에는 4달러를 벌었고, 마지막 날에는 8달러를 잃은 것입니다.</li>
+  <li>profits를 파라미터로 받아, 최대 수익을 내는 구간의 수익을 리턴 sublist_max 함수를 구현하시오.</li>
+  <li>함수의 시간 복잡도는 O(n)여야 함.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sublist_max</span><span class="p">(</span><span class="n">profits</span><span class="p">):</span>
+    <span class="n">max_profit_so_far</span> <span class="o">=</span> <span class="n">profits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">max_check</span> <span class="o">=</span> <span class="n">profits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">profits</span><span class="p">)):</span>
+        <span class="n">max_check</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_check</span> <span class="o">+</span> <span class="n">profits</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">profits</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        
+        <span class="n">max_profit_so_far</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_profit_so_far</span><span class="p">,</span> <span class="n">max_check</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">max_profit_so_far</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">sublist_max</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sublist_max</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+7
+</code></pre></div></div>
+
+<hr />
+:ET

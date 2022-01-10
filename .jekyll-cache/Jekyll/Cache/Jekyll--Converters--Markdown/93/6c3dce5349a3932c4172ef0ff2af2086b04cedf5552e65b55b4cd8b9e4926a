@@ -1,0 +1,38 @@
+I"�<hr />
+<h3 id="mysql--postgres-in-docker">MySQL &amp; Postgres in Docker</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mysql container run</span>
+<span class="nb">mkdir </span>ms_db
+
+docker run <span class="nt">-p</span> 3306:3306 <span class="nt">--name</span> mysql1 <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-e</span> <span class="nv">MYSQL_USER</span><span class="o">=</span>carl020958 <span class="nt">-e</span> <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> <span class="nt">-v</span> /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/db/ms_db:/var/lib/mysql mysql:5.7.19
+
+<span class="c"># postgresql container run</span>
+<span class="nb">mkdir </span>pg_db
+
+docker run <span class="nt">-p</span> 5432:5432 <span class="nt">--name</span> postgres1 <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> <span class="nt">-v</span> /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/db/pg_db:/var/lib/postgresql/data postgres
+</code></pre></div></div>
+<hr />
+
+<h3 id="docker-mysql-sql-dump">DOCKER MYSQL sql dump</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># local directory에서 docker container으로 cp (docker cp [file/directory] [container_id:/home])</span>
+docker <span class="nb">cp </span>emp fad2828c2116:/home
+docker <span class="nb">cp </span>employees fad2828c2116:/home
+
+<span class="c"># docker을 통해 MySQL 서버에 로그인 (docker exec -it [mysql container_name(id)] bash)</span>
+docker <span class="nb">exec</span> <span class="nt">-it</span> mysql1 bash
+
+<span class="c"># mysql -p</span>
+mysql <span class="nt">-p</span>
+
+<span class="c"># enter password</span>
+1234
+
+<span class="c"># mysql 서버에서 실행</span>
+<span class="nb">source </span>home/emp/createTable.sql
+<span class="nb">source </span>home/emp/insertTable.sql
+soure home/employees/employees.sql
+<span class="c"># employees.sql의 source의 directory 확인!</span>
+</code></pre></div></div>
+<hr />
+:ET

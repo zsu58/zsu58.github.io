@@ -1,0 +1,6 @@
+I"˜<hr />
+<h3 id="docker-cleaning-up">Docker Cleaning Up</h3>
+<ul>
+  <li>prune command to clean up images, volumes, build cache, and containers</li>
+</ul>
+:ET

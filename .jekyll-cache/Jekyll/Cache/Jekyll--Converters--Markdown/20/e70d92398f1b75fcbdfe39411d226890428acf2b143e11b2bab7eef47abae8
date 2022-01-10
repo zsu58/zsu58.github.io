@@ -1,0 +1,80 @@
+I"p<hr />
+<h3 id="docker-persistent-data">Docker Persistent Data</h3>
+<ul>
+  <li>containers are usually immutable(unchangeable) &amp; ephemeral(temporary)</li>
+  <li>which means that containers should never change when containers are re-deployed</li>
+  <li>then the problem arises for unique data like databases</li>
+  <li>these unique data are called persistent data</li>
+  <li><strong>Data Volumes</strong> &amp; <strong>Bind Mounts</strong> is used to solve the problem</li>
+  <li><strong>Data Volumes</strong> - configuration option that creates a special locations outside the container’s union file system to store unique data</li>
+  <li><strong>Bind Mounts</strong> - sharing or mounting a host directory or file into a container</li>
+</ul>
+
+<hr />
+
+<h3 id="data-volumes">Data Volumes</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># pull mysql image </span>
+docker image pull mysql:latest
+
+<span class="c"># run container</span>
+docker container run <span class="nt">-d</span> <span class="nt">--name</span> mysql_test <span class="nt">-e</span> <span class="nv">MYSQL_ALLOW_EMPTY_PASSWORD</span><span class="o">=</span><span class="nb">true </span>mysql:latest
+
+<span class="c"># mysql_test container의 설정 부분, 설정 중 volume을 확인</span>
+docker container inspect mysql_test
+<span class="c"># destination - container가 데이터를 적재한다고 생각하는 곳</span>
+<span class="c"># source - 실제 데이터가 적대되어 있는 곳</span>
+
+<span class="c"># docker container를 통해 만든 모든 데이터를 확인할 수 있음, 이 volume은 container가 삭제되어도 남아 있음</span>
+docker volume <span class="nb">ls</span>
+
+<span class="c"># 하지만 volume이 어떤 volume인지 분간하기가 어렵기에 container을 run할 때 volume에 name을 주는 것이 좋음</span>
+docker container run <span class="nt">-d</span> <span class="nt">--name</span> mysql_test1 <span class="nt">-e</span> <span class="nv">MYSQL_ALLOW_EMPTY_PASSWORD</span><span class="o">=</span><span class="nb">true</span> <span class="nt">-v</span> mysql-db:/var/lib/mysql mysql:latest
+
+<span class="c"># mysql_test2도 mysql_test1과 같은 db를 사용</span>
+docker container run <span class="nt">-d</span> <span class="nt">--name</span> mysql_test2 <span class="nt">-e</span> <span class="nv">MYSQL_ALLOW_EMPTY_PASSWORD</span><span class="o">=</span><span class="nb">true</span> <span class="nt">-v</span> mysql-db:/var/lib/mysql mysql:latest
+</code></pre></div></div>
+<hr />
+
+<h3 id="database-upgrade-practice-using-named-volumes">Database Upgrade Practice Using Named Volumes</h3>
+<ul>
+  <li>Upgrading Database with Named Volumes</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># create a postgres container with named volume psql-data using version 9.6.1</span>
+docker container run <span class="nt">-d</span> <span class="nt">--name</span> postgres_test1 <span class="nt">-v</span> psql-data:/var/lib/postgresql/data postgres:9.6.1
+
+<span class="c"># check log &amp; stop container</span>
+docker container logs postgres_test1
+docker container stop postgres_test1
+
+<span class="c"># create a new postgres container with same named volume psql-data using version 9.6.2</span>
+docker container run <span class="nt">-d</span> <span class="nt">--name</span> postgres_test2 <span class="nt">-v</span> psql-data:/var/lib/postgresql/data postgres:9.6.2
+
+<span class="c"># check log &amp; stop container</span>
+docker container logs postgres_test2
+docker container stop postgres_test2
+</code></pre></div></div>
+<hr />
+
+<h3 id="bind-mounts">Bind Mounts</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># (terminal1) pwd에 index.html 존재 ($(pwd)는 현재 pwd, 즉 현재 wd와 colon 뒤 container의 wd를 일치시킬 것임)</span>
+docker container run <span class="nt">-d</span> <span class="nt">--name</span> nginx <span class="nt">-p</span> 80:80 <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>:/usr/share/nginx/html nginx
+
+<span class="c"># (terminal2) open a new terminal (command+shift+d)</span>
+<span class="c"># (terminal2) get a shell inside nginx container</span>
+docker container <span class="nb">exec</span> <span class="nt">-it</span> nginx bash
+
+<span class="c"># (terminal2) cd</span>
+<span class="nb">cd </span>usr/share/nginx/html
+<span class="nb">ls</span> <span class="nt">-al</span>
+<span class="c"># - you can see Dockerfile &amp; index.html</span>
+
+<span class="c"># (terminal1) make a new file in the original wd</span>
+<span class="nb">touch </span>test.txt
+
+<span class="c"># (terminal2)</span>
+<span class="nb">ls</span> <span class="nt">-al</span>
+<span class="c"># - you can see the test.txt file!</span>
+</code></pre></div></div>
+<hr />
+:ET

@@ -1,0 +1,117 @@
+I"H)<hr />
+<h3 id="putting-order--catch-up">Putting Order &amp; Catch Up</h3>
+<ul>
+  <li>Putting Order</li>
+  <li>Catch Up</li>
+</ul>
+
+<hr />
+
+<h3 id="putting-order">Putting Order</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> between dags to give order</li>
+  <li>path - AIRFLOW_HOME/dag/user_processing.py</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># user_processing.py
+</span><span class="kn">from</span> <span class="nn">airflow.models</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.providers.sqlite.operators.sqlite</span> <span class="kn">import</span> <span class="n">SqliteOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.providers.http.sensors.http</span> <span class="kn">import</span> <span class="n">HttpSensor</span>
+<span class="kn">from</span> <span class="nn">airflow.providers.http.operators.http</span> <span class="kn">import</span> <span class="n">SimpleHttpOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.python</span> <span class="kn">import</span> <span class="n">PythonOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.bash</span> <span class="kn">import</span> <span class="n">BashOperator</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">json_normalize</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">def</span> <span class="nf">_processing_user</span><span class="p">(</span><span class="n">task_instance</span><span class="p">):</span>
+    <span class="n">users</span> <span class="o">=</span> <span class="n">task_instance</span><span class="p">.</span><span class="n">xcom_pull</span><span class="p">(</span><span class="n">task_ids</span><span class="o">=</span><span class="p">[</span><span class="s">"extracting_user"</span><span class="p">])</span>
+    <span class="c1"># check error
+</span>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">users</span><span class="p">)</span> <span class="ow">or</span> <span class="s">"results"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">users</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"User is empty"</span><span class="p">)</span>
+    
+    <span class="c1"># store the data in user
+</span>    <span class="n">user</span> <span class="o">=</span> <span class="n">users</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">"results"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># get user data of interest
+</span>    <span class="n">processed_user</span> <span class="o">=</span> <span class="n">json_normalize</span><span class="p">({</span>
+        <span class="s">"firstname"</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s">"name"</span><span class="p">][</span><span class="s">"first"</span><span class="p">],</span>
+        <span class="s">"lastname"</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s">"name"</span><span class="p">][</span><span class="s">"last"</span><span class="p">],</span>
+        <span class="s">"country"</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s">"location"</span><span class="p">][</span><span class="s">"country"</span><span class="p">],</span>
+        <span class="s">"username"</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s">"login"</span><span class="p">][</span><span class="s">"username"</span><span class="p">],</span>
+        <span class="s">"password"</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s">"login"</span><span class="p">][</span><span class="s">"password"</span><span class="p">],</span>
+        <span class="s">"email"</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s">"email"</span><span class="p">]</span>
+    <span class="p">})</span>
+
+    <span class="n">path</span> <span class="o">=</span> <span class="s">"/Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/airflow1/tmp/processed_user.csv"</span>
+    <span class="n">processed_user</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"start_date"</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
+    <span class="s">'user_processing'</span><span class="p">,</span>
+    <span class="n">schedule_interval</span><span class="o">=</span><span class="s">'@daily'</span><span class="p">,</span>
+    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+    <span class="n">catchup</span><span class="o">=</span><span class="bp">True</span>
+<span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="c1"># Transfer Operator
+</span>    <span class="n">creating_table</span> <span class="o">=</span> <span class="n">SqliteOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"creating_table"</span><span class="p">,</span>
+        <span class="n">sqlite_conn_id</span><span class="o">=</span><span class="s">"db_sqlite"</span><span class="p">,</span>
+        <span class="n">sql</span><span class="o">=</span><span class="s">"""
+            CREATE TABLE IF NOT EXISTS users (
+                firstname TEXT NOT NULL,
+                lastname TEXT NOT NULL,
+                country TEXT NOT NULL,
+                username TEXT NOT NULL,
+                password TEXT NOT NULL,
+                email TEXT NOT NULL PRIMARY KEY
+            );
+            """</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Sensor Operator
+</span>    <span class="n">is_api_available</span> <span class="o">=</span> <span class="n">HttpSensor</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"is_api_available"</span><span class="p">,</span>
+        <span class="n">http_conn_id</span><span class="o">=</span><span class="s">"user_api"</span><span class="p">,</span>
+        <span class="n">endpoint</span><span class="o">=</span><span class="s">"api/"</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Action Operator
+</span>    <span class="n">extracting_user</span> <span class="o">=</span> <span class="n">SimpleHttpOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"extracting_user"</span><span class="p">,</span>
+        <span class="n">http_conn_id</span><span class="o">=</span><span class="s">"user_api"</span><span class="p">,</span>
+        <span class="n">endpoint</span><span class="o">=</span><span class="s">"api/"</span><span class="p">,</span>
+        <span class="c1"># used GET cuz there's no need to send any data
+</span>        <span class="n">method</span><span class="o">=</span><span class="s">"GET"</span><span class="p">,</span>
+        <span class="c1"># get the text and bring it in json form
+</span>        <span class="n">response_filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">response</span><span class="p">:</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">),</span>
+        <span class="c1"># print the response
+</span>        <span class="n">log_response</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Action Operator
+</span>    <span class="n">processing_user</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"processing_user"</span><span class="p">,</span>
+        <span class="n">python_callable</span><span class="o">=</span><span class="n">_processing_user</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Transfer Operator
+</span>    <span class="n">storing_user</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"storing_user"</span><span class="p">,</span>
+        <span class="n">bash_command</span><span class="o">=</span><span class="s">'echo -e ".separator ","</span><span class="se">\n</span><span class="s">.import /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/airflow1/tmp/processed_user.csv users" | sqlite3 /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/airflow1/airflow.db'</span>
+    <span class="p">)</span>
+
+<span class="n">creating_table</span> <span class="o">&gt;&gt;</span> <span class="n">is_api_available</span> <span class="o">&gt;&gt;</span> <span class="n">extracting_user</span> <span class="o">&gt;&gt;</span> <span class="n">processing_user</span> <span class="o">&gt;&gt;</span> <span class="n">storing_user</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="catch-up">Catch Up</h3>
+<ul>
+  <li>기본적으로 Airflow의 Catch Up은 True임</li>
+  <li>Catch Up이 True인 경우, 마지막 execution date 이후로 catch up을 함</li>
+</ul>
+:ET

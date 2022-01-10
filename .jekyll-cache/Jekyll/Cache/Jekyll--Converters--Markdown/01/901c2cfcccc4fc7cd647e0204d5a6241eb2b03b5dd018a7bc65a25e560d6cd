@@ -1,0 +1,129 @@
+I"')<hr />
+<p><b>깔끔한 파이썬 탄탄한 백엔드</b></p>
+<h3 id="ch1-파이썬-설치-및-개발-환경-구성">CH1 파이썬 설치 및 개발 환경 구성</h3>
+<ul>
+  <li>홈브루/파이썬/파이썬 가상 환경/ 터미널/ 깃/ 셸/ 에디터 설치 (Mac 기준)</li>
+</ul>
+
+<hr />
+
+<h3 id="homebrew--python3">Homebrew &amp; Python3</h3>
+<ul>
+  <li>Homebrew는 명령어 인터페이스(CLI) 환경에서 패키지를 설치할 때 사용되는 패키지 관리자 프로그램</li>
+  <li>Homebrew는 기본적으로 맥에 미리 설치되어 있음, 만약 설치되어 있지 않다면 아래 코드 참고</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 홈브루 설치 명령어
+</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s">"(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 홈브루 통한 파이썬 설치
+</span><span class="n">brew</span> <span class="n">install</span> <span class="n">python</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="python-virtual-environment">Python Virtual Environment</h3>
+<ul>
+  <li>Anaconda와 Miniconda 중 선택, Anaconda가 용량이 더 크며 특히 Data Science 분야 프로젝트시 필요</li>
+  <li>https://docs.conda.io/en/latest/miniconda.html #miniconda</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 파일 다운로드 완료 후 다음의 명령어 입력
+</span><span class="n">bash</span> <span class="p">.</span><span class="o">/</span><span class="n">Miniconda30</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">MacOSX</span><span class="o">-</span><span class="n">x86_64</span><span class="p">.</span><span class="n">sh</span>
+
+<span class="c1"># 설치 완료 후 다음 명령어 입력 콘다 제대로 작동하는지 확인
+</span><span class="n">conda</span> <span class="nb">list</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="terminal">Terminal</h3>
+<ul>
+  <li>https://iterm2.com</li>
+  <li>색상 테마 변경 : Preference ➡️ Profiles ➡️ Colors ➡️ Color Presets</li>
+  <li>iTerm의 색 메타 페이지(https://github.com/mbadolato/iTerm2-Color-Schemes)를 통해 다른 색상 테마 선택 가능</li>
+</ul>
+
+<hr />
+
+<h3 id="git">Git</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 홈브루 이용하여 설치
+</span><span class="n">homebrew</span> <span class="n">install</span> <span class="n">git</span>
+
+<span class="c1"># 설치 잘 되었는지 확인
+</span><span class="n">git</span> <span class="o">--</span><span class="n">version</span>
+
+<span class="c1"># 깃에서 사용할 사용자 이름 &amp; 이메일 설정
+</span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="s">'ZSU'</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="p">.</span><span class="n">email</span> <span class="s">'carl020958@korea.ac.kr'</span>
+
+<span class="c1">#Git 관련 터미널 툴
+# 1)TIG(깃 커밋 히스토리를 터미널에서 보여주는 툴)
+</span><span class="n">homebrew</span> <span class="n">install</span> <span class="n">tig</span>
+
+<span class="c1"># 2)Diff So Fancy(git diff의 출력 화면을 터미널상에서 더 보기 쉽게 출력해주는 깃 플러그인)
+</span><span class="n">brew</span> <span class="n">install</span> <span class="n">diff</span><span class="o">-</span><span class="n">so</span><span class="o">-</span><span class="n">fancy</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="shell">Shell</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ZSH
+</span><span class="n">brew</span> <span class="n">install</span> <span class="n">zsh</span> <span class="n">zsh</span><span class="o">-</span><span class="n">completions</span>
+
+<span class="c1"># 설치 완료 후 default shell 변경
+</span><span class="n">sudo</span> <span class="o">-</span><span class="n">s</span> <span class="s">'echo /usr/local/bin/zsh &gt;&gt; /etc/shells'</span> <span class="o">&amp;&amp;</span> <span class="n">chsh</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">zsh</span> 
+
+<span class="c1"># 터미널 창을 닫고 새로 열면 ZSH이 default shell로 변경됨
+# 다음 명령어를 통해 ZSHdㅣ 정상적으로 default shell로 변경됐는지 확인
+</span><span class="n">echo</span> <span class="err">$</span><span class="n">SHELL</span>
+
+<span class="c1"># Oh My Zsh
+</span><span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s">"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span>
+
+<span class="c1"># .zshrc 파일 수정시 다음 명령어 입력
+</span><span class="n">vim</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span>
+
+<span class="c1"># ZSH plugin 중 zsh-syntax-highlighting &amp; history-substring-search 추천
+</span>
+<span class="c1"># ZSH로 변경 후 CONDA가 실행되지 않는 경우, ZSH상에서 콘다의 경로를 PATH 환경 변수에 포함
+</span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s">"/Users/ZSU/Miniconda3/bin:$PATH
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># plugin 'zsh-autosuggestion' not found 해결
+# 1) 설치(terminal)
+</span><span class="n">brew</span> <span class="n">install</span> <span class="n">zsh</span><span class="o">-</span><span class="n">autosuggestions</span>
+
+<span class="c1"># 2) 설치2(terminal)
+</span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">users</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">autosuggestions</span> <span class="err">$</span><span class="p">{</span><span class="n">ZSH_CUSTOM</span><span class="p">:</span><span class="o">-~/</span><span class="p">.</span><span class="n">oh</span><span class="o">-</span><span class="n">my</span><span class="o">-</span><span class="n">zsh</span><span class="o">/</span><span class="n">custom</span><span class="p">}</span><span class="o">/</span><span class="n">plugins</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">autosuggestions</span>
+
+<span class="c1"># 3) .zshrc plugin에 추가(vim ~/.zshrc)
+</span><span class="n">plugins</span><span class="o">=</span><span class="p">(</span> <span class="p">[</span><span class="n">plugins</span><span class="p">...]</span> <span class="n">zsh</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">highlighting</span><span class="p">)</span>
+
+<span class="c1"># 4) 업데이트(terminal)
+</span><span class="n">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span>
+
+<span class="c1"># plugin 'zsh-syntax-highlighting' not found 해결
+# 1) 설치(terminal)
+</span><span class="n">brew</span> <span class="n">install</span> <span class="n">zsh</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">highlighting</span>
+
+<span class="c1"># 2) 설치2(terminal)
+</span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">users</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">highlighting</span><span class="p">.</span><span class="n">git</span> <span class="err">$</span><span class="p">{</span><span class="n">ZSH_CUSTOM</span><span class="p">:</span><span class="o">-~/</span><span class="p">.</span><span class="n">oh</span><span class="o">-</span><span class="n">my</span><span class="o">-</span><span class="n">zsh</span><span class="o">/</span><span class="n">custom</span><span class="p">}</span><span class="o">/</span><span class="n">plugins</span><span class="o">/</span><span class="n">zsh</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">highlighting</span>
+
+<span class="c1"># 3) plugin에 추가(vim ~/.zshrc)
+</span> <span class="n">plugins</span><span class="o">=</span><span class="p">([</span><span class="n">plugins</span><span class="p">...]</span> <span class="n">zsh</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">highlighting</span><span class="p">)</span>
+
+<span class="c1"># 4) 업데이트(terminal)
+</span><span class="n">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="editor">Editor</h3>
+<ul>
+  <li>sublime text (https://www.sublimetext.com)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 저자는 VIM 추천(다른 IDE가 다양한 기능 제공해 오히려 언어의 숙련도를 높이는 데 방해되기에)
+</span><span class="n">brew</span> <span class="n">install</span> <span class="n">vim</span>
+</code></pre></div></div>
+:ET

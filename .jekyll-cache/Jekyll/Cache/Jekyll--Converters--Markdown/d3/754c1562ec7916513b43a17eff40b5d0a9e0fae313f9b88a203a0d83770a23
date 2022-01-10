@@ -1,0 +1,18 @@
+I"�<hr />
+
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 스터디(2)</li>
+  <li>탐색
+    <ul>
+      <li><strong>완전탐색(Brute-Force)</strong></li>
+      <li><strong>이분탐색(Binary Search)</strong></li>
+      <li>깊이우선탐색(Depth First Search)</li>
+      <li>너비우선탐색(Breadth First Search)</li>
+      <li>문자열탐색</li>
+      <li>KMP(Knuth-Morris-Pratt)</li>
+      <li>BM(Boyer-Moore)</li>
+    </ul>
+  </li>
+</ul>
+:ET

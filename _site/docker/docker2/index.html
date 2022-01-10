@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">129</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">130</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -528,7 +528,7 @@
                     
                 
                     
-                        <li><a href="/categories/airflow" class="">Airflow (9)</a></li>
+                        <li><a href="/categories/airflow" class="">Airflow (10)</a></li>
                     
                 
                     
@@ -826,15 +826,12 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mysql container run</span>
 <span class="nb">mkdir </span>ms_db
 
-docker run <span class="nt">-p</span> 3306:3306 <span class="nt">--name</span> mysql1 <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-e</span> <span class="nv">MYSQL_USER</span><span class="o">=</span>carl020958 <span class="nt">-e</span> <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> <span class="nt">-v</span> /Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/db/ms_db:/var/lib/mysql mysql:5.7.19
+docker run <span class="nt">-p</span> 3306:3306 <span class="nt">--name</span> mysql1 <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-e</span> <span class="nv">MYSQL_USER</span><span class="o">=</span>carl020958 <span class="nt">-e</span> <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> <span class="nt">-v</span> /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/db/ms_db:/var/lib/mysql mysql:5.7.19
 
-<span class="c"># apple silicon</span>
-docker run <span class="nt">--platform</span> linux/amd64 <span class="nt">-p</span> 3306:3306 <span class="nt">--name</span> todolist <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-e</span> <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>dbname <span class="nt">-e</span> <span class="nv">MYSQL_USER</span><span class="o">=</span>carl020958 <span class="nt">-e</span> <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> mysql:5.7
-        
-<span class="c"># postgresql container 생성</span>
+<span class="c"># postgresql container run</span>
 <span class="nb">mkdir </span>pg_db
 
-docker run <span class="nt">-p</span> 5432:5432 <span class="nt">--name</span> postgres1 <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> <span class="nt">-v</span> /Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/db/pg_db:/var/lib/postgresql/data postgres
+docker run <span class="nt">-p</span> 5432:5432 <span class="nt">--name</span> postgres1 <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> <span class="nt">-v</span> /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/db/pg_db:/var/lib/postgresql/data postgres
 </code></pre></div></div>
 <hr />
 
@@ -1001,6 +998,52 @@ OSError: mysql_config not found
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/airflow/airflow_udemy7/" rel="permalink">[Apache Airflow] Putting Order &amp; Catch Up
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Putting Order &amp; Catch Up
+
+  Putting Order
+  Catch Up
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/airflow/airflow_udemy6/" rel="permalink">[Apache Airflow] Storing Users Using Bash Operator
 </a>
       
@@ -1076,52 +1119,6 @@ Storing Users Using Bash Operator
 Processing Users Using Python Operator”
 
   Action Operator
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/airflow/airflow_udemy4/" rel="permalink">[Apache Airflow] Extracting Users Using API
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Extracting Users Using API
-
-  Action Operator
-  Test Airflow Task
 
 </p>
   </article>
