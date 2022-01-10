@@ -51,7 +51,7 @@ def _processing_user(task_instance):
     })
   
     # .to_csv function from pandas throw error if directory doesn't exist
-    path = "/Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/airflow/tmp/processed_user.csv"
+    path = "/Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/airflow1/tmp/processed_user.csv"
     processed_user.to_csv(path, index=None, header=False)
 
 with DAG(

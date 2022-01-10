@@ -50,7 +50,7 @@ with DAG(
 
 # airflow webserver - Admin - Connections - + (추가)
 # 1) Conn Id: python dag파일의 sqlite_conn_id 이름
-is_api_available
+user_api
 # 2) Conn Type: 해당하는 connection
 HTTP
 # 3) description: 자유롭게 작성

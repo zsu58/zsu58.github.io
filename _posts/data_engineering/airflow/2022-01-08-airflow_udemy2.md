@@ -76,7 +76,7 @@ Sqlite
 # 3) description: 자유롭게 작성
 sqlite connection to the db
 # 4) Host: airflow.db의 path
-/Users/jisu/Dropbox_Carl/Dropbox/JISU/DE/airflow/airflow.db
+/Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/airflow1/airflow.db
 # 확인
 ```
 ---
