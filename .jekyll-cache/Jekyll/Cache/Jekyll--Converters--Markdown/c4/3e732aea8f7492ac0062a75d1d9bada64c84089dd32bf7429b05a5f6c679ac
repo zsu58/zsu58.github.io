@@ -1,4 +1,4 @@
-I"H)<hr />
+I"J)<hr />
 <h3 id="putting-order--catch-up">Putting Order &amp; Catch Up</h3>
 <ul>
   <li>Putting Order</li>
@@ -9,7 +9,7 @@
 
 <h3 id="putting-order">Putting Order</h3>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> between dags to give order</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> - between dags to give order</li>
   <li>path - AIRFLOW_HOME/dag/user_processing.py</li>
 </ul>
 

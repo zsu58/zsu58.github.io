@@ -768,7 +768,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Apache Airflow] Putting Order & Catch Up",
-        "excerpt":"Putting Order &amp; Catch Up Putting Order Catch Up Putting Order &gt;&gt; between dags to give order path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py from airflow.models import DAG from airflow.providers.sqlite.operators.sqlite import SqliteOperator from airflow.providers.http.sensors.http import HttpSensor from airflow.providers.http.operators.http import SimpleHttpOperator from airflow.operators.python import PythonOperator from airflow.operators.bash import BashOperator from datetime import datetime...","categories": ["AIRFLOW"],
+        "excerpt":"Putting Order &amp; Catch Up Putting Order Catch Up Putting Order &gt;&gt; - between dags to give order path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py from airflow.models import DAG from airflow.providers.sqlite.operators.sqlite import SqliteOperator from airflow.providers.http.sensors.http import HttpSensor from airflow.providers.http.operators.http import SimpleHttpOperator from airflow.operators.python import PythonOperator from airflow.operators.bash import BashOperator from datetime import...","categories": ["AIRFLOW"],
         "tags": ["AIRFLOW","DOCKER"],
         "url": "/airflow/airflow_udemy7/",
         "teaser": null
@@ -777,5 +777,11 @@ var store = [{
         "excerpt":" OSError: mysql_config not found     상황            Python 가상환경에서 mysqlclient를 설치하고자 함       HomeBrew에서 mysql은 최신버전(8.x)으로 설치했음       .zshrc에 mysql 환경설정도 함       설치 과정에서 OSError: mysql_config not found           해결            mysql을 (5.7)으로 설치             Solution  brew remove mysql brew install mysql@5.7 brew link --force mysql@5.7 echo 'export PATH=\"/usr/local/opt/mysql@5.7/bin:$PATH\"' &gt;&gt; ~/.zshrc    ref     🔗 참고  ","categories": ["ERROR"],
         "tags": ["MYSQL","PYTHON"],
         "url": "/error/mysql_error1/",
+        "teaser": null
+      },{
+        "title": "[Error] ERROR 1366 (HY000): Incorrect string value: \\xEC\\x9D\\xB4\\xEB\\xAF\\xB8",
+        "excerpt":" ERROR 1366 (HY000): Incorrect string value: ‘\\xEC\\x9D\\xB4\\xEB\\xAF\\xB8     상황            MySQL에서 테이블에 INSERT 시 에러 발생       원인 - 한글로 된 데이터를 입력           해결            Table의 Charset 지정             Solution  ALTER TABLE member CONVERT TO CHARSET UTF8;    ref     🔗 참고  ","categories": ["ERROR"],
+        "tags": ["MYSQL","PYTHON"],
+        "url": "/error/mysql_error2/",
         "teaser": null
       }]

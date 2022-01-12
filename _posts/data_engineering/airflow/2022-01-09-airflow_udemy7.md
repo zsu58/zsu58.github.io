@@ -20,7 +20,7 @@ tags:
 ---
 
 ### Putting Order
-* `>>` between dags to give order
+* `>>` - between dags to give order
 * path - AIRFLOW_HOME/dag/user_processing.py
 
 ```python

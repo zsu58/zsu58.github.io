@@ -1,0 +1,17 @@
+I"�<hr />
+
+<h3 id="error-1366-hy000-incorrect-string-value-xecx9dxb4xebxafxb8">ERROR 1366 (HY000): Incorrect string value: ‘\xEC\x9D\xB4\xEB\xAF\xB8</h3>
+<ul>
+  <li>상황
+    <ul>
+      <li>MySQL에서 테이블에 INSERT 시 에러 발생</li>
+      <li>원인 - 한글로 된 데이터를 입력</li>
+    </ul>
+  </li>
+  <li>해결
+    <ul>
+      <li>Table의 Charset 지정</li>
+    </ul>
+  </li>
+</ul>
+:ET
