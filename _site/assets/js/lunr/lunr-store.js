@@ -784,4 +784,10 @@ var store = [{
         "tags": ["MYSQL","PYTHON"],
         "url": "/error/mysql_error2/",
         "teaser": null
+      },{
+        "title": "[Apache Airflow] Airflow - MySQL Data Extract",
+        "excerpt":"Airflow - MySQL Data Extract Required Package Installation Airflow - MySQL(local on Docker) Extract Airflow - MySQL(EC2) Extract Required Package Installation mysql은 homebrew를 통해 설치 및 .zshrc에 환결설정 등록 # venv 실행 후 pip3 install mysql-connector-python pip3 install mysqlclient pip3 install apache-airflow-providers-mysql # mysql provider 설치 확인 airflow providers list...","categories": ["AIRFLOW"],
+        "tags": ["AIRFLOW","DOCKER"],
+        "url": "/airflow/airflow4/",
+        "teaser": null
       }]

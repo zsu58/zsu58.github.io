@@ -1,0 +1,157 @@
+I"�$<hr />
+<h3 id="airflow---mysql-data-extract">Airflow - MySQL Data Extract</h3>
+<ul>
+  <li>Required Package Installation</li>
+  <li>Airflow - MySQL(local on Docker) Extract</li>
+  <li>Airflow - MySQL(EC2) Extract</li>
+</ul>
+
+<hr />
+
+<h3 id="required-package-installation">Required Package Installation</h3>
+<ul>
+  <li>mysql은 homebrew를 통해 설치 및 .zshrc에 환결설정 등록</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># venv 실행 후</span>
+pip3 <span class="nb">install </span>mysql-connector-python
+pip3 <span class="nb">install </span>mysqlclient
+pip3 <span class="nb">install </span>apache-airflow-providers-mysql
+
+<span class="c"># mysql provider 설치 확인</span>
+airflow providers list
+</code></pre></div></div>
+<hr />
+
+<h3 id="airflow---mysqllocal-on-docker-extract">Airflow - MySQL(local on Docker) Extract</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span> <span class="nn">airflow.models</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.sensors.sql</span> <span class="kn">import</span> <span class="n">SqlSensor</span>
+<span class="kn">from</span> <span class="nn">airflow.hooks.mysql_hook</span> <span class="kn">import</span> <span class="n">MySqlHook</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.python</span> <span class="kn">import</span> <span class="n">PythonOperator</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="k">def</span> <span class="nf">_extract_member_from_mysql</span><span class="p">():</span>
+    <span class="c1"># Get hook
+</span>    <span class="n">mysql_server</span> <span class="o">=</span> <span class="n">MySqlHook</span><span class="p">(</span><span class="n">mysql_conn_id</span><span class="o">=</span><span class="s">"mysql_conn"</span><span class="p">)</span>
+    <span class="c1"># Execute query
+</span>    <span class="n">df</span> <span class="o">=</span> <span class="n">mysql_server</span><span class="p">.</span><span class="n">get_pandas_df</span><span class="p">(</span><span class="n">sql</span><span class="o">=</span><span class="s">"SELECT * FROM member;"</span><span class="p">)</span>
+
+    <span class="c1"># Generate unique filename
+</span>    <span class="n">base_file_path</span> <span class="o">=</span> <span class="s">"tmp/member"</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="s">"{}_{}.csv"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">base_file_path</span><span class="p">,</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">().</span><span class="n">strftime</span><span class="p">(</span><span class="s">"%Y-%m-%d-%H-%M-%S"</span><span class="p">))</span>
+    <span class="c1"># save file
+</span>    <span class="n">df</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
+    <span class="s">"member_processing"</span><span class="p">,</span>
+    <span class="n">schedule_interval</span><span class="o">=</span><span class="s">"@daily"</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span>
+    <span class="n">catchup</span><span class="o">=</span><span class="bp">False</span>
+<span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+
+    <span class="c1"># check sql
+</span>    <span class="n">is_sql_available</span> <span class="o">=</span> <span class="n">SqlSensor</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"is_sql_available"</span><span class="p">,</span>
+        <span class="n">conn_id</span><span class="o">=</span><span class="s">"mysql_conn"</span><span class="p">,</span>
+        <span class="n">sql</span><span class="o">=</span><span class="s">"SELECT * FROM member;"</span>
+    <span class="p">)</span>
+
+    <span class="c1"># extract data from mysql
+</span>    <span class="n">extract_member_mysql</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"extract_member_mysql"</span><span class="p">,</span>
+        <span class="n">python_callable</span><span class="o">=</span><span class="n">_extract_member_from_mysql</span>
+    <span class="p">)</span>
+
+<span class="n">is_sql_available</span> <span class="o">&gt;&gt;</span> <span class="n">extract_member_mysql</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Add Connection in Airflow Webserver</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># airflow webserver - Admin - Connections - + (추가)</span>
+<span class="c"># 1) Conn Id: python dag파일의 mysql_conn_id 이름</span>
+mysql_conn
+<span class="c"># 2) Conn Type: 해당하는 connection</span>
+MySQL
+<span class="c"># 3) description: 자유롭게 작성</span>
+Connection to <span class="nb">local </span>MySQL
+<span class="c"># 4) Host:</span>
+0.0.0.0
+<span class="c"># 5) Schema: DB 스키마</span>
+airflow
+<span class="c"># 6) Login: DB id</span>
+root
+<span class="c"># 7) Password: DB password </span>
+1234
+<span class="c"># 8) Port:</span>
+3306
+<span class="c"># 확인</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="airflow---mysqlec2-extract">Airflow - MySQL(EC2) Extract</h3>
+<ul>
+  <li>위에서 mysql_conn_id만 바꾸기</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="k">def</span> <span class="nf">_extract_member_from_mysql</span><span class="p">():</span>
+    <span class="c1"># Get hook
+</span>    <span class="n">mysql_server</span> <span class="o">=</span> <span class="n">MySqlHook</span><span class="p">(</span><span class="n">mysql_conn_id</span><span class="o">=</span><span class="s">"ec2_mysql_conn"</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
+    <span class="s">"ec2_member_processing"</span><span class="p">,</span>
+<span class="p">...</span>
+<span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+
+    <span class="n">is_sql_available</span> <span class="o">=</span> <span class="n">SqlSensor</span><span class="p">(</span>
+        <span class="p">...</span>
+        <span class="n">conn_id</span><span class="o">=</span><span class="s">"ec2_mysql_conn"</span><span class="p">,</span>
+        <span class="p">...</span>
+    <span class="p">)</span>
+<span class="p">...</span>
+
+<span class="n">is_sql_available</span> <span class="o">&gt;&gt;</span> <span class="n">extract_member_mysql</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Add Connection in Airflow Webserver</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># airflow webserver - Admin - Connections - + (추가)</span>
+<span class="c"># 1) Conn Id: python dag파일의 mysql_conn_id 이름</span>
+ec2_mysql_conn
+<span class="c"># 2) Conn Type: 해당하는 connection</span>
+MySQL
+<span class="c"># 3) description: 자유롭게 작성</span>
+Connection to ec2 MySQL
+<span class="c"># 4) Host:</span>
+ec2-15-164-164-229.ap-northeast-2.compute.amazonaws.com
+<span class="c"># 5) Schema: DB 스키마</span>
+airflow
+<span class="c"># 6) Login: DB id</span>
+jisu
+<span class="c"># 7) Password: DB password </span>
+<span class="k">********</span>
+<span class="c"># 8) Port:</span>
+3306
+<span class="c"># 확인</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="ref">ref</h3>
+<ul>
+  <li><a href="https://airflow.apache.org/docs/apache-airflow-providers-mysql/stable/index.html">🔗 apache-airflow-providers-mysql 설치</a></li>
+  <li><a href="https://airflow.apache.org/docs/apache-airflow-providers-mysql/stable/operators.html">🔗 MySQLOperator 공식문서</a></li>
+  <li><a href="https://airflow.apache.org/docs/apache-airflow-providers-mysql/stable/_modules/airflow/providers/mysql/example_dags/example_mysql.html">🔗 MySQLOperator 예제 공식문서</a></li>
+  <li><a href="https://www.codestudyblog.com/cnb2004/0412094950.html">🔗 참고블로그1</a></li>
+  <li><a href="https://www.astronomer.io/guides/airflow-sql-tutorial">🔗 참고블로그2</a></li>
+  <li><a href="https://stackoverflow.com/questions/61555430/how-to-do-store-sql-output-to-pandas-dataframe-using-airflow">🔗 참고자료1</a></li>
+</ul>
+
+:ET
