@@ -261,7 +261,7 @@ def solution(board):
 ### 방문 길이
 * 16/12/2021
 <p align="center">
-    <img src="/img/backend/algorithm/coding_test/coding_test70.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test71.png" align="center">
 </p>
 ```python
 def solution(dirs):
@@ -294,6 +294,23 @@ def solution(dirs):
             s.add((nx,ny,x,y))
             x, y = nx, ny
     return len(s)/2
+```
+
+---
+
+### 타켓 넘버
+* 12/1/2022
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test72.png" align="center">
+</p>
+```python
+def solution(numbers, target):
+    ans = [0]
+    for number in numbers:
+        # add positive and negative number for every possible answer
+        a,b = list(map(lambda x: x+number, ans)),list(map(lambda x: x+number*-1, ans))
+        ans = a + b
+    return ans.count(target)
 ```
 
 ---

@@ -91,4 +91,4 @@ return answer
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/boj/boj(2)/)
 * [🔗 링크2](https://carl020958.github.io/boj/boj(3)/)
-* [🔗 링크3]()
+* [🔗 링크3](https://carl020958.github.io/programmers/programmers_coding_test(8)/#타켓-넘버)
