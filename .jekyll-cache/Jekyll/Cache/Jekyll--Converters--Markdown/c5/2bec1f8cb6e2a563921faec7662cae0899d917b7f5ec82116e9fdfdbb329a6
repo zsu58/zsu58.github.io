@@ -1,0 +1,21 @@
+I"�<hr />
+<h3 id="docker---mongodb">Docker - MongoDB</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mongoDB container run using named volume</span>
+docker run <span class="nt">--name</span> mongodb1 <span class="nt">-e</span> <span class="nv">MONGO_INITDB_ROOT_USERNAME</span><span class="o">=</span>root <span class="nt">-e</span> <span class="nv">MONGO_INITDB_ROOT_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-v</span> mongo_data:/data/db <span class="nt">-d</span> <span class="nt">-p</span> 27017:27017 mongo:5.0.5
+</code></pre></div></div>
+<hr />
+
+<h3 id="docker-mongodb-shell">Docker MongoDB Shell</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># MongoDB SHELL에 접속</span>
+docker container <span class="nb">exec</span> <span class="nt">-it</span> mongodb1 bash
+mongo <span class="nt">-u</span> <span class="s2">"root"</span> <span class="nt">-p</span> <span class="s2">"1234"</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="ref">ref</h3>
+<ul>
+  <li><a href="https://docs.mongodb.com/manual/reference/mongo-shell/#command-helpers">🔗 MongoDB Shell Command 공식문서</a></li>
+</ul>
+:ET

@@ -499,8 +499,14 @@ var store = [{
       },{
         "title": "[Docker] Docker MySql & Postgres",
         "excerpt":"MySQL &amp; Postgres in Docker # mysql container run using named volume docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=1234 -d -v mysql_data:/var/lib/mysql mysql:5.7.19 # postgresql container run using named volume docker run -p 5432:5432 --name postgres1 -e POSTGRES_PASSWORD=1234 -d -v psql_data:/var/lib/postgresql/data postgres DOCKER MYSQL sql dump # local directory에서...","categories": ["DOCKER"],
-        "tags": ["SQL","DOCKER"],
+        "tags": ["SQL","POSTGRES","MYSQL","DOCKER"],
         "url": "/docker/docker2/",
+        "teaser": null
+      },{
+        "title": "[Docker] Docker MongoDB",
+        "excerpt":" Docker - MongoDB   # mongoDB container run using named volume docker run --name mongodb1 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=1234 -v mongo_data:/data/db -d -p 27017:27017 mongo:5.0.5    Docker MongoDB Shell   # MongoDB SHELL에 접속 docker container exec -it mongodb1 bash mongo -u \"root\" -p \"1234\"    ref     🔗 MongoDB Shell Command 공식문서  ","categories": ["DOCKER"],
+        "tags": ["SQL","MONGODB"],
+        "url": "/docker/docker4/",
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv2 (2)",
@@ -697,7 +703,7 @@ var store = [{
       },{
         "title": "[Docker] Docker Jupyter Notebook & PySpark",
         "excerpt":"Docker - Jupyter Notebook &amp; PySpark  # run container docker container run --name jupyter_pyspark -p 10000:8888 -v $(pwd):/home/jovyan/work jupyter/pyspark-notebook:latest  # stop container docker container stop jupyter_pyspark  # restart container docker start -a jupyter_pyspark    ref     🔗 Docker Hub   🔗 Docker-Jupyter 공식 문서1   🔗 Docker-Jupyter 공식 문서2   🔗 참고 블로그  ","categories": ["DOCKER"],
-        "tags": ["DOCKER"],
+        "tags": ["DOCKER","PYSPARK"],
         "url": "/docker/docker3/",
         "teaser": null
       },{
@@ -795,6 +801,12 @@ var store = [{
         "excerpt":"Airflow Config 기본 Airflow Config Square Brackets to Combine Task 기본 Airflow Config Sqlite3는 동시에 multiple port를 허락하지 않음 따라서, task를 순차적으로 진행할 수 밖에 없음 Executor SequentialExecutor - Allows one task after another # venv에서 진행 # where airflow metadata is stored airflow config get-value core sql_alchemy_conn # what...","categories": ["AIRFLOW"],
         "tags": ["AIRFLOW","DOCKER"],
         "url": "/airflow/airflow_udemy8/",
+        "teaser": null
+      },{
+        "title": "[NoSQL] MongoDB Shell",
+        "excerpt":"MongoDB Shell # show all DB show dbs # db 생성 및 해당 db로 접속 (use [db_name]) use testDB # 현재 접속해있는 db 삭제 db.dropDatabase() # user collection(rdbms:table)에 documents(row) 추가 db.user.insertMany([ {uName: \"Tom\", pwd: \"1111\", age: 20}, {uName: \"Jane\", pwd: \"2222\", age: 30}, ]); # document 추가 db.user.insertOne({uName: \"zsu\", pwd:...","categories": ["NOSQL"],
+        "tags": ["SQL","MONGODB"],
+        "url": "/nosql/mongo1/",
         "teaser": null
       },{
         "title": "[Error] Postgres DB not showing in Dbeaver",

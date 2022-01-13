@@ -82,6 +82,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "NOSQL" %}
+                        <li><a href="/categories/nosql" class="">NoSQL ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "SPARK" %}
                         <li><a href="/categories/spark" class="">Spark ({{category[1].size}})</a></li>
                     {% endif %}
