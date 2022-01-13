@@ -498,7 +498,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Docker] Docker MySql & Postgres",
-        "excerpt":"MySQL &amp; Postgres in Docker # mysql container run mkdir ms_db docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_USER=carl020958 -e MYSQL_PASSWORD=1234 -d -v /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/db/ms_db:/var/lib/mysql mysql:5.7.19 # postgresql container run mkdir pg_db docker run -p 5432:5432 --name postgres1 -e POSTGRES_PASSWORD=1234 -d -v /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/db/pg_db:/var/lib/postgresql/data postgres DOCKER MYSQL sql dump #...","categories": ["DOCKER"],
+        "excerpt":"MySQL &amp; Postgres in Docker # mysql container run using named volume docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=1234 -d -v mysql_data:/var/lib/mysql mysql:5.7.19 # postgresql container run using named volume docker run -p 5432:5432 --name postgres1 -e POSTGRES_PASSWORD=1234 -d -v psql_data:/var/lib/postgresql/data postgres DOCKER MYSQL sql dump # local directory에서...","categories": ["DOCKER"],
         "tags": ["SQL","DOCKER"],
         "url": "/docker/docker2/",
         "teaser": null
@@ -702,9 +702,9 @@ var store = [{
         "teaser": null
       },{
         "title": "[PySpark] DataFrame Basics",
-        "excerpt":"PySpark DataFrame Basics PySpark Basic1 DataFrame Schema PySpark Basic2 PySpark Basic1 from pyspark.sql import SparkSession # start spark session by applying it spark = SparkSession.builder.appName(\"Basics\").getOrCreate() # read data df = spark.read.json(\"people.json\") # show dataframe df.show() +----+-------+ | age| name| +----+-------+ |null|Michael| | 30| Andy| | 19| Justin| +----+-------+ # show...","categories": ["PYSPARK"],
+        "excerpt":"PySpark DataFrame Basics PySpark Basic1 DataFrame Schema PySpark Basic2 PySpark Basic1 from pyspark.sql import SparkSession # start spark session by applying it spark = SparkSession.builder.appName(\"Basics\").getOrCreate() # read data df = spark.read.json(\"people.json\") # show dataframe df.show() +----+-------+ | age| name| +----+-------+ |null|Michael| | 30| Andy| | 19| Justin| +----+-------+ # show...","categories": ["SPARK"],
         "tags": ["PYTHON","PYSPARK","DOCKER"],
-        "url": "/pyspark/pyspark1/",
+        "url": "/spark/pyspark1/",
         "teaser": null
       },{
         "title": "[ALGORITHM] BOJ 1260. DFS와 BFS",
@@ -721,60 +721,60 @@ var store = [{
       },{
         "title": "[Apache Airflow] Airflow Installation on Local(Mac)",
         "excerpt":"Airflow on Local(Mac) Airflow Installation Airflow Installation # make folder and cd mkdir airflow cd airflow # create python virtual environment &amp; activate python3 -m venv venv source venv/bin/activate # install python module used by airflow pip3 install wheel # install airflow AIRFLOW_HOME=$(pwd) AIRFLOW_VERSION=2.1.4 PYTHON_VERSION=\"$(python --version | cut -d \"...","categories": ["AIRFLOW"],
-        "tags": ["AIRFLOW","DOCKER"],
+        "tags": ["AIRFLOW"],
         "url": "/airflow/airflow2/",
         "teaser": null
       },{
         "title": "[Apache Airflow] Airflow DB to Postgres(Docker)",
-        "excerpt":"Airflow DB to Postgres(Docker) 🔗 Airflow Local에 설치 Postgres Container 설치 PostgreSQL DB 및 DB User 생성 airflow.cfg 수정1 pycopg2-binary 설치 airflow db 초기화 airflow.cfg 수정2 Postgres Container 설치 # 폴더 생성 mkdir pg_db # container 생성 docker run -p 5432:5432 --name postgres1 -e POSTGRES_PASSWORD=1234 -d -v /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/db/pg_db:/var/lib/postgresql/data postgres #...","categories": ["AIRFLOW"],
+        "excerpt":"Airflow DB to Postgres(Docker) 🔗 Airflow Local에 설치 Postgres Container 설치 PostgreSQL DB 및 DB User 생성 airflow.cfg 수정1 pycopg2-binary 설치 airflow db 초기화 airflow.cfg 수정2 Postgres Container 설치 # container 생성 docker run -p 5432:5432 --name postgres1 -e POSTGRES_PASSWORD=1234 -d -v psql_data:/var/lib/postgresql/data postgres # postgres shell 접속 docker exec...","categories": ["AIRFLOW"],
         "tags": ["AIRFLOW","DOCKER"],
         "url": "/airflow/airflow3/",
         "teaser": null
       },{
         "title": "[Apache Airflow] Airflow Operator",
         "excerpt":" Airflow Operator     A task in data pipeline that defines one task            to know which task has a problem           1) Action Operator: Execute an action   2) Transfer Operator: Transfer data   3) Sensors: Wait for a condition to be met before executing the next task  ","categories": ["AIRFLOW"],
-        "tags": ["AIRFLOW","DOCKER"],
+        "tags": ["AIRFLOW"],
         "url": "/airflow/airflow_udemy1/",
         "teaser": null
       },{
         "title": "[Apache Airflow] Airflow Dag",
         "excerpt":"Airflow Dag Airflow Dag Create Airflow Dag File Add Connection in Airflow Webserver Test Airflow Task Create Airflow Dag File path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py from airflow.models import DAG from airflow.providers.sqlite.operators.sqlite import SqliteOperator from datetime import datetime default_args = { \"start_date\": datetime(2022, 1, 7), } with DAG( 'user_processing', schedule_interval='@daily', default_args=default_args,...","categories": ["AIRFLOW"],
-        "tags": ["AIRFLOW","DOCKER"],
+        "tags": ["AIRFLOW"],
         "url": "/airflow/airflow_udemy2/",
         "teaser": null
       },{
         "title": "[Apache Airflow] Using API",
         "excerpt":"Using API Sensor Operator Add Connection in Airflow Webserver Test Airflow Task Sensor Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py ... from airflow.providers.http.sensors.http import HttpSensor with DAG( ... ) as dag: # Sensor Operator is_api_available = HttpSensor( task_id=\"is_api_available\", http_conn_id=\"user_api\", # the endpoint of the url endpoint=\"api/\" ) Add Connection in Airflow...","categories": ["AIRFLOW"],
-        "tags": ["AIRFLOW","DOCKER"],
+        "tags": ["AIRFLOW"],
         "url": "/airflow/airflow_udemy3/",
         "teaser": null
       },{
         "title": "[Apache Airflow] Extracting Users Using API",
         "excerpt":"Extracting Users Using API Action Operator Test Airflow Task Action Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py ... from airflow.providers.http.operators.http import SimpleHttpOperator import json with DAG( ... ) as dag: # Action Operator extracting_user = SimpleHttpOperator( task_id=\"extracting_user\", http_conn_id=\"user_api\", endpoint=\"api/\", # used GET cuz there's no need to send any data method=\"GET\",...","categories": ["AIRFLOW"],
-        "tags": ["AIRFLOW","DOCKER"],
+        "tags": ["AIRFLOW"],
         "url": "/airflow/airflow_udemy4/",
         "teaser": null
       },{
         "title": "[Apache Airflow] Processing Users Using Python Operator",
         "excerpt":"Processing Users Using Python Operator” Action Operator Action Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py ... from airflow.operators.python import PythonOperator from pandas import json_normalize import json # user process method def _processing_user(task_instance): # get data from extracting user users = task_instance.xcom_pull(task_ids=[\"extracting_user\"]) # check error if not len(users) or \"results\" not in...","categories": ["AIRFLOW"],
-        "tags": ["AIRFLOW","DOCKER"],
+        "tags": ["AIRFLOW"],
         "url": "/airflow/airflow_udemy5/",
         "teaser": null
       },{
         "title": "[Apache Airflow] Storing Users Using Bash Operator",
         "excerpt":"Storing Users Using Bash Operator Transfer(Bash) Operator Transfer(Bash) Operator path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py ... from airflow.operators.bash import BashOperator with DAG( ... ) as dag: # Transfer Operator storing_user = BashOperator( task_id=\"storing_user\", bash_command='echo -e \".separator \",\"\\n.import /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/airflow1/tmp/processed_user.csv users\" | sqlite3 /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/airflow1/airflow.db' ) Test Airflow Task allows to test a specific...","categories": ["AIRFLOW"],
-        "tags": ["AIRFLOW","DOCKER"],
+        "tags": ["AIRFLOW"],
         "url": "/airflow/airflow_udemy6/",
         "teaser": null
       },{
         "title": "[Apache Airflow] Putting Order & Catch Up",
         "excerpt":"Putting Order &amp; Catch Up Putting Order Catch Up Putting Order &gt;&gt; - between dags to give order path - AIRFLOW_HOME/dag/user_processing.py # user_processing.py from airflow.models import DAG from airflow.providers.sqlite.operators.sqlite import SqliteOperator from airflow.providers.http.sensors.http import HttpSensor from airflow.providers.http.operators.http import SimpleHttpOperator from airflow.operators.python import PythonOperator from airflow.operators.bash import BashOperator from datetime import...","categories": ["AIRFLOW"],
-        "tags": ["AIRFLOW","DOCKER"],
+        "tags": ["AIRFLOW"],
         "url": "/airflow/airflow_udemy7/",
         "teaser": null
       },{
         "title": "[Error] OSError: mysql_config not found",
-        "excerpt":" OSError: mysql_config not found     상황            Python 가상환경에서 mysqlclient를 설치하고자 함       HomeBrew에서 mysql은 최신버전(8.x)으로 설치했음       .zshrc에 mysql 환경설정도 함       설치 과정에서 OSError: mysql_config not found           해결            mysql을 (5.7)으로 설치             Solution  brew remove mysql brew install mysql@5.7 brew link --force mysql@5.7 echo 'export PATH=\"/usr/local/opt/mysql@5.7/bin:$PATH\"' &gt;&gt; ~/.zshrc    ref     🔗 참고  ","categories": ["ERROR"],
+        "excerpt":"OSError: mysql_config not found 상황 Python 가상환경에서 mysqlclient를 설치하고자 함 HomeBrew에서 mysql은 최신버전(8.x)으로 설치했음 .zshrc에 mysql 환경설정도 함 설치 과정에서 OSError: mysql_config not found 해결 mysql을 (5.7)으로 설치 Solution brew remove mysql brew install mysql@5.7 brew link --force mysql@5.7 echo 'export PATH=\"/usr/local/opt/mysql@5.7/bin:$PATH\"' &gt;&gt; ~/.zshrc Solution2 애초에 무거운 mysql 그 자체가...","categories": ["ERROR"],
         "tags": ["MYSQL","PYTHON"],
         "url": "/error/mysql_error1/",
         "teaser": null
@@ -787,7 +787,19 @@ var store = [{
       },{
         "title": "[Apache Airflow] Airflow - MySQL Data Extract",
         "excerpt":"Airflow - MySQL Data Extract Required Package Installation Airflow - MySQL(local on Docker) Extract Airflow - MySQL(EC2) Extract Required Package Installation mysql은 homebrew를 통해 설치 및 .zshrc에 환결설정 등록 # venv 실행 후 pip3 install mysql-connector-python pip3 install mysqlclient pip3 install apache-airflow-providers-mysql # mysql provider 설치 확인 airflow providers list...","categories": ["AIRFLOW"],
-        "tags": ["AIRFLOW","DOCKER"],
+        "tags": ["AIRFLOW"],
         "url": "/airflow/airflow4/",
+        "teaser": null
+      },{
+        "title": "[Apache Airflow] Airflow Config",
+        "excerpt":"Airflow Config 기본 Airflow Config Square Brackets to Combine Task 기본 Airflow Config Sqlite3는 동시에 multiple port를 허락하지 않음 따라서, task를 순차적으로 진행할 수 밖에 없음 Executor SequentialExecutor - Allows one task after another # venv에서 진행 # where airflow metadata is stored airflow config get-value core sql_alchemy_conn # what...","categories": ["AIRFLOW"],
+        "tags": ["AIRFLOW","DOCKER"],
+        "url": "/airflow/airflow_udemy8/",
+        "teaser": null
+      },{
+        "title": "[Error] Postgres DB not showing in Dbeaver",
+        "excerpt":" Postgres DB not showing     상황            Dbeaver에서 Postgres 연결 후 DB 만들고 refresh 했는데 DB가 보이지 않음       DB가 정상적으로 생성되긴 함           해결            아래와 같이 해결       1) Edit connection(우클릭)       2) Connection settings       3) panel 중에 2번쨰 PostgreSQL 클릭       4) Show all databases 클릭             ref     🔗 참고  ","categories": ["ERROR"],
+        "tags": ["MYSQL","PYTHON"],
+        "url": "/error/postgres_error1/",
         "teaser": null
       }]

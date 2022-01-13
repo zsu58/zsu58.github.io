@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[PySpark] DataFrame Basics - Bibliothek für Data-Engineering</title>
-<meta name="description" content="PySpark DataFrame Basics    PySpark Basic1   DataFrame Schema   PySpark Basic2">
+<!-- begin _includes/seo.html --><title>[Apache Airflow] Airflow Config - Bibliothek für Data-Engineering</title>
+<meta name="description" content="Airflow Config    기본 Airflow Config   Square Brackets to Combine Task">
 
 
   <meta name="author" content="ZSU">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Bibliothek für Data-Engineering">
-<meta property="og:title" content="[PySpark] DataFrame Basics">
-<meta property="og:url" content="http://localhost:4000/pyspark/pyspark1/">
+<meta property="og:title" content="[Apache Airflow] Airflow Config">
+<meta property="og:url" content="http://localhost:4000/airflow/airflow_udemy8/">
 
 
-  <meta property="og:description" content="PySpark DataFrame Basics    PySpark Basic1   DataFrame Schema   PySpark Basic2">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-01-05T00:00:00+09:00">
+  <meta property="og:description" content="Airflow Config    기본 Airflow Config   Square Brackets to Combine Task">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-01-13T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/pyspark/pyspark1/">
+
+<link rel="canonical" href="http://localhost:4000/airflow/airflow_udemy8/">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">132</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">134</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -502,7 +502,7 @@
                     
                 
             </ul>
-        <span class="nav__sub-title">Data-Enginnering</span>
+        <span class="nav__sub-title">Data-Engineering</span>
             <ul>
                 
                     
@@ -528,7 +528,7 @@
                     
                 
                     
-                        <li><a href="/categories/airflow" class="">Airflow (11)</a></li>
+                        <li><a href="/categories/airflow" class="">Airflow (12)</a></li>
                     
                 
                     
@@ -629,6 +629,8 @@
                     
                 
                     
+                        <li><a href="/categories/spark" class="">Spark (1)</a></li>
+                    
                 
                     
                 
@@ -696,7 +698,7 @@
                 
             
                 
-                    <li><a href="/categories/error" class="">Error (2)</a></li>
+                    <li><a href="/categories/error" class="">Error (3)</a></li>
                 
             
         </ul>
@@ -776,15 +778,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[PySpark] DataFrame Basics">
-    <meta itemprop="description" content="PySpark DataFrame Basics  PySpark Basic1  DataFrame Schema  PySpark Basic2">
-    <meta itemprop="datePublished" content="2022-01-05T00:00:00+09:00">
+    <meta itemprop="headline" content="[Apache Airflow] Airflow Config">
+    <meta itemprop="description" content="Airflow Config  기본 Airflow Config  Square Brackets to Combine Task">
+    <meta itemprop="datePublished" content="2022-01-13T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[PySpark] DataFrame Basics
+          <h1 id="page-title" class="page__title" itemprop="headline">[Apache Airflow] Airflow Config
 </h1>
           
 
@@ -800,7 +802,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          less than 1 minute read
         
       </span>
     
@@ -815,235 +817,88 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#pyspark-dataframe-basics">PySpark DataFrame Basics</a></li><li><a href="#pyspark-basic1">PySpark Basic1</a></li><li><a href="#dataframe-schema">DataFrame Schema</a></li><li><a href="#pyspark-basic2">PySpark Basic2</a></li></ul>
+              <ul class="toc__menu"><li><a href="#airflow-config">Airflow Config</a></li><li><a href="#기본-airflow-config">기본 Airflow Config</a></li><li><a href="#square-brackets-to-combine-task">Square Brackets to Combine Task</a></li></ul>
 
             </nav>
           </aside>
         
         <hr />
-<h3 id="pyspark-dataframe-basics">PySpark DataFrame Basics</h3>
+<h3 id="airflow-config">Airflow Config</h3>
 <ul>
-  <li>PySpark Basic1</li>
-  <li>DataFrame Schema</li>
-  <li>PySpark Basic2</li>
+  <li>기본 Airflow Config</li>
+  <li>Square Brackets to Combine Task</li>
 </ul>
 
 <hr />
 
-<h3 id="pyspark-basic1">PySpark Basic1</h3>
+<h3 id="기본-airflow-config">기본 Airflow Config</h3>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<ul>
+  <li>Sqlite3는 동시에 multiple port를 허락하지 않음
+    <ul>
+      <li>따라서, task를 순차적으로 진행할 수 밖에 없음</li>
+    </ul>
+  </li>
+  <li>Executor
+    <ul>
+      <li>SequentialExecutor - Allows one task after another</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># venv에서 진행</span>
+<span class="c"># where airflow metadata is stored</span>
+airflow config get-value core sql_alchemy_conn
+
+<span class="c"># what my executor currently is</span>
+airflow config get-value core executor
 </code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># start spark session by applying it
-</span><span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="p">.</span><span class="n">builder</span><span class="p">.</span><span class="n">appName</span><span class="p">(</span><span class="s">"Basics"</span><span class="p">).</span><span class="n">getOrCreate</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># read data
-</span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">json</span><span class="p">(</span><span class="s">"people.json"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># show dataframe
-</span><span class="n">df</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----+-------+
-| age|   name|
-+----+-------+
-|null|Michael|
-|  30|   Andy|
-|  19| Justin|
-+----+-------+
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># show df schema
-</span><span class="n">df</span><span class="p">.</span><span class="n">printSchema</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root
- |-- age: long (nullable = true)
- |-- name: string (nullable = true)
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># show df columns
-</span><span class="n">df</span><span class="p">.</span><span class="n">columns</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['age', 'name']
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get summary of df
-</span><span class="n">df</span><span class="p">.</span><span class="n">describe</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DataFrame[summary: string, age: string, name: string]
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># # get statiscal summary of df
-</span><span class="n">df</span><span class="p">.</span><span class="n">describe</span><span class="p">().</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------+------------------+-------+
-|summary|               age|   name|
-+-------+------------------+-------+
-|  count|                 2|      3|
-|   mean|              24.5|   null|
-| stddev|7.7781745930520225|   null|
-|    min|                19|   Andy|
-|    max|                30|Michael|
-+-------+------------------+-------+
-</code></pre></div></div>
-
 <hr />
 
-<h3 id="dataframe-schema">DataFrame Schema</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StructField</span><span class="p">,</span> <span class="n">StringType</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">,</span> <span class="n">StructType</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># third parameter true - no data will be null
-</span><span class="n">data_schema</span> <span class="o">=</span> <span class="p">[</span><span class="n">StructField</span><span class="p">(</span><span class="s">"age"</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">(),</span><span class="bp">True</span><span class="p">),</span>
-               <span class="n">StructField</span><span class="p">(</span><span class="s">"name"</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span><span class="bp">True</span><span class="p">)]</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">final_struc</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="n">data_schema</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">json</span><span class="p">(</span><span class="s">'people.json'</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">final_struc</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">printSchema</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root
- |-- age: integer (nullable = true)
- |-- name: string (nullable = true)
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="pyspark-basic2">PySpark Basic2</h3>
-
+<h3 id="square-brackets-to-combine-task">Square Brackets to Combine Task</h3>
 <ul>
-  <li>selecting a column</li>
+  <li><code class="language-plaintext highlighter-rouge">[]</code>를 통해 task을 묶을 수 있음</li>
+  <li>단, 현재 Airflow DB가 Sqlite3인 경우 task는 순차적으로 진행됨</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># select column from a df
-</span><span class="n">df</span><span class="p">[</span><span class="s">"age"</span><span class="p">]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">airflow.models</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.bash</span> <span class="kn">import</span> <span class="n">BashOperator</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"start_date"</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">with</span> <span class="n">DAG</span> <span class="p">(</span>
+    <span class="s">"parallel_dag"</span><span class="p">,</span>
+    <span class="n">schedule_interval</span><span class="o">=</span><span class="s">'@daily'</span><span class="p">,</span>
+    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+    <span class="n">catchup</span><span class="o">=</span><span class="bp">False</span>
+<span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+
+    <span class="n">task_1</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"task_1"</span><span class="p">,</span>
+        <span class="n">bash_command</span><span class="o">=</span><span class="s">"sleep 3"</span>
+    <span class="p">)</span>
+    <span class="n">task_2</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"task_2"</span><span class="p">,</span>
+        <span class="n">bash_command</span><span class="o">=</span><span class="s">"sleep 3"</span>
+    <span class="p">)</span>
+
+    <span class="n">task_3</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"task_3"</span><span class="p">,</span>
+        <span class="n">bash_command</span><span class="o">=</span><span class="s">"sleep 3"</span>
+    <span class="p">)</span>
+
+    <span class="n">task_4</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"task_4"</span><span class="p">,</span>
+        <span class="n">bash_command</span><span class="o">=</span><span class="s">"sleep 3"</span>
+    <span class="p">)</span>
+
+<span class="n">task_1</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">task_2</span><span class="p">,</span> <span class="n">task_3</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">task_4</span>
+
 </code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Column&lt;'age'&gt;
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">"age"</span><span class="p">])</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pyspark.sql.column.Column
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># select a column of a df as a df
-</span><span class="n">df</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"age"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DataFrame[age: int]
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"age"</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----+
-| age|
-+----+
-|null|
-|  30|
-|  19|
-+----+
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"age"</span><span class="p">))</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pyspark.sql.dataframe.DataFrame
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># selecting multiple columns
-</span><span class="n">df</span><span class="p">.</span><span class="n">select</span><span class="p">([</span><span class="s">"age"</span><span class="p">,</span><span class="s">"name"</span><span class="p">])</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DataFrame[age: int, name: string]
-</code></pre></div></div>
-
-<ul>
-  <li>selecting a row</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Row(age=None, name='Michael')
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pyspark.sql.types.Row
-</code></pre></div></div>
-
-<ul>
-  <li>mutate</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"double_age"</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s">"age"</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----+-------+----------+
-| age|   name|double_age|
-+----+-------+----------+
-|null|Michael|      null|
-|  30|   Andy|        60|
-|  19| Justin|        38|
-+----+-------+----------+
-</code></pre></div></div>
-
-<ul>
-  <li>rename</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s">"age"</span><span class="p">,</span> <span class="s">"new_age"</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------+-------+
-|new_age|   name|
-+-------+-------+
-|   null|Michael|
-|     30|   Andy|
-|     19| Justin|
-+-------+-------+
-</code></pre></div></div>
-
-<ul>
-  <li>sql in Spark</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># make a temporary view
-</span><span class="n">df</span><span class="p">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s">"people"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># query
-</span><span class="n">results</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">"SELECT * FROM people WHERE age = 30"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">results</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---+----+
-|age|name|
-+---+----+
-| 30|Andy|
-+---+----+
-</code></pre></div></div>
-
-<hr />
 
         
       </section>
@@ -1060,11 +915,9 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#docker" class="page__taxonomy-item" rel="tag">DOCKER</a><span class="sep">, </span>
+      <a href="/tags/#airflow" class="page__taxonomy-item" rel="tag">AIRFLOW</a><span class="sep">, </span>
     
-      <a href="/tags/#pyspark" class="page__taxonomy-item" rel="tag">PYSPARK</a><span class="sep">, </span>
-    
-      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+      <a href="/tags/#docker" class="page__taxonomy-item" rel="tag">DOCKER</a>
     
     </span>
   </p>
@@ -1081,7 +934,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#pyspark" class="page__taxonomy-item" rel="tag">PYSPARK</a>
+      <a href="/categories/#airflow" class="page__taxonomy-item" rel="tag">AIRFLOW</a>
     
     </span>
   </p>
@@ -1089,7 +942,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-01-05T00:00:00+09:00">January 5, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-01-13T00:00:00+09:00">January 13, 2022</time></p>
 
 
       </footer>
@@ -1099,22 +952,22 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BPySpark%5D+DataFrame+Basics%20http%3A%2F%2Flocalhost%3A4000%2Fpyspark%2Fpyspark1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BApache+Airflow%5D+Airflow+Config%20http%3A%2F%2Flocalhost%3A4000%2Fairflow%2Fairflow_udemy8%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpyspark%2Fpyspark1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fairflow%2Fairflow_udemy8%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpyspark%2Fpyspark1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fairflow%2Fairflow_udemy8%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/docker/docker3/" class="pagination--pager" title="[Docker] Docker Jupyter Notebook &amp; PySpark
+      <a href="/airflow/airflow4/" class="pagination--pager" title="[Apache Airflow] Airflow - MySQL Data Extract
 ">Previous</a>
     
     
-      <a href="/boj/boj(2)/" class="pagination--pager" title="[ALGORITHM] BOJ 1260. DFS와 BFS
+      <a href="/error/postgres_error1/" class="pagination--pager" title="[Error] Postgres DB not showing in Dbeaver
 ">Next</a>
     
   </nav>
@@ -1129,6 +982,58 @@
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/error/postgres_error1/" rel="permalink">[Error] Postgres DB not showing in Dbeaver
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Postgres DB not showing
+
+  상황
+    
+      Dbeaver에서 Postgres 연결 후 DB 만들고 refresh 했는데 DB가 보이지 않음
+      DB가 정상적으로 생성되긴 함
+    
+  
+  해결
+    
+      아래와 같이 해결
+   ...</p>
+  </article>
+</div>
+
         
           
 
@@ -1271,52 +1176,6 @@ OSError: mysql_config not found
       HomeBrew에서 mysql은 최신버전(8.x)으로 설치했음
       .zshrc에 mysql 환경설정도 함
   ...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/airflow/airflow_udemy7/" rel="permalink">[Apache Airflow] Putting Order &amp; Catch Up
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Putting Order &amp; Catch Up
-
-  Putting Order
-  Catch Up
-
-</p>
   </article>
 </div>
 

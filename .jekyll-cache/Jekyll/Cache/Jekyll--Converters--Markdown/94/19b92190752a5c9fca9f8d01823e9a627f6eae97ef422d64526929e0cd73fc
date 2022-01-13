@@ -1,4 +1,4 @@
-I"��<hr />
+I":�<hr />
 <h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
 <ul>
   <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
@@ -23,7 +23,6 @@
                    <span class="p">)</span>
     <span class="k">return</span> <span class="n">files</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="3차-압축">[3차] 압축</h3>
@@ -52,7 +51,6 @@
 
     <span class="k">return</span> <span class="n">answer</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="주식가격">주식가격</h3>
@@ -80,7 +78,6 @@
         
     <span class="k">return</span> <span class="n">ans</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="기능개발">기능개발</h3>
@@ -136,7 +133,6 @@
     <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">answer</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="다리를-지나는-트럭">다리를 지나는 트럭</h3>
@@ -206,7 +202,6 @@
         
     <span class="k">return</span> <span class="n">sec</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="가장-큰-정사각형-찾기">가장 큰 정사각형 찾기</h3>
@@ -249,7 +244,6 @@
 
     <span class="k">return</span> <span class="n">max_num</span> <span class="o">**</span> <span class="mi">2</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="방문-길이">방문 길이</h3>
@@ -257,7 +251,7 @@
   <li>16/12/2021</li>
 </ul>
 <p align="center">
-    <img src="/img/backend/algorithm/coding_test/coding_test70.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test71.png" align="center" />
 </p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">dirs</span><span class="p">):</span>
     <span class="n">move</span> <span class="o">=</span> <span class="p">{</span><span class="s">"U"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s">"D"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="s">"L"</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s">"R"</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span>
@@ -290,6 +284,31 @@
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
 </code></pre></div></div>
+<hr />
 
+<h3 id="타켓-넘버">타켓 넘버</h3>
+<ul>
+  <li>12/1/2022</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test72.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="c1"># add positive and negative number for every possible answer
+</span>        <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">number</span><span class="p">,</span> <span class="n">ans</span><span class="p">)),</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">number</span><span class="o">*-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ans</span><span class="p">))</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">numbers</span> <span class="ow">and</span> <span class="n">target</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">target</span><span class="o">-</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">target</span><span class="o">+</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div></div>
 <hr />
 :ET

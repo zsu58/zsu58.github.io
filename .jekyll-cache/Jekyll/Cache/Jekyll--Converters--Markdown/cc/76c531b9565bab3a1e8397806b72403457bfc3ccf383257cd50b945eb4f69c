@@ -1,0 +1,22 @@
+I"�
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/spark/pyspark1/">[PySpark] DataFrame Basics</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2022.01.05
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#spark" class="page__taxonomy-item-category" rel="tag">SPARK</a>
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+:ET

@@ -9,7 +9,6 @@ categories:
   - AIRFLOW
 tags:
   - AIRFLOW
-  - DOCKER
 ---
 
 ---

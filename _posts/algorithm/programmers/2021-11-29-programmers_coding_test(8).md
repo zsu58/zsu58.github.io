@@ -34,7 +34,6 @@ def solution(files):
                    )
     return files
 ```
-
 ---
 
 ### [3차] 압축
@@ -62,7 +61,6 @@ def solution(msg):
 
     return answer
 ```
-
 ---
 
 ### 주식가격
@@ -89,7 +87,6 @@ def solution(prices):
         
     return ans
 ```
-
 ---
 
 ### 기능개발
@@ -144,7 +141,6 @@ ef solution(progresses, speeds):
     answer.append(count)
     return answer
 ```
-
 ---
 
 ### 다리를 지나는 트럭
@@ -213,7 +209,6 @@ def solution(bridge_length, weight, truck_weights):
         
     return sec
 ```
-
 ---
 
 ### 가장 큰 정사각형 찾기
@@ -255,7 +250,6 @@ def solution(board):
 
     return max_num ** 2
 ```
-
 ---
 
 ### 방문 길이
@@ -295,7 +289,6 @@ def solution(dirs):
             x, y = nx, ny
     return len(s)/2
 ```
-
 ---
 
 ### 타켓 넘버
@@ -311,6 +304,14 @@ def solution(numbers, target):
         a,b = list(map(lambda x: x+number, ans)),list(map(lambda x: x+number*-1, ans))
         ans = a + b
     return ans.count(target)
-```
 
+# 다른 사람의 좋은 풀이
+def solution(numbers, target):
+    if not numbers and target == 0 :
+        return 1
+    elif not numbers:
+        return 0
+    else:
+        return solution(numbers[1:], target-numbers[0]) + solution(numbers[1:], target+numbers[0])
+```
 ---

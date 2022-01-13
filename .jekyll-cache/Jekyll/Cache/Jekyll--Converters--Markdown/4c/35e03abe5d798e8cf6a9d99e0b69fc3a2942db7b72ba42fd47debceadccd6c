@@ -1,4 +1,4 @@
-I"O<hr />
+I"�<hr />
 <h3 id="oserror-mysql_config-not-found">OSError: mysql_config not found</h3>
 <ul>
   <li>상황
@@ -23,6 +23,19 @@
 brew <span class="nb">install </span>mysql@5.7
 brew <span class="nb">link</span> <span class="nt">--force</span> mysql@5.7
 <span class="nb">echo</span> <span class="s1">'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+</code></pre></div></div>
+<hr />
+
+<h3 id="solution2">Solution2</h3>
+<ul>
+  <li>애초에 무거운 mysql 그 자체가 필요한 것이 아니므로, mysql-client만 설치 후 환경설정</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install mysql-client with homebrew</span>
+brew <span class="nb">install </span>mysql-client
+
+<span class="c"># mysql_config setting</span>
+<span class="nb">echo</span> <span class="s1">'export PATH="/usr/local/Cellar/mysql-client/8.0.27/bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~./zshrc
 </code></pre></div></div>
 <hr />
 

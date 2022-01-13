@@ -1,15 +1,12 @@
-I"·<hr />
+I"}<hr />
 <h3 id="mysql--postgres-in-docker">MySQL &amp; Postgres in Docker</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mysql container run</span>
-<span class="nb">mkdir </span>ms_db
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mysql container run using named volume</span>
+docker run <span class="nt">-p</span> 3306:3306 <span class="nt">--name</span> mysql1 <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> <span class="nt">-v</span> mysql_data:/var/lib/mysql mysql:5.7.19
 
-docker run <span class="nt">-p</span> 3306:3306 <span class="nt">--name</span> mysql1 <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-e</span> <span class="nv">MYSQL_USER</span><span class="o">=</span>carl020958 <span class="nt">-e</span> <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> <span class="nt">-v</span> /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/db/ms_db:/var/lib/mysql mysql:5.7.19
 
-<span class="c"># postgresql container run</span>
-<span class="nb">mkdir </span>pg_db
-
-docker run <span class="nt">-p</span> 5432:5432 <span class="nt">--name</span> postgres1 <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> <span class="nt">-v</span> /Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/DE/db/pg_db:/var/lib/postgresql/data postgres
+<span class="c"># postgresql container run using named volume</span>
+docker run <span class="nt">-p</span> 5432:5432 <span class="nt">--name</span> postgres1 <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>1234 <span class="nt">-d</span> <span class="nt">-v</span> psql_data:/var/lib/postgresql/data postgres
 </code></pre></div></div>
 <hr />
 

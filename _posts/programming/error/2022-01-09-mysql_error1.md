@@ -33,5 +33,17 @@ echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> ~/.zshrc
 ```
 ---
 
+### Solution2
+* 애초에 무거운 mysql 그 자체가 필요한 것이 아니므로, mysql-client만 설치 후 환경설정
+
+```bash
+# install mysql-client with homebrew
+brew install mysql-client
+
+# mysql_config setting
+echo 'export PATH="/usr/local/Cellar/mysql-client/8.0.27/bin:$PATH"' >> ~./zshrc
+```
+---
+
 ### ref 
 * [🔗 참고](https://stackoverflow.com/questions/50864438/mac-pip-install-mysql-python-unsuccessful)

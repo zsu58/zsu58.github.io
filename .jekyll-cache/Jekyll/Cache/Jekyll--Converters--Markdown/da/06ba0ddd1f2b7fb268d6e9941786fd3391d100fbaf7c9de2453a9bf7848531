@@ -1,0 +1,27 @@
+I"�<hr />
+<h3 id="postgres-db-not-showing">Postgres DB not showing</h3>
+<ul>
+  <li>상황
+    <ul>
+      <li>Dbeaver에서 Postgres 연결 후 DB 만들고 refresh 했는데 DB가 보이지 않음</li>
+      <li>DB가 정상적으로 생성되긴 함</li>
+    </ul>
+  </li>
+  <li>해결
+    <ul>
+      <li>아래와 같이 해결</li>
+      <li>1) Edit connection(우클릭)</li>
+      <li>2) Connection settings</li>
+      <li>3) panel 중에 2번쨰 PostgreSQL 클릭</li>
+      <li>4) Show all databases 클릭</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="ref">ref</h3>
+<ul>
+  <li><a href="https://stackoverflow.com/questions/54235029/dbeaver-can-only-see-default-postgresql-database-in-connection">🔗 참고</a></li>
+</ul>
+:ET

@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">132</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">134</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -502,7 +502,7 @@
                     
                 
             </ul>
-        <span class="nav__sub-title">Data-Enginnering</span>
+        <span class="nav__sub-title">Data-Engineering</span>
             <ul>
                 
                     
@@ -528,7 +528,7 @@
                     
                 
                     
-                        <li><a href="/categories/airflow" class="">Airflow (11)</a></li>
+                        <li><a href="/categories/airflow" class="">Airflow (12)</a></li>
                     
                 
                     
@@ -629,6 +629,8 @@
                     
                 
                     
+                        <li><a href="/categories/spark" class="">Spark (1)</a></li>
+                    
                 
                     
                 
@@ -696,7 +698,7 @@
                 
             
                 
-                    <li><a href="/categories/error" class="">Error (2)</a></li>
+                    <li><a href="/categories/error" class="">Error (3)</a></li>
                 
             
         </ul>
@@ -815,7 +817,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#3차-파일명-정렬">[3차] 파일명 정렬</a></li><li><a href="#3차-압축">[3차] 압축</a></li><li><a href="#주식가격">주식가격</a></li><li><a href="#기능개발">기능개발</a></li><li><a href="#다리를-지나는-트럭">다리를 지나는 트럭</a></li><li><a href="#가장-큰-정사각형-찾기">가장 큰 정사각형 찾기</a></li><li><a href="#방문-길이">방문 길이</a></li></ul>
+              <ul class="toc__menu"><li><a href="#algorithm-übung---programmers">ALGORITHM Übung - Programmers</a></li><li><a href="#3차-파일명-정렬">[3차] 파일명 정렬</a></li><li><a href="#3차-압축">[3차] 압축</a></li><li><a href="#주식가격">주식가격</a></li><li><a href="#기능개발">기능개발</a></li><li><a href="#다리를-지나는-트럭">다리를 지나는 트럭</a></li><li><a href="#가장-큰-정사각형-찾기">가장 큰 정사각형 찾기</a></li><li><a href="#방문-길이">방문 길이</a></li><li><a href="#타켓-넘버">타켓 넘버</a></li></ul>
 
             </nav>
           </aside>
@@ -845,7 +847,6 @@
                    <span class="p">)</span>
     <span class="k">return</span> <span class="n">files</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="3차-압축">[3차] 압축</h3>
@@ -874,7 +875,6 @@
 
     <span class="k">return</span> <span class="n">answer</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="주식가격">주식가격</h3>
@@ -902,7 +902,6 @@
         
     <span class="k">return</span> <span class="n">ans</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="기능개발">기능개발</h3>
@@ -958,7 +957,6 @@
     <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">answer</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="다리를-지나는-트럭">다리를 지나는 트럭</h3>
@@ -1028,7 +1026,6 @@
         
     <span class="k">return</span> <span class="n">sec</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="가장-큰-정사각형-찾기">가장 큰 정사각형 찾기</h3>
@@ -1071,7 +1068,6 @@
 
     <span class="k">return</span> <span class="n">max_num</span> <span class="o">**</span> <span class="mi">2</span>
 </code></pre></div></div>
-
 <hr />
 
 <h3 id="방문-길이">방문 길이</h3>
@@ -1079,7 +1075,7 @@
   <li>16/12/2021</li>
 </ul>
 <p align="center">
-    <img src="/img/backend/algorithm/coding_test/coding_test70.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test71.png" align="center" />
 </p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">dirs</span><span class="p">):</span>
     <span class="n">move</span> <span class="o">=</span> <span class="p">{</span><span class="s">"U"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s">"D"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="s">"L"</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s">"R"</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span>
@@ -1112,7 +1108,32 @@
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
 </code></pre></div></div>
+<hr />
 
+<h3 id="타켓-넘버">타켓 넘버</h3>
+<ul>
+  <li>12/1/2022</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test72.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="c1"># add positive and negative number for every possible answer
+</span>        <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">number</span><span class="p">,</span> <span class="n">ans</span><span class="p">)),</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">number</span><span class="o">*-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ans</span><span class="p">))</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">numbers</span> <span class="ow">and</span> <span class="n">target</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">target</span><span class="o">-</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">target</span><span class="o">+</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div></div>
 <hr />
 
         
@@ -1207,6 +1228,104 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/error/postgres_error1/" rel="permalink">[Error] Postgres DB not showing in Dbeaver
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Postgres DB not showing
+
+  상황
+    
+      Dbeaver에서 Postgres 연결 후 DB 만들고 refresh 했는데 DB가 보이지 않음
+      DB가 정상적으로 생성되긴 함
+    
+  
+  해결
+    
+      아래와 같이 해결
+   ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/airflow/airflow_udemy8/" rel="permalink">[Apache Airflow] Airflow Config
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Airflow Config
+
+  기본 Airflow Config
+  Square Brackets to Combine Task
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/airflow/airflow4/" rel="permalink">[Apache Airflow] Airflow - MySQL Data Extract
 </a>
       
@@ -1291,100 +1410,6 @@ ERROR 1366 (HY000): Incorrect string value: ‘\xEC\x9D\xB4\xEB\xAF\xB8
   
   해결
   ...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/error/mysql_error1/" rel="permalink">[Error] OSError: mysql_config not found
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-OSError: mysql_config not found
-
-  상황
-    
-      Python 가상환경에서 mysqlclient를 설치하고자 함
-      HomeBrew에서 mysql은 최신버전(8.x)으로 설치했음
-      .zshrc에 mysql 환경설정도 함
-  ...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/airflow/airflow_udemy7/" rel="permalink">[Apache Airflow] Putting Order &amp; Catch Up
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Putting Order &amp; Catch Up
-
-  Putting Order
-  Catch Up
-
-</p>
   </article>
 </div>
 

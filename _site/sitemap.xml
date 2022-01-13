@@ -469,7 +469,7 @@
 <lastmod>2022-01-05T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/pyspark/pyspark1/</loc>
+<loc>http://localhost:4000/spark/pyspark1/</loc>
 <lastmod>2022-01-05T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -527,6 +527,14 @@
 <url>
 <loc>http://localhost:4000/airflow/airflow4/</loc>
 <lastmod>2022-01-12T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/airflow/airflow_udemy8/</loc>
+<lastmod>2022-01-13T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/error/postgres_error1/</loc>
+<lastmod>2022-01-13T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/storage/2021-09-15-Python_Backend-CH1/</loc>
@@ -587,6 +595,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tags/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/page2/</loc>
