@@ -1,4 +1,5 @@
-I"~<hr />
+I"<hr />
+
 <h3 id="pandas">Pandas</h3>
 <ul>
   <li>Inspecting dataframe
@@ -8,7 +9,7 @@
       <li><code class="language-plaintext highlighter-rouge">.describe</code></li>
     </ul>
   </li>
-  <li>Sort
+  <li>sort
     <ul>
       <li><code class="language-plaintext highlighter-rouge">.sort_values()</code></li>
     </ul>

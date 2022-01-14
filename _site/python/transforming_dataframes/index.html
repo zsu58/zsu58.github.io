@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>[Python] Data manipulation with pandas(1) - Bibliothek für Data-Engineering</title>
-<meta name="description" content="Pandas    Inspecting dataframe            .info()       .shape       .describe           Sort            .sort_values()           select            df[[&#39;column1&#39;, &#39;column2&#39;]]           filter            df[df[column] == &#39;condition&#39;]           mutate            df[column] = df[column] + 1">
+<meta name="description" content="Pandas    Inspecting dataframe            .info()       .shape       .describe           sort            .sort_values()           select            df[[&#39;column1&#39;, &#39;column2&#39;]]           filter            df[df[column] == &#39;condition&#39;]           mutate            df[column] = df[column] + 1">
 
 
   <meta name="author" content="ZSU">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/python/transforming_dataframes/">
 
 
-  <meta property="og:description" content="Pandas    Inspecting dataframe            .info()       .shape       .describe           Sort            .sort_values()           select            df[[&#39;column1&#39;, &#39;column2&#39;]]           filter            df[df[column] == &#39;condition&#39;]           mutate            df[column] = df[column] + 1">
+  <meta property="og:description" content="Pandas    Inspecting dataframe            .info()       .shape       .describe           sort            .sort_values()           select            df[[&#39;column1&#39;, &#39;column2&#39;]]           filter            df[df[column] == &#39;condition&#39;]           mutate            df[column] = df[column] + 1">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">136</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">138</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -755,7 +755,7 @@
                 
             
                 
-                    <li><a href="/categories/error" class="">Error (3)</a></li>
+                    <li><a href="/categories/error" class="">Error (4)</a></li>
                 
             
                 
@@ -799,7 +799,7 @@
             <ul>
                 
                     
-                        <li><a href="/categories/python" class="">Python (12)</a></li>
+                        <li><a href="/categories/python" class="">Python (13)</a></li>
                     
                 
                     
@@ -842,7 +842,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[Python] Data manipulation with pandas(1)">
-    <meta itemprop="description" content="Pandas  Inspecting dataframe          .info()      .shape      .describe        Sort          .sort_values()        select          df[[&#39;column1&#39;, &#39;column2&#39;]]        filter          df[df[column] == &#39;condition&#39;]        mutate          df[column] = df[column] + 1      ">
+    <meta itemprop="description" content="Pandas  Inspecting dataframe          .info()      .shape      .describe        sort          .sort_values()        select          df[[&#39;column1&#39;, &#39;column2&#39;]]        filter          df[df[column] == &#39;condition&#39;]        mutate          df[column] = df[column] + 1      ">
     <meta itemprop="datePublished" content="2021-10-19T00:00:00+09:00">
     
 
@@ -880,7 +880,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#pandas">Pandas</a></li><li><a href="#info--shape--describe">.info() &amp; .shape &amp; .describe()</a></li><li><a href="#head--columns--index">.head() &amp; .columns &amp; .index</a></li><li><a href="#sort_values">.sort_values()</a></li><li><a href="#dfcolum1-column2">df[[‘colum1’, ‘column2’]]</a></li><li><a href="#dfdfcolumn--condition">df[df[‘column’] = ‘condition’]</a></li><li><a href="#isin">.isin()</a></li><li><a href="#dfcolumn-">df`[column] =</a></li></ul>
+              <ul class="toc__menu"><li><a href="#pandas">Pandas</a></li><li><a href="#info--shape--describe">.info() &amp; .shape &amp; .describe()</a></li><li><a href="#head--columns--index">.head() &amp; .columns &amp; .index</a></li><li><a href="#sort_values">.sort_values()</a></li><li><a href="#dfcolum1-column2">df[[‘colum1’, ‘column2’]]</a></li><li><a href="#dfdfcolumn--condition">df[df[‘column’] = ‘condition’]</a></li><li><a href="#isin">.isin()</a></li><li><a href="#dfcolumn-">df[‘column’] =</a></li></ul>
 
             </nav>
           </aside>
@@ -895,7 +895,7 @@
       <li><code class="language-plaintext highlighter-rouge">.describe</code></li>
     </ul>
   </li>
-  <li>Sort
+  <li>sort
     <ul>
       <li><code class="language-plaintext highlighter-rouge">.sort_values()</code></li>
     </ul>
@@ -925,6 +925,7 @@
 
 <span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">'iris'</span><span class="p">)</span>
 </code></pre></div></div>
+<hr />
 
 <h3 id="info--shape--describe">.info() &amp; .shape &amp; .describe()</h3>
 <ul>
@@ -971,6 +972,8 @@ min        4.300000     2.000000      1.000000     0.100000
 75%        6.400000     3.300000      5.100000     1.800000
 max        7.900000     4.400000      6.900000     2.500000
 </code></pre></div></div>
+
+<hr />
 
 <h3 id="head--columns--index">.head() &amp; .columns &amp; .index</h3>
 <ul>
@@ -1329,7 +1332,7 @@ RangeIndex(start=0, stop=150, step=1)
 
 <hr />
 
-<h3 id="dfcolumn-">df`[column] =</h3>
+<h3 id="dfcolumn-">df[‘column’] =</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">[</span><span class="s">'sepal_agg'</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">]</span> <span class="o">*</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_width'</span><span class="p">]</span>
 <span class="n">iris</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -1428,6 +1431,8 @@ RangeIndex(start=0, stop=150, step=1)
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
+      <a href="/tags/#pandas" class="page__taxonomy-item" rel="tag">PANDAS</a><span class="sep">, </span>
+    
       <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
     
     </span>
@@ -1503,7 +1508,108 @@ RangeIndex(start=0, stop=150, step=1)
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/error/postgres_error1/" rel="permalink">[Error] Postgres DB not showing in Dbeaver
+        <a href="/python/introduction_to_data_reshaping/" rel="permalink">[Python] Reshaping Data with pandas(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Pandas
+
+  .transpose() - switch column &amp; row
+  .pivot() - long to wide
+  .pivot_table() - long to wide
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/error/pandas_error1/" rel="permalink">[Error] ParserError: Error tokenizing data. C error
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ParserError: Error tokenizing data. C error
+
+  상황
+    
+      Pandas에서 df.read_csv(“filename.csv”)에서 에러 발생
+    
+  
+  해결
+    
+      delimiter 명시
+    
+  
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/error/postgres_error1-copy/" rel="permalink">[Error] Postgres DB not showing in Dbeaver
 </a>
       
     </h2>
@@ -1584,99 +1690,6 @@ Postgres DB not showing
 ```bash
 show all DB
 show dbs
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/airflow/airflow_udemy8/" rel="permalink">[Apache Airflow] Airflow Config
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Airflow Config
-
-  기본 Airflow Config
-  Square Brackets to Combine Task
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/airflow/airflow4/" rel="permalink">[Apache Airflow] Airflow - MySQL Data Extract
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Airflow - MySQL Data Extract
-
-  Required Package Installation
-  Airflow - MySQL(local on Docker) Extract
-  Airflow - MySQL(EC2) Extract
-
 </p>
   </article>
 </div>

@@ -9,6 +9,7 @@ categories:
   - PYTHON
 tags:
   - PYTHON
+  - PANDAS
 ---
 ---
 ### Pandas 
@@ -22,7 +23,6 @@ tags:
 * Read & write dataframe
     * `pd.read_csv()`
     * `.to_csv()`
-
 
 ---
 

@@ -9,6 +9,7 @@ categories:
   - PYTHON
 tags:
   - PYTHON
+  - PANDAS
 ---
 
 
@@ -40,7 +41,6 @@ tags:
 
 ---
 
-
 ```python
 # import data
 import seaborn as sns
@@ -49,6 +49,7 @@ import numpy as np
 
 iris = sns.load_dataset('iris')
 ```
+---
 
 ### .mean() & .median()
 * df`.mean()`

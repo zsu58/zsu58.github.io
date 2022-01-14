@@ -1,4 +1,4 @@
-I"r<hr />
+I"q<hr />
 <h3 id="airflow-config">Airflow Config</h3>
 <ul>
   <li>기본 Airflow Config</li>
@@ -74,6 +74,5 @@ airflow config get-value core executor
     <span class="p">)</span>
 
 <span class="n">task_1</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">task_2</span><span class="p">,</span> <span class="n">task_3</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">task_4</span>
-
 </code></pre></div></div>
 :ET

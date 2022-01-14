@@ -1,0 +1,747 @@
+I"�[<hr />
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li>Aggregating dataframe
+    <ul>
+      <li>pandas Series인 상태로 계산하면 계산값이 int/float 형태로, pandas Dataframe 상태로 계산하면 dataframe으로 반환
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">.mean()</code> - 평균</li>
+          <li><code class="language-plaintext highlighter-rouge">.median()</code> - 중위값</li>
+          <li><code class="language-plaintext highlighter-rouge">.mode()</code> - 최빈값</li>
+          <li><code class="language-plaintext highlighter-rouge">.max()</code> - 최대값</li>
+          <li><code class="language-plaintext highlighter-rouge">.min()</code> - 최소값</li>
+          <li><code class="language-plaintext highlighter-rouge">.var()</code> - 분산</li>
+          <li><code class="language-plaintext highlighter-rouge">.std()</code> - 표준편차</li>
+          <li><code class="language-plaintext highlighter-rouge">.sum()</code> - 합</li>
+          <li><code class="language-plaintext highlighter-rouge">.quantile()</code> - 분위수</li>
+          <li><code class="language-plaintext highlighter-rouge">.agg()</code> - custom function 사용이 가능하게 함</li>
+        </ul>
+      </li>
+      <li>dataframe으로 반환
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">.cumsum()</code> - 누적 합</li>
+          <li><code class="language-plaintext highlighter-rouge">.cummax()</code> - 누적 중 최대값</li>
+          <li><code class="language-plaintext highlighter-rouge">.cummin()</code> - 누적 중 최소값</li>
+          <li><code class="language-plaintext highlighter-rouge">.cummprod()</code> - 누적 곱</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>unique
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.drop_duplicates()</code></li>
+    </ul>
+  </li>
+  <li>group_by
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.groupby()</code></li>
+    </ul>
+  </li>
+  <li>pivot
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.pivot_table</code></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<hr />
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import data
+</span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">'iris'</span><span class="p">)</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="mean--median">.mean() &amp; .median()</h3>
+<ul>
+  <li>df<code class="language-plaintext highlighter-rouge">.mean()</code></li>
+  <li>df<code class="language-plaintext highlighter-rouge">.median()</code></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">mean</span><span class="p">(),</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">median</span><span class="p">())</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5.843333333333334 5.8
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="agg">.agg()</h3>
+<ul>
+  <li>여러 열에 함수를 적용할 경우 리스트 안에 함수를 기입</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">irq</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">column</span><span class="p">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span> <span class="o">-</span> <span class="n">column</span><span class="p">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="n">iris</span><span class="p">[[</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'sepal_width'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="n">irq</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>irq</th>
+      <td>1.300000</td>
+      <td>0.500000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>5.843333</td>
+      <td>3.057333</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="cumsum--cummax--cummin--cumprod">.cumsum() &amp; .cummax() &amp; .cummin() &amp; .cumprod()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cumsumed_sepaL_length</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">cummax_sepaL_length</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">cummax</span><span class="p">()</span>
+<span class="n">cummin_sepaL_length</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">cummin</span><span class="p">()</span>
+<span class="n">cumprod_sepaL_length</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length'</span><span class="p">].</span><span class="n">cumprod</span><span class="p">().</span><span class="nb">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length_cumsum'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cumsumed_sepaL_length</span>
+<span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length_cummax'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cummax_sepaL_length</span>
+<span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length_cummin'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cummin_sepaL_length</span>
+<span class="n">iris</span><span class="p">[</span><span class="s">'sepal_length_cumprod'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cumprod_sepaL_length</span>
+<span class="n">iris</span><span class="p">[[</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'sepal_length_cumsum'</span><span class="p">,</span> <span class="s">'sepal_length_cummax'</span><span class="p">,</span> <span class="s">'sepal_length_cummin'</span><span class="p">,</span> <span class="s">'sepal_length_cumprod'</span><span class="p">]].</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_length_cumsum</th>
+      <th>sepal_length_cummax</th>
+      <th>sepal_length_cummin</th>
+      <th>sepal_length_cumprod</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>5.1</td>
+      <td>5.1</td>
+      <td>5.1</td>
+      <td>5.10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>10.0</td>
+      <td>5.1</td>
+      <td>4.9</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>14.7</td>
+      <td>5.1</td>
+      <td>4.7</td>
+      <td>117.45</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>19.3</td>
+      <td>5.1</td>
+      <td>4.6</td>
+      <td>540.28</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>24.3</td>
+      <td>5.1</td>
+      <td>4.6</td>
+      <td>2701.42</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5.4</td>
+      <td>29.7</td>
+      <td>5.4</td>
+      <td>4.6</td>
+      <td>14587.66</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4.6</td>
+      <td>34.3</td>
+      <td>5.4</td>
+      <td>4.6</td>
+      <td>67103.25</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>5.0</td>
+      <td>39.3</td>
+      <td>5.4</td>
+      <td>4.6</td>
+      <td>335516.24</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4.4</td>
+      <td>43.7</td>
+      <td>5.4</td>
+      <td>4.4</td>
+      <td>1476271.46</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>4.9</td>
+      <td>48.6</td>
+      <td>5.4</td>
+      <td>4.4</td>
+      <td>7233730.13</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="drop_duplicates">.drop_duplicates()</h3>
+<ul>
+  <li>조건을 2개 이상으로 할 경우 리스트 안에 열이름을 기입</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span>
+    <span class="n">iris</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="s">'petal_width'</span><span class="p">).</span><span class="n">shape</span><span class="p">,</span>
+    <span class="n">iris</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s">'petal_length'</span><span class="p">,</span> <span class="s">'petal_width'</span><span class="p">]).</span><span class="n">shape</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(22, 5) (102, 5)
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="value_counts">.value_counts()</h3>
+<ul>
+  <li>pandas Series만 가능</li>
+  <li>normalize 옵션을 통해 비율 산출 가능</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">[</span><span class="s">'species'</span><span class="p">].</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setosa        50
+versicolor    50
+virginica     50
+Name: species, dtype: int64
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">[</span><span class="s">'species'</span><span class="p">].</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setosa        0.333333
+versicolor    0.333333
+virginica     0.333333
+Name: species, dtype: float64
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="groupby">.groupby()</h3>
+<ul>
+  <li>조건을 2개 이상으로 할 경우 리스트 안에 열이름을 기입</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'species'</span><span class="p">)[[</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'sepal_width'</span><span class="p">]].</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># 조건이 두개인 경우
+# iris.groupby(['species', 'petal_length'])[['sepal_length', 'sepal_width']].mean()
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+    </tr>
+    <tr>
+      <th>species</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>setosa</th>
+      <td>5.006</td>
+      <td>3.428</td>
+    </tr>
+    <tr>
+      <th>versicolor</th>
+      <td>5.936</td>
+      <td>2.770</td>
+    </tr>
+    <tr>
+      <th>virginica</th>
+      <td>6.588</td>
+      <td>2.974</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'species'</span><span class="p">).</span><span class="n">agg</span><span class="p">([</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">median</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="4" halign="left">sepal_length</th>
+      <th colspan="4" halign="left">sepal_width</th>
+      <th colspan="4" halign="left">petal_length</th>
+      <th colspan="4" halign="left">petal_width</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>median</th>
+      <th>amax</th>
+      <th>amin</th>
+      <th>mean</th>
+      <th>median</th>
+      <th>amax</th>
+      <th>amin</th>
+      <th>mean</th>
+      <th>median</th>
+      <th>amax</th>
+      <th>amin</th>
+      <th>mean</th>
+      <th>median</th>
+      <th>amax</th>
+      <th>amin</th>
+    </tr>
+    <tr>
+      <th>species</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>setosa</th>
+      <td>5.006</td>
+      <td>5.0</td>
+      <td>5.8</td>
+      <td>4.3</td>
+      <td>3.428</td>
+      <td>3.4</td>
+      <td>4.4</td>
+      <td>2.3</td>
+      <td>1.462</td>
+      <td>1.50</td>
+      <td>1.9</td>
+      <td>1.0</td>
+      <td>0.246</td>
+      <td>0.2</td>
+      <td>0.6</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>versicolor</th>
+      <td>5.936</td>
+      <td>5.9</td>
+      <td>7.0</td>
+      <td>4.9</td>
+      <td>2.770</td>
+      <td>2.8</td>
+      <td>3.4</td>
+      <td>2.0</td>
+      <td>4.260</td>
+      <td>4.35</td>
+      <td>5.1</td>
+      <td>3.0</td>
+      <td>1.326</td>
+      <td>1.3</td>
+      <td>1.8</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>virginica</th>
+      <td>6.588</td>
+      <td>6.5</td>
+      <td>7.9</td>
+      <td>4.9</td>
+      <td>2.974</td>
+      <td>3.0</td>
+      <td>3.8</td>
+      <td>2.2</td>
+      <td>5.552</td>
+      <td>5.55</td>
+      <td>6.9</td>
+      <td>4.5</td>
+      <td>2.026</td>
+      <td>2.0</td>
+      <td>2.5</td>
+      <td>1.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="pivot_table">.pivot_table</h3>
+<ul>
+  <li>default는 mean이며, aggfunc을 통해 복수의 aggregate 값 산출</li>
+  <li>values에는 aggregate한 값을 원하는 변수 기입</li>
+  <li>index에는 groupby로 지정하고 싶은 변수 기입, 해당 변수에 따라 aggregate된 값을 row에 따라 제시</li>
+  <li>columns에 groupby 지정하고 싶은 변수를 기입할 경우, 해당 변수에 따라 aggregate된 값을 column에 따라 제시</li>
+  <li>fill_value에는 Nan 대신 산출하고 싶은 값 기입</li>
+  <li>margins에는 종합적인 aggregate 값을 산출하고 싶을 경우 True 사용</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="s">'petal_length'</span><span class="p">],</span>
+                 <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s">'species'</span><span class="p">,</span><span class="s">'petal_width'</span><span class="p">],</span>
+                 <span class="n">aggfunc</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">],</span>
+                 <span class="n">margins</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="2" halign="left">mean</th>
+      <th colspan="2" halign="left">amax</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>petal_length</th>
+      <th>sepal_length</th>
+      <th>petal_length</th>
+      <th>sepal_length</th>
+    </tr>
+    <tr>
+      <th>species</th>
+      <th>petal_width</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="6" valign="top">setosa</th>
+      <th>0.1</th>
+      <td>1.380000</td>
+      <td>4.820000</td>
+      <td>1.5</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>0.2</th>
+      <td>1.444828</td>
+      <td>4.972414</td>
+      <td>1.9</td>
+      <td>5.8</td>
+    </tr>
+    <tr>
+      <th>0.3</th>
+      <td>1.428571</td>
+      <td>4.971429</td>
+      <td>1.7</td>
+      <td>5.7</td>
+    </tr>
+    <tr>
+      <th>0.4</th>
+      <td>1.571429</td>
+      <td>5.300000</td>
+      <td>1.9</td>
+      <td>5.7</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>1.700000</td>
+      <td>5.100000</td>
+      <td>1.7</td>
+      <td>5.1</td>
+    </tr>
+    <tr>
+      <th>0.6</th>
+      <td>1.600000</td>
+      <td>5.000000</td>
+      <td>1.6</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th rowspan="9" valign="top">versicolor</th>
+      <th>1.0</th>
+      <td>3.628571</td>
+      <td>5.414286</td>
+      <td>4.1</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>1.1</th>
+      <td>3.566667</td>
+      <td>5.400000</td>
+      <td>3.9</td>
+      <td>5.6</td>
+    </tr>
+    <tr>
+      <th>1.2</th>
+      <td>4.240000</td>
+      <td>5.780000</td>
+      <td>4.7</td>
+      <td>6.1</td>
+    </tr>
+    <tr>
+      <th>1.3</th>
+      <td>4.176923</td>
+      <td>5.884615</td>
+      <td>4.6</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>1.4</th>
+      <td>4.500000</td>
+      <td>6.357143</td>
+      <td>4.8</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>1.5</th>
+      <td>4.580000</td>
+      <td>6.190000</td>
+      <td>4.9</td>
+      <td>6.9</td>
+    </tr>
+    <tr>
+      <th>1.6</th>
+      <td>4.766667</td>
+      <td>6.100000</td>
+      <td>5.1</td>
+      <td>6.3</td>
+    </tr>
+    <tr>
+      <th>1.7</th>
+      <td>5.000000</td>
+      <td>6.700000</td>
+      <td>5.0</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>1.8</th>
+      <td>4.800000</td>
+      <td>5.900000</td>
+      <td>4.8</td>
+      <td>5.9</td>
+    </tr>
+    <tr>
+      <th rowspan="12" valign="top">virginica</th>
+      <th>1.4</th>
+      <td>5.600000</td>
+      <td>6.100000</td>
+      <td>5.6</td>
+      <td>6.1</td>
+    </tr>
+    <tr>
+      <th>1.5</th>
+      <td>5.050000</td>
+      <td>6.150000</td>
+      <td>5.1</td>
+      <td>6.3</td>
+    </tr>
+    <tr>
+      <th>1.6</th>
+      <td>5.800000</td>
+      <td>7.200000</td>
+      <td>5.8</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>1.7</th>
+      <td>4.500000</td>
+      <td>4.900000</td>
+      <td>4.5</td>
+      <td>4.9</td>
+    </tr>
+    <tr>
+      <th>1.8</th>
+      <td>5.381818</td>
+      <td>6.445455</td>
+      <td>6.3</td>
+      <td>7.3</td>
+    </tr>
+    <tr>
+      <th>1.9</th>
+      <td>5.320000</td>
+      <td>6.340000</td>
+      <td>6.1</td>
+      <td>7.4</td>
+    </tr>
+    <tr>
+      <th>2.0</th>
+      <td>5.550000</td>
+      <td>6.650000</td>
+      <td>6.7</td>
+      <td>7.9</td>
+    </tr>
+    <tr>
+      <th>2.1</th>
+      <td>5.783333</td>
+      <td>6.916667</td>
+      <td>6.6</td>
+      <td>7.6</td>
+    </tr>
+    <tr>
+      <th>2.2</th>
+      <td>6.033333</td>
+      <td>6.866667</td>
+      <td>6.7</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>2.3</th>
+      <td>5.700000</td>
+      <td>6.912500</td>
+      <td>6.9</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>2.4</th>
+      <td>5.433333</td>
+      <td>6.266667</td>
+      <td>5.6</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>2.5</th>
+      <td>5.933333</td>
+      <td>6.733333</td>
+      <td>6.1</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <th></th>
+      <td>3.758000</td>
+      <td>5.843333</td>
+      <td>6.9</td>
+      <td>7.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+:ET

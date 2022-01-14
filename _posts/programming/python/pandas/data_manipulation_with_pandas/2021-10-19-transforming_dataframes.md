@@ -9,6 +9,7 @@ categories:
   - PYTHON
 tags:
   - PYTHON
+  - PANDAS
 ---
 
 ---
@@ -17,7 +18,7 @@ tags:
     * `.info()`
     * `.shape`
     * `.describe`
-* Sort
+* sort
     * `.sort_values()`
 * select
     * df`[['column1', 'column2']]`
@@ -28,7 +29,6 @@ tags:
 
 ---
 
-
 ```python
 # import data
 import seaborn as sns
@@ -36,12 +36,12 @@ import pandas as pd
 
 iris = sns.load_dataset('iris')
 ```
+---
 
 ### .info() & .shape & .describe()
 * df`.info`
 * df`.shape`
 * df`.describe`
-
 
 ```python
 # Print information about iris
@@ -82,6 +82,7 @@ print(iris.describe())
     75%        6.400000     3.300000      5.100000     1.800000
     max        7.900000     4.400000      6.900000     2.500000
 
+---
 
 ### .head() & .columns & .index
 * df`.head`
@@ -466,7 +467,7 @@ iris[cond].shape # setosa 50개 virginica 50개
 
 ---
 
-### df`[column] =
+### df['column'] =
 
 
 ```python

@@ -541,8 +541,16 @@
 <lastmod>2022-01-13T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/error/postgres_error1/</loc>
+<loc>http://localhost:4000/error/postgres_error1-copy/</loc>
 <lastmod>2022-01-13T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/error/pandas_error1/</loc>
+<lastmod>2022-01-14T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/python/introduction_to_data_reshaping/</loc>
+<lastmod>2022-01-14T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/storage/2021-09-15-Python_Backend-CH1/</loc>

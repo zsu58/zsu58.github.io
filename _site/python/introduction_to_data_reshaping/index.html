@@ -1,0 +1,2006 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Python] Reshaping Data with pandas(1) - Bibliothek für Data-Engineering</title>
+<meta name="description" content="Pandas    .transpose() - switch column &amp; row   .pivot() - long to wide   .pivot_table() - long to wide">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[Python] Reshaping Data with pandas(1)">
+<meta property="og:url" content="http://localhost:4000/python/introduction_to_data_reshaping/">
+
+
+  <meta property="og:description" content="Pandas    .transpose() - switch column &amp; row   .pivot() - long to wide   .pivot_table() - long to wide">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-14T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/python/introduction_to_data_reshaping/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Kategorie</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://stingy-camp-e37.notion.site/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/armi_made.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">138</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Algorithm</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--boj 카테고리 글들을 모아둔 페이지인 /categories/boj 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/boj" class="">BOJ (3)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/codeit" class="">Codeit (34)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/leetcode" class="">LeetCode (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/programmers" class="">Programmers (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/study_algorithm" class="">Study (3)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Data-Engineering</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/airflow" class="">Airflow (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/docker" class="">Docker (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/nosql" class="">NoSQL (1)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/spark" class="">Spark (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (21)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <li><a href="/categories/error" class="">Error (4)</a></li>
+                
+            
+                
+            
+        </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/java" class="">Java (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Python] Reshaping Data with pandas(1)">
+    <meta itemprop="description" content="Pandas  .transpose() - switch column &amp; row  .pivot() - long to wide  .pivot_table() - long to wide">
+    <meta itemprop="datePublished" content="2022-01-14T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Python] Reshaping Data with pandas(1)
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#pandas">Pandas</a></li><li><a href="#transpose">.transpose()</a></li><li><a href="#pivot">.pivot()</a></li><li><a href="#pivot_table">.pivot_table()</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.transpose()</code> - switch column &amp; row</li>
+  <li><code class="language-plaintext highlighter-rouge">.pivot()</code> - long to wide</li>
+  <li><code class="language-plaintext highlighter-rouge">.pivot_table()</code> - long to wide</li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import pkg &amp; dataset
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">df_fifa</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"players_20.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="transpose">.transpose()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span> <span class="o">=</span> <span class="n">df_fifa</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">"short_name"</span><span class="p">)[[</span><span class="s">"height_cm"</span><span class="p">,</span> <span class="s">"weight_kg"</span><span class="p">]]</span>
+<span class="n">df1</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>height_cm</th>
+      <th>weight_kg</th>
+    </tr>
+    <tr>
+      <th>short_name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>L. Messi</th>
+      <td>170</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>Cristiano Ronaldo</th>
+      <td>187</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>Neymar Jr</th>
+      <td>175</td>
+      <td>68</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">.</span><span class="n">transpose</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>short_name</th>
+      <th>L. Messi</th>
+      <th>Cristiano Ronaldo</th>
+      <th>Neymar Jr</th>
+      <th>J. Oblak</th>
+      <th>E. Hazard</th>
+      <th>K. De Bruyne</th>
+      <th>M. ter Stegen</th>
+      <th>V. van Dijk</th>
+      <th>L. Modrić</th>
+      <th>M. Salah</th>
+      <th>...</th>
+      <th>M. Gallagher</th>
+      <th>Huang Jiahui</th>
+      <th>M. Sagaf</th>
+      <th>E. Tweed</th>
+      <th>P. Martin</th>
+      <th>Shao Shuai</th>
+      <th>Xiao Mingjie</th>
+      <th>Zhang Wei</th>
+      <th>Wang Haijian</th>
+      <th>Pan Ximing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>height_cm</th>
+      <td>170</td>
+      <td>187</td>
+      <td>175</td>
+      <td>188</td>
+      <td>175</td>
+      <td>181</td>
+      <td>187</td>
+      <td>193</td>
+      <td>172</td>
+      <td>175</td>
+      <td>...</td>
+      <td>178</td>
+      <td>183</td>
+      <td>177</td>
+      <td>180</td>
+      <td>188</td>
+      <td>186</td>
+      <td>177</td>
+      <td>186</td>
+      <td>185</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <th>weight_kg</th>
+      <td>72</td>
+      <td>83</td>
+      <td>68</td>
+      <td>87</td>
+      <td>74</td>
+      <td>70</td>
+      <td>85</td>
+      <td>92</td>
+      <td>66</td>
+      <td>71</td>
+      <td>...</td>
+      <td>70</td>
+      <td>74</td>
+      <td>70</td>
+      <td>72</td>
+      <td>84</td>
+      <td>79</td>
+      <td>66</td>
+      <td>75</td>
+      <td>74</td>
+      <td>78</td>
+    </tr>
+  </tbody>
+</table>
+<p>2 rows × 18278 columns</p>
+</div>
+
+<hr />
+
+<h3 id="pivot">.pivot()</h3>
+<ul>
+  <li>values가 복수인 경우에는 <code class="language-plaintext highlighter-rouge">[]</code> 활용</li>
+  <li>values가 전체인 경우 생략</li>
+  <li>중복값이 있는 경우 제거해야함</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 데이터 불러오기
+</span><span class="n">fifa_long</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"fifa_long.csv"</span><span class="p">)</span>
+<span class="n">fifa_long</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>movement</th>
+      <th>overall</th>
+      <th>attacking</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>messi</td>
+      <td>shooting</td>
+      <td>92</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ronaldo</td>
+      <td>shooting</td>
+      <td>91</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>messi</td>
+      <td>passing</td>
+      <td>95</td>
+      <td>94</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># values가 1개인 경우
+</span><span class="n">fifa_long</span><span class="p">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">"name"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">"movement"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">"overall"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>movement</th>
+      <th>dribbling</th>
+      <th>passing</th>
+      <th>shooting</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>messi</th>
+      <td>96</td>
+      <td>95</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <th>ronaldo</th>
+      <td>88</td>
+      <td>82</td>
+      <td>91</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># values가 복수개인 경우
+</span><span class="n">fifa_long</span><span class="p">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">"name"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">"movement"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s">"overall"</span><span class="p">,</span> <span class="s">"attacking"</span><span class="p">])</span>
+<span class="c1"># values가 2개이므로 위와 같음
+# fifa_long.pivot(index="name", columns="movement")
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">overall</th>
+      <th colspan="3" halign="left">attacking</th>
+    </tr>
+    <tr>
+      <th>movement</th>
+      <th>dribbling</th>
+      <th>passing</th>
+      <th>shooting</th>
+      <th>dribbling</th>
+      <th>passing</th>
+      <th>shooting</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>messi</th>
+      <td>96</td>
+      <td>95</td>
+      <td>92</td>
+      <td>88</td>
+      <td>94</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>ronaldo</th>
+      <td>88</td>
+      <td>82</td>
+      <td>91</td>
+      <td>83</td>
+      <td>83</td>
+      <td>89</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 중복 행 만들기
+</span><span class="n">fifa_long</span> <span class="o">=</span> <span class="n">fifa_long</span><span class="p">.</span><span class="n">append</span><span class="p">({</span><span class="s">"name"</span><span class="p">:</span><span class="s">"ronaldo"</span><span class="p">,</span><span class="s">"movement"</span><span class="p">:</span><span class="s">"dribbling"</span><span class="p">,</span><span class="s">"overall"</span><span class="p">:</span><span class="mi">85</span><span class="p">,</span><span class="s">"attacking"</span><span class="p">:</span><span class="mi">84</span><span class="p">},</span> <span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">fifa_long</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>movement</th>
+      <th>overall</th>
+      <th>attacking</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>messi</td>
+      <td>shooting</td>
+      <td>92</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ronaldo</td>
+      <td>shooting</td>
+      <td>91</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>messi</td>
+      <td>passing</td>
+      <td>95</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ronaldo</td>
+      <td>passing</td>
+      <td>82</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>messi</td>
+      <td>dribbling</td>
+      <td>96</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ronaldo</td>
+      <td>dribbling</td>
+      <td>88</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ronaldo</td>
+      <td>dribbling</td>
+      <td>85</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ronaldo</td>
+      <td>dribbling</td>
+      <td>85</td>
+      <td>84</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 중복 행 제거
+</span><span class="n">fifa_long</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>movement</th>
+      <th>overall</th>
+      <th>attacking</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>messi</td>
+      <td>shooting</td>
+      <td>92</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ronaldo</td>
+      <td>shooting</td>
+      <td>91</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>messi</td>
+      <td>passing</td>
+      <td>95</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ronaldo</td>
+      <td>passing</td>
+      <td>82</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>messi</td>
+      <td>dribbling</td>
+      <td>96</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ronaldo</td>
+      <td>dribbling</td>
+      <td>88</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ronaldo</td>
+      <td>dribbling</td>
+      <td>85</td>
+      <td>84</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="pivot_table">.pivot_table()</h3>
+<ul>
+  <li>다음 3가지의 조건 중 하나라도 만족하는 경우 사용(즉, pivot과의 차이)
+    <ul>
+      <li>index/column pair이 한 개 이상인 경우</li>
+      <li>multi-index로 pivot을 원하는 경우</li>
+      <li>summary statistic을 산출하고 싶은 경우</li>
+    </ul>
+  </li>
+  <li>parameter
+    <ul>
+      <li>index - 행 기준</li>
+      <li>columns - 열 기준</li>
+      <li>values - 값 기준</li>
+      <li>aggfunc - 값에 대한 통계치, default는 mean</li>
+      <li>margins - 총계</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset player included in fc barcelona or real madrid
+</span><span class="n">df2</span> <span class="o">=</span> <span class="n">df_fifa</span><span class="p">[[</span><span class="s">"sofifa_id"</span><span class="p">,</span> <span class="s">"short_name"</span><span class="p">,</span> <span class="s">"age"</span><span class="p">,</span> <span class="s">"height_cm"</span><span class="p">,</span> <span class="s">"weight_kg"</span><span class="p">,</span> <span class="s">"nationality"</span><span class="p">,</span> <span class="s">"club"</span><span class="p">]]</span>
+<span class="n">df_rm_fbc</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">.</span><span class="n">club</span><span class="p">.</span><span class="n">isin</span><span class="p">([</span><span class="s">"FC Barcelona"</span><span class="p">,</span> <span class="s">"Real Madrid"</span><span class="p">])]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># maximum height of player by nationality &amp; club
+</span><span class="n">df_rm_fbc</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">"nationality"</span><span class="p">,</span> 
+                      <span class="n">columns</span><span class="o">=</span><span class="s">"club"</span><span class="p">,</span>
+                      <span class="n">values</span><span class="o">=</span><span class="s">"height_cm"</span><span class="p">,</span>
+                      <span class="n">aggfunc</span><span class="o">=</span><span class="s">"max"</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>club</th>
+      <th>FC Barcelona</th>
+      <th>Real Madrid</th>
+    </tr>
+    <tr>
+      <th>nationality</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Argentina</th>
+      <td>170.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Belgium</th>
+      <td>NaN</td>
+      <td>199.0</td>
+    </tr>
+    <tr>
+      <th>Brazil</th>
+      <td>190.0</td>
+      <td>186.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># total count of players of RM and FBC by nationality &amp; club
+</span><span class="n">df_rm_fbc</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">"nationality"</span><span class="p">,</span>
+                      <span class="n">columns</span><span class="o">=</span><span class="s">"club"</span><span class="p">,</span>
+                      <span class="n">values</span><span class="o">=</span><span class="s">"sofifa_id"</span><span class="p">,</span>
+                      <span class="n">aggfunc</span><span class="o">=</span><span class="s">"count"</span><span class="p">,</span>
+                      <span class="n">margins</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>club</th>
+      <th>FC Barcelona</th>
+      <th>Real Madrid</th>
+      <th>All</th>
+    </tr>
+    <tr>
+      <th>nationality</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Argentina</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Belgium</th>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Brazil</th>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>Chile</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Colombia</th>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Costa Rica</th>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Croatia</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Dominican Republic</th>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>France</th>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>Germany</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Japan</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Netherlands</th>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Portugal</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Senegal</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Serbia</th>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Spain</th>
+      <td>15.0</td>
+      <td>13.0</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>Uruguay</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Wales</th>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <td>33.0</td>
+      <td>33.0</td>
+      <td>66</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#pandas" class="page__taxonomy-item" rel="tag">PANDAS</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-01-14T00:00:00+09:00">January 14, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BPython%5D+Reshaping+Data+with+pandas%281%29%20http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fintroduction_to_data_reshaping%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fintroduction_to_data_reshaping%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fintroduction_to_data_reshaping%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/error/pandas_error1/" class="pagination--pager" title="[Error] ParserError: Error tokenizing data. C error
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/error/pandas_error1/" rel="permalink">[Error] ParserError: Error tokenizing data. C error
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ParserError: Error tokenizing data. C error
+
+  상황
+    
+      Pandas에서 df.read_csv(“filename.csv”)에서 에러 발생
+    
+  
+  해결
+    
+      delimiter 명시
+    
+  
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/error/postgres_error1-copy/" rel="permalink">[Error] Postgres DB not showing in Dbeaver
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Postgres DB not showing
+
+  상황
+    
+      Dbeaver에서 Postgres 연결 후 DB 만들고 refresh 했는데 DB가 보이지 않음
+      DB가 정상적으로 생성되긴 함
+    
+  
+  해결
+    
+      아래와 같이 해결
+   ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/nosql/mongo1/" rel="permalink">[NoSQL] MongoDB Shell
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">MongoDB Shell
+```bash
+show all DB
+show dbs
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/airflow/airflow_udemy8/" rel="permalink">[Apache Airflow] Airflow Config
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Airflow Config
+
+  기본 Airflow Config
+  Square Brackets to Combine Task
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

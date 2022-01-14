@@ -9,6 +9,7 @@ categories:
   - PYTHON
 tags:
   - PYTHON
+  - PANDAS
 ---
 
 ---

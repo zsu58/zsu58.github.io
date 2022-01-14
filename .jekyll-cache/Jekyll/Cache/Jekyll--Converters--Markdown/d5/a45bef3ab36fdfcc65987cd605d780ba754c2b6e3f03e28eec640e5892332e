@@ -1,0 +1,9 @@
+I"[<hr />
+
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.transpose()</code> - switch column &amp; row</li>
+  <li><code class="language-plaintext highlighter-rouge">.pivot()</code> - long to wide</li>
+  <li><code class="language-plaintext highlighter-rouge">.pivot_table()</code> - long to wide</li>
+</ul>
+:ET

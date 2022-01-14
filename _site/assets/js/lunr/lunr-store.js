@@ -306,14 +306,14 @@ var store = [{
         "teaser": null
       },{
         "title": "[Python] Data manipulation with pandas(1)",
-        "excerpt":"Pandas Inspecting dataframe .info() .shape .describe Sort .sort_values() select df[['column1', 'column2']] filter df[df[column] == 'condition'] mutate df[column] = df[column] + 1 # import data import seaborn as sns import pandas as pd iris = sns.load_dataset('iris') .info() &amp; .shape &amp; .describe() df.info df.shape df.describe # Print information about iris print(iris.info()) #...","categories": ["PYTHON"],
-        "tags": ["PYTHON"],
+        "excerpt":"Pandas Inspecting dataframe .info() .shape .describe sort .sort_values() select df[['column1', 'column2']] filter df[df[column] == 'condition'] mutate df[column] = df[column] + 1 # import data import seaborn as sns import pandas as pd iris = sns.load_dataset('iris') .info() &amp; .shape &amp; .describe() df.info df.shape df.describe # Print information about iris print(iris.info()) #...","categories": ["PYTHON"],
+        "tags": ["PYTHON","PANDAS"],
         "url": "/python/transforming_dataframes/",
         "teaser": null
       },{
         "title": "[Python] Data manipulation with pandas(2)",
         "excerpt":"Pandas Aggregating dataframe pandas Series인 상태로 계산하면 계산값이 int/float 형태로, pandas Dataframe 상태로 계산하면 dataframe으로 반환 .mean() - 평균 .median() - 중위값 .mode() - 최빈값 .max() - 최대값 .min() - 최소값 .var() - 분산 .std() - 표준편차 .sum() - 합 .quantile() - 분위수 .agg() - custom function 사용이 가능하게 함...","categories": ["PYTHON"],
-        "tags": ["PYTHON"],
+        "tags": ["PYTHON","PANDAS"],
         "url": "/python/aggregating_dataframe/",
         "teaser": null
       },{
@@ -331,7 +331,7 @@ var store = [{
       },{
         "title": "[Python] Data manipulation with pandas(3)",
         "excerpt":"Pandas Slicing and Indexing DataFrames pandas에는 index와 loc을 사용해 더 깔끔한 코드로 subsetting을 수 있음 그러나 data가 index로 활용된 측면에서 이는 tidy data는 아님(이 문제는 .reset_index를 통해 해결 가능) 개인적으로 dataframe 정렬 후 slicing을 통해 dataframe을 subsetting할 때 유용할 수 있을 것이라고 생각 .set_index() .reset_index() .loc() .sort_index() # import data...","categories": ["PYTHON"],
-        "tags": ["PYTHON"],
+        "tags": ["PYTHON","PANDAS"],
         "url": "/python/slicing_indexing_dataframe/",
         "teaser": null
       },{
@@ -355,7 +355,7 @@ var store = [{
       },{
         "title": "[Python] Data manipulation with pandas(4)",
         "excerpt":"Pandas Creating and Visualizing DataFrames .plot() kind=”bar”/ “line”/ “scatter” .hist() .legend() Missing data .isna() Read &amp; write dataframe pd.read_csv() .to_csv() # import data import seaborn as sns import pandas as pd import matplotlib.pyplot as plt iris = sns.load_dataset(\"iris\") .plot() kind=”bar” petal_len_by_species = iris.groupby(\"species\")[[\"petal_length\"]].mean() petal_len_by_species.plot(kind=\"bar\") plt.show() kind = “line” sp_wd_by_sp_len =...","categories": ["PYTHON"],
-        "tags": ["PYTHON"],
+        "tags": ["PYTHON","PANDAS"],
         "url": "/python/creating_and_visualizing_dataframes/",
         "teaser": null
       },{
@@ -793,13 +793,13 @@ var store = [{
       },{
         "title": "[Apache Airflow] Airflow - MySQL Data Extract",
         "excerpt":"Airflow - MySQL Data Extract Required Package Installation Airflow - MySQL(local on Docker) Extract Airflow - MySQL(EC2) Extract Required Package Installation mysql은 homebrew를 통해 설치 및 .zshrc에 환결설정 등록 # venv 실행 후 pip3 install mysql-connector-python pip3 install mysqlclient pip3 install apache-airflow-providers-mysql # mysql provider 설치 확인 airflow providers list...","categories": ["AIRFLOW"],
-        "tags": ["AIRFLOW"],
+        "tags": ["AIRFLOW","DOCKER"],
         "url": "/airflow/airflow4/",
         "teaser": null
       },{
         "title": "[Apache Airflow] Airflow Config",
         "excerpt":"Airflow Config 기본 Airflow Config Square Brackets to Combine Task 기본 Airflow Config Sqlite3는 동시에 multiple port를 허락하지 않음 따라서, task를 순차적으로 진행할 수 밖에 없음 Executor SequentialExecutor - Allows one task after another # venv에서 진행 # where airflow metadata is stored airflow config get-value core sql_alchemy_conn # what...","categories": ["AIRFLOW"],
-        "tags": ["AIRFLOW","DOCKER"],
+        "tags": ["AIRFLOW"],
         "url": "/airflow/airflow_udemy8/",
         "teaser": null
       },{
@@ -812,6 +812,18 @@ var store = [{
         "title": "[Error] Postgres DB not showing in Dbeaver",
         "excerpt":" Postgres DB not showing     상황            Dbeaver에서 Postgres 연결 후 DB 만들고 refresh 했는데 DB가 보이지 않음       DB가 정상적으로 생성되긴 함           해결            아래와 같이 해결       1) Edit connection(우클릭)       2) Connection settings       3) panel 중에 2번쨰 PostgreSQL 클릭       4) Show all databases 클릭             ref     🔗 참고  ","categories": ["ERROR"],
         "tags": ["MYSQL","PYTHON"],
-        "url": "/error/postgres_error1/",
+        "url": "/error/postgres_error1-copy/",
+        "teaser": null
+      },{
+        "title": "[Error] ParserError: Error tokenizing data. C error",
+        "excerpt":" ParserError: Error tokenizing data. C error     상황            Pandas에서 df.read_csv(“filename.csv”)에서 에러 발생           해결            delimiter 명시             Solution  # df_book = pd.read_csv(\"books.csv\") df_book = pd.read_csv(\"books.csv\", sep =\"\\t\")    ref     [🔗 참고1]https://mskim8717.tistory.com/82)   [🔗 참고2]https://stackoverflow.com/questions/18039057/python-pandas-error-tokenizing-data)  ","categories": ["ERROR"],
+        "tags": ["MYSQL","PYTHON"],
+        "url": "/error/pandas_error1/",
+        "teaser": null
+      },{
+        "title": "[Python] Reshaping Data with pandas(1)",
+        "excerpt":"Pandas .transpose() - switch column &amp; row .pivot() - long to wide .pivot_table() - long to wide # import pkg &amp; dataset import numpy as np import pandas as pd df_fifa = pd.read_csv(\"players_20.csv\") .transpose() df1 = df_fifa.set_index(\"short_name\")[[\"height_cm\", \"weight_kg\"]] df1.head(3) height_cm weight_kg short_name L. Messi 170 72 Cristiano Ronaldo 187 83...","categories": ["PYTHON"],
+        "tags": ["PYTHON","PANDAS"],
+        "url": "/python/introduction_to_data_reshaping/",
         "teaser": null
       }]

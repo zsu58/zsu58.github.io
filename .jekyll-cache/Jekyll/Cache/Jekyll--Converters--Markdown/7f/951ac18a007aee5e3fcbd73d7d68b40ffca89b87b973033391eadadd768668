@@ -1,0 +1,16 @@
+I"7<hr />
+
+<h3 id="parsererror-error-tokenizing-data-c-error">ParserError: Error tokenizing data. C error</h3>
+<ul>
+  <li>상황
+    <ul>
+      <li>Pandas에서 df.read_csv(“filename.csv”)에서 에러 발생</li>
+    </ul>
+  </li>
+  <li>해결
+    <ul>
+      <li>delimiter 명시</li>
+    </ul>
+  </li>
+</ul>
+:ET

@@ -1,4 +1,4 @@
-I"áD<hr />
+I"ùD<hr />
 <h3 id="pandas">Pandas</h3>
 <ul>
   <li>Inspecting dataframe
@@ -8,7 +8,7 @@
       <li><code class="language-plaintext highlighter-rouge">.describe</code></li>
     </ul>
   </li>
-  <li>Sort
+  <li>sort
     <ul>
       <li><code class="language-plaintext highlighter-rouge">.sort_values()</code></li>
     </ul>
@@ -32,12 +32,14 @@
 
 <hr />
 
+<hr />
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import data
 </span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 
 <span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">'iris'</span><span class="p">)</span>
 </code></pre></div></div>
+<hr />
 
 <h3 id="info--shape--describe">.info() &amp; .shape &amp; .describe()</h3>
 <ul>
@@ -84,6 +86,8 @@ min        4.300000     2.000000      1.000000     0.100000
 75%        6.400000     3.300000      5.100000     1.800000
 max        7.900000     4.400000      6.900000     2.500000
 </code></pre></div></div>
+
+<hr />
 
 <h3 id="head--columns--index">.head() &amp; .columns &amp; .index</h3>
 <ul>

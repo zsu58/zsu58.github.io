@@ -1,0 +1,29 @@
+I"Y<hr />
+<h3 id="parsererror-error-tokenizing-data-c-error">ParserError: Error tokenizing data. C error</h3>
+<ul>
+  <li>상황
+    <ul>
+      <li>Pandas에서 df.read_csv(“filename.csv”)에서 에러 발생</li>
+    </ul>
+  </li>
+  <li>해결
+    <ul>
+      <li>delimiter 명시</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="solution">Solution</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># df_book = pd.read_csv("books.csv")
+</span><span class="n">df_book</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"books.csv"</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="ref">ref</h3>
+<ul>
+  <li>[🔗 참고1]https://mskim8717.tistory.com/82)</li>
+  <li>[🔗 참고2]https://stackoverflow.com/questions/18039057/python-pandas-error-tokenizing-data)</li>
+</ul>
+:ET
