@@ -9,7 +9,6 @@ categories:
   - STUDY_ALGORITHM
 tags:
   - ALGORITHM
-  - PROGRAMMERS
 ---
 
 ---

@@ -1,7 +1,19 @@
-I"5N<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+I"bO<hr />
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.transpose()</code> - switch column &amp; row</li>
+  <li><code class="language-plaintext highlighter-rouge">.pivot()</code> - long to wide</li>
+  <li><code class="language-plaintext highlighter-rouge">.pivot_table()</code> - long to wide</li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import pkg &amp; dataset
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="n">df_fifa</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"players_20.csv"</span><span class="p">)</span>
 </code></pre></div></div>
+<hr />
 
 <h3 id="transpose">.transpose()</h3>
 
@@ -158,7 +170,6 @@
 
 <h3 id="pivot">.pivot()</h3>
 <ul>
-  <li>values가 복수인 경우에는 <code class="language-plaintext highlighter-rouge">[]</code> 활용</li>
   <li>values가 전체인 경우 생략</li>
   <li>중복값이 있는 경우 제거해야함</li>
 </ul>
@@ -515,7 +526,7 @@
 
 <hr />
 
-<h1 id="pivot_table">.pivot_table()</h1>
+<h3 id="pivot_table">.pivot_table()</h3>
 <ul>
   <li>다음 3가지의 조건 중 하나라도 만족하는 경우 사용(즉, pivot과의 차이)
     <ul>

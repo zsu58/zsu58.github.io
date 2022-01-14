@@ -9,7 +9,6 @@ categories:
   - STUDY_ALGORITHM
 tags:
   - ALGORITHM
-  - PROGRAMMERS
 ---
 
 ---
@@ -87,6 +86,7 @@ while len(queue) > 0:
         
 return answer
 ```
+---
 
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/boj/boj(2)/)
