@@ -29,5 +29,5 @@ df_book = pd.read_csv("books.csv", sep ="\t")
 ---
 
 ### ref 
-* [🔗 참고1]https://mskim8717.tistory.com/82)
-* [🔗 참고2]https://stackoverflow.com/questions/18039057/python-pandas-error-tokenizing-data)
+* [🔗 참고1](https://mskim8717.tistory.com/82)
+* [🔗 참고2](https://stackoverflow.com/questions/18039057/python-pandas-error-tokenizing-data)
