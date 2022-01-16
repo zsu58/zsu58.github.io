@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>[Python] iterrows &amp; itertuples &amp; pd.applys - Bibliothek für Data-Engineering</title>
-<meta name="description" content="Writing Efficient Python Code    PART4   iterrows를 통해 row별 iterration 가능            iterrows를 쓸 경우 index와 pandas Series로 구성되어 있는 tuple을 반환           itertuples를 통해 row별 iterration 가능            itertuples를 쓸 경우 namedtuple 형태를 반환           pd.applys을 통해 loop 대체 가능            0: columns, 1: rows           효율성: .values &gt; pd.applys &gt; itertuples &gt; iterrows">
+<meta name="description" content="Writing Efficient Python Code    PART4   iterrows를 통해 row별 iterration 가능            iterrows를 쓸 경우 index와 pandas Series로 구성되어 있는 tuple을 반환           itertuples를 통해 row별 iterration 가능            itertuples를 쓸 경우 namedtuple 형태를 반환           pd.applys을 통해 loop 대체 가능            0: row, 1: column           효율성: .values &gt; pd.applys &gt; itertuples &gt; iterrows">
 
 
   <meta name="author" content="ZSU">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/python/basic_pandas_optimizations/">
 
 
-  <meta property="og:description" content="Writing Efficient Python Code    PART4   iterrows를 통해 row별 iterration 가능            iterrows를 쓸 경우 index와 pandas Series로 구성되어 있는 tuple을 반환           itertuples를 통해 row별 iterration 가능            itertuples를 쓸 경우 namedtuple 형태를 반환           pd.applys을 통해 loop 대체 가능            0: columns, 1: rows           효율성: .values &gt; pd.applys &gt; itertuples &gt; iterrows">
+  <meta property="og:description" content="Writing Efficient Python Code    PART4   iterrows를 통해 row별 iterration 가능            iterrows를 쓸 경우 index와 pandas Series로 구성되어 있는 tuple을 반환           itertuples를 통해 row별 iterration 가능            itertuples를 쓸 경우 namedtuple 형태를 반환           pd.applys을 통해 loop 대체 가능            0: row, 1: column           효율성: .values &gt; pd.applys &gt; itertuples &gt; iterrows">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">138</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">144</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -326,7 +326,7 @@
                     
                 
                     
-                        <li><a href="/categories/boj" class="">BOJ (3)</a></li>
+                        <li><a href="/categories/boj" class="">BOJ (5)</a></li>
                     
                 
                     
@@ -464,7 +464,7 @@
                     
                 
                     
-                        <li><a href="/categories/study_algorithm" class="">Study (3)</a></li>
+                        <li><a href="/categories/study_algorithm" class="">Study (4)</a></li>
                     
                 
                     
@@ -799,7 +799,7 @@
             <ul>
                 
                     
-                        <li><a href="/categories/python" class="">Python (13)</a></li>
+                        <li><a href="/categories/python" class="">Python (16)</a></li>
                     
                 
                     
@@ -842,7 +842,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[Python] iterrows &amp; itertuples &amp; pd.applys">
-    <meta itemprop="description" content="Writing Efficient Python Code  PART4  iterrows를 통해 row별 iterration 가능          iterrows를 쓸 경우 index와 pandas Series로 구성되어 있는 tuple을 반환        itertuples를 통해 row별 iterration 가능          itertuples를 쓸 경우 namedtuple 형태를 반환        pd.applys을 통해 loop 대체 가능          0: columns, 1: rows        효율성: .values &gt; pd.applys &gt; itertuples &gt; iterrows">
+    <meta itemprop="description" content="Writing Efficient Python Code  PART4  iterrows를 통해 row별 iterration 가능          iterrows를 쓸 경우 index와 pandas Series로 구성되어 있는 tuple을 반환        itertuples를 통해 row별 iterration 가능          itertuples를 쓸 경우 namedtuple 형태를 반환        pd.applys을 통해 loop 대체 가능          0: row, 1: column        효율성: .values &gt; pd.applys &gt; itertuples &gt; iterrows">
     <meta itemprop="datePublished" content="2021-09-21T00:00:00+09:00">
     
 
@@ -901,7 +901,7 @@
   </li>
   <li><code class="language-plaintext highlighter-rouge">pd.applys</code>을 통해 loop 대체 가능
     <ul>
-      <li>0: columns, 1: rows</li>
+      <li>0: row, 1: column</li>
     </ul>
   </li>
   <li>효율성: <code class="language-plaintext highlighter-rouge">.values</code> &gt; <code class="language-plaintext highlighter-rouge">pd.applys</code> &gt; <code class="language-plaintext highlighter-rouge">itertuples</code> &gt; <code class="language-plaintext highlighter-rouge">iterrows</code></li>
@@ -1422,7 +1422,7 @@ Name: 0, dtype: object
 
 <h3 id="pdapply">pd.apply</h3>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># column sum
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># row sum
 </span><span class="n">baseball_df</span><span class="p">[[</span><span class="s">'RS'</span><span class="p">,</span> <span class="s">'RA'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1431,7 +1431,7 @@ RA    880981
 dtype: int64
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># row sum
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># column sum
 </span><span class="n">baseball_df</span><span class="p">[[</span><span class="s">'RS'</span><span class="p">,</span> <span class="s">'RA'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1644,7 +1644,7 @@ Name: WP, dtype: float64
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/python/introduction_to_data_reshaping/" rel="permalink">[Python] Reshaping Data with pandas(1)
+        <a href="/python/stacking_and_unstacking_dataframes/" rel="permalink">[Python] Reshaping Data with pandas(3)
 </a>
       
     </h2>
@@ -1662,7 +1662,7 @@ Name: WP, dtype: float64
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 minute read
+          6 minute read
         
       </span>
     
@@ -1673,9 +1673,57 @@ Name: WP, dtype: float64
 
 Pandas
 
-  .transpose() - switch column &amp; row
-  .pivot() - long to wide
-  .pivot_table() - long to wide
+  pd.MultiIndex.from_arrays() - setting MultiIndex to a dataframe
+  .stack() - rearrange innermost column index to become the innermost row index (...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/converting_between_wide_and_long_format/" rel="permalink">[Python] Reshaping Data with pandas(2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Pandas
+
+  .melt() - wide to long
+  pd.wide_to_long - wide to long
+    
+      function of pandas
+    
+  
+  .str - handling string in pandas
 
 </p>
   </article>
@@ -1691,7 +1739,60 @@ Pandas
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/error/pandas_error1/" rel="permalink">[Error] ParserError: Error tokenizing data. C error
+        <a href="/python/10_minutes_pandas/" rel="permalink">[Python] 10 minutes to Pandas
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          10 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+10 Minutes Pandas
+
+  Viewing Data
+  Selection
+  Missing Data
+  Operation
+  Merge
+  Grouping
+  Reshaping
+  Time Series
+  Categoricals
+  Plotting
+  Getting D...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj(5)/" rel="permalink">[ALGORITHM] BOJ 2745. 진법 변ㅏ
 </a>
       
     </h2>
@@ -1718,114 +1819,10 @@ Pandas
 
     <p class="archive__item-excerpt" itemprop="description">
 
-ParserError: Error tokenizing data. C error
+ALGORITHM Übung - 백준
 
-  상황
-    
-      Pandas에서 df.read_csv(“filename.csv”)에서 에러 발생
-    
-  
-  해결
-    
-      delimiter 명시
-    
-  
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
 
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/error/postgres_error1-copy/" rel="permalink">[Error] Postgres DB not showing in Dbeaver
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Postgres DB not showing
-
-  상황
-    
-      Dbeaver에서 Postgres 연결 후 DB 만들고 refresh 했는데 DB가 보이지 않음
-      DB가 정상적으로 생성되긴 함
-    
-  
-  해결
-    
-      아래와 같이 해결
-   ...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/nosql/mongo1/" rel="permalink">[NoSQL] MongoDB Shell
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">MongoDB Shell
-```bash
-show all DB
-show dbs
 </p>
   </article>
 </div>

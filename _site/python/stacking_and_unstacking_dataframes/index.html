@@ -1,0 +1,2538 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Python] Reshaping Data with pandas(3) - Bibliothek für Data-Engineering</title>
+<meta name="description" content="Pandas    pd.MultiIndex.from_arrays() - setting MultiIndex to a dataframe   .stack() - rearrange innermost column index to become the innermost row index (즉, column들을 새로운 하나의 index로 처리)   .unstack() - rearrange innermost row index to become the innermost column index            innermost column or row index have the highest level           .swaplevel() - exchange row/column between different levels">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[Python] Reshaping Data with pandas(3)">
+<meta property="og:url" content="http://localhost:4000/python/stacking_and_unstacking_dataframes/">
+
+
+  <meta property="og:description" content="Pandas    pd.MultiIndex.from_arrays() - setting MultiIndex to a dataframe   .stack() - rearrange innermost column index to become the innermost row index (즉, column들을 새로운 하나의 index로 처리)   .unstack() - rearrange innermost row index to become the innermost column index            innermost column or row index have the highest level           .swaplevel() - exchange row/column between different levels">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-15T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/python/stacking_and_unstacking_dataframes/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Kategorie</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://stingy-camp-e37.notion.site/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/armi_made.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">144</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Algorithm</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--boj 카테고리 글들을 모아둔 페이지인 /categories/boj 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/boj" class="">BOJ (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/codeit" class="">Codeit (34)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/leetcode" class="">LeetCode (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/programmers" class="">Programmers (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/study_algorithm" class="">Study (4)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Data-Engineering</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/airflow" class="">Airflow (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/docker" class="">Docker (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/nosql" class="">NoSQL (1)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/spark" class="">Spark (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (21)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <li><a href="/categories/error" class="">Error (4)</a></li>
+                
+            
+                
+            
+        </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/java" class="">Java (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Python] Reshaping Data with pandas(3)">
+    <meta itemprop="description" content="Pandas  pd.MultiIndex.from_arrays() - setting MultiIndex to a dataframe  .stack() - rearrange innermost column index to become the innermost row index (즉, column들을 새로운 하나의 index로 처리)  .unstack() - rearrange innermost row index to become the innermost column index          innermost column or row index have the highest level        .swaplevel() - exchange row/column between different levels">
+    <meta itemprop="datePublished" content="2022-01-15T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Python] Reshaping Data with pandas(3)
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#pandas">Pandas</a></li><li><a href="#pdmultiindexfrom_arrays">pd.MultiIndex.from_arrays()</a></li><li><a href="#stack">.stack()</a></li><li><a href="#unstack">.unstack()</a></li><li><a href="#swaplevel">.swaplevel()</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pd.MultiIndex.from_arrays()</code> - setting MultiIndex to a dataframe</li>
+  <li><code class="language-plaintext highlighter-rouge">.stack()</code> - rearrange innermost column index to become the innermost row index (즉, column들을 새로운 하나의 index로 처리)</li>
+  <li><code class="language-plaintext highlighter-rouge">.unstack()</code> - rearrange innermost row index to become the innermost column index
+    <ul>
+      <li>innermost column or row index have the highest level</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">.swaplevel()</code> - exchange row/column between different levels</li>
+</ul>
+
+<hr />
+
+<h3 id="pdmultiindexfrom_arrays">pd.MultiIndex.from_arrays()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import pkg &amp; dataset
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">churn</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"churn-bigml-20.csv"</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">churn</span><span class="p">[[</span><span class="s">"Area code"</span><span class="p">,</span> <span class="s">"Total day calls"</span><span class="p">,</span> <span class="s">"Total day charge"</span><span class="p">,</span> <span class="s">"Total night calls"</span><span class="p">,</span> <span class="s">"Total night charge"</span><span class="p">]]</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">df3</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">df3</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Area code</th>
+      <th>Total day calls</th>
+      <th>Total day charge</th>
+      <th>Total night calls</th>
+      <th>Total night charge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>408</td>
+      <td>97</td>
+      <td>31.37</td>
+      <td>90</td>
+      <td>9.71</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>415</td>
+      <td>137</td>
+      <td>21.95</td>
+      <td>111</td>
+      <td>9.40</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>415</td>
+      <td>67</td>
+      <td>56.59</td>
+      <td>128</td>
+      <td>7.23</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>415</td>
+      <td>103</td>
+      <td>18.77</td>
+      <td>105</td>
+      <td>8.53</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># predefine index to use as index
+</span><span class="n">new_index</span> <span class="o">=</span> <span class="p">[[</span><span class="s">'California'</span><span class="p">,</span> <span class="s">'California'</span><span class="p">,</span> <span class="s">'New York'</span><span class="p">,</span> <span class="s">'Ohio'</span><span class="p">],</span> 
+             <span class="p">[</span><span class="s">'Los Angeles'</span><span class="p">,</span> <span class="s">'San Francisco'</span><span class="p">,</span> <span class="s">'New York'</span><span class="p">,</span> <span class="s">'Cleveland'</span><span class="p">]]</span>
+
+<span class="c1"># create a multi-level index using predefined new_index
+</span><span class="n">multi_index</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">MultiIndex</span><span class="p">.</span><span class="n">from_arrays</span><span class="p">(</span><span class="n">new_index</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">'state'</span><span class="p">,</span> <span class="s">'city'</span><span class="p">])</span>
+
+<span class="c1"># Assign the new index to the churn index
+</span><span class="n">df3</span><span class="p">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">multi_index</span>
+
+<span class="n">df3</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Area code</th>
+      <th>Total day calls</th>
+      <th>Total day charge</th>
+      <th>Total night calls</th>
+      <th>Total night charge</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">California</th>
+      <th>Los Angeles</th>
+      <td>408</td>
+      <td>97</td>
+      <td>31.37</td>
+      <td>90</td>
+      <td>9.71</td>
+    </tr>
+    <tr>
+      <th>San Francisco</th>
+      <td>415</td>
+      <td>137</td>
+      <td>21.95</td>
+      <td>111</td>
+      <td>9.40</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <th>New York</th>
+      <td>415</td>
+      <td>67</td>
+      <td>56.59</td>
+      <td>128</td>
+      <td>7.23</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <th>Cleveland</th>
+      <td>415</td>
+      <td>103</td>
+      <td>18.77</td>
+      <td>105</td>
+      <td>8.53</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="stack">.stack()</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">level</code>을 통해 어떤 column을 stack할 것인지 정할 수 있음</li>
+  <li>stack의 dropna=True가 default임</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+</span><span class="n">df4</span> <span class="o">=</span> <span class="n">df3</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"Area code"</span><span class="p">])</span>
+<span class="n">df4</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df4_melt</span> <span class="o">=</span> <span class="n">df4</span><span class="p">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s">"state"</span><span class="p">,</span> <span class="s">"city"</span><span class="p">])</span>
+<span class="n">df4_melt</span><span class="p">[</span><span class="s">"variable"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df4_melt</span><span class="p">[</span><span class="s">"variable"</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"Total "</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+<span class="n">df4_melt</span><span class="p">[[</span><span class="s">"time"</span><span class="p">,</span> <span class="s">"feature"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df4_melt</span><span class="p">[</span><span class="s">"variable"</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df4_pivot</span> <span class="o">=</span> <span class="n">df4_melt</span><span class="p">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">"state"</span><span class="p">,</span><span class="s">"city"</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"time"</span><span class="p">,</span> <span class="s">"feature"</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="s">"value"</span><span class="p">)</span>
+<span class="n">df4_pivot</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>time</th>
+      <th colspan="2" halign="left">day</th>
+      <th colspan="2" halign="left">night</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>feature</th>
+      <th>calls</th>
+      <th>charge</th>
+      <th>calls</th>
+      <th>charge</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">California</th>
+      <th>Los Angeles</th>
+      <td>97.0</td>
+      <td>31.37</td>
+      <td>90.0</td>
+      <td>9.71</td>
+    </tr>
+    <tr>
+      <th>San Francisco</th>
+      <td>137.0</td>
+      <td>21.95</td>
+      <td>111.0</td>
+      <td>9.40</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <th>New York</th>
+      <td>67.0</td>
+      <td>56.59</td>
+      <td>128.0</td>
+      <td>7.23</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <th>Cleveland</th>
+      <td>103.0</td>
+      <td>18.77</td>
+      <td>105.0</td>
+      <td>8.53</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># default는 innermost column
+</span><span class="n">df4_pivot</span><span class="p">.</span><span class="n">stack</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>time</th>
+      <th>day</th>
+      <th>night</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th>city</th>
+      <th>feature</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">California</th>
+      <th rowspan="2" valign="top">Los Angeles</th>
+      <th>calls</th>
+      <td>97.00</td>
+      <td>90.00</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>31.37</td>
+      <td>9.71</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">San Francisco</th>
+      <th>calls</th>
+      <td>137.00</td>
+      <td>111.00</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>21.95</td>
+      <td>9.40</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">New York</th>
+      <th rowspan="2" valign="top">New York</th>
+      <th>calls</th>
+      <td>67.00</td>
+      <td>128.00</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>56.59</td>
+      <td>7.23</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Ohio</th>
+      <th rowspan="2" valign="top">Cleveland</th>
+      <th>calls</th>
+      <td>103.00</td>
+      <td>105.00</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>18.77</td>
+      <td>8.53</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset 준비
+</span><span class="n">df5_melt</span> <span class="o">=</span> <span class="n">df4</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"Total night charge"</span><span class="p">]).</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s">"state"</span><span class="p">,</span> <span class="s">"city"</span><span class="p">])</span>
+<span class="n">df5_melt</span><span class="p">[</span><span class="s">"variable"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df5_melt</span><span class="p">[</span><span class="s">"variable"</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"Total "</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+<span class="n">df5_melt</span><span class="p">[[</span><span class="s">"time"</span><span class="p">,</span> <span class="s">"feature"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df4_melt</span><span class="p">[</span><span class="s">"variable"</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df5_pivot</span> <span class="o">=</span> <span class="n">df5_melt</span><span class="p">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">"state"</span><span class="p">,</span><span class="s">"city"</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"time"</span><span class="p">,</span> <span class="s">"feature"</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="s">"value"</span><span class="p">)</span>
+<span class="n">df5_pivot</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>time</th>
+      <th colspan="2" halign="left">day</th>
+      <th>night</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>feature</th>
+      <th>calls</th>
+      <th>charge</th>
+      <th>calls</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">California</th>
+      <th>Los Angeles</th>
+      <td>97.0</td>
+      <td>31.37</td>
+      <td>90.0</td>
+    </tr>
+    <tr>
+      <th>San Francisco</th>
+      <td>137.0</td>
+      <td>21.95</td>
+      <td>111.0</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <th>New York</th>
+      <td>67.0</td>
+      <td>56.59</td>
+      <td>128.0</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <th>Cleveland</th>
+      <td>103.0</td>
+      <td>18.77</td>
+      <td>105.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dropna=False를 통해 없는 default로 사라진 행까지 생성되게 할 수 있으며, fillna를 통해 빈 값을 채울 수 있음
+</span><span class="n">df5_pivot</span><span class="p">.</span><span class="n">stack</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">fillna</span><span class="p">(</span><span class="s">"채움"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>time</th>
+      <th>day</th>
+      <th>night</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th>city</th>
+      <th>feature</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">California</th>
+      <th rowspan="2" valign="top">Los Angeles</th>
+      <th>calls</th>
+      <td>97.00</td>
+      <td>90.0</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>31.37</td>
+      <td>채움</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">San Francisco</th>
+      <th>calls</th>
+      <td>137.00</td>
+      <td>111.0</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>21.95</td>
+      <td>채움</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">New York</th>
+      <th rowspan="2" valign="top">New York</th>
+      <th>calls</th>
+      <td>67.00</td>
+      <td>128.0</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>56.59</td>
+      <td>채움</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Ohio</th>
+      <th rowspan="2" valign="top">Cleveland</th>
+      <th>calls</th>
+      <td>103.00</td>
+      <td>105.0</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>18.77</td>
+      <td>채움</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># level을 통해 어떤 열을 stack할 것인지 명시 가능
+</span><span class="n">df4_pivot</span><span class="p">.</span><span class="n">stack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># 위와 같음
+</span><span class="n">df4_pivot</span><span class="p">.</span><span class="n">stack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s">"feature"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>time</th>
+      <th>day</th>
+      <th>night</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th>city</th>
+      <th>feature</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">California</th>
+      <th rowspan="2" valign="top">Los Angeles</th>
+      <th>calls</th>
+      <td>97.00</td>
+      <td>90.00</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>31.37</td>
+      <td>9.71</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">San Francisco</th>
+      <th>calls</th>
+      <td>137.00</td>
+      <td>111.00</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>21.95</td>
+      <td>9.40</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">New York</th>
+      <th rowspan="2" valign="top">New York</th>
+      <th>calls</th>
+      <td>67.00</td>
+      <td>128.00</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>56.59</td>
+      <td>7.23</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Ohio</th>
+      <th rowspan="2" valign="top">Cleveland</th>
+      <th>calls</th>
+      <td>103.00</td>
+      <td>105.00</td>
+    </tr>
+    <tr>
+      <th>charge</th>
+      <td>18.77</td>
+      <td>8.53</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 복수의 column index stack
+</span><span class="n">df4_pivot</span><span class="p">.</span><span class="n">stack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># # 위와 같음
+# df4_pivot.stack(level=["time", "feature"])
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>state       city           time   feature
+California  Los Angeles    day    calls       97.00
+                                  charge      31.37
+                           night  calls       90.00
+                                  charge       9.71
+            San Francisco  day    calls      137.00
+                                  charge      21.95
+                           night  calls      111.00
+                                  charge       9.40
+New York    New York       day    calls       67.00
+                                  charge      56.59
+                           night  calls      128.00
+                                  charge       7.23
+Ohio        Cleveland      day    calls      103.00
+                                  charge      18.77
+                           night  calls      105.00
+                                  charge       8.53
+dtype: float64
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="unstack">.unstack()</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">level</code>을 통해 어떤 column을 unstack할 것인지 정할 수 있음</li>
+  <li><code class="language-plaintext highlighter-rouge">fill_value</code>를 통해 unstack 시 발생하는 NaN을 다른 값으로 채울 수 있음</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># default는 innermost row
+</span><span class="n">df4_pivot</span><span class="p">.</span><span class="n">unstack</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>time</th>
+      <th colspan="8" halign="left">day</th>
+      <th colspan="8" halign="left">night</th>
+    </tr>
+    <tr>
+      <th>feature</th>
+      <th colspan="4" halign="left">calls</th>
+      <th colspan="4" halign="left">charge</th>
+      <th colspan="4" halign="left">calls</th>
+      <th colspan="4" halign="left">charge</th>
+    </tr>
+    <tr>
+      <th>city</th>
+      <th>Cleveland</th>
+      <th>Los Angeles</th>
+      <th>New York</th>
+      <th>San Francisco</th>
+      <th>Cleveland</th>
+      <th>Los Angeles</th>
+      <th>New York</th>
+      <th>San Francisco</th>
+      <th>Cleveland</th>
+      <th>Los Angeles</th>
+      <th>New York</th>
+      <th>San Francisco</th>
+      <th>Cleveland</th>
+      <th>Los Angeles</th>
+      <th>New York</th>
+      <th>San Francisco</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>NaN</td>
+      <td>97.0</td>
+      <td>NaN</td>
+      <td>137.0</td>
+      <td>NaN</td>
+      <td>31.37</td>
+      <td>NaN</td>
+      <td>21.95</td>
+      <td>NaN</td>
+      <td>90.0</td>
+      <td>NaN</td>
+      <td>111.0</td>
+      <td>NaN</td>
+      <td>9.71</td>
+      <td>NaN</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>67.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>56.59</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>128.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.23</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>103.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18.77</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>105.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8.53</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># fill_value=0을 통해 missing value 채울 수 있음
+</span><span class="n">df4_pivot</span><span class="p">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>time</th>
+      <th colspan="8" halign="left">day</th>
+      <th colspan="8" halign="left">night</th>
+    </tr>
+    <tr>
+      <th>feature</th>
+      <th colspan="4" halign="left">calls</th>
+      <th colspan="4" halign="left">charge</th>
+      <th colspan="4" halign="left">calls</th>
+      <th colspan="4" halign="left">charge</th>
+    </tr>
+    <tr>
+      <th>city</th>
+      <th>Cleveland</th>
+      <th>Los Angeles</th>
+      <th>New York</th>
+      <th>San Francisco</th>
+      <th>Cleveland</th>
+      <th>Los Angeles</th>
+      <th>New York</th>
+      <th>San Francisco</th>
+      <th>Cleveland</th>
+      <th>Los Angeles</th>
+      <th>New York</th>
+      <th>San Francisco</th>
+      <th>Cleveland</th>
+      <th>Los Angeles</th>
+      <th>New York</th>
+      <th>San Francisco</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>0.0</td>
+      <td>97.0</td>
+      <td>0.0</td>
+      <td>137.0</td>
+      <td>0.00</td>
+      <td>31.37</td>
+      <td>0.00</td>
+      <td>21.95</td>
+      <td>0.0</td>
+      <td>90.0</td>
+      <td>0.0</td>
+      <td>111.0</td>
+      <td>0.00</td>
+      <td>9.71</td>
+      <td>0.00</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>67.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>56.59</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>128.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>7.23</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>103.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>18.77</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>105.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8.53</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># level을 통해 어떤 row를 stack할 것인지 명시 가능
+</span><span class="n">df4_pivot</span><span class="p">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># 위와 같음
+# df4_pivot.unstack(level="state")
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>time</th>
+      <th colspan="6" halign="left">day</th>
+      <th colspan="6" halign="left">night</th>
+    </tr>
+    <tr>
+      <th>feature</th>
+      <th colspan="3" halign="left">calls</th>
+      <th colspan="3" halign="left">charge</th>
+      <th colspan="3" halign="left">calls</th>
+      <th colspan="3" halign="left">charge</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th>California</th>
+      <th>New York</th>
+      <th>Ohio</th>
+      <th>California</th>
+      <th>New York</th>
+      <th>Ohio</th>
+      <th>California</th>
+      <th>New York</th>
+      <th>Ohio</th>
+      <th>California</th>
+      <th>New York</th>
+      <th>Ohio</th>
+    </tr>
+    <tr>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Cleveland</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>103.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18.77</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>105.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8.53</td>
+    </tr>
+    <tr>
+      <th>Los Angeles</th>
+      <td>97.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>31.37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>90.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>NaN</td>
+      <td>67.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>56.59</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>128.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.23</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>San Francisco</th>
+      <td>137.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>21.95</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>111.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 복수의 row index unstack
+</span><span class="n">df4_pivot</span><span class="p">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># # 위와 같음
+# df4_pivot.unstack(level=["state", "city"])
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time   feature  state       city         
+day    calls    California  Cleveland           NaN
+                            Los Angeles       97.00
+                            New York            NaN
+                            San Francisco    137.00
+                New York    Cleveland           NaN
+                            Los Angeles         NaN
+                            New York          67.00
+                            San Francisco       NaN
+                Ohio        Cleveland        103.00
+                            Los Angeles         NaN
+                            New York            NaN
+                            San Francisco       NaN
+       charge   California  Cleveland           NaN
+                            Los Angeles       31.37
+                            New York            NaN
+                            San Francisco     21.95
+                New York    Cleveland           NaN
+                            Los Angeles         NaN
+                            New York          56.59
+                            San Francisco       NaN
+                Ohio        Cleveland         18.77
+                            Los Angeles         NaN
+                            New York            NaN
+                            San Francisco       NaN
+night  calls    California  Cleveland           NaN
+                            Los Angeles       90.00
+                            New York            NaN
+                            San Francisco    111.00
+                New York    Cleveland           NaN
+                            Los Angeles         NaN
+                            New York         128.00
+                            San Francisco       NaN
+                Ohio        Cleveland        105.00
+                            Los Angeles         NaN
+                            New York            NaN
+                            San Francisco       NaN
+       charge   California  Cleveland           NaN
+                            Los Angeles        9.71
+                            New York            NaN
+                            San Francisco      9.40
+                New York    Cleveland           NaN
+                            Los Angeles         NaN
+                            New York           7.23
+                            San Francisco       NaN
+                Ohio        Cleveland          8.53
+                            Los Angeles         NaN
+                            New York            NaN
+                            San Francisco       NaN
+dtype: float64
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="swaplevel">.swaplevel()</h3>
+<ul>
+  <li>axis=1을 통해 column의 level 간 이동이 가능</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># row index 간 교환
+</span><span class="n">df4_pivot</span><span class="p">.</span><span class="n">swaplevel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>time</th>
+      <th colspan="2" halign="left">day</th>
+      <th colspan="2" halign="left">night</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>feature</th>
+      <th>calls</th>
+      <th>charge</th>
+      <th>calls</th>
+      <th>charge</th>
+    </tr>
+    <tr>
+      <th>city</th>
+      <th>state</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Los Angeles</th>
+      <th>California</th>
+      <td>97.0</td>
+      <td>31.37</td>
+      <td>90.0</td>
+      <td>9.71</td>
+    </tr>
+    <tr>
+      <th>San Francisco</th>
+      <th>California</th>
+      <td>137.0</td>
+      <td>21.95</td>
+      <td>111.0</td>
+      <td>9.40</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <th>New York</th>
+      <td>67.0</td>
+      <td>56.59</td>
+      <td>128.0</td>
+      <td>7.23</td>
+    </tr>
+    <tr>
+      <th>Cleveland</th>
+      <th>Ohio</th>
+      <td>103.0</td>
+      <td>18.77</td>
+      <td>105.0</td>
+      <td>8.53</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># column index 간 교환
+</span><span class="n">df4_pivot</span><span class="p">.</span><span class="n">swaplevel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>feature</th>
+      <th>calls</th>
+      <th>charge</th>
+      <th>calls</th>
+      <th>charge</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>time</th>
+      <th>day</th>
+      <th>day</th>
+      <th>night</th>
+      <th>night</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">California</th>
+      <th>Los Angeles</th>
+      <td>97.0</td>
+      <td>31.37</td>
+      <td>90.0</td>
+      <td>9.71</td>
+    </tr>
+    <tr>
+      <th>San Francisco</th>
+      <td>137.0</td>
+      <td>21.95</td>
+      <td>111.0</td>
+      <td>9.40</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <th>New York</th>
+      <td>67.0</td>
+      <td>56.59</td>
+      <td>128.0</td>
+      <td>7.23</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <th>Cleveland</th>
+      <td>103.0</td>
+      <td>18.77</td>
+      <td>105.0</td>
+      <td>8.53</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#pandas" class="page__taxonomy-item" rel="tag">PANDAS</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-01-15T00:00:00+09:00">January 15, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BPython%5D+Reshaping+Data+with+pandas%283%29%20http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fstacking_and_unstacking_dataframes%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fstacking_and_unstacking_dataframes%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fstacking_and_unstacking_dataframes%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/python/converting_between_wide_and_long_format/" class="pagination--pager" title="[Python] Reshaping Data with pandas(2)
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/converting_between_wide_and_long_format/" rel="permalink">[Python] Reshaping Data with pandas(2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Pandas
+
+  .melt() - wide to long
+  pd.wide_to_long - wide to long
+    
+      function of pandas
+    
+  
+  .str - handling string in pandas
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/10_minutes_pandas/" rel="permalink">[Python] 10 minutes to Pandas
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+10 Minutes Pandas
+
+  Viewing Data
+  Selection
+  Missing Data
+  Operation
+  Merge
+  Grouping
+  Reshaping
+  Time Series
+  Categoricals
+  Plotting
+  Getting D...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj(5)/" rel="permalink">[ALGORITHM] BOJ 2745. 진법 변ㅏ
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - 백준
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/introduction_to_data_reshaping/" rel="permalink">[Python] Reshaping Data with pandas(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Pandas
+
+  .transpose() - switch column &amp; row
+  .pivot() - long to wide
+  .pivot_table() - long to wide
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

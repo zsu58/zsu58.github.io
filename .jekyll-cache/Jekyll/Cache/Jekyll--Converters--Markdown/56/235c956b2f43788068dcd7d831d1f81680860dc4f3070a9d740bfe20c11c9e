@@ -1,0 +1,23 @@
+I"p<hr />
+
+<h3 id="writing-efficient-python-code">Writing Efficient Python Code</h3>
+<ul>
+  <li>PART4</li>
+  <li><code class="language-plaintext highlighter-rouge">iterrows</code>를 통해 row별 iterration 가능
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">iterrows</code>를 쓸 경우 index와 pandas Series로 구성되어 있는 tuple을 반환</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">itertuples</code>를 통해 row별 iterration 가능
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">itertuples</code>를 쓸 경우 namedtuple 형태를 반환</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">pd.applys</code>을 통해 loop 대체 가능
+    <ul>
+      <li>0: row, 1: column</li>
+    </ul>
+  </li>
+  <li>효율성: <code class="language-plaintext highlighter-rouge">.values</code> &gt; <code class="language-plaintext highlighter-rouge">pd.applys</code> &gt; <code class="language-plaintext highlighter-rouge">itertuples</code> &gt; <code class="language-plaintext highlighter-rouge">iterrows</code></li>
+</ul>
+:ET

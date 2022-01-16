@@ -1,0 +1,3466 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Python] 10 minutes to Pandas - Bibliothek für Data-Engineering</title>
+<meta name="description" content="10 Minutes Pandas    Viewing Data   Selection   Missing Data   Operation   Merge   Grouping   Reshaping   Time Series   Categoricals   Plotting   Getting Data In / Out   Gotchas">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[Python] 10 minutes to Pandas">
+<meta property="og:url" content="http://localhost:4000/python/10_minutes_pandas/">
+
+
+  <meta property="og:description" content="10 Minutes Pandas    Viewing Data   Selection   Missing Data   Operation   Merge   Grouping   Reshaping   Time Series   Categoricals   Plotting   Getting Data In / Out   Gotchas">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-15T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/python/10_minutes_pandas/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Kategorie</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://stingy-camp-e37.notion.site/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/armi_made.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">144</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Algorithm</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--boj 카테고리 글들을 모아둔 페이지인 /categories/boj 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/boj" class="">BOJ (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/codeit" class="">Codeit (34)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/leetcode" class="">LeetCode (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/programmers" class="">Programmers (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/study_algorithm" class="">Study (4)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Data-Engineering</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/airflow" class="">Airflow (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/docker" class="">Docker (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/nosql" class="">NoSQL (1)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/spark" class="">Spark (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (21)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <li><a href="/categories/error" class="">Error (4)</a></li>
+                
+            
+                
+            
+        </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/java" class="">Java (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Python] 10 minutes to Pandas">
+    <meta itemprop="description" content="10 Minutes Pandas  Viewing Data  Selection  Missing Data  Operation  Merge  Grouping  Reshaping  Time Series  Categoricals  Plotting  Getting Data In / Out  Gotchas">
+    <meta itemprop="datePublished" content="2022-01-15T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Python] 10 minutes to Pandas
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#10-minutes-pandas">10 Minutes Pandas</a></li><li><a href="#viewing-data">Viewing Data</a></li><li><a href="#selection">Selection</a></li><li><a href="#missing-data">Missing Data</a></li><li><a href="#operation">Operation</a></li><li><a href="#merge">Merge</a></li><li><a href="#grouping">Grouping</a></li><li><a href="#reshaping">Reshaping</a></li><li><a href="#time-series">Time Series</a></li><li><a href="#categoricals">Categoricals</a></li><li><a href="#getting-data-in--out">Getting Data In / Out</a></li><li><a href="#plotting">Plotting</a></li><li><a href="#gotchasusing-iftruth-statements-with-pandas">Gotchas(Using if/truth statements with pandas)</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="10-minutes-pandas">10 Minutes Pandas</h3>
+<ul>
+  <li>Viewing Data</li>
+  <li>Selection</li>
+  <li>Missing Data</li>
+  <li>Operation</li>
+  <li>Merge</li>
+  <li>Grouping</li>
+  <li>Reshaping</li>
+  <li>Time Series</li>
+  <li>Categoricals</li>
+  <li>Plotting</li>
+  <li>Getting Data In / Out</li>
+  <li>Gotchas</li>
+</ul>
+
+<hr />
+
+<h3 id="viewing-data">Viewing Data</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 필요한 패키지 불러오기
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+</span><span class="n">school_list</span> <span class="o">=</span> <span class="p">[{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'John'</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">"teacher"</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Nate'</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">"teacher"</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="mi">35</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Yuna'</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">"teacher"</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="mi">35</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Abraham'</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">"student"</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Brian'</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">"student"</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="mi">19</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Janny'</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">"student"</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Nate'</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">"teacher"</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="mi">28</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'John'</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">"student"</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="mi">31</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Sera'</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">"student"</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="bp">None</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Ben'</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">"teacher"</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="bp">None</span><span class="p">}</span>
+         <span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">school_list</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'name'</span><span class="p">,</span> <span class="s">'job'</span><span class="p">,</span> <span class="s">'age'</span><span class="p">])</span>
+
+<span class="n">date_list</span> <span class="o">=</span> <span class="p">[{</span><span class="s">'yyyy-mm-dd'</span> <span class="p">:</span> <span class="s">'2000-06-27'</span><span class="p">},</span>
+             <span class="p">{</span><span class="s">'yyyy-mm-dd'</span> <span class="p">:</span> <span class="s">'2002-09-24'</span><span class="p">},</span>
+             <span class="p">{</span><span class="s">'yyyy-mm-dd'</span> <span class="p">:</span> <span class="s">'2005-12-20'</span><span class="p">}]</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">date_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'yyyy-mm-dd'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Q) DataFrame <code class="language-plaintext highlighter-rouge">df</code> 에서 나이가 많은 순서로 정렬 후, 상위 3명만 보이게 출력해 주세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">"age"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>job</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Nate</td>
+      <td>teacher</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Yuna</td>
+      <td>teacher</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>John</td>
+      <td>student</td>
+      <td>31.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="selection">Selection</h3>
+
+<ul>
+  <li>Q) DataFrame df에서 나이가 20살 미만인 사람 정보 출력해 주세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">.</span><span class="n">age</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>job</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>Abraham</td>
+      <td>student</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Brian</td>
+      <td>student</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Janny</td>
+      <td>student</td>
+      <td>15.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) DataFrame df에서 나이가 30 이상이면서, 학생인 사람 정보를 출력해 주세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">job</span> <span class="o">==</span> <span class="s">"student"</span><span class="p">)]</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>job</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>John</td>
+      <td>student</td>
+      <td>31.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) “2022-01-12”부터 1씩 증가하는 pandas Series를 df의 index로 설정해 주세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">date_range</span><span class="p">(</span><span class="s">'20220112'</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="n">df</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">school_list</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">)</span>
+<span class="n">df2</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>job</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-12</th>
+      <td>John</td>
+      <td>teacher</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-13</th>
+      <td>Nate</td>
+      <td>teacher</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-14</th>
+      <td>Yuna</td>
+      <td>teacher</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-15</th>
+      <td>Abraham</td>
+      <td>student</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-16</th>
+      <td>Brian</td>
+      <td>student</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-17</th>
+      <td>Janny</td>
+      <td>student</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-18</th>
+      <td>Nate</td>
+      <td>teacher</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-19</th>
+      <td>John</td>
+      <td>student</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-20</th>
+      <td>Sera</td>
+      <td>student</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2022-01-21</th>
+      <td>Ben</td>
+      <td>teacher</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Q) DataFrame df2에서 2022-01-14 ~ 2022-01-17 사이의 name, age 값을 모두 출력하세요.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df2</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"20220114"</span><span class="p">:</span><span class="s">"20220117"</span><span class="p">,</span> <span class="p">[</span><span class="s">"name"</span><span class="p">,</span><span class="s">"age"</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-14</th>
+      <td>Yuna</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-15</th>
+      <td>Abraham</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-16</th>
+      <td>Brian</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-17</th>
+      <td>Janny</td>
+      <td>15.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Q) DataFrame df2에 새로운 열 gender를 추가 하세요 (성별은 M/F 중 아무거나 입력)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df2</span><span class="p">[</span><span class="s">"gender"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"M"</span><span class="p">,</span> <span class="s">"M"</span><span class="p">,</span> <span class="s">"F"</span><span class="p">,</span> <span class="s">"M"</span><span class="p">,</span> <span class="s">"M"</span><span class="p">,</span> <span class="s">"F"</span><span class="p">,</span> <span class="s">"M"</span><span class="p">,</span> <span class="s">"M"</span><span class="p">,</span> <span class="s">"F"</span><span class="p">,</span> <span class="s">"M"</span><span class="p">]</span>
+<span class="n">df2</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>job</th>
+      <th>age</th>
+      <th>gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-12</th>
+      <td>John</td>
+      <td>teacher</td>
+      <td>30.0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>2022-01-13</th>
+      <td>Nate</td>
+      <td>teacher</td>
+      <td>35.0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>2022-01-14</th>
+      <td>Yuna</td>
+      <td>teacher</td>
+      <td>35.0</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>2022-01-15</th>
+      <td>Abraham</td>
+      <td>student</td>
+      <td>10.0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>2022-01-16</th>
+      <td>Brian</td>
+      <td>student</td>
+      <td>19.0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>2022-01-17</th>
+      <td>Janny</td>
+      <td>student</td>
+      <td>15.0</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>2022-01-18</th>
+      <td>Nate</td>
+      <td>teacher</td>
+      <td>28.0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>2022-01-19</th>
+      <td>John</td>
+      <td>student</td>
+      <td>31.0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>2022-01-20</th>
+      <td>Sera</td>
+      <td>student</td>
+      <td>NaN</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>2022-01-21</th>
+      <td>Ben</td>
+      <td>teacher</td>
+      <td>NaN</td>
+      <td>M</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="missing-data">Missing Data</h3>
+
+<ul>
+  <li>Q) DataFrame df에서 age에 값이 없는 리스트를 찾아, job(직업)별 평균 나이의 값을 넣어 주세요. (transform 함수 사용)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">'age'</span><span class="p">].</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'job'</span><span class="p">)[</span><span class="s">'age'</span><span class="p">].</span><span class="n">transform</span><span class="p">(</span><span class="s">'median'</span><span class="p">),</span><span class="n">inplace</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>job</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-12</th>
+      <td>John</td>
+      <td>teacher</td>
+      <td>30.00</td>
+    </tr>
+    <tr>
+      <th>2022-01-13</th>
+      <td>Nate</td>
+      <td>teacher</td>
+      <td>35.00</td>
+    </tr>
+    <tr>
+      <th>2022-01-14</th>
+      <td>Yuna</td>
+      <td>teacher</td>
+      <td>35.00</td>
+    </tr>
+    <tr>
+      <th>2022-01-15</th>
+      <td>Abraham</td>
+      <td>student</td>
+      <td>10.00</td>
+    </tr>
+    <tr>
+      <th>2022-01-16</th>
+      <td>Brian</td>
+      <td>student</td>
+      <td>19.00</td>
+    </tr>
+    <tr>
+      <th>2022-01-17</th>
+      <td>Janny</td>
+      <td>student</td>
+      <td>15.00</td>
+    </tr>
+    <tr>
+      <th>2022-01-18</th>
+      <td>Nate</td>
+      <td>teacher</td>
+      <td>28.00</td>
+    </tr>
+    <tr>
+      <th>2022-01-19</th>
+      <td>John</td>
+      <td>student</td>
+      <td>31.00</td>
+    </tr>
+    <tr>
+      <th>2022-01-20</th>
+      <td>Sera</td>
+      <td>student</td>
+      <td>18.75</td>
+    </tr>
+    <tr>
+      <th>2022-01-21</th>
+      <td>Ben</td>
+      <td>teacher</td>
+      <td>32.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="operation">Operation</h3>
+
+<ul>
+  <li>Q) DataFrame df2의 name을 모두 대문자로 변경해 출력해 주세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df2</span><span class="p">[</span><span class="s">"name"</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">upper</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2022-01-12       JOHN
+2022-01-13       NATE
+2022-01-14       YUNA
+2022-01-15    ABRAHAM
+2022-01-16      BRIAN
+2022-01-17      JANNY
+2022-01-18       NATE
+2022-01-19       JOHN
+2022-01-20       SERA
+2022-01-21        BEN
+Freq: D, Name: name, dtype: object
+</code></pre></div></div>
+
+<ul>
+  <li>Q) DataFrame df2의 age별 count를 출력해 주세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df2</span><span class="p">[</span><span class="s">"age"</span><span class="p">].</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>35.0    2
+30.0    1
+10.0    1
+19.0    1
+15.0    1
+28.0    1
+31.0    1
+Name: age, dtype: int64
+</code></pre></div></div>
+
+<ul>
+  <li>Q) DataFrame df3에서 날짜의 년도 값만 들어있는 ‘year’ 컬럼을 추가해 주세요.  ex) 2000-06-27 -&gt; 2000</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df3</span><span class="p">[</span><span class="s">"year"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df3</span><span class="p">[</span><span class="s">"yyyy-mm-dd"</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"-"</span><span class="p">).</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df3</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>yyyy-mm-dd</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2000-06-27</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2002-09-24</td>
+      <td>06</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2005-12-20</td>
+      <td>27</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="merge">Merge</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+</span><span class="n">url</span> <span class="o">=</span> <span class="s">"https://raw.githubusercontent.com/sheon-j/pandas-study/main/datasets/harry_potter.csv"</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">';'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Q) print columns</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="o">*</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">columns</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s">", "</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Id, Name, Gender, Job, House, Wand, Patronus, Species, Blood status, Hair colour, Eye colour, Loyalty, Skills, Birth, Death
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset change
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">"Death"</span><span class="p">].</span><span class="n">isna</span><span class="p">()][[</span><span class="s">"Name"</span><span class="p">,</span> <span class="s">"Gender"</span><span class="p">,</span> <span class="s">"Job"</span><span class="p">,</span> <span class="s">"House"</span><span class="p">]]</span>
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Job</th>
+      <th>House</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Harry James Potter</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ronald Bilius Weasley</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hermione Jean Granger</td>
+      <td>Female</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) count the each house’s member</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">"House"</span><span class="p">].</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Gryffindor                      27
+Slytherin                       21
+Ravenclaw                       14
+Hufflepuff                       8
+Beauxbatons Academy of Magic     3
+Durmstrang Institute             1
+Name: House, dtype: int64
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+# 기숙사별 학생 데이터를 구성합니다. 
+</span><span class="n">gryf</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s">"House"</span><span class="p">]</span><span class="o">==</span><span class="s">"Gryffindor"</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">"Job"</span><span class="p">]</span><span class="o">==</span><span class="s">"Student"</span><span class="p">)].</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">slyt</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s">"House"</span><span class="p">]</span><span class="o">==</span><span class="s">"Slytherin"</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">"Job"</span><span class="p">]</span><span class="o">==</span><span class="s">"Student"</span><span class="p">)].</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ravn</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s">"House"</span><span class="p">]</span><span class="o">==</span><span class="s">"Ravenclaw"</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">"Job"</span><span class="p">]</span><span class="o">==</span><span class="s">"Student"</span><span class="p">)].</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">huff</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s">"House"</span><span class="p">]</span><span class="o">==</span><span class="s">"Hufflepuff"</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">"Job"</span><span class="p">]</span><span class="o">==</span><span class="s">"Student"</span><span class="p">)].</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">huff</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Job</th>
+      <th>House</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Justin Finch-Fletchley</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Hufflepuff</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Zacharias Smith</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Hufflepuff</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hannah Abbott</td>
+      <td>Female</td>
+      <td>Student</td>
+      <td>Hufflepuff</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) 각 기숙사의 데이터가 합쳐진 DataFrame을 만드세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hogwart</span> <span class="o">=</span> <span class="p">[</span><span class="n">gryf</span><span class="p">,</span> <span class="n">slyt</span><span class="p">,</span> <span class="n">ravn</span><span class="p">,</span> <span class="n">huff</span><span class="p">]</span>
+<span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">hogwart</span><span class="p">).</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">).</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Job</th>
+      <th>House</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>42</th>
+      <td>Ernest Macmillan</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Hufflepuff</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Susan Bones</td>
+      <td>Female</td>
+      <td>Student</td>
+      <td>Hufflepuff</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Edward Remus Lupin</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Hufflepuff</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+# 기숙사별 Gender 항목을 집계한 테이블 준비
+</span><span class="k">def</span> <span class="nf">gender_count</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">df_gender</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"Gender"</span><span class="p">).</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">df_gender</span> <span class="o">=</span> <span class="n">df_gender</span><span class="p">[[</span><span class="s">"Name"</span><span class="p">]].</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">df_gender</span> <span class="o">=</span> <span class="n">df_gender</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">"Name"</span><span class="p">:</span> <span class="n">name</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">df_gender</span>
+
+<span class="n">gryf_gender</span> <span class="o">=</span> <span class="n">gender_count</span><span class="p">(</span><span class="n">gryf</span><span class="p">,</span> <span class="s">"Gryf"</span><span class="p">)</span>
+<span class="n">slyt_gender</span> <span class="o">=</span> <span class="n">gender_count</span><span class="p">(</span><span class="n">slyt</span><span class="p">,</span> <span class="s">"Slyt"</span><span class="p">)</span>
+<span class="n">ravn_gender</span> <span class="o">=</span> <span class="n">gender_count</span><span class="p">(</span><span class="n">ravn</span><span class="p">,</span> <span class="s">"Ravn"</span><span class="p">)</span>
+<span class="n">huff_gender</span> <span class="o">=</span> <span class="n">gender_count</span><span class="p">(</span><span class="n">huff</span><span class="p">,</span> <span class="s">"Huff"</span><span class="p">)</span>
+
+<span class="n">gryf_gender</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gender</th>
+      <th>Gryf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Female</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Male</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) 모든 _gender 테이블을 Join 하세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">gryf_gender</span><span class="p">,</span> <span class="n">slyt_gender</span><span class="p">,</span> <span class="n">ravn_gender</span><span class="p">,</span> <span class="n">huff_gender</span><span class="p">]</span>
+
+<span class="n">df_merged</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">'Gender'</span><span class="p">),</span> <span class="n">dfs</span><span class="p">)</span>
+<span class="n">df_merged</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gender</th>
+      <th>Gryf</th>
+      <th>Slyt</th>
+      <th>Ravn</th>
+      <th>Huff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Female</td>
+      <td>8</td>
+      <td>2</td>
+      <td>5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Male</td>
+      <td>11</td>
+      <td>8</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) 원하는 기숙사에 자신의 데이터를 추가해보세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">append</span><span class="p">({</span><span class="s">"Name"</span><span class="p">:</span><span class="s">"zsu"</span><span class="p">,</span><span class="s">"Gender"</span><span class="p">:</span><span class="s">"Male"</span><span class="p">,</span><span class="s">"Job"</span><span class="p">:</span><span class="s">"Student"</span><span class="p">,</span><span class="s">"House"</span><span class="p">:</span><span class="s">"Hufflepuff"</span><span class="p">},</span> <span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="c1"># 다른 방법
+# zsu = pd.DataFrame.from_dict([{"Name":"zsu","Gender":"Male","Job":"Student","House":"Hufflepuff"}])
+# df.append(zsu, ignore_index=True)
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Job</th>
+      <th>House</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Harry James Potter</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ronald Bilius Weasley</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hermione Jean Granger</td>
+      <td>Female</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Rubeus Hagrid</td>
+      <td>Male</td>
+      <td>Keeper of Keys and Grounds | Professor of Care...</td>
+      <td>Gryffindor</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Neville Longbottom</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>Septima Vector</td>
+      <td>Female</td>
+      <td>Professor of Arithmancyat Hogwarts</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>Wilhelmina Grubbly-Plank</td>
+      <td>Female</td>
+      <td>Substitute professor of Care of Magical Creatu...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>Fenrir Greyback</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Kreacher</td>
+      <td>Male</td>
+      <td>\nBlack family's house-elf (?-1996), \nHarry P...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>zsu</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Hufflepuff</td>
+    </tr>
+  </tbody>
+</table>
+<p>99 rows × 4 columns</p>
+</div>
+
+<hr />
+
+<h3 id="grouping">Grouping</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+
+<span class="c1"># 호그와트의 1학기 성적이 나왔습니다.
+</span><span class="n">df</span><span class="p">[</span><span class="s">"Score_1"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Job</th>
+      <th>House</th>
+      <th>Score_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Harry James Potter</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ronald Bilius Weasley</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hermione Jean Granger</td>
+      <td>Female</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) 호그와트의 기숙사별(House) 성적 평균을 집계하세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hogwarts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">"House"</span><span class="p">].</span><span class="n">isin</span><span class="p">([</span><span class="s">"Gryffindor"</span><span class="p">,</span> <span class="s">"Ravenclaw"</span><span class="p">,</span> <span class="s">"Slytherin"</span><span class="p">,</span> <span class="s">"Hufflepuff"</span><span class="p">])]</span>
+<span class="n">hogwarts</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"House"</span><span class="p">).</span><span class="n">mean</span><span class="p">().</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Score_1</th>
+    </tr>
+    <tr>
+      <th>House</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Gryffindor</th>
+      <td>77.0</td>
+    </tr>
+    <tr>
+      <th>Hufflepuff</th>
+      <td>70.4</td>
+    </tr>
+    <tr>
+      <th>Ravenclaw</th>
+      <td>79.6</td>
+    </tr>
+    <tr>
+      <th>Slytherin</th>
+      <td>79.3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Q) 호그와트의 남녀별 성적 평균을 집계하세요</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"Gender"</span><span class="p">).</span><span class="n">mean</span><span class="p">().</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Score_1</th>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Female</th>
+      <td>77.7</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>74.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hogwarts</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">"House"</span><span class="p">,</span> <span class="s">"Gender"</span><span class="p">]).</span><span class="n">mean</span><span class="p">().</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Score_1</th>
+    </tr>
+    <tr>
+      <th>House</th>
+      <th>Gender</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Gryffindor</th>
+      <th>Female</th>
+      <td>82.9</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>73.5</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Hufflepuff</th>
+      <th>Female</th>
+      <td>64.7</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>73.8</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Ravenclaw</th>
+      <th>Female</th>
+      <td>81.0</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>78.6</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Slytherin</th>
+      <th>Female</th>
+      <td>89.6</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>77.6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="reshaping">Reshaping</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 호그와트의 2학기 성적이 나왔습니다.
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">134</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s">"Score_2"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">hogwart</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">.</span><span class="n">House</span><span class="p">.</span><span class="n">isin</span><span class="p">([</span><span class="s">"Gryffindor"</span><span class="p">,</span> <span class="s">"Ravenclaw"</span><span class="p">,</span> <span class="s">"Slytherin"</span><span class="p">,</span> <span class="s">"Hufflepuff"</span><span class="p">])]</span>
+<span class="n">hogwart</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Job</th>
+      <th>House</th>
+      <th>Score_1</th>
+      <th>Score_2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Harry James Potter</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+      <td>83</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ronald Bilius Weasley</td>
+      <td>Male</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+      <td>67</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hermione Jean Granger</td>
+      <td>Female</td>
+      <td>Student</td>
+      <td>Gryffindor</td>
+      <td>100</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) 다음 기숙사 &amp; 남녀별 성적 평균표를 남녀 별 성적 평균표의 다층 컬럼을 단일층 칼럼으로 변환하세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 기숙사 남녀별 성적 평균
+</span><span class="n">hogwart_house_gender_mean</span> <span class="o">=</span> <span class="n">hogwart</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">"House"</span><span class="p">,</span> <span class="s">"Gender"</span><span class="p">]).</span><span class="n">mean</span><span class="p">().</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">hogwart_house_gender_mean</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Score_1</th>
+      <th>Score_2</th>
+    </tr>
+    <tr>
+      <th>House</th>
+      <th>Gender</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Gryffindor</th>
+      <th>Female</th>
+      <td>82.9</td>
+      <td>80.7</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>73.5</td>
+      <td>73.6</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Hufflepuff</th>
+      <th>Female</th>
+      <td>64.7</td>
+      <td>77.3</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>73.8</td>
+      <td>84.0</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Ravenclaw</th>
+      <th>Female</th>
+      <td>81.0</td>
+      <td>74.3</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>78.6</td>
+      <td>79.9</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Slytherin</th>
+      <th>Female</th>
+      <td>89.6</td>
+      <td>85.4</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>77.6</td>
+      <td>70.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hogwart_house_gender_mean_stacked</span> <span class="o">=</span> <span class="n">hogwart_house_gender_mean</span><span class="p">.</span><span class="n">stack</span><span class="p">()</span>
+<span class="n">hogwart_house_gender_mean_stacked</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>House       Gender         
+Gryffindor  Female  Score_1    82.9
+                    Score_2    80.7
+            Male    Score_1    73.5
+                    Score_2    73.6
+Hufflepuff  Female  Score_1    64.7
+                    Score_2    77.3
+            Male    Score_1    73.8
+                    Score_2    84.0
+Ravenclaw   Female  Score_1    81.0
+                    Score_2    74.3
+            Male    Score_1    78.6
+                    Score_2    79.9
+Slytherin   Female  Score_1    89.6
+                    Score_2    85.4
+            Male    Score_1    77.6
+                    Score_2    70.0
+dtype: float64
+</code></pre></div></div>
+
+<ul>
+  <li>Q) 단일층으로된 표를 다시 다층으로 변환하세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hogwart_house_gender_mean</span> <span class="o">=</span> <span class="n">hogwart_house_gender_mean_stacked</span><span class="p">.</span><span class="n">unstack</span><span class="p">()</span>
+<span class="n">hogwart_house_gender_mean</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Score_1</th>
+      <th>Score_2</th>
+    </tr>
+    <tr>
+      <th>House</th>
+      <th>Gender</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Gryffindor</th>
+      <th>Female</th>
+      <td>82.9</td>
+      <td>80.7</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>73.5</td>
+      <td>73.6</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Hufflepuff</th>
+      <th>Female</th>
+      <td>64.7</td>
+      <td>77.3</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>73.8</td>
+      <td>84.0</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Ravenclaw</th>
+      <th>Female</th>
+      <td>81.0</td>
+      <td>74.3</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>78.6</td>
+      <td>79.9</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Slytherin</th>
+      <th>Female</th>
+      <td>89.6</td>
+      <td>85.4</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>77.6</td>
+      <td>70.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) pivot_table 기능을 통해 원하는 통계 테이블을 만들어보세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hogwart</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">"House"</span><span class="p">,</span> 
+                    <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s">"Score_1"</span><span class="p">,</span> <span class="s">"Score_2"</span><span class="p">],</span> 
+                    <span class="n">aggfunc</span><span class="o">=</span><span class="p">{</span><span class="s">"Score_1"</span><span class="p">:</span> <span class="p">[</span><span class="nb">max</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">median</span><span class="p">],</span> <span class="s">"Score_2"</span><span class="p">:</span> <span class="p">[</span><span class="nb">max</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">median</span><span class="p">]})</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Score_1</th>
+      <th colspan="3" halign="left">Score_2</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>max</th>
+      <th>median</th>
+      <th>min</th>
+      <th>max</th>
+      <th>median</th>
+      <th>min</th>
+    </tr>
+    <tr>
+      <th>House</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Gryffindor</th>
+      <td>100.0</td>
+      <td>75.0</td>
+      <td>53.0</td>
+      <td>100.0</td>
+      <td>73.0</td>
+      <td>53.0</td>
+    </tr>
+    <tr>
+      <th>Hufflepuff</th>
+      <td>88.0</td>
+      <td>76.5</td>
+      <td>53.0</td>
+      <td>100.0</td>
+      <td>84.5</td>
+      <td>56.0</td>
+    </tr>
+    <tr>
+      <th>Ravenclaw</th>
+      <td>100.0</td>
+      <td>80.0</td>
+      <td>58.0</td>
+      <td>100.0</td>
+      <td>77.5</td>
+      <td>51.0</td>
+    </tr>
+    <tr>
+      <th>Slytherin</th>
+      <td>100.0</td>
+      <td>83.0</td>
+      <td>50.0</td>
+      <td>95.0</td>
+      <td>76.0</td>
+      <td>53.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="time-series">Time Series</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+# 다음은 매일 기록되는 기숙사 점수표입니다.
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">hogwart_board</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s">"Date"</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="n">date_range</span><span class="p">(</span><span class="s">"2021-3-1"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s">"D"</span><span class="p">),</span> 
+    <span class="s">"Gryf"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+    <span class="s">"Slyt"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+    <span class="s">"Ravn"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+    <span class="s">"Huff"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="n">hogwart_board</span><span class="p">.</span><span class="n">tail</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Gryf</th>
+      <th>Slyt</th>
+      <th>Ravn</th>
+      <th>Huff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>115</th>
+      <td>2021-06-24</td>
+      <td>2</td>
+      <td>1</td>
+      <td>9</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>2021-06-25</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>2021-06-26</td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>2021-06-27</td>
+      <td>1</td>
+      <td>8</td>
+      <td>8</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>2021-06-28</td>
+      <td>2</td>
+      <td>8</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) 월별 합산 기숙사 점수를 나타내세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hogwart_board</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">hogwart_board</span><span class="p">[</span><span class="s">"Date"</span><span class="p">].</span><span class="n">dt</span><span class="p">.</span><span class="n">month</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gryf</th>
+      <th>Slyt</th>
+      <th>Ravn</th>
+      <th>Huff</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>148</td>
+      <td>130</td>
+      <td>128</td>
+      <td>155</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>126</td>
+      <td>168</td>
+      <td>139</td>
+      <td>102</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>142</td>
+      <td>166</td>
+      <td>137</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>83</td>
+      <td>115</td>
+      <td>145</td>
+      <td>127</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) 최종 점수를 확인하고, 우승 기숙사를 발표하세요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hogwart_board</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">hogwart_board</span><span class="p">[</span><span class="s">"Date"</span><span class="p">].</span><span class="n">dt</span><span class="p">.</span><span class="n">year</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gryf</th>
+      <th>Slyt</th>
+      <th>Ravn</th>
+      <th>Huff</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021</th>
+      <td>499</td>
+      <td>579</td>
+      <td>549</td>
+      <td>534</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="categoricals">Categoricals</h3>
+
+<ul>
+  <li>Q) 아래의 데이터프레임이 존재한다. ‘국가’ 데이터(열)을 범주형 데이터로 변환하시오. 이떄 열 이름을 ‘대륙_카테고리’로 하시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">"기업"</span><span class="p">:[</span><span class="s">"현대"</span><span class="p">,</span><span class="s">"삼성"</span><span class="p">,</span><span class="s">"벤츠"</span><span class="p">,</span><span class="s">"애플"</span><span class="p">,</span><span class="s">"테슬라"</span><span class="p">],</span> <span class="s">"국가"</span><span class="p">:[</span><span class="s">"한국"</span><span class="p">,</span><span class="s">"한국"</span><span class="p">,</span><span class="s">"독일"</span><span class="p">,</span><span class="s">"미국"</span><span class="p">,</span><span class="s">"미국"</span><span class="p">]})</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">"대륙_카테고리"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">"국가"</span><span class="p">].</span><span class="n">astype</span><span class="p">(</span><span class="s">"category"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 확인
+</span><span class="n">df</span><span class="p">[</span><span class="s">"대륙_카테고리"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    한국
+1    한국
+2    독일
+3    미국
+4    미국
+Name: 대륙_카테고리, dtype: category
+Categories (3, object): ['독일', '미국', '한국']
+</code></pre></div></div>
+
+<ul>
+  <li>Q) 생각해보니 대륙 카테고리입니다. 대륙_카테고리를 대륙별로 새롭게 범주화하시오(유럽/아메리카/아시아).</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">"대륙_카테고리"</span><span class="p">].</span><span class="n">cat</span><span class="p">.</span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s">"유럽"</span><span class="p">,</span><span class="s">"아메리카"</span><span class="p">,</span><span class="s">"아시아"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 확인
+</span><span class="n">df</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>기업</th>
+      <th>국가</th>
+      <th>대륙_카테고리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>현대</td>
+      <td>한국</td>
+      <td>아시아</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>삼성</td>
+      <td>한국</td>
+      <td>아시아</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>벤츠</td>
+      <td>독일</td>
+      <td>유럽</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>애플</td>
+      <td>미국</td>
+      <td>아메리카</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>테슬라</td>
+      <td>미국</td>
+      <td>아메리카</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) 대륙 카테고리에 빠진 대륙들을 추가해주시오. 빠진 대륙은 (아프리카, 오세아니아) 입니다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">"대륙_카테고리"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">"대륙_카테고리"</span><span class="p">].</span><span class="n">cat</span><span class="p">.</span><span class="n">set_categories</span><span class="p">([</span><span class="s">"유럽"</span><span class="p">,</span><span class="s">"아메리카"</span><span class="p">,</span><span class="s">"아시아"</span><span class="p">,</span><span class="s">"아프리카"</span><span class="p">,</span><span class="s">"오세아니아"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 확인
+</span><span class="n">df</span><span class="p">[</span><span class="s">"대륙_카테고리"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     아시아
+1     아시아
+2      유럽
+3    아메리카
+4    아메리카
+Name: 대륙_카테고리, dtype: category
+Categories (5, object): ['유럽', '아메리카', '아시아', '아프리카', '오세아니아']
+</code></pre></div></div>
+
+<ul>
+  <li>Q) 대륙 카테고리를 기준으로 데이터프레임을 정렬하시오(유럽, 아메리카, 이시아, 아프리카, 오세아니아 순으로).</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">"대륙_카테고리"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>기업</th>
+      <th>국가</th>
+      <th>대륙_카테고리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>벤츠</td>
+      <td>독일</td>
+      <td>유럽</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>애플</td>
+      <td>미국</td>
+      <td>아메리카</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>테슬라</td>
+      <td>미국</td>
+      <td>아메리카</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>현대</td>
+      <td>한국</td>
+      <td>아시아</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>삼성</td>
+      <td>한국</td>
+      <td>아시아</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Q) 대륙 카테고리 별 기업의 숫자를 구하시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"대륙_카테고리"</span><span class="p">).</span><span class="n">size</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>대륙_카테고리
+유럽       1
+아메리카     2
+아시아      2
+아프리카     0
+오세아니아    0
+dtype: int64
+</code></pre></div></div>
+
+<h3 id="getting-data-in--out">Getting Data In / Out</h3>
+
+<ul>
+  <li>Q) 공유한 happiness_data.csv 파일을 읽고 df 이름의 객체로 저장하시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"/Users/jisu/Desktop/happiness_data.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Q) df에서 country_name이 “South Korea”인 데이터만 필터(filter)한 후 happiness_data_korea.csv 파일(index가 없는 상태)로 저장하시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">"country_name"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"South Korea"</span><span class="p">].</span><span class="n">to_csv</span><span class="p">(</span><span class="s">"/Users/jisu/Desktop/happiness_data_korea.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Q) happiness_data_korea.csv 파일을 읽고 df2 이름의 객체로 저장하시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"/Users/jisu/Desktop/happiness_data_korea.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Q) df2 데이터프레임에서 social_support가 0.79 이상이며 동시에 freedom_to_make_life_choices가 0.65 이상인 데이터를 필터링한 후 high_happiness.h5 파일의 df3로 저장하시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df2</span><span class="p">[(</span><span class="n">df2</span><span class="p">.</span><span class="n">social_support</span> <span class="o">&gt;=</span> <span class="mf">0.79</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df2</span><span class="p">.</span><span class="n">freedom_to_make_life_choices</span> <span class="o">&gt;=</span> <span class="mf">0.65</span><span class="p">)].</span><span class="n">to_hdf</span><span class="p">(</span><span class="s">"/Users/jisu/Desktop/high_happiness.h5"</span><span class="p">,</span> <span class="s">"df3"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Q) high_happiness.h5파일의 df3을 읽고 df3 이름의 객체로 저장하시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s">"/Users/jisu/Desktop/high_happiness.h5"</span><span class="p">,</span> <span class="s">"df3"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Q) df3의 2번째와 3번째 행(index가 4,5번인 행)을 subsetting 한후 df4.xlsx 파일(Sheet 이름은 “Sheet1”, index가 없는 상태)으로 저장하시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df3</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">].</span><span class="n">to_excel</span><span class="p">(</span><span class="s">"/Users/jisu/Desktop/df4.xlsx"</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s">"Sheet1"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Q) df4.xlsx 파일을 읽고 df4 이름의 객체로 저장하시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s">"/Users/jisu/Desktop/df4.xlsx"</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s">"Sheet1"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="plotting">Plotting</h3>
+
+<p>Q)</p>
+<ul>
+  <li>공유한 happiness_data.csv 파일을 읽고 df 이름의 객체로 저장하시오.</li>
+  <li>df에서 country_name이 “South Korea”인 데이터만 필터(filter)한 후 df_korea로 저장하시오.</li>
+  <li>df_korea에서 “year”과 “happiness” column만을 select 한 뒤, index을 “year”로 설정한 후 그래프로 그려보시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"/Users/jisu/Desktop/happiness_data.csv"</span><span class="p">)</span>
+<span class="n">df_korea</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">.</span><span class="n">country_name</span> <span class="o">==</span> <span class="s">"South Korea"</span><span class="p">]</span>
+<span class="n">df_korea</span><span class="p">[[</span><span class="s">"year"</span><span class="p">,</span> <span class="s">"happiness"</span><span class="p">]].</span><span class="n">set_index</span><span class="p">(</span><span class="s">"year"</span><span class="p">).</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Q)</p>
+<ul>
+  <li>matplotlib의 pyplot을 활용하여 다음을 구하시오.</li>
+  <li>년도별 regional_indicator 별 평균 행복을 도표로 구하시오.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_by_regional_indicator</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s">"regional_indicator"</span><span class="p">,</span><span class="s">"year"</span><span class="p">,</span><span class="s">"happiness"</span><span class="p">]].</span><span class="n">groupby</span><span class="p">([</span><span class="s">"regional_indicator"</span><span class="p">,</span> <span class="s">"year"</span><span class="p">]).</span><span class="n">agg</span><span class="p">([</span><span class="s">"mean"</span><span class="p">])</span>
+<span class="n">df_pivoted</span> <span class="o">=</span> <span class="n">df_by_regional_indicator</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">"year"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">"regional_indicator"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">df_pivoted</span><span class="p">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">"best"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="gotchasusing-iftruth-statements-with-pandas">Gotchas(Using if/truth statements with pandas)</h3>
+
+<ul>
+  <li>아래 코드의 Pandas Series는 False도 포함하고 있으며 False도, 또한 길이가 1 이상 이기에 True가 될 수 있는 상황이여서 에러가 발생합니다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">]):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"I was true"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+/var/folders/6k/3q6ftyyn3v1gswgzvq0rxsf80000gn/T/ipykernel_5803/2648304181.py in &lt;module&gt;
+----&gt; 1 if pd.Series([False, True, False]):
+      2     print("I was true")
+
+
+~/miniconda3/envs/exp_project/lib/python3.9/site-packages/pandas/core/generic.py in __nonzero__(self)
+   1535     @final
+   1536     def __nonzero__(self):
+-&gt; 1537         raise ValueError(
+   1538             f"The truth value of a {type(self).__name__} is ambiguous. "
+   1539             "Use a.empty, a.bool(), a.item(), a.any() or a.all()."
+
+
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+</code></pre></div></div>
+
+<ul>
+  <li>Pandas Series 중 하나라도 True인 경우를 만족하고 싶은 경우 <code class="language-plaintext highlighter-rouge">.any()</code>를 사용하면 됩니다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">]).</span><span class="nb">any</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"At least one True included"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"No True included"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>At least one True included
+</code></pre></div></div>
+
+<ul>
+  <li>Pandas Series가 모두 True인 경우를 만족하고 싶은 경우 <code class="language-plaintext highlighter-rouge">.all()</code>을 사용하면 됩니다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">]).</span><span class="nb">all</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Everything is True"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"At least one False included"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Everything is True
+</code></pre></div></div>
+
+<ul>
+  <li>Pandas Series가 비어있는지 확인하고 싶은 경우 <code class="language-plaintext highlighter-rouge">.empty</code>나 is None을 사용하면 됩니다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">([</span><span class="s">"1"</span><span class="p">])</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>  
+    <span class="k">print</span><span class="p">(</span><span class="s">"No element is included"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"At least one element included"</span><span class="p">)</span>
+
+<span class="c1"># 위와 같음
+# if pd.Series(["1"]).empty:
+#     print("No element is included")
+# else:
+#     print("At least one element included")
+</span>    
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>At least one element included
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#pandas" class="page__taxonomy-item" rel="tag">PANDAS</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">PYTHON</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-01-15T00:00:00+09:00">January 15, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BPython%5D+10+minutes+to+Pandas%20http%3A%2F%2Flocalhost%3A4000%2Fpython%2F10_minutes_pandas%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpython%2F10_minutes_pandas%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpython%2F10_minutes_pandas%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/boj/boj(5)/" class="pagination--pager" title="[ALGORITHM] BOJ 2745. 진법 변ㅏ
+">Previous</a>
+    
+    
+      <a href="/python/converting_between_wide_and_long_format/" class="pagination--pager" title="[Python] Reshaping Data with pandas(2)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/stacking_and_unstacking_dataframes/" rel="permalink">[Python] Reshaping Data with pandas(3)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Pandas
+
+  pd.MultiIndex.from_arrays() - setting MultiIndex to a dataframe
+  .stack() - rearrange innermost column index to become the innermost row index (...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/converting_between_wide_and_long_format/" rel="permalink">[Python] Reshaping Data with pandas(2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Pandas
+
+  .melt() - wide to long
+  pd.wide_to_long - wide to long
+    
+      function of pandas
+    
+  
+  .str - handling string in pandas
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj(5)/" rel="permalink">[ALGORITHM] BOJ 2745. 진법 변ㅏ
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - 백준
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/introduction_to_data_reshaping/" rel="permalink">[Python] Reshaping Data with pandas(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Pandas
+
+  .transpose() - switch column &amp; row
+  .pivot() - long to wide
+  .pivot_table() - long to wide
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

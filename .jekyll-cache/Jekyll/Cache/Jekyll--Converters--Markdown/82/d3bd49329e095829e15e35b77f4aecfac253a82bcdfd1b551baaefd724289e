@@ -1,0 +1,14 @@
+I"�<hr />
+
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pd.MultiIndex.from_arrays()</code> - setting MultiIndex to a dataframe</li>
+  <li><code class="language-plaintext highlighter-rouge">.stack()</code> - rearrange innermost column index to become the innermost row index (즉, column들을 새로운 하나의 index로 처리)</li>
+  <li><code class="language-plaintext highlighter-rouge">.unstack()</code> - rearrange innermost row index to become the innermost column index
+    <ul>
+      <li>innermost column or row index have the highest level</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">.swaplevel()</code> - exchange row/column between different levels</li>
+</ul>
+:ET

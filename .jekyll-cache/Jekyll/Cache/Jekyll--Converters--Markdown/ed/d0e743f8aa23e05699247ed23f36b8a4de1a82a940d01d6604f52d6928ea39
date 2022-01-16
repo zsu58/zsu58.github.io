@@ -1,0 +1,82 @@
+I"b
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/study_algorithm/algorithm_study4/">[ALGORITHM] 진법변화 &amp; 비트연산</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2022.01.14
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#study-algorithm" class="page__taxonomy-item-category" rel="tag">STUDY_ALGORITHM</a>
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/study_algorithm/algorithm_study3/">[ALGORITHM] 깊이우선탐색(Depth First Search) &amp; 너비우선탐색(Breadth First Search)</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.12.24
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#study-algorithm" class="page__taxonomy-item-category" rel="tag">STUDY_ALGORITHM</a>
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/study_algorithm/algorithm_study2/">[ALGORITHM] 완전탐색(Brute-Force) &amp; 이분탐색</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.12.13
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#study-algorithm" class="page__taxonomy-item-category" rel="tag">STUDY_ALGORITHM</a>
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/study_algorithm/algorithm_study1/">[ALGORITHM] Stack &amp; Queue</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.12.06
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#study-algorithm" class="page__taxonomy-item-category" rel="tag">STUDY_ALGORITHM</a>
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+:ET

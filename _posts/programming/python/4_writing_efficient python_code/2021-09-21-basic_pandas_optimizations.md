@@ -19,7 +19,7 @@ tags:
 * ```itertuples```를 통해 row별 iterration 가능
     * ```itertuples```를 쓸 경우 namedtuple 형태를 반환
 * ```pd.applys```을 통해 loop 대체 가능
-    * 0: columns, 1: rows
+    * 0: row, 1: column
 * 효율성: ```.values``` > ```pd.applys``` > ```itertuples``` > ```iterrows```
 
 ---
@@ -558,7 +558,7 @@ yankees_df.sort_values('RD', ascending = 0).head(5)
 
 
 ```python
-# column sum
+# row sum
 baseball_df[['RS', 'RA']].sum(axis=0)
 ```
 
@@ -573,7 +573,7 @@ baseball_df[['RS', 'RA']].sum(axis=0)
 
 
 ```python
-# row sum
+# column sum
 baseball_df[['RS', 'RA']].sum(axis=1)
 ```
 

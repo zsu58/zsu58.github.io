@@ -59,16 +59,16 @@ var store = [{
         "url": "/sql/sql2_2_outer_join/",
         "teaser": null
       },{
-        "title": "[Python] Dplyr to Pandas",
-        "excerpt":"dplyr to pandas # import data import seaborn as sns import pandas as pd import re iris_df = sns.load_dataset('iris') print(type(iris_df)) &lt;class 'pandas.core.frame.DataFrame'&gt; dplyr::mutate() # dplyr iris_df %&gt;% mutate(New_feature= Petal.Width*Petal.Length/2) # pandas iris_df[\"New_feature\"] = iris_df[\"petal_width\"] * iris_df[\"petal_length\"] / 2 dplyr::select() # dplyr iris_df %&gt;% select('sepal_length', 'sepal_width') # pandas iris_df[['sepal_length', 'sepal_width']] #...","categories": ["PYTHON"],
-        "tags": ["PYTHON"],
-        "url": "/python/dplyr_to_pandas/",
-        "teaser": null
-      },{
         "title": "[Python] range & enumerate & map & numpy",
         "excerpt":"Writing Efficient Python Code RANGE ENUMERATE MAP NUMPY range 1) range Create a new list of odd numbers from 1 to 11 by unpacking a range object num_list = [*range(1,12,2)] print(num_list) [1, 3, 5, 7, 9, 11] enumerate 2) enumerate names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman'] # method 1...","categories": ["PYTHON"],
         "tags": ["PYTHON"],
         "url": "/python/foundations_for_efficiencies/",
+        "teaser": null
+      },{
+        "title": "[Python] Dplyr to Pandas",
+        "excerpt":"dplyr to pandas # import data import seaborn as sns import pandas as pd import re iris_df = sns.load_dataset('iris') print(type(iris_df)) &lt;class 'pandas.core.frame.DataFrame'&gt; dplyr::mutate() # dplyr iris_df %&gt;% mutate(New_feature= Petal.Width*Petal.Length/2) # pandas iris_df[\"New_feature\"] = iris_df[\"petal_width\"] * iris_df[\"petal_length\"] / 2 dplyr::select() # dplyr iris_df %&gt;% select('sepal_length', 'sepal_width') # pandas iris_df[['sepal_length', 'sepal_width']] #...","categories": ["PYTHON"],
+        "tags": ["PYTHON","PANDAS"],
+        "url": "/python/dplyr_to_pandas/",
         "teaser": null
       },{
         "title": "[Python] %timeit & %lprun & %mprun",
@@ -84,7 +84,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Python] iterrows & itertuples & pd.applys",
-        "excerpt":"Writing Efficient Python Code PART4 iterrows를 통해 row별 iterration 가능 iterrows를 쓸 경우 index와 pandas Series로 구성되어 있는 tuple을 반환 itertuples를 통해 row별 iterration 가능 itertuples를 쓸 경우 namedtuple 형태를 반환 pd.applys을 통해 loop 대체 가능 0: columns, 1: rows 효율성: .values &gt; pd.applys &gt; itertuples &gt; iterrows # import...","categories": ["PYTHON"],
+        "excerpt":"Writing Efficient Python Code PART4 iterrows를 통해 row별 iterration 가능 iterrows를 쓸 경우 index와 pandas Series로 구성되어 있는 tuple을 반환 itertuples를 통해 row별 iterration 가능 itertuples를 쓸 경우 namedtuple 형태를 반환 pd.applys을 통해 loop 대체 가능 0: row, 1: column 효율성: .values &gt; pd.applys &gt; itertuples &gt; iterrows # import...","categories": ["PYTHON"],
         "tags": ["PYTHON"],
         "url": "/python/basic_pandas_optimizations/",
         "teaser": null
@@ -541,7 +541,7 @@ var store = [{
       },{
         "title": "[ALGORITHM] Stack & Queue",
         "excerpt":"ALGORITHM 알고리즘 스터디(1) Stack &amp; Queue(Deque) Stack 책을 쌓은 것처럼 차곡차곡 쌓아 올린 형태의 자료구조로 LIFO(Last In First Out)라고도 함 시간 순서에 따라 자료가 쌓이기에 가장 마지막에 삽입된 자료가 가장 먼저 삭제되는 구조적인 특징을 가짐 대표적인 기능으로는 push(삽입), pop(삭제), peek(가장 마지막으로 추가된 자료 조회)가 존재 대표적으로 웹 브라우저에서 이전 페이지...","categories": ["STUDY_ALGORITHM"],
-        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "tags": ["ALGORITHM"],
         "url": "/study_algorithm/algorithm_study1/",
         "teaser": null
       },{
@@ -601,12 +601,12 @@ var store = [{
       },{
         "title": "[ALGORITHM] 완전탐색(Brute-Force) & 이분탐색",
         "excerpt":"ALGORITHM 알고리즘 스터디(2) 탐색 완전탐색(Brute-Force) 이분탐색(Binary Search) 깊이우선탐색(Depth First Search) 너비우선탐색(Breadth First Search) 문자열탐색 KMP(Knuth-Morris-Pratt) BM(Boyer-Moore) 완전탐색 가능한 모든 경우의 수를 탐색 효율성의 관점에서는 최악 구현방법 반복문 재귀함수 cf. 재귀함수는 동적 계획법/ 백트래킹/ 탐욕법에서도 사용됨 # card 안에 8의 순서를 찾는 함수 (반복문) def solution(card): for i in range(len(card)): if...","categories": ["STUDY_ALGORITHM"],
-        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "tags": ["ALGORITHM"],
         "url": "/study_algorithm/algorithm_study2/",
         "teaser": null
       },{
         "title": "[ALGORITHM] BOJ 10816. 숫자 카드 2",
-        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys from collections import Counter def num_of_cards(cards,interest): c = Counter(cards) return [c[i] for i in interest] # if not in interest 0 if __name__ == \"__main__\": n = int(input()) cards = list(map(int,sys.stdin.readline().split())) m...","categories": ["BOJ"],
+        "excerpt":"ALGORITHM Übung - 백준 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys from collections import Counter def num_of_cards(cards,interest): c = Counter(cards) return [c[i] for i in interest] # if not in interest 0 if __name__ == \"__main__\": n = int(input()) cards = list(map(int,sys.stdin.readline().split())) m...","categories": ["BOJ"],
         "tags": ["ALGORITHM","BOJ"],
         "url": "/boj/boj(1)/",
         "teaser": null
@@ -631,7 +631,7 @@ var store = [{
       },{
         "title": "[ALGORITHM] 깊이우선탐색(Depth First Search) & 너비우선탐색(Breadth First Search)",
         "excerpt":"ALGORITHM 알고리즘 스터디(3) 탐색 완전탐색(Brute-Force) 이분탐색(Binary Search) 깊이우선탐색(Depth First Search) 너비우선탐색(Breadth First Search) 문자열탐색 KMP(Knuth-Morris-Pratt) BM(Boyer-Moore) 깊이우선탐색(Depth First Search) 하나의 경우의 수에 대하여 모든 경우의 수를 조사하면서 해를 찾는 과정 이때 스텍을 활용할 수 있음 # 미로찾기 while len(stack) &gt; 0: now = stack.pop() if now == dest: return True...","categories": ["STUDY_ALGORITHM"],
-        "tags": ["ALGORITHM","PROGRAMMERS"],
+        "tags": ["ALGORITHM"],
         "url": "/study_algorithm/algorithm_study3/",
         "teaser": null
       },{
@@ -714,13 +714,13 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] BOJ 1260. DFS와 BFS",
-        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys from collections import deque # dfs method def dfs(n): print(n, end=' ') # mark visited visited[n] = True for i in graph[n]: if not visited[i]: dfs(i) # bfs method def bfs(n): dq...","categories": ["BOJ"],
+        "excerpt":"ALGORITHM Übung - 백준 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys from collections import deque # dfs method def dfs(n): print(n, end=' ') # mark visited visited[n] = True for i in graph[n]: if not visited[i]: dfs(i) # bfs method def bfs(n): dq...","categories": ["BOJ"],
         "tags": ["ALGORITHM","BOJ"],
         "url": "/boj/boj(2)/",
         "teaser": null
       },{
         "title": "[ALGORITHM] BOJ 2606. 바이러스",
-        "excerpt":"ALGORITHM Übung - LeetCode 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys # dfs method def dfs(n): for i in graph[n]: if not visited[i]: # mark visited visited[i] = True dfs(i) if __name__ == \"__main__\": n = int(sys.stdin.readline()) c = int(sys.stdin.readline()) # make graph...","categories": ["BOJ"],
+        "excerpt":"ALGORITHM Übung - 백준 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys # dfs method def dfs(n): for i in graph[n]: if not visited[i]: # mark visited visited[i] = True dfs(i) if __name__ == \"__main__\": n = int(sys.stdin.readline()) c = int(sys.stdin.readline()) # make graph...","categories": ["BOJ"],
         "tags": ["ALGORITHM","BOJ"],
         "url": "/boj/boj(3)/",
         "teaser": null
@@ -815,8 +815,20 @@ var store = [{
         "url": "/error/postgres_error1-copy/",
         "teaser": null
       },{
+        "title": "[ALGORITHM] BOJ 5692. 팩토리얼 진법",
+        "excerpt":"ALGORITHM Übung - 백준 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys # factorial method def factorial(n): return n * factorial(n-1) if n &gt; 1 else 1 if __name__ == \"__main__\": while 1: # get number num = sys.stdin.readline().rstrip() # if 0 break if...","categories": ["BOJ"],
+        "tags": ["ALGORITHM","BOJ"],
+        "url": "/boj/boj(4)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] 진법변화 & 비트연산",
+        "excerpt":"ALGORITHM 알고리즘 스터디(4) 진법변환 &amp; 비트연산 진법변환 진법 - 수를 셀 때 자릿수가 올라가는 단위를 기준으로 하는 셈법의 총칭하며, 사용하는 수자의 개수가 진법의 숫자를 의미 # 파이썬에서 진법 변환 함수 # 2진법 print(bin(10)) # 8진법 print(oct(10)) # 16진법 # 16진법 사용시 10=a, 11=b, 12=c, 13=d, 14=e, 15=f임 print(hex(162)) # 10진법으로...","categories": ["STUDY_ALGORITHM"],
+        "tags": ["ALGORITHM"],
+        "url": "/study_algorithm/algorithm_study4/",
+        "teaser": null
+      },{
         "title": "[Error] ParserError: Error tokenizing data. C error",
-        "excerpt":" ParserError: Error tokenizing data. C error     상황            Pandas에서 df.read_csv(“filename.csv”)에서 에러 발생           해결            delimiter 명시             Solution  # df_book = pd.read_csv(\"books.csv\") df_book = pd.read_csv(\"books.csv\", sep =\"\\t\")    ref     [🔗 참고1]https://mskim8717.tistory.com/82)   [🔗 참고2]https://stackoverflow.com/questions/18039057/python-pandas-error-tokenizing-data)  ","categories": ["ERROR"],
+        "excerpt":" ParserError: Error tokenizing data. C error     상황            Pandas에서 df.read_csv(“filename.csv”)에서 에러 발생           해결            delimiter 명시             Solution  # df_book = pd.read_csv(\"books.csv\") df_book = pd.read_csv(\"books.csv\", sep =\"\\t\")    ref     🔗 참고1   🔗 참고2  ","categories": ["ERROR"],
         "tags": ["MYSQL","PYTHON"],
         "url": "/error/pandas_error1/",
         "teaser": null
@@ -825,5 +837,29 @@ var store = [{
         "excerpt":"Pandas .transpose() - switch column &amp; row .pivot() - long to wide .pivot_table() - long to wide # import pkg &amp; dataset import numpy as np import pandas as pd df_fifa = pd.read_csv(\"players_20.csv\") .transpose() df1 = df_fifa.set_index(\"short_name\")[[\"height_cm\", \"weight_kg\"]] df1.head(3) height_cm weight_kg short_name L. Messi 170 72 Cristiano Ronaldo 187 83...","categories": ["PYTHON"],
         "tags": ["PYTHON","PANDAS"],
         "url": "/python/introduction_to_data_reshaping/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] BOJ 2745. 진법 변ㅏ",
+        "excerpt":"ALGORITHM Übung - 백준 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys import string if __name__ == \"__main__\": # get input n,b = sys.stdin.readline().split() # make dictionary matching alphabet:number d = dict(zip(string.ascii_uppercase, range(10, 36))) b = int(b) ans,j = 0,0 # add each digit_number...","categories": ["BOJ"],
+        "tags": ["ALGORITHM","BOJ"],
+        "url": "/boj/boj(5)/",
+        "teaser": null
+      },{
+        "title": "[Python] 10 minutes to Pandas",
+        "excerpt":"10 Minutes Pandas Viewing Data Selection Missing Data Operation Merge Grouping Reshaping Time Series Categoricals Plotting Getting Data In / Out Gotchas Viewing Data # 필요한 패키지 불러오기 import numpy as np import pandas as pd import matplotlib.pyplot as plt # dataset school_list = [{'name': 'John', 'job': \"teacher\", 'age': 30},...","categories": ["PYTHON"],
+        "tags": ["PYTHON","PANDAS"],
+        "url": "/python/10_minutes_pandas/",
+        "teaser": null
+      },{
+        "title": "[Python] Reshaping Data with pandas(2)",
+        "excerpt":"Pandas .melt() - wide to long pd.wide_to_long - wide to long function of pandas .str - handling string in pandas # import pkg &amp; dataset import numpy as np import pandas as pd df_book = pd.read_csv(\"books.csv\", sep =\",\", index_col=\"bookID\") df_book.head(1) title authors average_rating isbn isbn13 language_code num_pages ratings_count text_reviews_count publication_date...","categories": ["PYTHON"],
+        "tags": ["PYTHON","PANDAS"],
+        "url": "/python/converting_between_wide_and_long_format/",
+        "teaser": null
+      },{
+        "title": "[Python] Reshaping Data with pandas(3)",
+        "excerpt":"Pandas pd.MultiIndex.from_arrays() - setting MultiIndex to a dataframe .stack() - rearrange innermost column index to become the innermost row index (즉, column들을 새로운 하나의 index로 처리) .unstack() - rearrange innermost row index to become the innermost column index innermost column or row index have the highest level .swaplevel() - exchange...","categories": ["PYTHON"],
+        "tags": ["PYTHON","PANDAS"],
+        "url": "/python/stacking_and_unstacking_dataframes/",
         "teaser": null
       }]

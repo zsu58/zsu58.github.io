@@ -339,11 +339,11 @@ df_book.melt(id_vars=["title",'authors'],
 ### pd.wide_to_long
 * parameter
     * dataframe
-    * stubnames - names columns containng the prefix
+    * stubnames - prefix
     * i - id
-    * j - name the column containing the suffix
+    * j - suffix
     * sep - separation criterion (default="")
-        * alwalys assumed that prefix is immediately followed by a nuermic suffix
+        * always assumed that prefix is immediately followed by a numeric suffix
     * suffix - if suffix is not numeric, suffix can be assigned using regex
 
 

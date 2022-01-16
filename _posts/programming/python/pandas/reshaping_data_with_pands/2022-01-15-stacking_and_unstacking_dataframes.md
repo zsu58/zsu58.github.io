@@ -16,7 +16,7 @@ tags:
 * `pd.MultiIndex.from_arrays()` - setting MultiIndex to a dataframe
 * `.stack()` - rearrange innermost column index to become the innermost row index (즉, column들을 새로운 하나의 index로 처리)
 * `.unstack()` - rearrange innermost row index to become the innermost column index
-    * innermost column | row index have the highest level
+  * innermost column or row index have the highest level
 * `.swaplevel()` - exchange row/column between different levels
 
 ---

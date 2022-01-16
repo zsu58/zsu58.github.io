@@ -1,0 +1,116 @@
+I"�<hr />
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 스터디(4)</li>
+  <li>진법변환 &amp; 비트연산</li>
+</ul>
+
+<hr />
+
+<h3 id="진법변환">진법변환</h3>
+<ul>
+  <li>진법 - 수를 셀 때 자릿수가 올라가는 단위를 기준으로 하는 셈법의 총칭하며, 사용하는 수자의 개수가 진법의 숫자를 의미</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 파이썬에서 진법 변환 함수
+</span>
+<span class="c1"># 2진법
+</span><span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># 8진법
+</span><span class="k">print</span><span class="p">(</span><span class="nb">oct</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># 16진법
+# 16진법 사용시 10=a, 11=b, 12=c, 13=d, 14=e, 15=f임
+</span><span class="k">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="mi">162</span><span class="p">))</span>
+
+<span class="c1"># 10진법으로 돌리기
+</span><span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">oct</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="mi">8</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="mi">162</span><span class="p">),</span><span class="mi">16</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0b1010
+0o12
+0xa2
+10
+10
+162
+</code></pre></div></div>
+
+<h3 id="비트연산">비트연산</h3>
+<ul>
+  <li>한 개 혹은 두 개의 이진수에 적용되는 연산</li>
+  <li>비트연산 종류
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">&amp;</code>(AND) - 둘 다 1일 경우 1, 아니면 0</li>
+      <li><code class="language-plaintext highlighter-rouge">|</code>(OR) - 둘 중 하나가 1일 경우 1, 아니면 0</li>
+      <li><code class="language-plaintext highlighter-rouge">^</code>(XOR) - 각각의 자리수를 비교하여 (값이) 다르면 1, 같으면 0</li>
+      <li><code class="language-plaintext highlighter-rouge">~</code>(NOT) - 비트 반전 연산자로 1은 0으로, 0은 1로 변환 (1을 더한 뒤 부호를 바꿔줌)</li>
+      <li><code class="language-plaintext highlighter-rouge">&lt;&lt;</code>(SHIFT) - 이진수를 왼쪽으로 주어진 수 만큼 옮김</li>
+      <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code>)SHIFT) - 이진수를 오른쪽으로 주어진 수 만큼 옮김</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">13</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"------ $ ------"</span><span class="p">)</span>
+<span class="c1"># &amp;
+</span><span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mb">0b1101</span> <span class="o">&amp;</span> <span class="mb">0b1011</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">13</span> <span class="o">&amp;</span> <span class="mi">11</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"------ | ------"</span><span class="p">)</span>
+<span class="c1"># |
+</span><span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mb">0b1101</span> <span class="o">|</span> <span class="mb">0b1011</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">13</span> <span class="o">|</span> <span class="mi">11</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"------ ^ ------"</span><span class="p">)</span>
+<span class="c1"># ^
+</span><span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mb">0b1101</span> <span class="o">^</span> <span class="mb">0b1011</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">13</span> <span class="o">^</span> <span class="mi">11</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"------ ~ ------"</span><span class="p">)</span>
+<span class="c1"># ~
+</span><span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="o">~</span><span class="mb">0b1101</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="o">~</span><span class="mi">13</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"------ &lt;&lt; ------"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mb">0b11</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mb">0b1100</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"------ &lt;&lt; ------"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mb">0b11</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mb">0b1100</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0b1101
+0b1011
+------ $ ------
+0b1001
+0b1001
+------ | ------
+0b1111
+0b1111
+------ ^ ------
+0b110
+0b110
+------ ~ ------
+-0b1110
+-0b1110
+------ &lt;&lt; ------
+0b11000
+0b110000
+------ &lt;&lt; ------
+0b0
+0b11 ---
+</code></pre></div></div>
+
+<h3 id="관련-알고리즘-풀이">관련 알고리즘 풀이</h3>
+<ul>
+  <li><a href="https://carl020958.github.io/boj/boj(4)/">🔗 링크1</a></li>
+  <li><a href="https://carl020958.github.io/boj/boj(5)/">🔗 링크2</a></li>
+  <li><a href="">🔗 링크3</a></li>
+</ul>
+:ET
