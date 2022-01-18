@@ -131,49 +131,14 @@ def solution(numbers):
     <img src="/img/backend/algorithm/coding_test/coding_test47_2.png" align="center">
 </p>
 ```python
-def to_binary(n, arr):
-    binary_list = [(2 ** (n - 1)) / (2 ** i) for i in range(n)]
-
-    res = []
-    for num in arr:
-        s = ''
-        for b in binary_list:
-            if num >= b:
-                s += '1'
-                num -= b
-            else:
-                s += '0'
-        res.append(s)
-
-    return res
-
 def solution(n, arr1, arr2):
-
-    con_arr1 = to_binary(n, arr1)
-    con_arr2 = to_binary(n, arr2)
-
     res = []
-    for a,b in zip(con_arr1,con_arr2):
-        s = ''
-        for i in range(len(a)):
-            if a[i] == '0' and b[i] == '0':
-                s += ' '
-            else:
-                s += '#'
-        res.append(s)
-
+    for i in range(n):
+        t = bin(arr1[i]|arr2[i])[2:].zfill(n)
+        t = t.replace("1", "#")
+        t = t.replace("0", " ")
+        res.append(t)
     return res
-
-# 다른 사람의 좋은 풀이
-def solution(n, arr1, arr2):
-    answer = []
-    for i,j in zip(arr1,arr2):
-        a12 = str(bin(i|j)[2:])
-        a12=a12.rjust(n,'0')
-        a12=a12.replace('1','#')
-        a12=a12.replace('0',' ')
-        answer.append(a12)
-    return answer
 ```
 
 ---

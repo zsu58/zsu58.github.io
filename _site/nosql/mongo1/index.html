@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>[NoSQL] MongoDB Shell - Bibliothek für Data-Engineering</title>
-<meta name="description" content="MongoDB Shell ```bash show all DB show dbs">
+<meta name="description" content="MongoDB Shell    MongoDB Shell Overall   MongoDB Shell Find   MongoDB Shell Update &amp; Remove &amp; Drop   MongoDB Shell Aggregate">
 
 
   <meta name="author" content="ZSU">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/nosql/mongo1/">
 
 
-  <meta property="og:description" content="MongoDB Shell ```bash show all DB show dbs">
+  <meta property="og:description" content="MongoDB Shell    MongoDB Shell Overall   MongoDB Shell Find   MongoDB Shell Update &amp; Remove &amp; Drop   MongoDB Shell Aggregate">
 
 
 
@@ -295,7 +295,7 @@
       <!--전체 글 수-->
       <li>
             
-            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">144</style>
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">147</style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -464,7 +464,7 @@
                     
                 
                     
-                        <li><a href="/categories/study_algorithm" class="">Study (4)</a></li>
+                        <li><a href="/categories/study_algorithm" class="">Study (5)</a></li>
                     
                 
                     
@@ -651,7 +651,7 @@
                     
                 
                     
-                        <li><a href="/categories/nosql" class="">NoSQL (1)</a></li>
+                        <li><a href="/categories/nosql" class="">NoSQL (3)</a></li>
                     
                 
             </ul>
@@ -842,7 +842,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[NoSQL] MongoDB Shell">
-    <meta itemprop="description" content="MongoDB Shell```bashshow all DBshow dbs">
+    <meta itemprop="description" content="MongoDB Shell  MongoDB Shell Overall  MongoDB Shell Find  MongoDB Shell Update &amp; Remove &amp; Drop  MongoDB Shell Aggregate">
     <meta itemprop="datePublished" content="2022-01-13T00:00:00+09:00">
     
 
@@ -865,7 +865,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          2 minute read
         
       </span>
     
@@ -880,20 +880,37 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#mongodb-shell">MongoDB Shell</a></li><li><a href="#ref">ref</a></li></ul>
+              <ul class="toc__menu"><li><a href="#mongodb-shell">MongoDB Shell</a></li><li><a href="#mongodb-shell-overall">MongoDB Shell Overall</a></li><li><a href="#mongodb-shell-find">MongoDB Shell Find</a></li><li><a href="#mongodb-shell-update--remove--drop">MongoDB Shell Update &amp; Remove &amp; Drop</a></li><li><a href="#mongodb-shell-aggregate">MongoDB Shell Aggregate</a></li><li><a href="#ref">ref</a></li></ul>
 
             </nav>
           </aside>
         
-        <h3 id="mongodb-shell">MongoDB Shell</h3>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># show all DB</span>
-show dbs
+        <hr />
+<h3 id="mongodb-shell">MongoDB Shell</h3>
+<ul>
+  <li>MongoDB Shell Overall</li>
+  <li>MongoDB Shell Find</li>
+  <li>MongoDB Shell Update &amp; Remove &amp; Drop</li>
+  <li>MongoDB Shell Aggregate</li>
+</ul>
+
+<hr />
+
+<h3 id="mongodb-shell-overall">MongoDB Shell Overall</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 접속</span>
+mongosh <span class="nt">-u</span> <span class="s2">"root"</span> <span class="nt">-p</span> <span class="s2">"1234"</span> 
+
+<span class="c"># show all DB</span>
+show dbs<span class="p">;</span>
 
 <span class="c"># db 생성 및 해당 db로 접속 (use [db_name])</span>
-use testDB
+use testDB<span class="p">;</span>
 
 <span class="c"># 현재 접속해있는 db 삭제</span>
-db.dropDatabase<span class="o">()</span>
+db.dropDatabase<span class="o">()</span><span class="p">;</span>
+
+<span class="c"># collection 만들기</span>
+db.createCollection<span class="o">(</span><span class="s2">"user"</span><span class="o">)</span><span class="p">;</span>
 
 <span class="c"># user collection(rdbms:table)에 documents(row) 추가</span>
 db.user.insertMany<span class="o">([</span>
@@ -914,7 +931,187 @@ db.user.find<span class="o">({</span>uName:<span class="s2">"Tom"</span><span cl
 db.user.update<span class="o">({</span>uName:<span class="s2">"Jane"</span><span class="o">}</span>, <span class="o">{</span><span class="nv">$set</span>: <span class="o">{</span><span class="nb">pwd</span>:4444<span class="o">}})</span><span class="p">;</span>
 
 <span class="c"># uName이 Jane인 document 삭제</span>
-db.user.remove<span class="o">({</span>uName:<span class="s2">"Jane"</span><span class="o">})</span><span class="p">;</span>
+db.user.deleteOne<span class="o">({</span>uName:<span class="s2">"Jane"</span><span class="o">})</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="mongodb-shell-find">MongoDB Shell Find</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># collection 만들기</span>
+db.createCollection<span class="o">(</span><span class="s2">"score"</span><span class="o">)</span><span class="p">;</span>
+
+<span class="c"># document 추가</span>
+db.score.insertMany<span class="o">(</span>
+  <span class="o">{</span>name: <span class="s2">"Sophia"</span>, point:99<span class="o">}</span>,
+  <span class="o">{</span>name: <span class="s2">"Alice"</span>, point:85<span class="o">}</span>,
+  <span class="o">{</span>name: <span class="s2">"Jane"</span>, point:76<span class="o">}</span>,
+  <span class="o">{</span>name: <span class="s2">"James"</span>, point:64<span class="o">}</span>,
+<span class="o">)</span><span class="p">;</span>
+
+<span class="c"># 미리 list을 만들어두고 추가</span>
+var names <span class="o">=</span> <span class="o">[</span><span class="s2">"Jane"</span>, <span class="s2">"Tom"</span>, <span class="s2">"Alice"</span>, <span class="s2">"James"</span>, <span class="s2">"Sophia"</span><span class="o">]</span><span class="p">;</span>
+var points <span class="o">=</span> <span class="o">[</span>76,54,85,64,99]<span class="p">;</span>
+<span class="k">for</span> <span class="o">(</span><span class="nv">i</span><span class="o">=</span>0<span class="p">;</span> i&lt;names.length<span class="p">;</span> i++<span class="o">){</span>
+  db.score.insertOne<span class="o">({</span>name:names[i], point:points[i]<span class="o">})</span><span class="p">;</span>
+  <span class="o">}</span><span class="p">;</span>
+
+<span class="c"># point가 90점 초과인 데이터 찾기</span>
+db.score.find<span class="o">({</span>point:<span class="o">{</span><span class="nv">$gt</span>:90<span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># point가 70점 초과인 첫 번째 데이터 찾기</span>
+db.score.findOne<span class="o">({</span>point:<span class="o">{</span><span class="nv">$gt</span>:70<span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># point가 60점 이상 90졈 이하인 데이터 찾기</span>
+db.score.find<span class="o">({</span>point:<span class="o">{</span><span class="nv">$gte</span>:60, <span class="nv">$lte</span>:90<span class="o">}})</span><span class="p">;</span>
+<span class="c"># 위와 같음</span>
+db.score.find<span class="o">({</span>point:<span class="o">{</span><span class="nv">$gte</span>:60<span class="o">}</span>, point:<span class="o">{</span><span class="nv">$lte</span>:90<span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># point가 54, 76, 99점 중 있는 데이터 찾기</span>
+db.score.find<span class="o">({</span>point:<span class="o">{</span><span class="nv">$in</span>:[54,76,99]<span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># point가 54, 76, 99점 외의 데이터 찾기</span>
+db.score.find<span class="o">({</span>point:<span class="o">{</span><span class="nv">$nin</span>:[54,76,99]<span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># point가 60 이하 or 90 이상인 데이터만 찾기</span>
+db.score.find<span class="o">(</span>
+  <span class="o">{</span>
+    <span class="nv">$or</span>:[
+      <span class="o">{</span>point:<span class="o">{</span><span class="nv">$lte</span>:60<span class="o">}}</span>,<span class="o">{</span>point:<span class="o">{</span><span class="nv">$gte</span>:90<span class="o">}}</span>
+      <span class="o">]</span>
+  <span class="o">}</span>
+<span class="o">)</span><span class="p">;</span>
+
+<span class="c"># point column이 있는 document 찾기</span>
+db.score.find<span class="o">({</span>point:<span class="o">{</span><span class="nv">$exists</span>:true<span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># point column이 없는 document 찾기</span>
+db.score.find<span class="o">({</span>age:<span class="o">{</span><span class="nv">$exists</span>:false<span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># db.collection.find({condition},{column:0/1}), 0=don't show, 1=show</span>
+<span class="c"># point가 76점 이상인 document의 이름만 찾기</span>
+db.score.find<span class="o">({</span>point:<span class="o">{</span><span class="nv">$gte</span>:76<span class="o">}}</span>,<span class="o">{</span>_id:0, name:1<span class="o">})</span><span class="p">;</span>
+
+<span class="c"># limit query result to 2</span>
+db.score.find<span class="o">()</span>.limit<span class="o">(</span>2<span class="o">)</span><span class="p">;</span>
+
+<span class="c"># skip two document</span>
+db.score.find<span class="o">()</span>.skip<span class="o">(</span>2<span class="o">)</span><span class="p">;</span>
+
+<span class="c"># sort by point(ascending)</span>
+db.score.find<span class="o">()</span>.sort<span class="o">({</span>point:1<span class="o">})</span><span class="p">;</span>
+
+<span class="c"># sort by point(descending)</span>
+db.score.find<span class="o">()</span>.sort<span class="o">({</span>point:-1<span class="o">})</span><span class="p">;</span>
+
+<span class="c"># document 중 name이 Jane이면서 certi column이 있는 document 제거</span>
+db.score.deleteOne<span class="o">({</span>name:<span class="s2">"Jane"</span>, certi:<span class="o">{</span><span class="nv">$exists</span>:true<span class="o">}})</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="mongodb-shell-update--remove--drop">MongoDB Shell Update &amp; Remove &amp; Drop</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.test.insertMany<span class="o">(</span>
+  <span class="o">[</span>
+    <span class="o">{</span>name:<span class="s2">"Jane"</span>, certi:[<span class="s2">"Java"</span>, <span class="s2">"OS"</span>, <span class="s2">"Excel"</span><span class="o">]}</span>,
+    <span class="o">{</span>name:<span class="s2">"Tom"</span>, certi:[<span class="s2">"DB"</span>, <span class="s2">"Secuity"</span><span class="o">]}</span>,
+    <span class="o">{</span>title:<span class="s2">"IT Trend"</span>, author:<span class="s2">"James"</span>, price:5000<span class="o">}</span>,
+    <span class="o">{</span>name:<span class="s2">"Alice"</span>, certi:[<span class="s2">"PPT"</span>, <span class="s2">"SQL"</span>, <span class="s2">"Web"</span><span class="o">]}</span>,
+    <span class="o">{</span>name:<span class="s2">"John"</span>, age:34<span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">)</span><span class="p">;</span>
+
+<span class="c"># name이 John인 document의 age column 삭제</span>
+db.score.update<span class="o">({</span>name:<span class="s2">"John"</span><span class="o">}</span>,<span class="o">{</span><span class="nv">$unset</span>:<span class="o">{</span>age:34<span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># title이 IT Trend인 document에서 price: 35000이라는 column 추가</span>
+db.score.update<span class="o">({</span>title:<span class="s2">"IT Trend"</span><span class="o">}</span>,<span class="o">{</span><span class="nv">$set</span>:<span class="o">{</span>price:35000<span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># title이 IT Trend인 document에서 price: 35000에서 70000으로 변경</span>
+db.score.update<span class="o">({</span>title:<span class="s2">"IT Trend"</span><span class="o">}</span>,<span class="o">{</span><span class="nv">$set</span>:<span class="o">{</span>price:70000<span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># name이 John인 document에서 cert:["OS", "DB"]이라는 column 추가</span>
+db.score.update<span class="o">({</span>name:<span class="s2">"John"</span><span class="o">}</span>,<span class="o">{</span><span class="nv">$set</span>:<span class="o">{</span>certi:[<span class="s2">"OS"</span>, <span class="s2">"DB"</span><span class="o">]}})</span><span class="p">;</span>
+
+<span class="c"># name이 John인 document에서 cert column에 Word 추가</span>
+db.score.update<span class="o">({</span>name:<span class="s2">"John"</span><span class="o">}</span>,<span class="o">{</span><span class="nv">$push</span>:<span class="o">{</span>certi:<span class="s2">"Word"</span><span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># name이 John인 document에서 cert column에 Word 제거</span>
+db.score.update<span class="o">({</span>name:<span class="s2">"John"</span><span class="o">}</span>,<span class="o">{</span><span class="nv">$pull</span>:<span class="o">{</span>certi:<span class="s2">"Word"</span><span class="o">}})</span><span class="p">;</span>
+
+<span class="c"># name이 Jane인 document 제거</span>
+db.score.remove<span class="o">({</span>name:<span class="s2">"Jane"</span><span class="o">})</span><span class="p">;</span>
+
+<span class="c"># collection의 documents 삭제</span>
+db.score.remove<span class="o">({})</span><span class="p">;</span>
+
+<span class="c"># collection 삭제</span>
+db.score.drop<span class="o">()</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="mongodb-shell-aggregate">MongoDB Shell Aggregate</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># select deptno, and dname</span>
+db.dept.aggregate<span class="o">([</span>
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$project</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"_id"</span>: 0, <span class="s2">"deptno"</span>: 1, <span class="s2">"dname"</span>: 1<span class="o">}}</span>
+<span class="o">])</span><span class="p">;</span>
+
+<span class="c"># select deptno, and dname, and limit the data to 3</span>
+db.dept.aggregate<span class="o">([</span>
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$project</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"_id"</span>: 0, <span class="s2">"deptno"</span>: 1, <span class="s2">"dname"</span>: 1<span class="o">}}</span>, <span class="o">{</span><span class="s2">"</span><span class="nv">$limit</span><span class="s2">"</span>: 2<span class="o">}</span>
+<span class="o">])</span><span class="p">;</span>
+
+<span class="c"># count all documents in dept collection</span>
+db.dept.aggregate<span class="o">([</span>
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$group</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"_id"</span>: 0, <span class="s2">"count"</span>: <span class="o">{</span><span class="s2">"</span><span class="nv">$sum</span><span class="s2">"</span>:1<span class="o">}}}</span>
+<span class="o">])</span>
+
+<span class="c"># count employees by deptno</span>
+db.emp.aggregate<span class="o">([</span>
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$group</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"_id"</span>: <span class="s2">"</span><span class="nv">$deptno</span><span class="s2">"</span>, <span class="s2">"count"</span>: <span class="o">{</span><span class="s2">"</span><span class="nv">$sum</span><span class="s2">"</span>: 1<span class="o">}}}</span>
+<span class="o">])</span>
+
+<span class="c"># sum of salary by deptno</span>
+db.emp.aggregate<span class="o">([</span>
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$group</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"_id"</span>: <span class="s2">"</span><span class="nv">$deptno</span><span class="s2">"</span>, <span class="s2">"count"</span>: <span class="o">{</span><span class="s2">"</span><span class="nv">$sum</span><span class="s2">"</span>: <span class="s2">"</span><span class="nv">$sal</span><span class="s2">"</span><span class="o">}}}</span>
+<span class="o">])</span>
+
+<span class="c"># mean of salary by job</span>
+db.emp.aggregate<span class="o">([</span>
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$group</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"_id"</span>: <span class="s2">"</span><span class="nv">$job</span><span class="s2">"</span>, <span class="s2">"count"</span>: <span class="o">{</span><span class="s2">"</span><span class="nv">$avg</span><span class="s2">"</span>: <span class="s2">"</span><span class="nv">$sal</span><span class="s2">"</span><span class="o">}}}</span>
+<span class="o">])</span>
+
+<span class="c"># round mean of salary by job</span>
+db.emp.aggregate<span class="o">([</span>
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$group</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"_id"</span>: <span class="s2">"</span><span class="nv">$job</span><span class="s2">"</span>, <span class="s2">"avg"</span>:<span class="o">{</span><span class="s2">"</span><span class="nv">$avg</span><span class="s2">"</span>: <span class="s2">"</span><span class="nv">$sal</span><span class="s2">"</span><span class="o">}}}</span>, 
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$addFields</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"avg"</span>: <span class="o">{</span><span class="s2">"</span><span class="nv">$round</span><span class="s2">"</span>:[<span class="s2">"</span><span class="nv">$avg</span><span class="s2">"</span>, <span class="nt">-1</span><span class="o">]}}}</span> 
+<span class="o">])</span>
+
+<span class="c"># dept collection을 기준으로 emp collection join 한 뒤 dept_emp_join이라는 collection에 저장</span>
+<span class="c"># from - join될 collection name (emp)</span>
+<span class="c"># localField - dept collection의 기준 field</span>
+<span class="c"># foreignField - emp collection의 기준 field</span>
+<span class="c"># as - 기준 collection(dept)에 새로운 filed가 만들어지며 해당 filed 아래에 기준에 맞는 emp collection의 object이 들어감</span>
+db.dept.aggregate<span class="o">([</span>
+  <span class="o">{</span>
+    <span class="s2">"</span><span class="nv">$lookup</span><span class="s2">"</span>:
+      <span class="o">{</span>
+        <span class="s2">"from"</span>: <span class="s2">"emp"</span>, 
+        <span class="s2">"localField"</span>: <span class="s2">"deptno"</span>, 
+        <span class="s2">"foreignField"</span>: <span class="s2">"deptno"</span>, 
+        <span class="s2">"as"</span>: <span class="s2">"dno"</span>
+      <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$out</span><span class="s2">"</span>: <span class="s2">"dept_emp_join"</span><span class="o">}</span>
+<span class="o">])</span>
+
+<span class="c"># dname 개수</span>
+
+<span class="c"># dname별 인원수</span>
+
+<span class="c"># dname 별 급여합계</span>
+
+
+<span class="nv">$match</span> - where
+<span class="nv">$sort</span> - order by
+
 </code></pre></div></div>
 <hr />
 
@@ -1015,6 +1212,147 @@ db.user.remove<span class="o">({</span>uName:<span class="s2">"Jane"</span><span
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/nosql/mongo2/" rel="permalink">[NoSQL] mongoexport &amp; mongoimport
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MongoExport
+
+  Installation
+  Mongoexport
+  Mongoimport
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/nosql/fleibly_structure_data/" rel="permalink">[NoSQL] Introduction to MongoDB(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MongoDB
+
+  Mongoclient.my_database.my_collection - access database &amp; collection
+  .count_documents() - count documents in collection
+  .list_database_n...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/study_algorithm/algorithm_study5/" rel="permalink">[ALGORITHM] 해시
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM
+
+  알고리즘 스터디(5)
+  해시
+
+
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/python/stacking_and_unstacking_dataframes/" rel="permalink">[Python] Reshaping Data with pandas(3)
 </a>
       
@@ -1046,155 +1384,6 @@ Pandas
 
   pd.MultiIndex.from_arrays() - setting MultiIndex to a dataframe
   .stack() - rearrange innermost column index to become the innermost row index (...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/python/converting_between_wide_and_long_format/" rel="permalink">[Python] Reshaping Data with pandas(2)
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          4 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-Pandas
-
-  .melt() - wide to long
-  pd.wide_to_long - wide to long
-    
-      function of pandas
-    
-  
-  .str - handling string in pandas
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/python/10_minutes_pandas/" rel="permalink">[Python] 10 minutes to Pandas
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          10 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-10 Minutes Pandas
-
-  Viewing Data
-  Selection
-  Missing Data
-  Operation
-  Merge
-  Grouping
-  Reshaping
-  Time Series
-  Categoricals
-  Plotting
-  Getting D...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/boj/boj(5)/" rel="permalink">[ALGORITHM] BOJ 2745. 진법 변ㅏ
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-
-ALGORITHM Übung - 백준
-
-  알고리즘 문제 풀이를 통한 코딩 테스트 연습
-
-</p>
   </article>
 </div>
 

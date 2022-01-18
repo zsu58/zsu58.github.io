@@ -1,5 +1,5 @@
 ---
-title: "[ALGORITHM] 진법변화 & 비트연산"
+title: "[ALGORITHM] 진법변환 & 비트연산"
 layout: single
 date: '14/1/2022'
 toc: true
@@ -118,4 +118,4 @@ print(bin(0b1100 >> 2))
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/boj/boj(4)/)
 * [🔗 링크2](https://carl020958.github.io/boj/boj(5)/)
-* [🔗 링크3]()
+* [🔗 링크3](https://carl020958.github.io/programmers/programmers_coding_test(5)/#1차-비밀지도)

@@ -1,0 +1,145 @@
+I"H-<hr />
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 스터디(5)</li>
+  <li>해시</li>
+</ul>
+
+<hr />
+
+<h3 id="해시">해시</h3>
+<ul>
+  <li>데이터를 다루는 기법 중 하나로 검색과 저장이 아주 유용한 구조</li>
+  <li>Key와 Value 쌍으로 데이터를 저장</li>
+  <li>Python에서는 dictionary 활용</li>
+</ul>
+
+<hr />
+
+<h3 id="hash-with-dictionary">Hash with Dictionary</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 해시 구현 방법
+</span><span class="nb">hash</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nb">hash</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">"apple"</span>
+<span class="nb">hash</span><span class="p">[</span><span class="s">"banana"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">hash</span><span class="p">[(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">hash</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s">"a"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s">"b"</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">hash</span><span class="p">)</span>
+<span class="c1"># set, list, dict은 Key가 될 수 없음
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{1: 'apple', 'banana': 2, (4, 5): [1, 2, 3], 10: {1: 'a', 2: 'b'}}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 값 변경
+</span><span class="nb">hash</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">"melon"</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">hash</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{1: 'melon', 'banana': 2, (4, 5): [1, 2, 3], 10: {1: 'a', 2: 'b'}}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 값 제거 방법1
+</span><span class="nb">hash</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="s">"banana"</span><span class="p">)</span>
+
+<span class="c1"># 값 제거 방법2 (del은 반환을 안해서 성능이 조금 더 좋으나 별 차이 없음)
+</span><span class="k">del</span><span class="p">(</span><span class="nb">hash</span><span class="p">[(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+<span class="c1"># 위와 같음
+# del hash[(4,5)]
+</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">hash</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{1: 'apple', 10: {1: 'a', 2: 'b'}}
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="loop-dictionary">Loop Dictionary</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 딕셔너리 생성
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>
+    <span class="nb">hash</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 딕셔너리 Key loop
+</span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">hash</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+2
+3
+4
+5
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 딕셔너리 Key loop
+</span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">hash</span><span class="p">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+4
+9
+16
+25
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 딕셔너리 Key loop
+</span><span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">hash</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 1
+2 4
+3 9
+4 16
+5 25
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="sort-dictionary">Sort Dictionary</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># key에 대한 오름차순 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">hash</span><span class="p">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># key에 대한 내림차순 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">hash</span><span class="p">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 3, 4, 5, 7]
+[7, 5, 4, 3, 1]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># value에 대한 오름차순 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">hash</span><span class="p">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># value에 대한 내림차순 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">hash</span><span class="p">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[5, 6, 7, 10, 12]
+[12, 10, 7, 6, 5]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># item에 대한 key를 기준으로 오름차순 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">hash</span><span class="p">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="c1"># item에 대한 value을 기준으로 내림차순 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">hash</span><span class="p">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># item에 대한 key를 기준으로 오름차순, 그리고 value를 기준으로 내림차순 정렬
+</span><span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">hash</span><span class="p">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[(1, 10), (3, 12), (4, 5), (5, 7), (7, 6)]
+[(3, 12), (1, 10), (5, 7), (7, 6), (4, 5)]
+[(1, 10), (3, 12), (4, 5), (5, 7), (7, 6)]
+</code></pre></div></div>
+
+:ET

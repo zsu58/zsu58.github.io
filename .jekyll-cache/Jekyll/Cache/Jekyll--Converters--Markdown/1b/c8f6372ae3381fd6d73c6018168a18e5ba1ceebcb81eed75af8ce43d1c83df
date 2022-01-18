@@ -1,0 +1,41 @@
+I"B<hr />
+<h3 id="mongoexport">MongoExport</h3>
+<ul>
+  <li>Installation</li>
+  <li>Mongoexport</li>
+  <li>Mongoimport</li>
+</ul>
+
+<hr />
+
+<h3 id="installation">Installation</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew tap mongodb/brew
+brew <span class="nb">install </span>mongodb-database-tools
+</code></pre></div></div>
+<hr />
+
+<h3 id="mongoexport-1">Mongoexport</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 방법1</span>
+mongoexport <span class="nt">--uri</span><span class="o">=</span><span class="s2">"mongodb://root:1234@localhost:27017/testDB?authSource=admin&amp;retryWrites=true&amp;w=majority"</span>  <span class="nt">--collection</span><span class="o">=</span>dept  <span class="nt">--out</span><span class="o">=</span>dept_from_monogo.json
+<span class="c"># 방법2(추천)</span>
+mongoexport <span class="nt">--uri</span><span class="o">=</span><span class="s2">"mongodb://root:1234@localhost:27017/testDB"</span>  <span class="nt">--authenticationDatabase</span><span class="o">=</span>admin  <span class="nt">--collection</span><span class="o">=</span>dept  <span class="nt">--out</span><span class="o">=</span>dept_from_monogo.json
+
+<span class="c"># 쿼리 넣어서 가져오기</span>
+mongoexport <span class="nt">--uri</span><span class="o">=</span><span class="s2">"mongodb://root:1234@localhost:27017/testDB"</span>  <span class="nt">--authenticationDatabase</span><span class="o">=</span>admin  <span class="nt">--collection</span><span class="o">=</span>dept <span class="nt">-q</span><span class="o">=</span><span class="s1">'{"deptno":{"$gte":30}}'</span>  <span class="nt">--out</span><span class="o">=</span>dept_from_monogo.json
+</code></pre></div></div>
+<hr />
+
+<h3 id="mongoimport">Mongoimport</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mongoimport <span class="nt">--uri</span><span class="o">=</span><span class="s2">"mongodb://root:1234@localhost:27017/testDB"</span> <span class="nt">--authenticationDatabase</span><span class="o">=</span>admin  <span class="nt">-c</span><span class="o">=</span>dept2 <span class="nt">-d</span><span class="o">=</span>testDB <span class="nt">--file</span><span class="o">=</span>emp_202201181218.json
+</code></pre></div></div>
+<hr />
+
+<p>mongoimport –username joe –password secret1 mongodb://mongodb0.example.com:27017 –ssl</p>
+
+<h3 id="ref">ref</h3>
+<ul>
+  <li><a href="https://docs.mongodb.com/database-tools/installation/installation/">🔗 Mongoexport Installation 공식문서</a></li>
+  <li><a href="https://docs.mongodb.com/database-tools/mongoexport/">🔗 Mongoexport 공식문서</a></li>
+  <li><a href="https://docs.mongodb.com/database-tools/mongoimport/">🔗 Mongoimport 공식문서</a></li>
+</ul>
+:ET

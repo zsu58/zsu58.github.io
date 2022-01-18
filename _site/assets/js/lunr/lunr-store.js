@@ -804,7 +804,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[NoSQL] MongoDB Shell",
-        "excerpt":"MongoDB Shell # show all DB show dbs # db 생성 및 해당 db로 접속 (use [db_name]) use testDB # 현재 접속해있는 db 삭제 db.dropDatabase() # user collection(rdbms:table)에 documents(row) 추가 db.user.insertMany([ {uName: \"Tom\", pwd: \"1111\", age: 20}, {uName: \"Jane\", pwd: \"2222\", age: 30}, ]); # document 추가 db.user.insertOne({uName: \"zsu\", pwd:...","categories": ["NOSQL"],
+        "excerpt":"MongoDB Shell MongoDB Shell Overall MongoDB Shell Find MongoDB Shell Update &amp; Remove &amp; Drop MongoDB Shell Aggregate MongoDB Shell Overall # 접속 mongosh -u \"root\" -p \"1234\" # show all DB show dbs; # db 생성 및 해당 db로 접속 (use [db_name]) use testDB; # 현재 접속해있는 db 삭제...","categories": ["NOSQL"],
         "tags": ["SQL","MONGODB"],
         "url": "/nosql/mongo1/",
         "teaser": null
@@ -839,7 +839,7 @@ var store = [{
         "url": "/python/introduction_to_data_reshaping/",
         "teaser": null
       },{
-        "title": "[ALGORITHM] BOJ 2745. 진법 변ㅏ",
+        "title": "[ALGORITHM] BOJ 2745. 진법 변환",
         "excerpt":"ALGORITHM Übung - 백준 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 import sys import string if __name__ == \"__main__\": # get input n,b = sys.stdin.readline().split() # make dictionary matching alphabet:number d = dict(zip(string.ascii_uppercase, range(10, 36))) b = int(b) ans,j = 0,0 # add each digit_number...","categories": ["BOJ"],
         "tags": ["ALGORITHM","BOJ"],
         "url": "/boj/boj(5)/",
@@ -861,5 +861,23 @@ var store = [{
         "excerpt":"Pandas pd.MultiIndex.from_arrays() - setting MultiIndex to a dataframe .stack() - rearrange innermost column index to become the innermost row index (즉, column들을 새로운 하나의 index로 처리) .unstack() - rearrange innermost row index to become the innermost column index innermost column or row index have the highest level .swaplevel() - exchange...","categories": ["PYTHON"],
         "tags": ["PYTHON","PANDAS"],
         "url": "/python/stacking_and_unstacking_dataframes/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] 해시",
+        "excerpt":"ALGORITHM 알고리즘 스터디(5) 해시 해시 데이터를 다루는 기법 중 하나로 검색과 저장이 아주 유용한 구조 Key와 Value 쌍으로 데이터를 저장 Python에서는 dictionary 활용 Hash with Dictionary # 해시 구현 방법 hash = {} hash[1] = \"apple\" hash[\"banana\"] = 2 hash[(4,5)] = [1,2,3] hash[10] = {1:\"a\", 2:\"b\"} print(hash) # set, list,...","categories": ["STUDY_ALGORITHM"],
+        "tags": ["ALGORITHM"],
+        "url": "/study_algorithm/algorithm_study5/",
+        "teaser": null
+      },{
+        "title": "[NoSQL] Introduction to MongoDB(1)",
+        "excerpt":"MongoDB Mongoclient.my_database.my_collection - access database &amp; collection .count_documents() - count documents in collection .list_database_names() &amp; .list_collection_names() - list database/collection names .find_one() - retrieve a single document .keys() - return keys(field names) {[criteria]} - filter data Substructure - reach substructure using dot(.) import sys # install pymongo !conda install --yes --prefix...","categories": ["NOSQL"],
+        "tags": ["SQL","MONGODB"],
+        "url": "/nosql/fleibly_structure_data/",
+        "teaser": null
+      },{
+        "title": "[NoSQL] mongoexport & mongoimport",
+        "excerpt":"MongoExport Installation Mongoexport Mongoimport Installation brew tap mongodb/brew brew install mongodb-database-tools Mongoexport # 방법1 mongoexport --uri=\"mongodb://root:1234@localhost:27017/testDB?authSource=admin&amp;retryWrites=true&amp;w=majority\" --collection=dept --out=dept_from_monogo.json # 방법2(추천) mongoexport --uri=\"mongodb://root:1234@localhost:27017/testDB\" --authenticationDatabase=admin --collection=dept --out=dept_from_monogo.json # 쿼리 넣어서 가져오기 mongoexport --uri=\"mongodb://root:1234@localhost:27017/testDB\" --authenticationDatabase=admin --collection=dept -q='{\"deptno\":{\"$gte\":30}}' --out=dept_from_monogo.json Mongoimport mongoimport --uri=\"mongodb://root:1234@localhost:27017/testDB\" --authenticationDatabase=admin -c=dept2 -d=testDB --file=emp_202201181218.json mongoimport –username joe –password secret1 mongodb://mongodb0.example.com:27017 –ssl ref...","categories": ["NOSQL"],
+        "tags": ["SQL","MONGODB"],
+        "url": "/nosql/mongo2/",
         "teaser": null
       }]
