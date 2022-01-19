@@ -15,12 +15,12 @@ tags:
 ---
 ### MongoDB
 * Mongoclient.my_database.my_collection - access database & collection
-* .count_documents() - count documents in collection
-* .list_database_names() & .list_collection_names() - list database/collection names 
-* .find_one() - retrieve a single document
-* .keys() - return keys(field names)
-* {[criteria]} - filter data
-* Substructure - reach substructure using dot(.)
+* `.count_documents()` - count documents in collection
+* `.list_database_names()` & `.list_collection_names()` - list database/collection names 
+* `.find_one()` - retrieve a single document
+* `.keys()` - return keys(field names)
+* `{[criteria]}` - filter data
+* Substructure - reach substructure using dot(`.`)
 
 ---
 

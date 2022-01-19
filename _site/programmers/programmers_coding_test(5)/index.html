@@ -1013,49 +1013,14 @@
     <img src="/img/backend/algorithm/coding_test/coding_test47_1.png" align="center" />
     <img src="/img/backend/algorithm/coding_test/coding_test47_2.png" align="center" />
 </p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">to_binary</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">arr</span><span class="p">):</span>
-    <span class="n">binary_list</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="s">''</span>
-        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">binary_list</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">:</span>
-                <span class="n">s</span> <span class="o">+=</span> <span class="s">'1'</span>
-                <span class="n">num</span> <span class="o">-=</span> <span class="n">b</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">s</span> <span class="o">+=</span> <span class="s">'0'</span>
-        <span class="n">res</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">|</span><span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="mi">2</span><span class="p">:].</span><span class="n">zfill</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"#"</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"0"</span><span class="p">,</span> <span class="s">" "</span><span class="p">)</span>
+        <span class="n">res</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">res</span>
-
-<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">):</span>
-
-    <span class="n">con_arr1</span> <span class="o">=</span> <span class="n">to_binary</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">arr1</span><span class="p">)</span>
-    <span class="n">con_arr2</span> <span class="o">=</span> <span class="n">to_binary</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">arr2</span><span class="p">)</span>
-
-    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">con_arr1</span><span class="p">,</span><span class="n">con_arr2</span><span class="p">):</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="s">''</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
-            <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">'0'</span> <span class="ow">and</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">'0'</span><span class="p">:</span>
-                <span class="n">s</span> <span class="o">+=</span> <span class="s">' '</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">s</span> <span class="o">+=</span> <span class="s">'#'</span>
-        <span class="n">res</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">res</span>
-
-<span class="c1"># 다른 사람의 좋은 풀이
-</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">):</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span><span class="n">arr2</span><span class="p">):</span>
-        <span class="n">a12</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="o">|</span><span class="n">j</span><span class="p">)[</span><span class="mi">2</span><span class="p">:])</span>
-        <span class="n">a12</span><span class="o">=</span><span class="n">a12</span><span class="p">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">'0'</span><span class="p">)</span>
-        <span class="n">a12</span><span class="o">=</span><span class="n">a12</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'1'</span><span class="p">,</span><span class="s">'#'</span><span class="p">)</span>
-        <span class="n">a12</span><span class="o">=</span><span class="n">a12</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'0'</span><span class="p">,</span><span class="s">' '</span><span class="p">)</span>
-        <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">a12</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">answer</span>
 </code></pre></div></div>
 
 <hr />

@@ -821,7 +821,7 @@ var store = [{
         "url": "/boj/boj(4)/",
         "teaser": null
       },{
-        "title": "[ALGORITHM] 진법변화 & 비트연산",
+        "title": "[ALGORITHM] 진법변환 & 비트연산",
         "excerpt":"ALGORITHM 알고리즘 스터디(4) 진법변환 &amp; 비트연산 진법변환 진법 - 수를 셀 때 자릿수가 올라가는 단위를 기준으로 하는 셈법의 총칭하며, 사용하는 수자의 개수가 진법의 숫자를 의미 # 파이썬에서 진법 변환 함수 # 2진법 print(bin(10)) # 8진법 print(oct(10)) # 16진법 # 16진법 사용시 10=a, 11=b, 12=c, 13=d, 14=e, 15=f임 print(hex(162)) # 10진법으로...","categories": ["STUDY_ALGORITHM"],
         "tags": ["ALGORITHM"],
         "url": "/study_algorithm/algorithm_study4/",

@@ -1,4 +1,4 @@
-I":E<hr />
+I"�Q<hr />
 <h3 id="mongodb-shell">MongoDB Shell</h3>
 <ul>
   <li>MongoDB Shell Overall</li>
@@ -216,15 +216,30 @@ db.dept.aggregate<span class="o">([</span>
 <span class="o">])</span>
 
 <span class="c"># dname 개수</span>
+db.dept_emp_join.aggregate<span class="o">(</span>
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$unwind</span><span class="s2">"</span>: <span class="s2">"</span><span class="nv">$dno</span><span class="s2">"</span><span class="o">}</span>,
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$group</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"_id"</span>: 0, <span class="s2">"count"</span>:<span class="o">{</span><span class="s2">"</span><span class="nv">$sum</span><span class="s2">"</span>:1<span class="o">}}}</span>
+<span class="o">)</span>
 
-<span class="c"># dname별 인원수</span>
+<span class="c"># dname별 인원 수</span>
+db.dept_emp_join.aggregate<span class="o">(</span>
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$unwind</span><span class="s2">"</span>: <span class="s2">"</span><span class="nv">$dno</span><span class="s2">"</span><span class="o">}</span>,
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$group</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"_id"</span>: <span class="s2">"</span><span class="nv">$dname</span><span class="s2">"</span>, <span class="s2">"count"</span>:<span class="o">{</span><span class="s2">"</span><span class="nv">$sum</span><span class="s2">"</span>:1<span class="o">}}}</span>
+<span class="o">)</span>
 
-<span class="c"># dname 별 급여합계</span>
+<span class="c"># dname 별 급여 합계</span>
+db.dept_emp_join.aggregate<span class="o">(</span>
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$unwind</span><span class="s2">"</span>: <span class="s2">"</span><span class="nv">$dno</span><span class="s2">"</span><span class="o">}</span>,
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$group</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"_id"</span>: <span class="s2">"</span><span class="nv">$dname</span><span class="s2">"</span>, <span class="s2">"sum"</span>:<span class="o">{</span><span class="s2">"</span><span class="nv">$sum</span><span class="s2">"</span>: <span class="s2">"</span><span class="nv">$dno</span><span class="s2">.sal"</span><span class="o">}}}</span>
+<span class="o">)</span>
 
-
-<span class="nv">$match</span> - where
-<span class="nv">$sort</span> - order by
-
+<span class="c"># Accounting 부서 소속 직원들의 사번, 이름, 급여는? 급여를 기준으로 ascending하게 sort, (descending일 경우 -1)</span>
+db.dept_emp_join.aggregate<span class="o">(</span>
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$match</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"dname"</span>: <span class="s2">"ACCOUNTING"</span><span class="o">}}</span>,
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$unwind</span><span class="s2">"</span>: <span class="s2">"</span><span class="nv">$dno</span><span class="s2">"</span><span class="o">}</span>,
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$project</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"dno.empno"</span>: 1, <span class="s2">"dno.ename"</span>: 1, <span class="s2">"dno.sal"</span>: 1<span class="o">}}</span>,
+  <span class="o">{</span><span class="s2">"</span><span class="nv">$sort</span><span class="s2">"</span>: <span class="o">{</span><span class="s2">"dno.sal"</span>: 1<span class="o">}}</span>
+<span class="o">)</span>
 </code></pre></div></div>
 <hr />
 

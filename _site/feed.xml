@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-18T17:45:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[NoSQL] mongoexport &amp;amp; mongoimport</title><link href="http://localhost:4000/nosql/mongo2/" rel="alternate" type="text/html" title="[NoSQL] mongoexport &amp;amp; mongoimport" /><published>2022-01-18T00:00:00+09:00</published><updated>2022-01-18T00:00:00+09:00</updated><id>http://localhost:4000/nosql/mongo2</id><content type="html" xml:base="http://localhost:4000/nosql/mongo2/">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-18T18:49:28+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bibliothek für Data-Engineering</title><subtitle>Eine Bibliothek</subtitle><author><name>ZSU</name></author><entry><title type="html">[NoSQL] mongoexport &amp;amp; mongoimport</title><link href="http://localhost:4000/nosql/mongo2/" rel="alternate" type="text/html" title="[NoSQL] mongoexport &amp;amp; mongoimport" /><published>2022-01-18T00:00:00+09:00</published><updated>2022-01-18T00:00:00+09:00</updated><id>http://localhost:4000/nosql/mongo2</id><content type="html" xml:base="http://localhost:4000/nosql/mongo2/">&lt;hr /&gt;
 &lt;h3 id=&quot;mongoexport&quot;&gt;MongoExport&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Installation&lt;/li&gt;
@@ -179,7 +179,16 @@ mongoexport &lt;span class=&quot;nt&quot;&gt;--uri&lt;/span&gt;&lt;span class=&q
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[(1, 10), (3, 12), (4, 5), (5, 7), (7, 6)]
 [(3, 12), (1, 10), (5, 7), (7, 6), (4, 5)]
 [(1, 10), (3, 12), (4, 5), (5, 7), (7, 6)]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ZSU</name></author><category term="STUDY_ALGORITHM" /><category term="ALGORITHM" /><summary type="html">ALGORITHM 알고리즘 스터디(5) 해시</summary></entry><entry><title type="html">[NoSQL] Introduction to MongoDB(1)</title><link href="http://localhost:4000/nosql/fleibly_structure_data/" rel="alternate" type="text/html" title="[NoSQL] Introduction to MongoDB(1)" /><published>2022-01-18T00:00:00+09:00</published><updated>2022-01-18T00:00:00+09:00</updated><id>http://localhost:4000/nosql/fleibly_structure_data</id><content type="html" xml:base="http://localhost:4000/nosql/fleibly_structure_data/">&lt;hr /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;관련-알고리즘-풀이&quot;&gt;관련 알고리즘 풀이&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;&quot;&gt;🔗 링크1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&quot;&gt;🔗 링크2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&quot;&gt;🔗 링크3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>ZSU</name></author><category term="STUDY_ALGORITHM" /><category term="ALGORITHM" /><summary type="html">ALGORITHM 알고리즘 스터디(5) 해시</summary></entry><entry><title type="html">[NoSQL] Introduction to MongoDB(1)</title><link href="http://localhost:4000/nosql/fleibly_structure_data/" rel="alternate" type="text/html" title="[NoSQL] Introduction to MongoDB(1)" /><published>2022-01-18T00:00:00+09:00</published><updated>2022-01-18T00:00:00+09:00</updated><id>http://localhost:4000/nosql/fleibly_structure_data</id><content type="html" xml:base="http://localhost:4000/nosql/fleibly_structure_data/">&lt;hr /&gt;
 &lt;h3 id=&quot;mongodb&quot;&gt;MongoDB&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Mongoclient.my_database.my_collection - access database &amp;amp; collection&lt;/li&gt;
@@ -5352,7 +5361,7 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;</content><author><name>ZSU</name></author><category term="PYTHON" /><category term="PYTHON" /><category term="PANDAS" /><summary type="html">Pandas .transpose() - switch column &amp;amp; row .pivot() - long to wide .pivot_table() - long to wide</summary></entry><entry><title type="html">[ALGORITHM] 진법변화 &amp;amp; 비트연산</title><link href="http://localhost:4000/study_algorithm/algorithm_study4/" rel="alternate" type="text/html" title="[ALGORITHM] 진법변화 &amp;amp; 비트연산" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/study_algorithm/algorithm_study4</id><content type="html" xml:base="http://localhost:4000/study_algorithm/algorithm_study4/">&lt;hr /&gt;
+&lt;/div&gt;</content><author><name>ZSU</name></author><category term="PYTHON" /><category term="PYTHON" /><category term="PANDAS" /><summary type="html">Pandas .transpose() - switch column &amp;amp; row .pivot() - long to wide .pivot_table() - long to wide</summary></entry><entry><title type="html">[ALGORITHM] 진법변환 &amp;amp; 비트연산</title><link href="http://localhost:4000/study_algorithm/algorithm_study4/" rel="alternate" type="text/html" title="[ALGORITHM] 진법변환 &amp;amp; 비트연산" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/study_algorithm/algorithm_study4</id><content type="html" xml:base="http://localhost:4000/study_algorithm/algorithm_study4/">&lt;hr /&gt;
 &lt;h3 id=&quot;algorithm&quot;&gt;ALGORITHM&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;알고리즘 스터디(4)&lt;/li&gt;
@@ -5465,7 +5474,7 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://carl020958.github.io/boj/boj(4)/&quot;&gt;🔗 링크1&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://carl020958.github.io/boj/boj(5)/&quot;&gt;🔗 링크2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;&quot;&gt;🔗 링크3&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://carl020958.github.io/programmers/programmers_coding_test(5)/#1차-비밀지도&quot;&gt;🔗 링크3&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>ZSU</name></author><category term="STUDY_ALGORITHM" /><category term="ALGORITHM" /><summary type="html">ALGORITHM 알고리즘 스터디(4) 진법변환 &amp;amp; 비트연산</summary></entry><entry><title type="html">[ALGORITHM] BOJ 5692. 팩토리얼 진법</title><link href="http://localhost:4000/boj/boj(4)/" rel="alternate" type="text/html" title="[ALGORITHM] BOJ 5692. 팩토리얼 진법" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/boj/boj(4)</id><content type="html" xml:base="http://localhost:4000/boj/boj(4)/">&lt;hr /&gt;
 &lt;h3 id=&quot;algorithm-übung---백준&quot;&gt;ALGORITHM Übung - 백준&lt;/h3&gt;
 &lt;ul&gt;
