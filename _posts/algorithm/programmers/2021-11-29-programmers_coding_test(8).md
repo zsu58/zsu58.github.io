@@ -315,3 +315,30 @@ def solution(numbers, target):
         return solution(numbers[1:], target-numbers[0]) + solution(numbers[1:], target+numbers[0])
 ```
 ---
+
+### 전화번호 목록
+* 21/1/2022
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test73.png" align="center">
+</p>
+```python
+def solution(phone_book):
+    # sort to compare between adjacent phone numbers
+    phone_book.sort()
+
+    # compare adjacent numbers and return false if the second number's prefix equals to the first number
+    for i in range(len(phone_book)-1):
+        if phone_book[i] == phone_book[i+1][:len(phone_book[i])]:
+            return False
+    return True
+
+# 다른 사람의 좋은 풀이
+def solution(phoneBook):
+    phoneBook = sorted(phoneBook)
+
+    for p1, p2 in zip(phoneBook, phoneBook[1:]):
+        if p2.startswith(p1):
+            return False
+    return True
+```
+---

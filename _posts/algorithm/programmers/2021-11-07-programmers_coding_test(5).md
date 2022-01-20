@@ -37,13 +37,17 @@ def solution(array, commands):
 </p>
 ```python
 def solution(participant, completion):
-    participant.sort()
-    completion.sort()
+    hash = {}
+    # if participant in hash, get the number and add one to the value, if not 1
+    for p in participant:
+    hash[p] = hash.get(p,0) + 1
 
-    for i in range(len(participant) - 1):
-        if participant[i] != completion[i]:
-            return participant[i]
-    return participant[-1]
+    # iterate over completion and minus one from value 
+    for c in completion:
+    hash[c] -= 1
+
+    # iterate over hash and return key if value is 1
+    return [k for k,v in hash.items() if v==1][0]
 
 # 다른 사람의 좋은 풀이
 import collections

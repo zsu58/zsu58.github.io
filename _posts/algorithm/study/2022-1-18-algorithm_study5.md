@@ -173,5 +173,5 @@ print(sorted(hash.items(), key=lambda x:(x[0],-x[1])))
 
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/boj/boj(6)/)
-* [🔗 링크2]()
-* [🔗 링크3]()
+* [🔗 링크2](https://carl020958.github.io/programmers/programmers_coding_test(5)/#완주하지-못한-선수)
+* [🔗 링크3](https://carl020958.github.io/programmers/programmers_coding_test(8)/#전화번호-목록)
