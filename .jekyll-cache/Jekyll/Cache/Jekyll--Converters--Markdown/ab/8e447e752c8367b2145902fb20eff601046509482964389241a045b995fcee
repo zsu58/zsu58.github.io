@@ -1,0 +1,276 @@
+I"{<hr />
+<h3 id="algorithm-übung---programmers">ALGORITHM Übung - Programmers</h3>
+<ul>
+  <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
+</ul>
+
+<hr />
+
+<h3 id="k번째수">K번째수</h3>
+<ul>
+  <li>7/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test41.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">commands</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]])[</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="완주하지-못한-선수">완주하지 못한 선수</h3>
+<ul>
+  <li>7/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test42.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">participant</span><span class="p">,</span> <span class="n">completion</span><span class="p">):</span>
+    <span class="nb">hash</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># if participant in hash, get the number and add one to the value, if not 1
+</span>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">participant</span><span class="p">:</span>
+    <span class="nb">hash</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># iterate over completion and minus one from value 
+</span>    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">completion</span><span class="p">:</span>
+    <span class="nb">hash</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="c1"># iterate over hash and return key if value is 1
+</span>    <span class="k">return</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">hash</span><span class="p">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="kn">import</span> <span class="nn">collections</span>
+
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">participant</span><span class="p">,</span> <span class="n">completion</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">participant</span><span class="p">)</span> <span class="o">-</span> <span class="n">collections</span><span class="p">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">completion</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">answer</span><span class="p">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="소수-만들기">소수 만들기</h3>
+<ul>
+  <li>7/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test43.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+    <span class="n">max_n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">*</span><span class="mi">1000</span>
+    <span class="n">prime_num</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_n</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prime_num</span><span class="p">:</span>
+            <span class="n">prime_num</span> <span class="o">-=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="n">max_n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">combination</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span><span class="mi">3</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">combination</span><span class="p">)</span> <span class="ow">in</span> <span class="n">prime_num</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="내적">내적</h3>
+<ul>
+  <li>8/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test44.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">res</span><span class="p">,</span><span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="n">solution</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="음양-더하기">음양 더하기</h3>
+<ul>
+  <li>8/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test45.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">solution</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span> <span class="k">if</span> <span class="n">b</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">a</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="없는-숫자-더하기">없는 숫자 더하기</h3>
+<ul>
+  <li>8/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test46.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">45</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="1차-비밀지도">[1차] 비밀지도</h3>
+<ul>
+  <li>8/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test47_1.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test47_2.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">|</span><span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="mi">2</span><span class="p">:].</span><span class="n">zfill</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"#"</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"0"</span><span class="p">,</span> <span class="s">" "</span><span class="p">)</span>
+        <span class="n">res</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="크레인-인형뽑기-게임">크레인 인형뽑기 게임</h3>
+<ul>
+  <li>9/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test48_1.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test48_2.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pick</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">arr</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">return</span> <span class="n">val</span>
+
+<span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">arr</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">moves</span><span class="p">):</span>
+    <span class="n">flip_board</span> <span class="o">=</span> <span class="p">[[</span><span class="o">*</span><span class="n">args</span><span class="p">]</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">board</span><span class="p">)]</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">basket</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">flip_board</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">basket</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">basket</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pick</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">flip_board</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">flip_board</span><span class="p">)</span> <span class="o">==</span> <span class="n">basket</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">pick</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">flip_board</span><span class="p">)</span>
+                <span class="k">del</span><span class="p">(</span><span class="n">basket</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="mi">2</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">basket</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pick</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">flip_board</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="c1"># 다른 사람의 좋은 풀이
+</span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">moves</span><span class="p">):</span>
+    <span class="n">stacklist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">stacklist</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">board</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stacklist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">stacklist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">stacklist</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+                        <span class="n">stacklist</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                        <span class="n">stacklist</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                        <span class="n">answer</span> <span class="o">+=</span> <span class="mi">2</span>     
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="키패드-누르기">키패드 누르기</h3>
+<ul>
+  <li>13/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test49_1.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test49_2.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">hand</span><span class="p">):</span>
+    
+    <span class="n">ref</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">:(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">3</span><span class="p">:(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+           <span class="mi">4</span><span class="p">:(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="mi">5</span><span class="p">:(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="mi">6</span><span class="p">:(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+           <span class="mi">7</span><span class="p">:(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">8</span><span class="p">:(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">9</span><span class="p">:(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+           <span class="s">"*"</span><span class="p">:(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mi">0</span><span class="p">:(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="s">"#"</span><span class="p">:(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)}</span>
+    
+    <span class="n">l_hand</span> <span class="o">=</span> <span class="s">"*"</span>
+    <span class="n">r_hand</span> <span class="o">=</span> <span class="s">"#"</span>
+
+    <span class="n">all_hand</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">]:</span>
+            <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'R'</span>
+            <span class="n">r_hand</span> <span class="o">=</span> <span class="n">num</span>
+        <span class="k">elif</span> <span class="n">num</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]:</span>
+            <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'L'</span>
+            <span class="n">l_hand</span> <span class="o">=</span> <span class="n">num</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">left_move</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ref</span><span class="p">[</span><span class="n">l_hand</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ref</span><span class="p">[</span><span class="n">num</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ref</span><span class="p">[</span><span class="n">l_hand</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ref</span><span class="p">[</span><span class="n">num</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">right_move</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ref</span><span class="p">[</span><span class="n">r_hand</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ref</span><span class="p">[</span><span class="n">num</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ref</span><span class="p">[</span><span class="n">r_hand</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ref</span><span class="p">[</span><span class="n">num</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            
+            <span class="k">if</span> <span class="n">left_move</span> <span class="o">&lt;</span> <span class="n">right_move</span><span class="p">:</span>
+                <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'L'</span>
+                <span class="n">l_hand</span> <span class="o">=</span> <span class="n">num</span>
+            <span class="k">elif</span> <span class="n">left_move</span> <span class="o">&gt;</span> <span class="n">right_move</span><span class="p">:</span>
+                <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'R'</span>
+                <span class="n">r_hand</span> <span class="o">=</span> <span class="n">num</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">hand</span> <span class="o">==</span> <span class="s">"right"</span><span class="p">:</span>
+                    <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'R'</span>
+                    <span class="n">r_hand</span> <span class="o">=</span> <span class="n">num</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">all_hand</span> <span class="o">+=</span> <span class="s">'L'</span>
+                    <span class="n">l_hand</span> <span class="o">=</span> <span class="n">num</span>
+    
+    <span class="k">return</span> <span class="n">all_hand</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="숫자-문자열과-영단어">숫자 문자열과 영단어</h3>
+<ul>
+  <li>15/11/2021</li>
+</ul>
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test50_1.png" align="center" />
+    <img src="/img/backend/algorithm/coding_test/coding_test50_2.png" align="center" />
+</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">string_to_number</span> <span class="o">=</span> <span class="p">{</span><span class="s">"zero"</span><span class="p">:</span><span class="s">"0"</span><span class="p">,</span> <span class="s">"one"</span><span class="p">:</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"two"</span><span class="p">:</span><span class="s">"2"</span><span class="p">,</span> <span class="s">"three"</span><span class="p">:</span><span class="s">"3"</span><span class="p">,</span> <span class="s">"four"</span><span class="p">:</span><span class="s">"4"</span><span class="p">,</span>
+                        <span class="s">"five"</span><span class="p">:</span><span class="s">"5"</span><span class="p">,</span> <span class="s">"six"</span><span class="p">:</span><span class="s">"6"</span><span class="p">,</span> <span class="s">"seven"</span><span class="p">:</span><span class="s">"7"</span><span class="p">,</span> <span class="s">"eight"</span><span class="p">:</span><span class="s">"8"</span><span class="p">,</span> <span class="s">"nine"</span><span class="p">:</span><span class="s">"9"</span><span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">string_to_number</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+:ET

@@ -1,0 +1,8 @@
+I"¡<hr />
+<h3 id="mongodb">MongoDB</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.distinct()</code> - get unique values</li>
+  <li><code class="language-plaintext highlighter-rouge">$elemMatch</code> - filter documents that matches all the specified query criteria</li>
+  <li><code class="language-plaintext highlighter-rouge">$regex</code> - filter documents matching regular expression</li>
+</ul>
+:ET

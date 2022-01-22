@@ -1,0 +1,1468 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[NoSQL] Introduction to MongoDB(2) - Bibliothek für Data-Engineering</title>
+<meta name="description" content="MongoDB    .distinct() - get unique values   $elemMatch - filter documents that matches all the specified query criteria   $regex - filter documents matching regular expression">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[NoSQL] Introduction to MongoDB(2)">
+<meta property="og:url" content="http://localhost:4000/nosql/working_with_distinct_values_and_sets/">
+
+
+  <meta property="og:description" content="MongoDB    .distinct() - get unique values   $elemMatch - filter documents that matches all the specified query criteria   $regex - filter documents matching regular expression">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-18T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/nosql/working_with_distinct_values_and_sets/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Kategorie</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://stingy-camp-e37.notion.site/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/armi_made.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">151</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Algorithm</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--boj 카테고리 글들을 모아둔 페이지인 /categories/boj 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/boj" class="">BOJ (7)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/codeit" class="">Codeit (34)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/leetcode" class="">LeetCode (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/programmers" class="">Programmers (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/study_algorithm" class="">Study (6)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Data-Engineering</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/airflow" class="">Airflow (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/docker" class="">Docker (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/nosql" class="">NoSQL (4)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/spark" class="">Spark (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (21)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <li><a href="/categories/error" class="">Error (4)</a></li>
+                
+            
+                
+            
+        </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/java" class="">Java (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[NoSQL] Introduction to MongoDB(2)">
+    <meta itemprop="description" content="MongoDB  .distinct() - get unique values  $elemMatch - filter documents that matches all the specified query criteria  $regex - filter documents matching regular expression">
+    <meta itemprop="datePublished" content="2022-01-18T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[NoSQL] Introduction to MongoDB(2)
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#mongodb">MongoDB</a></li><li><a href="#distinct">.distinct()</a></li><li><a href="#elemmatch">$elemMatch</a></li><li><a href="#regex">$regex</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="mongodb">MongoDB</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.distinct()</code> - get unique values</li>
+  <li><code class="language-plaintext highlighter-rouge">$elemMatch</code> - filter documents that matches all the specified query criteria</li>
+  <li><code class="language-plaintext highlighter-rouge">$regex</code> - filter documents matching regular expression</li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># connect mongoDB
+</span><span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span>
+    <span class="n">username</span><span class="o">=</span><span class="s">"root"</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s">"1234"</span>
+<span class="p">)</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">nobel</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="distinct">.distinct()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># example of prize document
+</span><span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">find_one</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'_id': ObjectId('61e62ed9f373e66efa5b9694'),
+ 'year': '2021',
+ 'category': 'chemistry',
+ 'laureates': [{'id': '1002',
+   'firstname': 'Benjamin',
+   'surname': 'List',
+   'motivation': '"for the development of asymmetric organocatalysis"',
+   'share': '2'},
+  {'id': '1003',
+   'firstname': 'David',
+   'surname': 'MacMillan',
+   'motivation': '"for the development of asymmetric organocatalysis"',
+   'share': '2'}]}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># example of laureates document
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">find_one</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'_id': ObjectId('61e62ed9f373e66efa5b9926'),
+ 'id': '1',
+ 'firstname': 'Wilhelm Conrad',
+ 'surname': 'Röntgen',
+ 'born': '1845-03-27',
+ 'died': '1923-02-10',
+ 'bornCountry': 'Prussia (now Germany)',
+ 'bornCountryCode': 'DE',
+ 'bornCity': 'Lennep (now Remscheid)',
+ 'diedCountry': 'Germany',
+ 'diedCountryCode': 'DE',
+ 'diedCity': 'Munich',
+ 'gender': 'male',
+ 'prizes': [{'year': '1901',
+   'category': 'physics',
+   'share': '1',
+   'motivation': '"in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him"',
+   'affiliations': [{'name': 'Munich University',
+     'city': 'Munich',
+     'country': 'Germany'}]}]}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># check whether category from "prizes" collection and category from "laureates" collection are same
+# .distinct() returns a list, therefore using set is recommended for comparison
+</span><span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"category"</span><span class="p">))</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"prizes.category"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get country recorded as countries of death but not as countries of birth
+</span><span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"diedCountry"</span><span class="p">))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"bornCountry"</span><span class="p">))</span>
+<span class="c1"># 위와 같음
+# set(db.laureates.distinct("diedCountry")).difference(set(db.laureates.distinct("bornCountry")))
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'Barbados',
+ 'East Germany (now Germany)',
+ 'Gabon',
+ 'Greece',
+ 'Israel',
+ 'Jamaica',
+ 'Northern Rhodesia (now Zambia)',
+ 'Puerto Rico',
+ 'Singapore',
+ 'Tunisia',
+ 'Yugoslavia (now Serbia)'}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># number of distinct countries of laureate affiliation for prizes
+</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"prizes.affiliations.country"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>29
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># distinct value에서 조건을 주어 filter도 가능
+# countries where USA-born laureates had affiliations for their prizes
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span>
+    <span class="s">"prizes.affiliations.country"</span><span class="p">,</span> <span class="p">{</span><span class="s">"bornCountry"</span><span class="p">:</span><span class="s">"USA"</span><span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Australia', 'Denmark', 'USA', 'United Kingdom']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># filter for prize documents with three or more laureates
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"laureates.2"</span><span class="p">:{</span><span class="s">"$exists"</span><span class="p">:</span><span class="bp">True</span><span class="p">}}</span>
+
+<span class="c1"># save set of distinct prize categories satisfying the criteria
+</span><span class="n">triple_play_categories</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"category"</span><span class="p">,</span> <span class="n">criteria</span><span class="p">))</span>
+
+<span class="c1"># confirm literature as the only category not satisfying the criteria
+</span><span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"category"</span><span class="p">))</span> <span class="o">-</span> <span class="n">triple_play_categories</span> <span class="o">==</span> <span class="p">{</span><span class="s">"literature"</span><span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="elemmatch">$elemMatch</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># one laureate who won a shared prize in physics before 1945.
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">find_one</span><span class="p">({</span>
+    <span class="s">"prizes"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$elemMatch"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"category"</span><span class="p">:</span> <span class="s">"physics"</span><span class="p">,</span>
+        <span class="s">"share"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$ne"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">},</span>
+        <span class="s">"year"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$lt"</span><span class="p">:</span> <span class="s">"1945"</span><span class="p">}}}})</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'_id': ObjectId('61e62ed9f373e66efa5b9927'),
+ 'id': '2',
+ 'firstname': 'Hendrik A.',
+ 'surname': 'Lorentz',
+ 'born': '1853-07-18',
+ 'died': '1928-02-04',
+ 'bornCountry': 'the Netherlands',
+ 'bornCountryCode': 'NL',
+ 'bornCity': 'Arnhem',
+ 'diedCountry': 'the Netherlands',
+ 'diedCountryCode': 'NL',
+ 'gender': 'male',
+ 'prizes': [{'year': '1902',
+   'category': 'physics',
+   'share': '2',
+   'motivation': '"in recognition of the extraordinary service they rendered by their researches into the influence of magnetism upon radiation phenomena"',
+   'affiliations': [{'name': 'Leiden University',
+     'city': 'Leiden',
+     'country': 'the Netherlands'}]}]}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Save a filter for laureates matching 3 criteria
+# 1) won a prize excluding physics and chemistry and medicine
+# 2) won a unshared prize
+# 3) awared after or equals to 1945
+</span><span class="n">unshared</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"prizes"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$elemMatch"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"category"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$nin"</span><span class="p">:</span> <span class="p">[</span><span class="s">"physics"</span><span class="p">,</span> <span class="s">"chemistry"</span><span class="p">,</span> <span class="s">"medicine"</span><span class="p">]},</span>
+        <span class="s">"share"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span>
+        <span class="s">"year"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$gte"</span><span class="p">:</span> <span class="s">"1945"</span><span class="p">},</span>
+    <span class="p">}}}</span>
+
+<span class="c1"># Save a filter for laureates matching 3 criteria
+# 1) won a prize excluding physics and chemistry and medicine
+# 2) won a shared prize
+# 3) awared after or equals to 1945
+</span><span class="n">shared</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"prizes"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$elemMatch"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"category"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$nin"</span><span class="p">:</span> <span class="p">[</span><span class="s">"physics"</span><span class="p">,</span> <span class="s">"chemistry"</span><span class="p">,</span> <span class="s">"medicine"</span><span class="p">]},</span>
+        <span class="s">"share"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$ne"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">},</span>
+        <span class="s">"year"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$gte"</span><span class="p">:</span> <span class="s">"1945"</span><span class="p">},</span>
+    <span class="p">}}}</span>
+
+<span class="c1"># ratio of unsahred / shared
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="n">unshared</span><span class="p">)</span> <span class="o">/</span> <span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="n">shared</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.2982456140350878
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="regex">$regex</h3>
+<ul>
+  <li>$options
+    <ul>
+      <li>i - insensitive</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">bson.regex</span> <span class="kn">import</span> <span class="n">Regex</span>
+
+<span class="c1"># number of laureates with a first name beginning with "G" and a surname beginning with "S"
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">({</span><span class="s">"firstname"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$regex"</span><span class="p">:</span> <span class="s">"^G"</span><span class="p">,</span> <span class="s">"$options"</span><span class="p">:</span> <span class="s">"i"</span><span class="p">},</span> <span class="s">"surname"</span><span class="p">:{</span><span class="s">"$regex"</span><span class="p">:</span><span class="s">"^S"</span><span class="p">,</span> <span class="s">"$options"</span><span class="p">:</span> <span class="s">"i"</span><span class="p">}})</span>
+
+<span class="c1"># 위와 같음
+# db.laureates.count_documents({"firstname": Regex("^G", "i"), "surname": Regex("^S", "i")})
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># laureates born in what was at the time Germany but is now another country
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"bornCountry"</span><span class="p">:</span> <span class="n">Regex</span><span class="p">(</span><span class="s">"^Germany "</span> <span class="o">+</span> <span class="s">"\("</span> <span class="o">+</span> <span class="s">"now"</span><span class="p">)}</span>
+<span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"bornCountry"</span><span class="p">,</span> <span class="n">criteria</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Germany (now France)', 'Germany (now Poland)', 'Germany (now Russia)']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># laureates born in what is now Germany but at the time was another country
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"bornCountry"</span><span class="p">:</span> <span class="n">Regex</span><span class="p">(</span><span class="s">"now"</span> <span class="o">+</span> <span class="s">" Germany\)"</span> <span class="o">+</span> <span class="s">"$"</span><span class="p">)}</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"bornCountry"</span><span class="p">,</span> <span class="n">criteria</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'East Friesland (now Germany)', 'Prussia (now Germany)', 'Württemberg (now Germany)', 'Bavaria (now Germany)', 'Mecklenburg (now Germany)', 'Hesse-Kassel (now Germany)', 'Schleswig (now Germany)', 'West Germany (now Germany)'}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">bson.regex</span> <span class="kn">import</span> <span class="n">Regex</span>
+
+<span class="c1"># criteria for laureates with prize motivation values containing "transistor" as a substring
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"prizes.motivation"</span><span class="p">:</span> <span class="n">Regex</span><span class="p">(</span><span class="s">"transistor"</span><span class="p">)}</span>
+
+<span class="c1"># Save the field names corresponding to a laureate's first name and last(sur) name as a list
+</span><span class="p">[(</span><span class="n">laureate</span><span class="p">[</span><span class="s">"firstname"</span><span class="p">],</span> <span class="n">laureate</span><span class="p">[</span><span class="s">"surname"</span><span class="p">])</span> <span class="k">for</span> <span class="n">laureate</span> <span class="ow">in</span> <span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">criteria</span><span class="p">)]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[('William B.', 'Shockley'), ('John', 'Bardeen'), ('Walter H.', 'Brattain')]
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#mongodb" class="page__taxonomy-item" rel="tag">MONGODB</a><span class="sep">, </span>
+    
+      <a href="/tags/#sql" class="page__taxonomy-item" rel="tag">SQL</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#nosql" class="page__taxonomy-item" rel="tag">NOSQL</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-01-18T00:00:00+09:00">January 18, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BNoSQL%5D+Introduction+to+MongoDB%282%29%20http%3A%2F%2Flocalhost%3A4000%2Fnosql%2Fworking_with_distinct_values_and_sets%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fnosql%2Fworking_with_distinct_values_and_sets%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fnosql%2Fworking_with_distinct_values_and_sets%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/nosql/fleibly_structure_data/" class="pagination--pager" title="[NoSQL] Introduction to MongoDB(1)
+">Previous</a>
+    
+    
+      <a href="/boj/boj(6)/" class="pagination--pager" title="[ALGORITHM] BOJ 15829. Hashing
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/study_algorithm/algorithm_study6/" rel="permalink">[ALGORITHM] 재귀함수
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM
+
+  알고리즘 스터디(6)
+  재귀함수
+
+
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj(7)/" rel="permalink">[ALGORITHM] BOJ 10829. 이진수 변환
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - 백준
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj(6)/" rel="permalink">[ALGORITHM] BOJ 15829. Hashing
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - 백준
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/nosql/fleibly_structure_data/" rel="permalink">[NoSQL] Introduction to MongoDB(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+MongoDB
+
+  Mongoclient.my_database.my_collection - access database &amp; collection
+  .count_documents() - count documents in collection
+  .list_database_n...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

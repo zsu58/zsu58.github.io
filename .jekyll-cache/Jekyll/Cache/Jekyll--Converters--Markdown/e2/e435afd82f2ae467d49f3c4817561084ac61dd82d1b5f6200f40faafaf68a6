@@ -1,0 +1,13 @@
+I"}<hr />
+
+<h3 id="mongodb">MongoDB</h3>
+<ul>
+  <li>Mongoclient.my_database.my_collection - access database &amp; collection</li>
+  <li><code class="language-plaintext highlighter-rouge">.count_documents()</code> - count documents in collection</li>
+  <li><code class="language-plaintext highlighter-rouge">.list_database_names()</code> &amp; <code class="language-plaintext highlighter-rouge">.list_collection_names()</code> - list database/collection names</li>
+  <li><code class="language-plaintext highlighter-rouge">.find_one()</code> - retrieve a single document</li>
+  <li><code class="language-plaintext highlighter-rouge">.keys()</code> - return keys(field names)</li>
+  <li><code class="language-plaintext highlighter-rouge">{[criteria]}</code> - filter data</li>
+  <li>Substructure - reach substructure using dot(<code class="language-plaintext highlighter-rouge">.</code>)</li>
+</ul>
+:ET

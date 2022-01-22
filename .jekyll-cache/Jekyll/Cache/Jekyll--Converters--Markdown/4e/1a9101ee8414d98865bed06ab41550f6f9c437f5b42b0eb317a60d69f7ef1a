@@ -1,0 +1,71 @@
+I"s<hr />
+<h3 id="algorithm">ALGORITHM</h3>
+<ul>
+  <li>알고리즘 스터디(6)</li>
+  <li>재귀함수</li>
+</ul>
+
+<hr />
+
+<h3 id="재귀함수">재귀함수</h3>
+<ul>
+  <li>메소드 혹은 함수의 내부에서 자기자신의 메소드 혹은 함수를 다시 호출하는 함수</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 각 변수를 조합하여 가능한 합을 출력
+</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">recur</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">recur</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+        <span class="n">recur</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="n">recur</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{0, 3, 5, 8, 11, 13, 16}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 팩토리얼
+</span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    
+<span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>24
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 피보나치 수열
+</span><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Python에서 재귀 함수의 최대 깊이는 1000
+# 변경 방법 (2000)으로 변경
+</span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="p">.</span><span class="n">setrecursionlimit</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="관련-알고리즘-풀이">관련 알고리즘 풀이</h3>
+<ul>
+  <li><a href="https://carl020958.github.io/boj/boj(7)/">🔗 링크1</a></li>
+  <li><a href="">🔗 링크2</a></li>
+  <li><a href="">🔗 링크3</a></li>
+</ul>
+:ET

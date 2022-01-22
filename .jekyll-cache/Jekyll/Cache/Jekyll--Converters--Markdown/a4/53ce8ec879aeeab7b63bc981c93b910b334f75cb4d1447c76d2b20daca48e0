@@ -1,0 +1,207 @@
+I"I=<hr />
+<h3 id="mongodb">MongoDB</h3>
+<ul>
+  <li>Mongoclient.my_database.my_collection - access database &amp; collection</li>
+  <li><code class="language-plaintext highlighter-rouge">.count_documents()</code> - count documents in collection</li>
+  <li><code class="language-plaintext highlighter-rouge">.list_database_names()</code> &amp; <code class="language-plaintext highlighter-rouge">.list_collection_names()</code> - list database/collection names</li>
+  <li><code class="language-plaintext highlighter-rouge">.find_one()</code> - retrieve a single document</li>
+  <li><code class="language-plaintext highlighter-rouge">.keys()</code> - return keys(field names)</li>
+  <li><code class="language-plaintext highlighter-rouge">{[criteria]}</code> - filter data</li>
+  <li>Substructure - reach substructure using dot(<code class="language-plaintext highlighter-rouge">.</code>)</li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="c1"># install pymongo
+</span><span class="err">!</span><span class="n">conda</span> <span class="n">install</span> <span class="o">--</span><span class="n">yes</span> <span class="o">--</span><span class="n">prefix</span> <span class="p">{</span><span class="n">sys</span><span class="p">.</span><span class="n">prefix</span><span class="p">}</span> <span class="n">pymongo</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#dataset
+</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+
+<span class="c1"># Connectino to MognoDB (default connectino is "localhost")
+</span><span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span>
+    <span class="n">username</span><span class="o">=</span><span class="s">"root"</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s">"1234"</span>
+<span class="p">)</span>
+<span class="c1"># Crate "nobel" local database
+</span><span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s">"nobel"</span><span class="p">]</span>
+
+<span class="c1"># create collection &amp; insert data
+</span><span class="k">for</span> <span class="n">collection_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s">"prizes"</span><span class="p">,</span> <span class="s">"laureates"</span><span class="p">]:</span>
+    <span class="c1"># collect data from API
+</span>    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"http://api.nobelprize.org/v1/{}.json"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">collection_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="c1"># convert the data to json
+</span>    <span class="n">documents</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()[</span><span class="n">collection_name</span><span class="p">]</span>
+    <span class="c1"># Insert documents into collection
+</span>    <span class="n">db</span><span class="p">[</span><span class="n">collection_name</span><span class="p">].</span><span class="n">insert_many</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># connect mongoDB
+</span><span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span>
+    <span class="n">username</span><span class="o">=</span><span class="s">"root"</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s">"1234"</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="count_documents">.count_documents()</h3>
+<ul>
+  <li>always need filter</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">filter</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="n">nobel</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="nb">filter</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="n">nobel</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="nb">filter</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>658
+968
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="list_database_names--list_collection_names">.list_database_names() &amp; .list_collection_names()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="n">list_database_names</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="n">nobel</span><span class="p">.</span><span class="n">list_collection_names</span><span class="p">())</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['admin', 'config', 'local', 'nobel', 'testDB']
+['prizes', 'laureates']
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="find_one--keys">.find_one() &amp; .keys()</h3>
+<ul>
+  <li>convenient to use when keys are saved as a list</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">nobel</span>
+<span class="n">prize</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">find_one</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">prize</span><span class="p">)</span>
+<span class="n">prize_fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">prize</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">prize_fields</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'_id': ObjectId('61e62ed9f373e66efa5b9694'), 'year': '2021', 'category': 'chemistry', 'laureates': [{'id': '1002', 'firstname': 'Benjamin', 'surname': 'List', 'motivation': '"for the development of asymmetric organocatalysis"', 'share': '2'}, {'id': '1003', 'firstname': 'David', 'surname': 'MacMillan', 'motivation': '"for the development of asymmetric organocatalysis"', 'share': '2'}]}
+['_id', 'year', 'category', 'laureates']
+</code></pre></div></div>
+
+<hr />
+
+<h3>{}</h3>
+<ul>
+  <li>filter data
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">$in</code></li>
+      <li><code class="language-plaintext highlighter-rouge">$ne</code> - not equal to</li>
+      <li><code class="language-plaintext highlighter-rouge">$exists</code></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># filter criterion for Germany-born laureates who died in the USA and with the first name "Albert"
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"diedCountry"</span><span class="p">:</span> <span class="s">"USA"</span><span class="p">,</span> 
+            <span class="s">"bornCountry"</span><span class="p">:</span> <span class="s">"Germany"</span><span class="p">,</span>
+            <span class="s">"firstname"</span><span class="p">:</span> <span class="s">"Albert"</span><span class="p">}</span>
+<span class="c1"># result
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="n">criteria</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># filter criterion for laureates born in the USA, Canada, or Mexico
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span> <span class="s">"bornCountry"</span><span class="p">:</span> 
+                <span class="p">{</span> <span class="s">"$in"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Canada"</span><span class="p">,</span> <span class="s">"Mexico"</span><span class="p">,</span> <span class="s">"USA"</span><span class="p">]}</span>
+             <span class="p">}</span>
+<span class="c1"># result
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="n">criteria</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>305
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># filter criterion for laureates who died in the USA and were not born there
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span> <span class="s">"diedCountry"</span><span class="p">:</span> <span class="s">"USA"</span><span class="p">,</span>
+               <span class="s">"bornCountry"</span><span class="p">:</span> <span class="p">{</span> <span class="s">"$ne"</span><span class="p">:</span> <span class="s">"USA"</span><span class="p">},</span> 
+             <span class="p">}</span>
+<span class="c1"># result
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="n">criteria</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>73
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># filter for documents without a "born" field
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"born"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$exists"</span><span class="p">:</span> <span class="bp">False</span><span class="p">}}</span>
+
+<span class="c1"># result
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="n">criteria</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="substructure">Substructure</h3>
+<ul>
+  <li>can reach substructure using dot(.)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># one example of document
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">find_one</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'_id': ObjectId('61e62ed9f373e66efa5b9926'),
+ 'id': '1',
+ 'firstname': 'Wilhelm Conrad',
+ 'surname': 'Röntgen',
+ 'born': '1845-03-27',
+ 'died': '1923-02-10',
+ 'bornCountry': 'Prussia (now Germany)',
+ 'bornCountryCode': 'DE',
+ 'bornCity': 'Lennep (now Remscheid)',
+ 'diedCountry': 'Germany',
+ 'diedCountryCode': 'DE',
+ 'diedCity': 'Munich',
+ 'gender': 'male',
+ 'prizes': [{'year': '1901',
+   'category': 'physics',
+   'share': '1',
+   'motivation': '"in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him"',
+   'affiliations': [{'name': 'Munich University',
+     'city': 'Munich',
+     'country': 'Germany'}]}]}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Filter laureates born in Austria with non-Austria prize affiliation
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"bornCountry"</span><span class="p">:</span> <span class="s">"Austria"</span><span class="p">,</span> 
+            <span class="s">"prizes.affiliations.country"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$ne"</span><span class="p">:</span> <span class="s">"Austria"</span><span class="p">}}</span>
+<span class="c1"># result
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="n">criteria</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># filter for laureates with at least 3 elements in "prizes" array
+# javascript 처럼 array.[number]로 array 내의 값을 가져올 수 있음
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"prizes.2"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$exists"</span><span class="p">:</span> <span class="bp">True</span><span class="p">}}</span>
+
+<span class="c1"># result
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="n">criteria</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+:ET

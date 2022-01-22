@@ -1,0 +1,237 @@
+I"DJ<hr />
+<h3 id="mongodb">MongoDB</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.distinct()</code> - get unique values</li>
+  <li><code class="language-plaintext highlighter-rouge">$elemMatch</code> - filter documents that matches all the specified query criteria</li>
+  <li><code class="language-plaintext highlighter-rouge">$regex</code> - filter documents matching regular expression</li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># connect mongoDB
+</span><span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span>
+    <span class="n">username</span><span class="o">=</span><span class="s">"root"</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s">"1234"</span>
+<span class="p">)</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">nobel</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="distinct">.distinct()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># example of prize document
+</span><span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">find_one</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'_id': ObjectId('61e62ed9f373e66efa5b9694'),
+ 'year': '2021',
+ 'category': 'chemistry',
+ 'laureates': [{'id': '1002',
+   'firstname': 'Benjamin',
+   'surname': 'List',
+   'motivation': '"for the development of asymmetric organocatalysis"',
+   'share': '2'},
+  {'id': '1003',
+   'firstname': 'David',
+   'surname': 'MacMillan',
+   'motivation': '"for the development of asymmetric organocatalysis"',
+   'share': '2'}]}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># example of laureates document
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">find_one</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'_id': ObjectId('61e62ed9f373e66efa5b9926'),
+ 'id': '1',
+ 'firstname': 'Wilhelm Conrad',
+ 'surname': 'Röntgen',
+ 'born': '1845-03-27',
+ 'died': '1923-02-10',
+ 'bornCountry': 'Prussia (now Germany)',
+ 'bornCountryCode': 'DE',
+ 'bornCity': 'Lennep (now Remscheid)',
+ 'diedCountry': 'Germany',
+ 'diedCountryCode': 'DE',
+ 'diedCity': 'Munich',
+ 'gender': 'male',
+ 'prizes': [{'year': '1901',
+   'category': 'physics',
+   'share': '1',
+   'motivation': '"in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him"',
+   'affiliations': [{'name': 'Munich University',
+     'city': 'Munich',
+     'country': 'Germany'}]}]}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># check whether category from "prizes" collection and category from "laureates" collection are same
+# .distinct() returns a list, therefore using set is recommended for comparison
+</span><span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"category"</span><span class="p">))</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"prizes.category"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get country recorded as countries of death but not as countries of birth
+</span><span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"diedCountry"</span><span class="p">))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"bornCountry"</span><span class="p">))</span>
+<span class="c1"># 위와 같음
+# set(db.laureates.distinct("diedCountry")).difference(set(db.laureates.distinct("bornCountry")))
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'Barbados',
+ 'East Germany (now Germany)',
+ 'Gabon',
+ 'Greece',
+ 'Israel',
+ 'Jamaica',
+ 'Northern Rhodesia (now Zambia)',
+ 'Puerto Rico',
+ 'Singapore',
+ 'Tunisia',
+ 'Yugoslavia (now Serbia)'}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># number of distinct countries of laureate affiliation for prizes
+</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"prizes.affiliations.country"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>29
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># distinct value에서 조건을 주어 filter도 가능
+# countries where USA-born laureates had affiliations for their prizes
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span>
+    <span class="s">"prizes.affiliations.country"</span><span class="p">,</span> <span class="p">{</span><span class="s">"bornCountry"</span><span class="p">:</span><span class="s">"USA"</span><span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Australia', 'Denmark', 'USA', 'United Kingdom']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># filter for prize documents with three or more laureates
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"laureates.2"</span><span class="p">:{</span><span class="s">"$exists"</span><span class="p">:</span><span class="bp">True</span><span class="p">}}</span>
+
+<span class="c1"># save set of distinct prize categories satisfying the criteria
+</span><span class="n">triple_play_categories</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"category"</span><span class="p">,</span> <span class="n">criteria</span><span class="p">))</span>
+
+<span class="c1"># confirm literature as the only category not satisfying the criteria
+</span><span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"category"</span><span class="p">))</span> <span class="o">-</span> <span class="n">triple_play_categories</span> <span class="o">==</span> <span class="p">{</span><span class="s">"literature"</span><span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="elemmatch">$elemMatch</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># one laureate who won a shared prize in physics before 1945.
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">find_one</span><span class="p">({</span>
+    <span class="s">"prizes"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$elemMatch"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"category"</span><span class="p">:</span> <span class="s">"physics"</span><span class="p">,</span>
+        <span class="s">"share"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$ne"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">},</span>
+        <span class="s">"year"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$lt"</span><span class="p">:</span> <span class="s">"1945"</span><span class="p">}}}})</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'_id': ObjectId('61e62ed9f373e66efa5b9927'),
+ 'id': '2',
+ 'firstname': 'Hendrik A.',
+ 'surname': 'Lorentz',
+ 'born': '1853-07-18',
+ 'died': '1928-02-04',
+ 'bornCountry': 'the Netherlands',
+ 'bornCountryCode': 'NL',
+ 'bornCity': 'Arnhem',
+ 'diedCountry': 'the Netherlands',
+ 'diedCountryCode': 'NL',
+ 'gender': 'male',
+ 'prizes': [{'year': '1902',
+   'category': 'physics',
+   'share': '2',
+   'motivation': '"in recognition of the extraordinary service they rendered by their researches into the influence of magnetism upon radiation phenomena"',
+   'affiliations': [{'name': 'Leiden University',
+     'city': 'Leiden',
+     'country': 'the Netherlands'}]}]}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Save a filter for laureates matching 3 criteria
+# 1) won a prize excluding physics and chemistry and medicine
+# 2) won a unshared prize
+# 3) awared after or equals to 1945
+</span><span class="n">unshared</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"prizes"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$elemMatch"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"category"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$nin"</span><span class="p">:</span> <span class="p">[</span><span class="s">"physics"</span><span class="p">,</span> <span class="s">"chemistry"</span><span class="p">,</span> <span class="s">"medicine"</span><span class="p">]},</span>
+        <span class="s">"share"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span>
+        <span class="s">"year"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$gte"</span><span class="p">:</span> <span class="s">"1945"</span><span class="p">},</span>
+    <span class="p">}}}</span>
+
+<span class="c1"># Save a filter for laureates matching 3 criteria
+# 1) won a prize excluding physics and chemistry and medicine
+# 2) won a shared prize
+# 3) awared after or equals to 1945
+</span><span class="n">shared</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"prizes"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$elemMatch"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"category"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$nin"</span><span class="p">:</span> <span class="p">[</span><span class="s">"physics"</span><span class="p">,</span> <span class="s">"chemistry"</span><span class="p">,</span> <span class="s">"medicine"</span><span class="p">]},</span>
+        <span class="s">"share"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$ne"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">},</span>
+        <span class="s">"year"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$gte"</span><span class="p">:</span> <span class="s">"1945"</span><span class="p">},</span>
+    <span class="p">}}}</span>
+
+<span class="c1"># ratio of unsahred / shared
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="n">unshared</span><span class="p">)</span> <span class="o">/</span> <span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">(</span><span class="n">shared</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.2982456140350878
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="regex">$regex</h3>
+<ul>
+  <li>$options
+    <ul>
+      <li>i - insensitive</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">bson.regex</span> <span class="kn">import</span> <span class="n">Regex</span>
+
+<span class="c1"># number of laureates with a first name beginning with "G" and a surname beginning with "S"
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">({</span><span class="s">"firstname"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$regex"</span><span class="p">:</span> <span class="s">"^G"</span><span class="p">,</span> <span class="s">"$options"</span><span class="p">:</span> <span class="s">"i"</span><span class="p">},</span> <span class="s">"surname"</span><span class="p">:{</span><span class="s">"$regex"</span><span class="p">:</span><span class="s">"^S"</span><span class="p">,</span> <span class="s">"$options"</span><span class="p">:</span> <span class="s">"i"</span><span class="p">}})</span>
+
+<span class="c1"># 위와 같음
+# db.laureates.count_documents({"firstname": Regex("^G", "i"), "surname": Regex("^S", "i")})
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># laureates born in what was at the time Germany but is now another country
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"bornCountry"</span><span class="p">:</span> <span class="n">Regex</span><span class="p">(</span><span class="s">"^Germany "</span> <span class="o">+</span> <span class="s">"\("</span> <span class="o">+</span> <span class="s">"now"</span><span class="p">)}</span>
+<span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"bornCountry"</span><span class="p">,</span> <span class="n">criteria</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Germany (now France)', 'Germany (now Poland)', 'Germany (now Russia)']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># laureates born in what is now Germany but at the time was another country
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"bornCountry"</span><span class="p">:</span> <span class="n">Regex</span><span class="p">(</span><span class="s">"now"</span> <span class="o">+</span> <span class="s">" Germany\)"</span> <span class="o">+</span> <span class="s">"$"</span><span class="p">)}</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"bornCountry"</span><span class="p">,</span> <span class="n">criteria</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'East Friesland (now Germany)', 'Prussia (now Germany)', 'Württemberg (now Germany)', 'Bavaria (now Germany)', 'Mecklenburg (now Germany)', 'Hesse-Kassel (now Germany)', 'Schleswig (now Germany)', 'West Germany (now Germany)'}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">bson.regex</span> <span class="kn">import</span> <span class="n">Regex</span>
+
+<span class="c1"># criteria for laureates with prize motivation values containing "transistor" as a substring
+</span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s">"prizes.motivation"</span><span class="p">:</span> <span class="n">Regex</span><span class="p">(</span><span class="s">"transistor"</span><span class="p">)}</span>
+
+<span class="c1"># Save the field names corresponding to a laureate's first name and last(sur) name as a list
+</span><span class="p">[(</span><span class="n">laureate</span><span class="p">[</span><span class="s">"firstname"</span><span class="p">],</span> <span class="n">laureate</span><span class="p">[</span><span class="s">"surname"</span><span class="p">])</span> <span class="k">for</span> <span class="n">laureate</span> <span class="ow">in</span> <span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">criteria</span><span class="p">)]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[('William B.', 'Shockley'), ('John', 'Bardeen'), ('Walter H.', 'Brattain')]
+</code></pre></div></div>
+
+:ET

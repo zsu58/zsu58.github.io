@@ -462,7 +462,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (5)",
-        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 K번째수 7/11/2021 def solution(array, commands): return [sorted(array[c[0]-1:c[1]])[c[2]-1] for c in commands] 완주하지 못한 선수 7/11/2021 def solution(participant, completion): participant.sort() completion.sort() for i in range(len(participant) - 1): if participant[i] != completion[i]: return participant[i] return participant[-1] # 다른 사람의 좋은 풀이...","categories": ["PROGRAMMERS"],
+        "excerpt":"ALGORITHM Übung - Programmers 알고리즘 문제 풀이를 통한 코딩 테스트 연습 K번째수 7/11/2021 def solution(array, commands): return [sorted(array[c[0]-1:c[1]])[c[2]-1] for c in commands] 완주하지 못한 선수 7/11/2021 def solution(participant, completion): hash = {} # if participant in hash, get the number and add one to the value, if not 1 for...","categories": ["PROGRAMMERS"],
         "tags": ["ALGORITHM","PROGRAMMERS"],
         "url": "/programmers/programmers_coding_test(5)/",
         "teaser": null
@@ -869,15 +869,39 @@ var store = [{
         "url": "/study_algorithm/algorithm_study5/",
         "teaser": null
       },{
+        "title": "[NoSQL] mongoexport & mongoimport",
+        "excerpt":"MongoExport Installation Mongoexport Mongoimport Installation brew tap mongodb/brew brew install mongodb-database-tools Mongoexport # 방법1 mongoexport --uri=\"mongodb://root:1234@localhost:27017/testDB?authSource=admin&amp;retryWrites=true&amp;w=majority\" --collection=dept --out=dept_from_monogo.json # 방법2(추천) mongoexport --uri=\"mongodb://root:1234@localhost:27017/testDB\" --authenticationDatabase=admin --collection=dept --out=dept_from_monogo.json # 쿼리 넣어서 가져오기 mongoexport --uri=\"mongodb://root:1234@localhost:27017/testDB\" --authenticationDatabase=admin --collection=dept -q='{\"deptno\":{\"$gte\":30}}' --out=dept_from_monogo.json Mongoimport mongoimport --uri=\"mongodb://root:1234@localhost:27017/testDB\" --authenticationDatabase=admin -c=dept2 -d=testDB --file=emp_202201181218.json mongoimport –username joe –password secret1 mongodb://mongodb0.example.com:27017 –ssl ref...","categories": ["NOSQL"],
+        "tags": ["SQL","MONGODB"],
+        "url": "/nosql/mongo2/",
+        "teaser": null
+      },{
         "title": "[NoSQL] Introduction to MongoDB(1)",
         "excerpt":"MongoDB Mongoclient.my_database.my_collection - access database &amp; collection .count_documents() - count documents in collection .list_database_names() &amp; .list_collection_names() - list database/collection names .find_one() - retrieve a single document .keys() - return keys(field names) {[criteria]} - filter data Substructure - reach substructure using dot(.) import sys # install pymongo !conda install --yes --prefix...","categories": ["NOSQL"],
         "tags": ["SQL","MONGODB"],
         "url": "/nosql/fleibly_structure_data/",
         "teaser": null
       },{
-        "title": "[NoSQL] mongoexport & mongoimport",
-        "excerpt":"MongoExport Installation Mongoexport Mongoimport Installation brew tap mongodb/brew brew install mongodb-database-tools Mongoexport # 방법1 mongoexport --uri=\"mongodb://root:1234@localhost:27017/testDB?authSource=admin&amp;retryWrites=true&amp;w=majority\" --collection=dept --out=dept_from_monogo.json # 방법2(추천) mongoexport --uri=\"mongodb://root:1234@localhost:27017/testDB\" --authenticationDatabase=admin --collection=dept --out=dept_from_monogo.json # 쿼리 넣어서 가져오기 mongoexport --uri=\"mongodb://root:1234@localhost:27017/testDB\" --authenticationDatabase=admin --collection=dept -q='{\"deptno\":{\"$gte\":30}}' --out=dept_from_monogo.json Mongoimport mongoimport --uri=\"mongodb://root:1234@localhost:27017/testDB\" --authenticationDatabase=admin -c=dept2 -d=testDB --file=emp_202201181218.json mongoimport –username joe –password secret1 mongodb://mongodb0.example.com:27017 –ssl ref...","categories": ["NOSQL"],
+        "title": "[NoSQL] Introduction to MongoDB(2)",
+        "excerpt":"MongoDB .distinct() - get unique values $elemMatch - filter documents that matches all the specified query criteria $regex - filter documents matching regular expression # connect mongoDB from pymongo import MongoClient client = MongoClient( username=\"root\", password=\"1234\" ) db = client.nobel .distinct() # example of prize document db.prizes.find_one() {'_id': ObjectId('61e62ed9f373e66efa5b9694'), 'year':...","categories": ["NOSQL"],
         "tags": ["SQL","MONGODB"],
-        "url": "/nosql/mongo2/",
+        "url": "/nosql/working_with_distinct_values_and_sets/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] BOJ 15829. Hashing",
+        "excerpt":" ALGORITHM Übung - 백준     알고리즘 문제 풀이를 통한 코딩 테스트 연습     문제     🔗 문제 링크   코드  import string  if __name__ == \"__main__\":     n = int(input())     s = input()     apb = string.ascii_lowercase      res = 0     print(sum([(apb.find(s[i])+1) * (31**i) for i in range(n)]) % 1234567891)   ","categories": ["BOJ"],
+        "tags": ["ALGORITHM","BOJ"],
+        "url": "/boj/boj(6)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] BOJ 10829. 이진수 변환",
+        "excerpt":"ALGORITHM Übung - 백준 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 def binary(n): # 2보다 작으면 재귀함수 종료 if n &lt; 2: return str(n) # 그렇지 않다면 n을 2로 나눈 수(나머지 없이)에 대해 재귀함수를 다시 호출 + n을 2로 나눴을 때 나머지를 더함 else: return...","categories": ["BOJ"],
+        "tags": ["ALGORITHM","BOJ"],
+        "url": "/boj/boj(7)/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] 재귀함수",
+        "excerpt":"ALGORITHM 알고리즘 스터디(6) 재귀함수 재귀함수 메소드 혹은 함수의 내부에서 자기자신의 메소드 혹은 함수를 다시 호출하는 함수 # 각 변수를 조합하여 가능한 합을 출력 data = [3, 5, 8] def recur(index, value): if index == len(data): result.add(value) else: recur(index+1, value + data[index]) recur(index+1, value) result = set() recur(0,0) print(result) {0, 3,...","categories": ["STUDY_ALGORITHM"],
+        "tags": ["ALGORITHM"],
+        "url": "/study_algorithm/algorithm_study6/",
         "teaser": null
       }]
