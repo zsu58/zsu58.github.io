@@ -11,6 +11,7 @@ tags:
   - PYTHON
   - PANDAS
 ---
+
 ---
 ### Pandas 
 * `pd.MultiIndex.from_arrays()` - setting MultiIndex to a dataframe
