@@ -82,6 +82,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "HADOOP" %}
+                        <li><a href="/categories/hadoop" class="">Hadoop ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "NOSQL" %}
                         <li><a href="/categories/nosql" class="">NoSQL ({{category[1].size}})</a></li>
                     {% endif %}
