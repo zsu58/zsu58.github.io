@@ -863,6 +863,12 @@ var store = [{
         "url": "/python/stacking_and_unstacking_dataframes/",
         "teaser": null
       },{
+        "title": "[Python] Reshaping Data with pandas(4)",
+        "excerpt":"Pandas Using .stack with .mean() or .diff() .explode() - converts list contained column into separate rows pd.json_normalize() - converts json data into dataframe Convert nested data column # import pkg &amp; dataset import numpy as np import pandas as pd df = pd.read_csv(\"obesity.csv\") df_melted = df.melt(id_vars=\"country\") df_melted[[\"gender\", \"year\"]] = df_melted[\"variable\"].str.extract(\"([a-z]+)([0-9]+)\",...","categories": ["PYTHON"],
+        "tags": ["PYTHON","PANDAS"],
+        "url": "/python/advanced_reshaping/",
+        "teaser": null
+      },{
         "title": "[ALGORITHM] 해시",
         "excerpt":"ALGORITHM 알고리즘 스터디(5) 해시 해시 데이터를 다루는 기법 중 하나로 검색과 저장이 아주 유용한 구조 Key와 Value 쌍으로 데이터를 저장 Python에서는 dictionary 활용 Hash with Dictionary # 해시 구현 방법 hash = {} hash[1] = \"apple\" hash[\"banana\"] = 2 hash[(4,5)] = [1,2,3] hash[10] = {1:\"a\", 2:\"b\"} print(hash) # set, list,...","categories": ["STUDY_ALGORITHM"],
         "tags": ["ALGORITHM"],
@@ -899,9 +905,27 @@ var store = [{
         "url": "/boj/boj(7)/",
         "teaser": null
       },{
+        "title": "[NoSQL] Introduction to MongoDB(2)",
+        "excerpt":"MongoDB Projection Sort Index # connect mongoDB from pymongo import MongoClient client = MongoClient( username=\"root\", password=\"1234\" ) db = client.nobel Projection # example of prize document db.prizes.find_one() {'_id': ObjectId('61e62ed9f373e66efa5b9694'), 'year': '2021', 'category': 'chemistry', 'laureates': [{'id': '1002', 'firstname': 'Benjamin', 'surname': 'List', 'motivation': '\"for the development of asymmetric organocatalysis\"', 'share': '2'}, {'id':...","categories": ["NOSQL"],
+        "tags": ["SQL","MONGODB"],
+        "url": "/nosql/get_only_what_you_need_fast/",
+        "teaser": null
+      },{
         "title": "[ALGORITHM] 재귀함수",
         "excerpt":"ALGORITHM 알고리즘 스터디(6) 재귀함수 재귀함수 메소드 혹은 함수의 내부에서 자기자신의 메소드 혹은 함수를 다시 호출하는 함수 # 각 변수를 조합하여 가능한 합을 출력 data = [3, 5, 8] def recur(index, value): if index == len(data): result.add(value) else: recur(index+1, value + data[index]) recur(index+1, value) result = set() recur(0,0) print(result) {0, 3,...","categories": ["STUDY_ALGORITHM"],
         "tags": ["ALGORITHM"],
         "url": "/study_algorithm/algorithm_study6/",
+        "teaser": null
+      },{
+        "title": "[ALGORITHM] BOJ 10872. 팩토리얼",
+        "excerpt":"ALGORITHM Übung - 백준 알고리즘 문제 풀이를 통한 코딩 테스트 연습 문제 🔗 문제 링크 코드 def factorial(n): # 2보다 작으면 재귀함수 종료 if n &lt; 2: return 1 # 그렇지 않다면 n-1에 대해 재귀함수를 다시 호출 * n else: return factorial(n-1) * n if __name__ == \"__main__\": n =...","categories": ["BOJ"],
+        "tags": ["ALGORITHM","BOJ"],
+        "url": "/boj/boj(8)/",
+        "teaser": null
+      },{
+        "title": "[Hadoop] Hadoop Installation  on Local(Mac)",
+        "excerpt":"Hadoop Installation on Local(Mac) Hadoop Installation 환경변수 설정 사전 준비 Hadoop 실행 MapReduce 실행 Hadoop Installation 설치환경 OS: macOS Big Sur 11.6 Hadoop: 3.3.1 brew install hadoop # hadoop은 openjdk에 dependency가 존재하기에 hadoop 설치시 자동으로 설치됨 # 만약 기존에 사용하던 openjdk가 존재하는 경우 제거 가능 환경변수 설정 directory: /usr/local/Cellar/hadoop/3.3.1/libexec/etc/hadoop #...","categories": ["HADOOP"],
+        "tags": ["HADOOP"],
+        "url": "/hadoop/hadoop1/",
         "teaser": null
       }]

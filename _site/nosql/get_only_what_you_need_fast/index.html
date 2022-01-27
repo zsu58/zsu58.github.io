@@ -1,0 +1,2417 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[NoSQL] Introduction to MongoDB(2) - Bibliothek für Data-Engineering</title>
+<meta name="description" content="MongoDB    Projection   Sort   Index">
+
+
+  <meta name="author" content="ZSU">
+  
+  <meta property="article:author" content="ZSU">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bibliothek für Data-Engineering">
+<meta property="og:title" content="[NoSQL] Introduction to MongoDB(2)">
+<meta property="og:url" content="http://localhost:4000/nosql/get_only_what_you_need_fast/">
+
+
+  <meta property="og:description" content="MongoDB    Projection   Sort   Index">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-19T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/nosql/get_only_what_you_need_fast/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "ZSU",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bibliothek für Data-Engineering Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/books_2.png" alt="Bibliothek für Data-Engineering"></a>
+        
+        <a class="site-title" href="/">
+          Bibliothek für Data-Engineering
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/vorstellung">Vorstellung</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Kategorie</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://stingy-camp-e37.notion.site/Park-Jisu-66aeeb7693f64f20b149890337cdfc01">Portfolio</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/armi_made.png" alt="ZSU" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">ZSU</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Habe interesse für Data-Engineering. Liebe Fußball.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:carl020958@korea.ac.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/carl020958/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            
+            🗂 <span style="font-size:0.9em;">All Posts: </style> <span style="font-size:0.9em;">155</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 -->
+        <span class="nav__sub-title">Algorithm</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--boj 카테고리 글들을 모아둔 페이지인 /categories/boj 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/boj" class="">BOJ (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/codeit" class="">Codeit (34)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/leetcode" class="">LeetCode (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/programmers" class="">Programmers (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/study_algorithm" class="">Study (6)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/django" class="">Django (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Data-Engineering</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/airflow" class="">Airflow (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cli" class="">Cli (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/docker" class="">Docker (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/hadoop" class="">Hadoop (1)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/nosql" class="">NoSQL (5)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/spark" class="">Spark (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/sql" class="">SQL (21)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Programming</span>
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <li><a href="/categories/error" class="">Error (4)</a></li>
+                
+            
+                
+            
+                
+            
+        </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/java" class="">Java (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/python" class="">Python (17)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[NoSQL] Introduction to MongoDB(2)">
+    <meta itemprop="description" content="MongoDB  Projection  Sort  Index">
+    <meta itemprop="datePublished" content="2022-01-19T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[NoSQL] Introduction to MongoDB(2)
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          20 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Table of Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#mongodb">MongoDB</a></li><li><a href="#projection">Projection</a></li><li><a href="#sort">Sort</a></li><li><a href="#index">Index</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <hr />
+<h3 id="mongodb">MongoDB</h3>
+<ul>
+  <li>Projection</li>
+  <li>Sort</li>
+  <li>Index</li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># connect mongoDB
+</span><span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span>
+    <span class="n">username</span><span class="o">=</span><span class="s">"root"</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s">"1234"</span>
+<span class="p">)</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">nobel</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="projection">Projection</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># example of prize document
+</span><span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">find_one</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'_id': ObjectId('61e62ed9f373e66efa5b9694'),
+ 'year': '2021',
+ 'category': 'chemistry',
+ 'laureates': [{'id': '1002',
+   'firstname': 'Benjamin',
+   'surname': 'List',
+   'motivation': '"for the development of asymmetric organocatalysis"',
+   'share': '2'},
+  {'id': '1003',
+   'firstname': 'David',
+   'surname': 'MacMillan',
+   'motivation': '"for the development of asymmetric organocatalysis"',
+   'share': '2'}]}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># example of laureates document
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">find_one</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'_id': ObjectId('61e62ed9f373e66efa5b9926'),
+ 'id': '1',
+ 'firstname': 'Wilhelm Conrad',
+ 'surname': 'Röntgen',
+ 'born': '1845-03-27',
+ 'died': '1923-02-10',
+ 'bornCountry': 'Prussia (now Germany)',
+ 'bornCountryCode': 'DE',
+ 'bornCity': 'Lennep (now Remscheid)',
+ 'diedCountry': 'Germany',
+ 'diedCountryCode': 'DE',
+ 'diedCity': 'Munich',
+ 'gender': 'male',
+ 'prizes': [{'year': '1901',
+   'category': 'physics',
+   'share': '1',
+   'motivation': '"in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him"',
+   'affiliations': [{'name': 'Munich University',
+     'city': 'Munich',
+     'country': 'Germany'}]}]}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># filter, and select firstname &amp; surname
+</span><span class="n">docs</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">find</span><span class="p">(</span>
+       <span class="nb">filter</span><span class="o">=</span> <span class="p">{</span><span class="s">"firstname"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"$regex"</span> <span class="p">:</span> <span class="s">"^G"</span><span class="p">},</span>
+                <span class="s">"surname"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"$regex"</span> <span class="p">:</span> <span class="s">"^S"</span><span class="p">}</span>  <span class="p">},</span>
+   <span class="n">projection</span><span class="o">=</span> <span class="p">[</span><span class="s">"firstname"</span><span class="p">,</span> <span class="s">"surname"</span><span class="p">]</span>  <span class="p">)</span>
+
+<span class="c1"># Iterate over docs and concatenate first name and surname
+</span><span class="n">full_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">doc</span><span class="p">[</span><span class="s">"firstname"</span><span class="p">]</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">doc</span><span class="p">[</span><span class="s">"surname"</span><span class="p">]</span>  <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">]</span>
+
+<span class="c1"># result
+</span><span class="n">full_names</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Glenn T. Seaborg',
+ 'George D. Snell',
+ 'Gustav Stresemann',
+ 'George Bernard Shaw',
+ 'Giorgos Seferis',
+ 'George J. Stigler',
+ 'George F. Smoot',
+ 'George E. Smith',
+ 'George P. Smith',
+ 'Gregg Semenza']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Save documents, projecting out laureates share from prizes including laureates 
+</span><span class="n">prizes</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">find</span><span class="p">({</span><span class="s">"laureates.0"</span><span class="p">:{</span><span class="s">"$exists"</span><span class="p">:</span><span class="bp">True</span><span class="p">}},</span> <span class="p">[</span><span class="s">"laureates.share"</span><span class="p">])</span>
+
+<span class="n">shares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Iterate over every prize
+</span><span class="k">for</span> <span class="n">prize</span> <span class="ow">in</span> <span class="n">prizes</span><span class="p">:</span>
+    <span class="c1"># Initialize total share
+</span>    <span class="n">total_share</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
+    
+    <span class="c1"># Iterate over laureates in every prize
+</span>    <span class="k">for</span> <span class="n">laureate</span> <span class="ow">in</span> <span class="n">prize</span><span class="p">[</span><span class="s">"laureates"</span><span class="p">]:</span>
+        <span class="c1"># add the share of the laureate to total_share
+</span>        <span class="n">total_share</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">laureate</span><span class="p">[</span><span class="s">"share"</span><span class="p">])</span>
+    <span class="c1"># add the total share to shares
+</span>    <span class="n">shares</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_share</span><span class="p">)</span>
+
+<span class="c1"># result(every element should be 1)
+</span><span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">shares</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>609.0
+</code></pre></div></div>
+
+<h3 id="sort">Sort</h3>
+<ul>
+  <li>1) python의 <code class="language-plaintext highlighter-rouge">sorted</code>를 통해 가능
+    <ul>
+      <li>이때 itemgetter를 통해 key의 value 가져 옴</li>
+    </ul>
+  </li>
+  <li>2) find 함수 안에서 <code class="language-plaintext highlighter-rouge">sort</code>를 통해 가능</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
+
+<span class="k">def</span> <span class="nf">all_laureates</span><span class="p">(</span><span class="n">prize</span><span class="p">):</span>  
+  <span class="c1"># sort the laureates by surname
+</span>  <span class="n">sorted_laureates</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">prize</span><span class="p">[</span><span class="s">"laureates"</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="s">"surname"</span><span class="p">))</span>
+  
+  <span class="c1"># extract surnames
+</span>  <span class="n">surnames</span> <span class="o">=</span> <span class="p">[</span><span class="n">laureate</span><span class="p">[</span><span class="s">"surname"</span><span class="p">]</span> <span class="k">for</span> <span class="n">laureate</span> <span class="ow">in</span> <span class="n">sorted_laureates</span><span class="p">]</span>
+  
+  <span class="c1"># concatenate surnames separated with " and " 
+</span>  <span class="n">all_names</span> <span class="o">=</span> <span class="s">" and "</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">surnames</span><span class="p">)</span>
+  
+  <span class="k">return</span> <span class="n">all_names</span>
+
+<span class="c1"># filter physics prizes where laureates exists, project year and name, and sort by year
+</span><span class="n">docs</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">find</span><span class="p">(</span>
+           <span class="nb">filter</span><span class="o">=</span> <span class="p">{</span><span class="s">"$and"</span><span class="p">:</span> <span class="p">[{</span><span class="s">"laureates.0"</span><span class="p">:{</span><span class="s">"$exists"</span><span class="p">:</span><span class="bp">True</span><span class="p">}},</span> <span class="p">{</span><span class="s">"category"</span><span class="p">:</span> <span class="s">"physics"</span><span class="p">}]},</span> 
+           <span class="n">projection</span><span class="o">=</span> <span class="p">[</span><span class="s">"year"</span><span class="p">,</span> <span class="s">"laureates.firstname"</span><span class="p">,</span> <span class="s">"laureates.surname"</span><span class="p">],</span> 
+           <span class="n">sort</span><span class="o">=</span> <span class="p">[(</span><span class="s">"year"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+
+<span class="c1"># print the year and laureate names (from all_laureates)
+</span><span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"{year}: {names}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">doc</span><span class="p">[</span><span class="s">"year"</span><span class="p">],</span> <span class="n">names</span><span class="o">=</span><span class="n">all_laureates</span><span class="p">(</span><span class="n">doc</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1901: Röntgen
+1902: Lorentz and Zeeman
+1903: Becquerel and Curie and Curie
+1904: Rayleigh
+1905: Lenard
+1906: Thomson
+1907: Michelson
+1908: Lippmann
+1909: Braun and Marconi
+1910: van der Waals
+1911: Wien
+1912: Dalén
+1913: Kamerlingh Onnes
+1914: von Laue
+1915: Bragg and Bragg
+1917: Barkla
+1918: Planck
+1919: Stark
+1920: Guillaume
+1921: Einstein
+1922: Bohr
+1923: Millikan
+1924: Siegbahn
+1925: Franck and Hertz
+1926: Perrin
+1927: Compton and Wilson
+1928: Richardson
+1929: de Broglie
+1930: Raman
+1932: Heisenberg
+1933: Dirac and Schrödinger
+1935: Chadwick
+1936: Anderson and Hess
+1937: Davisson and Thomson
+1938: Fermi
+1939: Lawrence
+1943: Stern
+1944: Rabi
+1945: Pauli
+1946: Bridgman
+1947: Appleton
+1948: Blackett
+1949: Yukawa
+1950: Powell
+1951: Cockcroft and Walton
+1952: Bloch and Purcell
+1953: Zernike
+1954: Born and Bothe
+1955: Kusch and Lamb
+1956: Bardeen and Brattain and Shockley
+1957: Lee and Yang
+1958: Cherenkov and Frank and Tamm
+1959: Chamberlain and Segrè
+1960: Glaser
+1961: Hofstadter and Mössbauer
+1962: Landau
+1963: Goeppert Mayer and Jensen and Wigner
+1964: Basov and Prokhorov and Townes
+1965: Feynman and Schwinger and Tomonaga
+1966: Kastler
+1967: Bethe
+1968: Alvarez
+1969: Gell-Mann
+1970: Alfvén and Néel
+1971: Gabor
+1972: Bardeen and Cooper and Schrieffer
+1973: Esaki and Giaever and Josephson
+1974: Hewish and Ryle
+1975: Bohr and Mottelson and Rainwater
+1976: Richter and Ting
+1977: Anderson and Mott and Van Vleck
+1978: Kapitsa and Penzias and Wilson
+1979: Glashow and Salam and Weinberg
+1980: Cronin and Fitch
+1981: Bloembergen and Schawlow and Siegbahn
+1982: Wilson
+1983: Chandrasekhar and Fowler
+1984: Rubbia and van der Meer
+1985: von Klitzing
+1986: Binnig and Rohrer and Ruska
+1987: Bednorz and Müller
+1988: Lederman and Schwartz and Steinberger
+1989: Dehmelt and Paul and Ramsey
+1990: Friedman and Kendall and Taylor
+1991: de Gennes
+1992: Charpak
+1993: Hulse and Taylor Jr.
+1994: Brockhouse and Shull
+1995: Perl and Reines
+1996: Lee and Osheroff and Richardson
+1997: Chu and Cohen-Tannoudji and Phillips
+1998: Laughlin and Störmer and Tsui
+1999: 't Hooft and Veltman
+2000: Alferov and Kilby and Kroemer
+2001: Cornell and Ketterle and Wieman
+2002: Davis Jr. and Giacconi and Koshiba
+2003: Abrikosov and Ginzburg and Leggett
+2004: Gross and Politzer and Wilczek
+2005: Glauber and Hall and Hänsch
+2006: Mather and Smoot
+2007: Fert and Grünberg
+2008: Kobayashi and Maskawa and Nambu
+2009: Boyle and Kao and Smith
+2010: Geim and Novoselov
+2011: Perlmutter and Riess and Schmidt
+2012: Haroche and Wineland
+2013: Englert and Higgs
+2014: Akasaki and Amano and Nakamura
+2015: Kajita and McDonald
+2016: Haldane and Kosterlitz and Thouless
+2017: Barish and Thorne and Weiss
+2018: Ashkin and Mourou and Strickland
+2019: Mayor and Peebles and Queloz
+2020: Genzel and Ghez and Penrose
+2021: Hasselmann and Manabe and Parisi
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># project year and category, sort year in descending order, then by category in ascending order
+</span><span class="n">docs</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">find</span><span class="p">(</span>
+        <span class="nb">filter</span><span class="o">=</span><span class="p">{},</span>
+        <span class="n">projection</span><span class="o">=</span><span class="p">{</span><span class="s">"year"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">"category"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">"_id"</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span>
+        <span class="n">sort</span><span class="o">=</span><span class="p">[(</span><span class="s">"year"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"category"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="p">)</span>
+
+<span class="c1"># result
+</span><span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'year': '2021', 'category': 'chemistry'}
+{'year': '2021', 'category': 'economics'}
+{'year': '2021', 'category': 'literature'}
+{'year': '2021', 'category': 'medicine'}
+{'year': '2021', 'category': 'peace'}
+{'year': '2021', 'category': 'physics'}
+{'year': '2020', 'category': 'chemistry'}
+{'year': '2020', 'category': 'economics'}
+{'year': '2020', 'category': 'literature'}
+{'year': '2020', 'category': 'medicine'}
+{'year': '2020', 'category': 'peace'}
+{'year': '2020', 'category': 'physics'}
+{'year': '2019', 'category': 'chemistry'}
+{'year': '2019', 'category': 'economics'}
+{'year': '2019', 'category': 'literature'}
+{'year': '2019', 'category': 'medicine'}
+{'year': '2019', 'category': 'peace'}
+{'year': '2019', 'category': 'physics'}
+{'year': '2018', 'category': 'chemistry'}
+{'year': '2018', 'category': 'economics'}
+{'year': '2018', 'category': 'literature'}
+{'year': '2018', 'category': 'medicine'}
+{'year': '2018', 'category': 'peace'}
+{'year': '2018', 'category': 'physics'}
+{'year': '2017', 'category': 'chemistry'}
+{'year': '2017', 'category': 'economics'}
+{'year': '2017', 'category': 'literature'}
+{'year': '2017', 'category': 'medicine'}
+{'year': '2017', 'category': 'peace'}
+{'year': '2017', 'category': 'physics'}
+{'year': '2016', 'category': 'chemistry'}
+{'year': '2016', 'category': 'economics'}
+{'year': '2016', 'category': 'literature'}
+{'year': '2016', 'category': 'medicine'}
+{'year': '2016', 'category': 'peace'}
+{'year': '2016', 'category': 'physics'}
+{'year': '2015', 'category': 'chemistry'}
+{'year': '2015', 'category': 'economics'}
+{'year': '2015', 'category': 'literature'}
+{'year': '2015', 'category': 'medicine'}
+{'year': '2015', 'category': 'peace'}
+{'year': '2015', 'category': 'physics'}
+{'year': '2014', 'category': 'chemistry'}
+{'year': '2014', 'category': 'economics'}
+{'year': '2014', 'category': 'literature'}
+{'year': '2014', 'category': 'medicine'}
+{'year': '2014', 'category': 'peace'}
+{'year': '2014', 'category': 'physics'}
+{'year': '2013', 'category': 'chemistry'}
+{'year': '2013', 'category': 'economics'}
+{'year': '2013', 'category': 'literature'}
+{'year': '2013', 'category': 'medicine'}
+{'year': '2013', 'category': 'peace'}
+{'year': '2013', 'category': 'physics'}
+{'year': '2012', 'category': 'chemistry'}
+{'year': '2012', 'category': 'economics'}
+{'year': '2012', 'category': 'literature'}
+{'year': '2012', 'category': 'medicine'}
+{'year': '2012', 'category': 'peace'}
+{'year': '2012', 'category': 'physics'}
+{'year': '2011', 'category': 'chemistry'}
+{'year': '2011', 'category': 'economics'}
+{'year': '2011', 'category': 'literature'}
+{'year': '2011', 'category': 'medicine'}
+{'year': '2011', 'category': 'peace'}
+{'year': '2011', 'category': 'physics'}
+{'year': '2010', 'category': 'chemistry'}
+{'year': '2010', 'category': 'economics'}
+{'year': '2010', 'category': 'literature'}
+{'year': '2010', 'category': 'medicine'}
+{'year': '2010', 'category': 'peace'}
+{'year': '2010', 'category': 'physics'}
+{'year': '2009', 'category': 'chemistry'}
+{'year': '2009', 'category': 'economics'}
+{'year': '2009', 'category': 'literature'}
+{'year': '2009', 'category': 'medicine'}
+{'year': '2009', 'category': 'peace'}
+{'year': '2009', 'category': 'physics'}
+{'year': '2008', 'category': 'chemistry'}
+{'year': '2008', 'category': 'economics'}
+{'year': '2008', 'category': 'literature'}
+{'year': '2008', 'category': 'medicine'}
+{'year': '2008', 'category': 'peace'}
+{'year': '2008', 'category': 'physics'}
+{'year': '2007', 'category': 'chemistry'}
+{'year': '2007', 'category': 'economics'}
+{'year': '2007', 'category': 'literature'}
+{'year': '2007', 'category': 'medicine'}
+{'year': '2007', 'category': 'peace'}
+{'year': '2007', 'category': 'physics'}
+{'year': '2006', 'category': 'chemistry'}
+{'year': '2006', 'category': 'economics'}
+{'year': '2006', 'category': 'literature'}
+{'year': '2006', 'category': 'medicine'}
+{'year': '2006', 'category': 'peace'}
+{'year': '2006', 'category': 'physics'}
+{'year': '2005', 'category': 'chemistry'}
+{'year': '2005', 'category': 'economics'}
+{'year': '2005', 'category': 'literature'}
+{'year': '2005', 'category': 'medicine'}
+{'year': '2005', 'category': 'peace'}
+{'year': '2005', 'category': 'physics'}
+{'year': '2004', 'category': 'chemistry'}
+{'year': '2004', 'category': 'economics'}
+{'year': '2004', 'category': 'literature'}
+{'year': '2004', 'category': 'medicine'}
+{'year': '2004', 'category': 'peace'}
+{'year': '2004', 'category': 'physics'}
+{'year': '2003', 'category': 'chemistry'}
+{'year': '2003', 'category': 'economics'}
+{'year': '2003', 'category': 'literature'}
+{'year': '2003', 'category': 'medicine'}
+{'year': '2003', 'category': 'peace'}
+{'year': '2003', 'category': 'physics'}
+{'year': '2002', 'category': 'chemistry'}
+{'year': '2002', 'category': 'economics'}
+{'year': '2002', 'category': 'literature'}
+{'year': '2002', 'category': 'medicine'}
+{'year': '2002', 'category': 'peace'}
+{'year': '2002', 'category': 'physics'}
+{'year': '2001', 'category': 'chemistry'}
+{'year': '2001', 'category': 'economics'}
+{'year': '2001', 'category': 'literature'}
+{'year': '2001', 'category': 'medicine'}
+{'year': '2001', 'category': 'peace'}
+{'year': '2001', 'category': 'physics'}
+{'year': '2000', 'category': 'chemistry'}
+{'year': '2000', 'category': 'economics'}
+{'year': '2000', 'category': 'literature'}
+{'year': '2000', 'category': 'medicine'}
+{'year': '2000', 'category': 'peace'}
+{'year': '2000', 'category': 'physics'}
+{'year': '1999', 'category': 'chemistry'}
+{'year': '1999', 'category': 'economics'}
+{'year': '1999', 'category': 'literature'}
+{'year': '1999', 'category': 'medicine'}
+{'year': '1999', 'category': 'peace'}
+{'year': '1999', 'category': 'physics'}
+{'year': '1998', 'category': 'chemistry'}
+{'year': '1998', 'category': 'economics'}
+{'year': '1998', 'category': 'literature'}
+{'year': '1998', 'category': 'medicine'}
+{'year': '1998', 'category': 'peace'}
+{'year': '1998', 'category': 'physics'}
+{'year': '1997', 'category': 'chemistry'}
+{'year': '1997', 'category': 'economics'}
+{'year': '1997', 'category': 'literature'}
+{'year': '1997', 'category': 'medicine'}
+{'year': '1997', 'category': 'peace'}
+{'year': '1997', 'category': 'physics'}
+{'year': '1996', 'category': 'chemistry'}
+{'year': '1996', 'category': 'economics'}
+{'year': '1996', 'category': 'literature'}
+{'year': '1996', 'category': 'medicine'}
+{'year': '1996', 'category': 'peace'}
+{'year': '1996', 'category': 'physics'}
+{'year': '1995', 'category': 'chemistry'}
+{'year': '1995', 'category': 'economics'}
+{'year': '1995', 'category': 'literature'}
+{'year': '1995', 'category': 'medicine'}
+{'year': '1995', 'category': 'peace'}
+{'year': '1995', 'category': 'physics'}
+{'year': '1994', 'category': 'chemistry'}
+{'year': '1994', 'category': 'economics'}
+{'year': '1994', 'category': 'literature'}
+{'year': '1994', 'category': 'medicine'}
+{'year': '1994', 'category': 'peace'}
+{'year': '1994', 'category': 'physics'}
+{'year': '1993', 'category': 'chemistry'}
+{'year': '1993', 'category': 'economics'}
+{'year': '1993', 'category': 'literature'}
+{'year': '1993', 'category': 'medicine'}
+{'year': '1993', 'category': 'peace'}
+{'year': '1993', 'category': 'physics'}
+{'year': '1992', 'category': 'chemistry'}
+{'year': '1992', 'category': 'economics'}
+{'year': '1992', 'category': 'literature'}
+{'year': '1992', 'category': 'medicine'}
+{'year': '1992', 'category': 'peace'}
+{'year': '1992', 'category': 'physics'}
+{'year': '1991', 'category': 'chemistry'}
+{'year': '1991', 'category': 'economics'}
+{'year': '1991', 'category': 'literature'}
+{'year': '1991', 'category': 'medicine'}
+{'year': '1991', 'category': 'peace'}
+{'year': '1991', 'category': 'physics'}
+{'year': '1990', 'category': 'chemistry'}
+{'year': '1990', 'category': 'economics'}
+{'year': '1990', 'category': 'literature'}
+{'year': '1990', 'category': 'medicine'}
+{'year': '1990', 'category': 'peace'}
+{'year': '1990', 'category': 'physics'}
+{'year': '1989', 'category': 'chemistry'}
+{'year': '1989', 'category': 'economics'}
+{'year': '1989', 'category': 'literature'}
+{'year': '1989', 'category': 'medicine'}
+{'year': '1989', 'category': 'peace'}
+{'year': '1989', 'category': 'physics'}
+{'year': '1988', 'category': 'chemistry'}
+{'year': '1988', 'category': 'economics'}
+{'year': '1988', 'category': 'literature'}
+{'year': '1988', 'category': 'medicine'}
+{'year': '1988', 'category': 'peace'}
+{'year': '1988', 'category': 'physics'}
+{'year': '1987', 'category': 'chemistry'}
+{'year': '1987', 'category': 'economics'}
+{'year': '1987', 'category': 'literature'}
+{'year': '1987', 'category': 'medicine'}
+{'year': '1987', 'category': 'peace'}
+{'year': '1987', 'category': 'physics'}
+{'year': '1986', 'category': 'chemistry'}
+{'year': '1986', 'category': 'economics'}
+{'year': '1986', 'category': 'literature'}
+{'year': '1986', 'category': 'medicine'}
+{'year': '1986', 'category': 'peace'}
+{'year': '1986', 'category': 'physics'}
+{'year': '1985', 'category': 'chemistry'}
+{'year': '1985', 'category': 'economics'}
+{'year': '1985', 'category': 'literature'}
+{'year': '1985', 'category': 'medicine'}
+{'year': '1985', 'category': 'peace'}
+{'year': '1985', 'category': 'physics'}
+{'year': '1984', 'category': 'chemistry'}
+{'year': '1984', 'category': 'economics'}
+{'year': '1984', 'category': 'literature'}
+{'year': '1984', 'category': 'medicine'}
+{'year': '1984', 'category': 'peace'}
+{'year': '1984', 'category': 'physics'}
+{'year': '1983', 'category': 'chemistry'}
+{'year': '1983', 'category': 'economics'}
+{'year': '1983', 'category': 'literature'}
+{'year': '1983', 'category': 'medicine'}
+{'year': '1983', 'category': 'peace'}
+{'year': '1983', 'category': 'physics'}
+{'year': '1982', 'category': 'chemistry'}
+{'year': '1982', 'category': 'economics'}
+{'year': '1982', 'category': 'literature'}
+{'year': '1982', 'category': 'medicine'}
+{'year': '1982', 'category': 'peace'}
+{'year': '1982', 'category': 'physics'}
+{'year': '1981', 'category': 'chemistry'}
+{'year': '1981', 'category': 'economics'}
+{'year': '1981', 'category': 'literature'}
+{'year': '1981', 'category': 'medicine'}
+{'year': '1981', 'category': 'peace'}
+{'year': '1981', 'category': 'physics'}
+{'year': '1980', 'category': 'chemistry'}
+{'year': '1980', 'category': 'economics'}
+{'year': '1980', 'category': 'literature'}
+{'year': '1980', 'category': 'medicine'}
+{'year': '1980', 'category': 'peace'}
+{'year': '1980', 'category': 'physics'}
+{'year': '1979', 'category': 'chemistry'}
+{'year': '1979', 'category': 'economics'}
+{'year': '1979', 'category': 'literature'}
+{'year': '1979', 'category': 'medicine'}
+{'year': '1979', 'category': 'peace'}
+{'year': '1979', 'category': 'physics'}
+{'year': '1978', 'category': 'chemistry'}
+{'year': '1978', 'category': 'economics'}
+{'year': '1978', 'category': 'literature'}
+{'year': '1978', 'category': 'medicine'}
+{'year': '1978', 'category': 'peace'}
+{'year': '1978', 'category': 'physics'}
+{'year': '1977', 'category': 'chemistry'}
+{'year': '1977', 'category': 'economics'}
+{'year': '1977', 'category': 'literature'}
+{'year': '1977', 'category': 'medicine'}
+{'year': '1977', 'category': 'peace'}
+{'year': '1977', 'category': 'physics'}
+{'year': '1976', 'category': 'chemistry'}
+{'year': '1976', 'category': 'economics'}
+{'year': '1976', 'category': 'literature'}
+{'year': '1976', 'category': 'medicine'}
+{'year': '1976', 'category': 'peace'}
+{'year': '1976', 'category': 'physics'}
+{'year': '1975', 'category': 'chemistry'}
+{'year': '1975', 'category': 'economics'}
+{'year': '1975', 'category': 'literature'}
+{'year': '1975', 'category': 'medicine'}
+{'year': '1975', 'category': 'peace'}
+{'year': '1975', 'category': 'physics'}
+{'year': '1974', 'category': 'chemistry'}
+{'year': '1974', 'category': 'economics'}
+{'year': '1974', 'category': 'literature'}
+{'year': '1974', 'category': 'medicine'}
+{'year': '1974', 'category': 'peace'}
+{'year': '1974', 'category': 'physics'}
+{'year': '1973', 'category': 'chemistry'}
+{'year': '1973', 'category': 'economics'}
+{'year': '1973', 'category': 'literature'}
+{'year': '1973', 'category': 'medicine'}
+{'year': '1973', 'category': 'peace'}
+{'year': '1973', 'category': 'physics'}
+{'year': '1972', 'category': 'chemistry'}
+{'year': '1972', 'category': 'economics'}
+{'year': '1972', 'category': 'literature'}
+{'year': '1972', 'category': 'medicine'}
+{'year': '1972', 'category': 'peace'}
+{'year': '1972', 'category': 'physics'}
+{'year': '1971', 'category': 'chemistry'}
+{'year': '1971', 'category': 'economics'}
+{'year': '1971', 'category': 'literature'}
+{'year': '1971', 'category': 'medicine'}
+{'year': '1971', 'category': 'peace'}
+{'year': '1971', 'category': 'physics'}
+{'year': '1970', 'category': 'chemistry'}
+{'year': '1970', 'category': 'economics'}
+{'year': '1970', 'category': 'literature'}
+{'year': '1970', 'category': 'medicine'}
+{'year': '1970', 'category': 'peace'}
+{'year': '1970', 'category': 'physics'}
+{'year': '1969', 'category': 'chemistry'}
+{'year': '1969', 'category': 'economics'}
+{'year': '1969', 'category': 'literature'}
+{'year': '1969', 'category': 'medicine'}
+{'year': '1969', 'category': 'peace'}
+{'year': '1969', 'category': 'physics'}
+{'year': '1968', 'category': 'chemistry'}
+{'year': '1968', 'category': 'literature'}
+{'year': '1968', 'category': 'medicine'}
+{'year': '1968', 'category': 'peace'}
+{'year': '1968', 'category': 'physics'}
+{'year': '1967', 'category': 'chemistry'}
+{'year': '1967', 'category': 'literature'}
+{'year': '1967', 'category': 'medicine'}
+{'year': '1967', 'category': 'peace'}
+{'year': '1967', 'category': 'physics'}
+{'year': '1966', 'category': 'chemistry'}
+{'year': '1966', 'category': 'literature'}
+{'year': '1966', 'category': 'medicine'}
+{'year': '1966', 'category': 'peace'}
+{'year': '1966', 'category': 'physics'}
+{'year': '1965', 'category': 'chemistry'}
+{'year': '1965', 'category': 'literature'}
+{'year': '1965', 'category': 'medicine'}
+{'year': '1965', 'category': 'peace'}
+{'year': '1965', 'category': 'physics'}
+{'year': '1964', 'category': 'chemistry'}
+{'year': '1964', 'category': 'literature'}
+{'year': '1964', 'category': 'medicine'}
+{'year': '1964', 'category': 'peace'}
+{'year': '1964', 'category': 'physics'}
+{'year': '1963', 'category': 'chemistry'}
+{'year': '1963', 'category': 'literature'}
+{'year': '1963', 'category': 'medicine'}
+{'year': '1963', 'category': 'peace'}
+{'year': '1963', 'category': 'physics'}
+{'year': '1962', 'category': 'chemistry'}
+{'year': '1962', 'category': 'literature'}
+{'year': '1962', 'category': 'medicine'}
+{'year': '1962', 'category': 'peace'}
+{'year': '1962', 'category': 'physics'}
+{'year': '1961', 'category': 'chemistry'}
+{'year': '1961', 'category': 'literature'}
+{'year': '1961', 'category': 'medicine'}
+{'year': '1961', 'category': 'peace'}
+{'year': '1961', 'category': 'physics'}
+{'year': '1960', 'category': 'chemistry'}
+{'year': '1960', 'category': 'literature'}
+{'year': '1960', 'category': 'medicine'}
+{'year': '1960', 'category': 'peace'}
+{'year': '1960', 'category': 'physics'}
+{'year': '1959', 'category': 'chemistry'}
+{'year': '1959', 'category': 'literature'}
+{'year': '1959', 'category': 'medicine'}
+{'year': '1959', 'category': 'peace'}
+{'year': '1959', 'category': 'physics'}
+{'year': '1958', 'category': 'chemistry'}
+{'year': '1958', 'category': 'literature'}
+{'year': '1958', 'category': 'medicine'}
+{'year': '1958', 'category': 'peace'}
+{'year': '1958', 'category': 'physics'}
+{'year': '1957', 'category': 'chemistry'}
+{'year': '1957', 'category': 'literature'}
+{'year': '1957', 'category': 'medicine'}
+{'year': '1957', 'category': 'peace'}
+{'year': '1957', 'category': 'physics'}
+{'year': '1956', 'category': 'chemistry'}
+{'year': '1956', 'category': 'literature'}
+{'year': '1956', 'category': 'medicine'}
+{'year': '1956', 'category': 'peace'}
+{'year': '1956', 'category': 'physics'}
+{'year': '1955', 'category': 'chemistry'}
+{'year': '1955', 'category': 'literature'}
+{'year': '1955', 'category': 'medicine'}
+{'year': '1955', 'category': 'peace'}
+{'year': '1955', 'category': 'physics'}
+{'year': '1954', 'category': 'chemistry'}
+{'year': '1954', 'category': 'literature'}
+{'year': '1954', 'category': 'medicine'}
+{'year': '1954', 'category': 'peace'}
+{'year': '1954', 'category': 'physics'}
+{'year': '1953', 'category': 'chemistry'}
+{'year': '1953', 'category': 'literature'}
+{'year': '1953', 'category': 'medicine'}
+{'year': '1953', 'category': 'peace'}
+{'year': '1953', 'category': 'physics'}
+{'year': '1952', 'category': 'chemistry'}
+{'year': '1952', 'category': 'literature'}
+{'year': '1952', 'category': 'medicine'}
+{'year': '1952', 'category': 'peace'}
+{'year': '1952', 'category': 'physics'}
+{'year': '1951', 'category': 'chemistry'}
+{'year': '1951', 'category': 'literature'}
+{'year': '1951', 'category': 'medicine'}
+{'year': '1951', 'category': 'peace'}
+{'year': '1951', 'category': 'physics'}
+{'year': '1950', 'category': 'chemistry'}
+{'year': '1950', 'category': 'literature'}
+{'year': '1950', 'category': 'medicine'}
+{'year': '1950', 'category': 'peace'}
+{'year': '1950', 'category': 'physics'}
+{'year': '1949', 'category': 'chemistry'}
+{'year': '1949', 'category': 'literature'}
+{'year': '1949', 'category': 'medicine'}
+{'year': '1949', 'category': 'peace'}
+{'year': '1949', 'category': 'physics'}
+{'year': '1948', 'category': 'chemistry'}
+{'year': '1948', 'category': 'literature'}
+{'year': '1948', 'category': 'medicine'}
+{'year': '1948', 'category': 'peace'}
+{'year': '1948', 'category': 'physics'}
+{'year': '1947', 'category': 'chemistry'}
+{'year': '1947', 'category': 'literature'}
+{'year': '1947', 'category': 'medicine'}
+{'year': '1947', 'category': 'peace'}
+{'year': '1947', 'category': 'physics'}
+{'year': '1946', 'category': 'chemistry'}
+{'year': '1946', 'category': 'literature'}
+{'year': '1946', 'category': 'medicine'}
+{'year': '1946', 'category': 'peace'}
+{'year': '1946', 'category': 'physics'}
+{'year': '1945', 'category': 'chemistry'}
+{'year': '1945', 'category': 'literature'}
+{'year': '1945', 'category': 'medicine'}
+{'year': '1945', 'category': 'peace'}
+{'year': '1945', 'category': 'physics'}
+{'year': '1944', 'category': 'chemistry'}
+{'year': '1944', 'category': 'literature'}
+{'year': '1944', 'category': 'medicine'}
+{'year': '1944', 'category': 'peace'}
+{'year': '1944', 'category': 'physics'}
+{'year': '1943', 'category': 'chemistry'}
+{'year': '1943', 'category': 'literature'}
+{'year': '1943', 'category': 'medicine'}
+{'year': '1943', 'category': 'peace'}
+{'year': '1943', 'category': 'physics'}
+{'year': '1942', 'category': 'chemistry'}
+{'year': '1942', 'category': 'literature'}
+{'year': '1942', 'category': 'medicine'}
+{'year': '1942', 'category': 'peace'}
+{'year': '1942', 'category': 'physics'}
+{'year': '1941', 'category': 'chemistry'}
+{'year': '1941', 'category': 'literature'}
+{'year': '1941', 'category': 'medicine'}
+{'year': '1941', 'category': 'peace'}
+{'year': '1941', 'category': 'physics'}
+{'year': '1940', 'category': 'chemistry'}
+{'year': '1940', 'category': 'literature'}
+{'year': '1940', 'category': 'medicine'}
+{'year': '1940', 'category': 'peace'}
+{'year': '1940', 'category': 'physics'}
+{'year': '1939', 'category': 'chemistry'}
+{'year': '1939', 'category': 'literature'}
+{'year': '1939', 'category': 'medicine'}
+{'year': '1939', 'category': 'peace'}
+{'year': '1939', 'category': 'physics'}
+{'year': '1938', 'category': 'chemistry'}
+{'year': '1938', 'category': 'literature'}
+{'year': '1938', 'category': 'medicine'}
+{'year': '1938', 'category': 'peace'}
+{'year': '1938', 'category': 'physics'}
+{'year': '1937', 'category': 'chemistry'}
+{'year': '1937', 'category': 'literature'}
+{'year': '1937', 'category': 'medicine'}
+{'year': '1937', 'category': 'peace'}
+{'year': '1937', 'category': 'physics'}
+{'year': '1936', 'category': 'chemistry'}
+{'year': '1936', 'category': 'literature'}
+{'year': '1936', 'category': 'medicine'}
+{'year': '1936', 'category': 'peace'}
+{'year': '1936', 'category': 'physics'}
+{'year': '1935', 'category': 'chemistry'}
+{'year': '1935', 'category': 'literature'}
+{'year': '1935', 'category': 'medicine'}
+{'year': '1935', 'category': 'peace'}
+{'year': '1935', 'category': 'physics'}
+{'year': '1934', 'category': 'chemistry'}
+{'year': '1934', 'category': 'literature'}
+{'year': '1934', 'category': 'medicine'}
+{'year': '1934', 'category': 'peace'}
+{'year': '1934', 'category': 'physics'}
+{'year': '1933', 'category': 'chemistry'}
+{'year': '1933', 'category': 'literature'}
+{'year': '1933', 'category': 'medicine'}
+{'year': '1933', 'category': 'peace'}
+{'year': '1933', 'category': 'physics'}
+{'year': '1932', 'category': 'chemistry'}
+{'year': '1932', 'category': 'literature'}
+{'year': '1932', 'category': 'medicine'}
+{'year': '1932', 'category': 'peace'}
+{'year': '1932', 'category': 'physics'}
+{'year': '1931', 'category': 'chemistry'}
+{'year': '1931', 'category': 'literature'}
+{'year': '1931', 'category': 'medicine'}
+{'year': '1931', 'category': 'peace'}
+{'year': '1931', 'category': 'physics'}
+{'year': '1930', 'category': 'chemistry'}
+{'year': '1930', 'category': 'literature'}
+{'year': '1930', 'category': 'medicine'}
+{'year': '1930', 'category': 'peace'}
+{'year': '1930', 'category': 'physics'}
+{'year': '1929', 'category': 'chemistry'}
+{'year': '1929', 'category': 'literature'}
+{'year': '1929', 'category': 'medicine'}
+{'year': '1929', 'category': 'peace'}
+{'year': '1929', 'category': 'physics'}
+{'year': '1928', 'category': 'chemistry'}
+{'year': '1928', 'category': 'literature'}
+{'year': '1928', 'category': 'medicine'}
+{'year': '1928', 'category': 'peace'}
+{'year': '1928', 'category': 'physics'}
+{'year': '1927', 'category': 'chemistry'}
+{'year': '1927', 'category': 'literature'}
+{'year': '1927', 'category': 'medicine'}
+{'year': '1927', 'category': 'peace'}
+{'year': '1927', 'category': 'physics'}
+{'year': '1926', 'category': 'chemistry'}
+{'year': '1926', 'category': 'literature'}
+{'year': '1926', 'category': 'medicine'}
+{'year': '1926', 'category': 'peace'}
+{'year': '1926', 'category': 'physics'}
+{'year': '1925', 'category': 'chemistry'}
+{'year': '1925', 'category': 'literature'}
+{'year': '1925', 'category': 'medicine'}
+{'year': '1925', 'category': 'peace'}
+{'year': '1925', 'category': 'physics'}
+{'year': '1924', 'category': 'chemistry'}
+{'year': '1924', 'category': 'literature'}
+{'year': '1924', 'category': 'medicine'}
+{'year': '1924', 'category': 'peace'}
+{'year': '1924', 'category': 'physics'}
+{'year': '1923', 'category': 'chemistry'}
+{'year': '1923', 'category': 'literature'}
+{'year': '1923', 'category': 'medicine'}
+{'year': '1923', 'category': 'peace'}
+{'year': '1923', 'category': 'physics'}
+{'year': '1922', 'category': 'chemistry'}
+{'year': '1922', 'category': 'literature'}
+{'year': '1922', 'category': 'medicine'}
+{'year': '1922', 'category': 'peace'}
+{'year': '1922', 'category': 'physics'}
+{'year': '1921', 'category': 'chemistry'}
+{'year': '1921', 'category': 'literature'}
+{'year': '1921', 'category': 'medicine'}
+{'year': '1921', 'category': 'peace'}
+{'year': '1921', 'category': 'physics'}
+{'year': '1920', 'category': 'chemistry'}
+{'year': '1920', 'category': 'literature'}
+{'year': '1920', 'category': 'medicine'}
+{'year': '1920', 'category': 'peace'}
+{'year': '1920', 'category': 'physics'}
+{'year': '1919', 'category': 'chemistry'}
+{'year': '1919', 'category': 'literature'}
+{'year': '1919', 'category': 'medicine'}
+{'year': '1919', 'category': 'peace'}
+{'year': '1919', 'category': 'physics'}
+{'year': '1918', 'category': 'chemistry'}
+{'year': '1918', 'category': 'literature'}
+{'year': '1918', 'category': 'medicine'}
+{'year': '1918', 'category': 'peace'}
+{'year': '1918', 'category': 'physics'}
+{'year': '1917', 'category': 'chemistry'}
+{'year': '1917', 'category': 'literature'}
+{'year': '1917', 'category': 'medicine'}
+{'year': '1917', 'category': 'peace'}
+{'year': '1917', 'category': 'physics'}
+{'year': '1916', 'category': 'chemistry'}
+{'year': '1916', 'category': 'literature'}
+{'year': '1916', 'category': 'medicine'}
+{'year': '1916', 'category': 'peace'}
+{'year': '1916', 'category': 'physics'}
+{'year': '1915', 'category': 'chemistry'}
+{'year': '1915', 'category': 'literature'}
+{'year': '1915', 'category': 'medicine'}
+{'year': '1915', 'category': 'peace'}
+{'year': '1915', 'category': 'physics'}
+{'year': '1914', 'category': 'chemistry'}
+{'year': '1914', 'category': 'literature'}
+{'year': '1914', 'category': 'medicine'}
+{'year': '1914', 'category': 'peace'}
+{'year': '1914', 'category': 'physics'}
+{'year': '1913', 'category': 'chemistry'}
+{'year': '1913', 'category': 'literature'}
+{'year': '1913', 'category': 'medicine'}
+{'year': '1913', 'category': 'peace'}
+{'year': '1913', 'category': 'physics'}
+{'year': '1912', 'category': 'chemistry'}
+{'year': '1912', 'category': 'literature'}
+{'year': '1912', 'category': 'medicine'}
+{'year': '1912', 'category': 'peace'}
+{'year': '1912', 'category': 'physics'}
+{'year': '1911', 'category': 'chemistry'}
+{'year': '1911', 'category': 'literature'}
+{'year': '1911', 'category': 'medicine'}
+{'year': '1911', 'category': 'peace'}
+{'year': '1911', 'category': 'physics'}
+{'year': '1910', 'category': 'chemistry'}
+{'year': '1910', 'category': 'literature'}
+{'year': '1910', 'category': 'medicine'}
+{'year': '1910', 'category': 'peace'}
+{'year': '1910', 'category': 'physics'}
+{'year': '1909', 'category': 'chemistry'}
+{'year': '1909', 'category': 'literature'}
+{'year': '1909', 'category': 'medicine'}
+{'year': '1909', 'category': 'peace'}
+{'year': '1909', 'category': 'physics'}
+{'year': '1908', 'category': 'chemistry'}
+{'year': '1908', 'category': 'literature'}
+{'year': '1908', 'category': 'medicine'}
+{'year': '1908', 'category': 'peace'}
+{'year': '1908', 'category': 'physics'}
+{'year': '1907', 'category': 'chemistry'}
+{'year': '1907', 'category': 'literature'}
+{'year': '1907', 'category': 'medicine'}
+{'year': '1907', 'category': 'peace'}
+{'year': '1907', 'category': 'physics'}
+{'year': '1906', 'category': 'chemistry'}
+{'year': '1906', 'category': 'literature'}
+{'year': '1906', 'category': 'medicine'}
+{'year': '1906', 'category': 'peace'}
+{'year': '1906', 'category': 'physics'}
+{'year': '1905', 'category': 'chemistry'}
+{'year': '1905', 'category': 'literature'}
+{'year': '1905', 'category': 'medicine'}
+{'year': '1905', 'category': 'peace'}
+{'year': '1905', 'category': 'physics'}
+{'year': '1904', 'category': 'chemistry'}
+{'year': '1904', 'category': 'literature'}
+{'year': '1904', 'category': 'medicine'}
+{'year': '1904', 'category': 'peace'}
+{'year': '1904', 'category': 'physics'}
+{'year': '1903', 'category': 'chemistry'}
+{'year': '1903', 'category': 'literature'}
+{'year': '1903', 'category': 'medicine'}
+{'year': '1903', 'category': 'peace'}
+{'year': '1903', 'category': 'physics'}
+{'year': '1902', 'category': 'chemistry'}
+{'year': '1902', 'category': 'literature'}
+{'year': '1902', 'category': 'medicine'}
+{'year': '1902', 'category': 'peace'}
+{'year': '1902', 'category': 'physics'}
+{'year': '1901', 'category': 'chemistry'}
+{'year': '1901', 'category': 'literature'}
+{'year': '1901', 'category': 'medicine'}
+{'year': '1901', 'category': 'peace'}
+{'year': '1901', 'category': 'physics'}
+</code></pre></div></div>
+
+<h3 id="index">Index</h3>
+<ul>
+  <li>When to use index?
+    <ul>
+      <li>Queries with high specificity</li>
+      <li>Large documents &amp; Large Collections</li>
+    </ul>
+  </li>
+  <li>index에 대한 정보 얻기
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.index_information()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">cursor.explain()</code></li>
+    </ul>
+  </li>
+  <li>For each prize category, report the most recent year that a single laureate(rather than several) received a prize in that category</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Specify an index model for compound sorting
+</span><span class="n">index_model</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"category"</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"year"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">create_index</span><span class="p">(</span><span class="n">index_model</span><span class="p">)</span>
+
+<span class="c1"># Collect the last single-laureate year for each category
+</span><span class="n">report</span> <span class="o">=</span> <span class="s">""</span>
+<span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"category"</span><span class="p">)):</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">find_one</span><span class="p">(</span>
+        <span class="p">{</span><span class="s">"category"</span><span class="p">:</span> <span class="n">category</span><span class="p">,</span> <span class="s">"laureates.share"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">},</span>
+        <span class="n">sort</span><span class="o">=</span><span class="p">[(</span><span class="s">"year"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">+=</span> <span class="s">"{category}: {year}</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="o">**</span><span class="n">doc</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chemistry: 2011
+economics: 2017
+literature: 2021
+medicine: 2016
+peace: 2020
+physics: 1992
+</code></pre></div></div>
+
+<ul>
+  <li>find the five countries of birth with the highest counts of such laureates</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="c1"># Ensure an index on country of birth for efficient gathering of distinct values and counting of documents
+</span><span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">create_index</span><span class="p">([(</span><span class="s">"bornCountry"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+
+<span class="c1"># Collect a count of laureates for each country of birth
+</span><span class="n">n_born_and_affiliated</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">born_country</span><span class="p">:</span> <span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">count_documents</span><span class="p">({</span>
+        <span class="s">"bornCountry"</span><span class="p">:</span> <span class="n">born_country</span><span class="p">,</span>
+        <span class="s">"prizes.affiliations.country"</span><span class="p">:</span> <span class="n">born_country</span>
+    <span class="p">})</span>
+    <span class="k">for</span> <span class="n">born_country</span> <span class="ow">in</span> <span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">distinct</span><span class="p">(</span><span class="s">"bornCountry"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># result
+</span><span class="n">Counter</span><span class="p">(</span><span class="n">n_born_and_affiliated</span><span class="p">).</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[('USA', 250),
+ ('United Kingdom', 58),
+ ('Germany', 39),
+ ('France', 26),
+ ('Japan', 18)]
+</code></pre></div></div>
+
+<ul>
+  <li>print the first two prizes with quarter-share laureate(s)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="c1"># Save a cursor to yield the first five prizes
+</span><span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">prizes</span><span class="p">.</span><span class="n">find</span><span class="p">({</span><span class="s">"laureates.share"</span><span class="p">:</span> <span class="s">"4"</span><span class="p">},</span> 
+                        <span class="p">[</span><span class="s">"category"</span><span class="p">,</span> <span class="s">"year"</span><span class="p">,</span> <span class="s">"laureates.motivation"</span><span class="p">]).</span><span class="n">sort</span><span class="p">(</span><span class="s">"year"</span><span class="p">).</span><span class="n">limit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">cursor</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[{'_id': ObjectId('61e62ed9f373e66efa5b991a'),
+  'category': 'physics',
+  'laureates': [{'motivation': '"in recognition of the extraordinary services '
+                               'he has rendered by his discovery of '
+                               'spontaneous radioactivity"'},
+                {'motivation': '"in recognition of the extraordinary services '
+                               'they have rendered by their joint researches '
+                               'on the radiation phenomena discovered by '
+                               'Professor Henri Becquerel"'},
+                {'motivation': '"in recognition of the extraordinary services '
+                               'they have rendered by their joint researches '
+                               'on the radiation phenomena discovered by '
+                               'Professor Henri Becquerel"'}],
+  'year': '1903'},
+ {'_id': ObjectId('61e62ed9f373e66efa5b9840'),
+  'category': 'chemistry',
+  'laureates': [{'motivation': '"for his discovery that enzymes can be '
+                               'crystallized"'},
+                {'motivation': '"for their preparation of enzymes and virus '
+                               'proteins in a pure form"'},
+                {'motivation': '"for their preparation of enzymes and virus '
+                               'proteins in a pure form"'}],
+  'year': '1946'}]
+</code></pre></div></div>
+
+<ul>
+  <li>present these laureates one page at a time, with three laureates per page.</li>
+  <li>order the laureates chronologically by award year.</li>
+  <li>when there is a “tie” in ordering (i.e. two laureates were awarded prizes in the same year), order them alphabetically by surname.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="c1"># function to retrieve a page of data
+</span><span class="k">def</span> <span class="nf">get_particle_laureates</span><span class="p">(</span><span class="n">page_number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">page_size</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">page_number</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">page_number</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"Pages are natural numbers (starting from 1)."</span><span class="p">)</span>
+    <span class="n">particle_laureates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="n">db</span><span class="p">.</span><span class="n">laureates</span><span class="p">.</span><span class="n">find</span><span class="p">(</span>
+            <span class="p">{</span><span class="s">"prizes.motivation"</span><span class="p">:</span> <span class="p">{</span><span class="s">"$regex"</span><span class="p">:</span> <span class="s">"particle"</span><span class="p">}},</span>
+            <span class="p">[</span><span class="s">"firstname"</span><span class="p">,</span> <span class="s">"surname"</span><span class="p">,</span> <span class="s">"prizes"</span><span class="p">])</span>
+        <span class="p">.</span><span class="n">sort</span><span class="p">([(</span><span class="s">"prizes.year"</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"surname"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+        <span class="p">.</span><span class="n">skip</span><span class="p">(</span><span class="n">page_size</span> <span class="o">*</span> <span class="p">(</span><span class="n">page_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="p">.</span><span class="n">limit</span><span class="p">(</span><span class="n">page_size</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">particle_laureates</span>
+
+<span class="c1"># Collect and save the first nine pages
+</span><span class="n">pages</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_particle_laureates</span><span class="p">(</span><span class="n">page_number</span><span class="o">=</span><span class="n">page</span><span class="p">)</span> <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">)]</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">pages</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[{'_id': ObjectId('61e62ed9f373e66efa5b9946'),
+  'firstname': 'C.T.R.',
+  'prizes': [{'affiliations': [{'city': 'Cambridge',
+                                'country': 'United Kingdom',
+                                'name': 'University of Cambridge'}],
+              'category': 'physics',
+              'motivation': '"for his method of making the paths of '
+                            'electrically charged particles visible by '
+                            'condensation of vapour"',
+              'share': '2',
+              'year': '1927'}],
+  'surname': 'Wilson'},
+ {'_id': ObjectId('61e62ed9f373e66efa5b995c'),
+  'firstname': 'John',
+  'prizes': [{'affiliations': [{'city': 'Harwell, Berkshire',
+                                'country': 'United Kingdom',
+                                'name': 'Atomic Energy Research '
+                                        'Establishment'}],
+              'category': 'physics',
+              'motivation': '"for their pioneer work on the transmutation of '
+                            'atomic nuclei by artificially accelerated atomic '
+                            'particles"',
+              'share': '2',
+              'year': '1951'}],
+  'surname': 'Cockcroft'},
+ {'_id': ObjectId('61e62ed9f373e66efa5b995d'),
+  'firstname': 'Ernest T.S.',
+  'prizes': [{'affiliations': [{'city': 'Dublin',
+                                'country': 'Ireland',
+                                'name': 'Trinity College'}],
+              'category': 'physics',
+              'motivation': '"for their pioneer work on the transmutation of '
+                            'atomic nuclei by artificially accelerated atomic '
+                            'particles"',
+              'share': '2',
+              'year': '1951'}],
+  'surname': 'Walton'}]
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#mongodb" class="page__taxonomy-item" rel="tag">MONGODB</a><span class="sep">, </span>
+    
+      <a href="/tags/#sql" class="page__taxonomy-item" rel="tag">SQL</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#nosql" class="page__taxonomy-item" rel="tag">NOSQL</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-01-19T00:00:00+09:00">January 19, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BNoSQL%5D+Introduction+to+MongoDB%282%29%20http%3A%2F%2Flocalhost%3A4000%2Fnosql%2Fget_only_what_you_need_fast%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fnosql%2Fget_only_what_you_need_fast%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fnosql%2Fget_only_what_you_need_fast%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/boj/boj(7)/" class="pagination--pager" title="[ALGORITHM] BOJ 10829. 이진수 변환
+">Previous</a>
+    
+    
+      <a href="/study_algorithm/algorithm_study6/" class="pagination--pager" title="[ALGORITHM] 재귀함수
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/hadoop/hadoop1/" rel="permalink">[Hadoop] Hadoop Installation  on Local(Mac)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Hadoop Installation on Local(Mac)
+
+  Hadoop Installation
+  환경변수 설정
+  사전 준비
+  Hadoop 실행
+  MapReduce 실행
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj(8)/" rel="permalink">[ALGORITHM] BOJ 10872. 팩토리얼
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - 백준
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/study_algorithm/algorithm_study6/" rel="permalink">[ALGORITHM] 재귀함수
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM
+
+  알고리즘 스터디(6)
+  재귀함수
+
+
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/boj/boj(7)/" rel="permalink">[ALGORITHM] BOJ 10829. 이진수 변환
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+ALGORITHM Übung - 백준
+
+  알고리즘 문제 풀이를 통한 코딩 테스트 연습
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 ZSU. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

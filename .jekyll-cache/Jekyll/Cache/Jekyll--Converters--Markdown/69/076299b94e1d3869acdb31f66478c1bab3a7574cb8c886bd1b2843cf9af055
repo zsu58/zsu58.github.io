@@ -1,0 +1,161 @@
+I"�<hr />
+<h3 id="hadoop-installation-on-localmac">Hadoop Installation on Local(Mac)</h3>
+<ul>
+  <li>Hadoop Installation</li>
+  <li>환경변수 설정</li>
+  <li>사전 준비</li>
+  <li>Hadoop 실행</li>
+  <li>MapReduce 실행</li>
+</ul>
+
+<hr />
+
+<h3 id="hadoop-installation">Hadoop Installation</h3>
+<ul>
+  <li>설치환경
+    <ul>
+      <li>OS: macOS Big Sur 11.6</li>
+      <li>Hadoop: 3.3.1</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>hadoop
+</code></pre></div></div>
+
+<h3 id="환경변수-설정">환경변수 설정</h3>
+<ul>
+  <li>directory: usr/local/Cellar/hadoop/3.1.0_1/libexec/etc/hadoop/</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># hadoop-env.sh (맨 아래에 추가)</span>
+<span class="nb">export </span><span class="nv">HADOOP_OPTS</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HADOOP_OPTS</span><span class="s2"> -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="</span>
+<span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">"/Library/Java/JavaVirtualMachines/jdk-13.0.1.jdk/Contents/Home"</span>
+
+<span class="c"># core-site.xml (configuration에 property 추가)</span>
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+        &lt;value&gt;/usr/local/Cellar/hadoop/hdfs/tmp&lt;/value&gt;
+        &lt;description&gt;A base <span class="k">for </span>other temporary directories.&lt;/description&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;fs.default.name&lt;/name&gt;
+        &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+
+<span class="c"># hdfs-site.xml (configuration에 property 추가)</span>
+&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.replication&lt;/name&gt;
+    &lt;value&gt;1&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+
+<span class="c"># mapred-site.xml</span>
+&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+    &lt;value&gt;yarn&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;mapreduce.application.classpath&lt;/name&gt;   
+    &lt;value&gt;<span class="nv">$HADOOP_MAPRED_HOME</span>/share/hadoop/mapreduce/<span class="k">*</span>:<span class="nv">$HADOOP_MAPRED_HOME</span>/share/hadoop/mapreduce/lib/<span class="k">*</span>&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+
+<span class="c"># yarn-site.xml</span>
+&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.env-whitelist&lt;/name&gt;
+    &lt;value&gt;JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre></div></div>
+
+<h3 id="사전-준비">사전 준비</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 아래 명령어 입력</span>
+ssh localhost
+<span class="c"># 만약 접속시간이 안뜨고 Connection refused 라고 뜨면, 아래 명령어를 입력</span>
+ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-P</span> <span class="s1">''</span> <span class="nt">-f</span> ~/.ssh/id_rsa
+<span class="nb">cat</span> ~/.ssh/id_rsa.pub <span class="o">&gt;&gt;</span> ~/.ssh/authorized_keys
+<span class="nb">chmod </span>0600 ~/.ssh/authorized_keys
+
+<span class="c"># 디렉토리 변경</span>
+<span class="nb">cd</span> /usr/local/Cellar/hadoop/3.3.1/libexec/bin
+
+<span class="c"># HDFS 포맷</span>
+hdfs namenode <span class="nt">-format</span>
+<span class="c"># 포맷시, /usr/local/Cellar/hadoop에 hdfs 생성됨</span>
+
+<span class="c"># alias 등록</span>
+<span class="nb">alias </span><span class="nv">hstart</span><span class="o">=</span><span class="s2">"/usr/local/Cellar/hadoop/3.3.1/libexec/sbin/start-all.sh"</span>
+<span class="nb">alias </span><span class="nv">hstop</span><span class="o">=</span><span class="s2">"/usr/local/Cellar/hadoop/3.3.1/libexec/sbin/stop-all.sh"</span>
+</code></pre></div></div>
+
+<h3 id="hadoop-실행">Hadoop 실행</h3>
+<ul>
+  <li>Cluster status : http://localhost:8088</li>
+  <li>HDFS status : http://localhost:9870</li>
+  <li>Secondary NameNode status : http://localhost:9868</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 하둡 시작</span>
+hstart
+<span class="c"># 만약 "localhost: ssh: connect to host localhost port 22: Connection refused" 발생시</span>
+<span class="c"># System Preferences - Sharing - Remote Login 접속후</span>
+<span class="c"># 1) Remote Login을 on으로 수정</span>
+<span class="c"># 2) Allow full disk access for remote users 클릭</span>
+
+<span class="c"># 확인</span>
+jps 
+<span class="c"># NodeManager, NameNode, Jps, DataNode, ResourceManager, SecondaryNameNode가 정상적으로 나오는지 확인</span>
+
+<span class="c"># 종료</span>
+hstop
+</code></pre></div></div>
+
+<h3 id="mapreduce-실행">MapReduce 실행</h3>
+<ul>
+  <li>local에 wFile01.txt, wFile02.txt 준비 후 해당 디렉토리에서 진행</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#-------- </span>
+<span class="c"># 파일 주입</span>
+<span class="c">#--------</span>
+
+<span class="c"># 디렉토리 생성</span>
+hadoop fs <span class="nt">-mkdir</span> /input01
+
+<span class="c"># 디렉토리 확인</span>
+hadoop fs <span class="nt">-ls</span> /
+
+<span class="c"># 파일 옮기기</span>
+hadoop fs <span class="nt">-put</span> ./wFile01.txt /input01
+hadoop fs <span class="nt">-put</span> ./wFile02.txt /input01
+
+<span class="c"># 확인</span>
+hadoop fs <span class="nt">-ls</span> /input01
+hadoop fs <span class="nt">-cat</span> /input01/wFile01.txt
+hadoop fs <span class="nt">-cat</span> /input01/wFile02.txt
+
+<span class="c"># jar 파일 안의 wordcount 클래스를 이용해, input01 안의 파일에 mapreduce에 적용 후, output01로</span>
+hadoop jar /usr/local/Cellar/hadoop/3.3.1/libexec/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.1.jar wordcount /input01 /output01
+
+<span class="c"># 확인</span>
+hadoop fs <span class="nt">-cat</span> /output01/
+
+</code></pre></div></div>
+
+<h3 id="ref">ref</h3>
+<ul>
+  <li><a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html">🔗 공식문서</a></li>
+  <li><a href="https://key4920.github.io/p/mac-os에-하둡hadoop-설치/">🔗 참고1</a></li>
+  <li><a href="https://stackoverflow.com/questions/51808588/run-hadoop-in-the-mac-os">🔗 참고2</a></li>
+</ul>
+:ET

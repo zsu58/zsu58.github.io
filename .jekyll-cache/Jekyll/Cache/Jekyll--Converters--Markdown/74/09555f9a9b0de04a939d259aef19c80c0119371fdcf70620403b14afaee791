@@ -1,0 +1,9 @@
+I"3<hr />
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li>Using <code class="language-plaintext highlighter-rouge">.stack</code> with <code class="language-plaintext highlighter-rouge">.mean()</code> or <code class="language-plaintext highlighter-rouge">.diff()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.explode()</code> - converts list contained column into separate rows</li>
+  <li><code class="language-plaintext highlighter-rouge">pd.json_normalize()</code> - converts json data into dataframe</li>
+  <li>Convert nested data column</li>
+</ul>
+:ET

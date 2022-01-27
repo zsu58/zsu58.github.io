@@ -1,0 +1,1020 @@
+I"�<hr />
+<h3 id="pandas">Pandas</h3>
+<ul>
+  <li>Using <code class="language-plaintext highlighter-rouge">.stack</code> with <code class="language-plaintext highlighter-rouge">.mean()</code> or <code class="language-plaintext highlighter-rouge">.diff()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.explode()</code> - converts list contained column into separate rows</li>
+  <li><code class="language-plaintext highlighter-rouge">pd.json_normalize()</code> - converts json data into dataframe</li>
+  <li>Convert nested data column</li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import pkg &amp; dataset
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"obesity.csv"</span><span class="p">)</span>
+<span class="n">df_melted</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="s">"country"</span><span class="p">)</span>
+
+<span class="n">df_melted</span><span class="p">[[</span><span class="s">"gender"</span><span class="p">,</span> <span class="s">"year"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df_melted</span><span class="p">[</span><span class="s">"variable"</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">extract</span><span class="p">(</span><span class="s">"([a-z]+)([0-9]+)"</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df_melted</span> <span class="o">=</span> <span class="n">df_melted</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">"variable"</span><span class="p">).</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">"value"</span><span class="p">:</span><span class="s">"perc_obesity"</span><span class="p">})</span>
+<span class="n">df_melted</span> <span class="o">=</span> <span class="n">df_melted</span><span class="p">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"gender"</span><span class="p">,</span> <span class="s">"year"</span><span class="p">],</span> <span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df_melted</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>perc_obesity</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th>gender</th>
+      <th>year</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>argentina</th>
+      <th>male</th>
+      <th>2005</th>
+      <td>21.5</td>
+    </tr>
+    <tr>
+      <th>japan</th>
+      <th>male</th>
+      <th>2005</th>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>norway</th>
+      <th>male</th>
+      <th>2005</th>
+      <td>17.6</td>
+    </tr>
+    <tr>
+      <th>argentina</th>
+      <th>female</th>
+      <th>2005</th>
+      <td>24.2</td>
+    </tr>
+    <tr>
+      <th>japan</th>
+      <th>female</th>
+      <th>2005</th>
+      <td>2.6</td>
+    </tr>
+    <tr>
+      <th>norway</th>
+      <th>female</th>
+      <th>2005</th>
+      <td>18.6</td>
+    </tr>
+    <tr>
+      <th>argentina</th>
+      <th>male</th>
+      <th>2015</th>
+      <td>26.8</td>
+    </tr>
+    <tr>
+      <th>japan</th>
+      <th>male</th>
+      <th>2015</th>
+      <td>4.6</td>
+    </tr>
+    <tr>
+      <th>norway</th>
+      <th>male</th>
+      <th>2015</th>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>argentina</th>
+      <th>female</th>
+      <th>2015</th>
+      <td>28.5</td>
+    </tr>
+    <tr>
+      <th>japan</th>
+      <th>female</th>
+      <th>2015</th>
+      <td>3.6</td>
+    </tr>
+    <tr>
+      <th>norway</th>
+      <th>female</th>
+      <th>2015</th>
+      <td>22.2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="using-stack-with-mean-or-diff">Using .stack() with .mean() or .diff()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># mean of obesity percent by gender &amp; year
+</span><span class="n">df_general</span> <span class="o">=</span> <span class="n">df_melted</span><span class="p">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_general</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gender  year
+female  2005    15.133333
+        2015    18.100000
+male    2005    13.866667
+        2015    18.133333
+dtype: float64
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># difference of obesity percent by year considering country &amp; gender
+</span><span class="n">df_melted</span><span class="p">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">2</span><span class="p">).</span><span class="n">diff</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="2" halign="left">perc_obesity</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>year</th>
+      <th>2005</th>
+      <th>2015</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th>gender</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">argentina</th>
+      <th>female</th>
+      <td>NaN</td>
+      <td>4.3</td>
+    </tr>
+    <tr>
+      <th>male</th>
+      <td>NaN</td>
+      <td>5.3</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">japan</th>
+      <th>female</th>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>male</th>
+      <td>NaN</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">norway</th>
+      <th>female</th>
+      <td>NaN</td>
+      <td>3.6</td>
+    </tr>
+    <tr>
+      <th>male</th>
+      <td>NaN</td>
+      <td>5.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># mean of obesity by country
+</span><span class="n">df_melted</span><span class="p">.</span><span class="n">stack</span><span class="p">().</span><span class="n">groupby</span><span class="p">(</span><span class="s">"country"</span><span class="p">).</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>country
+argentina    25.250
+japan         3.325
+norway       20.350
+dtype: float64
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="explode">.explode()</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+# csv는 python의 list로써 저장되는 것이 아니므로, 데이터를 읽을 때 해당 열이 python의 list임을 명시해야 함
+</span><span class="kn">import</span> <span class="nn">ast</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"obesity_list.csv"</span><span class="p">,</span> <span class="n">converters</span><span class="o">=</span><span class="p">{</span><span class="s">"bounds"</span><span class="p">:</span> <span class="n">ast</span><span class="p">.</span><span class="n">literal_eval</span><span class="p">})</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 방법 1) explode한 df와 기존 df의 열 merge
+</span><span class="n">df2_bounds</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="s">"bounds"</span><span class="p">].</span><span class="n">explode</span><span class="p">()</span>
+<span class="n">df2</span><span class="p">[[</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"perc_obesity"</span><span class="p">]].</span><span class="n">merge</span><span class="p">(</span><span class="n">df2_bounds</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>perc_obesity</th>
+      <th>bounds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Argentina</td>
+      <td>21.5</td>
+      <td>15.4</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Argentina</td>
+      <td>21.5</td>
+      <td>31.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Germany</td>
+      <td>22.3</td>
+      <td>16.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Germany</td>
+      <td>22.3</td>
+      <td>32.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Japan</td>
+      <td>2.5</td>
+      <td>1.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Japan</td>
+      <td>2.5</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Norway</td>
+      <td>23.0</td>
+      <td>13.1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Norway</td>
+      <td>23.0</td>
+      <td>33.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 방법 2) 해당 행을 explode 함수 안에 명시, 이 경우 index를 reset할 필요 존재
+</span><span class="n">df2</span><span class="p">.</span><span class="n">explode</span><span class="p">(</span><span class="s">"bounds"</span><span class="p">).</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>perc_obesity</th>
+      <th>bounds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Argentina</td>
+      <td>21.5</td>
+      <td>15.4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Argentina</td>
+      <td>21.5</td>
+      <td>31.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Germany</td>
+      <td>22.3</td>
+      <td>16.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Germany</td>
+      <td>22.3</td>
+      <td>32.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Japan</td>
+      <td>2.5</td>
+      <td>1.1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Japan</td>
+      <td>2.5</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Norway</td>
+      <td>23.0</td>
+      <td>13.1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Norway</td>
+      <td>23.0</td>
+      <td>33.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+</span><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"obesity3.csv"</span><span class="p">)</span>
+<span class="n">df3</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>perc_obesity</th>
+      <th>bounds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Argentina</td>
+      <td>21.5</td>
+      <td>11.4-25.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Germany</td>
+      <td>22.3</td>
+      <td>16.2-32.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Japan</td>
+      <td>2.5</td>
+      <td>8.1-16.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Norway</td>
+      <td>23.0</td>
+      <td>9.1-20.1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 한 열이 특정한 string을 기준을 바탕으로 list로 분리한 뒤 explode를 사용할 수도 있음
+</span><span class="n">df3_splited</span> <span class="o">=</span> <span class="n">df3</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">bounds</span> <span class="o">=</span> <span class="n">df3</span><span class="p">[</span><span class="s">"bounds"</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"-"</span><span class="p">).</span><span class="n">explode</span><span class="p">(</span><span class="s">"bounds"</span><span class="p">))</span>
+<span class="n">df3_splited</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>perc_obesity</th>
+      <th>bounds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Argentina</td>
+      <td>21.5</td>
+      <td>11.4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Germany</td>
+      <td>22.3</td>
+      <td>25.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Japan</td>
+      <td>2.5</td>
+      <td>16.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Norway</td>
+      <td>23.0</td>
+      <td>32.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="pdjson_normalize">pd.json_normalize()</h3>
+<ul>
+  <li>nest가 한번인 경우까지 dataframe으로 normalize 됨</li>
+  <li>parameter
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">sep</code> -  column name의 separator인 string 명시 가능 (default는 .)</li>
+      <li><code class="language-plaintext highlighter-rouge">record_path</code> - double nested 되어 있을 경우 해당 데이터를 dataframe으로 반환</li>
+      <li><code class="language-plaintext highlighter-rouge">meta</code> - Fields to use as metadata for each record in resulting table</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+</span><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">"movies.json"</span><span class="p">))</span>
+<span class="n">movies</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[{'director': 'Woody Allen',
+  'producer': 'Letty Aronson',
+  'features': {'title': 'Magic in the Moonlight', 'year': 2014}},
+ {'director': 'Niki Caro',
+  'producer': 'Jason Reed',
+  'features': {'title': 'Mulan', 'year': 2020}}]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">movies</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">"_"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>director</th>
+      <th>producer</th>
+      <th>features_title</th>
+      <th>features_year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Woody Allen</td>
+      <td>Letty Aronson</td>
+      <td>Magic in the Moonlight</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Niki Caro</td>
+      <td>Jason Reed</td>
+      <td>Mulan</td>
+      <td>2020</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+</span><span class="n">movies2</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">"movies2.json"</span><span class="p">))</span>
+<span class="n">movies2</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[{'director': 'Woody Allen',
+  'producer': 'Letty Aronson',
+  'features': [{'title': 'Magic in the Moonlight', 'year': 2014},
+   {'title': 'Vicky Cristina Barcelona', 'year': 2008},
+   {'title': 'Midnight in Paris', 'year': 2011}]},
+ {'director': 'Niki Caro',
+  'producer': 'Jason Reed',
+  'features': [{'title': 'Mulan', 'year': 2020}]}]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 열 안에 또 json 형식의 데이터가 있으면 flatten되지 않음
+</span><span class="n">pd</span><span class="p">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">movies2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>director</th>
+      <th>producer</th>
+      <th>features</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Woody Allen</td>
+      <td>Letty Aronson</td>
+      <td>[{'title': 'Magic in the Moonlight', 'year': 2...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Niki Caro</td>
+      <td>Jason Reed</td>
+      <td>[{'title': 'Mulan', 'year': 2020}]</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># features 열의 json 형식의 데이터를 dataframe으로 반환
+</span><span class="n">pd</span><span class="p">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">movies2</span><span class="p">,</span> <span class="n">record_path</span><span class="o">=</span><span class="s">"features"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Magic in the Moonlight</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Vicky Cristina Barcelona</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Midnight in Paris</td>
+      <td>2011</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Mulan</td>
+      <td>2020</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">movies2</span><span class="p">,</span> <span class="n">record_path</span><span class="o">=</span><span class="s">'features'</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="p">[</span><span class="s">"director"</span><span class="p">,</span> <span class="s">"producer"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>year</th>
+      <th>director</th>
+      <th>producer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Magic in the Moonlight</td>
+      <td>2014</td>
+      <td>Woody Allen</td>
+      <td>Letty Aronson</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Vicky Cristina Barcelona</td>
+      <td>2008</td>
+      <td>Woody Allen</td>
+      <td>Letty Aronson</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Midnight in Paris</td>
+      <td>2011</td>
+      <td>Woody Allen</td>
+      <td>Letty Aronson</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Mulan</td>
+      <td>2020</td>
+      <td>Niki Caro</td>
+      <td>Jason Reed</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h3 id="convert-nested-data-column">Convert nested data column</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">json.loads</code> - convert json string into python dictionary</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># dataset
+# bird_name이 담겨 있는 list
+</span><span class="n">bird_name</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Killdeer'</span><span class="p">,</span> <span class="s">'Chipping Sparrow'</span><span class="p">,</span> <span class="s">'Cedar Waxwing'</span><span class="p">]</span>
+<span class="c1"># bird feature이 담겨 있는 list(각 bird의 feature은 dictionary 형태의 String임)
+</span><span class="n">bird_features</span> <span class="o">=</span> <span class="p">[</span><span class="s">'{"Size" : "Large", "Color": "Golden brown", "Behavior": "Runs swiftly along ground", "Habitat": "Rocky areas"}'</span><span class="p">,</span>
+                 <span class="s">'{"Size":"Small", "Color": "Gray-white", "Behavior": "Often in flocks", "Habitat": "Open woodlands"}'</span><span class="p">,</span>
+                 <span class="s">'{"Size":"Small", "Color": "Gray-brown", "Behavior": "Catch insects over open water", "Habitat": "Parks"}'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># make dataframe using dict
+</span><span class="n">birds</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">bird_name</span><span class="o">=</span><span class="n">bird_name</span><span class="p">,</span> <span class="n">bird_features</span><span class="o">=</span><span class="n">bird_features</span><span class="p">))</span>
+<span class="n">birds</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bird_name</th>
+      <th>bird_features</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Killdeer</td>
+      <td>{"Size" : "Large", "Color": "Golden brown", "B...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Chipping Sparrow</td>
+      <td>{"Size":"Small", "Color": "Gray-white", "Behav...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cedar Waxwing</td>
+      <td>{"Size":"Small", "Color": "Gray-brown", "Behav...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>방법1</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># convert bird_features into dataframe using json.loads &amp; pd.Series
+# json.loads - json 형식의 문자열을 dictionary으로 convert, 이후 dictionary를 pd.Series으로 convert
+</span><span class="n">bird_features_df</span> <span class="o">=</span> <span class="n">birds</span><span class="p">[</span><span class="s">"bird_features"</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">).</span><span class="nb">apply</span><span class="p">(</span><span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">)</span>
+<span class="n">bird_features_df</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Behavior</th>
+      <th>Habitat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Large</td>
+      <td>Golden brown</td>
+      <td>Runs swiftly along ground</td>
+      <td>Rocky areas</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Small</td>
+      <td>Gray-white</td>
+      <td>Often in flocks</td>
+      <td>Open woodlands</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Small</td>
+      <td>Gray-brown</td>
+      <td>Catch insects over open water</td>
+      <td>Parks</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># bird_name과 bird_feature 최종 합치기
+</span><span class="n">bird_name_df</span> <span class="o">=</span> <span class="n">birds</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">"bird_features"</span><span class="p">)</span>
+<span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bird_name_df</span><span class="p">,</span> <span class="n">bird_features_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bird_name</th>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Behavior</th>
+      <th>Habitat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Killdeer</td>
+      <td>Large</td>
+      <td>Golden brown</td>
+      <td>Runs swiftly along ground</td>
+      <td>Rocky areas</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Chipping Sparrow</td>
+      <td>Small</td>
+      <td>Gray-white</td>
+      <td>Often in flocks</td>
+      <td>Open woodlands</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cedar Waxwing</td>
+      <td>Small</td>
+      <td>Gray-brown</td>
+      <td>Catch insects over open water</td>
+      <td>Parks</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>방법2</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Apply json.loads to the bird_features column and transform it to a list 
+</span><span class="n">birds_features</span> <span class="o">=</span> <span class="n">birds</span><span class="p">[</span><span class="s">'bird_features'</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">).</span><span class="n">to_list</span><span class="p">()</span>
+
+<span class="c1"># Convert birds_features into a JSON 
+</span><span class="n">birds_dump</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">birds_features</span><span class="p">)</span>
+
+<span class="c1"># Read the JSON birds_dump into a DataFrame
+</span><span class="n">birds_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">birds_dump</span><span class="p">)</span>
+
+<span class="c1"># Concatenate the 'bird_name' column of birds with birds_df
+</span><span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">birds</span><span class="p">[</span><span class="s">"bird_name"</span><span class="p">],</span> <span class="n">birds_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bird_name</th>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Behavior</th>
+      <th>Habitat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Killdeer</td>
+      <td>Large</td>
+      <td>Golden brown</td>
+      <td>Runs swiftly along ground</td>
+      <td>Rocky areas</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Chipping Sparrow</td>
+      <td>Small</td>
+      <td>Gray-white</td>
+      <td>Often in flocks</td>
+      <td>Open woodlands</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cedar Waxwing</td>
+      <td>Small</td>
+      <td>Gray-brown</td>
+      <td>Catch insects over open water</td>
+      <td>Parks</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+:ET

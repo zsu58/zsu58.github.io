@@ -1,0 +1,29 @@
+I"�<hr />
+<h3 id="algorithm-übung---백준">ALGORITHM Übung - 백준</h3>
+<ul>
+  <li>알고리즘 문제 풀이를 통한 코딩 테스트 연습</li>
+</ul>
+
+<hr />
+
+<h3 id="문제">문제</h3>
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/10872">🔗 문제 링크</a></li>
+</ul>
+
+<h3 id="코드">코드</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="c1"># 2보다 작으면 재귀함수 종료
+</span>  <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="k">return</span> <span class="mi">1</span>
+  <span class="c1"># 그렇지 않다면 n-1에 대해 재귀함수를 다시 호출 * n
+</span>  <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div></div>
+<hr />
+:ET
