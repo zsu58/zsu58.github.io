@@ -1,0 +1,277 @@
+I"zd<hr />
+<h3 id="web-crawling">Web Crawling</h3>
+<ul>
+  <li>가상환경 및 scrapy 프로젝트 구축</li>
+  <li>사전 확인</li>
+  <li>Requests</li>
+  <li>Requests 한글 깨짐</li>
+  <li>Code
+    <ul>
+      <li>items.py</li>
+      <li>spiders/kidnews_spider.py</li>
+      <li>pipelines.py</li>
+      <li>settings.py</li>
+    </ul>
+  </li>
+  <li>scrapy 실행</li>
+</ul>
+
+<hr />
+
+<h3 id="가상환경-및-scrapy-프로젝트-구축">가상환경 및 scrapy 프로젝트 구축</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 가상환경 구축</span>
+python3 <span class="nt">-m</span> venv venv
+<span class="nb">source </span>venv/bin/activate
+
+<span class="c"># python library 설치</span>
+pip3 <span class="nb">install </span>scrapy
+pip3 <span class="nb">install </span>ipykernel
+pip3 <span class="nb">install </span>pymongo
+pip3 <span class="nb">install </span>requests
+
+<span class="c"># jupyter notebook kernel 구축</span>
+python3 <span class="nt">-m</span> ipykernel <span class="nb">install</span> <span class="nt">--user</span> <span class="nt">--name</span> venv <span class="nt">--display-name</span> <span class="s2">"venv_scrapy"</span>
+
+<span class="c"># scrapy project 시작</span>
+scrapy startproject kidnewscrawling
+</code></pre></div></div>
+<hr />
+
+<h3 id="사전-확인">사전 확인</h3>
+<ul>
+  <li>interested_url/robots.txt 를 통해 crawling 가능 여부 확인
+    <ul>
+      <li>예) http://kid.chosun.com/robots.txt</li>
+      <li>아래는 crawling 불가능한 영역
+        <ul>
+          <li>Disallow: /sv*</li>
+          <li>Disallow: /list*</li>
+          <li>Disallow: /cartoonlist*</li>
+          <li>Disallow: /priv*</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="requests">Requests</h3>
+<ul>
+  <li>Requests 라이브러리를 활용하여 xpath/css 찾기</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="n">request_object</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://kid.chosun.com/site/data/html_dir/2022/01/31/2022013100293.html'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="s">'charset'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">request_object</span><span class="p">.</span><span class="n">headers</span><span class="p">[</span><span class="s">'content-type'</span><span class="p">]:</span>
+    <span class="n">request_object</span><span class="p">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">request_object</span><span class="p">.</span><span class="n">apparent_encoding</span>
+
+<span class="n">response_object</span> <span class="o">=</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">request_object</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="s">" "</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">response_object</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//div[@class="Paragraph"]//div[not(contains(@class, "center_img"))]//text()'</span><span class="p">).</span><span class="n">extract</span><span class="p">())</span>
+<span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s">'[&lt;사진&gt;\xa0]'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">p</span><span class="p">).</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'호주 정부가 코알라 생태계를 보전하기 위해 400억 원이 넘는 돈을 쏟아붓기로 했다. 29일(현지 시각) CNN에 따르면 호주 정부는 코알라 개체 수(數)를 보호하기 위해 앞으로 4년간 5000만 호주달러(약 422억 원)를 투자한다. 스콧 모리슨 호주 총리는 “코알라는 세계에서 랑받는 호주의 상징”이라며 “다음 세대를 위해 최선을 다해 코알라를 보호해야 한다”고 밝혔다. 정부 예산은 코알라 서식지 복원과 치료, 연구 등에 용된다. 지난해 9월 호주 코알라 재단이 발표한 내용에 따르면 2018년 이후 산불, 가뭄, 토지 개간(開墾) 등으로 호주에 서식하는 코알라의 약 30％가 라졌다. 특히 2019년 뉴우스웨일즈의 땅 4만8000㎢을 파괴한 대형 산불은 코알라 개체 감소에 치명적이었다. 현재 코알라는 세계 최대 환경보호 기구인 ‘세계자연보전연맹(IUCN)’이 정하는 ‘취약종(種)’ 목록에 올라있다. *코알라를 보호하는 방법을 정리해 알려주세요.'
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="requests-한글-깨짐">Requests 한글 깨짐</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">request.headers['content-type']</code> - text/html인 경우 인코딩 문제 발생</li>
+  <li>해결
+    <ul>
+      <li>방법1 - request.encoding을 직접적으로 수정</li>
+      <li>방법2 - request.encoding을 request.apparaent_encoding으로 변환</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">request</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://kid.chosun.com/list_kj.html?catid=1'</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">headers</span><span class="p">[</span><span class="s">'content-type'</span><span class="p">])</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">apparent_encoding</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">encoding</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://kid.chosun.com/list_kj.html?catid=1'</span><span class="p">)</span>
+<span class="c1"># 방법 1
+# request.encoding = 'euc-kr'
+</span>
+<span class="c1"># 방법 2
+</span><span class="k">if</span> <span class="s">'charset'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">request</span><span class="p">.</span><span class="n">headers</span><span class="p">[</span><span class="s">'content-type'</span><span class="p">]:</span>
+    <span class="n">request</span><span class="p">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">apparent_encoding</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>text/html
+CP949
+ISO-8859-1
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="code">Code</h3>
+
+<h4 id="itemspy">items.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># -*- coding: utf-8 -*-
+</span>
+<span class="kn">import</span> <span class="nn">scrapy</span>
+
+
+<span class="k">class</span> <span class="nc">KidNewScrawlingItem</span><span class="p">(</span><span class="n">scrapy</span><span class="p">.</span><span class="n">Item</span><span class="p">):</span>
+    <span class="c1"># define the fields for your item here like:
+</span>    <span class="n">url</span> <span class="o">=</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Field</span><span class="p">()</span> <span class="c1"># 기사 원문 URL
+</span>    <span class="n">title</span> <span class="o">=</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Field</span><span class="p">()</span> <span class="c1"># 제목
+</span>    <span class="n">subtitle</span> <span class="o">=</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Field</span><span class="p">()</span> <span class="c1"># 부제목
+</span>    <span class="n">author</span> <span class="o">=</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Field</span><span class="p">()</span> <span class="c1"># 기자
+</span>    <span class="n">date</span> <span class="o">=</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Field</span><span class="p">()</span> <span class="c1"># 날짜   
+</span>    <span class="n">article</span> <span class="o">=</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Field</span><span class="p">()</span> <span class="c1"># 기사 내용
+</span>    <span class="n">img_path</span> <span class="o">=</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Field</span><span class="p">()</span> <span class="c1"># 기사 img 경로
+</span>    <span class="n">source</span> <span class="o">=</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Field</span><span class="p">()</span> <span class="c1"># 신문사
+#     category = scrapy.Field() # 카테고리
+</span>    <span class="k">pass</span>
+</code></pre></div></div>
+
+<h4 id="spiderskidnews_spiderpy">spiders/kidnews_spider.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># -*- coding: utf-8 -*-
+</span>
+<span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">from</span> <span class="nn">kidnewscrawling.items</span> <span class="kn">import</span> <span class="n">KidNewScrawlingItem</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">class</span> <span class="nc">KidNewsSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="p">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"kidNewsCrawler"</span>
+    
+    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="s">'http://kid.chosun.com/list_kj.html?catid=1&amp;pn={page}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">parse_url</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">parse_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="c1"># 인코딩 변환
+</span>        <span class="k">if</span> <span class="n">response</span><span class="p">.</span><span class="n">encoding</span> <span class="o">==</span> <span class="s">'cp1252'</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s">'euc-kr'</span><span class="p">)</span>
+        
+        <span class="n">default_url</span> <span class="o">=</span> <span class="s">'http://kid.chosun.com'</span>
+        <span class="n">urls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">default_url</span> <span class="o">+</span> <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//div[@class="subject"]/a/@href'</span><span class="p">).</span><span class="n">extract</span><span class="p">()))</span>
+        
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">response</span><span class="p">.</span><span class="n">follow</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">parse_article</span><span class="p">)</span>
+            
+    <span class="k">def</span> <span class="nf">parse_article</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">KidNewScrawlingItem</span><span class="p">()</span>
+        
+        <span class="c1"># 기사 url
+</span>        <span class="n">item</span><span class="p">[</span><span class="s">"url"</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">url</span>
+        
+        <span class="c1"># 기사 제목
+</span>        <span class="n">item</span><span class="p">[</span><span class="s">"title"</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//title/text()'</span><span class="p">).</span><span class="n">extract_first</span><span class="p">()</span>
+
+        <span class="c1"># 기사 부제목, 없는 경우도 존재
+</span>        <span class="n">item</span><span class="p">[</span><span class="s">"subtitle"</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//h3/text()'</span><span class="p">).</span><span class="n">extract_first</span><span class="p">()</span>
+
+        <span class="c1"># 기자, 기자가 아닌 경우도 존재
+</span>        <span class="n">author</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//span[@class="author"]/text()'</span><span class="p">).</span><span class="n">extract_first</span><span class="p">()</span>
+        <span class="n">item</span><span class="p">[</span><span class="s">"author"</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s">'[\r\n\t정리=]'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">author</span><span class="p">).</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="c1"># 입력날짜
+</span>        <span class="n">date</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//span[@class="date"]/text()'</span><span class="p">).</span><span class="n">extract_first</span><span class="p">()</span>
+        <span class="n">item</span><span class="p">[</span><span class="s">"date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s">'[\r\n\t]'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">date</span><span class="p">).</span><span class="n">strip</span><span class="p">()[</span><span class="mi">5</span><span class="p">:</span><span class="mi">21</span><span class="p">]</span>
+        
+        <span class="c1"># 본문
+</span>        <span class="n">p</span> <span class="o">=</span> <span class="s">" "</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//div[@class="Paragraph"]</span><span class="se">\
+</span><span class="s">                                                [not(contains(@class, "center_img")) </span><span class="se">\
+</span><span class="s">                                                and not(contains(@class, "right_img"))]//text()'</span><span class="p">).</span><span class="n">extract</span><span class="p">())</span>
+        <span class="n">item</span><span class="p">[</span><span class="s">"article"</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s">'[\r\n\t&lt;사진&gt;\xa0]'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">p</span><span class="p">).</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="c1"># 기사 첫 사진 이미지 url
+</span>        <span class="n">item</span><span class="p">[</span><span class="s">"img_path"</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//img[@id="artImg0"]/@src'</span><span class="p">).</span><span class="n">extract_first</span><span class="p">()</span>
+        
+        <span class="c1"># 신문지
+</span>        <span class="n">item</span><span class="p">[</span><span class="s">"source"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"어린이조선일보"</span>
+
+        <span class="k">yield</span> <span class="n">item</span>
+</code></pre></div></div>
+
+<h4 id="settingspy">settings.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">BOT_NAME</span> <span class="o">=</span> <span class="s">'kidnewscrawling'</span>
+
+<span class="n">SPIDER_MODULES</span> <span class="o">=</span> <span class="p">[</span><span class="s">'kidnewscrawling.spiders'</span><span class="p">]</span>
+<span class="n">NEWSPIDER_MODULE</span> <span class="o">=</span> <span class="s">'kidnewscrawling.spiders'</span>
+
+<span class="c1"># 한글깨짐
+</span><span class="n">FEED_EXPORT_ENCODING</span> <span class="o">=</span> <span class="s">'utf-8'</span>
+
+<span class="p">...</span>
+
+<span class="c1"># Obey robots.txt rules
+</span><span class="n">ROBOTSTXT_OBEY</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="c1"># mongodb setting
+</span><span class="n">LOG_LEVEL</span><span class="o">=</span><span class="s">'ERROR'</span>
+
+<span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span><span class="s">'kidnewscrawling.pipelines.MongoPipeline'</span><span class="p">:</span> <span class="mi">300</span><span class="p">,}</span>
+
+<span class="n">MONGO_URI</span> <span class="o">=</span> <span class="s">'mongodb://root:1234@localhost:27017'</span>
+<span class="n">MONGO_DATABASE</span> <span class="o">=</span> <span class="s">'newsDB'</span>
+</code></pre></div></div>
+
+<h4 id="pipelinespy">pipelines.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># -*- coding: utf-8 -*-
+</span>
+<span class="kn">import</span> <span class="nn">pymongo</span>
+<span class="kn">from</span> <span class="nn">itemadapter</span> <span class="kn">import</span> <span class="n">ItemAdapter</span>
+
+<span class="k">class</span> <span class="nc">MongoPipeline</span><span class="p">:</span>
+
+    <span class="n">collection_name</span> <span class="o">=</span> <span class="s">'news'</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mongo_uri</span><span class="p">,</span> <span class="n">mongo_db</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">mongo_uri</span> <span class="o">=</span> <span class="n">mongo_uri</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">mongo_db</span> <span class="o">=</span> <span class="n">mongo_db</span>
+
+    <span class="o">@</span><span class="nb">classmethod</span>
+    <span class="k">def</span> <span class="nf">from_crawler</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">crawler</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="p">(</span>
+            <span class="n">mongo_uri</span><span class="o">=</span><span class="n">crawler</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'MONGO_URI'</span><span class="p">),</span>
+            <span class="n">mongo_db</span><span class="o">=</span><span class="n">crawler</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'MONGO_DATABASE'</span><span class="p">,</span> <span class="s">'items'</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">open_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">pymongo</span><span class="p">.</span><span class="n">MongoClient</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">mongo_uri</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">db</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">client</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">mongo_db</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">close_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s">"title"</span><span class="p">])</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">db</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">collection_name</span><span class="p">].</span><span class="n">insert_one</span><span class="p">(</span><span class="n">ItemAdapter</span><span class="p">(</span><span class="n">item</span><span class="p">).</span><span class="n">asdict</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">item</span>
+</code></pre></div></div>
+
+<h3 id="scrapy-실행">scrapy 실행</h3>
+<ul>
+  <li>spiders/kidnews_spider.py의 클래스 내 이름</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scrapy crawl kidNewsCrawler
+</code></pre></div></div>
+
+<h3 id="ref">ref</h3>
+<ul>
+  <li><a href="https://devbull.xyz/python-create-environment/">🔗 가상환경 관련</a></li>
+  <li>https://excelsior-cjh.tistory.com/86</li>
+  <li>https://dev-jacob.tistory.com/entry/Python-Requests-한글-깨짐-문제-해결하기</li>
+</ul>
+:ET

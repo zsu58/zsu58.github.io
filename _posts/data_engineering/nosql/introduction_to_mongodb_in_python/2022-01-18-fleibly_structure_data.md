@@ -38,7 +38,7 @@ import sys
 import requests
 from pymongo import MongoClient
 
-# Connectino to MognoDB (default connectino is "localhost")
+# Connecting to MognoDB (default connection is "localhost")
 client = MongoClient(
     username="root",
     password="1234"

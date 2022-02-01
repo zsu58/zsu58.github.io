@@ -1,4 +1,4 @@
-I"Y<hr />
+I"�<hr />
 <h3 id="hadoop-installation-on-localmac">Hadoop Installation on Local(Mac)</h3>
 <ul>
   <li>Hadoop Installation</li>
@@ -6,6 +6,7 @@
   <li>사전 준비</li>
   <li>Hadoop 실행</li>
   <li>MapReduce 실행</li>
+  <li>Error 관련</li>
 </ul>
 
 <hr />
@@ -33,9 +34,9 @@
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># hadoop-env.sh (맨 아래에 추가)</span>
 <span class="nb">export </span><span class="nv">HADOOP_OPTS</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HADOOP_OPTS</span><span class="s2"> -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="</span>
-<span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">"/Library/Java/JavaVirtualMachines/jdk-13.0.1.jdk/Contents/Home"</span>
+<span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">"/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home"</span>
 
-<span class="c"># core-site.xml (configuration에 property 추가)</span>
+<span class="c"># core-site.xml</span>
 &lt;configuration&gt;
     &lt;property&gt;
         &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
@@ -48,7 +49,7 @@
     &lt;/property&gt;
 &lt;/configuration&gt;
 
-<span class="c"># hdfs-site.xml (configuration에 property 추가)</span>
+<span class="c"># hdfs-site.xml</span>
 &lt;configuration&gt;
   &lt;property&gt;
     &lt;name&gt;dfs.replication&lt;/name&gt;
@@ -152,8 +153,14 @@ hadoop jar /usr/local/Cellar/hadoop/3.3.1/libexec/share/hadoop/mapreduce/hadoop-
 
 <span class="c"># 확인</span>
 hadoop fs <span class="nt">-cat</span> /output01/
-
 </code></pre></div></div>
+
+<h3 id="error">Error</h3>
+<ul>
+  <li>start-all.sh로 하둡 실행 시, secondarynodemanager과 관련해 operation timed out 에러 발생</li>
+  <li>원인: 집 공유기가 SK인데, SK에서는 22번 포트를 막아 놓은 경우가 있다고 함</li>
+  <li>임시적인 해결: 핸드폰 핫스팟으로 진행 시 정상 작동 확인</li>
+</ul>
 
 <h3 id="ref">ref</h3>
 <ul>

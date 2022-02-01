@@ -905,7 +905,7 @@ var store = [{
         "url": "/boj/boj(7)/",
         "teaser": null
       },{
-        "title": "[NoSQL] Introduction to MongoDB(2)",
+        "title": "[NoSQL] Introduction to MongoDB(3)",
         "excerpt":"MongoDB Projection Sort Index # connect mongoDB from pymongo import MongoClient client = MongoClient( username=\"root\", password=\"1234\" ) db = client.nobel Projection # example of prize document db.prizes.find_one() {'_id': ObjectId('61e62ed9f373e66efa5b9694'), 'year': '2021', 'category': 'chemistry', 'laureates': [{'id': '1002', 'firstname': 'Benjamin', 'surname': 'List', 'motivation': '\"for the development of asymmetric organocatalysis\"', 'share': '2'}, {'id':...","categories": ["NOSQL"],
         "tags": ["SQL","MONGODB"],
         "url": "/nosql/get_only_what_you_need_fast/",
@@ -924,8 +924,14 @@ var store = [{
         "teaser": null
       },{
         "title": "[Hadoop] Hadoop Installation  on Local(Mac)",
-        "excerpt":"Hadoop Installation on Local(Mac) Hadoop Installation 환경변수 설정 사전 준비 Hadoop 실행 MapReduce 실행 Hadoop Installation 설치환경 OS: macOS Big Sur 11.6 Hadoop: 3.3.1 brew install hadoop # hadoop은 openjdk에 dependency가 존재하기에 hadoop 설치시 자동으로 설치됨 # 만약 기존에 사용하던 openjdk가 존재하는 경우 제거 가능 환경변수 설정 directory: /usr/local/Cellar/hadoop/3.3.1/libexec/etc/hadoop #...","categories": ["HADOOP"],
+        "excerpt":"Hadoop Installation on Local(Mac) Hadoop Installation 환경변수 설정 사전 준비 Hadoop 실행 MapReduce 실행 Error 관련 Hadoop Installation 설치환경 OS: macOS Big Sur 11.6 Hadoop: 3.3.1 brew install hadoop # hadoop은 openjdk에 dependency가 존재하기에 hadoop 설치시 자동으로 설치됨 # 만약 기존에 사용하던 openjdk가 존재하는 경우 제거 가능 환경변수 설정 directory:...","categories": ["HADOOP"],
         "tags": ["HADOOP"],
         "url": "/hadoop/hadoop1/",
+        "teaser": null
+      },{
+        "title": "[Web Crawling] Crawling Kid News by Scrapy",
+        "excerpt":"Web Crawling 가상환경 및 scrapy 프로젝트 구축 사전 확인 Requests Requests 한글 깨짐 Code items.py spiders/kidnews_spider.py pipelines.py settings.py scrapy 실행 가상환경 및 scrapy 프로젝트 구축 # 가상환경 구축 python3 -m venv venv source venv/bin/activate # python library 설치 pip3 install scrapy pip3 install ipykernel pip3 install pymongo pip3 install requests...","categories": ["WEB_CRAWLING"],
+        "tags": ["SCRAPY","PYTHON"],
+        "url": "/web_crawling/web_crawling1/",
         "teaser": null
       }]

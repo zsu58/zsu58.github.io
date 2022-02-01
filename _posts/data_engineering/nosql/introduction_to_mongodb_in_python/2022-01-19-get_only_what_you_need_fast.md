@@ -1,5 +1,5 @@
 ---
-title: "[NoSQL] Introduction to MongoDB(2)"
+title: "[NoSQL] Introduction to MongoDB(3)"
 layout: single
 date: '19/1/2022'
 toc: true

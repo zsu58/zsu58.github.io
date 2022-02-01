@@ -1,0 +1,19 @@
+I"x<hr />
+
+<h3 id="web-crawling">Web Crawling</h3>
+<ul>
+  <li>가상환경 및 scrapy 프로젝트 구축</li>
+  <li>사전 확인</li>
+  <li>Requests</li>
+  <li>Requests 한글 깨짐</li>
+  <li>Code
+    <ul>
+      <li>items.py</li>
+      <li>spiders/kidnews_spider.py</li>
+      <li>pipelines.py</li>
+      <li>settings.py</li>
+    </ul>
+  </li>
+  <li>scrapy 실행</li>
+</ul>
+:ET

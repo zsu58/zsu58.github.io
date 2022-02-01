@@ -1,0 +1,22 @@
+I"�
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/web_crawling/web_crawling1/">[Web Crawling] Crawling Kid News by Scrapy</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2022.01.31
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#web-crawling" class="page__taxonomy-item-category" rel="tag">WEB_CRAWLING</a>
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+:ET

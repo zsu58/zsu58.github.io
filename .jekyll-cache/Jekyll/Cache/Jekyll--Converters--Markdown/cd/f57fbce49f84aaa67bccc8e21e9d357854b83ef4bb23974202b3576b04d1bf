@@ -1,4 +1,5 @@
-I"�<hr />
+I"<hr />
+
 <h3 id="hadoop-installation-on-localmac">Hadoop Installation on Local(Mac)</h3>
 <ul>
   <li>Hadoop Installation</li>
@@ -6,5 +7,6 @@
   <li>사전 준비</li>
   <li>Hadoop 실행</li>
   <li>MapReduce 실행</li>
+  <li>Error 관련</li>
 </ul>
 :ET
