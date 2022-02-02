@@ -1,5 +1,5 @@
 ---
-title: "[Web Crawling] Crawling Kid News by Scrapy"
+title: "[Web Crawling] Crawling Children News by Scrapy"
 layout: single
 date: '31/1/2022'
 toc: true
