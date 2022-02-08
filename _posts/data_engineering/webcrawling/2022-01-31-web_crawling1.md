@@ -194,9 +194,9 @@ class KidNewsSpider(scrapy.Spider):
         item["date"] = re.sub(r'[\r\n\t]', '', date).strip()[5:21]
         
         # 본문
-        p = " ".join(response.xpath('//div[@class="Paragraph"]\
-                                                [not(contains(@class, "center_img")) \
-                                                and not(contains(@class, "right_img"))]//text()').extract())
+        p = " ".join(response.xpath('//div[@class="Paragraph"]//text()[normalize-space() \
+                                                    and not(ancestor::*/@class="center_img") \
+                                                    and not(ancestor::*/@class="right_img")]').extract())
         item["article"] = re.sub(r'[\r\n\t<사진>\xa0]', '', p).strip()
 
         # 기사 첫 사진 이미지 url
