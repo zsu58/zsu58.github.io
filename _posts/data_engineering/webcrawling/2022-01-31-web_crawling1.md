@@ -91,7 +91,7 @@ re.sub(r'[<사진>\xa0]', '', p).strip()
 * `request.headers['content-type']` - text/html인 경우 인코딩 문제 발생
 * 해결
     * 방법1 - request.encoding을 직접적으로 수정
-    * 방법2 - request.encoding을 request.apparaent_encoding으로 변환
+    * 방법2 - request.encoding을 request.apparent_encoding으로 변환
 
 
 ```python
