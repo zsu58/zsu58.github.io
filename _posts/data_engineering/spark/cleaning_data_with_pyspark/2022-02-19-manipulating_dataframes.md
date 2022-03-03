@@ -1,7 +1,7 @@
 ---
 title: "[PySpark] Cleaning Data with PySpark(2)"
 layout: single
-date: '27/02/2022'
+date: '19/02/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
@@ -296,20 +296,6 @@ voters_df.select("VOTER_NAME", "VOTER_NAME2").show(3)
     +-------------------+----------------+
     only showing top 3 rows
     
-
-
-
-```python
-user_df = user_df.withColumn('ReverseName', udfReverseString(user_df.Name))
-```
-
-
-```python
-def sortingCap():
-    return random.choice(["A", "B", "C"])
-udfStoringCap = udf(sortingCap, StringType())
-user_df = user_df.withColumn('sorted_class', udfStoringCap())
-```
 
 ---
 
