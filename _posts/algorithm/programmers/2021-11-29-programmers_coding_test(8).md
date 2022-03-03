@@ -360,3 +360,54 @@ def solution(phoneBook):
     return True
 ```
 ---
+
+### 괄호 변환
+
+* 3/3/2022
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test74_1.png" align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test74_2.png" align="center">
+</p>
+```python
+# function to divide input string as "balanced parenthesis" and the rest
+def splitParenthesis(s):
+    leftP, rightP = 0, 0
+    for i in range(len(s)):
+        if s[i] == "(":
+            leftP += 1
+        else:
+            rightP += 1
+        if leftP == rightP:
+            return s[:i+1], s[i+1:]
+
+# function to check whether input string is a "correct parenthesis"
+def isCorrect(s):
+    leftP = 0
+    for i in range(len(s)):
+        if s[i] == "(":
+            leftP += 1
+        else:
+            leftP -= 1
+        if leftP < 0:
+            return False
+    return leftP == 0
+
+
+def solution(p):
+    # step1 
+    if not p:
+        return ''
+    # step2
+    u, v = splitParenthesis(p)
+
+    # step3
+    if isCorrect(u):
+        u += solution(v)
+        return u
+    # step4
+    else:
+        t = "(" + solution(v) + ")"
+        t += "".join([")" if i == "(" else "(" for i in u[1:len(u)-1]])
+        return t
+```
+---

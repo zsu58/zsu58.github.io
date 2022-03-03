@@ -80,5 +80,5 @@ sys.setrecursionlimit(2000)
 
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/boj/boj(7)/)
-* [🔗 링크2]()
-* [🔗 링크3]()
+* [🔗 링크2](https://carl020958.github.io/boj/boj(8)/)
+* [🔗 링크3](https://carl020958.github.io/programmers/programmers_coding_test(8)/#괄호-변환)
