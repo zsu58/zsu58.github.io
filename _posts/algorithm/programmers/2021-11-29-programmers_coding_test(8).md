@@ -206,7 +206,7 @@ from collections import deque
 
 
 def solution(bridge_length, weight, truck_weights):
-    bridge = deque([0 for _ in range(0,bridge_length)])
+    bridge = deque([0] * bridge_length)
     truck_weights = deque(truck_weights)
     total_weight = sum(truck_weights)
     sec = 0
@@ -217,10 +217,9 @@ def solution(bridge_length, weight, truck_weights):
         sum_bridge -= bridge[0]
         bridge.popleft()
         
-        if len(truck_weights) > 0 and sum_bridge+truck_weights[0] <= weight:
+        if truck_weights and (sum_bridge + truck_weights[0] <= weight):
             sum_bridge += truck_weights[0]
-            bridge.append(truck_weights[0])
-            truck_weights.popleft()
+            bridge.append(truck_weights.popleft())
         else:
             bridge.append(0)
         
