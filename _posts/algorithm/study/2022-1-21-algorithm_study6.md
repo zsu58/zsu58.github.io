@@ -77,6 +77,7 @@ print(fibonacci(5))
 import sys
 sys.setrecursionlimit(2000)
 ```
+---
 
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/boj/boj(7)/)
