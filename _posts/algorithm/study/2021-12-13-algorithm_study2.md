@@ -94,6 +94,6 @@ print(solution(cards))
 
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/programmers/programmers_coding_test(4)/#모의고사)
-* [🔗 링크2](https://carl020958.github.io/programmers/programmers_coding_test(2)/#소수-찾기)
-* [🔗 링크2](https://carl020958.github.io/boj/boj(1)/)
+* [🔗 링크2](https://carl020958.github.io/programmers/programmers_coding_test(9)/#소수-찾기)
+* [🔗 링크3](https://carl020958.github.io/boj/boj(1)/)
 
