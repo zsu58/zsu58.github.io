@@ -37,13 +37,12 @@ def isPrime(num):
     return True
 
 def solution(numbers):
-    
     ps = set()
     # loop for all possible combination numbers
     for i in range(1, len(numbers)+1):
-        # loop over all possible permetuations
-        for permetuation in permutations(numbers, i):
-            tmp = int("".join(permetuation))
+        # loop over all possible permutations
+        for permutation in permutations(numbers, i):
+            tmp = int("".join(permutation))
             # if prime number add to set
             if isPrime(tmp):
                 ps.add(tmp)

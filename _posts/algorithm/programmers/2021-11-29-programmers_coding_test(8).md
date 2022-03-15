@@ -323,6 +323,12 @@ def solution(numbers, target):
         ans = a + b
     return ans.count(target)
 
+# product 함수 사용하면 조금 더 깔끔하게 해결 가능
+from itertools import product
+def solution(numbers, target):
+    l = [(num, -num) for num in numbers]
+    return list(map(sum, product(*l))).count(target)
+
 # 다른 사람의 좋은 풀이
 def solution(numbers, target):
     if not numbers and target == 0 :
