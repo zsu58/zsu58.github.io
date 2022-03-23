@@ -49,24 +49,3 @@ def solution(numbers):
     return len(ps)
 ```
 ---
-
-### 정수 삼각형
-* 16/3/2022
-<p align="center">
-    <img src="/img/backend/algorithm/coding_test/coding_test76.png" align="center">
-</p>
-```python
-# 나의 풀이
-def solution(triangle):
-    # update every row in triangle
-    for i in range(1, len(triangle)):
-        # add the first, last number of the previous row to the first, last number of the current row each
-        triangle[i][0] += triangle[i-1][0]
-        triangle[i][-1] += triangle[i-1][-1]
-        # add the maximum number of the previous row's neighboring two numbers to the current row
-        for j in range(1, len(triangle[i])-1):
-            triangle[i][j] += max(triangle[i-1][j-1], triangle[i-1][j])
-    
-    return max(triangle[-1])
-```
----

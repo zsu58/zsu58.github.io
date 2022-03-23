@@ -99,5 +99,5 @@ print(solution(data))
 ---
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/boj/boj(9)/)
-* [🔗 링크2]()
-* [🔗 링크3]()
+* [🔗 링크2](https://carl020958.github.io/programmers/programmers_coding_test(10)/#정수-삼각형)
+* [🔗 링크3](https://carl020958.github.io/programmers/programmers_coding_test(10)/#N으로-표현)
