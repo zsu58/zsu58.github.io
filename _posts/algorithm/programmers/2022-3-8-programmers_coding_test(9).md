@@ -97,3 +97,33 @@ def solution(fees, records):
 ```
 ---
 
+### 주차 요금 계산
+* 3/4/2022
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test79.png" align="center">
+</p>
+```python
+# 나의 풀이
+def transform(n, k):
+    res = ""
+    while n > k:
+        res = str((n % k)) + res
+        n //= k
+    return str(n) + res
+
+def is_prime(n):
+    n = int(n)
+    if n == 1:
+        return False
+    if n in [2, 3]:
+        return True
+    for i in range(2, int(n**(1/2)+1)):
+        if n % i == 0:
+            return False
+    return True
+
+def solution(n, k):
+    transformed = transform(n, k)
+    return sum(is_prime(num) for num in transformed.split("0") if num)
+```
+---
