@@ -40,11 +40,11 @@ def solution(participant, completion):
     hash = {}
     # if participant in hash, get the number and add one to the value, if not 1
     for p in participant:
-    hash[p] = hash.get(p,0) + 1
+        hash[p] = hash.get(p,0) + 1
 
     # iterate over completion and minus one from value 
     for c in completion:
-    hash[c] -= 1
+        hash[c] -= 1
 
     # iterate over hash and return key if value is 1
     return [k for k,v in hash.items() if v==1][0]
