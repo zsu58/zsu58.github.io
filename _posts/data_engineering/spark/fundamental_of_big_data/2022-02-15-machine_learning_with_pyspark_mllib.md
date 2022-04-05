@@ -398,9 +398,3 @@ plt.scatter(rdd_split_int_df_pandas["col1"], rdd_split_int_df_pandas["col2"])
 plt.scatter(cluster_centers_pandas["col1"], cluster_centers_pandas["col2"], color="red", marker="x")
 plt.show()
 ```
-
-
-    
-![png](output_28_0.png)
-    
-
