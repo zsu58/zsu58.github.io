@@ -158,13 +158,13 @@ def dijkstra(start):
             continue
 
         # 현재 노드와 연결된 다른 인접 노드 확인
-        for i in graph[now]:
-            cost = dist + i[1]
+        for node_index, node_cost in graph[now]:
+            cost = dist + node_cost
 
             # 현재 노드를 거쳐, 다른 노드로 이동하는 거리가 더 짧은 경우 추가
-            if cost < distance[i[0]]:
-                distance[i[0]] = cost
-                heapq.heappush(q, (cost, i[0]))
+            if cost < distance[node_index]:
+                distance[node_index] = cost
+                heapq.heappush(q, (cost, node_index))
 
 # 다익스트라 알고리즘 수행
 dijkstra(x)
@@ -184,5 +184,6 @@ for i in range(1, n+1):
 
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/programmers/programmers_coding_test(10)/#배달)
-* [🔗 링크2](https://carl020958.github.io/boj/boj(10)/)
+* [🔗 링크2](https://carl020958.github.io/boj/boj(10))
 * [🔗 링크3](https://carl020958.github.io/programmers/programmers_coding_test(10)/#가장-먼-노드)
+* [🔗 링크4](https://carl020958.github.io/boj/boj(11))
