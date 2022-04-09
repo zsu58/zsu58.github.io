@@ -97,7 +97,7 @@ def solution(fees, records):
 ```
 ---
 
-### 주차 요금 계산
+### k진수에서 소수 개수 구하기
 * 3/4/2022
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test79.png" align="center">

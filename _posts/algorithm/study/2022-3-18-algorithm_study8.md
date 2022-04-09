@@ -183,6 +183,6 @@ for i in range(1, n+1):
 ---
 
 ### 관련 알고리즘 풀이
-* [🔗 링크1]()
+* [🔗 링크1](https://carl020958.github.io/programmers/programmers_coding_test(10)/#배달)
 * [🔗 링크2](https://carl020958.github.io/boj/boj(10)/)
-* [🔗 링크3]()
+* [🔗 링크3](https://carl020958.github.io/programmers/programmers_coding_test(10)/#가장-먼-노드)
