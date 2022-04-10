@@ -23,6 +23,7 @@ tags:
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test76.png" align="center">
 </p>
+
 ```python
 # 나의 풀이
 def solution(triangle):
@@ -41,9 +42,11 @@ def solution(triangle):
 
 ### N으로 표현
 * 23/3/2022
+
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test77.png" align="center">
 </p>
+
 ```python
 # 나의 풀이
 from itertools import product
@@ -84,10 +87,12 @@ def solution(N, number):
 
 ### 배달
 * 9/4/2022
+
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test80_1.png" align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test80_2.png" align="center">
 </p>
+
 ```python
 # 나의 풀이
 import heapq
@@ -131,9 +136,11 @@ def solution(N, road, K):
 
 ### 가장 먼 노드
 * 9/4/2022
+
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test81.png" align="center">
 </p>
+
 ```python
 # 나의 풀이
 # bfs(nonlocal 활용)
@@ -247,5 +254,44 @@ def solution(n, edge):
     dists = dijkstra(1, graph, dists)
 
     return sum(1 for dist in dists if dist == max(dists[1:]))
+```
+---
+
+### 네트워크
+* 10/4/2022
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test82.png" align="center">
+</p>
+
+```python
+# 나의 풀이
+def solution(n, computers):
+    
+    graph = [[] for _ in range(n)]
+    for i in range(len(computers)):
+        for j in range(len(computers[i])):
+            if computers[i][j] == 1:
+                graph[i].append(j)
+    
+    def dfs(n):
+        nonlocal visited, conn
+        conn.append(n)
+        visited[n] = True
+        for node in graph[n]:
+            if not visited[node]:
+                dfs(node)
+    
+    conns = []
+    for i in range(n):
+        visited = [False] * (n+1)
+        conn = []
+        dfs(i)
+        conns.append(conn)
+    
+    res = set()
+    for conn in conns:
+        res.add("".join(map(str, sorted(conn))))
+    
+    return len(res)
 ```
 ---
