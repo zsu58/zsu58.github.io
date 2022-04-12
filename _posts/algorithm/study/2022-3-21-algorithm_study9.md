@@ -30,4 +30,4 @@ tags:
 ### 관련 알고리즘 풀이
 * [🔗 링크1](https://carl020958.github.io/programmers/programmers_coding_test(6)/#체육복)
 * [🔗 링크2](https://carl020958.github.io/boj/boj(12))
-* [🔗 링크3]()
+* [🔗 링크3](https://carl020958.github.io/programmers/programmers_coding_test(9)/#구명보트)

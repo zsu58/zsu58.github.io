@@ -127,3 +127,26 @@ def solution(n, k):
     return sum(is_prime(num) for num in transformed.split("0") if num)
 ```
 ---
+
+### 구명보트
+* 12/4/2022
+<p align="center">
+    <img src="/img/backend/algorithm/coding_test/coding_test83.png" align="center">
+</p>
+```python
+# 나의 풀이
+def solution(people, limit):
+    people.sort(reverse=True)
+    res = 0
+    l, r = 0, len(people)-1
+    while l <= r:
+        if people[l] + people[r] <= limit:
+            l += 1
+            r -= 1
+        else:
+            l += 1
+        res += 1
+    
+    return res
+```
+---
