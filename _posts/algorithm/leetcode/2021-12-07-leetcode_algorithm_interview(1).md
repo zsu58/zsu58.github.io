@@ -1,7 +1,7 @@
 ---
 title: "[ALGORITHM] LeetCode 125. Valid Palindrome"
 layout: single
-date: '7/12/2021'
+date: '07/12/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 리스트 항목의 합 탐색"
 layout: single
-date: '6/11/2021'
+date: '06/11/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

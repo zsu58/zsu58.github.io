@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 주식 최대 이익"
 layout: single
-date: '3/11/2021'
+date: '03/11/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

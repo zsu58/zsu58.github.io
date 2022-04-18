@@ -1,7 +1,7 @@
 ---
 title: "[ALGORITHM] 최단 경로 알고리즘(플로이드 와샬 & 다익스트라)"
 layout: single
-date: '18/3/2022'
+date: '18/03/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

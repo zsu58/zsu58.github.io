@@ -1,7 +1,7 @@
 ---
 title: "[Error] ModuleNotFoundError: No module named '_lzma'"
 layout: single
-date: '22/3/2022'
+date: '22/03/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

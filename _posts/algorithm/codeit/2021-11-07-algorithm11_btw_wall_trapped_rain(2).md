@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 벽 사이 빗물 최대량(2)"
 layout: single
-date: '6/11/2021'
+date: '07/11/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

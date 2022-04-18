@@ -1,7 +1,7 @@
 ---
 title: "[ALGORITHM] 탐욕법"
 layout: single
-date: '21/3/2022'
+date: '21/03/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

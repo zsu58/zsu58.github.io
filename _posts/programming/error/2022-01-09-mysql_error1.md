@@ -1,7 +1,7 @@
 ---
 title: "[Error] OSError: mysql_config not found"
 layout: single
-date: '9/1/2022'
+date: '09/01/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

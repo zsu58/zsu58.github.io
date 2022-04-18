@@ -1,7 +1,7 @@
 ---
 title: "[Python] Reshaping Data with pandas(4)"
 layout: single
-date: '16/1/2022'
+date: '16/01/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

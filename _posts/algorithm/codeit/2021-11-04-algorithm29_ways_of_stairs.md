@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 계단 올라가는 방법의 수(1)"
 layout: single
-date: '4/11/2021'
+date: '04/11/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

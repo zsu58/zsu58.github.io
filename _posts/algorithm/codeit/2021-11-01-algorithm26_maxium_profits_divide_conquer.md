@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 최대 이익 구간 - Divide & Conquer"
 layout: single
-date: '1/11/2021'
+date: '01/11/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

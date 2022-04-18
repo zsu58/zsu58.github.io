@@ -2,7 +2,7 @@
 title: "[Python] Generator"
 date: '13/9/2021'
 layout: single
-date: '13/9/2021'
+date: '13/09/2021'
 # toc: true
 # toc_sticky: true
 # toc_label: Table of Contents

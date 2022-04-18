@@ -1,7 +1,7 @@
 ---
 title: "[NoSQL] Introduction to MongoDB(3)"
 layout: single
-date: '19/1/2022'
+date: '19/01/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

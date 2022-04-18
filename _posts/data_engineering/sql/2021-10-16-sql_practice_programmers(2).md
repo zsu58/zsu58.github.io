@@ -1,7 +1,7 @@
 ---
 title: "[SQL] Programmers SQL 연습문제 (2)"
 layout: single
-date: '22/10/2021'
+date: '16/10/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

@@ -1,7 +1,7 @@
 ---
 title: "[SQL] LEFT JOIN & RIGHT JOIN & FULL JOIN & CROSS JOIN"
 layout: single
-date: '16/9/2021'
+date: '16/09/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

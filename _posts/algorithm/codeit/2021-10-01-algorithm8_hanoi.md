@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 하노이의 탑 - 재귀함수"
 layout: single
-date: '3/10/2021'
+date: '01/10/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

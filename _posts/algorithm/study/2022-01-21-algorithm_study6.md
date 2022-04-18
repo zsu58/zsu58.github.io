@@ -1,7 +1,7 @@
 ---
 title: "[ALGORITHM] 재귀함수"
 layout: single
-date: '21/1/2022'
+date: '21/01/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

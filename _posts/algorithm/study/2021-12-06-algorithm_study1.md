@@ -1,7 +1,7 @@
 ---
 title: "[ALGORITHM] Stack & Queue"
 layout: single
-date: '6/12/2021'
+date: '06/12/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 효율적으로 중복되는 숫자 찾기(2)"
 layout: single
-date: '5/11/2021'
+date: '05/11/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

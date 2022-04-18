@@ -1,7 +1,7 @@
 ---
 title: "[Error] ERROR 1366 (HY000): Incorrect string value: \\xEC\\x9D\\xB4\\xEB\\xAF\\xB8"
 layout: single
-date: '10/1/2022'
+date: '10/01/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

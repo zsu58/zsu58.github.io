@@ -1,7 +1,7 @@
 ---
 title: "[SQL] Intermediate SQL(4)"
 layout: single
-date: '2/2/2022'
+date: '02/02/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

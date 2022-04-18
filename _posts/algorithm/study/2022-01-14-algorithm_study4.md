@@ -1,7 +1,7 @@
 ---
 title: "[ALGORITHM] 진법변환 & 비트연산"
 layout: single
-date: '14/1/2022'
+date: '14/01/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

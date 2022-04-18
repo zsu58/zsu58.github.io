@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 시간 복잡도"
 layout: single
-date: '28/9/2021'
+date: '28/09/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

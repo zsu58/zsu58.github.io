@@ -1,7 +1,7 @@
 ---
 title: "[ALGORITHM] LeetCode 49. Group Anagrams"
 layout: single
-date: '9/12/2021'
+date: '09/12/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

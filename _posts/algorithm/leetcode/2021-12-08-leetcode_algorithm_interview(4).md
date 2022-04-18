@@ -1,7 +1,7 @@
 ---
 title: "[ALGORITHM] LeetCode 819. Most Common Word"
 layout: single
-date: '8/12/2021'
+date: '08/12/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

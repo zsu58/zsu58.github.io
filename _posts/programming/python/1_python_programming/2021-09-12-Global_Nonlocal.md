@@ -1,6 +1,6 @@
 ---
 title: "[Python] 전역변수 지역변수"
-date: '12/9/2021'
+date: '12/09/2021'
 layout: single
 # toc: true
 # toc_sticky: true

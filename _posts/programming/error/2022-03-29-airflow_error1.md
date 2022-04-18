@@ -1,7 +1,7 @@
 ---
 title: "[Error] JAVA_HOME is not set"
 layout: single
-date: '29/3/2022'
+date: '29/03/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

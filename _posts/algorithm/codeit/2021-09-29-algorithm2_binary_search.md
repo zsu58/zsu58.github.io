@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 이진 탐색"
 layout: single
-date: '29/9/2021'
+date: '29/09/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

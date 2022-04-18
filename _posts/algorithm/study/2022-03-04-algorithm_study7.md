@@ -1,7 +1,7 @@
 ---
 title: "[ALGORITHM] 동적계획법"
 layout: single
-date: '4/3/2022'
+date: '04/03/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

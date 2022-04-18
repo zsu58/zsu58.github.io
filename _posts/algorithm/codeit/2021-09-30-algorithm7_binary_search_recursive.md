@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 이진 탐색 - 재귀함수"
 layout: single
-date: '30/9/2021'
+date: '30/09/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

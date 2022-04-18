@@ -1,7 +1,7 @@
 ---
 title: "[Web Crawling] Crawling Children News by Scrapy"
 layout: single
-date: '31/1/2022'
+date: '31/01/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

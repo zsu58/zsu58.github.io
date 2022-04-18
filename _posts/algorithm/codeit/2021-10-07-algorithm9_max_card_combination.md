@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 카드 조합 최대값 - 무차별 대입"
 layout: single
-date: '7/10/2021'
+date: '07/10/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

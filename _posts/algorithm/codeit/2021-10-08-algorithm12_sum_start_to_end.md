@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 첫 번째 숫자부터 마지막 숫자까지 합 - 분할정복"
 layout: single
-date: '8/10/2021'
+date: '08/10/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

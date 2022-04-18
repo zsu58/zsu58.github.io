@@ -1,7 +1,7 @@
 ---
 title: "[Python] Counter & combinations & set"
 layout: single
-date: '20/9/2021'
+date: '20/09/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

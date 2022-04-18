@@ -1,7 +1,7 @@
 ---
 title: "[ALGORITHM] Programmers ALGORITHM 연습문제 Lv1 (5)"
 layout: single
-date: '7/11/2021'
+date: '07/11/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 리스트 뒤집기 - 재귀함수"
 layout: single
-date: '29/9/2021'
+date: '29/09/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

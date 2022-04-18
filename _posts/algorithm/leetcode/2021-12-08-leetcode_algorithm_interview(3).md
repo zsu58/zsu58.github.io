@@ -1,7 +1,7 @@
 ---
 title: "[ALGORITHM] LeetCode 937. Reorder Data in Log Files"
 layout: single
-date: '8/12/2021'
+date: '08/12/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

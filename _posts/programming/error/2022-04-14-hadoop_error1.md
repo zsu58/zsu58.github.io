@@ -1,7 +1,7 @@
 ---
 title: "[Error] java.lang.UnsatisfiedLinkError:no leveldbjni64-1.8 in java.library.path"
 layout: single
-date: '14/4/2022'
+date: '14/04/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

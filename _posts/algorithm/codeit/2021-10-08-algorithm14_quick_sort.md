@@ -1,7 +1,7 @@
 ---
 title: "[Algorithm] 퀵 정렬 - 분할정복"
 layout: single
-date: '8/10/2021'
+date: '08/10/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
