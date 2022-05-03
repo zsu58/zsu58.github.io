@@ -148,7 +148,7 @@ WHERE
 ```
 
 * get matches with scores that are equal to the highest scoring match for each country, in each season
-* highest scoring - (home_team_goal + away_team_goal)
+* highest scoring: (home_team_goal + away_team_goal)
 
 
 ```sql
