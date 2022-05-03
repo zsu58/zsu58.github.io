@@ -359,26 +359,11 @@ WHERE season = '2013/2014'
 GROUP BY l.name;
 ```
 
-     * sqlite:////Users/jisu/Dropbox_Carl/Dropbox/JISU/Data/Jupyter_Projects/blog/data_engineer/sql/3_intermediate_sql/database.sqlitem
-    (sqlite3.OperationalError) no such table: league
-    [SQL: SELECT
-    	l.name AS league,
-    	ROUND(AVG(m.home_team_goal + m.away_team_goal),2) AS avg_goals,
-    	ROUND(AVG(m.home_team_goal + m.away_team_goal) - 
-    		(SELECT AVG(home_team_goal + away_team_goal)
-    		 FROM match 
-             WHERE season = '2013/2014'),2) AS diff
-    FROM league AS l
-    LEFT JOIN match AS m
-    ON l.country_id = m.country_id
-    WHERE season = '2013/2014'
-    GROUP BY l.name;]
-    (Background on this error at: https://sqlalche.me/e/14/e3q8)
-
 
 ### Subquery Everywhere
 
-* avg_goal and overall_goal by stage in 2012/2013 season
+* avg_goal and overall_goal by stage in 2012/2013 season 
+* only display the results where avg_goal of the stage is higher than the overall average
 
 
 ```sql
