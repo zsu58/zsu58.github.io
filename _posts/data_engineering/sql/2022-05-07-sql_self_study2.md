@@ -43,7 +43,7 @@ def get_connection(autocommit):
 	port=5432
 	dbname="dbname"
 	conn=psycopg2.connect(f'dbname={dbname} user={user} host={host} password={password} port={port} dbname={dbname}') 
-	conn.set_session(autcommit=autcommit)
+	conn.set_session(autocommit=autocommit)
 	return conn
 
 
