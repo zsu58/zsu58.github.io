@@ -150,3 +150,47 @@ def solution(people, limit):
     return res
 ```
 ---
+
+### 양궁대회
+* 13/5/2022
+### 문제
+* [🔗 문제 링크](https://programmers.co.kr/learn/courses/30/lessons/92342?language=python3)
+
+
+```python
+# 나의 풀이
+from itertools import combinations_with_replacement
+from collections import Counter
+
+
+def solution(n, info):
+    cases = []
+    for combination in combinations_with_replacement(range(11), n):
+        ryan = Counter(combination)
+        ryan_score, apeach_score = 0, 0
+        for i in range(11):
+            if info[10-i] < ryan[i]:
+                ryan_score += i
+            elif info[10-i] > 0:
+                apeach_score += i
+                
+        if ryan_score > apeach_score:
+            cases.append((ryan, ryan_score-apeach_score))
+    
+    if not cases:
+        return [-1]
+
+    cases2 = []
+    max_score = max(case[1] for case in cases)
+    for case in cases:
+        if case[1] == max_score:
+            tmp = [0] * 11
+            for k,v in case[0].items():
+                tmp[10-k] = v
+            cases2.append(tmp)
+    
+    return sorted(cases2, 
+                  key=lambda x: (-x[10], -x[9], -x[8], -x[7], -x[6], -x[5], -x[4], -x[3], -x[2], -x[1], -x[0]))[0]
+```
+---
+
