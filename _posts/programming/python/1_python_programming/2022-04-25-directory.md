@@ -1,8 +1,7 @@
 ---
 title: "[Python] Directory"
-date: '25/4/2022'
+date: '25/04/2022'
 layout: single
-date: '13/09/2021'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
