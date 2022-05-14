@@ -23,6 +23,7 @@ tags:
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test75.png" align="center">
 </p>
+
 ```python
 # 나의 풀이
 from itertools import permutations
@@ -52,12 +53,14 @@ def solution(numbers):
 
 ### 주차 요금 계산
 * 3/4/2022
+
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test78_1.png" align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test78_2.png" align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test78_3.png" align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test78_4.png" align="center">
 </p>
+
 ```python
 # 나의 풀이
 from datetime import datetime, timedelta
@@ -99,9 +102,11 @@ def solution(fees, records):
 
 ### k진수에서 소수 개수 구하기
 * 3/4/2022
+
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test79.png" align="center">
 </p>
+
 ```python
 # 나의 풀이
 def transform(n, k):
@@ -130,9 +135,11 @@ def solution(n, k):
 
 ### 구명보트
 * 12/4/2022
+
 <p align="center">
     <img src="/img/backend/algorithm/coding_test/coding_test83.png" align="center">
 </p>
+
 ```python
 # 나의 풀이
 def solution(people, limit):
@@ -152,10 +159,9 @@ def solution(people, limit):
 ---
 
 ### 양궁대회
-* 13/5/2022
-### 문제
-* [🔗 문제 링크](https://programmers.co.kr/learn/courses/30/lessons/92342?language=python3)
 
+* 13/5/2022
+* [🔗 문제 링크](https://programmers.co.kr/learn/courses/30/lessons/92342)
 
 ```python
 # 나의 풀이
@@ -193,4 +199,59 @@ def solution(n, info):
                   key=lambda x: (-x[10], -x[9], -x[8], -x[7], -x[6], -x[5], -x[4], -x[3], -x[2], -x[1], -x[0]))[0]
 ```
 ---
+
+
+### [3차] 방금그곡
+
+* 14/5/2022
+* [🔗 문제 링크](https://programmers.co.kr/learn/courses/30/lessons/17683)
+
+```python
+# 나의 풀이
+import re
+from datetime import datetime
+
+
+def replace(m):
+    change_list = [("C#", "c"), ("D#", "d"), ("F#", "f"), ("G#", "g"), ("A#", "a")]
+    for change in change_list:
+        m = re.sub(change[0], change[1], m)
+    return m
+
+
+def solution(m, musicinfos):
+    music_list = []
+    for idx, musicinfo in enumerate(musicinfos):
+        start, end, title, notes = musicinfo.split(",")
+        time = (datetime.strptime(end, "%H:%M") - datetime.strptime(start, "%H:%M")).total_seconds()/60
+        notes = replace(notes)
+        
+        notes_len = len(notes)
+        if time <= notes_len:
+            total_notes = notes[:int(time)]
+        else:
+            total_notes = (notes * int(time//notes_len)) + notes[:int(time%notes_len)]
+        
+        m = replace(m)
+        m_len = len(m)
+        
+        for i, note in enumerate(total_notes):
+            if len(total_notes) < i+m_len:
+                break
+            if note == m[0]:
+                check = total_notes[i:i+m_len]
+                if check == m:
+                    music_list.append((time, idx, title))
+                    break
+
+    res = sorted(music_list, key=lambda x: (-x[0], x[1]))
+
+    if res:
+        return res[0][2]
+    else:
+        return "(None)"
+```
+---
+
+
 
