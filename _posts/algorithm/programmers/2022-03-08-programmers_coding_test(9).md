@@ -200,7 +200,6 @@ def solution(n, info):
 ```
 ---
 
-
 ### [3차] 방금그곡
 
 * 14/5/2022
@@ -253,5 +252,27 @@ def solution(m, musicinfos):
 ```
 ---
 
+### [3차] 방금그곡
+
+* 14/5/2022
+* [🔗 문제 링크](https://programmers.co.kr/learn/courses/30/lessons/49993)
+
+```python
+# 나의 풀이
+import re
+
+
+def solution(skill, skill_trees):
+    res = len(skill_trees)
+    for skill_tree in skill_trees:
+        for i in range(1, len(skill)):
+            if skill[i] in skill_tree:
+                p = f'(.*?)([{skill[i-1]}])(.*?)([{skill[i]}])'
+                if not re.search(p, skill_tree):
+                    res -= 1
+                    break
+    return res
+```
+---
 
 
