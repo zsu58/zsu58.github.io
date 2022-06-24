@@ -41,6 +41,7 @@ WHERE year = '2015'
 
 ### Subquery (inside SELECT)
 * 이 경우, `AS`로 alias 해야 함!
+* 단일 값(single value)만 올 수 있음
 * GET the country and number of cities per country
 * Order the result in descending order of the number and limit the result to 9 countries
 
