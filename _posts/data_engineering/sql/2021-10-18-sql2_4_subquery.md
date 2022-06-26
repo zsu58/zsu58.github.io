@@ -63,6 +63,10 @@ SELECT countries.name AS country,
 FROM countries
 ORDER BY cities_num DESC, country
 LIMIT 9;
+
+-- select name, price and price ratio(price/max(price) for each phone
+SELECT name, price, price / (SELECT MAX(price) FROM phones)
+FROM phones
 ```
 ---
 
