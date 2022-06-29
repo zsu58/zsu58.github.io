@@ -1,7 +1,7 @@
 ---
 title: "[PostgreSQL] Polymorphic Association"
 layout: single
-date: '27/05/2022'
+date: '27/06/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

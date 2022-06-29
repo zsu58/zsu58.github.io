@@ -1,7 +1,7 @@
 ---
 title: "[SQL] DELETE FROM vs TRUNCATE"
 layout: single
-date: '08/05/2022'
+date: '07/05/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

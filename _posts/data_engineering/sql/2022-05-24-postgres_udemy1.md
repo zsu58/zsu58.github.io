@@ -1,7 +1,7 @@
 ---
 title: "[PostgreSQL] ON DELETE"
 layout: single
-date: '24/05/2022'
+date: '24/06/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

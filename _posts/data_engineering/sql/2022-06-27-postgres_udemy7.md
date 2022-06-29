@@ -1,7 +1,7 @@
 ---
 title: "[PostgreSQL] Understanding Postgres"
 layout: single
-date: '27/05/2022'
+date: '27/06/2022'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
@@ -62,7 +62,8 @@ WHERE relname = 'users';
 	* pd_upper: 처음부터 free space 끝까지의 거리(비트)
 	...
 * ItemIdData: four bytes, 처음부터 item/ tuple/ row까지의 거리(비트), 해당 비트의 길이(비트)
-	* 
+	* 2번째 Byte의 '8 bit Binary'의 2~8자리 + 1번째 Byte의 '8 bit binary'의 10진수 값(binary -> decimal): 처음부터 해당 Item(시작)까지의 거리(비트)
+	* 3번째 Byte의 Int16 값: 해당 Item의 길이(비트)
 
 ---
 
