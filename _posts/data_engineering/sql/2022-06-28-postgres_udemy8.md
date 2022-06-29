@@ -17,6 +17,8 @@ tags:
 * Index Types
 * Downsides of Indexes
 * Index Creation
+* Automatically Generated Indexes
+* Actual File of Index
 
 ---
 
@@ -83,7 +85,65 @@ WHERE username = 'Emil30';
 -- with index execution time was approximately 0.05ms
 ```
 
+---
 
+### Automatically Generated Indexes
+* Automatically generated indexes don't get listed under 'indexes'
+  * For every PK column for every table postgres automatically creates an index
+  * For any 'unique' constraint postgres automatically creates an index
+
+```sql
+-- list of all the index in the database
+SELECT relname, relkind
+FROM pg_class
+WHERE relkind = 'i';
+```
+
+---
+
+### Actual File of Index
+* File of Index are composed of the following(similar to the Heap file used to store data)
+  * Meta Page(8kb): information about the overall index
+  * Leaf Block/Page(8kb)
+  * Leaf Block/Page(8kb)
+  <br>
+  ...
+  <br>
+  * Root Block/Page(8kb): direction info to the Leaf Block
+  * Leaf Block/Page(8kb)
+    * the first row is the pointer to the next Leaf Block/Page
+    * the second row is the first value of that Leaf Block/Page
+
+```sql
+-- create extension to look at page
+CREATE EXTENSION pageinspect;
+
+-- Find the Root Block/Page's number
+SELECT *
+-- bt: B-tree metap: metapage
+FROM bt_metap('users_username_idx');
+-- root: 3
+-- meaning that the 3 page is the Root Block/Page
+
+-- Get the data from the Root Block/Page
+SELECT *
+-- 3 means the page number
+FROM bt_page_items('users_username_idx', 3);
+-- if the data matches the data from the 'data' column then should go to the page index listed inside the 'ctid' column
+-- ctid consists of ([leaf_page_number], [])
+
+-- Get the data from the Leaf Block/Page 1
+SELECT *
+FROM bt_page_items('users_username_idx', 1);
+-- 'ctid' column: ([page/block_num], [index_num]) of 'users' heap file
+-- (96,34)
+
+-- check wether the ctid actually has that data
+SELECT ctid, *
+FROM users 
+WHERE username =  'Aaron_Gutmann'
+-- (96,34)
+```
 
 ---
 
