@@ -58,10 +58,14 @@ WHERE relname = 'users';
 
 ### Overall Block/ Page Layout
 * PageHedaerData: 24 bytes long, contains general information about the page, including free space pointers.
+	<br>
 	...
+	<br>
 	* pd_lower: 처음부터 free space 시작까지의 거리(비트)
 	* pd_upper: 처음부터 free space 끝까지의 거리(비트)
+	<br>
 	...
+	<br>
 * ItemIdData: four bytes, 처음부터 item/ tuple/ row까지의 거리(비트), 해당 비트의 길이(비트)
 	* 2번째 Byte의 '8 bit Binary'의 2~8자리 + 1번째 Byte의 '8 bit binary'의 10진수 값(binary -> decimal): 처음부터 해당 Item(시작)까지의 거리(비트)
 	* 3번째 Byte의 Int16 값: 해당 Item의 길이(비트)
