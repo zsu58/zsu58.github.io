@@ -54,6 +54,7 @@ WHERE relname = 'users';
 	* 하나의 Heap File 안에 여러 Block/ Page가 존재
 	* 하나의 Block/ Page 안에 여러 Tuple/Item이 존재
 
+---
 
 ### Overall Block/ Page Layout
 * PageHedaerData: 24 bytes long, contains general information about the page, including free space pointers.
@@ -70,6 +71,8 @@ WHERE relname = 'users';
 ### Table Row Layout
 * Individual Item/ Tuple/ Row
 * There is a fixed-size header (occupying 23 bytes on most machines), followed by an optional null bitmap, an optional object ID field, and the **user data**.
+
+---
 
 ### ref
 * [🔗 Postgres Page 공식문서](https://www.postgresql.org/docs/current/storage-page-layout.html)
