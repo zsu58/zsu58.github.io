@@ -15,6 +15,7 @@ tags:
 ### Basic Query Tuning
 * Query Processing Pipeline
 * EXPLAIN & EXPLAIN ANALYZE
+* Meaning of Cost
 
 ---
 
@@ -73,15 +74,27 @@ WHERE tablename IN ('users', 'comments');
 ```
 * Hash Join: How this node is generating data
 * cost: Amount of processing power required for this step
+  * the first number(e.g. 8.31): cost for this step to produce the first row
+  * the second number(e.g. 1756.11): cost for this step to produce all row
+  * data(rows) are emited to the next step right after the execution, however if the first, and second number is the same(e.g. 3) Hash  (cost=8.30..8.30), it means that all the process has to be executed, and the rows are sent in altogether.
 * rows: Guess at how many rows this step will produce
 * width: Guess at the average number of bytes of each row
 
+---
 
+### Meaning of Cost
+* seq_page_cost: pages(blocks) read sequentially(1.0)
+* random_page_cost: pages read at random(4.0)
+* cpu_tuple_cost: rows scanned(.01)
+* cpu_index_tuple_cost: index entries scanned(0.005)
+* cpu_operator_cost: time function/ operation evaluated(0.0025)
+* There are more sort of costs which can be found in [🔗 Postgres Query Planning 공식문서](https://www.postgresql.org/docs/current/runtime-config-query.html)
 
 ---
 
 ### ref
-* [🔗 Query Tuning 참고1](https://coding-factory.tistory.com/744)
-* [🔗 Query Tuning 참고2](https://velog.io/@jwpark06/Postgresql-%EC%8A%AC%EB%A1%9C%EC%9A%B0-%EC%BF%BC%EB%A6%AC%EC%97%90-%EB%8C%80%EC%B2%98%ED%95%98%EA%B8%B0
-https://bactoria.github.io/2019/06/15/%EC%8B%A4%ED%96%89%EA%B3%84%ED%9A%8D-postgresql/)
 
+* [🔗 Query Tuning 참고1](https://coding-factory.tistory.com/744)
+* [🔗 Query Tuning 참고2](https://velog.io/@jwpark06/Postgresql-%EC%8A%AC%EB%A1%9C%EC%9A%B0-%EC%BF%BC%EB%A6%AC%EC%97%90-%EB%8C%80%EC%B2%98%ED%95%98%EA%B8%B0)
+* [🔗 Query Tuning 참고3](https://bactoria.github.io/2019/06/15/%EC%8B%A4%ED%96%89%EA%B3%84%ED%9A%8D-postgresql/)
+* [🔗 Query Tuning 참고4](http://www.gurubee.net/lecture/2388)
