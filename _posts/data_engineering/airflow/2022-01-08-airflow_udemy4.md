@@ -32,15 +32,15 @@ with DAG(
 ) as dag:
     # Action Operator
     extracting_user = SimpleHttpOperator(
-    task_id="extracting_user",
-    http_conn_id="user_api",
-    endpoint="api/",
-    # used GET cuz there's no need to send any data
-    method="GET",
-    # get the text and bring it in json form
-    response_filter=lambda response: json.loads(response.text),
-    # print the response
-    log_response=True
+        task_id="extracting_user",
+        http_conn_id="user_api",
+        endpoint="api/",
+        # used GET cuz there's no need to send any data
+        method="GET",
+        # get the text and bring it in json form
+        response_filter=lambda response: json.loads(response.text),
+        # print the response
+        log_response=True
     )
 ```
 ---
