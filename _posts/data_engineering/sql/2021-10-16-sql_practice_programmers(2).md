@@ -96,4 +96,46 @@ HAVING HOUR BETWEEN 9 AND 19
 ORDER BY HOUR
 ```
 
+### 문제 17
+<p align="center">
+    <img src="/img/data_engineering/sql/sql_programmers17_1.png" align="center">
+    <img src="/img/data_engineering/sql/sql_programmers17_2.png" align="center">
+    <img src="/img/data_engineering/sql/sql_programmers17_3.png" align="center">
+</p>
+
+
+```sql
+WITH RECURSIVE h(hour) AS (
+    SELECT
+        0
+    UNION ALL
+    SELECT
+        hour + 1
+    FROM
+        h
+    WHERE
+        hour < 23
+)
+SELECT
+    h.hour AS HOUR,
+    CASE 
+        WHEN cnt IS NULL THEN 0
+        ELSE cnt
+    END AS COUNT
+FROM
+    h
+    LEFT JOIN
+        (
+            SELECT
+                HOUR(DATETIME) AS hour,
+                COUNT(ANIMAL_ID) AS cnt
+            FROM
+                ANIMAL_OUTS
+            GROUP BY
+                1
+        ) AS foo 
+    ON h.hour = foo.hour
+
+```
+
 ---
