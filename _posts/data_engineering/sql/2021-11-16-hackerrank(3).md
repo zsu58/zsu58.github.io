@@ -41,6 +41,8 @@ SELECT
 FROM triangles;
 ```
 
+---
+
 ### The PADS
 * 17/11/2021
 
@@ -67,8 +69,10 @@ GROUP BY Occupation
 ORDER BY COUNT(*);
 ```
 
+---
+
 ### OCCUPATIONS
-* 30/08/2022
+* 17/11/2021
 * [🔗 문제 링크](https://www.hackerrank.com/challenges/occupations/problem?isFullScreen=true)
 
 ```sql
@@ -86,8 +90,10 @@ FROM (
 GROUP BY RN
 ```
 
+---
+
 ### Binary Tree Nodes
-* 30/08/2022
+* 17/11/2021
 * [🔗 문제 링크](https://www.hackerrank.com/challenges/binary-search-tree-1/problem?isFullScreen=true)
 
 ```sql
@@ -134,8 +140,10 @@ ORDER BY
 
 ```
 
+---
+
 ### New Companies
-* 30/08/2022
+* 17/11/2021
 * [🔗 문제 링크](https://www.hackerrank.com/challenges/the-company/problem?isFullScreen=true)
 
 ```sql
@@ -173,6 +181,84 @@ GROUP BY
     c.company_code,
     c.founder
 ORDER BY
-    c.company_code
+    c.company_code;
+
+```
+
+---
+
+### Revising Aggregations - The Count Function
+* 17/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/revising-aggregations-the-count-function/problem?isFullScreen=true)
+
+```sql
+SELECT
+    COUNT(1)    
+FROM 
+    CITY
+WHERE
+    population > 100000;
+
+```
+
+---
+
+### Revising Aggregations - The Sum Function
+* 17/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/revising-aggregations-sum/problem?isFullScreen=true)
+
+```sql
+SELECT
+    SUM(POPULATION)
+FROM
+    CITY
+WHERE
+    DISTRICT = 'California';
+
+```
+
+---
+
+### Revising Aggregations - Averages
+* 17/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/revising-aggregations-the-average-function/problem?isFullScreen=true)
+
+```sql
+SELECT
+    AVG(POPULATION)
+FROM
+    CITY
+WHERE
+    DISTRICT = 'California';
+
+```
+
+---
+
+### Revising Aggregations - Averages
+* 17/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/revising-aggregations-the-average-function/problem?isFullScreen=true)
+
+```sql
+SELECT
+    AVG(POPULATION)
+FROM
+    CITY
+WHERE
+    DISTRICT = 'California';
+
+```
+
+---
+
+### Average Population
+* 17/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/average-population/problem?isFullScreen=true)
+
+```sql
+SELECT
+    ROUND(AVG(POPULATION))
+FROM
+    CITY;
 
 ```
