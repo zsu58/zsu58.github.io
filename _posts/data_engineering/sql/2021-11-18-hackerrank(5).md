@@ -44,7 +44,7 @@ SELECT
         4
     )
 FROM
-    STATION
+    STATION;
 
 ```
 
@@ -66,7 +66,93 @@ FROM
             STATION
     ) AS foo
 WHERE
-    pr = 0.5
+    pr = 0.5;
+
+```
+
+---
+
+### Population Census
+* 19/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/asian-population/problem?isFullScreen=true)
+
+```sql
+SELECT
+     SUM(ci.POPULATION)    
+FROM
+    CITY AS ci
+INNER JOIN
+    COUNTRY AS co
+ON 
+    ci.COUNTRYCODE = co.CODE
+    AND co.CONTINENT = 'Asia';
+
+```
+
+---
+
+### African Cities
+* 19/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/african-cities/problem?isFullScreen=true)
+
+```sql
+SELECT
+     ci.NAME
+FROM
+    CITY AS ci
+INNER JOIN
+    COUNTRY AS co
+ON 
+    ci.COUNTRYCODE = co.CODE
+    AND co.CONTINENT = 'Africa';
+
+```
+
+---
+
+### Average Population of Each Continent
+* 19/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/average-population-of-each-continent/problem?isFullScreen=true)
+
+```sql
+SELECT
+     co.CONTINENT,
+     FLOOR(AVG(ci.POPULATION))
+FROM
+    CITY AS ci
+INNER JOIN
+    COUNTRY AS co
+ON 
+    ci.COUNTRYCODE = co.CODE
+GROUP BY
+    co.CONTINENT;
+
+```
+
+---
+
+
+### The Report
+* 19/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/the-report/problem?isFullScreen=true)
+
+```sql
+SELECT
+    CASE 
+        WHEN g.Grade < 8 THEN 'NULL'
+        ELSE s.Name
+    END AS Name,
+    g.Grade,
+    s.Marks
+FROM
+    Students AS s
+INNER JOIN
+    Grades AS g
+ON
+    s.Marks BETWEEN Min_Mark AND Max_Mark
+ORDER BY
+    g.Grade DESC, s.Name, s.Marks;
+
 ```
 
 ---
