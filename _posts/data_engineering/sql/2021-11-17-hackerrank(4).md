@@ -187,15 +187,3 @@ LIMIT
 ```
 
 ---
-
-### Weather Observation Station 18
-* 17/11/2021
-* [🔗 문제 링크](https://www.hackerrank.com/challenges/weather-observation-station-18/problem?isFullScreen=true)
-
-```sql
-SELECT
-    ROUND(ABS(MIN(LAT_N) - MAX(LAT_N)) + ABS(MIN(LONG_W) - MAX(LONG_W)), 4)
-FROM
-    STATION;
-
-```
