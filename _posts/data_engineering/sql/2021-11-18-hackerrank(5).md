@@ -156,3 +156,111 @@ ORDER BY
 ```
 
 ---
+
+### Top Competitors
+* 19/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/full-score/problem?isFullScreen=true)
+
+```sql
+SELECT
+    h.hacker_id,
+    h.name
+FROM
+    Hackers AS h
+INNER JOIN
+    Submissions AS s
+ON
+    s.hacker_id = h.hacker_id
+INNER JOIN
+    Challenges AS c
+ON
+    c.challenge_id = s.challenge_id
+INNER JOIN
+    Difficulty AS d
+ON
+    d.difficulty_level = c.difficulty_level
+    AND d.score = S.score
+GROUP BY
+    h.hacker_id,
+    h.name
+HAVING 
+    COUNT(1) > 1
+ORDER BY
+    COUNT(1) DESC,
+    h.hacker_id ASC;
+
+```
+
+---
+
+### Ollivander's Inventory
+* 19/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/harry-potter-and-wands/problem?isFullScreen=true)
+
+```sql
+SELECT 
+    w.ID, 
+    P.AGE, 
+    w.coins_needed, 
+    w.power
+FROM (
+    SELECT 
+        code, 
+        power,
+        MIN(coins_needed) as min_coins_needed
+    FROM 
+        wands 
+    GROUP BY
+    code, 
+    power
+) as t
+INNER JOIN
+    WANDS as w
+ON 
+    w.code = t.code 
+    and w.power = t.power 
+    and w.coins_needed = t.min_coins_needed
+INNER JOIN 
+    wands_property as p
+ON 
+    p.code = w.code
+where 
+    p.is_evil = 0
+order by 
+    w.power desc, 
+    p.age desc;
+
+-- 다른 코드
+SELECT
+    W.id, 
+    P.age, 
+    W.coins_needed, 
+    W.power
+FROM Wands AS W
+INNER JOIN 
+    Wands_Property AS P 
+ON 
+    W.code = P.code
+    AND P.is_evil = 0
+    AND W.coins_needed = (
+        SELECT 
+            MIN(W1.coins_needed)
+        FROM 
+            Wands AS W1
+        INNER JOIN 
+            Wands_Property AS P1 
+        ON 
+            W1.code = P1.code
+        WHERE 
+            P1.is_evil = 0 
+            AND 
+                W1.power = W.power
+            AND 
+                P1.age = P.age
+    )
+ORDER BY 
+    W.power DESC, 
+    P.age DESC
+```
+
+---
