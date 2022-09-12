@@ -18,7 +18,7 @@ tags:
 ---
 
 ### Weather Observation Station 18
-* 17/11/2021
+* 18/11/2021
 * [🔗 문제 링크](https://www.hackerrank.com/challenges/weather-observation-station-18/problem?isFullScreen=true)
 
 ```sql
@@ -264,3 +264,51 @@ ORDER BY
 ```
 
 ---
+
+### Challenges
+* 19/11/2021
+* [🔗 문제 링크](https://www.hackerrank.com/challenges/challenges/problem?isFullScreen=true)
+
+```sql
+-- MS_SQL 기준 코드
+WITH cte AS (
+    SELECT
+        hacker_id,
+        COUNT(1) AS total_cc
+    FROM
+        Challenges AS c
+    GROUP BY
+        hacker_id
+)
+SELECT
+    cte.hacker_id,
+    h.name,
+    cte.total_cc
+FROM
+    cte
+JOIN
+    Hackers AS h
+ON
+    cte.hacker_id = h.hacker_id
+WHERE
+     cte.total_cc = (
+        SELECT 
+            MAX(total_cc)
+        FROM 
+            cte
+    )
+    OR total_cc IN (
+        SELECT
+            total_cc
+        FROM
+            cte
+        GROUP BY
+            total_cc
+        HAVING
+            COUNT(1) = 1
+    )
+ORDER BY
+    total_cc DESC,
+    hacker_id;
+
+```
