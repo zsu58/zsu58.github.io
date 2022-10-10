@@ -66,6 +66,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+            <span class="nav__sub-title">Computer Science</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "OS" %}
+                        <li><a href="/categories/os" class="">OS ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         <span class="nav__sub-title">Data-Engineering</span>
             <ul>
                 {% for category in site.categories %}
