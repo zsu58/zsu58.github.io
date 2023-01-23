@@ -23,7 +23,7 @@ tags:
 # where python is installed
 sys.prefix
 
-# Where the compiled C binaries exists
+# Where the python environment is
 sys.exec_prefix
 
 # where python look for imports
