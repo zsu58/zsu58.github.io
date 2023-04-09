@@ -71,16 +71,16 @@ localhost:80
   
 ```bash
 # docker image tagging
-docker tag testnode:latest carl020958/testing_node:latest
+docker tag testnode:latest zsu58/testing_node:latest
 
 # pushing to docker hub
-docker push carl020958/testing_node:latest
+docker push zsu58/testing_node:latest
 
 # remove docker image
 docker image rm -f 3b6
 
 # run container
-docker container run --rm -p 80:3000 carl020958/testing_node
+docker container run --rm -p 80:3000 zsu58/testing_node
 
 # check
 localhost:80

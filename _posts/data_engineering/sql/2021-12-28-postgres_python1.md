@@ -36,9 +36,9 @@ import psycopg2
 ```
 
 ```python
-%sql postgresql://carl020958:1234@0.0.0.0:5432/testDB
+%sql postgresql://zsu58:1234@0.0.0.0:5432/testDB
 ```
-    'Connected: carl020958@testDB'
+    'Connected: zsu58@testDB'
 ---
 
 ### Table 생성
@@ -52,7 +52,7 @@ CREATE TABLE name_geschlecht(
 )
 ```
 
-     * postgresql://carl020958:***@0.0.0.0:5432/testDB
+     * postgresql://zsu58:***@0.0.0.0:5432/testDB
     Done.
     Done.
     []
@@ -64,7 +64,7 @@ CREATE TABLE name_geschlecht(
 ```python
 def get_postgres_connection():
     host = "0.0.0.0"
-    user = "carl020958"
+    user = "zsu58"
     password = "1234"
     port = "5432"
     dbname = "testDB"
@@ -139,7 +139,7 @@ transform_load(dataframe)
 %%sql
 SELECT * FROM name_geschlecht
 ```
-     * postgresql://carl020958:***@0.0.0.0:5432/testDB
+     * postgresql://zsu58:***@0.0.0.0:5432/testDB
     6 rows affected.
 
 <table>

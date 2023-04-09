@@ -24,7 +24,7 @@ tags:
 ---
 
 ### Solution
-* [🔗 Dockerfile 링크](https://github.com/carl020958/docker/tree/main/hadoop_spark/base)
+* [🔗 Dockerfile 링크](https://github.com/zsu58/docker/tree/main/hadoop_spark/base)
 
 ---
 

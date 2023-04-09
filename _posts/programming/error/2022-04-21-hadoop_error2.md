@@ -18,7 +18,7 @@ tags:
     * airflow에서 master을 yarn으로 spark-submit job 실행
 * 해결
   * spark-env.sh에 HADOOP_CONF_DIR 명시
-  * [🔗 Dockerfile을 통한 해결](https://github.com/carl020958/docker/blob/main/hadoop_spark/spark/Dockerfile)
+  * [🔗 Dockerfile을 통한 해결](https://github.com/zsu58/docker/blob/main/hadoop_spark/spark/Dockerfile)
 
 ---
 

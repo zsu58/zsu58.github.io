@@ -22,7 +22,7 @@ tags:
 
 ### Run Container
 * scrapy-kidnews image를 활용하여 scrapy container 생성
-* 생성 후 scrapy 정상 실행을 위해, lzma 오류 해결해야함 * [🔗 lzma 해결](https://carl020958.github.io/error/docker_error1/)
+* 생성 후 scrapy 정상 실행을 위해, lzma 오류 해결해야함 * [🔗 lzma 해결](https://zsu58.github.io/error/docker_error1/)
 
 
 ```bash
