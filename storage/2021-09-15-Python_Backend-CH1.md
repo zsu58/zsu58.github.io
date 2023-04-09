@@ -65,7 +65,7 @@ git --version
 
 # 깃에서 사용할 사용자 이름 & 이메일 설정
 git config --global user.name 'ZSU'
-git config --global user.email 'carl020958@korea.ac.kr'
+git config --global user.email 'zsu58@icloud.com'
 
 #Git 관련 터미널 툴
 # 1)TIG(깃 커밋 히스토리를 터미널에서 보여주는 툴)
