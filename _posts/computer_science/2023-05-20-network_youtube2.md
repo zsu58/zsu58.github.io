@@ -1,5 +1,5 @@
 ---
-title: "[Computer Science] 네트워크 기초1 실습"
+title: "[Computer Science] 따라學IT 네트워크란 무엇인가? - 실습1 & 2"
 layout: single
 date: '20/05/2023'
 toc: true
@@ -12,7 +12,7 @@ tags:
 ---
 
 ---
-### 네트워크 기초1 실습
+### 실습1 & 2
 * 구글과의 연결
 * Wireshark으로 프로토콜 확인
 
