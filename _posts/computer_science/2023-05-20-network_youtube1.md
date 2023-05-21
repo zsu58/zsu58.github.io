@@ -1,5 +1,5 @@
 ---
-title: "[Computer Science] 따라學IT 네트워크란 무엇인가?"
+title: "[Computer Science] 따라學IT 네트워크 기초1 - 네트워크란 무엇인가?"
 layout: single
 date: '20/05/2023'
 toc: true
