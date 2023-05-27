@@ -34,7 +34,7 @@ tags:
 
 #### 연결 형태에 따른 분류
 * `Star형`: 중앙 장비에 모든 노드가 연결된 형태(e.g. 일반 가정집의 공유기)
-* `Mesh형`: 여러 노드들이 서로 그물처럼 연결된 형태(e.g. 나라 간 인터넷 연결 https://www.submarinecablemap.com)
+* `Mesh형`: 여러 노드들이 서로 그물처럼 연결된 형태(e.g. [🔗 나라 간 인터넷 연결](https://www.submarinecablemap.com))
 * `Tree형`: 계층 구조로 연결된 형태
 * 그 외 기타: (`링형`, `버스형`, `혼합형` 등)
 
