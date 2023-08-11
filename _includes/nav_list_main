@@ -125,6 +125,13 @@
             {% endfor %}
           </ul>
           <ul>
+            {% for category in site.categories %}
+                {% if category[0] == "LINUX" %}
+                    <li><a href="/categories/linux" class="">Linux ({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+          </ul>
+          <ul>
               {% for category in site.categories %}
                   {% if category[0] == "NOSQL" %}
                       <li><a href="/categories/nosql" class="">NoSQL ({{category[1].size}})</a></li>
