@@ -119,6 +119,13 @@
           </ul>
           <ul>
             {% for category in site.categories %}
+                {% if category[0] == "JENKINS" %}
+                    <li><a href="/categories/jenkins" class="">Jenkins ({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+          </ul>
+          <ul>
+            {% for category in site.categories %}
                 {% if category[0] == "KUBERNETES" %}
                     <li><a href="/categories/kubernetes" class="">Kubernetes ({{category[1].size}})</a></li>
                 {% endif %}
