@@ -26,6 +26,9 @@ docker image build -t custom_nginx .
 
 # dockerfile에 적혀 있는 순서대로 build하며, 변경이 없는 부분은 cache를 이용하고 변경된 부분만 새롭게 build하므로
 # 변경이 없는 부분을 위에, 변경이 많은 부분은 아래에 적는 것이 좋음
+
+# log build output
+docker build --no-cache --progress=plain -t hrs-pipeline:v1.0.5-3.8-3.3.2 . 2>&1 | tee build_log.out
 ```
 ---
 
@@ -86,5 +89,3 @@ docker container run --rm -p 80:3000 zsu58/testing_node
 localhost:80
 ```
 ---
-
-
