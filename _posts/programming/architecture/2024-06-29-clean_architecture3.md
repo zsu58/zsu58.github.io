@@ -1,7 +1,7 @@
 ---
 title: "[Clean Architecture] CH3 패러다임 개요"
 layout: single
-date: '06/29/2024'
+date: '29/06/2024'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

@@ -1,7 +1,7 @@
 ---
 title: "[Clean Architecture] CH2 두 가지 가치에 대한 이야기"
 layout: single
-date: '06/29/2024'
+date: '29/06/2024'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
