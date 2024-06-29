@@ -198,7 +198,7 @@
                 <ul>
                     {% for category in site.categories %}
                         {% if category[0] == "CLEAN_ARCHITECTURE" %}
-                            <li><a href="/categories/clean_architecture" class="">Python ({{category[1].size}})</a></li>
+                            <li><a href="/categories/clean_architecture" class="">CLEAN ARCHITECTURE ({{category[1].size}})</a></li>
                         {% endif %}
                     {% endfor %}
                 </ul>
