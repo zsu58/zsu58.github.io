@@ -15,7 +15,7 @@ tags:
 
 ### 상속을 사용하도록 가이드하기
 * 아래 코드에서 Billing 어플리케이션의 행위가 License 하위 타입 중 무엇을 사용하는지에 전혀 의존하기 떄문에 LSP를 준수함
-* Licnese는 하위 타입(PersonalLicense | BusinessLicense으로 치환될 수 있음)
+* Licnese는 하위 타입(PersonalLicense or BusinessLicense으로 치환될 수 있음)
 
 ```python
 class Billing:
