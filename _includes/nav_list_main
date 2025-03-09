@@ -202,6 +202,19 @@
                         {% endif %}
                     {% endfor %}
                 </ul>
+                <span class="nav__sub-title">Settings</span>
+                <ul>
+                    {% for category in site.categories %}
+                        {% if category[0] == "MACBOOK_SETTINGS" %}
+                            <li><a href="/categories/macbook_settings" class="">Error ({{category[1].size}})</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% for category in site.categories %}
+                        {% if category[0] == "PYTHON_SETTINGS" %}
+                            <li><a href="/categories/python_settings" class="">Error ({{category[1].size}})</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
         </li>
     </ul>
 </nav>
