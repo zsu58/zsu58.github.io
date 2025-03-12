@@ -6,9 +6,9 @@ toc: true
 toc_sticky: true
 toc_label: Table of Contents
 categories:
-  - CLEAN_ARCHITECTURE
+  - BOOKS
 tags:
-  - CLEAN_ARCHITECTURE
+  - BOOKS
 ---
 
 ---
@@ -48,7 +48,7 @@ tags:
 * 이러한 의존성을 해결하기 위해 추상 팩토리를 사용할 수 있음
 
 <p align="center">
-    <img src="img/programming/clean_architecture/clean_architecture1.png" align="center">
+    <img src="img/programming/books/clean_architecture/clean_architecture1.png" align="center">
 </p>
 
 * 위 그림의 곡선은 아키텍처 경계를 뜻하며, 해당 곡선은 구체적인 것들로부터 추상적인 것들을 분리함

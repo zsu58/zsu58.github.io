@@ -197,8 +197,8 @@
                 </ul>
                 <ul>
                     {% for category in site.categories %}
-                        {% if category[0] == "CLEAN_ARCHITECTURE" %}
-                            <li><a href="/categories/clean_architecture" class="">Clean Architecture ({{category[1].size}})</a></li>
+                        {% if category[0] == "BOOKS" %}
+                            <li><a href="/categories/books" class="">Books ({{category[1].size}})</a></li>
                         {% endif %}
                     {% endfor %}
                 </ul>

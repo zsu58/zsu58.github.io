@@ -6,9 +6,9 @@ toc: true
 toc_sticky: true
 toc_label: Table of Contents
 categories:
-  - CLEAN_ARCHITECTURE
+  - BOOKS
 tags:
-  - CLEAN_ARCHITECTURE
+  - BOOKS
 ---
 
 ---

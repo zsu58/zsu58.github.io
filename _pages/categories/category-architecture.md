@@ -1,11 +1,11 @@
 ---
-title: "Programming - Clean Architecture"
+title: "Programming - books"
 layout: archive
-permalink: categories/clean_architecture
+permalink: categories/books
 author_profile: true
 sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.CLEAN_ARCHITECTURE %}
+{% assign posts = site.categories.BOOKS %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {%endfor %}
