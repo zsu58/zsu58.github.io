@@ -1,7 +1,7 @@
 ---
 title: "[Clean Architecture] CH8 OCP(개방-폐쇄 원칙)"
 layout: single
-date: '07/07/2024'
+date: '08/07/2024'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

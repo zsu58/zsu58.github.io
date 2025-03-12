@@ -1,7 +1,7 @@
 ---
 title: "[Clean Architecture] CH10 ISP(인터페이스 분리 원칙)"
 layout: single
-date: '07/07/2024'
+date: '10/07/2024'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

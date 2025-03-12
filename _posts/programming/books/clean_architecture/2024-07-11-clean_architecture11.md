@@ -1,7 +1,7 @@
 ---
 title: "[Clean Architecture] CH11 DIP(의존성 역전 원칙)"
 layout: single
-date: '07/07/2024'
+date: '11/07/2024'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents

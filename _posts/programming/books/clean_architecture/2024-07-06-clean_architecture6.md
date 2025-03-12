@@ -1,7 +1,7 @@
 ---
 title: "[Clean Architecture] CH6 함수형 프로그래밍"
 layout: single
-date: '07/07/2024'
+date: '06/07/2024'
 toc: true
 toc_sticky: true
 toc_label: Table of Contents
