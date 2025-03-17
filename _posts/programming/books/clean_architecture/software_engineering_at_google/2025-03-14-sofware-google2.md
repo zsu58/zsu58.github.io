@@ -43,4 +43,14 @@ management of the scaling costs for the organization, the product, and the devel
     * Policy: policies like the Beyoncé Rule(it should be in the CI test if it shouldn't be affected)
 * The underlying lesson is not about the frequency or difficulty of compiler upgrades, but that as soon as we became aware that compiler upgrade tasks were necessary, we found ways to make sure to perform those tasks with a constant number of engineers, even as the codebase grew
 
+### Trade-offs and Costs
+* Whenever it is efficient to do so, we should be able to explain our work when deciding between the general costs for two engineering options
+* Costs include these factors
+    * Financial
+    * Resource
+    * Personnel
+    * Transaction
+    * Opportunity
+    * Societal
+
 ---
