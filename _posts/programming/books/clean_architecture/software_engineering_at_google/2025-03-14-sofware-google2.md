@@ -52,5 +52,9 @@ management of the scaling costs for the organization, the product, and the devel
     * Transaction
     * Opportunity
     * Societal
+* Making good engineering decisions is all about weighing all of the available inputs and making informed decisions about the trade-offs
+* In the end, decisions in an engineering group should come down to very few things
+    * We are doing this because we must (legal requirements, customer requirements)
+    * We are doing this because it is the best option (as determined by some appropriate decider) we can see at the time, based on current evidence
 
 ---
