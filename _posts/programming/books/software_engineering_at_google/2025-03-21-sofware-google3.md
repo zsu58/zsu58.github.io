@@ -31,5 +31,15 @@ tags:
 * Pillar 3: Trust
     * You believe others are competent and will do the right thing, and you’re OK with letting them drive when appropriate
 
+### Humility, Respect, and Trust in Practice
+* Learn to respect your peers and give constructive criticism politely
+* Learn to accept criticism as well
+    * You are not your code
+
+
+### TL;DR
+* A small investment in understanding personalities and working styles of yourself and others can go a long way toward improving productivity
+* To work effectively with a team or a large organization, be aware of
+your preferred working style and that of other
 
 ---
