@@ -19,4 +19,8 @@ tags:
 * An enormous part of learning is being able to try things and feeling safe to fail
 * One important way of building psychological safety is to assign a mentor someone who is not their team member manager, or tech lead whose responsibilities explicitly include answering questions and helping ramping up
 
+### Growing Your Knowledge
+* Learning is not just about understanding new things; it also includes developing an understanding of the decisions behind the design and implementation of existing things
+    * Seek out and understand context, especially for decisions that seem unusual. After you’ve understood the context and purpose of the code, consider whether your change still makes sense
+
 ---
