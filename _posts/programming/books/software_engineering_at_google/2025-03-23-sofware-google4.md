@@ -23,4 +23,17 @@ tags:
 * Learning is not just about understanding new things; it also includes developing an understanding of the decisions behind the design and implementation of existing things
     * Seek out and understand context, especially for decisions that seem unusual. After you’ve understood the context and purpose of the code, consider whether your change still makes sense
 
+### Scaling Your Questions: Ask the Community
+* Use the following community
+    * Group Chats
+    * Mailing Lists
+    * Question-and-Answer Platform
+
+### Scaling Your Knowledge
+* Use the following source to increase/spread knowledge
+    * Office Hours
+    * Tech Talks and Classes
+    * Documentation
+    * Code and Comments
+
 ---
