@@ -24,7 +24,7 @@ tags:
     * Seek out and understand context, especially for decisions that seem unusual. After you’ve understood the context and purpose of the code, consider whether your change still makes sense
 
 ### Scaling Your Questions: Ask the Community
-* Use the following community
+* Use the following community to ask questions
     * Group Chats
     * Mailing Lists
     * Question-and-Answer Platform
@@ -35,5 +35,10 @@ tags:
     * Tech Talks and Classes
     * Documentation
     * Code and Comments
+
+### Scaling Your Organization’s Knowledge
+* Be aware of the following for cultivating a knowledge-sharing culture
+    * Respect
+    * Incentives and recognition
 
 ---
