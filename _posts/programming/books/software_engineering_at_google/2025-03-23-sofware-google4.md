@@ -41,4 +41,15 @@ tags:
     * Respect
     * Incentives and recognition
 
+### Readability: Standardized Mentorship Through Code Review
+* Code review is mandatory at Google
+* Every changelist (CL) requires readability approval, which indicates that someone who has readability certification for that language has approved the CL
+* Certified authors implicitly provide readability approvalof their own CLs; otherwise, one or more qualified reviewers must explicitly give readability approval for the CL
+
+### TL;DR
+* Psychological safety is the foundation for fostering a knowledge-sharing environment
+* Make it easy for people to get the help they need from both human experts and documented references
+* At a systemic level, encourage and reward those who take time to teach and broaden their expertise beyond just themselves, their team, or their organization
+* There is no silver bullet: empowering a knowledge-sharing culture requires a combination of multiple strategies, and the exact mix that works best for your organization will likely change over time
+
 ---
