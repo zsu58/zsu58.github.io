@@ -29,6 +29,14 @@ tags:
     * First, it’s a way to scale yourself
     * Second, you might just be really good at it
 
+### Servant Leadership
+* The symptoms of this disease include, but are by no means limited to, micromanaging, ignoring low performers, and hiring pushovers
+* To avoid this, above all, resist the urge to manage
+* The cure for the management disease is a liberal application of servant leadership, which is a nice way of saying the most important thing you can do as a leader is to serve your team, much like a butler or majordomo tends to the health and well-being of a household
+
+### The Engineering Manager
+
+
 ### TL;DR
 
 
