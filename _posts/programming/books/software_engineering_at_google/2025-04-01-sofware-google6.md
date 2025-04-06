@@ -34,7 +34,22 @@ tags:
 * To avoid this, above all, resist the urge to manage
 * The cure for the management disease is a liberal application of servant leadership, which is a nice way of saying the most important thing you can do as a leader is to serve your team, much like a butler or majordomo tends to the health and well-being of a household
 
-### The Engineering Manager
+### Today's Engineering Manager
+* Traditional managers worry about how to get things done, whereas great managers worry about what things get done (and trust their team to figure out how to do it).
+
+### Antipatterns
+* Hire Pushovers
+    * You should strive to hire people who are smarter than you and can replace you
+* Ignore Low Performers
+    * How do you effectively coach a low performer? The best analogy is to imagine that you’re helping a limping person learn to walk again, then jog, then run alongside the rest of the team. It almost always requires temporary micromanagement, but still a whole lot of humility, respect, and trust—particularly respect
+* Ignore Human Issues
+* Be Everyone’s Friend
+    * Don’t confuse friendship with leading with a soft touch
+* Compromise the Hiring Bar
+    * Steve Jobs once said: “A people hire other A people; B people hire C people.”
+* Treat Your Team Like Children
+
+### Positive Patterns
 
 
 ### TL;DR
