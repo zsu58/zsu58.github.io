@@ -50,7 +50,14 @@ tags:
 * Treat Your Team Like Children
 
 ### Positive Patterns
-
+* Lose the Ego
+    * Part of losing the ego is trust: you need to trust your team
+    * Think about the big picture of what you’re trying to accomplish as a team, and accept feedback and criticism openly; avoid the urge to be territorial
+    * Apologize when you make a mistake, and you need to sincerely mean it
+* Be a Zen Master
+    * Mediating your reactions and maintaining your calm is more important as you lead more people, because your team will (both unconsciously and consciously) look to you for clues on how to act and react to whatever is going on around you
+    * Zen management trick: asking questions
+        * The person asking for advice typically doesn’t want you to solve their problem, but rather to help them solve it, and the easiest way to do this is to ask this person questions
 
 ### TL;DR
 
