@@ -58,6 +58,9 @@ tags:
     * Mediating your reactions and maintaining your calm is more important as you lead more people, because your team will (both unconsciously and consciously) look to you for clues on how to act and react to whatever is going on around you
     * Zen management trick: asking questions
         * The person asking for advice typically doesn’t want you to solve their problem, but rather to help them solve it, and the easiest way to do this is to ask this person questions
+* Be a Catalyst
+    * One of the most common things a team leader does is to build consensus
+    * drive the process from start to finish, or you just give it a gentle push in the right direction to speed it up
 
 ### TL;DR
 
