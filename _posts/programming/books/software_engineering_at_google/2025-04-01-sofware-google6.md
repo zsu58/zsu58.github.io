@@ -61,6 +61,8 @@ tags:
 * Be a Catalyst
     * One of the most common things a team leader does is to build consensus
     * drive the process from start to finish, or you just give it a gentle push in the right direction to speed it up
+* Remove Roadblocks
+    * You don’t need to know all the answers to help remove roadblocks, but it usually helps to know the people who do
 
 ### TL;DR
 
