@@ -63,6 +63,9 @@ tags:
     * drive the process from start to finish, or you just give it a gentle push in the right direction to speed it up
 * Remove Roadblocks
     * You don’t need to know all the answers to help remove roadblocks, but it usually helps to know the people who do
+* Be a Teacher and a Mentor
+    * A good mentor must balance the trade-offs of a mentee’s time learning versus their time contributing to their product as part of an effective effort to scale the team as it grows
+    * Experience with your team’s processes and systems, the ability to explain things to someone else, and the ability to gauge how much help your mentee needs
 
 ### TL;DR
 
