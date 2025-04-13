@@ -66,6 +66,14 @@ tags:
 * Be a Teacher and a Mentor
     * A good mentor must balance the trade-offs of a mentee’s time learning versus their time contributing to their product as part of an effective effort to scale the team as it grows
     * Experience with your team’s processes and systems, the ability to explain things to someone else, and the ability to gauge how much help your mentee needs
+* Set Clear Goals
+    * If you’re going to have clear goals, you need to set clear priorities and help your team decide how it should make trade-offs when the time comes
+    * Create a concise mission statement for the team.
+* Be Honest
+    * Even more common is when a team member asks you something you don’t know the answer to: you can tell that person you don’t know.
+    * We strongly advise against using the compliment sandwich, not because we think you should be unnecessarily cruel or harsh, but because most people won’t hear the critical message, which is that something needs to change
+* Track Happiness
+    * A good simple way to track your team’s happiness8 is to ask the team member at the end of each one-on-one meeting, “What do you need?
 
 ### TL;DR
 
