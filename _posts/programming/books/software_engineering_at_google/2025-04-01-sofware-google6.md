@@ -75,6 +75,17 @@ tags:
 * Track Happiness
     * A good simple way to track your team’s happiness8 is to ask the team member at the end of each one-on-one meeting, “What do you need?
 
+### Other Tips and Tricks
+* Delegate, but get your hands dirty
+    * If you’ve been leading teams for a while or if you pick up a new team, one of the easiest ways to gain the team’s respect and get up to speed on what they’re doing is to get your hands dirty—usually by taking on a grungy task that no one else wants to do
+* Seek to replace yourself
+* Know when to make waves
+    * By waiting, you’re only delaying the inevitable and causing untold damage in the process. So act, and act quickly
+* Shield your team from chaos
+* Give your team air cover
+    * Share as much information as you can with your team, but don’t distract them with organizational craziness that is extremely unlikely to ever actually affect them
+* It’s easy to say “yes” to something that’s easy to undo
+
 ### TL;DR
 
 
