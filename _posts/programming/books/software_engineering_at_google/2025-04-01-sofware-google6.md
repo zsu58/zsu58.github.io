@@ -86,6 +86,15 @@ tags:
     * Share as much information as you can with your team, but don’t distract them with organizational craziness that is extremely unlikely to ever actually affect them
 * It’s easy to say “yes” to something that’s easy to undo
 
+### People Are Like Plants
+* It’s your job as their leader to determine who needs what and then give it to them—except instead of light, water, and fertilizer, your team needs varying amounts of motivation and direction
+* Giving direction is fairly straightforward—it requires a basic understanding of what needs to be done, some simple organizational skills, and enough coordination to break it down into manageable task
+* There are two types of motivation: extrinsic, and intrinsic, and you need to work to increase their intrinsic motivation by giving people three things: autonomy, mastery, and purpose
+    * A person has autonomy when they have the ability to act on their own without someone micromanaging them.
+    * Mastery in its basest form simply means that you need to give someone the opportunity to improve existing skills and learn new ones
+    * Focus on positive effects the products might have on their company, their customers, or even the world. Even for cases in which the product might have a much smaller impact, when the engineers receives a message that the product has helped them personally or helped their business, it inspires the team members to think about ways in which they can make their product even better
+
+
 ### TL;DR
 
 
