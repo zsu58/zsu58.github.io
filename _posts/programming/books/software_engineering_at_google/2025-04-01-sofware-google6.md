@@ -95,7 +95,12 @@ tags:
     * Focus on positive effects the products might have on their company, their customers, or even the world. Even for cases in which the product might have a much smaller impact, when the engineers receives a message that the product has helped them personally or helped their business, it inspires the team members to think about ways in which they can make their product even better
 
 
-### TL;DR
+### Conclusion
+* Software engineering experience itself is invaluable for managers, the most important skills an effective manager brings to the table are social ones
 
+### TL;DR
+* Don’t “manage” in the traditional sense; focus on leadership, influence, and serving your team
+*  Delegate where possible; don’t DIY (Do It Yourself)
+* Pay particular attention to the focus, direction, and velocity of your team
 
 ---
