@@ -19,7 +19,10 @@ tags:
 * Always Be Scaling
 
 ### Always Be Deciding
-
+* At the highest level, your job as a leader—either of a single team or a larger organization—is to guide people toward solving difficult, ambiguous problems
+* By ambiguous, we mean that the problem has no obvious solution and might even be unsolvable
+* There are three main steps to this process; First, you need to identify the blinders; next, you
+need to identify the trade-offs; and then you need to decide and iterate on a solution
 
 ### TL;DR
 
