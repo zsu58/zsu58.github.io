@@ -37,6 +37,20 @@ tags:
 ### Always Be Leaving
 * It’s not just your job to solve an ambiguous problem, but to get your organization to solve it by itself, without you present
 
+### Your Mission: Build a Self-Driving Team
+* Again, there are three main parts to constructing this sort of self-sufficient group: dividing the problem space, delegating subproblems, and iterating as needed
+
+### Always Be Scaling
+* As a leader, your most precious resource is your limited pool of time, attention, and energy
+
+### Important Versus Urgent
+* As you moved into leadership, though, you might have noticed that your main mode of work became less predictable and more about firefighting. That is, your job became less proactive and more reactive. The higher up in leadership you go, the more escalations you receive
+*  If you let yourself slip into pure reactive mode (which happens almost automatically), you spend every moment of your life on urgent things, but almost none of those things are important in the big picture
+* Here are a few key techniques to force yourself to work mostly on important things
+    * Delegate
+    * Schedule dedicated time
+    * Find a tracking system that works
+
 
 ### TL;DR
 
