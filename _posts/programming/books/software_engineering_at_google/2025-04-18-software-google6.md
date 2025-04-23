@@ -39,7 +39,7 @@ tags:
 
 ### Your Mission: Build a Self-Driving Team
 * Again, there are three main parts to constructing this sort of self-sufficient group: dividing the problem space, delegating subproblems, and iterating as needed
-
+z
 ### Always Be Scaling
 * As a leader, your most precious resource is your limited pool of time, attention, and energy
 
@@ -50,6 +50,10 @@ tags:
     * Delegate
     * Schedule dedicated time
     * Find a tracking system that works
+
+### Learn to Drop Balls
+* And so now, as you work through your tasks, do not try to tackle the top 80%—you’ll still end up overwhelmed and mostly working on urgent-but-not-important tasks
+* Instead, mindfully identify the balls that strictly fall in the top 20%—critical things that only you can do—and focus strictly on them
 
 
 ### TL;DR
