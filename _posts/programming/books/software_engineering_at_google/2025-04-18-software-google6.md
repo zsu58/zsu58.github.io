@@ -55,8 +55,17 @@ z
 * And so now, as you work through your tasks, do not try to tackle the top 80%—you’ll still end up overwhelmed and mostly working on urgent-but-not-important tasks
 * Instead, mindfully identify the balls that strictly fall in the top 20%—critical things that only you can do—and focus strictly on them
 
+### Protecting Your Energy
+* Take real vacations
+* Make it trivial to disconnect
+* Take real weekends, too
+* Take breaks during the day
+* Give yourself permission to take a mental health day
+
 
 ### TL;DR
-
+* Always Be Deciding: Ambiguous problems have no magic answer; they’re all about finding the right trade-offs of the moment, and iterating
+* Always Be Leaving: Your job, as a leader, is to build an organization that automatically solves a class of ambiguous problems—over time—without you needing to be present
+*  Always Be Scaling: Success generates more responsibility over time, and you must proactively manage the scaling of this work in order to protect your scarce resources of personal time, attention, and energy
 
 ---
