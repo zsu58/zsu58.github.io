@@ -36,6 +36,14 @@ Google
     * Performance matters
     * Interoperability also matters
 
+### The Style Guide
+* Rules to avoid dangers
+* Rules to enforce best practices
+* Rules to ensure consistency
+
+# Changing the Rules
+* 
+
 ### TL;DR
 * 
 
